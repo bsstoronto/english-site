@@ -182,7 +182,7 @@ const F={
     if(t===0)return mcQ(`What does <b>${w.w}</b> mean?`,w.m,SAMPLE(words.filter(x=>x!==w),3).map(x=>x.m),`${w.e} <b>${w.w}</b> means ${w.m}. Example: ${w.ex}`);
     if(t===1)return mcQ(`Which word means: <b>${w.m}</b>?`,w.w,SAMPLE(words.filter(x=>x!==w),3).map(x=>x.w),`${w.e} <b>${w.w}</b>: ${w.ex}`);
     if(t===2)return {type:"type",q:`Type the missing word: <b>${w.fill}</b>`,a:[w.w].concat(w.alt||[]),why:`${w.e} <b>${w.w}</b> = ${w.m}`,hint:`It starts with "${w.w[0]}" and has ${w.w.length} letters.`};
-    if(t===3)return {type:"type",q:`Type the missing word: <b>${blankWord(w.ex,w.w)}</b>`,a:[w.w].concat(w.alt||[]),why:`${w.e} ${w.ex}`,hint:`It starts with "${w.w[0]}" and has ${w.w.length} letters.`};
+    if(t===3){const mm=w.ex.match(new RegExp("\\b"+w.w+"(s|es|d|ed)?\\b","i"));if(!mm)return {type:"type",q:`Type the missing word: <b>${w.fill}</b>`,a:[w.w].concat(w.alt||[]),why:`${w.e} <b>${w.w}</b> = ${w.m}`,hint:`It starts with "${w.w[0]}" and has ${w.w.length} letters.`};return {type:"type",q:`Type the missing word: <b>${blankWord(w.ex,w.w)}</b>`,a:[mm[0]].concat(w.alt||[]),why:`${w.e} ${w.ex}`,hint:`It starts with "${w.w[0]}" and has ${w.w.length} letters.`};}
     return {type:"type",q:`Type the word that means: <b>${w.m}</b>`,a:[w.w].concat(w.alt||[]),why:`${w.e} <b>${w.w}</b>: ${w.ex}`,hint:`It starts with "${w.w[0]}" and has ${w.w.length} letters.`}},
   bank:bank=>()=>{const b=R(bank);return mcQ(b.q,b.a,b.o.filter(x=>x!==b.a),b.why,b.hint)},
   // spelling
@@ -2684,9 +2684,585 @@ u.cats=[
 ];
 })();
 
+/* ===================== GRADE 3 · UNIT 5 · SPACE AND THE PLANETS (original content, plus one public-domain poem) ===================== */
+(function(){
+const f=(q,a,o,why)=>({lv:"find",q,o:[a].concat(o),a:[a],why});
+const t=(q,a,o,why)=>({lv:"think",q,o:[a].concat(o),a:[a],why});
+UNITS.push({
+id:"space", num:5, emoji:"🚀🪐🌙", title:"Space and the Planets", badge:"🚀 Space Explorer",
+
+stories:[
+/* ---------- 1. STORY (diary) ---------- */
+{title:"Leo's Space Camp Diary", e:"📔", kind:"Story (diary)", pages:[
+ {pic:"📔🚀", text:"<b>Monday</b><br>Dear Diary,<br>Today I arrived at Space Camp! I will be here for five whole days. My room has a bunk bed and a window that looks at the stars. Our camp leader is named Captain Rosa. She says that by Friday, we will build and launch our own rocket. I am so excited that I can't sleep!",
+  qs:[f("How long will Leo stay at Space Camp?","Five days",["One day","Two weeks"],"\"I will be here for five whole days.\""),
+      t("What kind of writing is this?","A diary, where someone writes about their own day",["A recipe","A newspaper"],"A diary starts with \"Dear Diary\" and tells about the writer's day, using I and me.")]},
+ {pic:"🌍🪐", text:"<b>Tuesday</b><br>Dear Diary,<br>Today we learned about the planets. Captain Rosa taught us a trick to remember their order from the Sun: <i>My Very Excellent Mother Just Served Us Noodles.</i> That means Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus and Neptune! Jupiter is so big that more than a thousand Earths could fit inside it.",
+  qs:[f("Which planet is closest to the Sun?","Mercury",["Neptune","Earth"],"The first word of the trick is \"My\", for Mercury."),
+      t("Why did Captain Rosa teach a sentence like \"My Very Excellent Mother…\"?","The first letters help you remember the planets in order",["Because mothers make noodles","To learn about cooking"],"Each word starts with the same letter as a planet. This kind of memory trick is called a mnemonic.")]},
+ {pic:"🧑‍🚀🎈", text:"<b>Wednesday</b><br>Dear Diary,<br>Today was the best day! We tried on real spacesuits. They were heavy and hot! Then we went into a special pool to practise moving like astronauts in space. Captain Rosa told us that astronauts on the International Space Station float because they are falling around the Earth all the time. My brain is still spinning!",
+  qs:[f("Where did they practise moving like astronauts?","In a special pool",["On a trampoline","In the kitchen"],"\"We went into a special pool to practise.\""),
+      f("How did the spacesuits feel?","Heavy and hot",["Light and cold","Soft and fluffy"],"\"They were heavy and hot!\"")]},
+ {pic:"🔭⭐", text:"<b>Thursday</b><br>Dear Diary,<br>Tonight we looked through a big telescope. I saw the craters on the Moon and four tiny dots near Jupiter. Captain Rosa said those dots are Jupiter's biggest moons! We also found the Big Dipper, a group of stars shaped like a giant spoon. Tomorrow is launch day. I hope our rocket flies high!",
+  qs:[f("What did Leo see near Jupiter?","Four tiny dots, which were Jupiter's biggest moons",["A rocket","A comet"],"The tiny dots were Jupiter's biggest moons."),
+      t("What shape is the Big Dipper?","A giant spoon",["A circle","A star"],"A dipper is a big spoon for scooping water.")]},
+ {pic:"🚀💨", text:"<b>Friday</b><br>Dear Diary,<br>Launch day! Our team built a rocket from a plastic bottle, cardboard fins and a paper nose cone. We filled it with a little water and pumped in air. Everyone counted down: \"Five, four, three, two, one… LIFT-OFF!\" Whoosh! Our rocket shot up higher than the trees. Our team cheered so loudly that birds flew away.",
+  qs:[f("What was the rocket made from?","A plastic bottle, cardboard fins and a paper nose cone",["Metal and glass","Wood and nails"],"They used a plastic bottle, cardboard fins and a paper nose cone."),
+      t("Why did the birds fly away?","The team cheered very loudly",["The rocket hit them","It started to rain"],"\"Our team cheered so loudly that birds flew away.\"")]},
+ {pic:"🏠🌟", text:"<b>Saturday</b><br>Dear Diary,<br>Today I came home. I told Mia and Grandmother everything. Grandmother laughed and said that when she was a girl, nobody had walked on the Moon yet. Now I know what I am going to be when I grow up: an astronaut! First, I will study hard in science and maths. One day, I will float among the stars.",
+  qs:[f("What does Leo want to be?","An astronaut",["A baker","A pilot"],"\"Now I know what I am going to be when I grow up: an astronaut!\""),
+      t("Which sentence talks about the FUTURE?","One day, I will float among the stars.",["Today I came home.","I told Mia everything."],"The word \"will\" shows something that has not happened yet.")]}
+], turn:{q:"Write a short diary entry about something you did today. Start with \"Dear Diary,\".",model:"Dear Diary, today I went to the library with my dad. I found a great book about planets."}},
+
+/* ---------- 2. STORY ---------- */
+{title:"The Night of the Full Moon", e:"🌕", kind:"Story", pages:[
+ {pic:"🌕👵", text:"On a clear autumn night, Grandmother woke Mia and Leo. \"Put on your warm jackets,\" she whispered. \"Tonight there will be a lunar eclipse.\" The children followed her into the back garden. The full Moon hung above the roofs like a giant silver coin.",
+  qs:[f("What did Grandmother say would happen tonight?","A lunar eclipse",["A snowstorm","A rocket launch"],"\"Tonight there will be a lunar eclipse.\""),
+      f("What was the Moon compared to?","A giant silver coin",["A banana","A ball of fire"],"The full Moon hung above the roofs like a giant silver coin.")]},
+ {pic:"🌍🌑", text:"\"What is an eclipse?\" asked Leo. Grandmother held up an orange, a tennis ball and a torch. \"The torch is the Sun, the orange is the Earth, and the ball is the Moon,\" she said. \"Sometimes the Earth moves exactly between the Sun and the Moon. Then the Earth's shadow falls on the Moon. That is a lunar eclipse.\"",
+  qs:[f("In Grandmother's model, what was the torch?","The Sun",["The Moon","The Earth"],"\"The torch is the Sun.\""),
+      t("What causes a lunar eclipse?","The Earth's shadow falls on the Moon",["The Moon falls asleep","Clouds cover the Moon"],"When the Earth moves between the Sun and the Moon, its shadow covers the Moon.")]},
+ {pic:"🌘🔴", text:"Slowly, a dark shadow crept across the Moon. Bit by bit, the bright Moon disappeared. Then something amazing happened. The Moon did not turn black. It glowed a deep, coppery red! \"A blood moon,\" whispered Grandmother. \"In my village, people used to bang pots to scare away the giant they thought was eating the Moon.\"",
+  qs:[f("What colour did the Moon turn?","Deep, coppery red",["Black","Bright green"],"It glowed a deep, coppery red!"),
+      t("Why did people in Grandmother's village bang pots long ago?","They did not know about the Earth's shadow and thought a giant was eating the Moon",["To make music for dancing","To call their cows"],"Long ago, people made up stories to explain things they did not understand yet.")]},
+ {pic:"🔭👀", text:"Leo looked through Grandmother's small telescope. \"I can see craters!\" he said. \"Those were made by space rocks crashing into the Moon long ago,\" Grandmother explained. \"The Moon has no air and no wind, so the craters stay there for millions of years. Even the astronauts' footprints are still there!\"",
+  qs:[f("What made the craters on the Moon?","Space rocks crashing into it",["Volcanoes of ice","Astronauts digging"],"Space rocks crashed into the Moon long ago."),
+      t("Why are the astronauts' footprints still on the Moon?","There is no wind or rain to wipe them away",["Someone guards them","They are painted on"],"The Moon has no air and no wind, so nothing moves the dust.")]},
+ {pic:"🌗🌒", text:"\"Does the Moon really change shape every night?\" asked Mia. \"No,\" said Grandmother. \"The Moon is always round. It has no light of its own. It reflects light from the Sun. As the Moon travels around the Earth, we see different amounts of its sunny side. Those are called the phases of the Moon.\"",
+  qs:[f("Does the Moon make its own light?","No, it reflects light from the Sun",["Yes, it glows by itself","Only on Fridays"],"\"It has no light of its own. It reflects light from the Sun.\""),
+      t("Why does the Moon seem to change shape?","We see different amounts of its sunny side as it moves around the Earth",["The Moon gets bitten","The Moon shrinks every night"],"These changing shapes are called the phases of the Moon.")]},
+ {pic:"🌕💛", text:"After an hour, the shadow moved away and the Moon shone silver again. Mia yawned. \"I will never forget tonight,\" she said. Grandmother hugged them both. \"People all over the world have watched the same Moon for thousands of years,\" she said. \"Tonight, you joined them.\"",
+  qs:[f("What happened after about an hour?","The shadow moved away and the Moon shone silver again",["The Moon disappeared forever","It started to snow"],"After an hour, the shadow moved away."),
+      t("What did Grandmother mean by \"Tonight, you joined them\"?","Mia and Leo shared the same experience as people throughout history",["They joined a club","They flew to the Moon"],"Everyone on Earth, now and long ago, has watched the same Moon.")]}
+], turn:{q:"What do you see when you look at the night sky? Write two sentences.",model:"I can see the Moon and a few bright stars. Sometimes I see a plane blinking as it flies past."}},
+
+/* ---------- 3. FACT TEXT ---------- */
+{title:"Our Solar System", e:"🪐", kind:"Fact text", pages:[
+ {pic:"☀️🪐", text:"Our <b>solar system</b> is the Sun and everything that travels around it: eight planets, their moons, and millions of rocks and balls of ice. The Sun is right in the middle. It is a <b>star</b>, a giant ball of hot, glowing gas. Its light takes about eight minutes to reach the Earth.",
+  qs:[f("What is in the middle of our solar system?","The Sun",["The Earth","The Moon"],"The Sun is right in the middle."),
+      f("What is the Sun?","A star",["A planet","A moon"],"The Sun is a star, a giant ball of hot, glowing gas.")]},
+ {pic:"☿️♀️🌍♂️", text:"The four planets closest to the Sun are <b>Mercury, Venus, Earth and Mars</b>. They are called the rocky planets because they have hard, rocky surfaces. Mercury is the smallest planet. Venus is the hottest, because its thick clouds trap heat. Mars looks red because its dust contains rust.",
+  qs:[f("Which planet is the hottest?","Venus",["Mercury","Mars"],"Venus is the hottest, because its thick clouds trap heat."),
+      t("Venus is farther from the Sun than Mercury, but it is hotter. Why?","Its thick clouds trap the heat",["It is made of fire","It is closer to the Sun"],"Thick clouds work like a blanket, keeping the heat in.")]},
+ {pic:"🌍💙", text:"<b>Earth</b> is the third planet from the Sun. It is the only planet we know of with liquid water on its surface and living things. It is not too hot and not too cold. Scientists sometimes call it the \"Goldilocks planet\", because its temperature is just right for life.",
+  qs:[f("Which planet is Earth from the Sun?","The third",["The first","The eighth"],"Earth is the third planet from the Sun."),
+      t("Why is Earth called the \"Goldilocks planet\"?","Its temperature is just right for life",["It has golden rocks","A girl named Goldilocks lives there"],"Like the porridge in the story, Earth is not too hot and not too cold.")]},
+ {pic:"🪐🌀", text:"The next four planets are <b>Jupiter, Saturn, Uranus and Neptune</b>. They are called the giant planets. Jupiter is the biggest planet of all, and it has a storm bigger than the whole Earth. Saturn is famous for its huge, bright rings, made of ice and rock. You could never land on these planets, because they have no solid ground.",
+  qs:[f("Which is the biggest planet?","Jupiter",["Saturn","Earth"],"Jupiter is the biggest planet of all."),
+      f("What are Saturn's rings made of?","Ice and rock",["Gold","Clouds of fire"],"Saturn's rings are made of ice and rock.")]},
+ {pic:"🥶🔵", text:"Uranus and Neptune are so far from the Sun that they are freezing cold. Uranus spins on its side, as if it were rolling around the Sun. Neptune, the farthest planet, has the fastest winds in the solar system. A year on Neptune lasts about 165 Earth years!",
+  qs:[f("Which planet is the farthest from the Sun?","Neptune",["Uranus","Mars"],"Neptune is the farthest planet."),
+      t("Why is a year on Neptune so long?","It is so far away that its trip around the Sun is very long",["It spins very slowly","It has no Sun"],"A year is one trip around the Sun. The farther out a planet is, the longer its path.")]},
+ {pic:"🧊⚫", text:"Pluto used to be called the ninth planet. But in 2006, scientists decided it was too small, and now it is called a <b>dwarf planet</b>. Beyond the planets are millions of icy objects. Every year, scientists discover new things about our solar system, and maybe one day you will too!",
+  qs:[f("What is Pluto called now?","A dwarf planet",["The ninth planet","A star"],"Now Pluto is called a dwarf planet."),
+      f("In which year did scientists change Pluto's name?","2006",["1906","2026"],"In 2006, scientists decided it was too small.")]}
+], turn:{q:"If you could visit one planet, which would you choose? Write two sentences saying why.",model:"I would visit Saturn. I want to see its huge, bright rings up close."}},
+
+/* ---------- 4. FACT TEXT ---------- */
+{title:"Footprints on the Moon", e:"👣", kind:"Fact text", pages:[
+ {pic:"🌙🌍", text:"The Moon is the Earth's closest neighbour in space. It travels around the Earth about once every month. It is about 384,000 kilometres away. That is so far that if you could drive a car there, it would take about six months without stopping!",
+  qs:[f("How often does the Moon travel around the Earth?","About once a month",["Once a day","Once a year"],"It travels around the Earth about once every month."),
+      t("Why would it take six months to drive to the Moon?","It is very, very far away",["Cars are slow on the Moon","The road is bumpy"],"The Moon is about 384,000 kilometres away.")]},
+ {pic:"🚀🇺🇸", text:"On July 20, 1969, the Apollo 11 spacecraft landed on the Moon. Neil Armstrong climbed down the ladder and became the first person ever to walk on the Moon. He said, \"That's one small step for man, one giant leap for mankind.\" Buzz Aldrin joined him soon after.",
+  qs:[f("Who was the first person to walk on the Moon?","Neil Armstrong",["Buzz Aldrin","Captain Rosa"],"Neil Armstrong became the first person ever to walk on the Moon."),
+      f("In which year did Apollo 11 land on the Moon?","1969",["2006","1906"],"On July 20, 1969.")]},
+ {pic:"🏃🌙", text:"The Moon's <b>gravity</b> is much weaker than the Earth's. Things weigh only about one-sixth as much there. The astronauts could bounce and leap like kangaroos! There is also no air on the Moon, so astronauts must wear spacesuits that give them oxygen to breathe.",
+  qs:[f("Why must astronauts wear spacesuits on the Moon?","There is no air to breathe",["To look smart","Because it is raining"],"There is no air on the Moon, so spacesuits give them oxygen."),
+      t("A child weighs 30 kg on Earth. On the Moon, the child would feel…","much lighter",["much heavier","exactly the same"],"The Moon's gravity is weaker, so things weigh only about one-sixth as much.")]},
+ {pic:"🌡️🌙", text:"The Moon has no air to act like a blanket. So in the daytime, it can be hotter than boiling water. At night, it gets colder than anywhere on Earth. There is no wind and no rain, so the astronauts' footprints may stay in the Moon dust for millions of years.",
+  qs:[f("What is the daytime temperature on the Moon like?","Hotter than boiling water",["Cool and pleasant","Always freezing"],"In the daytime, it can be hotter than boiling water."),
+      t("Why does the Moon get so hot AND so cold?","It has no air to act like a blanket",["It is close to the Sun","It spins very fast"],"Air helps keep a planet's temperature steady. The Moon has none.")]},
+ {pic:"🇮🇳🛰️", text:"Many countries have sent spacecraft to the Moon. In August 2023, India's Chandrayaan-3 mission landed near the Moon's south pole, the first spacecraft ever to land there. Its little rover, Pragyan, drove across the surface and studied the soil.",
+  qs:[f("Which country's mission landed near the Moon's south pole in 2023?","India",["Canada","Brazil"],"India's Chandrayaan-3 mission landed near the Moon's south pole."),
+      f("What was the name of the rover?","Pragyan",["Apollo","Rosa"],"Its little rover, Pragyan, drove across the surface.")]},
+ {pic:"🧑‍🚀🔮", text:"Scientists are now planning for people to return to the Moon and maybe one day live there in special bases. From the Moon, astronauts may even travel on to Mars. The children reading this today could be the scientists and astronauts of tomorrow!",
+  qs:[t("Where might astronauts travel to after the Moon?","Mars",["The Sun","Inside the Earth"],"From the Moon, astronauts may travel on to Mars."),
+      t("What is the author saying in the last sentence?","Today's children could become future space explorers",["Children cannot be scientists","Space travel has ended"],"The author encourages readers to dream about the future.")]}
+], turn:{q:"If you could ask Neil Armstrong one question, what would it be? Write your question and say why you would ask it.",model:"I would ask him, \"Were you scared when you stepped on the Moon?\" I want to know how brave astronauts feel."}},
+
+/* ---------- 5. FABLE ---------- */
+{title:"Stella, the Little Star (a fable)", e:"⭐", kind:"Fable", pages:[
+ {pic:"⭐🌕", text:"High in the night sky lived a little star named Stella. She was not big, and she was not very bright. Every night she looked at the Moon and sighed. \"Everyone on Earth looks at the Moon,\" she said. \"Nobody ever notices me.\"",
+  qs:[f("Who did Stella look at every night?","The Moon",["The Sun","A comet"],"Every night she looked at the Moon and sighed."),
+      t("How did Stella feel?","Unimportant and jealous",["Proud and happy","Angry at the Sun"],"She felt that nobody noticed her because she was small.")]},
+ {pic:"☄️✨", text:"One night, a bright comet zoomed past with a long, glowing tail. \"Look at me!\" it shouted. \"I am the most dazzling thing in the sky!\" All the children on Earth pointed at the comet. Stella felt even smaller. \"If only I could zoom and sparkle like that,\" she whispered.",
+  qs:[f("What did the comet have?","A long, glowing tail",["Wings","A red ring"],"A bright comet zoomed past with a long, glowing tail."),
+      t("Why did Stella feel even smaller?","Everyone noticed the comet, but not her",["The comet bumped into her","She was getting colder"],"She compared herself to the comet and felt less important.")]},
+ {pic:"⛵🌊", text:"Far below, on a dark sea, a little fishing boat was lost. The storm had passed, but the sailor could not find her way home. The Moon had set, and the comet was gone. The sailor looked up at the sky, searching. Then her eyes stopped on one small star that never moved: Stella.",
+  qs:[f("Why was the sailor lost?","She could not find her way home after the storm",["Her boat had no sail","She was asleep"],"The sailor could not find her way home."),
+      t("Why couldn't the Moon or the comet help the sailor?","The Moon had set and the comet was gone",["They were too bright","They were angry"],"Neither of them was in the sky anymore.")]},
+ {pic:"⭐🧭", text:"\"There you are!\" said the sailor. \"The star that always points north. My grandfather taught me to follow you home.\" Stella stayed in her place all night, shining as steadily as she could. By morning, the little boat had reached the harbour, where the sailor's family was waiting.",
+  qs:[f("What did the sailor's grandfather teach her?","To follow the star that points north",["To swim fast","To catch big fish"],"\"My grandfather taught me to follow you home.\""),
+      t("What was special about Stella?","She always stayed in the same place, so sailors could find their way",["She was the brightest star","She had a long tail"],"Stella never moved, so she was a guide for travellers.")]},
+ {pic:"⭐💛", text:"The next night, the Moon said to Stella, \"I shine brightly for only part of the month. The comet passes by once in many years. But you are there every night for those who need you.\" Stella glowed with happiness. She never wished to be someone else again. <b>Lesson: You don't have to be the biggest or the brightest to be important.</b>",
+  qs:[t("What is the lesson of this fable?","You don't have to be the biggest or the brightest to be important",["Comets are better than stars","Never go sailing"],"Stella helped the sailor because of who she was."),
+      t("Which real star is Stella like?","The North Star, which sailors used to find north",["The Sun","A shooting star"],"For hundreds of years, travellers in the northern half of the Earth have used the North Star to find their way.")]}
+], turn:{q:"Write about a time you helped someone, even in a small way. How did it feel?",model:"I helped my little cousin tie her shoes. It felt good to be useful."}},
+
+/* ---------- 6. REAL-WORLD TEXT ---------- */
+{title:"Real-world reading: A stargazing poster and a planet chart", e:"🔭", kind:"Real-world text", pages:[
+ {pic:"🔭🌌", text:"Read this poster from the library.<div class=\"realdoc\"><b>🌌 Family Stargazing Night! 🌌</b><br>📅 <b>Saturday, November 14</b><br>🕖 <b>7:00 p.m. to 9:00 p.m.</b><br>📍 Maple Park, by the big field<br><br>🔭 Look through real telescopes!<br>🪐 See Saturn's rings and the Moon's craters<br>☕ Free hot chocolate<br><br>👕 Dress warmly. Bring a blanket.<br>🔦 Please use only red flashlights, so everyone's eyes stay used to the dark.<br>☁️ If it is cloudy, the event will move to Sunday.</div>",
+  qs:[f("What time does the stargazing start?","7:00 p.m.",["9:00 p.m.","7:00 a.m."],"7:00 p.m. to 9:00 p.m."),
+      f("What will happen if it is cloudy?","The event will move to Sunday",["It will be cancelled forever","Everyone will go home early"],"If it is cloudy, the event will move to Sunday."),
+      t("Why will the event move if it is cloudy?","Clouds would hide the stars and planets",["Clouds are cold","The park closes"],"You cannot see the sky through thick clouds."),
+      t("Why are only red flashlights allowed?","Red light does not spoil your eyes' night vision",["Red is a pretty colour","Red flashlights are free"],"Bright white light makes it harder for your eyes to see faint stars.")]},
+ {pic:"🪐📊", text:"This chart compares some planets.<table class=\"realtbl\"><tr><th>Planet</th><th>Order from the Sun</th><th>Type</th><th>Fun fact</th></tr><tr><td>Mercury</td><td>1st</td><td>Rocky</td><td>Smallest planet</td></tr><tr><td>Venus</td><td>2nd</td><td>Rocky</td><td>Hottest planet</td></tr><tr><td>Earth</td><td>3rd</td><td>Rocky</td><td>Has living things</td></tr><tr><td>Mars</td><td>4th</td><td>Rocky</td><td>Red dust</td></tr><tr><td>Jupiter</td><td>5th</td><td>Giant</td><td>Biggest planet</td></tr><tr><td>Saturn</td><td>6th</td><td>Giant</td><td>Bright rings</td></tr></table>",
+  qs:[f("Which planet is 4th from the Sun?","Mars",["Jupiter","Earth"],"Mars: 4th."),
+      f("What type of planet is Jupiter?","Giant",["Rocky","Icy moon"],"Jupiter: Giant."),
+      t("How many ROCKY planets are in the chart?","4",["2","6"],"Mercury, Venus, Earth and Mars are rocky."),
+      t("Which planet comes right after Earth?","Mars",["Venus","Saturn"],"Earth is 3rd, so the 4th, Mars, comes right after.")]}
+], turn:{q:"Write two rules for a stargazing night. Explain why one of them is important.",model:"Bring a warm blanket. Use only a red flashlight, because bright light makes it harder to see the stars."}}
+],
+
+poems:[
+ {title:"The Star (by Jane Taylor, 1806)",
+  lines:["Twinkle, twinkle, little star,","How I wonder what you are!","Up above the world so high,","Like a diamond in the sky.","","When the blazing sun is gone,","When he nothing shines upon,","Then you show your little light,","Twinkle, twinkle, all the night."],
+  qs:[f("What does the poet compare the star to?","A diamond in the sky",["A ball","A flower"],"\"Like a diamond in the sky.\""),
+      t("When does the star show its light, according to the poem?","At night, when the sun is gone",["At noon","Only in summer"],"\"When the blazing sun is gone… Then you show your little light.\""),
+      f("This poem was written in 1806. Is it a new poem or an old poem?","An old poem, more than 200 years old",["A brand-new poem"],"It was written more than 200 years ago and is famous all over the world as a song.")]},
+ {title:"Rocket Ride",
+  lines:["Ten, nine, eight, the engines roar,","Seven, six, the sky I'll soar!","Five, four, three, I hold on tight,","Two, one, zero, into the night!","Past the Moon and planets bright,","Stars are sparkling, what a sight!","One day soon, I'll fly up high,","And wave hello across the sky."],
+  qs:[f("Which word rhymes with 'roar'?","soar",["seven","engine"],"Roar and soar end with the same sound."),
+      t("Why does the poem start with numbers going down?","It is a countdown before a rocket launch",["The poet is learning to count","The numbers are a phone number"],"Rockets launch after a countdown: 10, 9, 8…"),
+      t("Which line talks about the future?","One day soon, I'll fly up high",["Stars are sparkling, what a sight!","Past the Moon and planets bright"],"\"I'll\" means \"I will\", which shows the future.")]}
+],
+
+words:[
+ {w:"planet",e:"🪐",m:"a very large, round object that travels around a star",ex:"Mars is a red planet.",fill:"Earth is the ___ we live on."},
+ {w:"star",e:"⭐",m:"a huge ball of hot, glowing gas in space",ex:"The Sun is a star.",fill:"At night, I saw a bright ___ twinkling."},
+ {w:"comet",e:"☄️",m:"a ball of ice and dust in space with a long glowing tail",ex:"A comet zoomed past with a glowing tail.",fill:"The ___ had a long, glowing tail."},
+ {w:"asteroid",e:"🪨",m:"a rock that travels around the Sun",ex:"An asteroid is a big space rock.",fill:"A big space rock that travels around the Sun is an ___."},
+ {w:"galaxy",e:"🌌",m:"a huge group of billions of stars",ex:"Our galaxy is called the Milky Way.",fill:"The Milky Way is our ___."},
+ {w:"constellation",e:"✨",m:"a group of stars that makes a shape or picture",ex:"The Big Dipper is a famous constellation.",fill:"A group of stars that makes a picture is a ___."},
+ {w:"crater",e:"🌑",m:"a large round hole made when something crashes into the ground",ex:"The Moon is covered in craters.",fill:"A space rock made a big ___ on the Moon."},
+ {w:"meteor",e:"🌠",m:"a space rock that burns up in our sky, making a streak of light",ex:"We saw a meteor flash across the sky.",fill:"People call a ___ a shooting star."},
+ {w:"satellite",e:"🛰️",m:"an object that travels around a planet",ex:"The Moon is Earth's natural satellite.",fill:"A ___ in space helps send TV signals."},
+ {w:"universe",e:"🌌",m:"everything that exists: all of space, stars and planets",ex:"The universe is bigger than we can imagine.",fill:"All the galaxies together make up the ___."},
+
+ {w:"astronaut",e:"🧑‍🚀",m:"a person who travels into space",ex:"The astronaut floated in the space station.",fill:"An ___ trains for years before going to space."},
+ {w:"rocket",e:"🚀",m:"a vehicle with powerful engines that flies into space",ex:"The rocket shot up into the sky.",fill:"The ___ blasted off into space."},
+ {w:"launch",e:"🔥",m:"to send a rocket or spacecraft up into the air",ex:"They will launch the rocket on Friday.",fill:"Scientists will ___ the rocket tomorrow morning."},
+ {w:"spacesuit",e:"👨‍🚀",m:"special clothing that keeps astronauts safe and gives them air",ex:"Leo tried on a heavy spacesuit.",fill:"An astronaut wears a ___ to breathe in space."},
+ {w:"telescope",e:"🔭",m:"a tool that makes faraway things look bigger and closer",ex:"We looked at the Moon through a telescope.",fill:"Through the ___, I could see Saturn's rings."},
+ {w:"gravity",e:"🍎",m:"the force that pulls things towards each other, like towards the ground",ex:"Gravity makes an apple fall from a tree.",fill:"___ keeps our feet on the ground."},
+ {w:"mission",e:"🎯",m:"an important job or journey with a special goal",ex:"The mission to the Moon was a success.",fill:"The astronauts' ___ was to study Mars."},
+ {w:"countdown",e:"🔟",m:"counting backwards to zero before something starts",ex:"The countdown went five, four, three, two, one!",fill:"Everyone shouted the ___: three, two, one, lift-off!"},
+ {w:"float",e:"🎈",m:"to stay up in the air or on water without sinking",ex:"Astronauts float inside the space station.",fill:"In space, astronauts ___ around the cabin."},
+ {w:"orbit",e:"🔄",m:"the curved path of something travelling around a planet or star",ex:"The Moon is in orbit around the Earth.",fill:"The space station is in ___ around the Earth."},
+
+ {w:"rotate",e:"🌀",m:"to turn or spin around in a circle",ex:"The Earth rotates once every day.",fill:"The Earth will ___ once every 24 hours."},
+ {w:"phase",e:"🌓",m:"one of the shapes the Moon seems to have as it changes",ex:"The full Moon is one phase of the Moon.",fill:"The half Moon is one ___ of the Moon."},
+ {w:"eclipse",e:"🌘",m:"when one object in space blocks the light of another",ex:"During the eclipse, the Moon turned red.",fill:"During a lunar ___, the Earth's shadow covers the Moon."},
+ {w:"horizon",e:"🌅",m:"the line where the land or sea seems to meet the sky",ex:"The Sun sank below the horizon.",fill:"The Moon rose slowly over the ___."},
+ {w:"dawn",e:"🌄",m:"the early morning, when the sky first gets light",ex:"The birds sing at dawn.",fill:"We woke up at ___, when the sky was just getting light."},
+ {w:"dusk",e:"🌆",m:"the evening, when the sky is getting dark",ex:"The first stars appear at dusk.",fill:"At ___, the sky turns dark and the stars come out."},
+ {w:"shadow",e:"👤",m:"a dark shape made when something blocks the light",ex:"The Earth's shadow covered the Moon.",fill:"My ___ was very long in the evening sun."},
+ {w:"reflect",e:"🪞",m:"to bounce light back",ex:"The Moon reflects light from the Sun.",fill:"A mirror can ___ light."},
+ {w:"twinkle",e:"✨",m:"to shine with a light that seems to flicker",ex:"The stars twinkle at night.",fill:"Look at the stars ___ in the dark sky."},
+ {w:"distance",e:"📏",m:"how far it is from one place to another",ex:"The distance to the Moon is huge.",fill:"The ___ from the Earth to the Sun is very great."},
+
+ {w:"vast",e:"🌌",m:"extremely large",ex:"Space is vast.",fill:"The ocean looked ___ and endless."},
+ {w:"distant",e:"🔭",m:"far away",ex:"We saw a distant planet through the telescope.",fill:"The ___ stars looked like tiny dots."},
+ {w:"gigantic",e:"🪐",m:"extremely big",ex:"Jupiter is a gigantic planet.",fill:"Jupiter is a ___ planet."},
+ {w:"rocky",e:"🪨",m:"made of rock or full of rocks",ex:"Mars is a rocky planet.",fill:"Mercury has a hard, ___ surface."},
+ {w:"dazzling",e:"🌟",m:"so bright that it is hard to look at",ex:"The comet was dazzling.",fill:"The fireworks were ___ in the night sky."},
+ {w:"mysterious",e:"❓",m:"strange and hard to understand or explain",ex:"Space is full of mysterious things.",fill:"The ___ light in the sky puzzled everyone."},
+ {w:"ancient",e:"🏛️",m:"very, very old",ex:"Ancient people watched the stars too.",fill:"The ___ castle was a thousand years old."},
+ {w:"weightless",e:"🎈",m:"seeming to have no weight, so you float",ex:"Astronauts feel weightless in space.",fill:"In the space station, the astronauts felt ___."},
+ {w:"glowing",e:"💡",m:"giving out a soft, steady light",ex:"The glowing Moon lit up the garden.",fill:"The ___ lantern lit up the path."},
+ {w:"fiery",e:"🔥",m:"very hot, or looking like fire",ex:"The rocket left a fiery trail.",fill:"The Sun is a ___ ball of gas."}
+],
+
+spelling:[
+ {w:"moon",s:"The moon is bright tonight.",tip:"Double o: m-oo-n."},
+ {w:"star",s:"I wished on a star.",tip:"'ar' as in car."},
+ {w:"space",s:"Astronauts travel into space.",tip:"Ends with a magic e: sp-a-ce."},
+ {w:"planet",s:"Earth is a planet."},
+ {w:"rocket",s:"The rocket flew up.",tip:"'ck' after a short vowel: ro-ck-et."},
+ {w:"earth",s:"We live on the Earth.",tip:"'ear' sounds like 'er': ear-th."},
+ {w:"night",s:"Stars shine at night.",tip:"'igh' says long i."},
+ {w:"light",s:"The Moon reflects light.",tip:"'igh' says long i."},
+ {w:"world",s:"The world is round."},
+ {w:"bright",s:"The comet was very bright.",tip:"'igh' says long i."},
+ {w:"orbit",s:"The Moon is in orbit."},
+ {w:"comet",s:"We saw a comet."},
+ {w:"astronaut",s:"The astronaut waved.",tip:"astro-naut: 'au' sounds like 'aw'."},
+ {w:"gravity",s:"Gravity pulls us down."},
+ {w:"shadow",s:"The Earth's shadow covered the Moon.",tip:"Ends with 'ow' as in snow."}
+],
+
+facts:[
+ {e:"☀️",c:"The Sun is a star.",t:true,x:"True! The Sun is a star. It looks much bigger and brighter than other stars because it is so much closer to us."},
+ {e:"🌍",c:"About one million Earths could fit inside the Sun.",t:true,x:"True! The Sun is so big that more than a million Earths could fit inside it."},
+ {e:"🔴",c:"Mars looks red because of rust in its dust.",t:true,x:"True! The dust on Mars contains iron that has rusted, just like an old bicycle."},
+ {e:"🔇",c:"You can hear loud explosions in space.",t:false,x:"Not true! Sound needs air to travel, and space has no air. Space is completely silent."},
+ {e:"🌙",c:"The Moon makes its own light.",t:false,x:"Not true! The Moon reflects light from the Sun, like a mirror."},
+ {e:"🪐",c:"Saturn is so light for its size that it could float in a giant bathtub.",t:true,x:"True! Saturn is mostly made of light gases, so it is less dense than water."},
+ {e:"🧑‍🚀",c:"Astronauts grow a little taller while they live in space.",t:true,x:"True! Without gravity squeezing their spine, astronauts can grow a few centimetres taller. They shrink back on Earth."},
+ {e:"✨",c:"Stars twinkle because they switch on and off.",t:false,x:"Not true! Stars shine steadily. They seem to twinkle because moving air in our sky bends their light."},
+ {e:"🧊",c:"Pluto is still called the ninth planet.",t:false,x:"Not true! Since 2006, Pluto has been called a dwarf planet."},
+ {e:"🌠",c:"A shooting star is a star falling from the sky.",t:false,x:"Not true! A shooting star is a meteor: a small space rock burning up in our sky."},
+ {e:"🌀",c:"Jupiter has a storm that is bigger than the whole Earth.",t:true,x:"True! It is called the Great Red Spot, and it has been swirling for hundreds of years."},
+ {e:"🌅",c:"Astronauts on the space station can see about 16 sunrises every day.",t:true,x:"True! The space station goes around the Earth about every 90 minutes, so astronauts see many sunrises and sunsets."}
+],
+
+writing:[
+ {e:"🌌",t:"Describe the night sky",level:"Step 1 · Sentences",
+  prompt:"Imagine you are lying on a blanket on a clear night. Write at least 4 sentences describing what you see, hear and feel. Use at least 2 describing words from the word bank.",
+  minS:4,minWords:2,
+  rx:[["^\\s*[A-Z]","I started with a capital letter"],["[.!?]\\s*$","I ended with a full stop (or ? or !)"],["^(?![\\s\\S]*\\bi\\b)","I wrote I as a capital letter"]],
+  starters:["The sky is ","I can see ","The Moon looks ","I can hear ","I feel "],
+  model:"The sky is dark and vast. I can see thousands of tiny stars that twinkle like diamonds. The glowing Moon is round and silver. I can hear crickets in the grass. I feel small and amazed under the distant stars."},
+ {e:"📔",t:"Diary: A day on the Moon",level:"Step 2 · Diary",
+  prompt:"Imagine you spent one day on the Moon. Write a diary entry of at least 6 sentences. Start with \"Dear Diary,\". Tell what you did, what you saw and how you felt. Write in the past tense, because it already happened.",
+  minS:6,minWords:2,
+  rx:[["^\\s*Dear Diary","I started with Dear Diary"],["[.!?]\\s*$","I ended with a full stop (or ? or !)"],["^(?![\\s\\S]*\\bi\\b)","I wrote I as a capital letter"],
+      ["(\\b(\\w+ed|saw|went|was|were|had|felt|ate|drank|took|made|found|flew|ran|came|thought|wore|slept|told|got|could)\\b[\\s\\S]*){3}","I used at least 3 past-tense verbs"]],
+  starters:["Dear Diary,\nToday I ","First, I ","I saw ","Then I ","I felt ","Tomorrow I will "],
+  model:"Dear Diary,\nToday I landed on the Moon! First, I put on my heavy spacesuit and climbed down the ladder. The ground was grey, dusty and full of craters. I bounced high because gravity is weak here, and I felt weightless. When I looked up, I saw the Earth glowing blue in the black sky. I felt tiny but very proud."},
+ {e:"🔮",t:"My future",level:"Step 3 · The future",
+  prompt:"What will you do when you grow up? What will the world be like? Write at least 6 sentences about the future. Use \"will\" or \"going to\" at least 3 times. Finish by saying how you will reach your dream.",
+  minS:6,minWords:1,
+  rx:[["^\\s*[A-Z]","I started with a capital letter"],["[.!?]\\s*$","I ended with a full stop (or ? or !)"],["^(?![\\s\\S]*\\bi\\b)","I wrote I as a capital letter"],
+      ["(\\b(will|'ll|going to)\\b[\\s\\S]*){3}","I used will or going to at least 3 times"]],
+  starters:["When I grow up, I will ","I am going to ","In the future, people will ","One day, ","To reach my dream, I will "],
+  model:"When I grow up, I will be a scientist who studies planets. I am going to work with a giant telescope. In the future, people will live in bases on the Moon. Maybe I will even visit Mars on a mission. My family will watch my rocket launch on TV. To reach my dream, I will study hard in science and maths."}
+]
+});
+})();
+
+/* ===================== UNIT 5 · SKILL BANKS AND SKILL LIST (original content) ===================== */
+(function(){
+const u=UNITS.find(x=>x.id==="space");
+const set=k=>u.words.slice(k*10,k*10+10);
+const MIX=(...g)=>()=>R(g)();
+const box=(t,txt)=>`<div class="qbox" style="margin:0 0 12px;font-size:18px;line-height:1.6;font-weight:400"><b>${t}</b><br>${txt}</div>`;
+const lc=s=>/^(I\b|Mia|Leo|Mr|Grandmother|Captain|Neil|Dev|Ravi)/.test(s)?s:s.charAt(0).toLowerCase()+s.slice(1);
+
+/* ================= GRAMMAR: FUTURE TENSE ================= */
+const SS=["I","Mia","Leo","She","He","My teacher","The astronaut","Grandmother","Captain Rosa","My cousin"];
+const SP_=["We","They","You","The astronauts","My friends","Mia and Leo","The scientists","Our class","The children","My parents"];
+const VB=[["watch","watches","watched","the stars"],["visit","visits","visited","the planetarium"],["launch","launches","launched","the rocket"],["look","looks","looked","through the telescope"],["build","builds","built","a model rocket"],["read","reads","read","a book about Mars"],["draw","draws","drew","the planets"],["see","sees","saw","the full Moon"],["fly","flies","flew","to the space station"],["learn","learns","learned","about comets"],["count","counts","counted","the stars"],["write","writes","wrote","in a diary"],["wear","wears","wore","a spacesuit"],["float","floats","floated","in the space station"],["explore","explores","explored","the Moon"],["study","studies","studied","the solar system"],["find","finds","found","a new star"],["travel","travels","travelled","to Mars"],["paint","paints","painted","a picture of Saturn"],["make","makes","made","a star map"],["go","goes","went","to Space Camp"],["eat","eats","ate","space food"],["take","takes","took","photos of the Moon"],["play","plays","played","a space game"],["visit","visits","visited","the science centre"]];
+const subj=()=>Math.random()<.5?{s:R(SS),pl:false}:{s:R(SP_),pl:true};
+const willQ=()=>{const v=R(VB),x=subj();const S=x.s;
+  if(Math.random()<.45)return {type:"type",q:`Write the verb in the future with <b>will</b>:<br><b>Tomorrow, ${lc(S)} ___ ${v[3]}.</b> <span style="color:var(--muted);font-size:16px">(${v[0]})</span>`,a:["will "+v[0]],why:`Tomorrow, ${lc(S)} <b>will ${v[0]}</b> ${v[3]}. Future = <b>will + verb</b>. The verb never changes after will.`,hint:"will + the plain verb (no -s, no -ed)."};
+  return mcQ(`Choose the future:<br><b>Next week, ${lc(S)} ___ ${v[3]}.</b>`,"will "+v[0],SAMPLE(["will "+v[1],"will "+v[2],v[2],x.pl?v[0]:v[1]].filter(z=>z!=="will "+v[0]&&!(z==="will read"&&v[0]==="read")),2),`<b>will ${v[0]}</b>: future = will + the plain verb.`,"After will, use the plain verb with no ending.")};
+const goingQ=()=>{const v=R(VB);const pick=R([["I","am"],["She","is"],["He","is"],["Mia","is"],["The astronaut","is"],["It","is"],["We","are"],["They","are"],["You","are"],["The scientists","are"],["Mia and Leo","are"],["My friends","are"]]);
+  return mcQ(`Choose <b>am</b>, <b>is</b> or <b>are</b>:<br><b>${pick[0]} ___ going to ${v[0]} ${v[3]}.</b>`,pick[1],["am","is","are"].filter(z=>z!==pick[1]),`<b>${pick[0]} ${pick[1]} going to ${v[0]}</b>. I am · he/she/it is · we/you/they are.`,"I → am. One person → is. More than one, or you/we/they → are.")};
+const goingType=()=>{const v=R(VB);const pick=R([["I","am"],["She","is"],["He","is"],["We","are"],["They","are"],["You","are"],["Leo","is"],["The astronauts","are"]]);
+  return {type:"type",q:`Rewrite with <b>going to</b>. Type only the missing words:<br><b>${pick[0]} will ${v[0]} ${v[3]}.</b> → <b>${pick[0]} ___ ${v[3]}.</b>`,a:[`${pick[1]} going to ${v[0]}`],why:`${pick[0]} <b>${pick[1]} going to ${v[0]}</b> ${v[3]}.`,hint:`am/is/are + going to + ${v[0]}`}};
+const PASTT=["Yesterday,","Last night,","Last week,","Two days ago,","Last year,"],PREST=["Every day,","Every night,","Usually,","Every week,","On Mondays,"],FUTT=["Tomorrow,","Next week,","Next year,","One day,","Tonight,"];
+const timeQ=()=>{const v=R(VB),x=subj();const k=R(["past","present","future"]);const tw=R(k==="past"?PASTT:k==="present"?PREST:FUTT);
+  const forms={past:v[2],present:x.pl||x.s==="I"?v[0]:v[1],future:"will "+v[0]};
+  if(Math.random()<.5){const sent=`${tw} ${lc(x.s)} ${forms[k]} ${v[3]}.`;
+    return mcQ(`Is this sentence about the <b>past</b>, the <b>present</b> or the <b>future</b>?<br><b>${sent}</b>`,k,["past","present","future"].filter(z=>z!==k),`Look at the time words (<b>${tw.replace(",","")}</b>) and the verb (<b>${forms[k]}</b>).`,"Look at the time words and the verb.")}
+  const opts=uniq([forms.past,forms.present,forms.future]);
+  return mcQ(`Choose the verb that matches the time words:<br><b>${tw} ${lc(x.s)} ___ ${v[3]}.</b>`,forms[k],opts.filter(z=>z!==forms[k]),`<b>${tw.replace(",","")}</b> tells us it is the ${k}, so we use <b>${forms[k]}</b>.`,"Past: yesterday, last… · Present: every day, usually… · Future: tomorrow, next…")};
+const futFix=()=>{const v=R(VB),x=subj();const wrong=Math.random()<.5?v[2]:(x.pl||x.s==="I"?v[0]:v[1]);if(wrong==="will "+v[0])return futFix();
+  return {type:"type",q:`Fix the verb. This has not happened yet:<br><b>Tomorrow, ${lc(x.s)} ${wrong} ${v[3]}.</b><br>Type only the correct verb (two words).`,a:["will "+v[0]],why:`Tomorrow, ${lc(x.s)} <b>will ${v[0]}</b> ${v[3]}.`,hint:"Tomorrow needs the future: will + verb."}};
+const WONT=[["Astronauts ___ need umbrellas on the Moon.","won't"],["I ___ forget my spacesuit.","won't"],["The rocket ___ launch if it is stormy.","won't"],["We ___ see the stars if it is cloudy.","won't"],["Don't worry, the telescope ___ break.","won't"],["Leo ___ be late for Space Camp.","won't"],["You ___ hear any sound in space.","won't"],["The comet ___ come back for many years.","won't"]];
+const wontQ=()=>{if(Math.random()<.5){const w=R(WONT);return mcQ(`Choose the short form of <b>will not</b>:<br><b>${w[0]}</b>`,"won't",["willn't","wont"],"<b>will not</b> → <b>won't</b>. It is a special short form, with an apostrophe.","The short form of will not is special.")}
+  const v=R(VB),x=subj();return {type:"type",q:`Write this sentence's verb in the negative future, using the short form of <b>will not</b>:<br><b>${x.s} will ${v[0]} ${v[3]}.</b> → <b>${x.s} ___ ${v[3]}.</b>`,a:["won't "+v[0]],why:`${x.s} <b>won't ${v[0]}</b> ${v[3]}. won't = will not.`,hint:"won't + the plain verb."}};
+
+/* ================= GRAMMAR: ARTICLES ================= */
+const A_=["rocket","planet","star","comet","telescope","moon","spacesuit","satellite","galaxy","crater","map","book","picture","dog","tree","meteor","mission","model","space station","window","camera","blanket","flag","robot","ladder","hat","banana","new planet","big crater","bright star","tiny moon","small rocket"];
+const AN_=["astronaut","asteroid","alien","eclipse","orbit","owl","apple","elephant","egg","igloo","ice cube","umbrella","octopus","ant","engine","island","oven","idea","inch","envelope","old telescope","amazing comet","orange planet","icy moon","enormous rocket","empty room"];
+const CTX=["I saw ___ {w} last night.","There is ___ {w} in the picture.","Leo drew ___ {w}.","Can you see ___ {w}?","Mia wants ___ {w}.","We found ___ {w}."];
+const aAn=()=>{const an=Math.random()<.5;const w=an?R(AN_):R(A_);const c=R(CTX).replace("{w}",w);
+  return mcQ(`Choose <b>a</b> or <b>an</b>:<br><b>${c}</b>`,an?"an":"a",[an?"a":"an"],an?`<b>${w}</b> starts with a vowel sound (a, e, i, o, u), so we use <b>an</b>.`:`<b>${w}</b> starts with a consonant sound, so we use <b>a</b>.`,"Say the next word. Does it start with a vowel sound (a, e, i, o, u)? Then use an.")};
+const THE=[["Look at ___ Moon tonight!","the","There is only one Moon for the Earth, so we say the Moon."],["___ Sun is a star.","The","There is only one Sun, so we say the Sun."],["We live on ___ Earth.","the","There is only one Earth, so we say the Earth."],["I saw a comet. ___ comet had a long tail.","The","The second time we talk about the same comet, we use the."],["Leo has a telescope. ___ telescope is very old.","The","We already know which telescope, so we use the."],["Mia read ___ book about Mars.","a","Any book, not a special one we already know, so we use a."],["Captain Rosa is ___ astronaut.","an","astronaut starts with a vowel sound, and she is one of many astronauts."],["Please close ___ door of the rocket.","the","We know which door: the rocket's door."],["We saw ___ owl in the tree.","an","owl starts with a vowel sound."],["Jupiter is ___ biggest planet.","the","Use the with -est words: the biggest."],["Neptune is ___ farthest planet from the Sun.","the","Use the with -est words: the farthest."],["I would like ___ apple, please.","an","apple starts with a vowel sound."],["There is ___ rocket on the launch pad.","a","We are talking about any rocket for the first time."],["I found a rock. ___ rock was shiny.","The","The second time, we know which rock."],["Venus is ___ hottest planet.","the","Use the with -est words: the hottest."],["Can I have ___ glass of water?","a","Any glass, so we use a."],["We visited ___ planetarium in our city.","the","There is one planetarium we both know about."],["Grandmother told us ___ amazing story.","an","amazing starts with a vowel sound."],["___ stars are bright tonight.","The","We mean the stars we can see tonight."],["My uncle is ___ engineer.","an","engineer starts with a vowel sound."]];
+const theQ=()=>{const t=R(THE);const opts=["a","an","the"].map(x=>t[1][0]===t[1][0].toUpperCase()?cap(x):x);return mcQ(`Choose <b>a</b>, <b>an</b> or <b>the</b>:<br><b>${t[0]}</b>`,t[1],opts.filter(x=>x!==t[1]),t[2],"Is it one special thing (the), or any one thing (a / an)?")};
+const SENT=["Leo went to Space Camp in July.","Neil Armstrong walked on the Moon.","Mia saw Saturn through a telescope.","The rocket launched on Friday.","Captain Rosa taught us about Mars.","India landed a rover on the Moon.","We will visit the planetarium on Sunday.","Grandmother watched the eclipse with us.","Jupiter is the biggest planet.","I want to be an astronaut.","Venus is very hot.","The astronauts floated in space.","Dev saw a comet in October.","My class made a model of the solar system.","Chris Hadfield is a famous Canadian astronaut.","The Moon travels around the Earth.","I will look at the stars tonight.","Leo wrote in his diary every day.","The Sun is a star.","Mars has red dust."];
+const fix=()=>{const s=R(SENT);return {type:"type",strict:true,q:`Fix this sentence. Add the capital letters and the full stop:<br><b>${breakSentence(s)}</b>`,a:[s],hint:"Capital letter at the start, capitals for names, places, planets and I, and a full stop at the end.",why:`Correct: <b>${s}</b>`}};
+const D=[CHK.cap,CHK.end,CHK.w4,CHK.I];
+const WP=[
+ {q:"Write a sentence about something you <b>will</b> do tomorrow.",checks:[...D,["\\bwill\\b","Uses will"]],model:"Tomorrow I will play football with my friends."},
+ {q:"Write a sentence using <b>going to</b>.",checks:[...D,["\\b(am|is|are)\\s+going to\\b","Uses am/is/are going to"]],model:"We are going to visit the science centre."},
+ {q:"Write a sentence using <b>won't</b>.",checks:[...D,["\\bwon't\\b","Uses won't"]],model:"I won't forget my homework."},
+ {q:"Write a sentence about something that happened <b>yesterday</b>.",checks:[...D,["\\b(\\w+ed|saw|went|was|were|had|ate|made|took|came|found|read|wrote|flew|ran)\\b","Uses a past-tense verb"]],model:"Yesterday I saw the full Moon."},
+ {q:"Write a sentence with <b>an</b> before a word starting with a vowel.",checks:[...D,["\\ban\\s+[aeiouAEIOU]\\w*","Uses an before a vowel word"]],model:"I saw an owl in the tree."},
+ {q:"Write a sentence about a planet. Remember: planet names start with a capital letter.",checks:[...D,["\\b(Mercury|Venus|Earth|Mars|Jupiter|Saturn|Uranus|Neptune)\\b","Names a planet with a capital letter"]],model:"Saturn has bright rings."},
+ {q:"Write a question you would ask an astronaut.",checks:[CHK.cap,CHK.q,CHK.w3,CHK.I],model:"What do you eat in space?"},
+ {q:"Write a sentence that uses <b>the</b> with a word ending in <b>-est</b>.",checks:[...D,["\\bthe\\s+\\w+est\\b","Uses the + -est"]],model:"Jupiter is the biggest planet."},
+ {q:"Write a sentence about what you will be when you grow up.",checks:[...D,["\\b(will|going to)\\b","Uses will or going to"]],model:"When I grow up, I will be a doctor."},
+ {q:"Write a sentence describing the Moon using two adjectives.",checks:[...D,["\\b[Mm]oon\\b","Mentions the Moon"]],model:"The Moon is round and silver."},
+ {q:"Write a sentence using the word <b>gravity</b>.",checks:[...D,["\\b[Gg]ravity\\b","Uses gravity"]],model:"Gravity pulls everything towards the ground."},
+ {q:"Write an exclaiming sentence about a rocket launch.",checks:[CHK.cap,["!\\s*$","Ends with an exclamation mark"],CHK.w3],model:"Wow, the rocket is so fast!"},
+ {q:"Write a sentence using <b>a</b> before a word that starts with a consonant.",checks:[...D,["\\ba\\s+[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z]\\w*","Uses a before a consonant word"]],model:"I have a telescope at home."},
+ {q:"Write a sentence about what people will do in the future.",checks:[...D,["\\b(will|going to)\\b","Uses will or going to"]],model:"In the future, people will live on the Moon."},
+ {q:"Write a sentence that tells how the Moon gets its light.",checks:[...D,["\\b(reflect|Sun|sun|light)\\w*","Talks about light or the Sun"]],model:"The Moon reflects light from the Sun."},
+ {q:"Write a sentence with <b>first</b> and <b>then</b> about getting ready for bed.",checks:[...D,["\\b[Ff]irst\\b","Uses first"],["\\b[Tt]hen\\b","Uses then"]],model:"First I brush my teeth, and then I read a book."},
+ {q:"Write a question that starts with <b>Will</b>.",checks:[["^\\s*Will\\b","Starts with Will"],CHK.q,CHK.w3],model:"Will it be clear tonight?"},
+ {q:"Write a sentence about your favourite planet and why you like it.",checks:[...D,["\\b(Mercury|Venus|Earth|Mars|Jupiter|Saturn|Uranus|Neptune)\\b","Names a planet"]],model:"My favourite planet is Mars because it is red."},
+ {q:"Write a sentence comparing two planets.",checks:[...D,["\\b\\w+er\\b|\\bmore\\b","Uses a comparing word"],["\\bthan\\b","Uses than"]],model:"Jupiter is bigger than Earth."},
+ {q:"Write a sentence using <b>a</b>, <b>an</b> and <b>the</b>.",checks:[...D,["\\b[Aa]n\\b","Uses an"],["\\b[Aa]\\b","Uses a"],["\\b[Tt]he\\b","Uses the"]],model:"An astronaut saw a comet near the Moon."}
+];
+
+/* ================= VOCABULARY AND SCIENCE ================= */
+const PF=[["is closest to the Sun","Mercury"],["is the smallest planet","Mercury"],["is the hottest planet","Venus"],["has thick clouds that trap heat","Venus"],["is the planet we live on","Earth"],["is the only planet we know with living things","Earth"],["is the third planet from the Sun","Earth"],["looks red because of rusty dust","Mars"],["is the fourth planet from the Sun","Mars"],["is the biggest planet","Jupiter"],["has a giant storm called the Great Red Spot","Jupiter"],["is the fifth planet from the Sun","Jupiter"],["is famous for its huge, bright rings","Saturn"],["is so light it could float in a giant bathtub","Saturn"],["is the sixth planet from the Sun","Saturn"],["spins on its side","Uranus"],["is the seventh planet from the Sun","Uranus"],["is the farthest planet from the Sun","Neptune"],["has the fastest winds","Neptune"],["is the eighth planet from the Sun","Neptune"]];
+const PL=["Mercury","Venus","Earth","Mars","Jupiter","Saturn","Uranus","Neptune"];
+const pfQ=()=>{const p=R(PF);return mcQ(`Which planet <b>${p[0]}</b>?`,p[1],SAMPLE(PL.filter(x=>x!==p[1]),3),`<b>${p[1]}</b> ${p[0]}.`,"Remember: My Very Excellent Mother Just Served Us Noodles.")};
+const ORD=["first","second","third","fourth","fifth","sixth","seventh","eighth"];
+const orderQ=()=>{const i=Math.floor(Math.random()*8);const t=R(["nth","after","before","which"]);
+  if(t==="nth")return mcQ(`Which planet is <b>${ORD[i]}</b> from the Sun?`,PL[i],SAMPLE(PL.filter((_,k)=>k!==i),3),`Order: ${PL.join(", ")}. <b>${PL[i]}</b> is ${ORD[i]}.`,"My Very Excellent Mother Just Served Us Noodles.");
+  if(t==="after"&&i<7)return mcQ(`Which planet comes right <b>after</b> ${PL[i]} (going away from the Sun)?`,PL[i+1],SAMPLE(PL.filter((_,k)=>k!==i+1&&k!==i),3),`Order: ${PL.join(" → ")}.`,"Say the order: My Very Excellent Mother…");
+  if(t==="before"&&i>0)return mcQ(`Which planet comes right <b>before</b> ${PL[i]} (closer to the Sun)?`,PL[i-1],SAMPLE(PL.filter((_,k)=>k!==i-1&&k!==i),3),`Order: ${PL.join(" → ")}.`,"Say the order: My Very Excellent Mother…");
+  return mcQ(`Where is <b>${PL[i]}</b> in the order of planets from the Sun?`,ORD[i],SAMPLE(ORD.filter((_,k)=>k!==i),3),`${PL[i]} is the <b>${ORD[i]}</b> planet from the Sun.`,"My Very Excellent Mother Just Served Us Noodles.")};
+const SCI=[
+ {q:"What causes day and night?",a:"The Earth spinning",o:["The Sun moving around the Earth","Clouds covering the Sun"],why:"The Earth spins once every 24 hours. The side facing the Sun has day."},
+ {q:"How long does the Earth take to spin once?",a:"About 24 hours",o:["About one month","About one year"],why:"One spin = one day."},
+ {q:"How long does the Earth take to travel once around the Sun?",a:"About one year",o:["About one day","About one week"],why:"One trip around the Sun = one year (about 365 days)."},
+ {q:"How long does the Moon take to travel around the Earth?",a:"About one month",o:["About one day","About one year"],why:"The Moon orbits the Earth about once a month."},
+ {q:"Where does the Moon's light come from?",a:"It reflects the Sun's light",o:["It makes its own light","Street lights shine on it"],why:"The Moon is like a mirror for sunlight."},
+ {q:"Why do astronauts float in the space station?",a:"They are falling around the Earth all the time",o:["There is no gravity anywhere in space","They are very light"],why:"The station and astronauts fall around the Earth together, so they seem weightless."},
+ {q:"What pulls things down towards the ground?",a:"Gravity",o:["Wind","Light"],why:"Gravity pulls objects towards each other."},
+ {q:"Is the Sun a planet or a star?",a:"A star",o:["A planet","A moon"],why:"The Sun is our closest star."},
+ {q:"Why do we see stars only at night?",a:"The Sun is so bright in the day that it hides them",o:["Stars turn off in the day","Stars move away in the day"],why:"The stars are still there in the day, but the sunlight is much brighter."},
+ {q:"What is a shooting star really?",a:"A space rock burning up in our sky",o:["A star falling down","A plane"],why:"Shooting stars are meteors."},
+ {q:"Why is there no sound in space?",a:"Sound needs air, and space has no air",o:["Space is too cold","Astronauts wear earmuffs"],why:"Sound travels through air."},
+ {q:"Which shape is the Moon really?",a:"Always round, like a ball",o:["A banana shape","It changes shape every night"],why:"Its phases only show how much of its sunny side we can see."},
+ {q:"During a lunar eclipse, what blocks the sunlight from reaching the Moon?",a:"The Earth",o:["Mars","A cloud"],why:"The Earth's shadow falls on the Moon."},
+ {q:"Which is closest to the Earth?",a:"The Moon",o:["The Sun","Mars"],why:"The Moon is our nearest neighbour in space."},
+ {q:"What is a group of stars that makes a shape called?",a:"A constellation",o:["A galaxy","A planet"],why:"The Big Dipper is a famous constellation."},
+ {q:"What is our galaxy called?",a:"The Milky Way",o:["The Big Dipper","The Solar Way"],why:"Our solar system is one tiny part of the Milky Way galaxy."},
+ {q:"Which planets are made of gas and have no solid ground?",a:"Jupiter, Saturn, Uranus and Neptune",o:["Mercury, Venus, Earth and Mars","Only Earth"],why:"The four giant planets are made mostly of gas and liquid."},
+ {q:"Why does Mars look red?",a:"Its dust contains rust",o:["It is on fire","It is covered in roses"],why:"Iron in the dust has rusted."},
+ {q:"Which tool helps us see faraway planets?",a:"A telescope",o:["A thermometer","A ruler"],why:"Telescopes make faraway things look closer."},
+ {q:"How many planets are in our solar system?",a:"Eight",o:["Nine","Five"],why:"Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus and Neptune."}
+];
+const SYN=[["vast","huge"],["distant","far"],["dazzling","brilliant"],["ancient","very old"],["glowing","shining"],["mysterious","strange"],["begin","start"],["finish","end"],["journey","trip"],["fast","quick"],["look","gaze"],["shout","yell"],["tiny","small"],["brave","fearless"],["silent","quiet"],["discover","find"],["happy","glad"],["tired","sleepy"]];
+const OPP=[["day","night"],["sunrise","sunset"],["dawn","dusk"],["near","far"],["up","down"],["launch","land"],["big","small"],["hot","cold"],["first","last"],["future","past"],["noisy","silent"],["inside","outside"],["full","empty"],["rise","set"],["heavy","weightless"],["ancient","modern"],["forward","backward"],["above","below"],["start","finish"]];
+const COMP=[["space","ship"],["space","suit"],["moon","light"],["star","light"],["sun","light"],["moon","beam"],["star","fish"],["day","time"],["night","time"],["sun","rise"],["sun","set"],["air","plane"],["sky","line"],["star","gazing"],["space","craft"],["count","down"],["moon","walk"],["sun","flower"],["birth","day"],["week","end"],["out","side"],["up","stairs"],["fire","work"]];
+
+/* ================= SPELLING ================= */
+const SP=u.spelling.concat([{w:"telescope",s:"We looked through the telescope.",tip:"tele-scope."},{w:"galaxy",s:"Our galaxy is the Milky Way."},{w:"sun",s:"The sun is hot."},{w:"stars",s:"The stars twinkle."},{w:"Mars",s:"Mars is red."},{w:"launch",s:"We will launch the rocket.",tip:"'au' sounds like 'aw'."},{w:"crater",s:"The Moon has a big crater."},{w:"float",s:"Astronauts float in space.",tip:"'oa' says long o."},{w:"spacesuit",s:"The astronaut wore a spacesuit.",tip:"space + suit."},{w:"travel",s:"I will travel to Mars one day."},{w:"future",s:"In the future, we will live on the Moon."},{w:"distance",s:"The distance is very far."},{w:"shine",s:"The stars shine at night.",tip:"Magic e: sh-i-ne."},{w:"sky",s:"The sky is dark."},{w:"eclipse",s:"We watched the eclipse.",tip:"ec-lipse."}]);
+const OU=[["cloud","cl__d"],["shout","sh__t"],["house","h__se"],["mouth","m__th"],["round","r__nd"],["ground","gr__nd"],["count","c__nt"],["sound","s__nd"],["loud","l__d"],["out","__t"],["south","s__th"],["mouse","m__se"],["found","f__nd"],["proud","pr__d"],["about","ab__t"],["outside","__tside"],["mountain","m__ntain"],["couch","c__ch"],["pouch","p__ch"],["countdown","c__ntdown"]];
+const OW=[["cow","c__"],["town","t__n"],["down","d__n"],["brown","br__n"],["crown","cr__n"],["owl","__l"],["clown","cl__n"],["flower","fl__er"],["now","n__"],["how","h__"],["frown","fr__n"],["howl","h__l"],["crowd","cr__d"],["towel","t__el"],["shower","sh__er"],["power","p__er"],["tower","t__er"],["growl","gr__l"],["wow","w__"],["vowel","v__el"]];
+const OUs={cloud:"A big cloud covered the Moon.",shout:"Don't shout in the library.",house:"Our house has a big window.",mouth:"Open your mouth.",round:"The Moon is round.",ground:"The rocket left the ground.",count:"Let's count the stars.",sound:"There is no sound in space.",loud:"The rocket was very loud.",out:"Let's go out tonight.",south:"Penguins live in the south.",mouse:"The mouse ran away.",found:"Leo found a star map.",proud:"I am proud of my rocket.",about:"This book is about space.",outside:"We went outside to see the stars.",mountain:"The telescope is on a mountain.",couch:"Grandmother sat on the couch.",pouch:"The kangaroo has a pouch.",countdown:"The countdown began.",cow:"The cow jumped over the moon in the old rhyme.",town:"Our town has a planetarium.",down:"The rocket came down slowly.",brown:"The dog is brown.",crown:"The queen wore a crown.",owl:"An owl hooted at night.",clown:"The clown made us laugh.",flower:"The flower opened.",now:"Look at the sky now!",how:"How far is Mars?",frown:"Don't frown, smile!",howl:"Wolves howl at the Moon.",crowd:"A big crowd watched the launch.",towel:"Dry your hands on the towel.",shower:"We saw a meteor shower.",power:"Rockets need a lot of power.",tower:"The launch tower is tall.",growl:"The dog began to growl.",wow:"Wow, look at that comet!",vowel:"A, e, i, o and u are vowels."};
+const ouow=()=>{const isOU=Math.random()<.5;const x=R(isOU?OU:OW);return mcQ(`🎧 Which letters are missing? <b style="letter-spacing:2px">${x[1]}</b>`,isOU?"ou":"ow",[isOU?"ow":"ou"],`<b>${x[0]}</b> is spelled with <b>${isOU?"ou":"ow"}</b>. ${isOU?"ou usually comes in the middle of a word.":"ow often comes at the end of a word, or before n, l or er."}`,"ow often comes at the end of a word or before n, l, er. ou usually comes in the middle.",{say:x[0],autoSay:true})};
+const OULIST=OU.concat(OW).map(x=>({w:x[0],s:OUs[x[0]]}));
+const CHOOSE=[["astronaut","astronot","astranaut"],["telescope","teliscope","telescop"],["planet","plannet","planit"],["rocket","roket","rockit"],["galaxy","galaxie","gallaxy"],["comet","commet","comit"],["gravity","gravaty","gravitee"],["eclipse","eclips","iclipse"],["future","fewcher","futur"],["launch","lawnch","lanch"],["cloud","clowd","cloude"],["flower","flouer","flowr"],["round","rownd","raund"],["crowd","croud","crowdd"],["mouth","mowth","mouthe"],["brown","broun","brawn"],["Saturn","Saturne","Satern"],["Jupiter","Jupitor","Jupeter"],["Neptune","Neptoon","Neptun"],["Mercury","Mercurey","Merkury"]].map(x=>({w:x[0],bad:[x[1],x[2]],tip:(SP.find(y=>y.w===x[0])||{}).tip||(OU.some(o=>o[0]===x[0])?"This word uses ou.":OW.some(o=>o[0]===x[0])?"This word uses ow.":/^[A-Z]/.test(x[0])?"Planet names start with a capital letter.":undefined)}));
+
+/* ================= READING ================= */
+const DETAIL=[
+ ["The International Space Station","The International Space Station is a giant laboratory that travels around the Earth. Astronauts from many countries live and work there for about six months at a time. It goes around the Earth about every 90 minutes. On a clear night, you can sometimes see it from the ground as a bright, moving dot.",[["How long do astronauts usually stay on the space station?","About six months",["One day","Ten years"]],["How often does it go around the Earth?","About every 90 minutes",["Once a year","Once a week"]],["What does it look like from the ground?","A bright, moving dot",["A big wheel","A red ball"]]]],
+ ["Chris Hadfield","Chris Hadfield is a famous Canadian astronaut. In 2013, he became the first Canadian to command the International Space Station. He shared photos of the Earth and even played guitar and sang in space. Millions of people watched his videos.",[["Which country is Chris Hadfield from?","Canada",["India","Japan"]],["What did he become in 2013?","The first Canadian to command the space station",["The first person on Mars","A pilot for a bus company"]],["What did he play in space?","The guitar",["Football","The drums"]]]],
+ ["Kalpana Chawla","Kalpana Chawla was born in India and became an astronaut in the United States. In 1997, she became the first woman born in India to go to space. She loved flying and worked hard to reach her dream. Schools and a satellite have been named after her.",[["Where was Kalpana Chawla born?","India",["Canada","Russia"]],["What did she become in 1997?","The first woman born in India to go to space",["The first person on the Moon","A teacher"]]]],
+ ["Space Food","Astronauts eat special food in space. Crumbs could float into machines, so bread is often replaced by soft flat tortillas. Drinks come in pouches with straws. Astronauts say food tastes less strong in space, so many of them love spicy sauces.",[["Why is bread a problem in space?","Crumbs could float into machines",["It is too heavy","It tastes bad"]],["How do astronauts drink?","From pouches with straws",["From cups","From bottles with no lid"]],["Why do astronauts like spicy sauces?","Food tastes less strong in space",["They are always cold","Spices help them float"]]]],
+ ["The Milky Way","Our solar system is part of a huge galaxy called the Milky Way. It has more than one hundred billion stars. On a very dark night, far from city lights, you can see it as a cloudy band of light across the sky. People long ago thought it looked like spilled milk.",[["What is the name of our galaxy?","The Milky Way",["The Big Dipper","The Solar Galaxy"]],["Why is it called the Milky Way?","People thought it looked like spilled milk",["It is made of milk","It is white and cold"]],["Where can you see it best?","Far from city lights on a very dark night",["In the city at noon","Through a window in the day"]]]],
+ ["Rocket Fuel","Rockets need a huge amount of fuel to escape the Earth's gravity. Most of a rocket's weight at launch is fuel. As it burns, hot gases rush out of the bottom and push the rocket up. Many rockets drop off their empty fuel tanks as they climb.",[["Why do rockets need so much fuel?","To escape the Earth's gravity",["To stay warm","To make light"]],["What pushes the rocket up?","Hot gases rushing out of the bottom",["Strong wind","Giant wings"]]]],
+ ["Mars Rovers","Rovers are robot cars that explore other planets. Several rovers have driven on Mars. They take photos, dig into the soil and look for signs that water once flowed there. Scientists on Earth send them instructions by radio.",[["What are rovers?","Robot cars that explore planets",["People who live on Mars","Rockets"]],["What are rovers looking for on Mars?","Signs that water once flowed there",["Gold","Trees"]],["How do scientists send instructions?","By radio",["By post","By shouting"]]]],
+ ["Meteor Showers","A few times every year, the Earth passes through trails of dust left behind by comets. Tiny bits of dust burn up in our sky, making streaks of light. On some nights you can see dozens of shooting stars every hour. The best way to watch is to lie on a blanket far from city lights.",[["What causes a meteor shower?","The Earth passing through dust left by comets",["Stars falling from the sky","Fireworks"]],["What is the best way to watch?","Lie on a blanket far from city lights",["Look through a window in the day","Watch with a flashlight on"]]]],
+ ["The Sun","The Sun is a giant ball of hot, glowing gas. Its surface is thousands of degrees. It gives the Earth light and warmth, and plants need its light to grow. Never look straight at the Sun, even with sunglasses, because it can badly hurt your eyes.",[["What is the Sun made of?","Hot, glowing gas",["Rock","Ice"]],["Why should you never look straight at the Sun?","It can badly hurt your eyes",["It is too far away","It will disappear"]]]],
+ ["Rakesh Sharma","In 1984, Rakesh Sharma became the first Indian citizen to travel into space. He flew on a Soviet spacecraft and spent about eight days in orbit. When India's prime minister asked him how India looked from space, he answered, \"Better than the whole world.\"",[["In which year did Rakesh Sharma go to space?","1984",["1969","2023"]],["About how long was he in orbit?","About eight days",["About eight years","One hour"]]]],
+ ["The Northern Hemisphere and the North Star","The North Star, also called Polaris, stays almost exactly in the same place in the sky all night. All the other stars seem to turn around it. That is why, for hundreds of years, sailors and travellers in the northern half of the Earth used it to find north.",[["What is another name for the North Star?","Polaris",["The Sun","Sirius"]],["Why did sailors use the North Star?","It stays in almost the same place, so it shows where north is",["It is the biggest star","It is red"]]]],
+ ["Saturn's Rings","Saturn's rings look solid from far away, but they are really made of billions of pieces of ice and rock. Some pieces are as small as grains of sand. Others are as big as houses. The rings are very wide but surprisingly thin.",[["What are Saturn's rings made of?","Billions of pieces of ice and rock",["One solid sheet of gold","Clouds"]],["How big are the biggest pieces?","As big as houses",["As big as the Earth","As small as a pin only"]]]]
+];
+const detail=()=>{const p=R(DETAIL),x=R(p[2]);return mcQ(`${box(p[0],p[1])}${x[0]}`,x[1],x[2],`Look back at the text: the answer is there.`,"Read the text again and find the words.",{say:p[1]+" "+x[0]})};
+const MAIN=[
+ ["Astronauts train for many years. They study science and learn to fly planes. They practise in big pools to feel like they are floating. They also learn to fix machines.","Astronauts train for many years.",["Pools are deep.","Planes can fly."]],
+ ["The Moon is very different from the Earth. It has no air and no water. Its gravity is weak. Its days are boiling hot and its nights are freezing.","The Moon is very different from the Earth.",["Water is wet.","Nights are dark."]],
+ ["Telescopes help us learn about space. They make faraway planets look closer. They let us see craters on the Moon. Giant telescopes can even see galaxies far away.","Telescopes help us learn about space.",["Craters are holes.","Galaxies are big."]],
+ ["The giant planets are very different from Earth. They are made mostly of gas. They have no solid ground. They are much bigger and have many moons.","The giant planets are very different from Earth.",["Gas is invisible.","Moons are round."]],
+ ["People have always been curious about the stars. Ancient people made up stories about constellations. Sailors used the stars to find their way. Today, scientists use telescopes to study them.","People have always been curious about the stars.",["Sailors use boats.","Stories are fun."]],
+ ["Living in space is not easy. There is no up or down. Water floats in bubbles. Astronauts must strap themselves into sleeping bags so they don't drift away.","Living in space is not easy.",["Bubbles are round.","Sleeping bags are warm."]],
+ ["The Sun is very important to the Earth. It gives us light and warmth. Plants need its light to grow. Without the Sun, there would be no life on Earth.","The Sun is very important to the Earth.",["Plants are green.","The Sun is far away."]],
+ ["Many countries work together in space. Astronauts from Canada, the USA, Japan, Europe and Russia have shared the International Space Station. They share food, work and science.","Many countries work together in space.",["Japan is a country.","Science is interesting."]],
+ ["Comets are like dirty snowballs. They are made of ice, rock and dust. When they come close to the Sun, the ice melts and makes a long glowing tail.","Comets are icy balls that grow tails near the Sun.",["Snowballs are cold.","Tails are long."]],
+ ["The night sky changes through the year. In winter, we see some constellations. In summer, we see others. The planets also move slowly across the sky.","The night sky changes through the year.",["Winter is cold.","Planets are round."]],
+ ["Robots help us explore space. Rovers drive on Mars. Probes fly past faraway planets and send back photos. Robots can go where it is too dangerous for people.","Robots help us explore space.",["Photos are pretty.","Mars is red."]],
+ ["The Earth is a special planet. It has liquid water. It has air we can breathe. It is not too hot and not too cold. As far as we know, it is the only planet with life.","The Earth is a special planet.",["Air is invisible.","Water is wet."]],
+ ["Light pollution hides the stars. Bright city lights make the sky glow. In big cities, people can see only a few stars. In the countryside, the sky is full of them.","Bright city lights hide the stars.",["Cities are big.","The countryside is quiet."]],
+ ["Rockets are carefully tested before they launch. Engineers check every part. They test the engines on the ground. They make sure the weather is safe on launch day.","Rockets are carefully tested before they launch.",["Engines are loud.","Weather changes."]],
+ ["Gravity is everywhere. It keeps our feet on the ground. It keeps the Moon travelling around the Earth. It keeps the Earth travelling around the Sun.","Gravity is everywhere and holds things together.",["Feet are useful.","The Moon is grey."]],
+ ["Exercise is very important for astronauts. In space, their muscles and bones get weaker because they don't have to work against gravity. So astronauts exercise for about two hours every day.","Astronauts must exercise to stay strong in space.",["Bones are hard.","Two hours is long."]],
+ ["The Moon affects the Earth's oceans. Its gravity pulls on the water. This makes the sea rise and fall twice a day. These changes are called tides.","The Moon's gravity causes tides.",["Oceans are salty.","The sea is blue."]],
+ ["Mars might have had water long ago. Scientists have found dry riverbeds. They have found rocks that only form in water. Some think tiny living things may once have lived there.","Mars might have had water long ago.",["Rocks are hard.","Rivers flow."]],
+ ["Space is extremely cold. Away from the Sun, it is far colder than the Arctic. That is why spacesuits have heaters inside them. Spacecraft are also wrapped in special blankets.","Space is extremely cold.",["Blankets are soft.","The Arctic is icy."]],
+ ["Stars are not all the same. Some are smaller than the Sun and some are much bigger. Some are red, some are yellow and some are blue-white. Their colour tells scientists how hot they are.","Stars come in different sizes and colours.",["The Sun is yellow.","Blue is a colour."]],
+ ["Children can be space scientists too. They can watch the Moon change shape. They can find constellations. They can join stargazing nights and science clubs.","Children can be space scientists too.",["Clubs are fun.","The Moon is round."]],
+ ["Dark skies are good for animals too. Many birds use the stars to find their way at night. Baby sea turtles follow moonlight to the ocean. Bright lights can confuse them.","Dark skies are important for animals.",["Birds fly.","Turtles swim."]],
+ ["The first trip to the Moon took a lot of teamwork. Thousands of engineers, scientists and workers helped. Only a few astronauts flew, but everyone was part of the mission.","Going to the Moon took a lot of teamwork.",["Engineers build things.","The Moon is far."]],
+ ["Space photos have changed how we see the Earth. From space, the Earth looks like a small blue marble. There are no borders between countries. Many astronauts say it made them want to protect our planet.","Space photos changed how we see the Earth.",["Marbles are round.","Countries have names."]]
+];
+const mainIdea=()=>{const m=R(MAIN);return mcQ(`${box("Read",m[0])}What is the <b>main idea</b>? (What is it mostly about?)`,m[1],m[2],`The main idea is what the whole text is about: <b>${m[1]}</b>`,"Which answer fits ALL the sentences, not just one?",{say:m[0]})};
+const FACTS=["The Sun is a star.","The Earth goes around the Sun.","The Moon travels around the Earth.","Jupiter is the biggest planet.","Neil Armstrong walked on the Moon in 1969.","Mars is the fourth planet from the Sun.","There is no air on the Moon.","A telescope makes faraway things look closer.","Saturn has rings.","There are eight planets in our solar system.","Pluto is a dwarf planet.","Chris Hadfield is a Canadian astronaut.","Venus is the hottest planet.","Astronauts wear spacesuits outside their spacecraft.","The Earth spins once every day.","A comet has a tail when it is near the Sun.","Shooting stars are meteors.","The Milky Way is a galaxy.","India landed a spacecraft on the Moon in 2023.","Stars look tiny because they are very far away.","The Moon has craters.","Mercury is the smallest planet.","Astronauts exercise in space.","Rockets need fuel to launch.","The North Star helps people find north."];
+const OPIN=["Saturn is the prettiest planet.","Being an astronaut is the best job.","Space food is yucky.","Mars would be a fun place to live.","Watching an eclipse is more exciting than a film.","Comets are cooler than meteors.","Stargazing is boring.","The full Moon is the most beautiful sight.","Rockets are scary.","Space is the most interesting subject.","Jupiter is more fun to learn about than Mercury.","Floating in space would feel wonderful.","Telescopes are the best present.","The night sky is prettier in winter.","Neptune has the nicest colour.","Space Camp is better than any other camp.","Moon rocks are boring.","Astronauts are the bravest people.","Building model rockets is the most fun hobby.","Star stories are the best stories.","Learning planet names is easy.","Red is the best colour for a planet.","Everybody should visit a planetarium.","Space films are better than books.","Night is more interesting than day."];
+const factOp=()=>{const f=Math.random()<.5;const s=f?R(FACTS):R(OPIN);return mcQ(`Is this a <b>fact</b> or an <b>opinion</b>?<br><b>${s}</b>`,f?"Fact":"Opinion",[f?"Opinion":"Fact"],f?"A <b>fact</b> can be checked by scientists or in a book.":"An <b>opinion</b> is what someone thinks or feels. Others may disagree.","Could a scientist check it? Or is it a feeling?")};
+const SEQ=[["Ten, nine, eight…","The engines roar","Lift-off!","The rocket reaches space"],["New Moon","Half Moon (first quarter)","Full Moon","Half Moon (last quarter)"],["The Sun rises","Noon","The Sun sets","The stars come out"],["Leo arrives at Space Camp","Leo learns the planets","Leo tries on a spacesuit","Leo launches a rocket"],["The Moon is full and bright","The Earth's shadow creeps across the Moon","The Moon glows red","The shadow moves away"],["Apollo 11 launches","It travels to the Moon","It lands on the Moon","Neil Armstrong steps onto the Moon"],["Stella feels unimportant","A sailor is lost at sea","The sailor follows Stella","The sailor reaches home"],["A comet travels far from the Sun","It comes close to the Sun","Its ice starts to melt","A long glowing tail appears"],["Mercury","Venus","Earth","Mars"],["Jupiter","Saturn","Uranus","Neptune"],["Build the bottle rocket","Fill it with a little water","Pump in air","Launch the rocket"],["Astronauts train for years","They launch in a rocket","They live on the space station","They return to Earth"]];
+const order=()=>{const s=R(SEQ),t=R(["first","last","next"]);
+  if(t==="first")return mcQ(`What comes <b>FIRST</b>?`,s[0],SAMPLE(s.slice(1),2),`Order: ${s.join(" → ")}`,"What must come before everything else?");
+  if(t==="last")return mcQ(`What comes <b>LAST</b>?`,s[s.length-1],SAMPLE(s.slice(0,-1),2),`Order: ${s.join(" → ")}`,"What comes at the very end?");
+  const k=Math.floor(Math.random()*(s.length-1));return mcQ(`What comes right <b>AFTER</b> this?<br><b>${s[k]}</b>`,s[k+1],SAMPLE(s.filter((_,i)=>i!==k&&i!==k+1),2),`Order: ${s.join(" → ")}`,"What is the very next step?")};
+const CE=[["Because there is no air on the Moon, astronauts wear spacesuits.","there is no air on the Moon","astronauts wear spacesuits"],["The Earth spins, so we have day and night.","the Earth spins","we have day and night"],["Because the Earth's shadow fell on the Moon, there was an eclipse.","the Earth's shadow fell on the Moon","there was an eclipse"],["It was cloudy, so the stargazing night moved to Sunday.","it was cloudy","the stargazing night moved to Sunday"],["Because Venus has thick clouds, it is very hot.","Venus has thick clouds","it is very hot"],["The comet came near the Sun, so its ice melted.","the comet came near the Sun","its ice melted"],["Because there is no wind on the Moon, the footprints are still there.","there is no wind on the Moon","the footprints are still there"],["The city lights were too bright, so we could not see the stars.","the city lights were too bright","we could not see the stars"],["Because Leo studied hard, he passed his science test.","Leo studied hard","he passed his science test"],["The rocket burned its fuel, so it rose into the sky.","the rocket burned its fuel","it rose into the sky"],["Because gravity on the Moon is weak, the astronauts bounced.","gravity on the Moon is weak","the astronauts bounced"],["The storm was coming, so the launch was cancelled.","the storm was coming","the launch was cancelled"],["Because Mars has rusty dust, it looks red.","Mars has rusty dust","it looks red"],["The sailor followed the North Star, so she found her way home.","the sailor followed the North Star","she found her way home"],["Because astronauts don't use their muscles much in space, they exercise every day.","astronauts don't use their muscles much in space","they exercise every day"],["The sun went down, so the stars appeared.","the sun went down","the stars appeared"],["Because crumbs could float into machines, astronauts eat tortillas instead of bread.","crumbs could float into machines","astronauts eat tortillas instead of bread"],["Leo pumped air into the bottle, so the rocket shot up.","Leo pumped air into the bottle","the rocket shot up"],["Because Neptune is so far from the Sun, it is freezing cold.","Neptune is so far from the Sun","it is freezing cold"],["The Moon's gravity pulls on the sea, so we have tides.","the Moon's gravity pulls on the sea","we have tides"]];
+const cause=()=>{const c=R(CE),other=R(CE.filter(x=>x!==c));const askCause=Math.random()<.5;
+  return mcQ(`${box("Read",c[0])}What is the <b>${askCause?"cause":"effect"}</b>? <span style="color:var(--muted);font-size:15px">(${askCause?"WHY it happened":"WHAT happened"})</span>`,askCause?c[1]:c[2],[askCause?c[2]:c[1],askCause?other[1]:other[2]],`Cause (why): <b>${c[1]}</b>. Effect (what happened): <b>${c[2]}</b>.`,"Look for because and so.",{say:c[0]})};
+const CMP=[
+ ["The Sun and the Moon both light up our sky. The Sun makes its own light, but the Moon only reflects sunlight.","Both light up our sky","The Sun makes its own light, but the Moon reflects light",["Both make their own light","The Moon is a star"]],
+ ["Mercury and Neptune are both planets. Mercury is the closest planet to the Sun, but Neptune is the farthest.","Both are planets","Mercury is closest to the Sun, but Neptune is the farthest",["Both are stars","Neptune is closest"]],
+ ["Earth and Mars are both rocky planets. Earth has liquid water and living things. Mars is dry, dusty and red.","Both are rocky planets","Earth has water and life, but Mars is dry and dusty",["Both have oceans","Mars has living things"]],
+ ["Comets and asteroids both travel around the Sun. Comets are made of ice and dust and can grow tails. Asteroids are made of rock and metal.","Both travel around the Sun","Comets are icy and grow tails, but asteroids are rocky",["Both are stars","Asteroids have tails"]],
+ ["Astronauts and pilots both fly. Pilots fly planes in the Earth's sky. Astronauts fly rockets into space.","Both fly","Pilots fly in the sky, but astronauts fly into space",["Both drive buses","Pilots go to space"]],
+ ["Jupiter and Saturn are both giant planets made of gas. Jupiter is bigger and has a famous red storm. Saturn has the brightest rings.","Both are giant gas planets","Jupiter has a red storm, but Saturn has bright rings",["Both are rocky","Saturn is bigger"]],
+ ["A telescope and binoculars both make faraway things look closer. You look through a telescope with one eye. You use binoculars with both eyes.","Both make faraway things look closer","A telescope uses one eye, but binoculars use two",["Both measure temperature","Binoculars use one eye"]],
+ ["Day and night both happen because the Earth spins. In the day, our side faces the Sun. At night, our side faces away from it.","Both happen because the Earth spins","In the day we face the Sun, but at night we face away",["Both are dark","At night we face the Sun"]],
+ ["Neil Armstrong and Chris Hadfield are both astronauts. Neil Armstrong walked on the Moon. Chris Hadfield commanded the International Space Station.","Both are astronauts","One walked on the Moon, and the other commanded the space station",["Both walked on Mars","Both are bakers"]],
+ ["A meteor and a comet can both make a streak of light in the sky. A meteor flashes past in a second. A comet can be seen for weeks.","Both can make a streak of light in the sky","A meteor lasts a second, but a comet can be seen for weeks",["Both last for years","A comet lasts a second"]],
+ ["The Earth and the Moon both travel around the Sun. The Earth has air, water and life. The Moon has none of these.","Both travel around the Sun","The Earth has air and water, but the Moon does not",["Both have oceans","The Moon has trees"]],
+ ["Rockets and planes both have engines. Planes need air to fly, so they stay close to the Earth. Rockets carry everything they need, so they can fly into space.","Both have engines","Planes need air, but rockets can fly into space",["Both have wheels for flying","Planes fly to the Moon"]]
+];
+const compare=()=>{const c=R(CMP);const same=Math.random()<.5;
+  return mcQ(`${box("Read",c[0])}${same?"How are they the <b>same</b>?":"What is one <b>difference</b>?"}`,same?c[1]:c[2],[same?c[2]:c[1],R(c[3])],same?`Same: <b>${c[1]}</b>.`:`Different: <b>${c[2]}</b>.`,same?"Look for the word both.":"Look for the word but.",{say:c[0]})};
+
+/* ================= THINKING ================= */
+const PUZ=[
+ {q:"🧩 Riddle: I am round and silver, and I change shape every night (or so it seems). What am I?",o:["The Moon","The Sun","A planet"],a:"The Moon",why:"The Moon's phases make it look like it changes shape."},
+ {q:"🧩 Riddle: I am a giant ball of fire that gives you daylight. What am I?",o:["The Sun","The Moon","A comet"],a:"The Sun",why:"The Sun is a star that gives us light."},
+ {q:"🧩 Riddle: I have a long glowing tail, but I am not a fish or a cat. What am I?",o:["A comet","A rocket","A star"],a:"A comet",why:"Comets grow glowing tails near the Sun."},
+ {q:"🧩 Riddle: I have huge rings, but I don't wear them on my fingers. What am I?",o:["Saturn","Mars","The Moon"],a:"Saturn",why:"Saturn has bright rings of ice and rock."},
+ {q:"🧩 Riddle: I am red, rocky and the fourth planet from the Sun. What am I?",o:["Mars","Venus","Jupiter"],a:"Mars",why:"Mars is the red planet."},
+ {q:"🧩 Riddle: I wear a big white suit and a helmet, and I float. Who am I?",o:["An astronaut","A chef","A firefighter"],a:"An astronaut",why:"Astronauts wear spacesuits."},
+ {q:"🧩 Riddle: I make faraway things look close, but I am not glasses. What am I?",o:["A telescope","A mirror","A camera flash"],a:"A telescope",why:"Telescopes help us see distant objects."},
+ {q:"☀️ Why should you NEVER look at the Sun through a telescope or binoculars?",o:["It can blind you","The Sun will get angry","The telescope will melt the Sun"],a:"It can blind you",why:"The Sun's light is so strong that it can badly damage your eyes in an instant."},
+ {q:"🕶️ Is it safe to look straight at the Sun if you wear sunglasses?",o:["No, sunglasses are not strong enough","Yes, always","Only in winter"],a:"No, sunglasses are not strong enough",why:"Only special eclipse glasses or viewers are safe for looking at the Sun."},
+ {q:"🌑 Is it safe to look at a lunar eclipse (the Moon turning red)?",o:["Yes, it is safe to look at the Moon","No, it will hurt your eyes","Only through sunglasses"],a:"Yes, it is safe to look at the Moon",why:"The Moon only reflects sunlight, so watching a lunar eclipse is safe."},
+ {q:"🧑‍🚀 Why must astronauts strap themselves into their sleeping bags?",o:["So they don't float away while they sleep","Because it is cold","To stop snoring"],a:"So they don't float away while they sleep",why:"In the space station, everything floats."},
+ {q:"🎈 You let go of a pencil in the space station. What happens?",o:["It floats","It falls to the floor","It flies to the Moon"],a:"It floats",why:"Everything in the space station seems weightless."},
+ {q:"🌍 It is daytime in Toronto. What is it like on the other side of the Earth, in India?",o:["It is night-time there","It is also noon","It is always day there"],a:"It is night-time there",why:"When one side of the Earth faces the Sun, the other side faces away."},
+ {q:"🔢 There are 8 planets. 4 are rocky. How many are giants?",o:["4","8","2"],a:"4",why:"8 − 4 = 4 giant planets."},
+ {q:"🪐 Which planet would you NEVER be able to stand on?",o:["Jupiter","Mars","Mercury"],a:"Jupiter",why:"Jupiter is made of gas and has no solid ground."},
+ {q:"🌕 You see a full Moon tonight. About how long until the next full Moon?",o:["About one month","About one day","About one year"],a:"About one month",why:"The Moon's phases repeat about every 29 or 30 days."},
+ {q:"🏙️ You want to see lots of stars. Where should you go?",o:["The countryside, far from city lights","The middle of a big city","A shopping mall"],a:"The countryside, far from city lights",why:"Bright city lights hide the stars."},
+ {q:"🔦 Why do stargazers use red flashlights?",o:["Red light does not spoil night vision","Red light is warmer","Red light makes stars brighter"],a:"Red light does not spoil night vision",why:"Bright white light makes your eyes need time to adjust again."},
+ {q:"🚀 Why do rockets launch only when the weather is safe?",o:["Storms and lightning could damage the rocket","Rockets are afraid of rain","Astronauts want to see the view"],a:"Storms and lightning could damage the rocket",why:"Safety comes first in space missions."},
+ {q:"🌞 What would happen to the Earth without the Sun?",o:["It would be dark and frozen","It would be hotter","Nothing would change"],a:"It would be dark and frozen",why:"The Sun gives the Earth its light and warmth."},
+ {q:"🌙 Why do astronauts on the Moon bounce when they walk?",o:["The Moon's gravity is weak","Their boots are springy","The ground is a trampoline"],a:"The Moon's gravity is weak",why:"Things weigh about one-sixth as much on the Moon."},
+ {q:"⭐ Why do stars look so tiny?",o:["They are very, very far away","They are tiny","They are made of glitter"],a:"They are very, very far away",why:"Many stars are bigger than the Sun, but they are much farther away."},
+ {q:"🛰️ What do satellites do for us on Earth?",o:["Help with weather forecasts, TV and maps","Make it rain","Grow food"],a:"Help with weather forecasts, TV and maps",why:"Satellites send signals and take pictures of the Earth."},
+ {q:"🗓️ Which comes first: a day, a month or a year?",o:["A day is the shortest","A year is the shortest","A month is the shortest"],a:"A day is the shortest",why:"Day (one spin) < month (Moon's orbit) < year (Earth's orbit)."},
+ {q:"🧑‍🚀 What do astronauts need to bring into space because there is none there?",o:["Air and water","Rocks","Sunlight"],a:"Air and water",why:"Space has no air to breathe and no water to drink."},
+ {q:"🌍 Why is it important to protect the Earth?",o:["It is the only planet we know of where people can live","There are many other Earths","Space is full of shops"],a:"It is the only planet we know of where people can live",why:"The Earth is our only home."}
+];
+const maths=()=>{const t=R(["count","moon","age","orbits","weeks","team","months"]);let q,ans,why;
+  if(t==="count"){const s=6+Math.floor(Math.random()*10),k=1+Math.floor(Math.random()*(s-2));ans=s-k;q=`The countdown starts at ${s}. Leo has counted down ${k} numbers. What number does he say next?`;ans=s-k;why=`${s} − ${k} = ${ans}.`}
+  else if(t==="moon"){const d=2+Math.floor(Math.random()*6);ans=d*6;q=`A rock weighs ${d} kg on the Moon. Things are about 6 times heavier on Earth. About how much does it weigh on Earth?`;why=`${d} × 6 = ${ans} kg.`}
+  else if(t==="age"){const a=30+Math.floor(Math.random()*15),y=1+Math.floor(Math.random()*9);ans=a+y;q=`An astronaut is ${a} years old. Her mission will be in ${y} years. How old will she be then?`;why=`${a} + ${y} = ${ans}.`}
+  else if(t==="orbits"){const d=2+Math.floor(Math.random()*4);ans=16*d;q=`The space station goes around the Earth about 16 times a day. About how many times does it go around in ${d} days?`;why=`16 × ${d} = ${ans}.`}
+  else if(t==="weeks"){const w=2+Math.floor(Math.random()*6);ans=w*7;q=`Leo will be at Space Camp for ${w} weeks. How many days is that?`;why=`${w} × 7 = ${ans} days.`}
+  else if(t==="team"){const g=2+Math.floor(Math.random()*4),k=2+Math.floor(Math.random()*4);ans=k;q=`There are ${g*k} children at Space Camp. They make teams of ${g}. How many teams are there?`;why=`${g*k} ÷ ${g} = ${k} teams.`}
+  else{const m=2+Math.floor(Math.random()*10);ans=12-m;q=`An astronaut has been in space for ${m} months. The mission is 12 months long. How many months are left?`;why=`12 − ${m} = ${ans}.`}
+  const wr=uniq([ans+1,ans-1,ans+2,ans+10].filter(x=>x>=0&&x!==ans));
+  return mcQ("🔢 "+q,String(ans),SAMPLE(wr,2).map(String),why,"Is it more, less, groups of, or sharing?")};
+const GRP={"planets":["Mercury","Venus","Earth","Mars","Jupiter","Saturn","Uranus","Neptune"],"astronauts":["Neil Armstrong","Chris Hadfield","Kalpana Chawla","Buzz Aldrin","Rakesh Sharma"],"space tools":["telescope","rocket","spacesuit","satellite","rover"],"times of day":["dawn","noon","dusk","midnight"],"things in our sky at night":["stars","the Moon","meteors","satellites"],"Moon phases":["new Moon","full Moon","half Moon","crescent Moon"]};
+const odd=()=>{const ks=Object.keys(GRP);const k=R(ks),k2=R(ks.filter(x=>x!==k));const three=SAMPLE(GRP[k],3),o=R(GRP[k2].filter(x=>!GRP[k].includes(x)));
+  return mcQ(`🤔 Which one does NOT belong?`,o,three,`${three.join(", ")} are all ${k}. <b>${o}</b> is not.`,"Find what three of them have in common.")};
+const ANA=[["Sun is to day as Moon is to ___.","night",["morning","lunch"]],["Astronaut is to rocket as pilot is to ___.","plane",["bike","boat"]],["Telescope is to see as microphone is to ___.","hear",["taste","smell"]],["Mars is to red as Earth is to ___.","blue",["purple","gold"]],["Earth is to planet as Sun is to ___.","star",["moon","rock"]],["Moon is to Earth as Earth is to ___.","Sun",["Mars","comet"]],["Day is to spin as year is to ___.","orbit",["sleep","week"]],["Big is to Jupiter as small is to ___.","Mercury",["Saturn","Neptune"]],["Hot is to Venus as cold is to ___.","Neptune",["Mercury","Sun"]],["Rocket is to launch as plane is to ___.","take off",["swim","grow"]],["Fish is to water as astronaut is to ___.","space",["sand","jungle"]],["Dawn is to morning as dusk is to ___.","evening",["noon","breakfast"]],["will is to future as did is to ___.","past",["now","tomorrow"]],["a is to rocket as an is to ___.","astronaut",["planet","telescope"]],["Comet is to tail as Saturn is to ___.","rings",["roots","wings"]],["Diary is to days as calendar is to ___.","dates",["planets","songs"]],["First is to Mercury as last is to ___.","Neptune",["Mars","Earth"]],["Spacesuit is to astronaut as uniform is to ___.","police officer",["planet","star"]],["Gravity is to pull as a magnet is to ___.","attract",["melt","float"]],["Footprint is to Moon as fingerprint is to ___.","finger",["foot","star"]]];
+const analogy=()=>{const x=R(ANA);return mcQ("🔗 "+x[0],x[1],x[2],`${x[0].replace("___","<b>"+x[1]+"</b>")} Think about how the first two words are linked.`,"How are the first two words linked? Use the same link.")};
+
+/* ================= LEARN NOTES ================= */
+const L={
+ detail:"Read the short text carefully. The answer is <b>in the text</b>.",
+ main:"The <b>main idea</b> is what the whole text is mostly about. It fits <b>all</b> the sentences.",
+ factop:"A <b>fact</b> can be checked by a scientist or in a book. An <b>opinion</b> is a feeling: <i>Saturn is the prettiest planet.</i>",
+ order:"Countdowns, Moon phases, the planets and stories all have an <b>order</b>. What comes first, next and last?",
+ cause:"The <b>cause</b> is <b>why</b>. The <b>effect</b> is <b>what happened</b>. Look for <b>because</b> and <b>so</b>.",
+ compare:"<b>Same:</b> look for <b>both</b>, <b>also</b>. <b>Different:</b> look for <b>but</b>.",
+ vocab:"Read the word, say it aloud, and think of a sentence that uses it.",
+ pf:"<b>Mercury</b> smallest & closest · <b>Venus</b> hottest · <b>Earth</b> our home · <b>Mars</b> red · <b>Jupiter</b> biggest · <b>Saturn</b> bright rings · <b>Uranus</b> spins on its side · <b>Neptune</b> farthest & windiest.",
+ ord:"Remember the order with: <b>M</b>y <b>V</b>ery <b>E</b>xcellent <b>M</b>other <b>J</b>ust <b>S</b>erved <b>U</b>s <b>N</b>oodles = Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune.",
+ sci:"<b>Day and night</b>: the Earth spins (24 hours). <b>A year</b>: the Earth goes around the Sun. <b>A month</b>: the Moon goes around the Earth. The Moon <b>reflects</b> sunlight.",
+ syn:"<b>Synonyms</b> mean almost the same: vast = huge, distant = far.",
+ opp:"<b>Opposites</b>: dawn ↔ dusk, launch ↔ land, past ↔ future.",
+ comp:"<b>Compound words</b>: space + ship = spaceship, moon + light = moonlight.",
+ will:"The <b>future</b> tells what will happen later. Use <b>will</b> + the plain verb: <i>I <b>will watch</b>, she <b>will watch</b>, they <b>will watch</b>.</i> The verb never takes -s or -ed after will.",
+ going:"You can also use <b>am / is / are + going to</b> + verb: <i>I <b>am going to</b> fly. She <b>is going to</b> fly. We <b>are going to</b> fly.</i>",
+ time:"<b>Past</b> (yesterday, last week): <i>watched</i>.<br><b>Present</b> (every day, usually): <i>watch / watches</i>.<br><b>Future</b> (tomorrow, next week): <i>will watch</i>.",
+ wont:"<b>won't</b> is the short form of <b>will not</b>: <i>I won't forget.</i> (Not willn't!)",
+ aan:"Use <b>an</b> before words that start with a <b>vowel sound</b> (a, e, i, o, u): <i>an astronaut, an owl</i>. Use <b>a</b> before other sounds: <i>a rocket, a planet</i>.",
+ the:"Use <b>the</b> for one special thing everyone knows (<i>the Sun, the Moon, the Earth</i>), for something already mentioned, and with -est words (<i>the biggest</i>). Use <b>a/an</b> for any one thing.",
+ fix:"Check: <b>1.</b> capital letter at the start, <b>2.</b> capitals for names, places, planets and I, <b>3.</b> a full stop at the end.",
+ orderW:"Find the word with the capital letter: it goes first. Then think: <b>who? does what?</b>",
+ write:"Plan in your head first. Then write: capital letter, complete idea, end mark.",
+ spell:"Use <b>Look → Say → Cover → Write → Check</b>.",
+ ouow:"<b>ou</b> and <b>ow</b> can make the same sound, as in <i>cloud</i> and <i>cow</i>.<br><b>ow</b> often comes at the <b>end</b> of a word (cow, now) or before <b>n</b>, <b>l</b> or <b>er</b> (town, owl, flower).<br><b>ou</b> usually comes in the <b>middle</b> (cloud, house, round).",
+ choose:"Say the word slowly and picture it. Remember: planet names start with a capital letter.",
+ think:"Think like a scientist. In safety questions, always choose the <b>safe</b> answer. Never look at the Sun!",
+ maths:"Is it more (add), less (take away), groups of (multiply) or sharing (divide)?",
+ odd:"Three belong to the same group. Find the one that does <b>not</b> belong.",
+ ana:"Find how the first two words are linked. Use the <b>same link</b> for the next pair.",
+ review:"These questions come from earlier units, so you keep everything you learned fresh."
+};
+const R1=UNITS.find(x=>x.id==="me").review,R2=UNITS.find(x=>x.id==="animals").review,R3=UNITS.find(x=>x.id==="plants").review,R4=UNITS.find(x=>x.id==="weather").review;
+u.review=MIX(willQ,goingQ,timeQ,futFix,wontQ,aAn,theQ,ouow,pfQ,orderQ,F.vocab(u.words));
+
+/* ================= THE SKILL LIST ================= */
+u.cats=[
+ {n:"Reading",e:"📖",items:[
+  {id:"r_t1",t:"Story (diary): Leo's Space Camp Diary",act:"story",si:0},
+  {id:"r_t2",t:"Story: The Night of the Full Moon",act:"story",si:1},
+  {id:"r_t3",t:"Fact text: Our Solar System",act:"story",si:2},
+  {id:"r_t4",t:"Fact text: Footprints on the Moon",act:"story",si:3},
+  {id:"r_t5",t:"Fable: Stella, the Little Star",act:"story",si:4},
+  {id:"r_t6",t:"Real-world reading: A stargazing poster and a planet chart",act:"story",si:5},
+  {id:"r_p1",t:"Classic poem: The Star (Twinkle, Twinkle)",act:"poem",pi:0},
+  {id:"r_p2",t:"Poem: Rocket Ride",act:"poem",pi:1},
+  {id:"r_detail",t:"Read and find the details",learn:L.detail,gen:detail},
+  {id:"r_main",t:"Find the main idea",learn:L.main,gen:mainIdea},
+  {id:"r_factop",t:"Fact or opinion?",learn:L.factop,gen:factOp},
+  {id:"r_order",t:"Order and sequence",learn:L.order,gen:order},
+  {id:"r_cause",t:"Cause and effect",learn:L.cause,gen:cause},
+  {id:"r_compare",t:"Compare and contrast",learn:L.compare,gen:compare}]},
+ {n:"Vocabulary",e:"🔤",items:[
+  {id:"v_s1",t:"Space object words",learn:L.vocab,gen:F.vocab(set(0))},
+  {id:"v_s2",t:"Space travel words",learn:L.vocab,gen:F.vocab(set(1))},
+  {id:"v_s3",t:"Sky and light words",learn:L.vocab,gen:F.vocab(set(2))},
+  {id:"v_s4",t:"Describing words",learn:L.vocab,gen:F.vocab(set(3))},
+  {id:"v_fill",t:"Use the right word in a sentence",learn:L.vocab,gen:F.fill(u.words)},
+  {id:"v_pf",t:"Planet facts",learn:L.pf,gen:pfQ},
+  {id:"v_ord",t:"The order of the planets",learn:L.ord,gen:orderQ},
+  {id:"v_syn",t:"Synonyms",learn:L.syn,gen:F.pairs(SYN,"synonym")},
+  {id:"v_opp",t:"Opposites",learn:L.opp,gen:F.pairs(OPP,"opposite")},
+  {id:"v_comp",t:"Compound words",learn:L.comp,gen:MIX(F.compoundJoin(COMP),F.compoundPick(COMP))}]},
+ {n:"Grammar",e:"🧩",items:[
+  {id:"g_will",t:"Future with will",learn:L.will,gen:willQ},
+  {id:"g_going",t:"Future with going to (am, is, are)",learn:L.going,gen:MIX(goingQ,goingType)},
+  {id:"g_time",t:"Past, present or future?",learn:L.time,gen:timeQ},
+  {id:"g_ffix",t:"Fix the verb (future)",learn:L.will,gen:futFix},
+  {id:"g_wont",t:"Won't (will not)",learn:L.wont,gen:wontQ},
+  {id:"g_aan",t:"A or an?",learn:L.aan,gen:aAn},
+  {id:"g_the",t:"A, an or the?",learn:L.the,gen:theQ},
+  {id:"g_fix",t:"Fix the sentence (capitals and full stops)",learn:L.fix,gen:fix},
+  {id:"g_order",t:"Put the words in order",learn:L.orderW,gen:G.order(SENT.filter(x=>(x.match(/\b[A-Z]/g)||[]).length===1))},
+  {id:"g_write",t:"Write your own sentences",learn:L.write,gen:F.write(WP)},
+  {id:"g_mixed",t:"Mixed grammar review",learn:"Use all the future-tense and article rules from this unit.",gen:MIX(willQ,goingQ,goingType,timeQ,futFix,wontQ,aAn,theQ)}]},
+ {n:"Spelling",e:"🎧",items:[
+  {id:"s_space",t:"Space words: listen and write",learn:L.spell,gen:F.listen(SP)},
+  {id:"s_ouow",t:"ou or ow?",learn:L.ouow,gen:ouow},
+  {id:"s_ouowl",t:"ou and ow words: listen and write",learn:L.ouow,gen:F.listen(OULIST)},
+  {id:"s_choose",t:"Choose the correct spelling",learn:L.choose,gen:F.chooseSpelling(CHOOSE)},
+  {id:"s_missing",t:"Missing letters",learn:L.spell,gen:F.missing(SP)}]},
+ {n:"Thinking and science",e:"🧠",items:[
+  {id:"t_puz",t:"Space puzzles and safety",learn:L.think,gen:F.bank(PUZ)},
+  {id:"t_sci",t:"Earth, Moon and Sun science",learn:L.sci,gen:F.bank(SCI)},
+  {id:"t_maths",t:"Space maths stories",learn:L.maths,gen:maths},
+  {id:"t_odd",t:"Odd one out",learn:L.odd,gen:odd},
+  {id:"t_ana",t:"Word links (analogies)",learn:L.ana,gen:analogy}]},
+ {n:"Review earlier units",e:"🔁",items:[
+  {id:"rv_u1",t:"Review: Unit 1 (sentences, question words, nouns)",learn:L.review,gen:R1},
+  {id:"rv_u2",t:"Review: Unit 2 (plurals, past tense, animals)",learn:L.review,gen:R2},
+  {id:"rv_u3",t:"Review: Unit 3 (present tense, plants, magic e)",learn:L.review,gen:R3},
+  {id:"rv_u4",t:"Review: Unit 4 (adjectives, comparing, homophones)",learn:L.review,gen:R4}]},
+ {n:"Explore and write",e:"✏️",items:[
+  {id:"x_facts",t:"Did you know? Amazing space facts",act:"facts"},
+  {id:"x_w1",t:"Writing step 1: Describe the night sky",act:"write",wi:0},
+  {id:"x_w2",t:"Writing step 2: Diary of a day on the Moon",act:"write",wi:1},
+  {id:"x_w3",t:"Writing step 3: My future",act:"write",wi:2}]}
+];
+})();
+
 /* ================= SETTINGS ================= */
 const SITE_NAME = "Sprout English";   // placeholder name — change this one line later
-const COMING=[["🚀","Space and the Planets"],["🌊","Life in the Ocean"],["⏰","Time, Shapes and Money"],["💡","Amazing Inventions"],["🤝","Friends and Feelings"],["🗺️","Countries and Cultures"],["🍎","My Healthy Body"],["📚","Stories and Fables"]];
+const COMING=[["🌊","Life in the Ocean"],["⏰","Time, Shapes and Money"],["💡","Amazing Inventions"],["🤝","Friends and Feelings"],["🗺️","Countries and Cultures"],["🍎","My Healthy Body"],["📚","Stories and Fables"]];
 
 /* ================= SAVED PROGRESS (this browser only) ================= */
 const KEY="sprout_v5";
