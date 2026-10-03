@@ -3260,9 +3260,699 @@ u.cats=[
 ];
 })();
 
+/* ===================== GRADE 3 · UNIT 6 · LIFE IN THE OCEAN (original content, plus one public-domain poem) ===================== */
+(function(){
+const f=(q,a,o,why)=>({lv:"find",q,o:[a].concat(o),a:[a],why});
+const t=(q,a,o,why)=>({lv:"think",q,o:[a].concat(o),a:[a],why});
+const p=(q,a,o,why)=>({lv:"predict",q,o:[a].concat(o),a:[a],why});
+UNITS.push({
+id:"ocean", num:6, emoji:"🌊🐠🐚", title:"Life in the Ocean", badge:"🐚 Ocean Guardian",
+
+stories:[
+/* ---------- 1. STORY (with predictions) ---------- */
+{title:"The Message in the Bottle", e:"🍾", kind:"Story (predict)", pages:[
+ {pic:"🏖️🍾", text:"In the summer holidays, Mia and Leo visited their aunt in Nova Scotia, on the east coast of Canada. One foggy morning, they walked along the rocky beach near the old lighthouse. Leo kicked at a pile of seaweed and stopped. Something green and shiny was tangled inside. It was a glass bottle, and there was a rolled-up piece of paper in it!",
+  qs:[f("Where were Mia and Leo?","On a beach in Nova Scotia",["In a city park","At school"],"They visited their aunt in Nova Scotia, on the east coast of Canada."),
+      p("What do you think they will do next?","Open the bottle and read the paper",["Throw the bottle back into the sea without looking","Go home and forget about it"],"Most curious children would want to read the message. Good readers use clues to predict what will happen.")]},
+ {pic:"📜🐟", text:"Mia carefully pulled out the cork. The paper was a little damp, but the writing was clear. <i>\"Hello! My name is Sofia. I am nine years old and I live in Portugal. I threw this bottle into the ocean from my grandfather's fishing boat. If you find it, please write to me!\"</i> At the bottom was an email address and a drawing of a smiling fish.",
+  qs:[f("Where does Sofia live?","Portugal",["Nova Scotia","India"],"\"I live in Portugal.\""),
+      t("How did the bottle get from Portugal to Canada?","Ocean currents carried it across the sea",["A bird carried it","Sofia posted it"],"Ocean currents are like giant rivers in the sea that can carry things very far.")]},
+ {pic:"🗺️🌊", text:"Back at the house, Aunt Jo spread out a big map. \"Portugal is in Europe, way over here,\" she said, pointing across the Atlantic Ocean. \"Your bottle travelled more than four thousand kilometres!\" Leo's eyes went wide. \"How long did it take?\" Aunt Jo shook her head. \"Let's ask Sofia.\"",
+  qs:[f("Which ocean did the bottle cross?","The Atlantic Ocean",["The Pacific Ocean","The Indian Ocean"],"She pointed across the Atlantic Ocean."),
+      p("What do you think the children will do next?","Write an email to Sofia",["Throw the map away","Go fishing"],"Aunt Jo said, \"Let's ask Sofia.\" That is a strong clue!")]},
+ {pic:"💻✉️", text:"Mia and Leo wrote an email together. They told Sofia about the lighthouse, the fog and the seaweed. The next morning, there was a reply! <i>\"I can't believe it! I threw that bottle into the sea two years ago. My grandfather said it would sink. I'm so happy it reached a friend!\"</i> Sofia also sent a photo of herself on her grandfather's boat.",
+  qs:[f("How long ago did Sofia throw the bottle?","Two years ago",["Two days ago","Ten years ago"],"\"I threw that bottle into the sea two years ago.\""),
+      t("How did Sofia feel when she got the email?","Very happy and surprised",["Angry","Bored"],"\"I can't believe it! … I'm so happy.\"")]},
+ {pic:"🐢🧴", text:"Then Sofia wrote something that made the children think. <i>\"My grandfather says we should not throw bottles in the sea anymore. Too much rubbish ends up in the ocean, and it hurts the animals. Next time, let's just send emails!\"</i> Mia looked at the beach. Among the seaweed, she could see plastic bags, a rope and a bottle cap.",
+  qs:[f("What did Sofia's grandfather say?","We should not throw bottles in the sea anymore",["Throw more bottles","Fishing is boring"],"\"We should not throw bottles in the sea anymore.\""),
+      p("What do you think Mia and Leo will decide to do?","Clean up the rubbish on the beach",["Throw more rubbish into the sea","Stop talking to Sofia"],"Mia noticed the rubbish just after reading about how it hurts animals.")]},
+ {pic:"🧺🤝", text:"That afternoon, Mia, Leo and Aunt Jo cleaned the beach. They filled three big bags with rubbish. They kept the glass bottle on the shelf, with Sofia's letter inside, to remember their new friend. Now, every month, they send Sofia an email, and Sofia sends back photos of the sea from the other side of the ocean.",
+  qs:[f("How many bags of rubbish did they fill?","Three",["One","Ten"],"They filled three big bags with rubbish."),
+      t("Was your prediction on the last page correct? What really happened?","They cleaned the beach",["They went swimming","They threw the bottle away"],"Good readers check their predictions as they read.")]}
+], turn:{q:"If you found a message in a bottle, what would you hope it said? Write two sentences.",model:"I would hope it was a letter from a child in another country. I would write back and become their pen pal."}},
+
+/* ---------- 2. STORY ---------- */
+{title:"Asha and the Mangrove Forest", e:"🌳", kind:"Story", pages:[
+ {pic:"🛶🌳", text:"Asha lives in a village at the edge of the Sundarbans, a huge mangrove forest where the rivers of India and Bangladesh meet the sea. Mangrove trees are special. They can grow in salty water, and their tangled roots stand up out of the mud like hundreds of wooden legs.",
+  qs:[f("What is special about mangrove trees?","They can grow in salty water",["They grow in deserts","They have no roots"],"Mangrove trees can grow in salty water."),
+      f("What do the roots look like?","Hundreds of wooden legs",["Long ropes","Green leaves"],"Their tangled roots stand up out of the mud like hundreds of wooden legs.")]},
+ {pic:"🐅👣", text:"One morning, Asha and her father paddled their small boat along the river. Fish jumped, crabs scuttled across the mud, and a kingfisher flashed blue. Then her father pointed to the muddy bank. \"Look, Asha. Tiger footprints!\" The Sundarbans is home to Bengal tigers, which can even swim across rivers.",
+  qs:[f("What did Asha's father point to?","Tiger footprints",["A crocodile","A boat"],"\"Look, Asha. Tiger footprints!\""),
+      t("Why might the tigers here need to swim?","The forest is full of rivers and water",["They are chasing boats","They are too hot"],"The Sundarbans is made of many islands and rivers, so tigers swim between them.")]},
+ {pic:"🌀🌊", text:"\"Why do you love the mangroves so much, Baba?\" Asha asked. Her father was quiet for a moment. \"When I was a boy, a terrible cyclone came from the sea,\" he said. \"Huge waves crashed towards the land. But the mangrove forest stood in their way. The roots slowed the water down, and our village was saved.\"",
+  qs:[f("What came from the sea when Asha's father was a boy?","A terrible cyclone",["A whale","A big ship"],"\"A terrible cyclone came from the sea.\""),
+      t("How did the mangroves save the village?","Their roots slowed down the huge waves",["They scared the cyclone away","They floated on the water"],"The thick roots act like a wall that slows the water.")]},
+ {pic:"🪓😟", text:"But in some places, people had cut down mangroves to build farms and fish ponds. Asha's teacher said that without the mangroves, villages are in more danger from storms. Fish and crabs also lose the places where their babies grow. Asha frowned. \"Can we plant new mangroves?\" she asked.",
+  qs:[f("Why had people cut down some mangroves?","To build farms and fish ponds",["To make paper boats","Because tigers asked them to"],"People had cut down mangroves to build farms and fish ponds."),
+      t("Why is cutting down mangroves a problem?","Villages are in more danger and young fish lose their homes",["It makes the trees grow faster","There is nothing wrong with it"],"Mangroves protect villages and are nurseries for young sea animals.")]},
+ {pic:"🌱🤝", text:"That year, Asha's whole school joined a mangrove-planting project. The children collected seedlings and pushed them into the soft mud at low tide. It was messy work! Their feet sank deep, and Asha fell over twice. But by the end of the day, they had planted five hundred little trees.",
+  qs:[f("How many trees did they plant?","Five hundred",["Fifty","Five"],"They had planted five hundred little trees."),
+      t("Why did they plant at low tide?","The water was low, so they could reach the mud",["The fish were asleep","It was dark"],"At low tide, the sea goes out and the muddy ground is uncovered.")]},
+ {pic:"🌳🦀", text:"Three years later, Asha paddled past the planting place with her little brother. The seedlings had grown taller than her! Tiny crabs climbed the roots, and baby fish darted between them. \"We planted these,\" Asha told him proudly. \"One day, they will protect our village, just like the old forest protected Baba.\"",
+  qs:[f("Who was with Asha three years later?","Her little brother",["Her teacher","Sofia"],"Asha paddled past the planting place with her little brother."),
+      t("What is the message of this story?","Protecting nature also protects people",["Tigers are dangerous","Mud is messy"],"The mangroves help animals AND keep the village safe.")]}
+], turn:{q:"What is one thing children can do to help protect nature where you live? Write two sentences.",model:"Children can plant trees in their neighbourhood. They can also pick up rubbish at the park."}},
+
+/* ---------- 3. FACT TEXT ---------- */
+{title:"Coral Reefs: Cities Under the Sea", e:"🪸", kind:"Fact text", pages:[
+ {pic:"🪸🐠", text:"A coral reef looks like a colourful underwater garden. But the coral is not a plant. It is made of millions of tiny animals called <b>polyps</b>. Each polyp builds a hard, stony skeleton around itself. Over hundreds of years, these skeletons pile up to make a reef.",
+  qs:[f("Is coral a plant or an animal?","An animal",["A plant","A rock"],"Coral is made of millions of tiny animals called polyps."),
+      f("How is a reef made?","Polyp skeletons pile up over hundreds of years",["People build it with bricks","Waves push sand together"],"Over hundreds of years, these skeletons pile up to make a reef.")]},
+ {pic:"🏙️🐟", text:"Coral reefs are sometimes called the cities of the sea. They cover only a tiny part of the ocean floor, but about one-quarter of all ocean creatures live on or near them. Fish, turtles, crabs, sea stars and octopuses all find food and shelter among the coral.",
+  qs:[f("About how many ocean creatures live on or near reefs?","About one-quarter",["Almost none","All of them"],"About one-quarter of all ocean creatures live on or near them."),
+      t("Why are reefs called the cities of the sea?","So many creatures live close together there",["They have traffic lights","People live under the water"],"Like a busy city, a reef is crowded with life.")]},
+ {pic:"🐠🌸", text:"On a reef, animals often help each other. The clownfish lives among the stinging arms of a sea anemone. The clownfish has a special slimy coat, so the stings don't hurt it. The anemone protects the clownfish from bigger fish, and the clownfish keeps the anemone clean.",
+  qs:[f("Why don't the anemone's stings hurt the clownfish?","It has a special slimy coat",["It is too fast","It has no skin"],"The clownfish has a special slimy coat."),
+      t("How do the clownfish and the anemone help each other?","The anemone protects the clownfish, and the clownfish keeps it clean",["They fight every day","They never meet"],"Each one gives the other something it needs.")]},
+ {pic:"🇦🇺🛰️", text:"The biggest reef in the world is the Great Barrier Reef, off the coast of Australia. It is more than 2,000 kilometres long. It is so big that astronauts can see it from space! It is the largest structure on Earth built by living things.",
+  qs:[f("Where is the Great Barrier Reef?","Off the coast of Australia",["Off the coast of Canada","In a lake"],"Off the coast of Australia."),
+      f("Who can see the reef from space?","Astronauts",["Fish","Nobody"],"Astronauts can see it from space.")]},
+ {pic:"🌡️🤍", text:"Coral reefs are in danger. When the ocean gets too warm, coral becomes stressed and turns white. This is called <b>coral bleaching</b>. If the water stays too warm for too long, the coral can die. Pollution and careless fishing also harm reefs.",
+  qs:[f("What is it called when coral turns white?","Coral bleaching",["Coral painting","Coral sleeping"],"This is called coral bleaching."),
+      t("What causes coral bleaching?","Water that is too warm",["Too many fish","Cold winters"],"When the ocean gets too warm, coral becomes stressed and turns white.")]},
+ {pic:"🤿💙", text:"Scientists and divers around the world are working to protect reefs. Some grow baby corals in underwater nurseries and plant them back on damaged reefs. Visitors can help too, by never touching or standing on coral and by using sunscreen that is safe for reefs.",
+  qs:[f("Where do some scientists grow baby corals?","In underwater nurseries",["In the desert","In kitchens"],"Some grow baby corals in underwater nurseries."),
+      t("Why should divers never stand on coral?","It can damage or kill the tiny animals",["The coral will bite them","It is too slippery"],"Coral is alive and fragile.")]}
+], turn:{q:"Would you like to dive on a coral reef? Write two sentences saying what you would hope to see.",model:"Yes, I would love to dive on a reef. I would hope to see a clownfish hiding in an anemone."}},
+
+/* ---------- 4. FACT TEXT ---------- */
+{title:"A Journey to the Deep", e:"🤿", kind:"Fact text", pages:[
+ {pic:"🌊☀️", text:"The ocean is so deep that scientists divide it into layers, called <b>zones</b>. The top layer is the <b>sunlight zone</b>. It is bright and warm, and most ocean plants and animals live here, because plants need sunlight to make food.",
+  qs:[f("What is the top layer of the ocean called?","The sunlight zone",["The midnight zone","The sand zone"],"The top layer is the sunlight zone."),
+      t("Why do most ocean plants live in the sunlight zone?","Plants need sunlight to make food",["It is the coldest zone","There are no fish there"],"Plants need sunlight to make their food.")]},
+ {pic:"🌗🦑", text:"Below that is the <b>twilight zone</b>. Only a little sunlight reaches it, so it is dim and blue, like the sky just after sunset. Many animals here swim up to the sunlight zone at night to feed, then sink back down in the day to hide from predators.",
+  qs:[f("Why is it called the twilight zone?","It is dim and blue, like the sky just after sunset",["It only exists at night","Twilight is the name of a fish"],"Twilight is the dim time just after sunset."),
+      t("Why do the animals swim back down in the day?","To hide from predators",["To sleep in beds","To find sunlight"],"In the dark, it is harder for predators to see them.")]},
+ {pic:"🌑🐟", text:"Deeper still is the <b>midnight zone</b>. No sunlight reaches it at all. It is pitch black and very cold. But it is not completely dark! Many creatures here make their own light. The anglerfish has a glowing lure on its head, like a fishing rod, to attract smaller fish to its huge mouth.",
+  qs:[f("What does the anglerfish have on its head?","A glowing lure, like a fishing rod",["A crown","A shell"],"The anglerfish has a glowing lure on its head."),
+      t("Why does the anglerfish have a glowing lure?","To attract smaller fish to eat",["To read in the dark","To scare away divers"],"Little fish swim towards the light and get eaten.")]},
+ {pic:"🏔️⬇️", text:"The deepest place in the ocean is the <b>Mariana Trench</b> in the Pacific Ocean. It is about 11 kilometres deep. If you put Mount Everest, the tallest mountain on Earth, at the bottom, its top would still be more than 2 kilometres under the water!",
+  qs:[f("Where is the Mariana Trench?","In the Pacific Ocean",["In the Atlantic Ocean","In a lake in Canada"],"The Mariana Trench is in the Pacific Ocean."),
+      t("What does the Mount Everest comparison show?","The trench is deeper than the tallest mountain is tall",["Everest is underwater","Mountains can swim"],"Even the tallest mountain would fit inside the trench.")]},
+ {pic:"🫧🚢", text:"Deep down, the water presses on everything with enormous force. This is called <b>water pressure</b>. A human diver would be crushed, so scientists explore the deep in special submarines with thick, strong walls. They also send robots with cameras.",
+  qs:[f("How do scientists explore the deep ocean?","In special submarines and with robots",["By swimming in a swimsuit","On a sailboat"],"Scientists explore in special submarines and send robots with cameras."),
+      t("Why do submarines need thick, strong walls?","To stand up to the enormous water pressure",["To keep fish out","To look nice"],"The deeper you go, the harder the water presses.")]},
+ {pic:"🔦❓", text:"Scientists say we have explored only a small part of the deep ocean. Every year, they discover new creatures, like see-through fish and glowing jellyfish. Some people say we know more about the surface of the Moon than about the bottom of our own ocean!",
+  qs:[f("How much of the deep ocean has been explored?","Only a small part",["All of it","Exactly half"],"We have explored only a small part of the deep ocean."),
+      t("Why might we know more about the Moon's surface than the deep ocean?","The deep ocean is dark, cold and hard to reach",["The Moon is closer","Fish hide the maps"],"Deep water is dark and has crushing pressure, which makes it very hard to explore.")]}
+], turn:{q:"Imagine you discovered a brand-new creature in the deep ocean. Describe it in two sentences.",model:"My creature is a purple fish with glowing blue spots. It uses its light to talk to its friends in the dark."}},
+
+/* ---------- 5. FABLE ---------- */
+{title:"Shelly the Hermit Crab (a fable)", e:"🐚", kind:"Fable", pages:[
+ {pic:"🦀🐚", text:"Shelly was a little hermit crab. Hermit crabs don't grow their own shells. Instead, they live in empty shells that they find. Shelly loved her shell. It was spiral, pink and just the right size. \"This is the best shell in the whole ocean,\" she said, \"and I will keep it forever.\"",
+  qs:[f("Where do hermit crabs live?","In empty shells they find",["In shells they grow","In holes in the sand only"],"Hermit crabs live in empty shells that they find."),
+      p("What do you think will happen as Shelly grows?","Her shell will become too small",["Her shell will grow with her","She will shrink"],"Shells don't grow, but crabs do. That is a strong clue!")]},
+ {pic:"😣🐚", text:"But Shelly grew, and her shell did not. Soon it pinched her legs. She couldn't pull herself all the way inside when a seagull flew over. \"You need a bigger shell,\" said her friend Pearl, an old sea turtle. \"Never!\" said Shelly. \"I'm scared to leave. What if I never find a shell as good as this one?\"",
+  qs:[f("What happened when Shelly grew?","Her shell pinched her and was too small",["Her shell grew too","She could fly"],"Soon it pinched her legs."),
+      t("Why didn't Shelly want to leave her shell?","She was scared she wouldn't find a better one",["She was lazy","Pearl told her to stay"],"\"I'm scared to leave. What if I never find a shell as good as this one?\"")]},
+ {pic:"🦀🦀🦀", text:"One day, Shelly saw something amazing on the sand. A row of hermit crabs was lined up from smallest to biggest beside a large, empty shell. The biggest crab climbed into the new shell. The next crab took the shell it left behind, and the next took that one, until every crab had a bigger home!",
+  qs:[f("How were the crabs lined up?","From smallest to biggest",["By colour","In a circle"],"A row of hermit crabs was lined up from smallest to biggest."),
+      t("Why did the crabs line up?","So each crab could move into a bigger shell",["To race each other","To hide from the sun"],"When one crab moves to a bigger shell, it leaves its old shell for the next crab.")]},
+ {pic:"🐚✨", text:"At the end of the line, there was one shell left over: a little bigger than Shelly's, smooth and white with brown stripes. Shelly's heart thumped. She stepped out of her pink shell, felt the cool water on her soft body, and quickly climbed into the new one. It fit perfectly. She had room to grow!",
+  qs:[f("What did the new shell look like?","Smooth and white with brown stripes",["Pink and spiral","Black and spiky"],"Smooth and white with brown stripes."),
+      t("How do you think Shelly felt when she stepped out of her old shell?","Scared but brave",["Bored","Angry"],"Her heart thumped, but she did it anyway. That is bravery.")]},
+ {pic:"🦀💛", text:"Shelly left her old pink shell on the sand, and a tiny crab happily moved in. \"Thank you!\" it squeaked. Shelly smiled. She had been afraid of change, but change had given her room to grow, and her old home had become a gift for someone else. <b>Lesson: Growing up means being brave enough to change.</b>",
+  qs:[t("What is the lesson of this fable?","Growing up means being brave enough to change",["Never leave your home","Pink shells are best"],"Shelly learned that change helps us grow."),
+      f("What happened to Shelly's old shell?","A tiny crab moved into it",["It broke","Shelly took it with her"],"A tiny crab happily moved in.")]}
+], turn:{q:"Write about a change in your life, like a new school, a new home or a new baby in the family. How did you feel?",model:"When I moved to a new school, I felt nervous. After a week, I made two new friends and felt happy."}},
+
+/* ---------- 6. REAL-WORLD TEXT ---------- */
+{title:"Real-world reading: A tide table and a beach safety sign", e:"🏖️", kind:"Real-world text", pages:[
+ {pic:"🌊📋", text:"The Bay of Fundy, between New Brunswick and Nova Scotia in Canada, has the highest tides in the world. The water can rise and fall more than 15 metres, as tall as a five-storey building! Here is a tide table for one day.<table class=\"realtbl\"><tr><th>Tide</th><th>Time</th><th>What you will see</th></tr><tr><td>🔽 Low tide</td><td>6:10 a.m.</td><td>Walk on the ocean floor!</td></tr><tr><td>🔼 High tide</td><td>12:25 p.m.</td><td>Water covers the beach</td></tr><tr><td>🔽 Low tide</td><td>6:35 p.m.</td><td>Walk on the ocean floor!</td></tr><tr><td>🔼 High tide</td><td>12:50 a.m. (next night)</td><td>Water covers the beach</td></tr></table>",
+  qs:[f("Where are the highest tides in the world?","The Bay of Fundy, in Canada",["The Sahara","The Great Barrier Reef"],"The Bay of Fundy has the highest tides in the world."),
+      f("What time is the first low tide?","6:10 a.m.",["12:25 p.m.","6:35 p.m."],"Low tide: 6:10 a.m."),
+      t("How many high tides happen in about one day?","Two",["One","Six"],"The table shows high tide at 12:25 p.m. and again at 12:50 a.m., so there are two."),
+      t("When should you walk on the ocean floor?","At low tide",["At high tide","Never check the time"],"At low tide, the water goes out and you can walk where the sea was."),
+      t("About how long is it from the first low tide to the high tide?","About 6 hours",["About 1 hour","About 12 days"],"From 6:10 a.m. to 12:25 p.m. is a little more than 6 hours.")]},
+ {pic:"🚩🏊", text:"Read this beach safety sign.<div class=\"realdoc\" style=\"text-align:left\"><b>🏖️ BEACH SAFETY 🏖️</b><br>🟢 Green flag: Calm water<br>🟡 Yellow flag: Swim with care<br>🔴 Red flag: <b>No swimming!</b><br><br>🌊 <b>Caught in a rip current?</b> (a strong current that pulls you away from the shore)<br>1. Stay calm. Don't fight the current.<br>2. Swim <b>sideways</b>, along the shore, until you are out of it.<br>3. If you can't, float and wave for help.<br><br>👀 Always swim near a lifeguard and with a grown-up.<br>⏰ Check the tide times. Don't get stuck on rocks when the tide comes in!</div>",
+  qs:[f("What does a red flag mean?","No swimming",["Calm water","Swim with care"],"🔴 Red flag: No swimming!"),
+      f("If you are caught in a rip current, which way should you swim?","Sideways, along the shore",["Straight back to the shore against the current","Further out to sea"],"Swim sideways, along the shore, until you are out of it."),
+      t("Why shouldn't you fight a rip current?","It is stronger than you, and you will get tired",["It is warm","It helps you swim faster"],"Rip currents are very strong. Fighting them makes swimmers exhausted."),
+      t("Why should you check the tide times?","The tide could come in and trap you on the rocks",["To know when lunch is","Because fish are hungry at high tide"],"At places like the Bay of Fundy, the water rises fast and high.")]}
+], turn:{q:"Write two safety rules for children at the beach. Explain why one is important.",model:"Always swim near a lifeguard. Never swim when the red flag is up, because the water is dangerous."}}
+],
+
+poems:[
+ {title:"At the Sea-Side (by Robert Louis Stevenson, 1885)",
+  lines:["When I was down beside the sea","A wooden spade they gave to me","To dig the sandy shore.","","My holes were empty like a cup,","In every hole the sea came up,","Till it could come no more."],
+  qs:[f("What did the child use to dig?","A wooden spade",["A metal bucket","His hands only"],"\"A wooden spade they gave to me.\""),
+      t("Why did the sea come up into the holes?","The water from the sea soaked through the sand",["Someone poured water in","It rained"],"Near the sea, the sand is full of water, so holes fill up."),
+      f("Which word rhymes with 'sea'?","me",["sand","cup"],"Sea and me end with the same sound.")]},
+ {title:"Down in the Deep",
+  lines:["Down in the deep where the sunlight fades,","The anglerfish glows in the dark blue shades.","Up on the reef, where the waters are warm,","The clownfish hides from the shark and the storm.","Out on the waves, the gulls dip and fly,","Under the clouds and the wide grey sky.","Ocean, oh ocean, so big and so old,","Full of more secrets than ever been told."],
+  qs:[f("Where does the clownfish hide?","On the reef, where the waters are warm",["In the deep, dark zone","Up in the sky"],"\"Up on the reef, where the waters are warm, the clownfish hides.\""),
+      f("Which word rhymes with 'warm'?","storm",["reef","shark"],"Warm and storm end with the same sound."),
+      t("What does \"Full of more secrets than ever been told\" mean?","There is still a lot we don't know about the ocean",["The ocean tells stories","Fish keep diaries"],"Scientists have explored only a small part of the ocean.")]}
+],
+
+words:[
+ {w:"reef",e:"🪸",m:"a long line of rock or coral near the surface of the sea",ex:"Colourful fish swim around the coral reef.",fill:"The divers explored a coral ___ full of fish."},
+ {w:"tide",e:"🌊",m:"the rising and falling of the sea, usually twice a day",ex:"At low tide, we can walk on the sand.",fill:"When the ___ comes in, the beach is covered with water."},
+ {w:"shore",e:"🏖️",m:"the land along the edge of the sea or a lake",ex:"We collected shells along the shore.",fill:"The waves crashed on the rocky ___."},
+ {w:"current",e:"➰",m:"water (or air) moving strongly in one direction",ex:"The current carried the bottle across the ocean.",fill:"A strong ___ carried the boat out to sea."},
+ {w:"coast",e:"🗺️",m:"the land next to the sea",ex:"Nova Scotia is on the east coast of Canada.",fill:"The lighthouse stands on the ___."},
+ {w:"bay",e:"⛵",m:"a part of the sea that curves into the land",ex:"The Bay of Fundy has very high tides.",fill:"The boats sheltered in the calm ___."},
+ {w:"island",e:"🏝️",m:"land with water all around it",ex:"The coconut floated to a new island.",fill:"We took a boat to the little ___ in the middle of the lake."},
+ {w:"lagoon",e:"🏝️",m:"a calm area of salt water separated from the sea",ex:"We swam in the warm, calm lagoon.",fill:"The water in the ___ was calm and clear."},
+ {w:"trench",e:"⬇️",m:"a long, deep, narrow hole, like a ditch",ex:"The Mariana Trench is the deepest place in the ocean.",fill:"The deepest part of the ocean is a ___."},
+ {w:"mangrove",e:"🌳",m:"a tree that grows in salty water along tropical coasts",ex:"Mangrove roots protect the village from big waves.",fill:"A ___ tree can grow in salty water."},
+
+ {w:"coral",e:"🪸",m:"a hard material made by tiny sea animals, which forms reefs",ex:"Coral is made by tiny animals called polyps.",fill:"Tiny animals build ___ reefs."},
+ {w:"plankton",e:"🦠",m:"tiny plants and animals that drift in the sea",ex:"Whales eat tiny plankton.",fill:"Many sea animals eat tiny floating ___."},
+ {w:"anemone",e:"🌸",m:"a soft sea animal with stinging arms that looks like a flower",ex:"The clownfish lives in a sea anemone.",fill:"The clownfish hides in the arms of a sea ___."},
+ {w:"jellyfish",e:"🪼",m:"a soft, see-through sea animal that can sting",ex:"Don't touch a jellyfish; it may sting.",fill:"A ___ is soft, see-through and can sting."},
+ {w:"seahorse",e:"🐴",m:"a small fish with a head shaped like a horse's",ex:"The seahorse wrapped its tail around the seaweed.",fill:"A ___ has a head shaped like a horse."},
+ {w:"crab",e:"🦀",m:"a sea animal with a hard shell, ten legs and two big claws",ex:"A crab scuttled across the mud.",fill:"The ___ walked sideways across the sand."},
+ {w:"eel",e:"🐍",m:"a long, thin fish that looks like a snake",ex:"An eel hid in a crack in the rocks.",fill:"The long, thin ___ looked like a snake."},
+ {w:"stingray",e:"🐟",m:"a flat fish with wide fins and a long tail",ex:"The stingray glided over the sand.",fill:"The flat ___ glided across the sea floor."},
+ {w:"salmon",e:"🐟",m:"a large fish that swims from the sea back up the river where it hatched",ex:"Salmon swim up rivers in British Columbia.",fill:"Every autumn, ___ swim back up the river where they hatched."},
+ {w:"shell",e:"🐚",m:"the hard outer covering of some sea animals",ex:"Shelly lived in an empty shell.",fill:"I held the ___ to my ear and heard the sea."},
+
+ {w:"submarine",e:"🚢",m:"a ship that can travel under the water",ex:"Scientists explore the deep sea in a submarine.",fill:"The ___ dived deep under the waves."},
+ {w:"diver",e:"🤿",m:"a person who swims under the water, often with special equipment",ex:"The diver saw a turtle on the reef.",fill:"The ___ wore a mask and flippers."},
+ {w:"lighthouse",e:"🗼",m:"a tower with a bright light that warns ships of danger",ex:"The lighthouse flashed in the fog.",fill:"The ___ shone its light to warn the ships."},
+ {w:"anchor",e:"⚓",m:"a heavy metal object dropped from a boat to keep it in one place",ex:"The sailors dropped the anchor.",fill:"Drop the ___ so the boat does not drift away."},
+ {w:"harbour",e:"⛴️",m:"a safe place where boats can stay near the land",ex:"The fishing boats returned to the harbour.",fill:"The boats were safe in the ___ during the storm.",alt:["harbor"]},
+ {w:"voyage",e:"🧭",m:"a long journey, especially by sea",ex:"The bottle made a long voyage across the ocean.",fill:"The sailors went on a long ___ across the ocean."},
+ {w:"sailor",e:"🧑‍✈️",m:"a person who works on a ship or sails a boat",ex:"The sailor followed the North Star.",fill:"The ___ tied the ropes on the ship."},
+ {w:"pressure",e:"🫧",m:"the force of something pressing on something else",ex:"Water pressure is very strong in the deep ocean.",fill:"Deep in the sea, the water ___ is enormous."},
+ {w:"pollution",e:"🗑️",m:"dirt, rubbish or chemicals that harm the air, land or water",ex:"Plastic pollution hurts sea animals.",fill:"Plastic bags in the sea are a kind of ___."},
+ {w:"recycle",e:"♻️",m:"to make something new out of old things instead of throwing them away",ex:"We recycle bottles and cans.",fill:"Please ___ your plastic bottles."},
+
+ {w:"shallow",e:"🦶",m:"not deep",ex:"Little children play in the shallow water.",fill:"The water is ___, so it only comes up to my knees."},
+ {w:"murky",e:"🌫️",m:"dark and dirty, so it is hard to see through",ex:"We couldn't see the fish in the murky water.",fill:"The pond was so ___ we couldn't see the bottom."},
+ {w:"salty",e:"🧂",m:"tasting of salt",ex:"Sea water is salty.",fill:"Don't drink sea water; it is too ___."},
+ {w:"slippery",e:"🧼",m:"smooth or wet, so it is easy to slide or fall",ex:"The wet rocks were slippery.",fill:"Be careful on the wet, ___ rocks."},
+ {w:"transparent",e:"🪟",m:"clear, so you can see through it",ex:"Some jellyfish are transparent.",fill:"The jellyfish was ___, like glass."},
+ {w:"colourful",e:"🌈",m:"having many bright colours",ex:"The reef is full of colourful fish.",fill:"The coral reef was bright and ___.",alt:["colorful"]},
+ {w:"graceful",e:"🩰",m:"moving in a smooth, beautiful way",ex:"The stingray is graceful.",fill:"The ___ dolphin leapt smoothly over the waves."},
+ {w:"unusual",e:"🦄",m:"not usual; strange or rare",ex:"The anglerfish is an unusual fish.",fill:"A fish that glows in the dark is very ___."},
+ {w:"unsafe",e:"⚠️",m:"not safe; dangerous",ex:"It is unsafe to swim when the red flag is up.",fill:"It is ___ to swim alone in the sea."},
+ {w:"unknown",e:"❓",m:"not known",ex:"Many deep-sea creatures are still unknown.",fill:"Many creatures in the deep ocean are still ___."}
+],
+
+spelling:[
+ {w:"ocean",s:"The ocean is very deep.",tip:"o-c-e-a-n. The 'c' sounds like 'sh'."},
+ {w:"wave",s:"A big wave crashed on the shore.",tip:"Magic e: w-a-ve."},
+ {w:"shell",s:"I found a shell on the beach.",tip:"Double l at the end."},
+ {w:"beach",s:"We walked along the beach.",tip:"'ea' says long e: b-ea-ch."},
+ {w:"sand",s:"The sand is warm."},
+ {w:"fish",s:"A fish swam past."},
+ {w:"crab",s:"The crab has big claws."},
+ {w:"boat",s:"The boat sailed away.",tip:"'oa' says long o: b-oa-t."},
+ {w:"whale",s:"A whale swam by.",tip:"'wh' at the start, magic e at the end."},
+ {w:"coral",s:"The coral is colourful."},
+ {w:"island",s:"We sailed to an island.",tip:"The 's' is silent: i-s-land."},
+ {w:"shore",s:"The waves hit the shore."},
+ {w:"salty",s:"The sea is salty."},
+ {w:"deep",s:"The ocean is very deep.",tip:"Double e: d-ee-p."},
+ {w:"swim",s:"Dolphins swim fast."}
+],
+
+facts:[
+ {e:"🐴",c:"Seahorse dads carry the babies before they are born.",t:true,x:"True! The father seahorse keeps the eggs in a pouch on his belly until the babies are ready to swim out."},
+ {e:"🪸",c:"Coral is a kind of plant.",t:false,x:"Not true! Coral is made of tiny animals called polyps."},
+ {e:"🫁",c:"About half of the oxygen we breathe comes from the ocean.",t:true,x:"True! Tiny ocean plants called phytoplankton make a huge amount of the world's oxygen."},
+ {e:"🏔️",c:"The deepest part of the ocean is deeper than Mount Everest is tall.",t:true,x:"True! The Mariana Trench is about 11 km deep, and Everest is less than 9 km tall."},
+ {e:"🪼",c:"Jellyfish have no brain.",t:true,x:"True! Jellyfish have no brain, no heart and no bones, but they have lived in the ocean for millions of years."},
+ {e:"✨",c:"Some deep-sea animals make their own light.",t:true,x:"True! In the dark midnight zone, many fish, squid and jellyfish glow."},
+ {e:"🦈",c:"Sharks have lived on Earth longer than trees.",t:true,x:"True! Sharks were swimming in the oceans millions of years before the first trees grew."},
+ {e:"⭐",c:"A sea star can grow back an arm if it loses one.",t:true,x:"True! Many sea stars can regrow lost arms."},
+ {e:"🌊",c:"The Bay of Fundy in Canada has the highest tides in the world.",t:true,x:"True! The water there can rise more than 15 metres."},
+ {e:"🥤",c:"If you are very thirsty at sea, it is safe to drink sea water.",t:false,x:"Not true! Sea water is too salty. Drinking it makes your body lose even more water."},
+ {e:"🗺️",c:"Scientists have explored almost all of the deep ocean.",t:false,x:"Not true! Most of the deep ocean has never been explored."},
+ {e:"🐟",c:"Salmon find their way back to the river where they hatched.",t:true,x:"True! Salmon travel the ocean for years and then swim back to the very river where they were born, partly by smell."}
+],
+
+writing:[
+ {e:"🏖️",t:"Describe a beach using your senses",level:"Step 1 · Sentences",
+  prompt:"Imagine you are at the beach. Write at least 4 sentences about what you see, hear, smell, feel and taste. Use at least 2 describing words from the word bank.",
+  minS:4,minWords:2,
+  rx:[["^\\s*[A-Z]","I started with a capital letter"],["[.!?]\\s*$","I ended with a full stop (or ? or !)"],["^(?![\\s\\S]*\\bi\\b)","I wrote I as a capital letter"]],
+  starters:["I can see ","I can hear ","The air smells ","The sand feels ","The water tastes "],
+  model:"I can see colourful sailboats and a tall lighthouse on the shore. I can hear the waves crashing and the seagulls calling. The air smells salty and fresh. The wet rocks feel slippery under my feet. When a wave splashes me, the water tastes salty."},
+ {e:"✉️",t:"A letter to keep our beaches clean",level:"Step 2 · Opinion letter",
+  prompt:"Write a letter to the people of your town. Give your opinion: why should everyone keep beaches, rivers and oceans clean? Give at least 2 reasons using \"because\". Use words like \"should\" or \"must\". Start with \"Dear\" and finish with \"From,\" and your first name. Write at least 6 sentences.",
+  minS:6,minWords:2,
+  rx:[["^\\s*Dear\\s+\\w","I started with Dear"],["\\b(should|must)\\b","I used should or must"],["(\\bbecause\\b[\\s\\S]*){2}","I gave at least 2 reasons with because"],["(From|Your friend|Sincerely|Love),?\\s*\\n*\\s*[A-Z][a-z]+[.!]?\\s*$","I ended with From, and my name"],["^(?![\\s\\S]*\\bi\\b)","I wrote I as a capital letter"]],
+  starters:["Dear people of ","I think we should ","This is important because ","Another reason is that ","Please ","From,\n"],
+  model:"Dear people of Toronto,\nI think we should all keep our beaches and the lake clean. This is important because plastic pollution hurts fish, birds and turtles. Another reason is that clean water is safer for children to swim in, because rubbish can carry germs. We must recycle our bottles and never leave rubbish on the sand. Please join our beach clean-up next Saturday! Together, we can protect the animals that live in the water.\nFrom,\nMia"},
+ {e:"📖",t:"An ocean adventure story",level:"Step 3 · Story",
+  prompt:"Write a story of at least 8 sentences about an adventure in or near the ocean. Your story needs a BEGINNING (who and where), a MIDDLE (a problem) and an END (how the problem is solved). Write in the past tense. Use time words like One day, Suddenly, Then and Finally.",
+  minS:8,minWords:2,
+  rx:[["^\\s*[A-Z]","I started with a capital letter"],["[.!?]\\s*$","I ended with a full stop (or ? or !)"],
+      ["\\b(One day|Once upon a time|Long ago|Last summer)\\b","My beginning uses a time phrase (One day…)"],
+      ["\\b(Suddenly|But|Then|Next)\\b","My middle uses Suddenly, But or Then"],
+      ["\\b(Finally|In the end|At last)\\b","My ending uses Finally, In the end or At last"],
+      ["(\\b(\\w+ed|saw|went|was|were|had|felt|swam|ran|came|found|took|made|got|told|thought|began|knew|caught|dove|dived)\\b[\\s\\S]*){3}","I used at least 3 past-tense verbs"]],
+  starters:["One day, ","was swimming near ","Suddenly, ","Then, ","Finally, ","In the end, "],
+  model:"One day, a young dolphin named Splash was playing near a coral reef. Suddenly, she heard a cry for help. A baby sea turtle was tangled in an old fishing net! Splash tried to pull the net with her teeth, but it was too strong. Then she swam to the surface and clicked loudly for her friends. Three dolphins came and pulled the net together. Finally, the net came loose, and the little turtle swam free. In the end, the turtle thanked Splash, and they became best friends."}
+]
+});
+})();
+
+/* ===================== UNIT 6 · SKILL BANKS AND SKILL LIST (original content) ===================== */
+(function(){
+const u=UNITS.find(x=>x.id==="ocean");
+const set=k=>u.words.slice(k*10,k*10+10);
+const MIX=(...g)=>()=>R(g)();
+const box=(t,txt)=>`<div class="qbox" style="margin:0 0 12px;font-size:18px;line-height:1.6;font-weight:400"><b>${t}</b><br>${txt}</div>`;
+const lc=s=>/^(I\b|Mia|Leo|Sofia|Asha|Dev|Grandpa|Grandma|Aunt|Captain|Shelly|Mom|Dad)/.test(s)?s:s.charAt(0).toLowerCase()+s.slice(1);
+
+/* ================= GRAMMAR: PREPOSITIONS OF PLACE ================= */
+const PLACE=[
+ ["The fish swim ___ the water.","in",["on","above"]],
+ ["A seagull is sitting ___ the top of the lighthouse.","on",["in","under"]],
+ ["The crab is hiding ___ the rock. The rock is right on top of it.","under",["on","above"]],
+ ["The little boat is floating ___ the calm water.","on",["under","inside"]],
+ ["The lighthouse is ___ the boat and the island. The boat is on one side and the island is on the other.","between",["behind","above"]],
+ ["The diver swam ___ the tunnel in the reef, in at one end and out at the other.","through",["on","above"]],
+ ["The pearl is ___ the closed oyster shell.","inside",["on","behind"]],
+ ["The plane flew high ___ the sea.","above",["under","inside"]],
+ ["The submarine is deep ___ the waves.","below",["above","on"]],
+ ["Leo sat right beside the sandcastle. He sat ___ the sandcastle.","next to",["between","through"]],
+ ["The bridge goes ___ the river, from one side to the other.","across",["under","inside"]],
+ ["Mia hid ___ the big tree, so her brother could not see her.","behind",["on","above"]],
+ ["My shell is safe ___ my pocket.","in",["on","under"]],
+ ["The turtle swam ___ the boat, deep below it.","under",["on","above"]],
+ ["Spread your towel ___ the sand and lie down.","on",["under","inside"]],
+ ["The eel lives ___ a dark hole in the rocks.","in",["on","above"]],
+ ["The bright Moon was high ___ the sea.","above",["under","inside"]],
+ ["Asha walked ___ the mangrove forest, in at one side and out at the other.","through",["above","under"]],
+ ["The dog ran ___ the beach, from the car park to the water.","across",["under","inside"]],
+ ["The shell is ___ the bucket and the spade.","between",["inside","above"]],
+ ["The sun went down ___ the hills, and we could not see it any more.","behind",["inside","on"]],
+ ["The fish are trapped ___ the net.","inside",["on","above"]],
+ ["Hang the wet swimsuit ___ the back of the chair to dry.","on",["under","inside"]],
+ ["A tiny hermit crab lives ___ the empty shell.","inside",["above","across"]],
+ ["The fluffy clouds were high ___ the boat.","above",["inside","under"]],
+ ["The old treasure chest is buried ___ the sand.","under",["above","across"]],
+ ["Dad parked the car right beside the beach shop. He parked ___ the shop.","next to",["through","across"]],
+ ["The ship sailed ___ the ocean, from Canada to Portugal.","across",["under","inside"]],
+ ["The anchor sank to the sea floor, far ___ the boat.","below",["above","on"]],
+ ["The starfish is stuck ___ the glass wall of the tank.","on",["under","between"]],
+ ["The little fish swam ___ the two big rocks, with one rock on each side.","between",["on","above"]],
+ ["The seagulls flew ___ the waves, looking for fish.","above",["inside","under"]]
+];
+const placeQ=()=>{const x=R(PLACE);return mcQ(`Choose the best word to show <b>where</b>:<br><b>${x[0]}</b>`,x[1],x[2],`<b>${x[0].replace("___",x[1])}</b>`,"Picture it in your head. Where is it?")};
+
+/* ================= GRAMMAR: PREPOSITIONS OF TIME ================= */
+const T_AT=["8 o'clock","noon","half past two","midnight","sunrise","3:30","lunchtime","night","six o'clock","sunset","10:15","quarter past nine"];
+const T_ON=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday","my birthday","Saturday morning","May 5th","Canada Day","Friday afternoon","July 1st","New Year's Day"];
+const T_IN=["July","January","the summer","the winter","the spring","the autumn","the morning","the afternoon","the evening","the rainy season","August","December","March","the holidays"];
+const T_SENT=["We will visit the aquarium ___ {x}.","The beach clean-up is ___ {x}.","The boat leaves ___ {x}.","Our swimming lesson is ___ {x}.","The whale-watching tour starts ___ {x}.","Mia and Leo went to the beach ___ {x}.","The lighthouse museum opens ___ {x}.","Asha planted the mangroves ___ {x}."];
+const timeP=()=>{const k=R(["at","on","in"]);const x=R(k==="at"?T_AT:k==="on"?T_ON:T_IN);const s=R(T_SENT).replace("{x}",x);
+  const why=k==="at"?`<b>at</b> + a clock time or a point in the day: at ${x}.`:k==="on"?`<b>on</b> + a day or a date: on ${x}.`:`<b>in</b> + a month, season, year or part of the day: in ${x}.`;
+  if(Math.random()<.35)return {type:"type",q:`Type <b>at</b>, <b>on</b> or <b>in</b>:<br><b>${s}</b>`,a:[k],why,hint:"at = clock times · on = days and dates · in = months, seasons, years"};
+  return mcQ(`Choose <b>at</b>, <b>on</b> or <b>in</b>:<br><b>${s}</b>`,k,["at","on","in"].filter(z=>z!==k),why,"at = clock times · on = days and dates · in = months, seasons, years")};
+
+/* ================= GRAMMAR: PRONOUNS ================= */
+const SUBJ=[["Sofia","She","p"],["Asha","She","p"],["Grandma","She","p"],["Aunt Jo","She","p"],["My sister","She","p"],["Dev","He","p"],["Leo","He","p"],["Grandpa","He","p"],["The fisherman","He","p"],["My brother","He","p"],
+ ["The crab","It","a"],["The whale","It","a"],["The octopus","It","a"],["The seahorse","It","a"],["The dolphins","They","a"],["The seagulls","They","a"],["The turtles","They","a"],
+ ["The boat","It","t"],["The bottle","It","t"],["The old net","It","t"],["The shells","They","t"],["The bottles","They","t"],["The logs","They","t"],
+ ["The divers","They","p"],["Sofia and Leo","They","p"],["The children","They","p"],["Mia and I","We","p"],["My class and I","We","p"],["Dad and I","We","p"]];
+const PRED={p:["walked along the shore.","picked up the plastic.","watched the waves.","found a message in a bottle.","swam in the lagoon.","visited the aquarium.","built a sandcastle.","waved to the sailors."],
+ a:["swam near the reef.","hid from the shark.","dived under the waves.","looked for food.","rested on the rocks."],
+ t:["floated on the water.","drifted to the shore.","washed up on the beach.","rocked in the waves."]};
+const PRONS=["He","She","It","We","They"];
+const subjPron=()=>{const s=R(SUBJ),pr=R(PRED[s[2]]);
+  if(Math.random()<.5)return mcQ(`Which pronoun can take the place of the underlined words?<br><b><u>${s[0]}</u> ${pr}</b>`,s[1],SAMPLE(PRONS.filter(z=>z!==s[1]),2),`<b>${s[1]}</b> ${pr} A pronoun takes the place of a noun.`,"One boy → he · one girl → she · one animal or thing → it · more than one → they · me and others → we");
+  const pr2=R(PRED[s[2]].filter(z=>z!==pr));
+  return mcQ(`Choose the pronoun for the second sentence:<br><b>${s[0]} ${pr} ___ ${pr2}</b>`,s[1],SAMPLE(PRONS.filter(z=>z!==s[1]),2),`We already know who it is, so we say <b>${s[1]}</b> instead of repeating "${s[0]}".`,"Who is the sentence about? One boy, one girl, a thing, or more than one?")};
+const OBJ=[["Sofia","her"],["Grandma","her"],["Asha","her"],["my sister","her"],["Dev","him"],["Grandpa","him"],["the fisherman","him"],["my brother","him"],["the crab","it"],["the bottle","it"],["the whale","it"],["the lighthouse","it"],["the dolphins","them"],["the shells","them"],["the children","them"],["the boats","them"],["Leo and me","us"],["my sister and me","us"],["my friends and me","us"]];
+const OVERB=["saw","watched","photographed","followed","drew a picture of","looked at"];
+const OSUBJ=["Mom","The lifeguard","Our teacher","The diver","Aunt Jo","Mia"];
+const OPRONS=["him","her","it","us","them"];
+const objPron=()=>{const o=R(OBJ),v=R(OVERB),s=R(OSUBJ.filter(z=>!o[0].includes(z)));
+  if(Math.random()<.35)return {type:"type",q:`Type the pronoun that can take the place of the underlined words:<br><b>${s} ${v} <u>${o[0]}</u>.</b>`,a:[o[1]],why:`${s} ${v} <b>${o[1]}</b>.`,hint:"After a verb, use me, you, him, her, it, us or them."};
+  return mcQ(`Which pronoun can take the place of the underlined words?<br><b>${s} ${v} <u>${o[0]}</u>.</b>`,o[1],SAMPLE(OPRONS.filter(z=>z!==o[1]),2),`${s} ${v} <b>${o[1]}</b>.`,"After a verb, use me, you, him, her, it, us or them.")};
+const PAIRS=[["I","me"],["he","him"],["she","her"],["we","us"],["they","them"]];
+const SUBT=["___ swam in the warm lagoon.","Dad and ___ built a sandcastle.","___ found a starfish on the shore.","Yesterday ___ saw a dolphin.","Aunt Jo and ___ went to the lighthouse.","___ picked up all the plastic on the beach."];
+const OBJT=["The crab pinched ___.","Grandma gave a shell to ___.","The lifeguard waved to ___.","Please come to the beach with ___.","The big wave splashed ___.","Sofia wrote a letter to ___.","Aunt Jo showed the map to ___."];
+const subObj=()=>{const p=R(PAIRS);const isS=Math.random()<.5;const t=R(isS?SUBT:OBJT);const start=t[0]==="_";
+  const fm=w=>start?cap(w):w;const ans=fm(isS?p[0]:p[1]),wr=fm(isS?p[1]:p[0]);
+  return mcQ(`Choose the correct word:<br><b>${t}</b>`,ans,[wr],isS?`<b>${t.replace("___",ans)}</b> The person is <b>doing</b> the action, so we use ${p[0]}.`:`<b>${t.replace("___",ans)}</b> The action is done <b>to</b> the person (or comes after with, to, at), so we use ${p[1]}.`,"Cover the other person's name. Would you say \"I swam\" or \"me swam\"? \"to me\" or \"to I\"?")};
+const OWN=[["Sofia","her",["packed ___ towel","opened ___ letter","put on ___ sun hat"]],["Asha","her",["planted ___ mangrove seedling","wiped ___ muddy boots"]],["Aunt Jo","her",["spread out ___ big map","found ___ binoculars"]],
+ ["Leo","his",["filled ___ bucket with sand","lost ___ sandal","zipped up ___ life jacket"]],["Grandpa","his",["fixed ___ fishing net","started ___ boat"]],["The fisherman","his",["pulled in ___ net","painted ___ boat"]],
+ ["The crab","its",["lost ___ shell","waved ___ big claws"]],["The whale","its",["slapped ___ tail on the water","fed ___ baby"]],["The octopus","its",["squirted ___ ink","wrapped ___ arms around a rock"]],["The boat","its",["lowered ___ sails","dropped ___ anchor"]],
+ ["The divers","their",["checked ___ air tanks","put on ___ masks"]],["The children","their",["collected ___ shells","washed ___ sandy feet"]],["The sailors","their",["tied ___ ropes","cleaned ___ ship"]],
+ ["Mia and I","our",["ate ___ lunch on the sand","rinsed ___ snorkels"]],["I","my",["filled ___ water bottle","rinsed ___ swimsuit"]]];
+const POSS=["his","her","its","their","our","my"];
+const possQ=()=>{const o=R(OWN),ph=R(o[2]);const s=`${o[0]} ${ph}.`;const pair={its:"their",their:"its",his:"her",her:"his",our:"their",my:"his"}[o[1]];
+  return mcQ(`Choose the word that shows it belongs to <b>${o[0]==="I"?"me":lc(o[0])}</b>:<br><b>${s}</b>`,o[1],[pair,R(POSS.filter(z=>z!==o[1]&&z!==pair))],`<b>${s.replace("___",o[1])}</b> ${o[1]==="its"?"Use <b>its</b> (no apostrophe!) for an animal or a thing.":o[1]==="their"?"Use <b>their</b> for more than one.":"The word shows who owns it."}`,"his = a boy's · her = a girl's · its = an animal's or thing's · their = more than one · our = mine and others' · my = mine")};
+
+/* ================= GRAMMAR AND SPELLING: PREFIXES UN- AND RE- ================= */
+const UN_A=["happy","safe","kind","fair","known","usual","able","clear","even","lucky","tidy","wise","well","friendly","healthy","true","fit","real"];
+const UN_V=["lock","tie","pack","wrap","cover","load","zip","fold","buckle","button"];
+const RE_=["build","read","write","fill","play","use","paint","heat","wind","start","tell","visit","count","do","wash","open","try","turn","plant","check"];
+const RE_ING={build:"build",read:"read",write:"write",fill:"fill",play:"play",use:"use",paint:"paint",heat:"heat",wind:"wind",start:"start",tell:"tell",visit:"visit",count:"count",do:"do",wash:"wash",open:"open",try:"try",turn:"turn",plant:"plant",check:"check"};
+const unMeaning=w=>UN_A.includes(w)?`not ${w}`:`to do the opposite of ${w}`;
+const prefJoin=()=>{const isUn=Math.random()<.5;const w=isUn?R(UN_A.concat(UN_V)):R(RE_);const pre=isUn?"un":"re";
+  return {type:"type",q:`Add the prefix and write the new word:<br><b>${pre} + ${w} = ?</b>`,a:[pre+w],why:`<b>${pre}${w}</b> means ${isUn?unMeaning(w):"to "+w+" again"}.`,hint:"Write the prefix, then the whole word, with no space."}};
+const prefMean=()=>{const isUn=Math.random()<.5;const w=isUn?R(UN_A.concat(UN_V)):R(RE_);const word=(isUn?"un":"re")+w;const right=isUn?unMeaning(w):`to ${w} again`;
+  const wrongs=isUn?[`to ${w} again`,UN_A.includes(w)?`very ${w}`:`to ${w} quickly`]:[unMeaning(w),`to ${w} slowly`];
+  return mcQ(`What does <b>${word}</b> mean?`,right,wrongs,`<b>un-</b> means <b>not</b> (or the opposite). <b>re-</b> means <b>again</b>. So ${word} means ${right}.`,"un- = not / opposite · re- = again")};
+const prefPick=()=>{const isUn=Math.random()<.5;const w=isUn?R(UN_A):R(RE_);const word=(isUn?"un":"re")+w;const m=isUn?`not ${w}`:`to ${w} again`;
+  if(Math.random()<.5)return {type:"type",q:`Write <b>one word</b> with a prefix that means:<br><b>${m}</b>`,a:[word],why:`<b>${word}</b> = ${m}.`,hint:isUn?"Use un- (not).":"Use re- (again)."};
+  const others=isUn?[w,"re"+R(RE_.filter(z=>z!==w))]:[w,"un"+R(UN_A.filter(z=>z!==w))];
+  return mcQ(`Which word means <b>${m}</b>?`,word,others,`<b>${word}</b> = ${m}.`,"un- = not · re- = again")};
+const PCTX=[["The water was too rough, so swimming was ___safe.","un"],["My sandcastle fell down, so I will ___build it.","re"],["I made a mistake, so I will ___write the sentence.","re"],["My water bottle is empty, so I will ___fill it.","re"],["Please ___use your bottle instead of buying a new one.","re"],["The knot was so tight that I could not ___tie it.","un"],["When we got home, we ___packed our beach bags.","un"],["That fish looks strange. It is very ___usual.","un"],["The film was so good that we will ___watch it.","re"],["Leo felt ___well after eating too much ice cream.","un"],["The game ended in a tie, so we will ___play it.","re"],["Asha ___locked the door with her key.","un"],["Grandpa had to ___paint the boat because the old paint was peeling.","re"],["It is ___kind to throw rubbish at animals.","un"],["The soup was cold, so Mom will ___heat it.","re"],["The deep ocean is still mostly ___known.","un"],["Our class will ___visit the aquarium next year.","re"],["Mia ___wrapped her birthday present.","un"],["My room was messy and ___tidy.","un"],["Let's ___count the shells to be sure.","re"],["It is ___fair if one person gets all the turns.","un"],["The plant fell over, so we will ___plant it in a bigger pot.","re"]];
+const prefCtx=()=>{const x=R(PCTX);return mcQ(`Which prefix fits? <b>un</b> (not) or <b>re</b> (again)?<br><b>${x[0]}</b>`,x[1],[x[1]==="un"?"re":"un"],`<b>${x[0].replace("___",x[1])}</b>`,"Does it mean NOT, or AGAIN?")};
+
+const SENT=["Mia and Leo found a bottle in Nova Scotia.","Sofia lives in Portugal.","The bottle crossed the Atlantic Ocean.","Asha lives near the Sundarbans in India.","The Great Barrier Reef is in Australia.","The Bay of Fundy has huge tides.","Aunt Jo showed us a map of Canada.","The Mariana Trench is in the Pacific Ocean.","Shelly the hermit crab found a new shell.","On Saturday we cleaned the beach.","I saw a whale near Vancouver.","Leo and I visited the aquarium in Toronto.","Grandpa took us fishing in July.","The Indian Ocean is warm.","Salmon swim up rivers in British Columbia.","We will go to the beach on Monday.","The crab walked sideways across the sand.","The divers swam through the reef.","A seagull sat on the lighthouse.","The tide comes in twice a day.","Sea turtles lay their eggs on the beach.","The octopus squirted ink at the shark.","The waves crashed on the rocky shore.","We picked up plastic from the beach.","A tiny seahorse held on to the seaweed.","The submarine dived deep under the sea."];
+const fix=()=>{const s=R(SENT);return {type:"type",strict:true,q:`Fix this sentence. Add the capital letters and the full stop:<br><b>${breakSentence(s)}</b>`,a:[s],hint:"Capital letter at the start, capitals for names, places, oceans, days, months and I, and a full stop at the end.",why:`Correct: <b>${s}</b>`}};
+const D=[CHK.cap,CHK.end,CHK.w4,CHK.I];
+const PREP="\\b(in|on|under|behind|between|next to|above|below|across|through|inside|beside|near)\\b";
+const WP=[
+ {q:"Write a sentence that tells <b>where</b> a sea animal is. Use a word like <b>under, behind, between</b> or <b>inside</b>.",checks:[...D,[PREP,"Uses a place word (preposition)"]],model:"The crab is hiding under a rock."},
+ {q:"Write a sentence about something you do <b>at</b> a clock time.",checks:[...D,["\\bat\\s+(\\d|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|noon|midnight|half|quarter)","Uses at + a time"]],model:"I go to the pool at four o'clock."},
+ {q:"Write a sentence about something you do <b>on</b> a day of the week.",checks:[...D,["\\b[Oo]n\\s+(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)s?\\b","Uses on + a day with a capital letter"]],model:"On Saturday I go swimming with my dad."},
+ {q:"Write a sentence about something that happens <b>in</b> a month or a season.",checks:[...D,["\\b[Ii]n\\s+(the\\s+)?(January|February|March|April|May|June|July|August|September|October|November|December|summer|winter|spring|autumn|fall)\\b","Uses in + a month or season"]],model:"In July we go to the beach."},
+ {q:"Write two sentences about a sea animal. In the second sentence, use <b>it</b> or <b>they</b> instead of the animal's name.",checks:[CHK.cap,CHK.end,["[.!?]\\s+\\S[\\s\\S]*[.!?]","Has two sentences"],["\\b([Ii]t|[Tt]hey)\\b","Uses it or they"]],model:"Dolphins are very clever. They talk to each other with clicks."},
+ {q:"Write a sentence using <b>him</b>, <b>her</b> or <b>them</b>.",checks:[...D,["\\b(him|her|them)\\b","Uses him, her or them"]],model:"My friends were at the beach, so I waved to them."},
+ {q:"Write a sentence that begins with <b>My friend and I</b>.",checks:[["^\\s*My friend and I\\b","Starts with My friend and I"],CHK.end,CHK.w4],model:"My friend and I built a giant sandcastle."},
+ {q:"Write a sentence that ends with <b>with me</b>.",checks:[CHK.cap,["\\bwith me[.!?]\\s*$","Ends with with me and an end mark"],CHK.w4,CHK.I],model:"My little brother came to the beach with me."},
+ {q:"Write a sentence using <b>its</b> to talk about an animal.",checks:[...D,["\\bits\\b","Uses its (no apostrophe)"]],model:"The crab hid in its shell."},
+ {q:"Write a sentence using <b>their</b>.",checks:[...D,["\\b[Tt]heir\\b","Uses their"]],model:"The divers checked their air tanks."},
+ {q:"Write a sentence with a word that starts with <b>un-</b> (meaning not).",checks:[...D,["\\b[Uu]n[a-z]{3,}","Uses an un- word"]],model:"It is unsafe to swim when the red flag is up."},
+ {q:"Write a sentence with a word that starts with <b>re-</b> (meaning again).",checks:[...D,["\\b[Rr]e(build|read|write|fill|play|use|paint|heat|wind|start|tell|visit|count|do|wash|open|try|turn|plant|check|cycle|pack)\\w*","Uses a re- word"]],model:"I will refill my water bottle."},
+ {q:"Write a sentence that names an ocean. Remember the capital letters!",checks:[...D,["\\b(Atlantic|Pacific|Indian|Arctic|Southern)\\s+Ocean\\b","Names an ocean with capital letters"]],model:"The Pacific Ocean is the biggest ocean."},
+ {q:"Write a sentence that tells one way to keep the ocean clean.",checks:[...D,["\\b(should|must|can|recycle|pick|reuse|clean|bin|rubbish|plastic|garbage|trash)\\w*","Talks about keeping the ocean clean"]],model:"We should recycle our plastic bottles."},
+ {q:"Write a sentence describing the sea using two describing words.",checks:[...D,["\\b([Ss]ea|[Oo]cean|water|waves)\\b","Mentions the sea, ocean, water or waves"]],model:"The sea was calm and sparkly."},
+ {q:"Write a question you would ask a deep-sea scientist.",checks:[CHK.cap,CHK.q,CHK.w3,CHK.I],model:"What is the strangest fish you have ever seen?"},
+ {q:"Write a beach safety rule. Start with <b>Always</b> or <b>Never</b>.",checks:[["^\\s*(Always|Never)\\b","Starts with Always or Never"],CHK.end,CHK.w4],model:"Never swim without a grown-up watching."},
+ {q:"Write a sentence that predicts what will happen if people keep throwing plastic in the sea.",checks:[...D,["\\b(will|might|could|going to)\\b","Uses will, might or could"]],model:"If people keep throwing plastic in the sea, more turtles will get hurt."},
+ {q:"Write a sentence using <b>because</b> about why coral reefs are important.",checks:[...D,["\\bbecause\\b","Uses because"],["\\b([Cc]oral|[Rr]eef)s?\\b","Mentions coral or reefs"]],model:"Coral reefs are important because many fish live there."},
+ {q:"Write a sentence using <b>between</b>.",checks:[...D,["\\bbetween\\b","Uses between"]],model:"A small fish hid between two rocks."},
+ {q:"Write a sentence using <b>through</b>.",checks:[...D,["\\bthrough\\b","Uses through"]],model:"The whale swam through the cold water."},
+ {q:"Write a sentence about your favourite sea animal and why you like it.",checks:[...D,["\\bbecause\\b","Uses because"]],model:"My favourite sea animal is the octopus because it is very clever."}
+];
+
+/* ================= VOCABULARY AND SCIENCE ================= */
+const HAB=[
+ {q:"Which ocean zone gets the most sunlight?",a:"The sunlight zone (near the top)",o:["The midnight zone","The bottom of a trench"],why:"Sunlight only reaches the top part of the ocean."},
+ {q:"Why are there no plants in the midnight zone?",a:"No sunlight reaches it, and plants need light",o:["It is too salty","Fish eat them all"],why:"Plants need sunlight to make food."},
+ {q:"What is special about many animals in the midnight zone?",a:"Many of them make their own light",o:["They are all huge","They have fur"],why:"In the dark, glowing helps animals find food and each other."},
+ {q:"Where is the Mariana Trench?",a:"In the Pacific Ocean",o:["In the Arctic Ocean","In a lake in Canada"],why:"It is the deepest place in the ocean, in the Pacific."},
+ {q:"What is coral made by?",a:"Tiny animals called polyps",o:["Tiny plants","Rocks melting"],why:"Coral is built by millions of tiny polyps."},
+ {q:"Which is the biggest ocean?",a:"The Pacific Ocean",o:["The Atlantic Ocean","The Indian Ocean"],why:"The Pacific is the largest and deepest ocean."},
+ {q:"Which ocean is between North America and Europe?",a:"The Atlantic Ocean",o:["The Pacific Ocean","The Indian Ocean"],why:"Sofia's bottle crossed the Atlantic from Portugal to Canada."},
+ {q:"Which ocean is around the North Pole?",a:"The Arctic Ocean",o:["The Indian Ocean","The Southern Ocean"],why:"The Arctic Ocean is cold and often covered in ice."},
+ {q:"Which ocean is south of India?",a:"The Indian Ocean",o:["The Arctic Ocean","The Atlantic Ocean"],why:"The Indian Ocean is named after India."},
+ {q:"Where do mangrove trees grow?",a:"In salty water along warm coasts",o:["On snowy mountains","In deserts"],why:"Mangroves grow where rivers meet warm seas."},
+ {q:"How do mangroves protect villages?",a:"Their roots slow down big waves",o:["They scare away storms","They make the sea freeze"],why:"The tangled roots act like a wall against waves."},
+ {q:"What is a coral reef often called because so many animals live there?",a:"The rainforest of the sea",o:["The desert of the sea","The sky of the sea"],why:"Like rainforests, reefs are full of different living things."},
+ {q:"Why does a hermit crab move to a new shell?",a:"It grows too big for its old one",o:["It wants a new colour","Its shell melts"],why:"Hermit crabs don't grow their own shells, so they move into bigger empty ones."},
+ {q:"How many times a day does the tide usually come in?",a:"About twice",o:["Once a year","Ten times"],why:"Most coasts have two high tides and two low tides each day."},
+ {q:"What pulls on the ocean and causes tides?",a:"The Moon's gravity",o:["The wind only","Fish swimming"],why:"The Moon pulls on the water, making it rise and fall."},
+ {q:"What do many whales eat?",a:"Tiny plankton and small fish",o:["Seaweed only","Rocks"],why:"Even the giant blue whale eats tiny krill."},
+ {q:"How does a fish breathe under water?",a:"With gills",o:["With lungs, like us","It does not breathe"],why:"Gills take oxygen from the water."},
+ {q:"How do whales and dolphins breathe?",a:"They come up to the surface to breathe air",o:["With gills","They never breathe"],why:"Whales and dolphins are mammals with lungs."},
+ {q:"Which sea animal has eight arms?",a:"An octopus",o:["A starfish","A crab"],why:"Octo means eight."},
+ {q:"What does a clownfish live in for protection?",a:"A sea anemone",o:["A shark's mouth","A shipwreck only"],why:"The anemone's stinging arms keep enemies away, but they don't hurt the clownfish."},
+ {q:"What is the deep-sea pressure like?",a:"Very strong, like a heavy weight pressing",o:["Very weak","Just like on land"],why:"The deeper you go, the more water presses down on you."},
+ {q:"Why do salmon swim up rivers?",a:"To lay their eggs where they hatched",o:["To find snow","To visit the city"],why:"Salmon return to their home river to lay eggs."}
+];
+const SYN=[["voyage","journey"],["ocean","sea"],["graceful","elegant"],["transparent","see-through"],["unusual","strange"],["unsafe","dangerous"],["shore","beach"],["glide","slide"],["shout","yell"],["rubbish","garbage"],["frightened","scared"],["quick","fast"],["sparkle","glitter"],["gather","collect"],["rescue","save"],["chilly","cold"],["damp","wet"],["begin","start"],["huge","giant"],["calm","peaceful"],["murky","muddy"],["little","small"]];
+const OPP=[["shallow","deep"],["sink","float"],["wet","dry"],["clean","dirty"],["calm","stormy"],["rough","smooth"],["above","below"],["top","bottom"],["empty","full"],["dark","bright"],["hot","cold"],["near","far"],["push","pull"],["catch","release"],["arrive","leave"],["open","closed"],["rise","fall"],["noisy","quiet"],["first","last"],["forward","backward"],["inside","outside"],["high tide","low tide"]];
+const COMP=[["sea","shell"],["sea","weed"],["star","fish"],["light","house"],["sail","boat"],["ship","wreck"],["sea","shore"],["sea","gull"],["sun","screen"],["water","proof"],["sand","castle"],["foot","print"],["sun","shine"],["sea","side"],["under","water"],["cat","fish"],["sword","fish"],["jelly","fish"],["shell","fish"],["life","guard"],["sun","burn"],["drift","wood"],["sea","horse"],["fisher","man"]];
+
+/* ================= SPELLING ================= */
+const SP=u.spelling.concat([{w:"seaweed",s:"The seaweed was slippery.",tip:"sea + weed."},{w:"dolphin",s:"A dolphin jumped out of the water.",tip:"'ph' sounds like f."},{w:"octopus",s:"The octopus has eight arms."},{w:"shark",s:"A shark swam past the boat.",tip:"'ar' as in car."},{w:"turtle",s:"The turtle laid her eggs.",tip:"'ur' in the middle, '-le' at the end."},{w:"starfish",s:"I found a starfish.",tip:"star + fish."},{w:"lighthouse",s:"The lighthouse flashed.",tip:"light + house. Remember the silent gh."},{w:"tide",s:"The tide is coming in.",tip:"Magic e: t-i-de."},{w:"reef",s:"The reef is colourful.",tip:"Double e."},{w:"sailor",s:"The sailor tied the rope.",tip:"It ends in -or."},{w:"anchor",s:"Drop the anchor!",tip:"'ch' sounds like k."},{w:"coast",s:"We drove along the coast.",tip:"'oa' says long o."},{w:"splash",s:"The children splash in the waves."},{w:"current",s:"The current is strong.",tip:"Double r."},{w:"plastic",s:"Plastic hurts sea animals."}]);
+const PRE_S={unhappy:"The crab was unhappy in its tiny shell.",unsafe:"It is unsafe to swim alone.",unkind:"It is unkind to tease others.",unlock:"Please unlock the door.",untie:"Can you untie this knot?",unpack:"We unpacked our beach bags.",unfair:"That game was unfair.",unknown:"The deep sea is mostly unknown.",unusual:"The anglerfish is an unusual fish.",unwrap:"Mia unwrapped her present.",unlucky:"It was an unlucky day.",untidy:"My room is untidy.",unwell:"Leo felt unwell.",unzip:"Unzip your bag.",rebuild:"We will rebuild the sandcastle.",reread:"Please reread the story.",rewrite:"I will rewrite my sentence neatly.",refill:"Refill your water bottle.",replay:"Let's replay the game.",reuse:"We reuse our bags.",repaint:"Grandpa will repaint the boat.",reheat:"Mom will reheat the soup.",restart:"Restart the computer.",retell:"Can you retell the fable?",revisit:"We will revisit the aquarium.",recount:"Let's recount the shells.",redo:"I need to redo my homework.",rewash:"I will rewash my muddy socks.",reopen:"The beach will reopen tomorrow.",retry:"If you fail, retry!",replant:"We will replant the mangroves."};
+const PRELIST=Object.keys(PRE_S).map(w=>({w,s:PRE_S[w],tip:w.startsWith("un")?`un + ${w.slice(2)}: not ${w.slice(2)} (or the opposite).`:`re + ${w.slice(2)}: ${w.slice(2)} again.`}));
+const CHOOSE=[["ocean","oshun","ocian"],["beach","beatch","bech"],["whale","wayle","whail"],["island","iland","ilend"],["shore","shor","shoar"],["salty","saltey","saulty"],["coral","corel","corle"],["dolphin","dolfin","dolphen"],["octopus","octapus","oktopus"],["turtle","turtel","tertle"],["seaweed","seeweed","seawead"],["lighthouse","lighthous","lighthows"],["anchor","anker","ancher"],["current","curent","currunt"],["submarine","submareen","submarin"],["jellyfish","jelyfish","jellyfich"],["unhappy","unhapy","unnhappy"],["rebuild","rebild","rebuld"],["unusual","unusal","unuseual"],["refill","refil","reefill"]].map(x=>({w:x[0],bad:[x[1],x[2]],tip:(SP.find(y=>y.w===x[0])||PRELIST.find(y=>y.w===x[0])||{}).tip}));
+
+/* ================= READING ================= */
+const DETAIL=[
+ ["The Blue Whale","The blue whale is the biggest animal that has ever lived, bigger than any dinosaur. It can be about 30 metres long. Its heart is as big as a small car. Even so, it eats some of the tiniest animals in the sea: little shrimp-like creatures called krill.",[["What is the biggest animal that has ever lived?","The blue whale",["A dinosaur","An elephant"]],["How big is its heart?","As big as a small car",["As big as a pea","As big as a house"]],["What does the blue whale eat?","Tiny krill",["Big sharks","Seaweed"]]]],
+ ["Sea Turtles","Sea turtles spend almost their whole lives in the ocean. But the mothers come back to the same beach where they hatched to lay their eggs in the sand. When the babies hatch, they follow the light of the moon over the water to reach the sea. Bright beach lights can confuse them.",[["Where do mother turtles lay their eggs?","In the sand on the beach where they hatched",["In a tree","At the bottom of the sea"]],["How do baby turtles find the sea?","They follow the moonlight over the water",["They follow the seagulls","Their mother carries them"]],["What can confuse baby turtles?","Bright beach lights",["The sound of waves","Seaweed"]]]],
+ ["The Bay of Fundy","The Bay of Fundy is between New Brunswick and Nova Scotia in Canada. It has the highest tides in the world. Twice a day, the water rises more than 15 metres and then drains away. At low tide, visitors can walk on the sea floor among tall rocks called the Hopewell Rocks.",[["Which country is the Bay of Fundy in?","Canada",["India","Australia"]],["How high can the water rise?","More than 15 metres",["1 metre","Only a few centimetres"]],["What can visitors do at low tide?","Walk on the sea floor",["Ski on the water","Swim with polar bears"]]]],
+ ["The Great Barrier Reef","The Great Barrier Reef is off the coast of Australia. It is the biggest coral reef in the world, so big that astronauts can see it from space. Thousands of kinds of fish, turtles and sharks live there. When the sea gets too warm, the coral can turn white and become sick.",[["Where is the Great Barrier Reef?","Off the coast of Australia",["In Canada","In the Arctic"]],["Who can see it from space?","Astronauts",["Fish","Birds"]],["What happens when the sea gets too warm?","The coral can turn white and become sick",["The coral grows faster","The reef turns into sand"]]]],
+ ["The Octopus","The octopus is one of the cleverest animals in the sea. It has eight arms covered in suckers and three hearts. It can change colour in a blink to hide from enemies. If it is scared, it squirts a cloud of dark ink and swims away fast.",[["How many hearts does an octopus have?","Three",["One","Eight"]],["Why does it change colour?","To hide from enemies",["To keep warm","To look pretty for a party"]],["What does it do when it is scared?","Squirts ink and swims away",["Sings loudly","Goes to sleep"]]]],
+ ["Lighthouses","Before modern maps and computers, sailors depended on lighthouses. A lighthouse is a tall tower with a very bright light at the top. Each lighthouse flashes in its own pattern, so sailors can tell which one they are looking at. The light warns ships to stay away from rocks.",[["What is at the top of a lighthouse?","A very bright light",["A bell for school","A garden"]],["Why does each lighthouse flash in its own pattern?","So sailors know which lighthouse it is",["To play music","To wake up the fish"]],["What does the light warn ships about?","Dangerous rocks",["Rain","Birds"]]]],
+ ["Plastic in the Ocean","Every year, millions of tonnes of plastic end up in the ocean. Sea turtles can mistake plastic bags for jellyfish and eat them. Birds and fish get tangled in old nets and rings. Using less plastic and recycling helps keep the ocean clean.",[["Why do turtles eat plastic bags?","They think the bags are jellyfish",["They like the taste","They are very hungry for plastic"]],["What can tangle birds and fish?","Old nets and rings",["Seaweed only","Waves"]],["What helps keep the ocean clean?","Using less plastic and recycling",["Throwing rubbish in rivers","Leaving bags on the beach"]]]],
+ ["Seahorses","Seahorses are fish, even though they do not look like it. They swim upright and wrap their curly tails around seaweed so the waves do not carry them away. Unusually, the father seahorse carries the eggs in a pouch until the babies hatch.",[["What kind of animal is a seahorse?","A fish",["A horse","A crab"]],["Why do seahorses wrap their tails around seaweed?","So the waves do not carry them away",["To eat it","To sleep in a bed"]],["Who carries the eggs?","The father seahorse",["The mother seahorse","A crab"]]]],
+ ["Jacques Cousteau","Jacques Cousteau was a French explorer who loved the sea. In the 1940s, he helped invent the aqualung, which let divers breathe under water for a long time. He made films that showed millions of people the beauty of the ocean and taught them to protect it.",[["Which country was Jacques Cousteau from?","France",["Canada","Japan"]],["What did he help invent?","The aqualung, so divers could breathe under water",["The submarine telephone","The fishing rod"]],["What did his films teach people?","To love and protect the ocean",["To catch more fish","To build ships"]]]],
+ ["The Sundarbans","The Sundarbans is the biggest mangrove forest in the world. It is where the big rivers of India and Bangladesh meet the sea. Royal Bengal tigers live there and can swim between the islands. The mangroves protect millions of people from storms.",[["What kind of forest is the Sundarbans?","A mangrove forest",["A pine forest","A desert"]],["Which big animal lives there and can swim?","The Royal Bengal tiger",["The polar bear","The kangaroo"]],["What do the mangroves protect people from?","Storms",["Snow","Earthquakes"]]]],
+ ["Sylvia Earle","Sylvia Earle is an American ocean scientist. She has led more than one hundred trips under the sea. People call her \"Her Deepness\" because she once walked on the sea floor deeper than any woman before. She says, \"No ocean, no life.\"",[["What is Sylvia Earle's job?","Ocean scientist",["Pilot","Baker"]],["What do people call her?","Her Deepness",["The Ocean Queen","Captain Wave"]],["What does she say?","No ocean, no life",["Fish are boring","The sea is too cold"]]]],
+ ["Rip Currents","A rip current is a strong, narrow stream of water that rushes away from the beach. It can pull even good swimmers out to sea. If you are caught in one, do not try to swim straight back to shore. Stay calm, swim sideways along the beach until you are out of it, and wave for help.",[["Where does a rip current pull you?","Away from the beach, out to sea",["Up into the sky","Onto the sand"]],["Which way should you swim to escape?","Sideways, along the beach",["Straight back to shore","Down to the sea floor"]],["What else should you do?","Stay calm and wave for help",["Shout and splash wildly","Close your eyes"]]]]
+];
+const detail=()=>{const p=R(DETAIL),x=R(p[2]);return mcQ(`${box(p[0],p[1])}${x[0]}`,x[1],x[2],`Look back at the text: the answer is there.`,"Read the text again and find the words.",{say:p[1]+" "+x[0]})};
+const MAIN=[
+ ["Oceans cover most of our planet. They give us food. They help control the weather. Tiny ocean plants make much of the oxygen we breathe.","Oceans are very important to our planet.",["Plants are tiny.","Weather changes."]],
+ ["Coral reefs are home to many animals. Fish hide in the coral. Crabs and eels live in its holes. Turtles visit to feed.","Coral reefs are home to many animals.",["Eels are long.","Turtles can swim."]],
+ ["The deep ocean is a strange place. It is completely dark. It is freezing cold. Some fish there glow and others have huge teeth.","The deep ocean is a strange place.",["Teeth are sharp.","Some fish are big."]],
+ ["Plastic is a big problem for sea animals. Turtles eat bags by mistake. Birds get tangled in rings. Fish swallow tiny pieces.","Plastic is a big problem for sea animals.",["Birds can fly.","Bags carry things."]],
+ ["Mangroves are amazing trees. They grow in salty water. Their roots stand above the mud like legs. They protect the coast from big waves.","Mangroves are amazing trees.",["Mud is sticky.","Waves are big."]],
+ ["Octopuses are very clever. They can open jars. They can find their way through mazes. Some even use coconut shells as little houses.","Octopuses are very clever.",["Jars have lids.","Coconuts are hard."]],
+ ["People can help the ocean in many ways. They can use less plastic. They can join beach clean-ups. They can choose not to buy things made from coral.","People can help the ocean in many ways.",["Beaches are sandy.","Coral is pretty."]],
+ ["The tide changes the beach every day. At high tide, the water covers the sand. At low tide, you can see rocks, pools and crabs. Then the water comes back again.","The tide changes the beach every day.",["Crabs have claws.","Sand is yellow."]],
+ ["Whales talk to each other. Humpback whales sing long songs. Dolphins use clicks and whistles. Their sounds can travel very far under water.","Whales and dolphins talk to each other with sounds.",["Water is wet.","Songs are long."]],
+ ["Lighthouses kept sailors safe. Their bright lights warned ships about rocks. Their foghorns sounded in thick fog. Lighthouse keepers worked all night.","Lighthouses kept sailors safe.",["Fog is grey.","Rocks are hard."]],
+ ["Sea animals have clever ways to hide. The octopus changes colour. The flatfish lies flat on the sand. The crab hides under rocks.","Sea animals have clever ways to hide.",["Sand is soft.","Rocks are grey."]],
+ ["Salmon make an amazing journey. They hatch in a river. They swim out to the ocean and live there for years. Then they swim all the way back to the river where they hatched.","Salmon make an amazing journey.",["Rivers flow.","Oceans are big."]],
+ ["Beaches can be dangerous. Rip currents can pull swimmers away. Jellyfish can sting. The sun can burn your skin.","Beaches can be dangerous, so we must be careful.",["Jellyfish are soft.","The sun is hot."]],
+ ["Sharks are important for the ocean. They keep fish populations healthy. They eat sick and weak animals. Without sharks, the reef could become unbalanced.","Sharks are important for the ocean.",["Fish are healthy.","Reefs are colourful."]],
+ ["Scientists use special tools to explore the deep sea. They use submarines. They send down robot cameras. They use sound to map the sea floor.","Scientists use special tools to explore the deep sea.",["Cameras take photos.","Submarines are yellow."]],
+ ["Sea water is not good to drink. It is too salty. It makes you more thirsty. Sailors must carry fresh water on long voyages.","Sea water is not good to drink.",["Sailors are brave.","Voyages are long."]],
+ ["Hermit crabs need empty shells. They do not grow their own shells. As they grow, they look for bigger ones. Sometimes crabs line up and swap shells by size.","Hermit crabs need empty shells to live in.",["Crabs line up.","Shells are hard."]],
+ ["The ocean gives people many jobs. Fishers catch fish. Sailors move goods on ships. Scientists study sea life. Lifeguards keep swimmers safe.","The ocean gives people many jobs.",["Ships are big.","Fish swim."]],
+ ["Some sea animals make their own light. Anglerfish use a glowing lure to catch food. Some jellyfish glow blue. Tiny plankton can make waves sparkle at night.","Some sea animals make their own light.",["Plankton is tiny.","Waves are wet."]],
+ ["Warm water is harming coral reefs. When the sea gets too hot, coral turns white. White coral is weak and can die. Many fish then lose their homes.","Warm water is harming coral reefs.",["Fish have homes.","White is a colour."]],
+ ["Ocean currents are like rivers in the sea. They carry warm and cold water around the world. They carry baby sea animals to new homes. They even carried Sofia's bottle to Canada.","Ocean currents move water and things around the world.",["Bottles are glass.","Canada is big."]],
+ ["Penguins are built for the sea. They cannot fly, but their wings work like flippers. Their bodies are smooth and fast in water. Thick feathers keep them warm.","Penguins are built for life in the sea.",["Feathers are soft.","Wings are wide."]],
+ ["People in many countries depend on the ocean. In Japan, people eat a lot of fish. In Portugal, many families are fishers. In Nova Scotia, lobster fishing is a big job.","People in many countries depend on the ocean.",["Japan is an island.","Lobsters are red."]],
+ ["Seabirds spend most of their lives at sea. Albatrosses can fly for days without landing. Puffins dive to catch fish. Seagulls follow fishing boats.","Seabirds spend most of their lives at sea.",["Puffins are cute.","Boats are noisy."]]
+];
+const mainIdea=()=>{const m=R(MAIN);return mcQ(`${box("Read",m[0])}What is the <b>main idea</b>? (What is it mostly about?)`,m[1],m[2],`The main idea is what the whole text is about: <b>${m[1]}</b>`,"Which answer fits ALL the sentences, not just one?",{say:m[0]})};
+const FACTS=["The Pacific Ocean is the biggest ocean.","Sea water is salty.","Whales breathe air.","Fish breathe with gills.","An octopus has eight arms.","Coral is made by tiny animals.","The Bay of Fundy has very high tides.","The Moon's gravity causes tides.","Sea turtles lay eggs on beaches.","Seahorses are fish.","The Mariana Trench is the deepest place in the ocean.","Plastic can hurt sea animals.","Salmon swim up rivers to lay eggs.","The Great Barrier Reef is in Australia.","Mangroves grow in salty water.","Jellyfish can sting.","Hermit crabs live in empty shells.","Lighthouses warn ships about rocks.","Dolphins are mammals.","The deep sea is very dark.","A blue whale is bigger than any dinosaur.","Some deep-sea fish make their own light.","Penguins cannot fly.","There are five oceans on Earth.","The tide usually comes in twice a day."];
+const OPIN=["Dolphins are the cutest animals.","The beach is the best place for a holiday.","Jellyfish are creepy.","Swimming in the sea is more fun than swimming in a pool.","Octopuses are the most interesting animals.","Seaweed smells horrible.","Sandcastles are fun to build.","The Pacific Ocean is the most beautiful ocean.","Crabs are funny.","Fish and chips is the best meal.","Being a diver would be an exciting job.","The deep sea is scary.","Shells make the best collection.","Lighthouses are beautiful.","Whale songs are relaxing.","Snorkelling is easy.","Sea stars are prettier than seahorses.","Rainy days at the beach are boring.","The ocean is more interesting than space.","Surfing is the coolest sport.","Blue is the nicest colour for the sea.","Everyone should visit the Bay of Fundy.","Sharks are frightening.","Beach clean-ups are fun.","Turtles are the best swimmers."];
+const factOp=()=>{const f=Math.random()<.5;const s=f?R(FACTS):R(OPIN);return mcQ(`Is this a <b>fact</b> or an <b>opinion</b>?<br><b>${s}</b>`,f?"Fact":"Opinion",[f?"Opinion":"Fact"],f?"A <b>fact</b> can be checked by scientists or in a book.":"An <b>opinion</b> is what someone thinks or feels. Others may disagree.","Could a scientist check it? Or is it a feeling?")};
+const SEQ=[["Leo finds a bottle in the seaweed","Mia reads Sofia's message","The children email Sofia","Sofia writes back"],["A mother turtle lays eggs in the sand","The eggs hatch","The babies crawl to the sea","The young turtles swim away"],["Salmon hatch in a river","They swim to the ocean","They grow big in the ocean","They swim back up the river"],["The tide is high","The water slowly goes out","It is low tide","The water comes back in"],["Shelly's shell feels too tight","She looks for a new shell","She bravely leaves her old shell","She moves into a bigger shell"],["A cyclone is coming","The villagers worry","The mangrove roots slow the waves","The village is safe"],["Put on sunscreen","Walk to the beach","Check the flag","Swim near the lifeguard"],["The sunlight zone","The twilight zone","The midnight zone","The deep trench"],["Tiny polyps settle on a rock","They build hard coral","The coral grows bigger","A reef forms and fish move in"],["A plastic bottle is dropped on the street","Rain washes it into a river","The river carries it to the sea","A turtle gets tangled"],["Gather bags and gloves","Walk along the beach","Pick up the rubbish","Sort it for recycling"],["The sailors load the ship","The ship leaves the harbour","It sails across the ocean","It arrives at a new port"]];
+const order=()=>{const s=R(SEQ),t=R(["first","last","next"]);
+  if(t==="first")return mcQ(`What comes <b>FIRST</b>?`,s[0],SAMPLE(s.slice(1),2),`Order: ${s.join(" → ")}`,"What must come before everything else?");
+  if(t==="last")return mcQ(`What comes <b>LAST</b>?`,s[s.length-1],SAMPLE(s.slice(0,-1),2),`Order: ${s.join(" → ")}`,"What comes at the very end?");
+  const k=Math.floor(Math.random()*(s.length-1));return mcQ(`What comes right <b>AFTER</b> this?<br><b>${s[k]}</b>`,s[k+1],SAMPLE(s.filter((_,i)=>i!==k&&i!==k+1),2),`Order: ${s.join(" → ")}`,"What is the very next step?")};
+const CE=[["Because the sea water was too warm, the coral turned white.","the sea water was too warm","the coral turned white"],["The red flag was up, so nobody swam.","the red flag was up","nobody swam"],["Because the current was strong, the bottle travelled far.","the current was strong","the bottle travelled far"],["The tide went out, so we could see the rock pools.","the tide went out","we could see the rock pools"],["Because the mangroves were planted, the village was safe from the waves.","the mangroves were planted","the village was safe from the waves"],["Shelly grew bigger, so she needed a new shell.","Shelly grew bigger","she needed a new shell"],["Because the turtle ate a plastic bag, it became sick.","the turtle ate a plastic bag","it became sick"],["The fog was thick, so the lighthouse sounded its horn.","the fog was thick","the lighthouse sounded its horn"],["Because Leo forgot his sunscreen, he got a sunburn.","Leo forgot his sunscreen","he got a sunburn"],["The octopus was scared, so it squirted ink.","the octopus was scared","it squirted ink"],["Because no sunlight reaches the deep sea, it is completely dark.","no sunlight reaches the deep sea","it is completely dark"],["The rocks were wet, so Mia slipped.","the rocks were wet","Mia slipped"],["Because beach lights were too bright, the baby turtles went the wrong way.","beach lights were too bright","the baby turtles went the wrong way"],["The storm was coming, so the fishing boats stayed in the harbour.","the storm was coming","the fishing boats stayed in the harbour"],["Because sea water is salty, sailors carry fresh water.","sea water is salty","sailors carry fresh water"],["The children cleaned the beach, so the birds had a safer home.","the children cleaned the beach","the birds had a safer home"],["Because Sofia wrote her email address on the note, the children could write back.","Sofia wrote her email address on the note","the children could write back"],["The diver's air was running low, so she swam back up.","the diver's air was running low","she swam back up"],["Because the Moon pulls on the sea, we have tides.","the Moon pulls on the sea","we have tides"],["The jellyfish stung Dev's foot, so the lifeguard put vinegar on it.","the jellyfish stung Dev's foot","the lifeguard put vinegar on it"]];
+const cause=()=>{const c=R(CE),other=R(CE.filter(x=>x!==c));const askCause=Math.random()<.5;
+  return mcQ(`${box("Read",c[0])}What is the <b>${askCause?"cause":"effect"}</b>? <span style="color:var(--muted);font-size:15px">(${askCause?"WHY it happened":"WHAT happened"})</span>`,askCause?c[1]:c[2],[askCause?c[2]:c[1],askCause?other[1]:other[2]],`Cause (why): <b>${c[1]}</b>. Effect (what happened): <b>${c[2]}</b>.`,"Look for because and so.",{say:c[0]})};
+const CMP=[
+ ["Whales and sharks both live in the ocean. Whales are mammals and breathe air. Sharks are fish and breathe with gills.","Both live in the ocean","Whales breathe air, but sharks breathe with gills",["Both breathe with gills","Sharks are mammals"]],
+ ["Lakes and oceans both hold lots of water. Lake water is fresh. Ocean water is salty.","Both hold lots of water","Lake water is fresh, but ocean water is salty",["Both are salty","Lakes are salty"]],
+ ["Crabs and lobsters both have hard shells and claws. Crabs often walk sideways. Lobsters have long tails and walk forwards.","Both have hard shells and claws","Crabs walk sideways, but lobsters have long tails",["Both have long tails","Lobsters walk sideways"]],
+ ["Coral reefs and mangroves both protect the coast from waves. Coral reefs are under the water. Mangroves are trees with roots in the mud.","Both protect the coast from waves","Reefs are under the water, but mangroves are trees",["Both are trees","Mangroves are under the water"]],
+ ["Dolphins and fish both swim in the sea. Dolphins come up to breathe air. Fish stay under water and use gills.","Both swim in the sea","Dolphins breathe air, but fish use gills",["Both use gills","Fish breathe air"]],
+ ["The sunlight zone and the midnight zone are both parts of the ocean. The sunlight zone is bright and warm. The midnight zone is dark and cold.","Both are parts of the ocean","The sunlight zone is bright, but the midnight zone is dark",["Both are bright","The midnight zone is warm"]],
+ ["A submarine and a boat both travel on the sea. A boat floats on top of the water. A submarine can go deep under the water.","Both travel on the sea","A boat floats on top, but a submarine goes under the water",["Both fly","Boats go deep under the water"]],
+ ["Seahorses and penguins both live in the sea. In seahorse families, the father carries the eggs. In penguin families, mothers and fathers take turns.","Both live in the sea","Seahorse fathers carry the eggs, but penguin parents take turns",["Both can fly","Seahorse mothers carry the eggs"]],
+ ["High tide and low tide both happen every day. At high tide, the water covers the beach. At low tide, the beach is wide and rock pools appear.","Both happen every day","High tide covers the beach, but low tide shows the rock pools",["Both cover the beach","Low tide covers the beach"]],
+ ["The Arctic Ocean and the Indian Ocean are both oceans. The Arctic Ocean is icy and cold. The Indian Ocean is warm.","Both are oceans","The Arctic Ocean is cold, but the Indian Ocean is warm",["Both are icy","The Indian Ocean is frozen"]],
+ ["Jellyfish and octopuses both have no bones. Jellyfish drift with the current. Octopuses swim and crawl where they want to go.","Both have no bones","Jellyfish drift, but octopuses choose where to go",["Both have many bones","Octopuses drift"]],
+ ["A lighthouse and a lifeguard both help keep people safe near the sea. A lighthouse warns ships with a light. A lifeguard watches swimmers and rescues them.","Both help keep people safe","A lighthouse warns ships, but a lifeguard watches swimmers",["Both catch fish","A lifeguard warns ships with a light"]]
+];
+const compare=()=>{const c=R(CMP);const same=Math.random()<.5;
+  return mcQ(`${box("Read",c[0])}${same?"How are they the <b>same</b>?":"What is one <b>difference</b>?"}`,same?c[1]:c[2],[same?c[2]:c[1],R(c[3])],same?`Same: <b>${c[1]}</b>.`:`Different: <b>${c[2]}</b>.`,same?"Look for the word both.":"Look for the word but.",{say:c[0]})};
+const PRED_T=[
+ ["Dark clouds rolled over the sea. The wind grew stronger and the waves got bigger. The fishermen looked up at the sky.","The fishermen will bring their boats back to the harbour.",["The fishermen will sail far out to sea.","The sun will come out and it will get hot."],"Dark clouds, wind and big waves are clues that a storm is coming."],
+ ["Leo put on his mask and snorkel. He waded into the clear, shallow water near the reef and put his face in.","Leo will see fish and coral under the water.",["Leo will go to sleep.","Leo will climb a tree."],"He is snorkelling near a reef, where fish live."],
+ ["Mia's sandcastle was close to the water. The tide was coming in, and each wave crept a little closer.","The waves will wash the sandcastle away.",["The sandcastle will grow bigger.","The tide will stop forever."],"The tide is coming in, so the water will reach the sandcastle."],
+ ["Shelly the hermit crab squeezed into her shell. It pinched her legs. She saw a big empty shell on the sand.","Shelly will move into the big shell.",["Shelly will get smaller.","Shelly will fly away."],"Her shell is too small, and she has found a bigger one."],
+ ["Dev forgot his sun hat and sunscreen. He played on the beach all afternoon in the hot sun.","Dev will get a sunburn.",["Dev will feel cold.","Dev will get snow on his nose."],"Strong sun on bare skin for a long time causes sunburn."],
+ ["The baby turtles hatched at night. The moon shone brightly over the sea.","The baby turtles will crawl towards the sea.",["The baby turtles will climb a tree.","The baby turtles will go to school."],"Baby turtles follow the moonlight to the water."],
+ ["Asha saw a plastic bag floating near a turtle. The turtle swam towards it with its mouth open.","The turtle might eat the bag, so Asha will try to grab it first.",["The turtle will turn into a bag.","Asha will throw more plastic in."],"Turtles mistake bags for jellyfish. A caring person would help."],
+ ["The lifeguard blew her whistle and pointed at the red flag. A boy was swimming far out.","The lifeguard will call the boy back to shore.",["The lifeguard will go home.","The boy will swim even farther."],"A red flag means danger. Lifeguards keep swimmers safe."],
+ ["Grandpa's boat had a big hole. Water was coming in. He grabbed his tools.","Grandpa will fix the hole.",["Grandpa will fill the boat with more water.","Grandpa will paint a picture."],"He grabbed his tools, so he is going to repair the boat."],
+ ["The octopus saw a shark coming. It changed colour to match the rocks and stayed very still.","The shark will swim past without seeing the octopus.",["The octopus will race the shark.","The shark will become friends with the rocks."],"The octopus is hiding by changing colour."],
+ ["The children filled ten bags with rubbish from the beach. A big recycling truck parked nearby.","The children will put the rubbish into the truck.",["The children will throw the bags into the sea.","The truck will go swimming."],"The truck is there to take the rubbish away."],
+ ["Fog covered the sea. A ship's captain could not see the rocks. Then a bright light flashed from the cliff.","The captain will steer away from the rocks.",["The captain will steer into the rocks.","The light will turn into a bird."],"The lighthouse light warns ships about rocks."],
+ ["Mia found a starfish stranded on the dry sand. It was hot and the starfish was not moving much.","Mia will gently put the starfish back into a rock pool.",["Mia will leave it in the sun.","The starfish will run away."],"Sea animals need water. A kind person would help."],
+ ["The salmon had lived in the ocean for four years. It was big and strong. It swam towards the mouth of the river.","The salmon will swim up the river to lay its eggs.",["The salmon will fly to the Moon.","The salmon will turn into a whale."],"Salmon return to their home river to lay eggs."],
+ ["Sofia wrote a note, rolled it up and put it in a bottle. She pushed in the cork and stood at the edge of her grandfather's boat.","Sofia will throw the bottle into the sea.",["Sofia will drink from the bottle.","Sofia will bury the bottle in the garden."],"She is getting the bottle ready for a voyage."],
+ ["The water at the beach slowly went out, much farther than usual. Rocks and pools appeared.","The children will explore the rock pools.",["It will snow on the beach.","The rocks will disappear right away."],"Low tide shows rock pools full of creatures to explore."],
+ ["Dev was swimming when he felt the water pulling him away from the beach. He remembered what the lifeguard had taught him.","Dev will stay calm and swim sideways, along the beach.",["Dev will swim straight back against the current until he is tired.","Dev will go to sleep in the water."],"The safe way to escape a rip current is to swim sideways."],
+ ["The scientists packed cameras, lights and notebooks into the submarine. They climbed in and closed the hatch.","The submarine will dive down to explore the deep sea.",["The submarine will fly to Mars.","The scientists will go shopping."],"Submarines take scientists under the sea."],
+ ["A pelican flew low over the water. It saw a fish near the surface and folded its wings.","The pelican will dive and try to catch the fish.",["The pelican will start to sing.","The pelican will build a sandcastle."],"Birds fold their wings to dive."],
+ ["The mangrove seedlings Asha planted were growing tall. The rainy season was coming, with big storms.","The mangroves will help protect the village from the storms.",["The mangroves will make the storms worse.","The mangroves will walk away."],"Mangrove roots slow down waves and protect villages."]
+];
+const predict=()=>{const x=R(PRED_T);return mcQ(`${box("Read",x[0])}🔮 What will <b>probably</b> happen next?`,x[1],x[2],`Clue: ${x[3]}`,"Use the clues in the text and what you already know.",{say:x[0]})};
+
+/* ================= THINKING ================= */
+const PUZ=[
+ {q:"🚩 What does a red flag at the beach mean?",o:["Danger: do not swim","Free ice cream","The water is warm"],a:"Danger: do not swim",why:"A red flag warns that the water is dangerous."},
+ {q:"🏊 Where is the safest place to swim at the beach?",o:["Between the lifeguard flags","Far out, away from everyone","Near the big rocks"],a:"Between the lifeguard flags",why:"Lifeguards watch the area between their flags."},
+ {q:"🌊 You are caught in a rip current. What should you do?",o:["Stay calm and swim sideways along the beach","Swim straight back to shore as hard as you can","Swim farther out"],a:"Stay calm and swim sideways along the beach",why:"Rip currents are narrow. Swim sideways to get out of them, then swim in."},
+ {q:"🪼 You see a jellyfish washed up on the sand. What should you do?",o:["Look but do not touch it","Pick it up","Step on it"],a:"Look but do not touch it",why:"Even a washed-up jellyfish can still sting."},
+ {q:"🦺 Why should you wear a life jacket in a boat?",o:["It keeps you floating if you fall in","It keeps you warm only","It looks nice"],a:"It keeps you floating if you fall in",why:"Life jackets save lives."},
+ {q:"🥤 You are very thirsty at the beach. What should you drink?",o:["Fresh water from your bottle","Sea water","Nothing at all"],a:"Fresh water from your bottle",why:"Sea water is too salty and makes you even more thirsty."},
+ {q:"☀️ How can you protect yourself from the sun at the beach?",o:["Wear a hat and sunscreen and sit in the shade","Stay in the sun all day","Wear no hat"],a:"Wear a hat and sunscreen and sit in the shade",why:"The sun's rays can burn your skin."},
+ {q:"🌊 Why should you check the tide table before walking on the sea floor at the Bay of Fundy?",o:["So the rising water does not trap you","To see the fish menu","To find the bus times"],a:"So the rising water does not trap you",why:"The tide comes in fast and can cut people off."},
+ {q:"🧑‍🤝‍🧑 Should you ever swim alone in the sea?",o:["No, always swim with a grown-up watching","Yes, it is fine","Only at night"],a:"No, always swim with a grown-up watching",why:"Someone should always be able to help you."},
+ {q:"🪨 Why should you walk carefully on rocks by the sea?",o:["Wet rocks are slippery","Rocks are soft","Rocks can bite"],a:"Wet rocks are slippery",why:"Seaweed and water make rocks very slippery."},
+ {q:"🧩 Riddle: I have a house on my back, but I am not a snail. I walk sideways. What am I?",o:["A hermit crab","A turtle","A fish"],a:"A hermit crab",why:"Hermit crabs carry shells and walk sideways."},
+ {q:"🧩 Riddle: I have eight arms and three hearts. What am I?",o:["An octopus","A starfish","A jellyfish"],a:"An octopus",why:"Octopuses have eight arms and three hearts."},
+ {q:"🧩 Riddle: I am tall and stand by the sea. At night I shine my light so ships stay free. What am I?",o:["A lighthouse","A tree","A street lamp"],a:"A lighthouse",why:"Lighthouses guide ships."},
+ {q:"🧩 Riddle: I come in and go out twice a day, but I never walk through a door. What am I?",o:["The tide","The Sun","A crab"],a:"The tide",why:"The tide rises and falls about twice a day."},
+ {q:"🧩 Riddle: I am the biggest animal ever, but I eat tiny krill. What am I?",o:["A blue whale","A shark","An elephant"],a:"A blue whale",why:"The blue whale is the biggest animal that has ever lived."},
+ {q:"🧩 Riddle: I look like a horse, but I live in the sea, and my dad carries the eggs. What am I?",o:["A seahorse","A dolphin","A crab"],a:"A seahorse",why:"Seahorse fathers carry the eggs."},
+ {q:"🧩 Riddle: I have a lamp on my head in the dark deep sea. What am I?",o:["An anglerfish","A goldfish","A seagull"],a:"An anglerfish",why:"The anglerfish uses a glowing lure."},
+ {q:"🧩 Riddle: I am soft and see-through, and I have no brain. Don't touch me! What am I?",o:["A jellyfish","A clam","A seahorse"],a:"A jellyfish",why:"Jellyfish have no brain and can sting."},
+ {q:"♻️ Which is the best way to help sea animals?",o:["Use less plastic and recycle","Throw bottles in the river","Leave rubbish on the beach"],a:"Use less plastic and recycle",why:"Less plastic means less rubbish in the ocean."},
+ {q:"🎈 Why can releasing balloons outside harm sea animals?",o:["They can land in the sea and animals may swallow them","Balloons make fish happy","Balloons turn into food"],a:"They can land in the sea and animals may swallow them",why:"What goes up comes down, often in the sea."},
+ {q:"🐚 Should you take live animals home from a rock pool?",o:["No, look gently and put them back","Yes, as many as you can","Only the biggest ones"],a:"No, look gently and put them back",why:"Rock pool animals need their home to survive."},
+ {q:"🔢 A crab has 10 legs. 2 of them are claws. How many walking legs does it have?",o:["8","10","12"],a:"8",why:"10 − 2 = 8."},
+ {q:"🌍 Why do people call the Earth \"the blue planet\"?",o:["Most of it is covered by ocean","It is cold","The sky is blue on Mars"],a:"Most of it is covered by ocean",why:"Oceans cover about 70 out of every 100 parts of the Earth."},
+ {q:"🐟 A fish is taken out of the water. Why is it in danger?",o:["Its gills cannot get oxygen from air","It gets too wet","It is too heavy"],a:"Its gills cannot get oxygen from air",why:"Fish need water to breathe."},
+ {q:"🐋 A whale stays under water for a long time. Why must it come up?",o:["To breathe air","To eat clouds","To dry off"],a:"To breathe air",why:"Whales are mammals with lungs."},
+ {q:"🦀 Why does a hermit crab need a bigger shell?",o:["It has grown","It is bored","It wants to share"],a:"It has grown",why:"The crab grows, but its shell doesn't."},
+ {q:"🌳 A storm is coming. Which village is safer?",o:["The village behind a mangrove forest","The village with no trees","They are the same"],a:"The village behind a mangrove forest",why:"Mangrove roots slow down big waves."},
+ {q:"🚢 Why do ships drop an anchor?",o:["To stay in one place","To go faster","To catch fish"],a:"To stay in one place",why:"The heavy anchor holds the ship still."},
+ {q:"💡 Why should beach houses turn off bright lights when turtles are hatching?",o:["The lights confuse the baby turtles","Turtles are scared of houses","To save the turtles' eyes from TV"],a:"The lights confuse the baby turtles",why:"Babies follow the brightest light, which should be the moon over the sea."},
+ {q:"🌡️ What happens to coral when the sea gets too warm?",o:["It turns white and can become sick","It grows faster and stronger","It turns into fish"],a:"It turns white and can become sick",why:"This is called coral bleaching."}
+];
+const SCI=[
+ {q:"Why is the sea salty?",a:"Rivers carry tiny bits of salt from rocks into the sea",o:["Fish add salt","People pour salt in"],why:"Over millions of years, salt from rocks has collected in the oceans."},
+ {q:"Why do things float more easily in the sea than in a lake?",a:"Salty water helps hold things up",o:["The sea is colder","Fish push them up"],why:"Salt water is heavier, so it pushes up more."},
+ {q:"What makes waves?",a:"Mostly the wind blowing over the water",o:["Fish swimming","Boats only"],why:"The wind pushes the water into waves."},
+ {q:"Why does the ocean look blue?",a:"Water soaks up red light and leaves blue light",o:["It is full of blue paint","Blue fish live everywhere"],why:"Deep water reflects mostly blue light."},
+ {q:"Why does it get darker as you go deeper in the ocean?",a:"Sunlight cannot reach very deep",o:["The fish turn off the lights","The water is black"],why:"Water blocks more and more light as you go down."},
+ {q:"Why do divers carry air tanks?",a:"People cannot breathe under water",o:["To float like balloons","To keep warm"],why:"Humans breathe air with lungs, not gills."},
+ {q:"What happens to water pressure as you go deeper?",a:"It gets stronger",o:["It gets weaker","It stays the same"],why:"More water presses down from above."},
+ {q:"What is it called when the sea is at its highest point on the beach?",a:"High tide",o:["Low tide","A current"],why:"High tide is when the water comes farthest up the beach."},
+ {q:"What is a food chain in the ocean?",a:"Plankton is eaten by small fish, which are eaten by bigger fish",o:["Fish holding fins in a line","A shop that sells fish"],why:"Energy passes from one living thing to another."},
+ {q:"What do tiny plankton need to grow?",a:"Sunlight",o:["Darkness","Ice"],why:"Plant plankton use sunlight to make food, like plants on land."},
+ {q:"Which animal is a mammal?",a:"A dolphin",o:["A shark","A tuna"],why:"Dolphins breathe air and feed their babies milk."},
+ {q:"How does a fish move through the water?",a:"By moving its tail and fins",o:["By walking","By flapping wings in the air"],why:"Fins and tails push against the water."},
+ {q:"What does a sea star use to move?",a:"Hundreds of tiny tube feet",o:["Wheels","Wings"],why:"Sea stars have tiny tube feet under their arms."},
+ {q:"Why are many deep-sea animals strange-looking?",a:"They are adapted to darkness, cold and pressure",o:["They are cartoons","They were painted"],why:"Living things change over time to suit where they live."},
+ {q:"What happens to ice when it melts into the sea?",a:"It becomes water and can make the sea level rise",o:["It turns into rock","It disappears with no water"],why:"Melting ice on land adds water to the oceans."},
+ {q:"What helps a sea turtle swim?",a:"Flippers",o:["Claws","Wheels"],why:"Sea turtles have flat flippers instead of feet."},
+ {q:"What does a shark use to breathe?",a:"Gills",o:["Lungs","A snorkel"],why:"Sharks are fish."},
+ {q:"Which zone of the ocean are most coral reefs in?",a:"The sunlight zone, in warm, shallow water",o:["The midnight zone","Under the Arctic ice"],why:"Coral needs sunlight and warm water."},
+ {q:"How do some sea animals protect themselves?",a:"With shells, spines, ink or camouflage",o:["With umbrellas","By shouting"],why:"Each animal has its own way to stay safe."},
+ {q:"Where does most of the Earth's water exist?",a:"In the oceans",o:["In rivers","In clouds"],why:"About 97 out of every 100 drops of water are in the oceans."}
+];
+const maths=()=>{const t=R(["shells","tide","boat","fish","bags","legs","depth"]);let q,ans,why;
+  if(t==="shells"){const a=5+Math.floor(Math.random()*15),b=3+Math.floor(Math.random()*12);ans=a+b;q=`Mia collected ${a} shells. Leo collected ${b} shells. How many shells did they collect altogether?`;why=`${a} + ${b} = ${ans}.`}
+  else if(t==="tide"){const h=1+Math.floor(Math.random()*5),d=6;ans=h+d;q=`High tide is at ${h} o'clock. Low tide comes about 6 hours later. At about what o'clock is low tide?`;why=`${h} + 6 = ${ans} o'clock.`}
+  else if(t==="boat"){const s=4+Math.floor(Math.random()*4),b=2+Math.floor(Math.random()*4);ans=s*b;q=`Each boat holds ${s} people. There are ${b} boats. How many people can go on the boat trip?`;why=`${s} × ${b} = ${ans}.`}
+  else if(t==="fish"){const g=2+Math.floor(Math.random()*4),k=2+Math.floor(Math.random()*5);ans=k;q=`${g*k} fish swim in groups of ${g}. How many groups are there?`;why=`${g*k} ÷ ${g} = ${k}.`}
+  else if(t==="bags"){const a=20+Math.floor(Math.random()*20),b=3+Math.floor(Math.random()*15);ans=a-b;q=`The class brought ${a} rubbish bags to the beach clean-up. They filled ${b}. How many bags are still empty?`;why=`${a} − ${b} = ${ans}.`}
+  else if(t==="legs"){const n=2+Math.floor(Math.random()*4);ans=n*8;q=`An octopus has 8 arms. How many arms do ${n} octopuses have?`;why=`8 × ${n} = ${ans}.`}
+  else{const a=10+Math.floor(Math.random()*20),b=5+Math.floor(Math.random()*10);ans=a+b;q=`A diver is ${a} metres under the water. She swims ${b} metres deeper. How deep is she now?`;why=`${a} + ${b} = ${ans} metres.`}
+  const wr=uniq([ans+1,ans-1,ans+2,ans+10].filter(x=>x>=0&&x!==ans));
+  return mcQ("🔢 "+q,String(ans),SAMPLE(wr,2).map(String),why,"Is it more, less, groups of, or sharing?")};
+const GRP={"oceans":["Pacific","Atlantic","Indian","Arctic","Southern"],"sea animals":["octopus","whale","seahorse","crab","jellyfish","dolphin"],"things on a beach":["sand","shells","seaweed","pebbles","driftwood"],"boat words":["anchor","sail","oar","deck","rudder"],"desert animals":["camel","scorpion","lizard","rattlesnake"],"farm animals":["cow","sheep","pig","hen","goat"],"forest trees":["maple","pine","oak","birch"]};
+const odd=()=>{const ks=Object.keys(GRP);const k=R(ks),k2=R(ks.filter(x=>x!==k));const three=SAMPLE(GRP[k],3),o=R(GRP[k2].filter(x=>!GRP[k].includes(x)));
+  return mcQ(`🤔 Which one does NOT belong?`,o,three,`${three.join(", ")} are all ${k}. <b>${o}</b> is not.`,"Find what three of them have in common.")};
+const ANA=[["Fish is to gills as whale is to ___.","lungs",["fins","feathers"]],["Bird is to sky as fish is to ___.","sea",["tree","desert"]],["Crab is to shell as turtle is to ___.","shell",["feathers","fur"]],["Octopus is to eight as starfish is to ___.","five",["two","ten"]],["Shallow is to deep as low tide is to ___.","high tide",["sand","wave"]],["Lighthouse is to ships as traffic light is to ___.","cars",["fish","birds"]],["Car is to road as ship is to ___.","sea",["sky","tunnel"]],["Pilot is to plane as captain is to ___.","ship",["train","bike"]],["Seed is to tree as egg is to ___.","turtle",["rock","shell"]],["Un- is to not as re- is to ___.","again",["before","very"]],["Unhappy is to happy as unsafe is to ___.","safe",["sad","kind"]],["Rewrite is to write again as reread is to ___.","read again",["not read","read slowly"]],["He is to him as she is to ___.","her",["his","they"]],["I is to me as we is to ___.","us",["our","they"]],["Day is to Monday as month is to ___.","July",["summer","noon"]],["At is to 3 o'clock as on is to ___.","Monday",["July","summer"]],["Hot is to Indian Ocean as icy is to ___.","Arctic Ocean",["Pacific Ocean","Bay of Fundy"]],["Forest is to trees as reef is to ___.","coral",["sand","clouds"]],["Kitten is to cat as calf is to ___.","whale",["crab","seagull"]],["Wing is to bird as flipper is to ___.","penguin",["eagle","horse"]]];
+const analogy=()=>{const x=R(ANA);return mcQ("🔗 "+x[0],x[1],x[2],`${x[0].replace("___","<b>"+x[1]+"</b>")} Think about how the first two words are linked.`,"How are the first two words linked? Use the same link.")};
+
+/* ================= LEARN NOTES ================= */
+const L={
+ detail:"Read the short text carefully. The answer is <b>in the text</b>.",
+ main:"The <b>main idea</b> is what the whole text is mostly about. It fits <b>all</b> the sentences.",
+ factop:"A <b>fact</b> can be checked by a scientist or in a book. An <b>opinion</b> is a feeling: <i>Dolphins are the cutest animals.</i>",
+ order:"Life cycles, tides and stories all have an <b>order</b>. What comes first, next and last?",
+ cause:"The <b>cause</b> is <b>why</b>. The <b>effect</b> is <b>what happened</b>. Look for <b>because</b> and <b>so</b>.",
+ compare:"<b>Same:</b> look for <b>both</b>, <b>also</b>. <b>Different:</b> look for <b>but</b>.",
+ predict:"To <b>predict</b> means to make a smart guess about what will happen next.<br>1. Look for <b>clues</b> in the text.<br>2. Think about <b>what you already know</b>.<br>3. Choose what will <b>probably</b> happen.",
+ vocab:"Read the word, say it aloud, and think of a sentence that uses it.",
+ hab:"<b>Ocean zones</b>: sunlight zone (bright, plants and coral) → twilight zone (dim) → midnight zone (dark, glowing animals). <b>Five oceans</b>: Pacific (biggest), Atlantic, Indian, Arctic (icy), Southern.",
+ syn:"<b>Synonyms</b> mean almost the same: voyage = journey, transparent = see-through.",
+ opp:"<b>Opposites</b>: shallow ↔ deep, sink ↔ float, high tide ↔ low tide.",
+ comp:"<b>Compound words</b>: sea + shell = seashell, light + house = lighthouse.",
+ place:"<b>Prepositions of place</b> tell <b>where</b>: in, on, under, behind, between, next to, above, below, across, through, inside.<br><i>The crab is <b>under</b> the rock. The fish swam <b>through</b> the tunnel.</i>",
+ timeP:"<b>at</b> + clock times: <i>at 8 o'clock, at noon, at night</i>.<br><b>on</b> + days and dates: <i>on Monday, on May 5th, on my birthday</i>.<br><b>in</b> + months, seasons, years and parts of the day: <i>in July, in the summer, in the morning</i>.",
+ subj:"A <b>pronoun</b> takes the place of a noun so we don't repeat it.<br><b>he</b> (one boy or man) · <b>she</b> (one girl or woman) · <b>it</b> (one animal or thing) · <b>they</b> (more than one) · <b>we</b> (me and others).",
+ obj:"After a verb, or after words like <i>to, with, at</i>, use: <b>me, him, her, it, us, them</b>.<br><i>Mom saw <b>the dolphins</b>. → Mom saw <b>them</b>.</i>",
+ subObj:"<b>I, he, she, we, they</b> do the action: <i><b>Dad and I</b> built a sandcastle.</i><br><b>me, him, her, us, them</b> come after the action or after to/with: <i>Grandma gave a shell <b>to me</b>.</i><br>Tip: cover the other name. <i>Dad and ___ swam → I swam</i> ✔.",
+ poss:"These words show who something <b>belongs to</b>: <b>my, his, her, its, our, their</b>.<br><i>The crab lost <b>its</b> shell.</i> (<b>its</b> has no apostrophe!)",
+ prefix:"A <b>prefix</b> is added to the <b>start</b> of a word and changes its meaning.<br><b>un-</b> = <b>not</b> or the opposite: un + safe = <b>unsafe</b> (not safe), un + lock = <b>unlock</b>.<br><b>re-</b> = <b>again</b>: re + build = <b>rebuild</b> (build again).",
+ fix:"Check: <b>1.</b> capital letter at the start, <b>2.</b> capitals for names, places, oceans, days, months and I, <b>3.</b> a full stop at the end.",
+ orderW:"Find the word with the capital letter: it goes first. Then think: <b>who? does what? where?</b>",
+ write:"Plan in your head first. Then write: capital letter, complete idea, end mark.",
+ spell:"Use <b>Look → Say → Cover → Write → Check</b>.",
+ choose:"Say the word slowly and picture it. With a prefix, keep the whole base word: un + happy = <b>unhappy</b>.",
+ think:"Think like an ocean scientist. In safety questions, always choose the <b>safe</b> answer.",
+ sci:"<b>Waves</b> come from the wind. <b>Tides</b> come from the Moon's pull. The deeper you go, the <b>darker</b>, <b>colder</b> and <b>stronger the pressure</b>.",
+ maths:"Is it more (add), less (take away), groups of (multiply) or sharing (divide)?",
+ odd:"Three belong to the same group. Find the one that does <b>not</b> belong.",
+ ana:"Find how the first two words are linked. Use the <b>same link</b> for the next pair.",
+ review:"These questions come from earlier units, so you keep everything you learned fresh."
+};
+const R1=UNITS.find(x=>x.id==="me").review,R2=UNITS.find(x=>x.id==="animals").review,R3=UNITS.find(x=>x.id==="plants").review,R4=UNITS.find(x=>x.id==="weather").review,R5=UNITS.find(x=>x.id==="space").review;
+u.review=MIX(placeQ,timeP,subjPron,objPron,subObj,possQ,prefJoin,prefMean,prefCtx,F.vocab(u.words),F.bank(HAB));
+
+/* ================= THE SKILL LIST ================= */
+u.cats=[
+ {n:"Reading",e:"📖",items:[
+  {id:"r_t1",t:"Story (predict): The Message in the Bottle",act:"story",si:0},
+  {id:"r_t2",t:"Story: Asha and the Mangrove Forest",act:"story",si:1},
+  {id:"r_t3",t:"Fact text: Coral Reefs, Cities Under the Sea",act:"story",si:2},
+  {id:"r_t4",t:"Fact text: A Journey to the Deep",act:"story",si:3},
+  {id:"r_t5",t:"Fable: Shelly the Hermit Crab",act:"story",si:4},
+  {id:"r_t6",t:"Real-world reading: A tide table and a beach safety sign",act:"story",si:5},
+  {id:"r_p1",t:"Classic poem: At the Sea-Side (Robert Louis Stevenson)",act:"poem",pi:0},
+  {id:"r_p2",t:"Poem: Down in the Deep",act:"poem",pi:1},
+  {id:"r_predict",t:"Predict what happens next",learn:L.predict,gen:predict},
+  {id:"r_detail",t:"Read and find the details",learn:L.detail,gen:detail},
+  {id:"r_main",t:"Find the main idea",learn:L.main,gen:mainIdea},
+  {id:"r_factop",t:"Fact or opinion?",learn:L.factop,gen:factOp},
+  {id:"r_order",t:"Order and sequence",learn:L.order,gen:order},
+  {id:"r_cause",t:"Cause and effect",learn:L.cause,gen:cause},
+  {id:"r_compare",t:"Compare and contrast",learn:L.compare,gen:compare}]},
+ {n:"Vocabulary",e:"🔤",items:[
+  {id:"v_s1",t:"Ocean place words",learn:L.vocab,gen:F.vocab(set(0))},
+  {id:"v_s2",t:"Sea animal words",learn:L.vocab,gen:F.vocab(set(1))},
+  {id:"v_s3",t:"People, ships and science words",learn:L.vocab,gen:F.vocab(set(2))},
+  {id:"v_s4",t:"Describing words",learn:L.vocab,gen:F.vocab(set(3))},
+  {id:"v_fill",t:"Use the right word in a sentence",learn:L.vocab,gen:F.fill(u.words)},
+  {id:"v_hab",t:"Oceans, zones and sea creatures",learn:L.hab,gen:F.bank(HAB)},
+  {id:"v_syn",t:"Synonyms",learn:L.syn,gen:F.pairs(SYN,"synonym")},
+  {id:"v_opp",t:"Opposites",learn:L.opp,gen:F.pairs(OPP,"opposite")},
+  {id:"v_comp",t:"Compound words",learn:L.comp,gen:MIX(F.compoundJoin(COMP),F.compoundPick(COMP))}]},
+ {n:"Grammar",e:"🧩",items:[
+  {id:"g_place",t:"Prepositions of place (in, on, under, between…)",learn:L.place,gen:placeQ},
+  {id:"g_timep",t:"Prepositions of time (at, on, in)",learn:L.timeP,gen:timeP},
+  {id:"g_subj",t:"Pronouns: he, she, it, we, they",learn:L.subj,gen:subjPron},
+  {id:"g_obj",t:"Pronouns: him, her, it, us, them",learn:L.obj,gen:objPron},
+  {id:"g_subobj",t:"I or me? He or him?",learn:L.subObj,gen:subObj},
+  {id:"g_poss",t:"My, his, her, its, our, their",learn:L.poss,gen:possQ},
+  {id:"g_prefix",t:"Prefixes un- and re-: build the word",learn:L.prefix,gen:MIX(prefJoin,prefPick)},
+  {id:"g_prefm",t:"Prefixes un- and re-: meanings",learn:L.prefix,gen:MIX(prefMean,prefCtx)},
+  {id:"g_fix",t:"Fix the sentence (capitals and full stops)",learn:L.fix,gen:fix},
+  {id:"g_order",t:"Put the words in order",learn:L.orderW,gen:G.order(SENT.filter(x=>(x.match(/\b[A-Z]/g)||[]).length===1))},
+  {id:"g_write",t:"Write your own sentences",learn:L.write,gen:F.write(WP)},
+  {id:"g_mixed",t:"Mixed grammar review",learn:"Use all the preposition, pronoun and prefix rules from this unit.",gen:MIX(placeQ,timeP,subjPron,objPron,subObj,possQ,prefJoin,prefMean,prefCtx)}]},
+ {n:"Spelling",e:"🎧",items:[
+  {id:"s_ocean",t:"Ocean words: listen and write",learn:L.spell,gen:F.listen(SP)},
+  {id:"s_prefix",t:"un- and re- words: listen and write",learn:L.prefix,gen:F.listen(PRELIST)},
+  {id:"s_choose",t:"Choose the correct spelling",learn:L.choose,gen:F.chooseSpelling(CHOOSE)},
+  {id:"s_missing",t:"Missing letters",learn:L.spell,gen:F.missing(SP)}]},
+ {n:"Thinking and science",e:"🧠",items:[
+  {id:"t_puz",t:"Ocean puzzles and beach safety",learn:L.think,gen:F.bank(PUZ)},
+  {id:"t_sci",t:"Ocean science",learn:L.sci,gen:F.bank(SCI)},
+  {id:"t_maths",t:"Ocean maths stories",learn:L.maths,gen:maths},
+  {id:"t_odd",t:"Odd one out",learn:L.odd,gen:odd},
+  {id:"t_ana",t:"Word links (analogies)",learn:L.ana,gen:analogy}]},
+ {n:"Review earlier units",e:"🔁",items:[
+  {id:"rv_u1",t:"Review: Unit 1 (sentences, question words, nouns)",learn:L.review,gen:R1},
+  {id:"rv_u2",t:"Review: Unit 2 (plurals, past tense, animals)",learn:L.review,gen:R2},
+  {id:"rv_u3",t:"Review: Unit 3 (present tense, plants, magic e)",learn:L.review,gen:R3},
+  {id:"rv_u4",t:"Review: Unit 4 (adjectives, comparing, homophones)",learn:L.review,gen:R4},
+  {id:"rv_u5",t:"Review: Unit 5 (future tense, a/an/the, space)",learn:L.review,gen:R5}]},
+ {n:"Explore and write",e:"✏️",items:[
+  {id:"x_facts",t:"Did you know? Amazing ocean facts",act:"facts"},
+  {id:"x_w1",t:"Writing step 1: Describe a beach using your senses",act:"write",wi:0},
+  {id:"x_w2",t:"Writing step 2: A letter to keep our beaches clean",act:"write",wi:1},
+  {id:"x_w3",t:"Writing step 3: An ocean adventure story",act:"write",wi:2}]}
+];
+})();
+
 /* ================= SETTINGS ================= */
 const SITE_NAME = "Sprout English";   // placeholder name — change this one line later
-const COMING=[["🌊","Life in the Ocean"],["⏰","Time, Shapes and Money"],["💡","Amazing Inventions"],["🤝","Friends and Feelings"],["🗺️","Countries and Cultures"],["🍎","My Healthy Body"],["📚","Stories and Fables"]];
+const COMING=[["⏰","Time, Shapes and Money"],["💡","Amazing Inventions"],["🤝","Friends and Feelings"],["🗺️","Countries and Cultures"],["🍎","My Healthy Body"],["📚","Stories and Fables"]];
 
 /* ================= SAVED PROGRESS (this browser only) ================= */
 const KEY="sprout_v5";
@@ -3479,7 +4169,7 @@ function askMany(container,qs,onAll){
   let left=qs.length;
   qs.forEach(qq=>{
     const box=document.createElement("div");box.className="qbox";
-    box.innerHTML=`${qq.lv?`<span class="lvtag">${qq.lv==="find"?"🔎 Find it":"💭 Think about it"}</span><br>`:""}<b>${qq.q}</b> <button class="link">🔊</button><div class="opts" style="margin-top:10px"></div><div></div>`;
+    box.innerHTML=`${qq.lv?`<span class="lvtag">${qq.lv==="find"?"🔎 Find it":qq.lv==="predict"?"🔮 Predict":"💭 Think about it"}</span><br>`:""}<b>${qq.q}</b> <button class="link">🔊</button><div class="opts" style="margin-top:10px"></div><div></div>`;
     const kids=[...box.children].filter(x=>x.tagName!=="BR"&&!x.classList.contains("lvtag"));kids[1].onclick=()=>say(qq.q);
     const opts=kids[2],fb=kids[3];
     shuffle(qq.o.slice()).forEach(o=>{const b=document.createElement("button");b.className="opt";b.textContent=o;
