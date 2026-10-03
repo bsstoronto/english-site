@@ -65,6 +65,22 @@ textarea{width:100%;min-height:150px;padding:12px;font-size:17px;border:1px soli
 .big{font-size:56px;margin:10px 0}
 .badge{display:inline-block;background:var(--sun);border:2px solid #E9C46A;border-radius:14px;padding:10px 16px;font-weight:800;color:#6B4E00;margin-top:12px}
 footer{text-align:center;color:var(--muted);font-size:12px;padding:20px 16px;border-top:1px solid var(--gb)}
+.cat{margin-top:22px}
+.cat h3{font-size:18px;margin:0 0 8px;color:var(--gd);display:flex;align-items:center;gap:8px}
+.skill{display:flex;align-items:center;gap:10px;padding:11px 12px;border:1px solid var(--gb);border-radius:10px;margin-bottom:6px;background:#fff;cursor:pointer}
+.skill:hover{border-color:var(--g);background:var(--gl)}
+.skill.done{background:var(--gl)}
+.skill .code{font-weight:800;color:var(--g);min-width:38px;font-size:14px}
+.skill .st{flex:1;font-size:15px}
+.scorebox{text-align:center;background:var(--g);color:#fff;border-radius:12px;padding:6px 14px;min-width:84px}
+.sclabel{font-size:11px;opacity:.85;text-transform:uppercase;letter-spacing:1px}
+.scnum{font-size:28px;font-weight:800;line-height:1.1}
+.lvtag{display:inline-block;font-size:12px;font-weight:700;color:#6B4E00;background:var(--sun);border-radius:6px;padding:2px 8px;margin-bottom:4px}
+.realdoc{border:3px dashed var(--g);border-radius:14px;padding:16px;margin:12px 0;background:#fff;text-align:center;font-size:18px;line-height:1.6}
+.realtbl{border-collapse:collapse;width:100%;margin:12px 0;font-size:15px;background:#fff}
+.realtbl th,.realtbl td{border:1px solid var(--gb);padding:7px 8px;text-align:left}
+.realtbl th{background:var(--mint);color:var(--gd)}
+.story .vw{font-size:inherit}
 .hidden{display:none}
 </style>
 </head>
@@ -96,7 +112,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px 16px;bor
     <div class="hero" style="margin-top:12px">
       <span class="pill">Grade 3</span>
       <h1>Grade 3 English</h1>
-      <p>12 units. Each one is a journey into one topic of the world.</p>
+      <p>12 units. Each one explores one topic of the world, with many skills to master.</p>
     </div>
     <h2>Units</h2>
     <div class="grid" id="unitGrid"></div>
@@ -111,9 +127,8 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px 16px;bor
       <p id="unitStars"></p>
       <div id="unitBadge"></div>
     </div>
-    <h2>Your journey</h2>
-    <p class="sub">Go in order for the best learning.</p>
-    <div class="grid" id="partGrid"></div>
+    <p class="sub" style="margin-top:18px">Practise each skill until you reach 100. Then it comes back in Daily review so you never forget it.</p>
+    <div id="partGrid"></div>
     <p style="text-align:center;margin-top:24px"><button class="link" onclick="resetUnit()">Reset my progress in this unit</button></p>
   </section>
 
@@ -130,7 +145,83 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px 16px;bor
 <div id="toast" class="toast hidden"></div>
 
 <script>
+/* ================= SHARED HELPERS + QUESTION GENERATORS ================= */
 const UNITS=[];
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function R(a){return a[Math.floor(Math.random()*a.length)]}
+function SAMPLE(a,n){return shuffle(a.slice()).slice(0,n)}
+function cap(w){return w.charAt(0).toUpperCase()+w.slice(1)}
+function uniq(a){return [...new Set(a)]}
+function mcQ(q,correct,wrongs,why,hint,extra){
+  const o=shuffle(uniq([correct].concat(wrongs.filter(x=>x!==correct))));
+  return Object.assign({type:"mc",q,o,a:[correct],why:why||"",hint},extra||{});
+}
+function blankWord(sentence,word){return sentence.replace(new RegExp("\\b"+word+"(s|es|d|ed)?\\b","i"),"___")}
+
+/* Writing checks shared by many skills */
+const CHK={
+  cap:["^\\s*[A-Z]","Starts with a capital letter"],
+  end:["[.!?]\\s*$","Ends with a full stop (or ? or !)"],
+  q:["\\?\\s*$","Ends with a question mark"],
+  I:["^(?![\\s\\S]*\\bi\\b)","Writes I as a capital letter"],
+  w4:["^\\s*(\\S+\\s+){3,}\\S+","Has at least 4 words"],
+  w3:["^\\s*(\\S+\\s+){2,}\\S+","Has at least 3 words"],
+  name:["\\s[A-Z][a-z]+","Has a name with a capital letter"]
+};
+
+/* ---------- Generator factories ---------- */
+const F={
+  // vocabulary
+  meaning:words=>()=>{const w=R(words);return mcQ(`What does <b>${w.w}</b> mean?`,w.m,SAMPLE(words.filter(x=>x!==w),3).map(x=>x.m),`${w.e} <b>${w.w}</b> means ${w.m}. Example: ${w.ex}`)},
+  word:words=>()=>{const w=R(words);return mcQ(`Which word means: <b>${w.m}</b>?`,w.w,SAMPLE(words.filter(x=>x!==w),3).map(x=>x.w),`${w.e} <b>${w.w}</b>: ${w.ex}`)},
+  fill:words=>()=>{const w=R(words);const s=Math.random()<.5?w.fill:blankWord(w.ex,w.w);
+    return {type:"type",q:`Type the missing word: <b>${s}</b>`,a:[w.w].concat(w.alt||[]),why:`${w.e} <b>${w.w}</b> = ${w.m}`,hint:`It starts with "${w.w[0]}" and has ${w.w.length} letters.`}},
+  // any fixed bank of {q,o,a,why,hint}
+  bank:bank=>()=>{const b=R(bank);return mcQ(b.q,b.a,b.o.filter(x=>x!==b.a),b.why,b.hint)},
+  // spelling
+  listen:list=>()=>{const x=R(list);const s=x.s?blankWord(x.s,x.w):"_ ".repeat(x.w.length).trim();
+    return {type:"type",q:`🎧 Listen, then write the word:<br><b>${s}</b>`,a:[x.w],say:x.s?`${x.w}. ${x.s} ${x.w}.`:`${x.w}. ${x.w}.`,autoSay:true,
+      why:`<b>${x.w}</b>${x.tip?" — "+x.tip:""}`,hint:`It has ${x.w.length} letters and starts with "${x.w[0]}".`}},
+  chooseSpelling:list=>()=>{const x=R(list);return mcQ(`Which spelling is correct?`,x.w,x.bad,`<b>${x.w}</b>${x.tip?" — "+x.tip:""}`,"Say the word slowly and picture it.",{say:x.w,autoSay:true})},
+  missing:list=>()=>{const x=R(list.filter(y=>y.w.length>=4));const w=x.w;const idx=SAMPLE([...Array(w.length).keys()].slice(1),Math.min(2,w.length-2));
+    const shown=w.split("").map((c,i)=>idx.includes(i)?"_":c).join(" ");
+    return {type:"type",q:`🎧 Fill in the missing letters and type the whole word:<br><b style="letter-spacing:4px">${shown}</b>`,a:[w],say:x.s?`${w}. ${x.s}`:w,autoSay:true,why:`<b>${w}</b>${x.tip?" — "+x.tip:""}`}},
+  // writing your own sentence
+  write:prompts=>()=>{const p=R(prompts);return {type:"write",q:p.q,checks:p.checks,model:p.model,why:"Check the list, then read your sentence aloud."}},
+  // compound words
+  compoundJoin:list=>()=>{const c=R(list);return {type:"type",q:`Join the two words to make one compound word:<br><b>${c[0]} + ${c[1]} = ?</b>`,a:[c[0]+c[1]],why:`${c[0]} + ${c[1]} = <b>${c[0]+c[1]}</b>`}},
+  compoundPick:list=>()=>{const c=R(list),w=c[0]+c[1];const others=SAMPLE(list.filter(x=>x!==c),2).map(x=>x[0]+x[1]);
+    const fake=R(list.filter(x=>x!==c))[0]+R(list.filter(x=>x!==c))[0];
+    return mcQ(`Which word is a <b>compound word</b> made of <b>${c[0]}</b> and <b>${c[1]}</b>?`,w,others.concat([fake]).filter(x=>x!==w),`${c[0]} + ${c[1]} = <b>${w}</b>`)},
+  // pairs: opposites / synonyms
+  pairs:(list,label)=>()=>{const p=R(list),flip=Math.random()<.5;const a=flip?p[1]:p[0],b=flip?p[0]:p[1];
+    const wrong=SAMPLE(list.filter(x=>x!==p).flat().filter(x=>x!==a&&x!==b),3);
+    return mcQ(`Which word is the <b>${label}</b> of <b>${a}</b>?`,b,wrong,`<b>${a}</b> and <b>${b}</b> are ${label==="opposite"?"opposites":"synonyms (they mean almost the same)"}.`)}
+};
+
+/* ---------- Grammar helpers that build questions from correct sentences ---------- */
+function breakSentence(s){ // lower first letter + proper nouns + I, remove end mark
+  const words=s.replace(/[.!?]$/,"").split(" ");
+  return words.map((w,i)=>i===0?w.charAt(0).toLowerCase()+w.slice(1):(/^[A-Z]/.test(w)?w.charAt(0).toLowerCase()+w.slice(1):w)).join(" ");
+}
+const G={
+  fix:sentences=>()=>{const s=R(sentences);return {type:"type",strict:true,q:`Fix this sentence. Add the capital letters and the end mark:<br><b>${breakSentence(s)}</b>`,a:[s],
+    hint:"Capital letter at the start, capitals for names and I, and a mark at the end.",why:`Correct: <b>${s}</b>`}},
+  order:sentences=>()=>{const s=R(sentences.filter(x=>x.split(" ").length<=8));const words=s.replace(/[.!?]$/,"").split(" ");let sh;do{sh=shuffle(words.slice())}while(sh.join(" ")===words.join(" ")&&words.length>2);
+    return {type:"type",strict:true,q:`Put the words in order to make a sentence. Remember the end mark!<br><b>${sh.join(" / ")}</b>`,a:[s],hint:"Start with the word that has a capital letter. Who? Does what?",why:`Correct: <b>${s}</b>`}},
+  capStart:sentences=>()=>{const s=R(sentences);const low=s.charAt(0).toLowerCase()+s.slice(1);
+    const ws=s.split(" ");const k=1+Math.floor(Math.random()*(ws.length-1));const odd=ws.map((w,i)=>i===k&&/^[a-z]/.test(w)?cap(w):w).join(" ");
+    return mcQ("Which sentence is written correctly?",s,[low,odd===s?low.replace(/[.!?]$/,""):odd],"A sentence starts with a capital letter. Other words only get capitals if they are names or I.","Look at the first letter of each choice.")},
+  capI:sentences=>()=>{const s=R(sentences.filter(x=>/\bI\b/.test(x)));const bad=s.replace(/\bI\b/g,"i");const bad2=bad.charAt(0).toLowerCase()+bad.slice(1);
+    return mcQ("Which sentence is correct?",s,[bad,bad2],"The word <b>I</b> is always a capital letter.","Find the word I in each sentence.")},
+  endMark:(tell,ask,excl)=>()=>{const t=R(["tell","ask","excl"]);const s=R(t==="tell"?tell:t==="ask"?ask:excl);const m=s.slice(-1);
+    return mcQ(`Which mark goes at the end?<br><b>${s.slice(0,-1)}___</b>`,m,[".","?","!"].filter(x=>x!==m),
+      m==="."?"It tells something, so it ends with a full stop.":m==="?"?"It asks something, so it ends with a question mark.":"It shows a strong feeling, so it ends with an exclamation mark.","Is it telling, asking, or showing a strong feeling?")},
+  kind:(tell,ask,excl)=>()=>{const t=R(["telling","asking","exclaiming"]);const s=R(t==="telling"?tell:t==="asking"?ask:excl);
+    return mcQ(`What kind of sentence is this?<br><b>${s}</b>`,t,["telling","asking","exclaiming"].filter(x=>x!==t),
+      t==="telling"?"It tells us something and ends with a full stop.":t==="asking"?"It asks a question and ends with ?":"It shows strong feeling and ends with !","Look at the mark at the end.")}
+};
+
 /* ===================== GRADE 3 · UNIT 1 · ALL ABOUT ME AND MY FAMILY (original content) ===================== */
 UNITS.push({
 id:"me", num:1, emoji:"👧🏽👨‍👩‍👧‍👦", title:"All About Me and My Family", badge:"🌟 Family Star",
@@ -386,6 +477,353 @@ writing:[
 ]
 });
 
+/* ===================== UNIT 1 · EXTRA READING TEXTS (original content) ===================== */
+(function(){
+const u=UNITS.find(x=>x.id==="me");
+const f=(q,a,o,why)=>({lv:"find",q,o:[a].concat(o),a:[a],why});
+const t=(q,a,o,why)=>({lv:"think",q,o:[a].concat(o),a:[a],why});
+
+u.stories[0].turn={q:"Write two sentences about your own family. Who is in it? What do you like to do together?",model:"There are four people in my family. We like to go to the park together on Sundays."};
+u.stories[1].turn={q:"What makes YOUR family special? Write two sentences.",model:"My family speaks two languages at home. We always eat dinner together."};
+
+u.stories.push(
+{title:"Leo's Lost Football", e:"⚽", kind:"Story", pages:[
+ {pic:"⚽😟", text:"On Saturday morning, Leo could not find his football. He looked under his bed. He looked behind the sofa. He even looked inside the fridge! \"Where is my ball?\" he cried.",
+  qs:[f("Where did Leo NOT look?","On the roof",["Under his bed","Behind the sofa"],"He looked under his bed, behind the sofa and in the fridge, but not on the roof."),
+      t("How did Leo feel?","Worried",["Sleepy","Proud"],"He cried, \"Where is my ball?\" He was worried.")]},
+ {pic:"👵🔍", text:"Grandmother put on her glasses. \"Let's think like detectives,\" she said. \"Where did you play with it last?\" Leo thought hard. \"In the garden, after school yesterday.\"",
+  qs:[f("Where did Leo play with the ball last?","In the garden",["At school","In the kitchen"],"Leo said, \"In the garden, after school yesterday.\""),
+      t("Why did Grandmother ask where he played last?","The ball is probably near the last place he used it",["She wanted to play football","She was tired"],"Good detectives start looking where a thing was last seen.")]},
+ {pic:"🌳🐈", text:"Leo and Grandmother went into the garden. They looked under the big tree and behind the flowers. No football. Then they heard a sound: \"Meow!\" Pepper the cat was sitting on top of the fence, looking very pleased with herself.",
+  qs:[f("Who was sitting on the fence?","Pepper the cat",["Mia","A bird"],"\"Pepper the cat was sitting on top of the fence.\""),
+      t("Why do you think Pepper looked pleased with herself?","She may know something about the ball",["She was hungry","She was asleep"],"The writer gives us a clue: Pepper might have played with the ball!")]},
+ {pic:"🥬⚽", text:"Behind the fence was Mr. Ali's garden. Leo's football was lying in the middle of his vegetable patch! It had squashed two tomato plants. Leo's face went red. \"Oh no,\" he whispered.",
+  qs:[f("Where was the football?","In Mr. Ali's vegetable patch",["In the fridge","Under the bed"],"It was lying in the middle of Mr. Ali's vegetable patch."),
+      t("Why did Leo's face go red?","He felt embarrassed about the broken plants",["He was too hot","He was eating tomatoes"],"Our faces can go red when we feel embarrassed or sorry.")]},
+ {pic:"🚪🙏", text:"Leo did not want to knock on Mr. Ali's door. He felt shy. But Grandmother said, \"When we make a mistake, we say sorry and try to fix it.\" So Leo knocked. \"I'm sorry, Mr. Ali. My ball broke your tomato plants. Can I help you fix them?\"",
+  qs:[f("What does Grandmother say we should do after a mistake?","Say sorry and try to fix it",["Run away","Hide the ball"],"\"When we make a mistake, we say sorry and try to fix it.\""),
+      t("Was it easy for Leo to knock on the door?","No, he felt shy",["Yes, it was very easy"],"Leo did not want to knock because he felt shy. He was brave to do it anyway.")]},
+ {pic:"🍅😊", text:"Mr. Ali smiled. \"Thank you for being honest, Leo. Let's plant two new tomato plants together.\" They worked side by side in the garden. When the tomatoes grew big and red, Mr. Ali gave a basket of them to Leo's family. Leo gave Mr. Ali a big thank-you drawing.",
+  qs:[f("What did Leo and Mr. Ali plant?","Two new tomato plants",["Sunflowers","An apple tree"],"\"Let's plant two new tomato plants together.\""),
+      t("What is the lesson of this story?","Be honest and fix your mistakes",["Never play football","Cats are naughty"],"Leo was honest and helped fix the problem, and it turned out well.")]}
+], turn:{q:"Write about a time you made a mistake. What did you do to make it better?",model:"Once I broke my sister's crayon. I said sorry and gave her one of mine."}},
+
+{title:"How Babies Grow", e:"👶", kind:"Fact text", pages:[
+ {pic:"👶🍼", text:"A newborn baby is very small and needs a lot of care. Newborn babies sleep for most of the day and night. When they are awake, they drink milk, and they cry to tell grown-ups they need something.",
+  qs:[f("How do newborn babies tell grown-ups they need something?","They cry",["They talk","They write a note"],"Babies cannot talk yet, so they cry."),
+      t("Why does a newborn baby need a lot of care?","It cannot do things for itself yet",["It is very strong","It can cook its own food"],"A newborn cannot feed itself, move around or talk yet.")]},
+ {pic:"👀😊", text:"At first, babies can only see things that are close to their faces. They love looking at faces most of all! When they are about six weeks old, many babies give their first real smile.",
+  qs:[f("About when do many babies give their first real smile?","At about six weeks old",["On the first day","At one year old"],"The text says about six weeks old."),
+      f("What do babies love looking at most of all?","Faces",["Cars","Trees"],"\"They love looking at faces most of all!\"")]},
+ {pic:"🧸🪑", text:"Babies grow stronger every month. They learn to hold up their heads, and then to roll over. At around six months, many babies can sit up. Many babies also get their first tooth at about this age.",
+  qs:[f("What can many babies do at around six months?","Sit up",["Run","Read"],"At around six months, many babies can sit up."),
+      t("Why does a baby hold up its head before it can sit?","Its neck and back must get stronger first",["Its head is very light","It is bored"],"Babies get stronger step by step, from the head down.")]},
+ {pic:"🚼👣", text:"Next, most babies learn to crawl. Then they pull themselves up and hold on to the furniture. Around their first birthday, many babies take their first wobbly steps and say their first words, like \"mama\" or \"dada\".",
+  qs:[f("About when do many babies take their first steps?","Around their first birthday",["At six weeks","At five years"],"Around their first birthday."),
+      f("What do most babies learn BEFORE walking?","Crawling",["Running","Jumping"],"First they crawl, then they stand, then they walk.")]},
+ {pic:"🌱💛", text:"Every baby grows at its own speed. Some babies walk early and some walk later, and that is perfectly normal. With love, food, sleep and lots of talking and playing, babies grow into strong, curious children, just like you!",
+  qs:[t("A baby walks later than her cousin. Does that mean something is wrong?","Not usually: every baby grows at its own speed",["Yes, always"],"The text says some babies walk later, and that is perfectly normal."),
+      f("What do babies need to grow well?","Love, food, sleep, talking and playing",["Only toys","Only milk"],"The text lists love, food, sleep, talking and playing.")]}
+], turn:{q:"Ask a grown-up about something you did when you were a baby. Write one or two sentences about it.",model:"When I was a baby, I loved my yellow blanket."}},
+
+{title:"Hazel and Fern (a fable)", e:"🐿️", kind:"Fable", pages:[
+ {pic:"🐿️🌰🐿️", text:"Long ago, in a tall oak tree, there lived two squirrel sisters, Hazel and Fern. All autumn, they gathered acorns for the winter. Hazel worked hard and filled her store to the top. Fern worked hard too, but a storm knocked her store out of the tree.",
+  qs:[f("What were the squirrels gathering?","Acorns",["Apples","Leaves"],"They gathered acorns for the winter."),
+      f("What happened to Fern's store of acorns?","A storm knocked it out of the tree",["Hazel ate it","A bird took it"],"A storm knocked her store out of the tree.")]},
+ {pic:"❄️😢", text:"When winter came, Fern was cold and hungry. She knocked on Hazel's door. \"Sister, may I have a few acorns?\" Hazel looked at her full store. \"These are mine,\" she said. \"I worked hard for them.\" And she closed the door.",
+  qs:[t("How did Fern feel?","Cold, hungry and sad",["Happy and full","Proud"],"She had no food in winter, and her sister closed the door."),
+      t("Was Hazel kind to her sister?","No, she did not share",["Yes, she was very kind"],"Hazel kept all her acorns and closed the door.")]},
+ {pic:"🌨️🏠", text:"That night, a fierce snowstorm came. The wind shook the tree so hard that Hazel's door blew open. Snow filled her home, and she could not find her acorns under the ice. Now Hazel was the cold and hungry one.",
+  qs:[f("What happened to Hazel's home?","Snow filled it",["It caught fire","A bear moved in"],"Her door blew open and snow filled her home."),
+      t("How is Hazel's problem now like Fern's problem before?","Now Hazel has no food either",["Now Hazel has too much food","Now Hazel is happy"],"Both sisters lost their acorns because of a storm.")]},
+ {pic:"🕯️🤝", text:"Hazel knocked on Owl's door, but Owl was asleep. Then she saw a light in a small hole lower down the tree. It was Fern's new home. Fern had found a few acorns under the snow. When she saw her sister, she said, \"Come in. We can share what I have.\"",
+  qs:[t("Why is Fern's choice surprising?","Hazel did not share with her before",["Fern has lots of food","Fern does not like acorns"],"Fern shares even though Hazel would not share with her."),
+      f("What did Fern say to Hazel?","\"Come in. We can share what I have.\"",["\"Go away.\"","\"These are mine.\""],"Fern invited her sister in.")]},
+ {pic:"💛🌳", text:"That winter, the two sisters shared every acorn and kept each other warm. Hazel never forgot her sister's kindness. When spring came, they gathered acorns together and kept one big store for both of them. <b>Lesson: Kindness that you share comes back to you.</b>",
+  qs:[t("What is the lesson of this fable?","Share with others, even when it is hard",["Keep everything for yourself","Never go out in the snow"],"A fable is a short story that teaches a lesson."),
+      f("What did the sisters do in spring?","They gathered acorns together",["They moved away","They stopped talking"],"In spring, they gathered acorns together.")]}
+], turn:{q:"Write about a time someone shared with you, or you shared with someone. How did it feel?",model:"My cousin shared his umbrella with me in the rain. It made me feel happy and safe."}},
+
+{title:"Real-world reading: An invitation and a chore chart", e:"📬", kind:"Real-world text", pages:[
+ {pic:"🎉✉️", text:"Mia's family made this invitation for Leo's birthday. Read it carefully.<div class=\"realdoc\"><b>🎈 You're invited! 🎈</b><br>Come to <b>Leo's 7th birthday party!</b><br><br>📅 <b>When:</b> Saturday, May 10, from 2:00 to 4:00 p.m.<br>📍 <b>Where:</b> Maple Park, next to the big slide<br>🎮 <b>Fun:</b> football games, face painting and cake<br>👟 Please wear sports shoes!<br><br>Please tell us if you can come by May 5.</div>",
+  qs:[f("What time does the party start?","2:00 p.m.",["4:00 p.m.","10:00 a.m."],"From 2:00 to 4:00 p.m., so it starts at 2:00."),
+      f("Where is the party?","Maple Park",["Leo's house","The school"],"Where: Maple Park, next to the big slide."),
+      f("How old will Leo be?","7",["6","10"],"It is Leo's 7th birthday party."),
+      t("Why should guests wear sports shoes?","There will be football games",["It will be very cold","It is a dance party"],"The invitation says there will be football games."),
+      f("By what date should you say if you can come?","May 5",["May 10","May 1"],"Please tell us if you can come by May 5.")]},
+ {pic:"🧹📋", text:"This is the chore chart on Mia's fridge. It shows who does each job.<table class=\"realtbl\"><tr><th>Day</th><th>Mia</th><th>Leo</th><th>Grandmother</th></tr><tr><td>Monday</td><td>Feed Pepper</td><td>Water plants</td><td>Fold clothes</td></tr><tr><td>Tuesday</td><td>Set the table</td><td>Feed Pepper</td><td>Water plants</td></tr><tr><td>Wednesday</td><td>Water plants</td><td>Set the table</td><td>Feed Pepper</td></tr><tr><td>Saturday</td><td>Tidy bedroom</td><td>Tidy bedroom</td><td>Rest!</td></tr></table>",
+  qs:[f("Who feeds Pepper on Tuesday?","Leo",["Mia","Grandmother"],"Find Tuesday, then look in the column that says Feed Pepper: Leo."),
+      f("What does Mia do on Wednesday?","Water plants",["Set the table","Feed Pepper"],"Wednesday row, Mia column: Water plants."),
+      f("What does Grandmother do on Saturday?","She rests",["She tidies her bedroom","She feeds Pepper"],"Saturday row, Grandmother column: Rest!"),
+      t("Why do families use a chore chart?","So everyone knows their jobs",["To draw pictures","To count the days"],"A chart makes it clear who does what, so nobody forgets.")]}
+], turn:{q:"Make your own chore list. Write two jobs you could do at home this week.",model:"I can make my bed every morning. I can help set the table for dinner."}}
+);
+
+u.poems=[u.poem,{title:"Sunday Pancakes",
+ lines:["Flip, flop, flip! The pancakes fly,","Up they go, up to the sky!","Dad mixes, Leo stirs the pot,","I catch the pancakes, nice and hot.","Grandma laughs and claps her hands,","Our kitchen is the best in all the lands!"],
+ qs:[f("Which word rhymes with 'fly'?","sky",["flip","hot"],"Fly and sky end with the same sound: -y."),
+     f("What does Grandma do?","She laughs and claps her hands",["She mixes","She stirs the pot"],"\"Grandma laughs and claps her hands.\""),
+     t("Which words sound like the pancakes moving?","Flip, flop",["Laughs, claps","Mixes, stirs"],"Some words copy a sound or a movement. Flip and flop sound like pancakes turning in the pan.")]}];
+})();
+
+/* ===================== UNIT 1 · SKILL BANKS AND SKILL LIST (original content) ===================== */
+(function(){
+const u=UNITS.find(x=>x.id==="me");
+const set=k=>u.words.slice(k*10,k*10+10);
+const MIX=(...g)=>()=>R(g)();
+
+/* ---------- Sentence banks ---------- */
+const SENT=["Mia lives in a yellow house.","My mother is a nurse.","My father bakes bread every morning.","Leo loves football.","Grandmother tells funny stories.","Ana and Ben are twins.","We eat dinner together.","I feed the cat every morning.","Pepper is a black cat.","My aunt lives in Toronto.","Leo and I play in the garden.","We visit Grandfather in July.","My cousin speaks Spanish.","The baby is sleeping.","I have two brothers.","My uncle is a pilot.","We make pancakes on Sunday.","Mia draws a tall tree.","My grandmother came from India.","I help my dad in the kitchen.","Ben has straight hair.","Ana has curly hair.","Our neighbour has a big dog.","My parents work hard.","I am eight years old.","Leo is six years old.","The librarian found a book for me.","My best friend is called Sam.","We celebrate Diwali with lamps.","I wash the dishes after dinner.","Our family went to Paris.","Mr. Lee is our teacher.","My sister and I share a room.","Grandfather calls us on Saturday.","The firefighter is very brave.","Dad and I walk to school.","We have a party in June.","Mia and Leo have chores.","My cousins live in London.","I love my family."];
+const ASK=["Where do you live?","How old are you?","What is your name?","Do you have a brother?","Who is your teacher?","When is your birthday?","Can you ride a bike?","Is Leo six years old?","What does your mother do?","Why is the baby crying?","Where is my pencil?","Do you like pancakes?","How many cousins do you have?","Who made this cake?","Are Ana and Ben twins?","What is your favourite colour?","When does school start?","Can I help you?","Is your aunt a teacher?","Who lives next door?","Where does Grandfather live?","What time is dinner?"];
+const EXCL=["What a big family!","Wow, that cake is huge!","Hooray, Grandfather is here!","What a funny story!","Oh no, I dropped my pancake!","Watch out!","How beautiful your drawing is!","Yay, it is my birthday!","What a loud noise!","I love this game so much!","Ouch, that hurts!","Wow, you are so tall!","What a lovely surprise!","Hurry up, we are late!","That is amazing!"];
+const FRAG=["The big yellow house.","Every Sunday morning.","My funny little brother.","In the kitchen.","Bakes bread every morning.","Under the big tree.","Ana and her twin brother.","After dinner.","Tells stories every night.","With my grandmother.","Plays football in the garden.","A black cat named Pepper.","On a video call.","Very tall and kind.","Lives in Toronto.","At the hospital.","Because it was raining.","My aunt and my uncle.","Before school.","Feeds the cat.","The noisy playground.","Flips the pancakes.","Next to my house.","Laughs at the funny story."];
+
+const complete=()=>{
+  if(Math.random()<.5){const s=R(SENT);return mcQ(`Is this a complete sentence?<br><b>${s}</b>`,"Yes, it is complete",["No, something is missing"],"It tells <b>who</b> and <b>what they do or are</b>, so it makes complete sense.","Does it tell who, and what they do?")}
+  const s=R(FRAG);return mcQ(`Is this a complete sentence?<br><b>${s}</b>`,"No, something is missing",["Yes, it is complete"],"It does not make complete sense. It is missing <b>who</b> or <b>what happens</b>.","Does it tell who, and what they do?");
+};
+
+/* ---------- Question words ---------- */
+const QW=[
+ ["Who","___ is your best friend?","Sam is my best friend."],["Who","___ made this cake?","Grandmother made it."],["Who","___ lives next door?","Mrs. Chen lives next door."],["Who","___ is your teacher?","Mr. Lee is my teacher."],["Who","___ is knocking at the door?","It is Uncle Raj."],
+ ["What","___ is your name?","My name is Mia."],["What","___ is your favourite food?","I love rice and dal."],["What","___ are you drawing?","I am drawing a tree."],["What","___ colour is your bag?","It is blue."],["What","___ did you eat for lunch?","I ate a sandwich."],
+ ["Where","___ do you live?","I live in Toronto."],["Where","___ is my book?","It is under your bed."],["Where","___ does your aunt work?","She works at the library."],["Where","___ did you put the keys?","I put them on the table."],["Where","___ is the park?","It is next to the school."],
+ ["When","___ is your birthday?","It is in June."],["When","___ does school start?","It starts at nine o'clock."],["When","___ will Grandfather visit?","He will visit next week."],["When","___ do you eat dinner?","We eat at six o'clock."],["When","___ did you lose your tooth?","I lost it yesterday."],
+ ["Why","___ is the baby crying?","Because she is hungry."],["Why","___ are you laughing?","Because the story is funny."],["Why","___ did you wake up so early?","Because I wanted to help Dad bake."],["Why","___ is Leo sad?","Because his team lost."],["Why","___ do we brush our teeth?","Because it keeps them healthy."],
+ ["How","___ old are you?","I am eight."],["How","___ many cousins do you have?","I have four cousins."],["How","___ do you get to school?","I walk with my dad."],["How","___ are you today?","I am fine, thank you."],["How","___ do you spell your name?","M-I-A."]
+];
+const WH={Who:"a person",What:"a thing",Where:"a place",When:"a time",Why:"a reason",How:"the way, how many or how old"};
+const qword=()=>{const x=R(QW);return mcQ(`Choose the question word:<br><b>${x[1]}</b><br><span style="color:var(--muted);font-size:16px">Answer: ${x[2]}</span>`,x[0],SAMPLE(Object.keys(WH).filter(k=>k!==x[0]),2),`<b>${x[0]}</b> asks about ${WH[x[0]]}: ${x[1].replace("___",x[0])}`,"Look at the answer. Is it a person, a thing, a place, a time or a reason?")};
+const matchQ=()=>{const x=R(QW);const others=SAMPLE(QW.filter(y=>y[0]!==x[0]),2).map(y=>y[1].replace("___",y[0]));
+  return mcQ(`The answer is: <b>${x[2]}</b><br>What was the question?`,x[1].replace("___",x[0]),others,`${x[0]} asks about ${WH[x[0]]}.`,"What kind of information is in the answer?")};
+
+/* ---------- Turn into a question ---------- */
+const MQ=[["Leo","is","six years old",1],["Ana","is","a twin",1],["My mother","is","a nurse",0],["The baby","is","asleep",0],["Mia","can","draw birds",1],["You","can","swim",0],["They","are","cousins",0],["Your aunt","is","a teacher",0],["The cat","is","hungry",0],["Grandmother","can","tell stories",1],["We","are","late",0],["The pancakes","are","ready",0],["Ben","can","ride a bike",1],["Your house","is","yellow",0],["The twins","are","eight",0],["Dad","is","in the kitchen",1],["She","can","speak two languages",0],["It","is","Sunday",0]];
+const makeQ=()=>{const m=R(MQ);const st=`${m[0]} ${m[1]} ${m[2]}.`;const subj=m[3]?m[0]:m[0].charAt(0).toLowerCase()+m[0].slice(1);const qq=`${cap(m[1])} ${subj} ${m[2]}?`;
+  return {type:"type",strict:true,q:`Turn this telling sentence into a question:<br><b>${st}</b>`,a:[qq],hint:`Move the word "${m[1]}" to the front, give it a capital letter, and end with a question mark.`,why:`<b>${qq}</b> We move "${m[1]}" to the front.`}};
+
+/* ---------- Nouns ---------- */
+const NS=[["The baker sells fresh bread.",["baker","bread"],["sells","fresh"]],["My cousin has a funny dog.",["cousin","dog"],["has","funny"]],["Grandmother reads a long story.",["Grandmother","story"],["reads","long"]],["The tall pilot flies a plane.",["pilot","plane"],["tall","flies"]],["Leo kicks the red ball.",["Leo","ball"],["kicks","red"]],["The nurse helps the sick boy.",["nurse","boy"],["helps","sick"]],["Mia paints a green tree.",["Mia","tree"],["paints","green"]],["The baby sleeps in a soft bed.",["baby","bed"],["sleeps","soft"]],["My uncle drives a big truck.",["uncle","truck"],["drives","big"]],["The kind teacher smiles at the class.",["teacher","class"],["kind","smiles"]],["Pepper chases a little mouse.",["Pepper","mouse"],["chases","little"]],["The farmer feeds the hungry cows.",["farmer","cows"],["feeds","hungry"]],["Dad cooks rice in the kitchen.",["Dad","rice","kitchen"],["cooks","in"]],["Ben quickly opens the door.",["Ben","door"],["quickly","opens"]],["The brave firefighter climbs a ladder.",["firefighter","ladder"],["brave","climbs"]],["Ana writes a happy letter.",["Ana","letter"],["writes","happy"]],["The librarian finds a new book.",["librarian","book"],["finds","new"]]];
+const findNoun=()=>{const x=R(NS);if(Math.random()<.6){const n=R(x[1]);return mcQ(`Which word is a <b>noun</b> (a naming word)?<br><b>${x[0]}</b>`,n,x[2],`<b>${n}</b> names a person, place, animal or thing. Nouns here: ${x[1].join(", ")}.`,"A noun names a person, place, animal or thing.")}
+  const o=R(x[2]);return mcQ(`Which word is NOT a noun?<br><b>${x[0]}</b>`,o,SAMPLE(x[1],2),`<b>${o}</b> is not a naming word. The nouns are: ${x[1].join(", ")}.`,"Two of these name a person, animal or thing.")};
+const COMMON=["girl","boy","city","river","dog","cat","teacher","school","country","mountain","day","month","park","street","baker","doctor","book","family","brother","friend","lake","language","holiday","cousin"];
+const PROPER=["Mia","Leo","Toronto","India","Canada","Paris","Monday","Sunday","July","June","Pepper","Mr. Lee","London","Africa","Diwali","English","Hindi","Lake Ontario","Ana","Ben","Kenji","Delhi","Friday","December"];
+const commonProper=()=>{if(Math.random()<.5){const p=Math.random()<.5;const w=p?R(PROPER):R(COMMON);
+   return mcQ(`Is <b>${w}</b> a common noun or a proper noun?`,p?"proper noun":"common noun",[p?"common noun":"proper noun"],p?`<b>${w}</b> is the name of one special person, place or thing, so it is proper and starts with a capital.`:`<b>${w}</b> names any ${w}, not one special one, so it is common.`,"Proper nouns are special names and start with a capital letter.")}
+  const p=R(PROPER);return mcQ("Which word is a <b>proper noun</b>?",p,SAMPLE(COMMON,2),`<b>${p}</b> is a special name, so it is a proper noun.`,"Look for the special name.")};
+const capName=()=>{const p=R(PROPER);return {type:"type",strict:true,q:`Type this name correctly, with capital letters:<br><b>${p.toLowerCase()}</b>`,a:[p],hint:"Names of people, pets, places, days, months, languages and festivals start with a capital letter.",why:`<b>${p}</b> is a proper noun, so it starts with a capital letter.`}};
+
+/* ---------- Write your own sentence ---------- */
+const D=[CHK.cap,CHK.end,CHK.w4,CHK.I];
+const WP=[
+ {q:"Write a sentence about someone in your family.",checks:D,model:"My aunt has curly hair."},
+ {q:"Write a sentence about what you do every morning.",checks:D,model:"I brush my teeth and eat breakfast."},
+ {q:"Write a question you could ask a new friend.",checks:[CHK.cap,CHK.q,CHK.w3,CHK.I],model:"What is your favourite game?"},
+ {q:"Write an exclaiming sentence about a birthday party.",checks:[CHK.cap,["!\\s*$","Ends with an exclamation mark"],CHK.w3],model:"What a fun party!"},
+ {q:"Write a sentence with the name of a city or country in it.",checks:[CHK.cap,CHK.end,CHK.name,CHK.I],model:"My grandfather lives in Delhi."},
+ {q:"Write a sentence that uses the word <b>kind</b>.",checks:[CHK.cap,CHK.end,["\\bkind\\b","Uses the word kind"],CHK.I],model:"My brother is kind to animals."},
+ {q:"Write a sentence about a job you would like to do one day.",checks:D,model:"I want to be a pilot one day."},
+ {q:"Write a sentence about your favourite family tradition.",checks:D,model:"We eat pancakes every Sunday."},
+ {q:"Write a question that starts with <b>Where</b>.",checks:[["^\\s*Where\\b","Starts with Where"],CHK.q,CHK.w3],model:"Where does your cousin live?"},
+ {q:"Write a question that starts with <b>Why</b>.",checks:[["^\\s*Why\\b","Starts with Why"],CHK.q,CHK.w3],model:"Why is the sky blue?"},
+ {q:"Write a sentence with the word <b>I</b> and a day of the week.",checks:[CHK.cap,CHK.end,["\\bI\\b","Uses the word I"],CHK.I,["\\b(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\\b","Has a day of the week with a capital letter"]],model:"I play football on Saturday."},
+ {q:"Write a sentence describing what someone in your family looks like.",checks:D,model:"My dad is tall and has short black hair."},
+ {q:"Write a sentence about a chore you do at home.",checks:D,model:"I make my bed every morning."},
+ {q:"Write a sentence using the word <b>together</b>.",checks:[CHK.cap,CHK.end,["\\btogether\\b","Uses the word together"],CHK.I],model:"We play games together after dinner."}
+];
+
+/* ---------- Vocabulary banks ---------- */
+const RELW=["grandmother","grandfather","aunt","uncle","cousin","father","mother","parents","twins","relatives","sister","brother"];
+const REL=[["Your mother's mother is your ___.","grandmother"],["Your father's mother is your ___.","grandmother"],["Your mother's father is your ___.","grandfather"],["Your father's father is your ___.","grandfather"],["Your mother's sister is your ___.","aunt"],["Your father's sister is your ___.","aunt"],["Your uncle's wife is your ___.","aunt"],["Your mother's brother is your ___.","uncle"],["Your father's brother is your ___.","uncle"],["Your aunt's husband is your ___.","uncle"],["Your aunt's son is your ___.","cousin"],["Your uncle's daughter is your ___.","cousin"],["Your mother and father are your ___.","parents"],["Two children born to the same mother on the same day are ___.","twins"],["All the people in your family, near and far, are your ___.","relatives"],["Your grandmother's husband is your ___.","grandfather"]];
+const rel=()=>{const r=R(REL);return mcQ(r[0],r[1],SAMPLE(RELW.filter(x=>x!==r[1]),3),`${r[0].replace("___","<b>"+r[1]+"</b>")}`,"Draw a little family tree in your head.")};
+const JOBS=[["nurse",["cares for sick people in a hospital","gives patients medicine and bandages"]],["baker",["bakes bread and cakes","starts work very early to make fresh bread"]],["artist",["paints and draws pictures","makes art for people to enjoy"]],["scientist",["does tests to learn how the world works","looks at tiny things under a microscope"]],["farmer",["grows crops and raises animals","plants seeds and milks cows"]],["firefighter",["puts out fires","rescues people from burning buildings"]],["teacher",["helps children learn to read and write","works in a classroom"]],["pilot",["flies a plane","lands planes safely at the airport"]],["mechanic",["fixes cars","repairs engines and machines"]],["librarian",["helps people find books","works in a library"]],["dentist",["checks and cleans your teeth"]],["chef",["cooks food in a restaurant"]],["police officer",["keeps people safe and makes sure laws are followed"]],["vet",["is a doctor for animals"]],["bus driver",["drives people around town on a bus"]],["builder",["builds houses"]],["mail carrier",["brings letters and parcels to your home"]]];
+const job=()=>{const j=R(JOBS);return mcQ(`Who <b>${R(j[1])}</b>?`,"a "+j[0],SAMPLE(JOBS.filter(x=>x!==j),3).map(x=>"a "+x[0]),`A <b>${j[0]}</b> ${j[1].join(" and ")}.`,"Think about where this person works.")};
+const OPP=[["tall","short"],["noisy","quiet"],["brave","scared"],["kind","mean"],["happy","sad"],["curly","straight"],["gentle","rough"],["funny","serious"],["old","young"],["big","small"],["early","late"],["hot","cold"],["fast","slow"],["full","empty"],["clean","dirty"],["strong","weak"],["awake","asleep"],["hard","soft"],["patient","impatient"],["polite","rude"],["near","far"],["first","last"]];
+const SYN=[["big","large"],["small","little"],["happy","glad"],["kind","nice"],["shout","yell"],["quick","fast"],["begin","start"],["angry","mad"],["tired","sleepy"],["scared","afraid"],["pretty","beautiful"],["speak","talk"],["close","shut"],["gift","present"],["smart","clever"],["noisy","loud"],["easy","simple"],["sad","unhappy"],["end","finish"],["jump","leap"]];
+const COMP=[["sun","flower"],["grand","mother"],["bed","room"],["foot","ball"],["rain","bow"],["some","one"],["cup","cake"],["class","room"],["home","work"],["pan","cake"],["butter","fly"],["book","shelf"],["birth","day"],["sea","shell"],["snow","man"],["tooth","brush"],["hair","cut"],["play","ground"],["back","pack"],["sun","shine"],["fire","fighter"],["news","paper"],["door","bell"],["week","end"],["mail","box"],["class","mate"],["air","plane"],["gold","fish"],["grand","father"],["note","book"]];
+
+/* ---------- Spelling banks ---------- */
+const SP=u.spelling.concat([
+ {w:"children",s:"The children play outside."},{w:"little",s:"Leo is my little brother.",tip:"Double t: li-tt-le."},{w:"together",s:"We cook together.",tip:"to-get-her: three small words."},
+ {w:"kitchen",s:"Dad is in the kitchen.",tip:"The 't' is quiet: ki-t-ch-en."},{w:"garden",s:"Our garden has a big tree."},{w:"morning",s:"I feed the cat every morning."},
+ {w:"night",s:"Grandmother tells stories at night.",tip:"n-igh-t. The 'gh' is silent."},{w:"write",s:"I write a letter to my cousin.",tip:"The 'w' is silent: w-rite."},
+ {w:"again",s:"Please read the story again."},{w:"because",s:"I am happy because it is Sunday.",tip:"Big Elephants Can Always Understand Small Elephants."},
+ {w:"they",s:"They are my cousins."},{w:"said",s:"Mom said hello.",tip:"'ai' sounds like 'e' in said."},{w:"there",s:"There is a cat on the bed."},
+ {w:"would",s:"Would you like a pancake?",tip:"The 'l' is silent: w-ou-l-d."},{w:"birthday",s:"Today is my birthday."}
+]);
+const CVC="cat hat map bag jam van fan bed pen hen net leg red ten web wet pig sit lip win pin big six zip dog hop pot box log mop fox top sun cup bus run mud hug nut rug".split(" ")
+  .map(w=>({w,tip:"short "+w.match(/[aeiou]/)[0]+" sound"}));
+const CHOOSE=[["friend","freind","frend"],["people","peeple","poeple"],["because","becuase","becos"],["said","sed","siad"],["they","thay","tey"],["there","thier","ther"],["eight","eigth","aight"],["cousin","cusin","cousen"],["school","skool","shcool"],["family","famly","familly"],["again","agen","agian"],["little","litle","littel"],["together","togather","togeter"],["kitchen","kichen","kitchin"],["morning","mornig","morening"],["birthday","brithday","birthdey"],["would","wud","woud"],["night","nite","nigt"],["brother","bruther","brothr"],["mother","muther","mothre"],["father","fathre","fahter"],["uncle","unkle","uncel"],["house","hous","howse"],["happy","hapy","happey"],["children","childern","chilren"],["garden","gardn","gardin"],["teacher","techer","teecher"],["baby","babey","babby"]]
+  .map(x=>({w:x[0],bad:[x[1],x[2]],tip:(SP.find(y=>y.w===x[0])||{}).tip}));
+
+/* ---------- Reading banks ---------- */
+const DETAIL=[
+ ["Sam's Grandma","Sam visits his grandma every Friday. She lives in a small blue flat near the park. They feed the ducks together and then drink warm milk. Grandma always saves the biggest cookie for Sam.",[["When does Sam visit his grandma?","Every Friday",["Every Monday","Every day"]],["What colour is Grandma's flat?","Blue",["Yellow","Red"]],["What do they feed together?","Ducks",["Cats","Fish"]]]],
+ ["The New Baby","Priya has a new baby brother. His name is Arjun. He is very small and sleeps most of the day. When he cries, Priya sings him a soft song, and he stops crying.",[["Who is Arjun?","Priya's baby brother",["Priya's cousin","Priya's dad"]],["What does Priya do when Arjun cries?","She sings him a soft song",["She shouts","She leaves the room"]]]],
+ ["Moving Day","Today the Lopez family is moving to a new house. Dad carries the big boxes. Mom packs the plates. Rosa carries her favourite teddy bear. The new house has a garden with an apple tree.",[["What does Dad carry?","The big boxes",["The plates","The teddy bear"]],["What is in the new garden?","An apple tree",["A pool","A swing"]],["What does Rosa carry?","Her teddy bear",["The plates","A box"]]]],
+ ["Two Languages","Omar speaks Arabic with his grandparents and English at school. At home, he helps his little sister learn English words. She can already count to ten in both languages!",[["Which language does Omar speak at school?","English",["Arabic","French"]],["Who does Omar help?","His little sister",["His teacher","His grandfather"]]]],
+ ["Uncle Tom","Uncle Tom is a farmer. Every morning he drives his old green truck to the market. He sells eggs, carrots and potatoes. On Saturdays, I go with him and help him count the money.",[["What is Uncle Tom's job?","He is a farmer",["He is a pilot","He is a chef"]],["What colour is the truck?","Green",["Red","Blue"]],["Which food does Uncle Tom NOT sell?","Apples",["Eggs","Carrots"]]]],
+ ["The Lost Tooth","Last night, Ben's front tooth fell out while he was eating an apple. He put the tooth under his pillow. In the morning, he found a shiny coin and a note that said, \"Well done, brave boy!\"",[["When did Ben's tooth fall out?","While he was eating an apple",["While he was playing football","While he was sleeping"]],["What did Ben find in the morning?","A shiny coin and a note",["His tooth","A new apple"]]]],
+ ["Game Night","Every Friday is game night in Lily's family. They turn off the TV and play board games. Lily's dad always loses, but he laughs anyway. The winner gets to choose the dessert.",[["What do they turn off?","The TV",["The lights","The oven"]],["What does the winner get?","To choose the dessert",["A gold medal","A new game"]],["How does Dad feel when he loses?","He laughs anyway",["He gets angry","He goes to bed"]]]],
+ ["Helping Hands","Mrs. Chen, our neighbour, is very old. Her legs hurt when she walks. Every week, my mom and I bring her groceries. Mrs. Chen gives us tea and tells us about her life in China.",[["Why do they bring Mrs. Chen groceries?","Her legs hurt when she walks",["She is a baker","She lives far away"]],["Where did Mrs. Chen live before?","China",["India","Canada"]]]],
+ ["Dad's Bakery","Mia's dad opens his bakery at six o'clock. The first customer is always Mr. Brown, who buys two loaves of bread. By nine o'clock, all the cinnamon rolls are sold out!",[["Who is the first customer?","Mr. Brown",["Mia","Grandmother"]],["What is sold out by nine o'clock?","The cinnamon rolls",["The bread","The cakes"]],["What time does the bakery open?","Six o'clock",["Nine o'clock","Four o'clock"]]]],
+ ["Different Twins","Ana and Ben are twins, but they like different things. Ana loves reading books about space. Ben loves building things with blocks. They both love their dog, Biscuit.",[["What does Ana love?","Reading books about space",["Building with blocks","Playing football"]],["What do the twins BOTH love?","Their dog, Biscuit",["Space books","Blocks"]]]]
+];
+const box=(t,txt)=>`<div class="qbox" style="margin:0 0 12px;font-size:18px;line-height:1.6;font-weight:400"><b>${t}</b><br>${txt}</div>`;
+const detail=()=>{const p=R(DETAIL),x=R(p[2]);return mcQ(`${box(p[0],p[1])}${x[0]}`,x[1],x[2],`Look back at the text: the answer is there.`,"Read the text again and find the words.",{say:p[1]+" "+x[0]})};
+const MAIN=[
+ ["Families can be big or small. Some families have many children, and some have just one. Some children live with their grandparents. Every family is different.","Every family is different.",["Grandparents are old.","Children like toys."]],
+ ["In Mia's house, everyone helps. Mia feeds the cat. Leo waters the plants. Mom and Dad cook and clean.","Everyone in Mia's family helps at home.",["Mia has a cat.","Plants need water."]],
+ ["Dogs make great pets. They are loyal and friendly. They love to play and go for walks. Many families have a dog.","Dogs make great pets.",["Dogs like walks in the rain.","Cats are better than dogs."]],
+ ["Grandparents can teach us many things. They tell stories about the past. They share family recipes. They teach us old songs and games.","Grandparents teach us many things.",["Grandparents like recipes.","Old songs are boring."]],
+ ["Breakfast is an important meal. It gives your body energy for the morning. Children who eat breakfast can think better at school.","Breakfast is important.",["School starts in the morning.","Eggs are tasty."]],
+ ["There are many ways to say hello. In Spanish, people say \"hola\". In Hindi, people say \"namaste\". In French, people say \"bonjour\".","People say hello in many languages.",["Spanish is easy.","Everyone speaks French."]],
+ ["Being a good friend is important. Good friends share and take turns. They listen to each other and help when someone is sad.","Good friends are kind to each other.",["Friends are always happy.","Taking turns is hard."]],
+ ["Bees are very busy insects. They fly from flower to flower to collect nectar. They use it to make honey. Bees also help plants grow by carrying pollen.","Bees are busy, helpful insects.",["Flowers are pretty.","Honey is sticky."]],
+ ["Libraries are wonderful places. You can borrow books for free. You can read quietly, use computers and join story time. Librarians are always ready to help.","Libraries are wonderful places to visit.",["Computers are fast.","Story time is short."]],
+ ["Washing your hands keeps you healthy. Germs can live on your hands. Soap and water wash the germs away, so you are less likely to get sick.","Washing your hands keeps you healthy.",["Soap smells nice.","Water is wet."]],
+ ["Many people help a town run well. Bus drivers take people to work. Mail carriers bring letters. Garbage collectors keep the streets clean.","Many people help a town run well.",["Buses are big.","Letters come in envelopes."]],
+ ["Moving to a new school can feel scary. You might not know anyone. But after a few days, you learn your way around and start to make friends.","A new school feels scary at first, but it gets better.",["Schools are big buildings.","Friends are fun."]],
+ ["Grandma's garden is full of life. Tomatoes grow up tall poles. Bees buzz around the sunflowers. A little frog lives near the pond.","Grandma's garden is full of life.",["Frogs are green.","Tomatoes are red."]],
+ ["Sleep is very important for children. While you sleep, your body grows and your brain stores what you learned. Most children need between nine and twelve hours of sleep every night.","Sleep is important for children.",["Beds are soft.","Night is dark."]],
+ ["Families share many jobs at home. Someone cooks, someone cleans, and someone takes out the rubbish. When everyone helps, the home runs smoothly.","Families share the jobs at home.",["Cooking is fun.","Rubbish smells bad."]],
+ ["Firefighters have a dangerous job. They rush into burning buildings to save people. They wear special clothes to protect them from heat and smoke.","Firefighters do a brave and dangerous job.",["Smoke is grey.","Some buildings are tall."]]
+];
+const mainIdea=()=>{const m=R(MAIN);return mcQ(`${box("Read",m[0])}What is the <b>main idea</b>? (What is it mostly about?)`,m[1],m[2],`The main idea is what the whole text is about: <b>${m[1]}</b>`,"Which answer fits ALL the sentences, not just one?",{say:m[0]})};
+const FACTS=["Mia is eight years old.","A week has seven days.","Toronto is a city in Canada.","Most babies are born without teeth.","Cats have four legs.","Water turns to ice when it gets very cold.","There are twelve months in a year.","The Sun rises in the morning.","Spiders have eight legs.","Paris is in France.","A baker makes bread.","Leo is six years old.","Your heart pumps blood around your body.","Some families speak two languages at home.","July comes after June."];
+const OPIN=["Pancakes are the best breakfast.","Football is the most fun sport.","Green is the prettiest colour.","Cats are better than dogs.","Homework is boring.","Summer is the best season.","My grandmother tells the funniest stories.","Pizza tastes better than rice.","Drawing is easy.","Rainy days are sad.","Big families are more fun.","Maths is the hardest subject.","Dogs are the cutest animals.","Sunday is the best day of the week."];
+const factOp=()=>{const f=Math.random()<.5;const s=f?R(FACTS):R(OPIN);return mcQ(`Is this a <b>fact</b> or an <b>opinion</b>?<br><b>${s}</b>`,f?"Fact":"Opinion",[f?"Opinion":"Fact"],f?"A <b>fact</b> can be checked and is true for everyone.":"An <b>opinion</b> is what someone thinks or feels. Other people may think differently.","Could you check it? Or do people feel differently about it?")};
+const SEQ=[["Wake up","Brush your teeth","Eat breakfast","Walk to school"],["Mix the batter","Pour it into the pan","Flip the pancake","Eat the pancake"],["Plant a seed","Water it every day","A small shoot grows","A flower opens"],["Fill the bath","Get into the bath","Wash with soap","Dry yourself with a towel"],["Put on your socks","Put on your shoes","Tie your laces"],["Write a letter","Put it in an envelope","Add a stamp","Post the letter"],["The baby is born","The baby learns to crawl","The baby learns to walk","The child goes to school"],["Wash the dishes","Dry the dishes","Put the dishes away"],["Get on the bus","Ride to your stop","Get off the bus"],["Buy a cake","Put candles on the cake","Light the candles","Blow out the candles"],["Leo kicks the ball","The ball flies through the air","The ball goes into the goal","Everyone cheers"],["An egg","A caterpillar","A chrysalis","A butterfly"],["Wet your hands","Rub them with soap","Rinse with water","Dry your hands"]];
+const order=()=>{const s=R(SEQ),t=R(["first","last","next"]);
+  if(t==="first")return mcQ(`What happens <b>FIRST</b>?`,s[0],SAMPLE(s.slice(1),2),`Order: ${s.join(" → ")}`,"Think about what must happen before everything else.");
+  if(t==="last")return mcQ(`What happens <b>LAST</b>?`,s[s.length-1],SAMPLE(s.slice(0,-1),2),`Order: ${s.join(" → ")}`,"Think about what happens at the very end.");
+  const k=Math.floor(Math.random()*(s.length-1));return mcQ(`What happens right <b>AFTER</b> this?<br><b>${s[k]}</b>`,s[k+1],SAMPLE(s.filter((_,i)=>i!==k&&i!==k+1),2),`Order: ${s.join(" → ")}`,"What is the very next step?")};
+
+/* ---------- Thinking banks ---------- */
+const PUZ=u.think.map(t=>({q:t.q,o:t.o,a:t.a[0],why:t.why})).concat([
+ {q:"🧩 Riddle: I am your mother's sister. Who am I?",o:["Your aunt","Your cousin","Your grandmother"],a:"Your aunt",why:"Your mother's sister is your aunt."},
+ {q:"🌧️ It is raining. What should Leo take to school?",o:["An umbrella","Sunglasses","A swimsuit"],a:"An umbrella",why:"An umbrella keeps you dry in the rain."},
+ {q:"🔥 You are at home and you smell smoke. What is the best thing to do?",o:["Get out of the house and tell a grown-up","Hide under your bed","Open the oven to look"],a:"Get out of the house and tell a grown-up",why:"Get out fast and tell a grown-up. Never hide from a fire."},
+ {q:"🔢 What comes next? 2, 4, 6, 8, ___",o:["10","9","12"],a:"10",why:"The numbers go up by 2 each time: 8 + 2 = 10."},
+ {q:"🗓️ Today is Monday. What day is tomorrow?",o:["Tuesday","Sunday","Wednesday"],a:"Tuesday",why:"Monday, then Tuesday."},
+ {q:"🗓️ Today is Friday. What day was yesterday?",o:["Thursday","Saturday","Wednesday"],a:"Thursday",why:"Thursday comes before Friday."},
+ {q:"🧓 Grandfather is older than Dad. Dad is older than Mia. Who is the youngest?",o:["Mia","Dad","Grandfather"],a:"Mia",why:"Mia is younger than Dad, and Dad is younger than Grandfather."},
+ {q:"🧥 What is the best thing to wear on a very cold, snowy day?",o:["A warm coat","Shorts","Sandals"],a:"A warm coat",why:"A warm coat keeps your body warm in the snow."},
+ {q:"😢 Your friend is sad because she lost her pencil. What is a kind thing to do?",o:["Lend her one of your pencils","Laugh at her","Ignore her"],a:"Lend her one of your pencils",why:"Sharing is a kind way to help a friend."},
+ {q:"🧦 Which one does NOT belong in a kitchen?",o:["A bed","A pan","A spoon"],a:"A bed",why:"Pans and spoons are used in the kitchen. A bed belongs in a bedroom."},
+ {q:"📅 Which month comes after June?",o:["July","May","August"],a:"July",why:"June, then July."}
+]);
+const NAMES=["Mia","Leo","Ana","Ben","Sam","Priya","Omar","Lily"];
+const maths=()=>{const t=R(["older","younger","share","total","left"]);let q,ans,why;const n=R(NAMES),m=R(NAMES.filter(x=>x!==n));
+  if(t==="older"){const a=4+Math.floor(Math.random()*6),d=1+Math.floor(Math.random()*5);ans=a+d;q=`${n} is ${a} years old. ${m} is ${d} years older. How old is ${m}?`;why=`Older means more: ${a} + ${d} = ${ans}.`}
+  else if(t==="younger"){const a=8+Math.floor(Math.random()*5),d=1+Math.floor(Math.random()*5);ans=a-d;q=`${n} is ${a} years old. ${m} is ${d} years younger. How old is ${m}?`;why=`Younger means fewer years: ${a} − ${d} = ${ans}.`}
+  else if(t==="share"){const p=2+Math.floor(Math.random()*3),k=2+Math.floor(Math.random()*4);ans=k;q=`${n} has ${p*k} cookies. ${n} shares them equally between ${p} children. How many cookies does each child get?`;why=`${p*k} shared equally between ${p} is ${k} each, because ${p} × ${k} = ${p*k}.`}
+  else if(t==="total"){const a=3+Math.floor(Math.random()*5),b=2+Math.floor(Math.random()*6);ans=a+b;q=`There are ${a} people in ${n}'s family and ${b} people in ${m}'s family. They all go to the park. How many people go to the park?`;why=`${a} + ${b} = ${ans}.`}
+  else{const a=8+Math.floor(Math.random()*12),b=2+Math.floor(Math.random()*(a-3));ans=a-b;q=`Dad baked ${a} loaves of bread. He sold ${b}. How many loaves are left?`;why=`${a} − ${b} = ${ans}.`}
+  const wr=uniq([ans+1,ans-1,ans+2,ans+10].filter(x=>x>0&&x!==ans)).slice(0,2);
+  return mcQ("🔢 "+q,String(ans),wr.map(String),why,"Draw it or count on your fingers.")};
+const CATS={"family members":["mother","father","sister","brother","aunt","uncle","cousin","grandmother"],"jobs":["nurse","baker","pilot","farmer","teacher","mechanic","librarian","chef"],"feelings":["happy","sad","angry","scared","proud","shy"],"colours":["red","blue","green","yellow","purple","pink"],"animals":["cat","dog","cow","horse","rabbit","duck"],"foods":["bread","rice","apple","pancake","soup","cheese"],"days of the week":["Monday","Tuesday","Friday","Sunday","Saturday"],"months":["January","March","June","July","October"]};
+const odd=()=>{const ks=Object.keys(CATS);const a=R(ks),b=R(ks.filter(k=>k!==a));const three=SAMPLE(CATS[a],3),o=R(CATS[b]);
+  return mcQ(`🤔 Which word does NOT belong?`,o,three,`${three.join(", ")} are all ${a}. <b>${o}</b> is not.`,"Find what three of them have in common.")};
+const ANA=[["Baker is to bread as artist is to ___.","picture",["bus","soup"]],["Mother is to daughter as father is to ___.","son",["aunt","baby"]],["Uncle is to aunt as grandfather is to ___.","grandmother",["cousin","brother"]],["Pilot is to plane as driver is to ___.","bus",["bread","book"]],["Doctor is to hospital as teacher is to ___.","school",["kitchen","farm"]],["Big is to small as tall is to ___.","short",["huge","funny"]],["Hot is to cold as happy is to ___.","sad",["glad","warm"]],["Day is to night as morning is to ___.","evening",["breakfast","lunch"]],["Bird is to nest as person is to ___.","house",["tree","egg"]],["Pen is to write as scissors are to ___.","cut",["draw","read"]],["Eyes are to see as ears are to ___.","hear",["smell","taste"]],["Cat is to kitten as dog is to ___.","puppy",["calf","cub"]],["Librarian is to books as farmer is to ___.","crops",["letters","cars"]],["Teeth are to dentist as fire is to ___.","firefighter",["chef","pilot"]],["Morning is to breakfast as evening is to ___.","dinner",["lunch","sunrise"]],["Fish is to water as bird is to ___.","sky",["sand","grass"]],["Foot is to shoe as hand is to ___.","glove",["hat","sock"]],["Cow is to milk as hen is to ___.","egg",["wool","honey"]],["Winter is to cold as summer is to ___.","hot",["snowy","dark"]],["Book is to read as song is to ___.","sing",["cook","paint"]]];
+const analogy=()=>{const x=R(ANA);return mcQ("🔗 "+x[0],x[1],x[2],`${x[0].replace("___","<b>"+x[1]+"</b>")} Think about how the first two words are linked.`,"How are the first two words linked? Use the same link.")};
+
+/* old fixed grammar questions become one mixed-review skill */
+const OLD=u.grammar.flatMap(g=>g.tries);
+const mixedGrammar=()=>{const t=Object.assign({},R(OLD));if(t.o)t.o=shuffle(t.o.slice());return t};
+
+/* ---------- Learn notes ---------- */
+const L={
+ detail:"Read the short text carefully. The answer is <b>in the text</b>. Go back and find the words that match the question.",
+ main:"The <b>main idea</b> is what the whole text is mostly about. It fits <b>all</b> the sentences, not just one of them.",
+ factop:"A <b>fact</b> is true and can be checked: <i>A week has seven days.</i><br>An <b>opinion</b> is what someone thinks or feels: <i>Sunday is the best day.</i> Words like <b>best, worst, prettiest, boring</b> often show an opinion.",
+ order:"Stories and instructions happen in <b>order</b>. Look for what must happen first, next and last. Words like <b>first, next, then, after that, finally</b> help.",
+ vocab:"Read the word, say it aloud, and think of a sentence that uses it. If you are not sure, go back to the word cards in the stories.",
+ rel:"<b>Grandmother/grandfather</b> = your parent's mother/father.<br><b>Aunt/uncle</b> = your parent's sister/brother.<br><b>Cousin</b> = your aunt's or uncle's child.",
+ jobs:"Every job helps people in a different way. Think about <b>where</b> the person works and <b>what</b> they do there.",
+ opp:"<b>Opposites</b> mean very different things: big ↔ small, noisy ↔ quiet.",
+ syn:"<b>Synonyms</b> mean almost the same thing: big = large, happy = glad. Using synonyms makes your writing more interesting.",
+ comp:"A <b>compound word</b> is two small words joined together to make a new word: sun + flower = <b>sunflower</b>.",
+ complete:"A <b>complete sentence</b> tells <b>who</b> (or what) and <b>what they do or are</b>.<br>✅ <i>Leo plays football.</i><br>❌ <i>Plays football.</i> (Who?)",
+ capStart:"Every sentence starts with a <b>capital letter</b>. Other words only get capitals if they are <b>names</b> or the word <b>I</b>.",
+ capI:"The word <b>I</b> is always a capital letter, wherever it is in the sentence: <i>Leo and I play.</i>",
+ marks:"<b>.</b> full stop → telling<br><b>?</b> question mark → asking<br><b>!</b> exclamation mark → strong feeling",
+ qword:"<b>Who</b> → a person · <b>What</b> → a thing · <b>Where</b> → a place · <b>When</b> → a time · <b>Why</b> → a reason · <b>How</b> → the way, how many, how old",
+ makeQ:"To turn some sentences into questions, move <b>is, are</b> or <b>can</b> to the front:<br><i>Leo is six.</i> → <i>Is Leo six?</i>",
+ noun:"A <b>noun</b> names a <b>person</b> (nurse), <b>place</b> (garden), <b>animal</b> (cat) or <b>thing</b> (bread).",
+ proper:"<b>Common nouns</b> name any person, place or thing: city, girl.<br><b>Proper nouns</b> name one special one and start with a capital: Toronto, Mia, Monday, July, English, Diwali.",
+ fix:"Check 3 things: <b>1.</b> capital letter at the start, <b>2.</b> capitals for names and I, <b>3.</b> a mark at the end.",
+ orderW:"Find the word with the capital letter: it goes first. Then think: <b>who? does what? where or when?</b> Add the end mark.",
+ write:"Plan in your head first. Then write: capital letter, complete idea, end mark. Read it aloud to check.",
+ spell:"Use <b>Look → Say → Cover → Write → Check</b>. Say the word slowly and listen to each sound.",
+ cvc:"Short vowel words have a <b>consonant–vowel–consonant</b> pattern: c-<b>a</b>-t, b-<b>e</b>-d, p-<b>i</b>-g, d-<b>o</b>-g, s-<b>u</b>-n.",
+ choose:"Say the word slowly in your head and picture it. Which one <b>looks</b> right? Tricky words often have silent letters (eight, write, would).",
+ think:"Read the question twice. Think about what you <b>know</b>, then choose. In real-life questions, choose the <b>safe and kind</b> answer.",
+ maths:"Find the numbers. Decide: is it <b>more</b> (add), <b>less</b> (take away), or <b>sharing equally</b>? Then work it out.",
+ odd:"Three words belong to the same group. Find the group, then find the word that is <b>not</b> in it.",
+ ana:"Find how the first two words are linked (a baker <b>makes</b> bread). Use the <b>same link</b> for the next pair (an artist <b>makes</b> pictures)."
+};
+
+/* ---------- The skill list ---------- */
+u.cats=[
+ {n:"Reading",e:"📖",items:[
+  {id:"r_story1",t:"Story: Meet Mia",act:"story",si:0},
+  {id:"r_story3",t:"Story: Leo's Lost Football",act:"story",si:2},
+  {id:"r_story2",t:"Fact text: Families Around the World",act:"story",si:1},
+  {id:"r_story4",t:"Fact text: How Babies Grow",act:"story",si:3},
+  {id:"r_story5",t:"Fable: Hazel and Fern",act:"story",si:4},
+  {id:"r_story6",t:"Real-world reading: An invitation and a chore chart",act:"story",si:5},
+  {id:"r_poem",t:"Poem: My Family Tree",act:"poem",pi:0},
+  {id:"r_poem2",t:"Poem: Sunday Pancakes",act:"poem",pi:1},
+  {id:"r_detail",t:"Read and find the details",learn:L.detail,gen:detail},
+  {id:"r_main",t:"Find the main idea",learn:L.main,gen:mainIdea},
+  {id:"r_factop",t:"Fact or opinion?",learn:L.factop,gen:factOp},
+  {id:"r_order",t:"Order of events",learn:L.order,gen:order}]},
+ {n:"Vocabulary",e:"🔤",items:[
+  {id:"v_fam",t:"Family words",learn:L.vocab,gen:MIX(F.word(set(0)),F.meaning(set(0)))},
+  {id:"v_rel",t:"Family relationships",learn:L.rel,gen:rel},
+  {id:"v_jobw",t:"Job words",learn:L.vocab,gen:MIX(F.word(set(1)),F.meaning(set(1)))},
+  {id:"v_jobs",t:"Who does this job?",learn:L.jobs,gen:job},
+  {id:"v_desc",t:"Words that describe people",learn:L.vocab,gen:MIX(F.word(set(2)),F.meaning(set(2)))},
+  {id:"v_home",t:"Home and daily life words",learn:L.vocab,gen:MIX(F.word(set(3)),F.meaning(set(3)))},
+  {id:"v_fill",t:"Use the right word in a sentence",learn:L.vocab,gen:F.fill(u.words)},
+  {id:"v_opp",t:"Opposites",learn:L.opp,gen:F.pairs(OPP,"opposite")},
+  {id:"v_syn",t:"Synonyms (words that mean the same)",learn:L.syn,gen:F.pairs(SYN,"synonym")},
+  {id:"v_comp",t:"Compound words",learn:L.comp,gen:MIX(F.compoundJoin(COMP),F.compoundPick(COMP))}]},
+ {n:"Grammar",e:"🧩",items:[
+  {id:"g_complete",t:"Is it a complete sentence?",learn:L.complete,gen:complete},
+  {id:"g_capstart",t:"Capital letter at the start",learn:L.capStart,gen:G.capStart(SENT)},
+  {id:"g_capi",t:"The word I is always a capital",learn:L.capI,gen:G.capI(SENT)},
+  {id:"g_marks",t:"End marks: . ? !",learn:L.marks,gen:G.endMark(SENT,ASK,EXCL)},
+  {id:"g_kind",t:"Telling, asking or exclaiming?",learn:L.marks,gen:G.kind(SENT,ASK,EXCL)},
+  {id:"g_qword",t:"Choose the question word",learn:L.qword,gen:qword},
+  {id:"g_match",t:"Match the question to the answer",learn:L.qword,gen:matchQ},
+  {id:"g_makeq",t:"Turn a sentence into a question",learn:L.makeQ,gen:makeQ},
+  {id:"g_noun",t:"Find the noun",learn:L.noun,gen:findNoun},
+  {id:"g_cp",t:"Common or proper noun?",learn:L.proper,gen:commonProper},
+  {id:"g_capname",t:"Capitals for names, places, days and months",learn:L.proper,gen:capName},
+  {id:"g_fix",t:"Fix the sentence",learn:L.fix,gen:G.fix(SENT.concat(ASK))},
+  {id:"g_order",t:"Put the words in order",learn:L.orderW,gen:G.order(SENT)},
+  {id:"g_write",t:"Write your own sentences",learn:L.write,gen:F.write(WP)},
+  {id:"g_mixed",t:"Mixed grammar review",learn:L.fix,gen:mixedGrammar}]},
+ {n:"Spelling",e:"🎧",items:[
+  {id:"s_family",t:"Family and tricky words: listen and write",learn:L.spell,gen:F.listen(SP)},
+  {id:"s_cvc",t:"Short vowel words: listen and write",learn:L.cvc,gen:F.listen(CVC)},
+  {id:"s_choose",t:"Choose the correct spelling",learn:L.choose,gen:F.chooseSpelling(CHOOSE)},
+  {id:"s_missing",t:"Missing letters",learn:L.spell,gen:F.missing(SP)}]},
+ {n:"Thinking",e:"🧠",items:[
+  {id:"t_puz",t:"Puzzles and real-life questions",learn:L.think,gen:F.bank(PUZ)},
+  {id:"t_maths",t:"Family maths stories",learn:L.maths,gen:maths},
+  {id:"t_odd",t:"Odd one out",learn:L.odd,gen:odd},
+  {id:"t_ana",t:"Word links (analogies)",learn:L.ana,gen:analogy}]},
+ {n:"Explore and write",e:"✏️",items:[
+  {id:"x_facts",t:"Did you know? Amazing facts",act:"facts"},
+  {id:"x_w1",t:"Writing step 1: Introduce yourself",act:"write",wi:0},
+  {id:"x_w2",t:"Writing step 2: A special person",act:"write",wi:1},
+  {id:"x_w3",t:"Writing step 3: A letter to a pen pal",act:"write",wi:2}]}
+];
+})();
+
 /* ===================== GRADE 3 · UNIT 2 · ANIMALS AROUND THE WORLD (original content; full-length rebuild still to come) ===================== */
 UNITS.push({
 id:"animals", num:2, emoji:"🐘🐪🐙", title:"Animals Around the World", badge:"🏅 Animal Explorer",
@@ -509,356 +947,321 @@ writing:[
 ]
 });
 
+/* ===================== UNIT 2 · SKILL LIST (full rebuild of content still to come) ===================== */
+(function(){
+const u=UNITS.find(x=>x.id==="animals");
+const MIX=(...g)=>()=>R(g)();
+const PL=[
+ ...["camel","bird","frog","lion","tiger","snake","horse","zebra","monkey","donkey","turtle","shark","whale","seal","rabbit","elephant","kangaroo"].map(w=>[w,w+"s","Most words: add -s."]),
+ ...["fox","box","bus","dish","brush","peach","lunch","glass","dress","wish"].map(w=>[w,w+"es","Words ending in -s, -x, -sh, -ch: add -es."]),
+ ...[["puppy","puppies"],["bunny","bunnies"],["baby","babies"],["pony","ponies"],["butterfly","butterflies"],["berry","berries"],["city","cities"],["story","stories"],["fly","flies"]].map(p=>[p[0],p[1],"Consonant + y: change y to -ies."]),
+ ...[["wolf","wolves"],["leaf","leaves"],["calf","calves"],["half","halves"],["shelf","shelves"],["knife","knives"],["loaf","loaves"]].map(p=>[p[0],p[1],"Many words ending in -f or -fe change to -ves."])
+];
+const SPECIAL=[["mouse","mice"],["goose","geese"],["sheep","sheep"],["deer","deer"],["fish","fish"],["child","children"],["foot","feet"],["tooth","teeth"],["man","men"],["woman","women"],["ox","oxen"]];
+const wrongPlurals=(w,c)=>uniq([w+"s",w+"es",w.replace(/y$/,"ies"),w.replace(/fe?$/,"ves"),w]).filter(x=>x!==c).slice(0,2);
+const plural=list=>()=>{const p=R(list);const why=(p[2]||"This is a special word. Learn it by heart.")+` One ${p[0]}, two <b>${p[1]}</b>.`;
+  return Math.random()<.5?{type:"type",q:`One ${p[0]}, two ___.`,a:[p[1]],why,hint:p[2]||"It is a special word."}
+   :mcQ(`One ${p[0]}, many ___.`,p[1],wrongPlurals(p[0],p[1]),why,p[2]||"It is a special word.")};
+const special=()=>plural(SPECIAL.map(p=>[p[0],p[1],null]))();
+
+const REG=[["walk","walked"],["jump","jumped"],["play","played"],["laugh","laughed"],["help","helped"],["kick","kicked"],["climb","climbed"],["look","looked"],["open","opened"],["cook","cooked"],["watch","watched"],["clean","cleaned"],["smile","smiled"],["wave","waved"],["dance","danced"],["bake","baked"],["live","lived"],["hop","hopped"],["stop","stopped"],["clap","clapped"],["hug","hugged"],["cry","cried"],["carry","carried"],["try","tried"]];
+const IRR=[["fly","flew"],["see","saw"],["swim","swam"],["eat","ate"],["run","ran"],["go","went"],["come","came"],["sing","sang"],["drink","drank"],["give","gave"],["take","took"],["sleep","slept"],["find","found"],["catch","caught"],["make","made"],["sit","sat"],["write","wrote"],["get","got"],["have","had"],["tell","told"],["meet","met"],["ride","rode"]];
+const SUBJ=["the elephants","the birds","we","they","the kangaroos","the monkeys","I","the penguins"];
+const past=(list,rule)=>()=>{const v=R(list),s=R(SUBJ);const S=s==="I"?"I":cap(s);
+  const why=`${v[0]} → <b>${v[1]}</b>. ${rule(v)}`;
+  if(Math.random()<.5)return {type:"type",q:`Today ${s} ${v[0]}. Yesterday ${s} ___.`,a:[v[1]],why,hint:rule(v)};
+  return mcQ(`Yesterday ${s} ___.<br><span style="color:var(--muted);font-size:16px">(${v[0]})</span>`,v[1],uniq([v[0],v[0]+"ed",v[0].replace(/e$/,"")+"ed"]).filter(x=>x!==v[1]).slice(0,2),why,rule(v))};
+const regRule=v=>/ied$/.test(v[1])?"Consonant + y: change y to i and add -ed.":/(.)\1ed$/.test(v[1])?"Short word ending consonant-vowel-consonant: double the last letter and add -ed.":/e$/.test(v[0])?"Ends in e: just add -d.":"Most verbs: add -ed.";
+const irrRule=()=>"This is a special (irregular) verb. Learn it by heart.";
+const HOME=[["camel","desert"],["lizard","desert"],["scorpion","desert"],["polar bear","Arctic"],["seal","Arctic"],["Arctic fox","Arctic"],["octopus","ocean"],["whale","ocean"],["shark","ocean"],["lion","grassland"],["zebra","grassland"],["elephant","grassland"],["monkey","rainforest"],["sloth","rainforest"],["toucan","rainforest"],["frog","pond"],["duck","pond"]];
+const home=()=>{const h=R(HOME);return mcQ(`Which habitat is home to the <b>${h[0]}</b>?`,h[1],SAMPLE(uniq(HOME.map(x=>x[1])).filter(x=>x!==h[1]),3),`The ${h[0]} lives in the <b>${h[1]}</b>.`,"Think: hot or cold? Wet or dry? Land or water?")};
+const PUZ=u.think.map(t=>({q:t.q,o:t.o,a:t.a[0],why:t.why}));
+const OLD=u.grammar.flatMap(g=>g.tries);
+const mixed=()=>{const t=Object.assign({},R(OLD));if(t.o)t.o=shuffle(t.o.slice());return t};
+u.cats=[
+ {n:"Reading",e:"📖",items:[{id:"r_story1",t:"Story: Pip's Trip Around the World",act:"story",si:0},{id:"r_poem",t:"Poem: Around the World with Pip",act:"poem"}]},
+ {n:"Vocabulary",e:"🔤",items:[
+  {id:"v_words",t:"Animal words",learn:"Say each word aloud and think of the animal it goes with.",gen:MIX(F.word(u.words),F.meaning(u.words))},
+  {id:"v_fill",t:"Use the right word in a sentence",learn:"Read the whole sentence, then choose the word that makes sense.",gen:F.fill(u.words)},
+  {id:"v_home",t:"Animal homes (habitats)",learn:"A <b>habitat</b> is the natural home of an animal: desert, Arctic, ocean, grassland, rainforest or pond.",gen:home}]},
+ {n:"Grammar",e:"🧩",items:[
+  {id:"g_plural",t:"Plurals: -s, -es, -ies, -ves",learn:"Most words add <b>-s</b>. Words ending in s, x, sh, ch add <b>-es</b>. Consonant + y → <b>-ies</b>. Many words ending in f → <b>-ves</b>.",gen:plural(PL)},
+  {id:"g_special",t:"Special plurals",learn:"Some words change in their own way: mouse → mice, tooth → teeth, child → children. Some don't change: sheep, deer, fish.",gen:special},
+  {id:"g_pastreg",t:"Past tense: regular verbs",learn:"Most verbs add <b>-ed</b> (walked). Ending in e: add <b>-d</b> (smiled). Short words like hop: double the last letter (hopped). Consonant + y: <b>-ied</b> (cried).",gen:past(REG,regRule)},
+  {id:"g_pastirr",t:"Past tense: special verbs",learn:"Special verbs change in their own way: go → went, see → saw, fly → flew, eat → ate.",gen:past(IRR,irrRule)},
+  {id:"g_mixed",t:"Mixed grammar review",learn:"Use all the rules you have learned.",gen:mixed}]},
+ {n:"Spelling",e:"🎧",items:[
+  {id:"s_listen",t:"Animal words: listen and write",learn:"Use <b>Look → Say → Cover → Write → Check</b>.",gen:F.listen(u.spelling)},
+  {id:"s_missing",t:"Missing letters",learn:"Say the word slowly and listen for every sound.",gen:F.missing(u.spelling)}]},
+ {n:"Thinking",e:"🧠",items:[{id:"t_puz",t:"Animal puzzles",learn:"Read the question twice and think about what you know.",gen:F.bank(PUZ)}]},
+ {n:"Explore and write",e:"✏️",items:[{id:"x_facts",t:"Did you know? Amazing animal facts",act:"facts"},{id:"x_w1",t:"Writing: Imagine you are an animal",act:"write",wi:0}]}
+];
+})();
+
 /* ================= SETTINGS ================= */
 const SITE_NAME = "Sprout English";   // placeholder name — change this one line later
-
 const COMING=[["🌱","How Plants Grow"],["🌦️","Weather and Seasons"],["🚀","Space and the Planets"],["🌊","Life in the Ocean"],["⏰","Time, Shapes and Money"],["💡","Amazing Inventions"],["🤝","Friends and Feelings"],["🗺️","Countries and Cultures"],["🍎","My Healthy Body"],["📚","Stories and Fables"]];
 
-const PARTS=[
- {k:"read",e:"📖",t:"1. Read",d:"Stories and a poem"},
- {k:"words",e:"🔤",t:"2. New words",d:"Word sets with meanings"},
- {k:"grammar",e:"🧩",t:"3. Grammar",d:"Mini-lessons, easy to hard"},
- {k:"spelling",e:"🎧",t:"4. Spelling",d:"Listen and write"},
- {k:"think",e:"🧠",t:"5. Think",d:"Puzzles, riddles, real life"},
- {k:"facts",e:"💡",t:"6. Did you know?",d:"Guess: true or false?"},
- {k:"write",e:"✏️",t:"7. Write",d:"Sentences → paragraph → letter"},
- {k:"review",e:"🔁",t:"8. Review",d:"Practice so you never forget"}
-];
-
 /* ================= SAVED PROGRESS (this browser only) ================= */
-const KEY="sprout_v4";
+const KEY="sprout_v5";
 let S;
 try{S=JSON.parse(localStorage.getItem(KEY))}catch(e){}
 if(!S||!S.u)S={u:{}};
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
 let U=UNITS[0];
-function st(){const s=S.u[U.id]||(S.u[U.id]={});["parts","cards","read","sets","gram","write"].forEach(k=>{if(!s[k])s[k]={}});return s}
+function st(id){const k=id||U.id;const s=S.u[k]||(S.u[k]={});["sc","n","act","rv","read","write"].forEach(x=>{if(!s[x])s[x]={}});return s}
 function resetUnit(){if(confirm("Reset all progress for this unit?")){delete S.u[U.id];save();openUnit(U.id)}}
-function markDone(k){st().parts[k]=true;save()}
 
 /* ================= HELPERS ================= */
 const $=id=>document.getElementById(id);
 const body=()=>$("pbody");
 const norm=s=>s.toLowerCase().trim().replace(/[.!?]+$/,"").replace(/\s+/g," ");
-function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function go(v){["home","grade","unit","part"].forEach(x=>$("v-"+x).classList.toggle("hidden",x!==v));window.scrollTo(0,0);try{speechSynthesis.cancel()}catch(e){}}
-function say(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t.replace(/<[^>]+>/g,"").replace(/_{3}/g,"blank"));u.lang="en-US";u.rate=0.9;speechSynthesis.speak(u)}catch(e){}}
+function say(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(String(t).replace(/<[^>]+>/g," ").replace(/_{3}/g,"blank").replace(/(_ )+_?/g,""));u.lang="en-US";u.rate=0.9;speechSynthesis.speak(u)}catch(e){}}
 let toastT;
 function toast(html){const t=$("toast");t.innerHTML=html;t.classList.remove("hidden");clearTimeout(toastT);toastT=setTimeout(()=>t.classList.add("hidden"),4500)}
-function cap(w){return w.charAt(0).toUpperCase()+w.slice(1)}
 function pick(a){return a[Math.floor(Math.random()*a.length)]}
 function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
-function chunk(a,n){const o=[];for(let i=0;i<a.length;i+=n)o.push(a.slice(i,i+n));return o}
-function doneScreen(e,title,msg,back){
-  body().innerHTML=`<div style="text-align:center"><div class="big">${e}</div><h2 style="margin-top:0">${title}</h2><p class="sub">${msg}</p>
-  <p style="margin-top:20px">${back?`<button class="btn ghost" onclick="${back[1]}">${back[0]}</button> `:""}<button class="btn" onclick="openUnit(U.id)">Back to the journey →</button></p></div>`;
-}
 function sentenceCount(v){return (v.match(/[a-z][^.!?]*[.!?]/gi)||[]).length}
 function vocabUsed(v){return U.words.filter(w=>new RegExp("\\b"+w.w,"i").test(v)).length}
+function allItems(u){return (u||U).cats.flatMap(c=>c.items)}
+function code(ci,ii){return String.fromCharCode(65+ci)+"."+(ii+1)}
+function findItem(id){let r;U.cats.forEach((c,ci)=>c.items.forEach((it,ii)=>{if(it.id===id)r={it,c,ci,ii}}));return r}
+function isMastered(it,uid){const s=st(uid);return it.act?!!s.act[it.id]:(s.sc[it.id]||0)>=100}
+function unitStats(u){const items=allItems(u);return {done:items.filter(it=>isMastered(it,u.id)).length,total:items.length}}
 
-/* ================= FSRS (v4.5 default weights) ================= */
+/* ================= FSRS (v4.5 default weights) — used for daily review ================= */
 const W=[0.4872,1.4003,3.7145,13.8206,5.1618,1.2298,0.8975,0.031,1.6474,0.1367,1.0461,2.1072,0.0793,0.3246,1.587,0.2272,2.8755];
 const DAY=86400000,FACTOR=19/81,DECAY=-0.5;
 const clampD=d=>Math.min(10,Math.max(1,d));
-function fsrs(c,g,now){ // g: 1 = wrong, 3 = right
+function fsrs(c,g,now){
   if(!c.s){c.s=W[g-1];c.d=clampD(W[4]-(g-3)*W[5])}
-  else{
-    const r=Math.pow(1+FACTOR*Math.max(0,(now-c.last)/DAY)/c.s,DECAY);
+  else{const r=Math.pow(1+FACTOR*Math.max(0,(now-c.last)/DAY)/c.s,DECAY);
     if(g===1)c.s=W[11]*Math.pow(c.d,-W[12])*(Math.pow(c.s+1,W[13])-1)*Math.exp(W[14]*(1-r));
     else c.s=c.s*(1+Math.exp(W[8])*(11-c.d)*Math.pow(c.s,-W[9])*(Math.exp(W[10]*(1-r))-1));
-    c.d=clampD(W[7]*W[4]+(1-W[7])*(c.d-W[6]*(g-3)));
-  }
+    c.d=clampD(W[7]*W[4]+(1-W[7])*(c.d-W[6]*(g-3)));}
   c.last=now;c.due=g===1?now:now+Math.max(1,Math.round(c.s))*DAY;
-  c.streak=g===1?0:(c.streak||0)+1;
 }
 
-/* ================= QUESTION RUNNER (used by every part) ================= */
+/* ================= ONE QUESTION: show, check, give feedback ================= */
 function writeChecks(it,v){return it.checks.map(c=>[new RegExp(c[0]).test(v),c[1]])}
 function isRight(it,val){
   if(it.type==="write")return writeChecks(it,val).every(c=>c[0]);
   if(it.strict){const v=val.trim().replace(/\s+/g," ");return it.a.includes(v)}
   return it.a.map(norm).includes(norm(val));
 }
-function runQuestions(list,opt){
-  const q=list.slice();let i=0,first=0,seen=new Set(),retries={},answered=false,answeredAt=0;
-  function show(){
-    answered=false;const it=q[i];
-    body().innerHTML=`<div class="bar"><div style="width:${i/q.length*100}%"></div></div>
-      <div class="row"><span class="pill">Question ${i+1} of ${q.length}</span>
-      <button class="btn ghost small" id="sayQ">🔊 Listen</button></div>
-      <div class="q">${it.q}</div><div id="qa"></div>
-      ${opt.hints&&it.hint?`<button class="link" id="hintBtn" style="margin-top:10px">💡 Need a hint?</button><div id="hint"></div>`:""}
-      <div id="fb"></div><div id="nx" class="row" style="margin-top:14px;justify-content:flex-start"></div>`;
-    $("sayQ").onclick=()=>say(it.say||it.q);
-    if(it.autoSay)setTimeout(()=>say(it.say||it.q),300);
-    if(opt.hints&&it.hint)$("hintBtn").onclick=()=>{$("hint").innerHTML=`<div class="hintbox">💡 ${it.hint}</div>`;$("hintBtn").remove()};
-    const qa=$("qa");
-    if(it.type==="type"||it.type==="write"){
-      const inp=document.createElement(it.type==="write"?"textarea":"input");
-      inp.className=it.type==="write"?"":"ans";inp.placeholder=it.type==="write"?"Write your sentence here…":"Type your answer";
-      if(it.type==="write")inp.style.minHeight="90px";
-      inp.autocomplete="off";inp.setAttribute("autocapitalize","off");inp.setAttribute("spellcheck","false");
-      if(it.type==="type")inp.onkeydown=e=>{if(e.key==="Enter"&&inp.value.trim()){e.preventDefault();check(inp.value)}};
-      const b=document.createElement("button");b.className="btn";b.textContent="Check";b.style.marginTop="8px";b.onclick=()=>{if(inp.value.trim())check(inp.value)};
-      qa.append(inp,b);inp.focus();
-    }else{
-      const box=document.createElement("div");box.className="opts";
-      shuffle(it.o.slice()).forEach(o=>{const b=document.createElement("button");b.className="opt";b.textContent=o;b.onclick=()=>check(o,b);box.appendChild(b)});
-      qa.appendChild(box);
-    }
-  }
+function askQ(area,it,onAnswer){
+  let answered=false;
+  area.innerHTML=`<div class="row" style="justify-content:flex-end"><button class="btn ghost small" data-say>🔊 Listen</button></div>
+    <div class="q">${it.q}</div><div data-qa></div>
+    ${it.hint?`<button class="link" data-hint style="margin-top:10px">💡 Need a hint?</button><div data-hintbox></div>`:""}
+    <div data-fb></div><div data-nx class="row" style="margin-top:14px;justify-content:flex-start"></div>`;
+  const qa=area.querySelector("[data-qa]"),fb=area.querySelector("[data-fb]"),nx=area.querySelector("[data-nx]");
+  area.querySelector("[data-say]").onclick=()=>say(it.say||it.q);
+  if(it.autoSay)setTimeout(()=>say(it.say||it.q),250);
+  const hb=area.querySelector("[data-hint]");if(hb)hb.onclick=()=>{area.querySelector("[data-hintbox]").innerHTML=`<div class="hintbox">💡 ${it.hint}</div>`;hb.remove()};
   function check(val,btn){
-    if(answered)return;answered=true;answeredAt=Date.now();
-    const it=q[i];const ok=isRight(it,val);
-    if(opt.onAnswer)opt.onAnswer(it,ok);
-    const key=it.id||it.q;
-    if(!seen.has(key)){seen.add(key);if(ok)first++}
-    $("qa").querySelectorAll("button,input,textarea").forEach(el=>el.disabled=true);
-    if(it.type==="mc"||!it.type)$("qa").querySelectorAll(".opt").forEach(b=>{if(it.a.includes(b.textContent))b.classList.add("right");else if(b===btn)b.classList.add("wrong")});
-    if($("hintBtn"))$("hintBtn").remove();
-    let msg;
+    if(answered)return;answered=true;
+    const ok=isRight(it,val);
+    qa.querySelectorAll("button,input,textarea").forEach(el=>el.disabled=true);
+    if(it.type==="mc")qa.querySelectorAll(".opt").forEach(b=>{if(it.a.includes(b.dataset.v))b.classList.add("right");else if(b===btn)b.classList.add("wrong")});
+    const h=area.querySelector("[data-hint]");if(h)h.remove();
     if(it.type==="write"){
       const list=writeChecks(it,val).map(c=>`${c[0]?"✅":"❌"} ${c[1]}`).join("<br>");
-      msg=`<div class="fb ${ok?"ok":"no"}"><b>${ok?"Well written! ✏️⭐":"Almost! Check the list and try again."}</b><br>${list}<br><br>Example: <i>${esc(it.model)}</i></div>`;
-    }else{
-      msg=`<div class="fb ${ok?"ok":"no"}"><b>${ok?pick(["Correct! 🎉","Great job! ⭐","Yes! 👏","Well done! 🌱"]):"Not quite. The answer is: "+esc(it.a[0])}</b><br>${it.why||""}</div>`;
-    }
-    $("fb").innerHTML=msg;
-    if(!ok&&it.type!=="write"&&(retries[key]||0)<2){retries[key]=(retries[key]||0)+1;q.splice(Math.min(i+3,q.length),0,it)}
-    if(!ok&&it.type==="write"){const tb=document.createElement("button");tb.className="btn ghost";tb.textContent="Try again";tb.onclick=()=>show();$("nx").appendChild(tb)}
-    const nb=document.createElement("button");nb.className="btn";nb.textContent=i+1<q.length?"Next →":"Finish ✓";
-    nb.onclick=()=>{if(Date.now()-answeredAt<250)return;i++;if(i>=q.length)opt.onDone(first,seen.size);else show()};
-    $("nx").appendChild(nb);setTimeout(()=>nb.focus(),50);
+      fb.innerHTML=`<div class="fb ${ok?"ok":"no"}"><b>${ok?"Well written! ✏️⭐":"Almost! Look at the list."}</b><br>${list}<br><br>Example: <i>${esc(it.model)}</i></div>`;
+    }else fb.innerHTML=`<div class="fb ${ok?"ok":"no"}"><b>${ok?pick(["Correct! 🎉","Great job! ⭐","Yes! 👏","Well done! 🌱","Excellent! 🌟"]):"Not quite. The correct answer is: "+esc(it.a[0])}</b><br>${it.why||""}</div>`;
+    onAnswer(ok,nx);
   }
-  show();
+  if(it.type==="type"||it.type==="write"){
+    const inp=document.createElement(it.type==="write"?"textarea":"input");
+    if(it.type==="type")inp.className="ans";else inp.style.minHeight="90px";
+    inp.placeholder=it.type==="write"?"Write here…":"Type your answer";
+    inp.autocomplete="off";inp.setAttribute("autocapitalize","off");inp.setAttribute("spellcheck","false");
+    if(it.type==="type")inp.onkeydown=e=>{if(e.key==="Enter"&&inp.value.trim()){e.preventDefault();check(inp.value)}};
+    const b=document.createElement("button");b.className="btn";b.textContent="Check";b.style.marginTop="8px";b.onclick=()=>{if(inp.value.trim())check(inp.value)};
+    qa.append(inp,b);setTimeout(()=>inp.focus(),30);
+  }else{
+    const box=document.createElement("div");box.className="opts";
+    it.o.forEach(o=>{const b=document.createElement("button");b.className="opt";b.textContent=o;b.dataset.v=o;b.onclick=()=>check(o,b);box.appendChild(b)});
+    qa.appendChild(box);
+  }
+}
+function nextBtn(nx,label,fn){const b=document.createElement("button");b.className="btn";b.textContent=label;const t=Date.now();b.onclick=()=>{if(Date.now()-t>250)fn()};nx.appendChild(b);setTimeout(()=>b.focus(),60);return b}
+
+/* ================= SKILL PRACTICE with a 0–100 mastery score ================= */
+function gain(s){return s<30?8:s<60?6:s<80?4:s<90?3:2}
+function loss(s){return s<30?3:s<60?5:s<80?7:s<90?9:12}
+const recent=[];
+const qkey=q=>q.q+"|"+(q.o||[]).slice().sort().join("|")+"|"+q.a[0];
+function newQ(it){let q;for(let k=0;k<25;k++){q=it.gen();if(!recent.includes(qkey(q)))break}recent.push(qkey(q));if(recent.length>12)recent.shift();return q}
+function practice(id){
+  const f=findItem(id);if(!f)return;const it=f.it;
+  if(it.act)return openActivity(it);
+  $("partTag").textContent=f.c.n;go("part");
+  body().innerHTML=`<div class="row"><div><span class="pill">${code(f.ci,f.ii)}</span> <b style="font-size:18px">${it.t}</b></div>
+     <div class="scorebox"><div class="sclabel">Mastery</div><div class="scnum" id="scNum">0</div></div></div>
+    <div class="bar" style="height:12px"><div id="scBar"></div></div>
+    <div class="row" style="font-size:13px;color:var(--muted)"><span id="scInfo"></span><button class="link" id="learnBtn">📘 Learn how</button></div>
+    <div id="learnBox"></div><div id="qArea" style="margin-top:6px"></div>`;
+  $("learnBtn").onclick=()=>{const b=$("learnBox");b.innerHTML=b.innerHTML?"":`<div class="rule">${it.learn||""}</div>`};
+  const s=st();
+  function paint(){const sc=s.sc[id]||0;$("scNum").textContent=sc;$("scBar").style.width=sc+"%";
+    $("scInfo").textContent=`${s.n[id]||0} questions answered`+(sc>=90&&sc<100?" · 🔥 Challenge zone: keep going!":"")}
+  function ask(){paint();
+    if((s.sc[id]||0)>=100&&!s._keep){return mastered()}
+    askQ($("qArea"),newQ(it),(ok,nx)=>{
+      const before=s.sc[id]||0;
+      s.sc[id]=Math.max(0,Math.min(100,before+(ok?gain(before):-loss(before))));
+      s.n[id]=(s.n[id]||0)+1;
+      if(before<100&&s.sc[id]>=100){if(!s.rv[id])s.rv[id]={};fsrs(s.rv[id],3,Date.now())}
+      save();paint();
+      nextBtn(nx,s.sc[id]>=100&&before<100?"Finish ⭐":"Next question →",ask);
+    });
+  }
+  function mastered(){
+    body().innerHTML=`<div style="text-align:center"><div class="big">🏆</div><h2 style="margin-top:0">Mastered!</h2>
+     <p class="sub">You reached 100 in <b>${it.t}</b> after ${s.n[id]} questions.<br>This skill will come back in your Daily Review so you never forget it.</p>
+     <p style="margin-top:20px"><button class="btn ghost" id="keepGo">Keep practising</button> <button class="btn" onclick="openUnit(U.id)">Back to the unit →</button></p></div>`;
+    $("keepGo").onclick=()=>{practice2(id)};
+  }
+  s._keep=false;ask();
+}
+function practice2(id){ // extra practice after mastery (score stays 100)
+  const f=findItem(id),it=f.it;
+  body().innerHTML=`<div class="row"><div><span class="pill">${code(f.ci,f.ii)}</span> <b style="font-size:18px">${it.t}</b></div><span class="pill">Mastered ⭐ · extra practice</span></div><div id="qArea" style="margin-top:10px"></div>`;
+  const loop=()=>askQ($("qArea"),newQ(it),(ok,nx)=>nextBtn(nx,"Next question →",loop));loop();
 }
 
-/* ================= HOME / GRADE / UNIT ================= */
+/* ================= DAILY REVIEW (spaced repetition on mastered skills) ================= */
+function dueSkills(){const s=st(),now=Date.now();return allItems().filter(it=>it.gen&&s.rv[it.id]&&s.rv[it.id].due<=now)}
+function reviewStart(){
+  $("partTag").textContent="Daily review";go("part");
+  const due=shuffle(dueSkills()).slice(0,8);
+  if(!due.length){
+    const s=st(),weak=allItems().filter(it=>it.gen&&(s.sc[it.id]||0)>0&&(s.sc[it.id]||0)<100).sort((a,b)=>(s.sc[a.id]||0)-(s.sc[b.id]||0));
+    body().innerHTML=`<div style="text-align:center"><div class="big">🌙</div><h2 style="margin-top:0">Nothing to review today</h2>
+     <p class="sub">Skills you master come back here on the right day, so you don't forget them.</p>
+     ${weak.length?`<p style="margin-top:16px">Your weakest skill right now: <b>${weak[0].t}</b> (${s.sc[weak[0].id]})</p><p><button class="btn" onclick="practice('${weak[0].id}')">Practise it →</button></p>`:""}
+     <p><button class="btn ghost" onclick="openUnit(U.id)">Back to the unit</button></p></div>`;return;
+  }
+  const queue=shuffle(due.flatMap(it=>[it,it])),res={};let i=0;
+  body().innerHTML=`<div class="bar"><div id="rvBar"></div></div><div class="row"><span class="pill" id="rvInfo"></span><span class="pill" id="rvSkill"></span></div><div id="qArea"></div>`;
+  const step=()=>{
+    if(i>=queue.length)return finish();
+    const it=queue[i];$("rvBar").style.width=(i/queue.length*100)+"%";$("rvInfo").textContent=`Question ${i+1} of ${queue.length}`;$("rvSkill").textContent=it.t;
+    askQ($("qArea"),newQ(it),(ok,nx)=>{(res[it.id]=res[it.id]||[]).push(ok);i++;nextBtn(nx,i<queue.length?"Next →":"Finish ✓",step)});
+  };
+  const finish=()=>{const s=st(),now=Date.now();let kept=0,slip=[];
+    due.forEach(it=>{const r=res[it.id]||[];const pass=r.filter(Boolean).length>=r.length-0&&r.every(Boolean);
+      fsrs(s.rv[it.id],pass?3:1,now);if(pass)kept++;else{s.sc[it.id]=Math.min(s.sc[it.id]||0,85);slip.push(it)}});save();
+    body().innerHTML=`<div style="text-align:center"><div class="big">🔁</div><h2 style="margin-top:0">Review done!</h2>
+     <p class="sub">${kept} of ${due.length} skills still strong.${slip.length?"<br>These need a little more practice: <b>"+slip.map(x=>x.t).join(", ")+"</b>":""}</p>
+     <p style="margin-top:18px">${slip.length?`<button class="btn ghost" onclick="practice('${slip[0].id}')">Practise ${esc(slip[0].t)}</button> `:""}<button class="btn" onclick="openUnit(U.id)">Back to the unit →</button></p></div>`};
+  step();
+}
+
+/* ================= HOME / GRADE / UNIT PAGES ================= */
 $("siteName").textContent=SITE_NAME;$("footName").textContent=SITE_NAME;document.title=SITE_NAME;
-$("gradeGrid").innerHTML=[...Array(12)].map((_,i)=>"Grade "+(i+1)).concat(["College"]).map((g,i)=>{
-  const open=i===2;
-  return `<div class="card ${open?"click":"locked"}" ${open?'onclick="openGrade()"':""}>
-    <span class="pill">${open?"Open":"Coming soon"}</span><h3>${g}</h3>
-    <p>${open?"Family, animals, plants, space and more":"In progress"}</p></div>`}).join("");
-
-function partsDone(id){const s=S.u[id];return s&&s.parts?PARTS.filter(p=>s.parts[p.k]).length:0}
+$("gradeGrid").innerHTML=[...Array(12)].map((_,i)=>"Grade "+(i+1)).concat(["College"]).map((g,i)=>{const open=i===2;
+  return `<div class="card ${open?"click":"locked"}" ${open?'onclick="openGrade()"':""}><span class="pill">${open?"Open":"Coming soon"}</span><h3>${g}</h3><p>${open?"Family, animals, plants, space and more":"In progress"}</p></div>`}).join("");
 function openGrade(){
-  const built=UNITS.map(u=>{const n=partsDone(u.id);
+  const built=UNITS.map(u=>{const x=unitStats(u);
     return `<div class="card click" onclick="openUnit('${u.id}')"><div class="em">${u.emoji}</div>
-      <span class="pill">Unit ${u.num} · ${n===PARTS.length?"Complete ✓":n?"⭐ "+n+"/"+PARTS.length:"Open"}</span><h3>${u.title}</h3></div>`});
+      <span class="pill">Unit ${u.num} · ${x.done===x.total?"Complete ✓":x.done+"/"+x.total+" skills"}</span><h3>${u.title}</h3></div>`});
   const soon=COMING.map((c,i)=>`<div class="card locked"><div class="em">${c[0]}</div><span class="pill">Unit ${UNITS.length+i+1} · Coming soon</span><h3>${c[1]}</h3></div>`);
-  $("unitGrid").innerHTML=built.concat(soon).join("");
-  go("grade");
-}
-function partDesc(k){
-  const ns=U.stories.length,nw=U.words.length,ng=U.grammar.length,nt=U.grammar.reduce((a,g)=>a+g.tries.length,0);
-  return {read:`${ns} ${ns>1?"stories":"story"} and a poem`,words:`${nw} words in ${Math.ceil(nw/10)} ${nw>10?"sets":"set"}`,grammar:`${ng} lessons · ${nt} practice questions`,
-    spelling:`${U.spelling.length} words: listen and write`,think:`${U.think.length} puzzles and real-life questions`,facts:`${U.facts.length} amazing facts`,
-    write:U.writing.length>1?U.writing.map(w=>w.level.split("· ")[1]).join(" → "):"Write your own ideas",review:"Practice so you never forget"}[k];
+  $("unitGrid").innerHTML=built.concat(soon).join("");go("grade");
 }
 function openUnit(id){
   U=UNITS.find(u=>u.id===id)||UNITS[0];
-  const s=st(),n=PARTS.filter(p=>s.parts[p.k]).length;
+  const s=st(),x=unitStats(U),due=dueSkills().length;
   $("unitEmoji").textContent=U.emoji;$("unitNum").textContent="Unit "+U.num;$("unitTitle").textContent=U.title;
-  $("unitStars").textContent=`⭐ ${n} of ${PARTS.length} parts complete`;
-  $("unitBadge").innerHTML=n===PARTS.length?`<div class="badge">${U.badge} badge earned!</div>`:"";
-  $("partGrid").innerHTML=PARTS.map(p=>{
-    const locked=p.k==="review"&&!(s.parts.words&&s.parts.grammar);
-    return `<div class="card ${locked?"locked":"click"}" ${locked?"":`onclick="openPart('${p.k}')"`}>
-      <div class="em">${p.e}</div><span class="pill">${s.parts[p.k]?"Done ⭐":locked?"🔒 After parts 2 & 3":"Start"}</span>
-      <h3>${p.t}</h3><p>${partDesc(p.k)}</p></div>`}).join("");
+  $("unitStars").textContent=`⭐ ${x.done} of ${x.total} skills mastered`;
+  $("unitBadge").innerHTML=(x.done===x.total?`<div class="badge">${U.badge} badge earned!</div>`:"")+
+    `<p style="margin:14px 0 0"><button class="btn" onclick="reviewStart()">🔁 Daily review${due?" ("+due+" due)":""}</button></p>`;
+  $("partGrid").innerHTML=U.cats.map((c,ci)=>{const m=c.items.filter(it=>isMastered(it)).length;
+    return `<div class="cat"><h3>${c.e} ${String.fromCharCode(65+ci)}. ${c.n} <span class="pill">${m}/${c.items.length}</span></h3>
+     ${c.items.map((it,ii)=>{const sc=s.sc[it.id]||0,done=isMastered(it);
+       const tag=done?"Mastered ⭐":it.act?(it.act==="write"?"Writing":it.act==="facts"?"Explore":"Read"):sc?sc+" / 100":"Start";
+       return `<div class="skill ${done?"done":""}" onclick="practice('${it.id}')"><span class="code">${code(ci,ii)}</span><span class="st">${it.t}</span><span class="pill">${tag}</span></div>`}).join("")}</div>`}).join("");
   go("unit");
 }
-function openPart(k){
-  $("partTag").textContent=PARTS.find(p=>p.k===k).t.replace(/^\d\. /,"");
-  go("part");
-  ({read:readPart,words:wordsPart,grammar:grammarPart,spelling:spellingPart,think:thinkPart,facts:factsPart,write:writePart,review:reviewPart})[k]();
-}
 
-/* ================= 1. READ (stories + poem) ================= */
-function hlOnce(html,w,i){
-  let done=false;const rx=new RegExp("\\b"+w+"(s|es|d|ed)?\\b","i");
-  return html.split(/(<[^>]+>)/).map(seg=>{if(done||seg.startsWith("<"))return seg;
-    return seg.replace(rx,m=>{done=true;return `<button class="vw" onclick="showWord(${i})">${m}</button>`})}).join("");
+/* ================= ACTIVITIES: stories, poem, facts, writing ================= */
+function openActivity(it){$("partTag").textContent=it.t;go("part");
+  if(it.act==="story")storyPage(it.si,0,it.id);else if(it.act==="poem")poemPage(it.id,it.pi);else if(it.act==="facts")factsPart(0,0,it.id);else writeTask(it.wi,it.id)}
+function finishAct(id){st().act[id]=true;save()}
+function doneScreen(e,title,msg){
+  body().innerHTML=`<div style="text-align:center"><div class="big">${e}</div><h2 style="margin-top:0">${title}</h2><p class="sub">${msg}</p>
+  <p style="margin-top:20px"><button class="btn" onclick="openUnit(U.id)">Back to the unit →</button></p></div>`;
 }
+function hlOnce(html,w,i){let done=false;const rx=new RegExp("\\b"+w+"(s|es|d|ed)?\\b","i");
+  return html.split(/(<[^>]+>)/).map(seg=>{if(done||seg.startsWith("<"))return seg;return seg.replace(rx,m=>{done=true;return `<button class="vw" onclick="showWord(${i})">${m}</button>`})}).join("")}
 function highlight(text){let out=text;U.words.forEach((w,i)=>{out=hlOnce(out,w.w,i)});return out}
 function showWord(i){const w=U.words[i];say(w.w+". "+w.m);toast(`${w.e} <b>${w.w}</b>: ${w.m}`)}
 function askMany(container,qs,onAll){
   let left=qs.length;
-  qs.forEach((qq,j)=>{
+  qs.forEach(qq=>{
     const box=document.createElement("div");box.className="qbox";
-    box.innerHTML=`<b>${qq.q}</b> <button class="link" onclick="say(this.previousElementSibling.textContent)">🔊</button><div class="opts" style="margin-top:10px"></div><div></div>`;
-    const opts=box.children[2],fb=box.children[3];
-    shuffle(qq.o.slice()).forEach(o=>{
-      const b=document.createElement("button");b.className="opt";b.textContent=o;
-      b.onclick=()=>{
-        const ok=qq.a.includes(o);
+    box.innerHTML=`${qq.lv?`<span class="lvtag">${qq.lv==="find"?"🔎 Find it":"💭 Think about it"}</span><br>`:""}<b>${qq.q}</b> <button class="link">🔊</button><div class="opts" style="margin-top:10px"></div><div></div>`;
+    const kids=[...box.children].filter(x=>x.tagName!=="BR"&&!x.classList.contains("lvtag"));kids[1].onclick=()=>say(qq.q);
+    const opts=kids[2],fb=kids[3];
+    shuffle(qq.o.slice()).forEach(o=>{const b=document.createElement("button");b.className="opt";b.textContent=o;
+      b.onclick=()=>{const ok=qq.a.includes(o);
         opts.querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(qq.a.includes(x.textContent))x.classList.add("right");else if(x===b)x.classList.add("wrong")});
-        fb.innerHTML=`<div class="fb ${ok?"ok":"no"}"><b>${ok?"Correct! 🎉":"Not quite."}</b> ${qq.why}</div>`;
-        if(--left===0)onAll();
-      };
-      opts.appendChild(b);
-    });
-    container.appendChild(box);
-  });
+        fb.innerHTML=`<div class="fb ${ok?"ok":"no"}"><b>${ok?"Correct! 🎉":"Not quite."}</b> ${qq.why}</div>`;if(--left===0)onAll()};
+      opts.appendChild(b)});
+    container.appendChild(box)});
 }
-function readDone(){const r=st().read;return U.stories.every((_,i)=>r["s"+i])&&r.poem}
-function readPart(){
-  const r=st().read;
-  body().innerHTML=`<h2>Read</h2><p class="sub">Read each one, then answer the questions on every page.</p>
-   <div class="grid">${U.stories.map((s,i)=>`<div class="card click" onclick="storyPage(${i},0)"><div class="em">${s.e}</div>
-     <span class="pill">${r["s"+i]?"Done ⭐":s.kind}</span><h3>${s.title}</h3><p>${s.pages.length} pages</p></div>`).join("")}
-   <div class="card click" onclick="poemPage()"><div class="em">🎵</div><span class="pill">${r.poem?"Done ⭐":"Poem"}</span><h3>${U.poem.title}</h3><p>Read it aloud and find the rhymes</p></div></div>`;
-}
-function storyPage(si,pg){
+function storyPage(si,pg,id){
   const s=U.stories[si],p=s.pages[pg],n=s.pages.length;
-  body().innerHTML=`<button class="link" onclick="readPart()">← All reading</button>
-    <div class="bar"><div style="width:${pg/n*100}%"></div></div>
+  body().innerHTML=`<div class="bar"><div style="width:${pg/n*100}%"></div></div>
     <div class="storypic">${p.pic}</div>
     <div class="row"><span class="pill">${s.title} · Page ${pg+1} of ${n}</span><button class="btn ghost small" onclick="say(U.stories[${si}].pages[${pg}].text)">🔊 Read to me</button></div>
-    <p class="story">${highlight(p.text)}</p>
+    <div class="story">${highlight(p.text)}</div>
     <p style="color:var(--muted);font-size:13px;margin:0">Tip: tap a <span class="vw">green word</span> to hear it and learn what it means.</p>
     <div id="qs"></div><div id="snext" style="margin-top:14px"></div>`;
-  askMany($("qs"),p.qs,()=>{
-    const nb=document.createElement("button");nb.className="btn";nb.textContent=pg+1<n?"Next page →":"Finish ✓";
-    nb.onclick=()=>{if(pg+1<n)storyPage(si,pg+1);else{st().read["s"+si]=true;save();if(readDone())markDone("read");
-      doneScreen(s.e,"Well read!",`You finished "${s.title}".`+(readDone()?" All the reading is done!":" Go back and read the next one."),["← More reading","readPart()"])}};
-    $("snext").appendChild(nb);
-  });
+  askMany($("qs"),p.qs,()=>nextBtn($("snext"),pg+1<n?"Next page →":s.turn?"Your turn ✍️ →":"Finish ✓",()=>{if(pg+1<n)storyPage(si,pg+1,id);else if(s.turn)turnPage(si,id);else storyDone(s,id)}));
 }
-function poemPage(){
-  const p=U.poem;
-  body().innerHTML=`<button class="link" onclick="readPart()">← All reading</button>
-    <div class="row" style="margin-top:10px"><span class="pill">Poem</span><button class="btn ghost small" onclick="say(U.poem.lines.join(' '))">🔊 Read the poem</button></div>
-    <h2 style="margin-top:14px">${p.title}</h2>
-    <div class="poem">${p.lines.join("<br>")}</div>
-    <p class="sub">Now read it aloud yourself. Can you hear the rhymes?</p>
-    <div id="qs"></div><div id="snext" style="margin-top:14px"></div>`;
-  askMany($("qs"),p.qs,()=>{
-    const nb=document.createElement("button");nb.className="btn";nb.textContent="Finish ✓";
-    nb.onclick=()=>{st().read.poem=true;save();if(readDone())markDone("read");
-      doneScreen("🎵","Poem complete!",readDone()?"All the reading is done!":"Go back and finish the stories too.",["← More reading","readPart()"])};
-    $("snext").appendChild(nb);
-  });
+function storyDone(s,id){finishAct(id);doneScreen(s.e,"Well read!",`You finished "${s.title}". Now try the other reading skills in this unit.`)}
+function turnPage(si,id){
+  const s=U.stories[si];
+  body().innerHTML=`<div class="storypic">✍️</div><span class="lvtag">✍️ Your turn</span><div id="qArea"></div>`;
+  askQ($("qArea"),{type:"write",q:s.turn.q,checks:[CHK.cap,CHK.end,CHK.w4,CHK.I],model:s.turn.model},(ok,nx)=>{
+    if(ok)nextBtn(nx,"Finish ✓",()=>storyDone(s,id));else nextBtn(nx,"Try again",()=>turnPage(si,id));});
 }
-
-/* ================= 2. WORDS (sets of 10) ================= */
-function sets(){return chunk(U.words.map((w,i)=>Object.assign({i},w)),10)}
-function wordsPart(){
-  const s=st().sets;
-  body().innerHTML=`<h2>New words</h2><p class="sub">Learn one set at a time. Each set unlocks the next.</p>
-   <div class="grid">${sets().map((set,si)=>{const open=si===0||s[si-1];
-     return `<div class="card ${open?"click":"locked"}" ${open?`onclick="wordCard(${si},0)"`:""}><div class="em">${set[0].e}</div>
-     <span class="pill">${s[si]?"Done ⭐":open?"Set "+(si+1):"🔒 Set "+(si+1)}</span><h3>${(U.setNames||[])[si]||"Set "+(si+1)}</h3><p>${set.map(w=>w.w).join(", ")}</p></div>`}).join("")}</div>`;
+function poemPage(id,pi){
+  pi=pi||0;const p=(U.poems||[U.poem])[pi];
+  body().innerHTML=`<div class="row"><span class="pill">Poem</span><button class="btn ghost small" onclick="say((U.poems||[U.poem])[${pi}].lines.join(' '))">🔊 Read the poem</button></div>
+    <h2 style="margin-top:14px">${p.title}</h2><div class="poem">${p.lines.join("<br>")}</div>
+    <p class="sub">Now read it aloud yourself. Can you hear the rhymes?</p><div id="qs"></div><div id="snext" style="margin-top:14px"></div>`;
+  askMany($("qs"),p.qs,()=>nextBtn($("snext"),"Finish ✓",()=>{finishAct(id);doneScreen("🎵","Poem complete!","Try reading it aloud to someone at home.")}));
 }
-function wordCard(si,wi){
-  const set=sets()[si],w=set[wi],n=set.length;
-  body().innerHTML=`<button class="link" onclick="wordsPart()">← All word sets</button>
-    <div class="bar"><div style="width:${wi/n*100}%"></div></div>
-    <div class="flash"><div class="em">${w.e}</div><div class="word">${cap(w.w)}</div>
-      <button class="btn ghost small" onclick="say(U.words[${w.i}].w)">🔊 Say it</button>
-      <div id="meanBox"><p style="margin-top:16px"><button class="btn" id="showM">Show the meaning</button></p></div>
-    </div>
-    <div class="row"><button class="btn ghost" ${wi===0?"disabled":""} onclick="wordCard(${si},${wi-1})">← Back</button>
-    <span class="pill">${(U.setNames||[])[si]||"Set "+(si+1)} · Word ${wi+1} of ${n}</span>
-    <button class="btn" onclick="${wi+1<n?`wordCard(${si},${wi+1})`:`setCheck(${si})`}">${wi+1<n?"Next →":"Check this set →"}</button></div>`;
-  $("showM").onclick=()=>{$("meanBox").innerHTML=`<div class="mean">${w.m}</div><div class="ex">"${w.ex}" <button class="link" onclick="say(U.words[${w.i}].ex)">🔊</button></div>`;say(w.m)};
-}
-function wordMC(w){return {id:"w_m_"+w.w,type:"mc",q:`Which word means: <b>${w.m}</b>?`,o:shuffle([w.w].concat(shuffle(U.words.filter(x=>x.w!==w.w)).slice(0,3).map(x=>x.w))),a:[w.w],why:`${w.e} <b>${w.w}</b>: ${w.ex}`}}
-function wordFill(w){return {id:"w_f_"+w.w,type:"type",q:`Type the missing word: <b>${w.fill}</b>`,a:[w.w].concat(w.alt||[]),why:`${w.e} <b>${w.w}</b> = ${w.m}`}}
-function setCheck(si){
-  const set=shuffle(sets()[si].slice());
-  const qs=shuffle(set.map((w,k)=>k%2?wordFill(w):wordMC(w)));
-  runQuestions(qs,{onDone:(f,t)=>{st().sets[si]=true;save();const all=sets().every((_,k)=>st().sets[k]);if(all)markDone("words");
-    doneScreen("🔤","Set complete!",`You got ${f} of ${t} right on the first try.`+(all?" All the word sets are done! These words will keep coming back in Review.":" The next set is now open."),["← Word sets","wordsPart()"])}});
-}
-
-/* ================= 3. GRAMMAR ================= */
-function grammarPart(){
-  body().innerHTML=`<h2>${U.grammar.length} mini-lessons</h2><p class="sub">Learn the rule first, then practise from easy to hard, with hints.</p>
-   <div class="grid">${U.grammar.map((g,i)=>`<div class="card click" onclick="grammarLesson(${i})"><div class="em">${g.e}</div>
-   <span class="pill">${st().gram[g.id]?"Done ⭐":"Lesson "+(i+1)}</span><h3>${g.t}</h3><p>${g.tries.length} questions</p></div>`).join("")}</div>`;
-}
-function grammarLesson(i){
-  const g=U.grammar[i];
-  body().innerHTML=`<button class="link" onclick="grammarPart()">← All lessons</button><div class="storypic">${g.e}</div><h2 style="margin-top:0">${g.t}</h2>
-   <p class="story" style="font-size:17px">${g.intro}</p>
-   ${g.rules.map((r,ri)=>`<div class="rule"><div>${r.r}</div><div>${r.ex.map((x,xi)=>`<span class="chip" onclick="say(U.grammar[${i}].rules[${ri}].ex[${xi}].replace(' → ',', '))">🔊 ${x}</span>`).join("")}</div></div>`).join("")}
-   <p style="text-align:center;margin-top:18px"><button class="btn" onclick="grammarTry(${i})">I understand — let me practise →</button></p>`;
-}
-function grammarTry(i){
-  const g=U.grammar[i];
-  runQuestions(g.tries,{hints:true,onDone:(f,t)=>{
-    st().gram[g.id]=true;save();
-    const all=U.grammar.every(x=>st().gram[x.id]);
-    if(all)markDone("grammar");
-    doneScreen("🧩","Lesson complete!",`You got ${f} of ${t} right on the first try.`+(all?" All the grammar lessons are done!":" Now try the next lesson."),["← All lessons","grammarPart()"]);
-  }});
-}
-
-/* ================= 4. SPELLING (listen and write) ================= */
-function spellItem(x){
-  const blank=x.s.replace(new RegExp("\\b"+x.w+"\\b","i"),"___");
-  return {id:"sp_"+x.w,type:"type",q:`🎧 Listen, then write the missing word:<br><b>${blank}</b>`,a:[x.w],say:`${x.w}. ${x.s} ${x.w}.`,autoSay:true,why:`<b>${x.w}</b>${x.tip?" — "+x.tip:""}`};
-}
-function spellingPart(){
-  body().innerHTML=`<h2>${U.spellTitle||"Spelling"}</h2>
-   <p class="sub">Use the 4 steps for every word: <b>Look → Say → Cover → Write.</b></p>
-   <div class="rule" style="margin-top:14px">1. <b>Look</b> at the word carefully.<br>2. <b>Say</b> it aloud, sound by sound.<br>3. <b>Cover</b> it and picture it in your head.<br>4. <b>Write</b> it, then check.</div>
-   <div style="margin:10px 0">${U.spelling.map((x,i)=>`<span class="chip" onclick="say(U.spelling[${i}].w)">🔊 ${x.w}</span>`).join("")}</div>
-   ${U.spelling.filter(x=>x.tip).map(x=>`<div class="hintbox">💡 <b>${x.w}</b>: ${x.tip}</div>`).join("")}
-   <p style="text-align:center;margin-top:18px"><button class="btn" onclick="spellTest()">I'm ready — start the spelling test →</button></p>`;
-}
-function spellTest(){
-  runQuestions(shuffle(U.spelling.map(spellItem)),{onDone:(f,t)=>{markDone("spelling");
-    doneScreen("🎧","Spelling done!",`You spelled ${f} of ${t} right on the first try. Words you missed will come back in Review.`,["← Spelling list","spellingPart()"])}});
-}
-
-/* ================= 5. THINK ================= */
-function thinkPart(){
-  runQuestions(U.think.map((x,i)=>Object.assign({id:"th"+i,type:"mc"},x)),{onDone:(f,t)=>{markDone("think");doneScreen("🧠","Super thinker!",`You solved ${f} of ${t} on the first try. Great brain work!`)}});
-}
-
-/* ================= 6. DID YOU KNOW? ================= */
-function factsPart(fi=0,score=0){
+function factsPart(fi,score,id){
   const f=U.facts[fi],n=U.facts.length;
   body().innerHTML=`<div class="bar"><div style="width:${fi/n*100}%"></div></div>
    <div class="flash"><div class="em">${f.e}</div><p style="color:var(--muted);margin:6px 0">Fact ${fi+1} of ${n} · Guess first: true or false?</p>
    <div class="q" style="font-weight:700">${f.c}</div>
    <div class="row" style="justify-content:center"><button class="btn" id="fT">True ✅</button><button class="btn" id="fF">False ❌</button></div>
-   <div id="ffb"></div></div><div id="fnx" style="text-align:center"></div>`;
+   <div id="ffb"></div></div><div id="fnx" class="row" style="justify-content:center"></div>`;
   say(f.c);
-  const ans=g=>{
-    $("fT").disabled=$("fF").disabled=true;const ok=g===f.t;if(ok)score++;
+  const ans=g=>{$("fT").disabled=$("fF").disabled=true;const ok=g===f.t;if(ok)score++;
     $("ffb").innerHTML=`<div class="fb ${ok?"ok":"no"}" style="text-align:left"><b>${ok?"You guessed right! 🎉":"Surprise! 😲"}</b><br>${f.x}</div>`;
-    const nb=document.createElement("button");nb.className="btn";nb.textContent=fi+1<n?"Next fact →":"Finish ✓";
-    nb.onclick=()=>{if(fi+1<n)factsPart(fi+1,score);else{markDone("facts");doneScreen("💡","Fact explorer!",`You guessed ${score} of ${n} right. Share one fact with your family today!`)}};
-    $("fnx").appendChild(nb);
-  };
+    nextBtn($("fnx"),fi+1<n?"Next fact →":"Finish ✓",()=>{if(fi+1<n)factsPart(fi+1,score,id);else{finishAct(id);doneScreen("💡","Fact explorer!",`You guessed ${score} of ${n} right. Share one fact with your family today!`)}})};
   $("fT").onclick=()=>ans(true);$("fF").onclick=()=>ans(false);
 }
-
-/* ================= 7. WRITE (step by step) ================= */
 function taskChecks(t,v){
   const c=[[sentenceCount(v)>=t.minS,`I wrote at least ${t.minS} sentences`]];
   if(t.minWords)c.push([vocabUsed(v)>=t.minWords,`I used at least ${t.minWords} word${t.minWords>1?"s":""} from the word bank`]);
   return c.concat(t.rx.map(r=>[new RegExp(r[0]).test(v),r[1]]));
 }
-function writePart(){
-  const w=st().write;
-  body().innerHTML=`<h2>Write</h2><p class="sub">Each step is a little bigger. Finish one to open the next.</p>
-   <div class="grid">${U.writing.map((t,i)=>{const open=i===0||(w[i-1]&&w[i-1].done);
-     return `<div class="card ${open?"click":"locked"}" ${open?`onclick="writeTask(${i})"`:""}><div class="em">${t.e}</div>
-     <span class="pill">${w[i]&&w[i].done?"Done ⭐":open?t.level:"🔒 "+t.level}</span><h3>${t.t}</h3></div>`}).join("")}</div>`;
-}
-let curTask=0;
-function writeTask(i){
-  curTask=i;const t=U.writing[i],saved=(st().write[i]||{}).text||"";
-  body().innerHTML=`<button class="link" onclick="writePart()">← All writing steps</button>
+let curTask=0,curTaskId="";
+function writeTask(i,id){
+  curTask=i;curTaskId=id;const t=U.writing[i],saved=(st().write[i]||{}).text||"";
+  const prev=i>0&&!(st().act[allItems().filter(x=>x.act==="write")[i-1].id]);
+  body().innerHTML=`${prev?`<div class="hintbox">Tip: finish the writing step before this one first. Each step builds on the last.</div>`:""}
    <div class="flash" style="text-align:left"><span class="pill">${t.level}</span><h2 style="text-align:left;margin:8px 0">${t.e} ${t.t}</h2>
    <p style="font-size:17px;line-height:1.5;margin:0">${esc(t.prompt)}</p>
-   <p style="margin:10px 0 0"><button class="btn ghost small" onclick="say(U.writing[${i}].prompt)">🔊 Read to me</button>
-   <button class="btn ghost small" id="exBtn">👀 See an example</button></p><div id="exBox"></div></div>
+   <p style="margin:10px 0 0"><button class="btn ghost small" onclick="say(U.writing[${i}].prompt)">🔊 Read to me</button> <button class="btn ghost small" id="exBtn">👀 See an example</button></p><div id="exBox"></div></div>
    <p style="margin:12px 0 4px"><b>Sentence starters</b> (tap to add):</p>
    <div>${t.starters.map((s,k)=>`<span class="chip" onclick="ins(U.writing[${i}].starters[${k}])">${esc(s.trim())}…</span>`).join("")}</div>
    <p style="margin:12px 0 4px"><b>Word bank</b> (tap to add):</p>
@@ -874,42 +1277,9 @@ function ins(t){const a=$("wr"),s=a.selectionStart??a.value.length;a.value=a.val
 function updateChecks(){$("checks").innerHTML=taskChecks(U.writing[curTask],$("wr").value).map(c=>`<div class="check">${c[0]?"✅":"⬜"} ${c[1]}</div>`).join("")}
 function saveWriting(){
   const v=$("wr").value,t=U.writing[curTask],all=taskChecks(t,v).every(c=>c[0]);
-  st().write[curTask]={text:v,done:all||((st().write[curTask]||{}).done)};save();
-  if(all){
-    const finished=U.writing.every((_,k)=>st().write[k]&&st().write[k].done);
-    if(finished)markDone("write");
-    $("wfb").innerHTML=`<div class="fb ok"><b>Wonderful writing! ✏️⭐</b><br>Your writing is saved. Read it aloud to someone at home!`+
-      (curTask+1<U.writing.length?`<br><br><button class="btn" onclick="writeTask(${curTask+1})">Next step →</button>`:finished?"<br>All the writing steps are done!":"")+`</div>`;
-  }else $("wfb").innerHTML=`<div class="fb no"><b>Saved!</b> Tick all the boxes above to finish this step.</div>`;
-}
-
-/* ================= 8. REVIEW (FSRS spaced repetition) ================= */
-function reviewItems(){
-  return U.words.flatMap(w=>[wordMC(w),wordFill(w)])
-    .concat(U.grammar.flatMap(g=>g.tries.filter(t=>t.type!=="write")))
-    .concat(U.spelling.map(spellItem));
-}
-function reviewPart(){
-  const s=st(),now=Date.now(),all=reviewItems();
-  const due=shuffle(all.filter(i=>s.cards[i.id]&&s.cards[i.id].due<=now)).slice(0,15);
-  const fresh=shuffle(all.filter(i=>!s.cards[i.id])).slice(0,Math.max(0,Math.min(8,15-due.length)));
-  const list=shuffle(due.concat(fresh));
-  const learned=all.filter(i=>s.cards[i.id]&&s.cards[i.id].streak>=2).length;
-  if(!list.length){
-    body().innerHTML=`<div style="text-align:center"><div class="big">🌙</div><h2 style="margin-top:0">All caught up!</h2>
-     <p class="sub">${learned} of ${all.length} items learned. Your next review is scheduled. Come back tomorrow!</p>
-     <p style="margin-top:18px"><button class="btn ghost" onclick="extraReview()">Extra practice anyway</button></p></div>`;return;
-  }
-  body().innerHTML=`<div style="text-align:center"><div class="big">🔁</div><h2 style="margin-top:0">Today's review</h2>
-   <p class="sub">${learned} of ${all.length} items learned so far.<br>Today: ${due.length} to review and ${fresh.length} new.</p>
-   <p style="margin-top:18px"><button class="btn" id="goRev">Start →</button></p></div>`;
-  $("goRev").onclick=()=>startReview(list);
-}
-function extraReview(){const c=st().cards;startReview(reviewItems().sort((a,b)=>((c[a.id]||{}).s||0)-((c[b.id]||{}).s||0)).slice(0,15))}
-function startReview(list){
-  runQuestions(list,{onAnswer:(it,ok)=>{const c=st().cards;c[it.id]=c[it.id]||{};fsrs(c[it.id],ok?3:1,Date.now());save()},
-    onDone:(f,t)=>{markDone("review");const s=st(),all=reviewItems();const learned=all.filter(i=>s.cards[i.id]&&s.cards[i.id].streak>=2).length;
-      doneScreen("🔁","Review done!",`${f} of ${t} right on the first try. ${learned} of ${all.length} items learned so far. Come back tomorrow: the ones you found hard will come back sooner.`)}});
+  st().write[curTask]={text:v};if(all)finishAct(curTaskId);save();
+  $("wfb").innerHTML=all?`<div class="fb ok"><b>Wonderful writing! ✏️⭐</b><br>Your writing is saved. Read it aloud to someone at home!<br><br><button class="btn" onclick="openUnit(U.id)">Back to the unit →</button></div>`
+    :`<div class="fb no"><b>Saved!</b> Tick all the boxes above to finish this step.</div>`;
 }
 
 </script>
