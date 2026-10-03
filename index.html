@@ -638,7 +638,7 @@ const REL=[["Your mother's mother is your ___.","grandmother"],["Your father's m
 const rel=()=>{const r=R(REL);return mcQ(r[0],r[1],SAMPLE(RELW.filter(x=>x!==r[1]),3),`${r[0].replace("___","<b>"+r[1]+"</b>")}`,"Draw a little family tree in your head.")};
 const JOBS=[["nurse",["cares for sick people in a hospital","gives patients medicine and bandages"]],["baker",["bakes bread and cakes","starts work very early to make fresh bread"]],["artist",["paints and draws pictures","makes art for people to enjoy"]],["scientist",["does tests to learn how the world works","looks at tiny things under a microscope"]],["farmer",["grows crops and raises animals","plants seeds and milks cows"]],["firefighter",["puts out fires","rescues people from burning buildings"]],["teacher",["helps children learn to read and write","works in a classroom"]],["pilot",["flies a plane","lands planes safely at the airport"]],["mechanic",["fixes cars","repairs engines and machines"]],["librarian",["helps people find books","works in a library"]],["dentist",["checks and cleans your teeth"]],["chef",["cooks food in a restaurant"]],["police officer",["keeps people safe and makes sure laws are followed"]],["vet",["is a doctor for animals"]],["bus driver",["drives people around town on a bus"]],["builder",["builds houses"]],["mail carrier",["brings letters and parcels to your home"]]];
 const job=()=>{const j=R(JOBS);return mcQ(`Who <b>${R(j[1])}</b>?`,"a "+j[0],SAMPLE(JOBS.filter(x=>x!==j),3).map(x=>"a "+x[0]),`A <b>${j[0]}</b> ${j[1].join(" and ")}.`,"Think about where this person works.")};
-const OPP=[["tall","short"],["noisy","quiet"],["brave","scared"],["kind","mean"],["happy","sad"],["curly","straight"],["gentle","rough"],["funny","serious"],["old","young"],["big","small"],["early","late"],["hot","cold"],["fast","slow"],["full","empty"],["clean","dirty"],["strong","weak"],["awake","asleep"],["hard","soft"],["patient","impatient"],["polite","rude"],["near","far"],["first","last"]];
+const OPP=[["tall","short"],["noisy","quiet"],["brave","scared"],["kind","mean"],["happy","sad"],["curly","straight"],["gentle","rough"],["funny","serious"],["old","young"],["big","small"],["early","late"],["hot","cold"],["fast","slow"],["full","empty"],["clean","dirty"],["strong","weak"],["awake","asleep"],["patient","impatient"],["near","far"],["first","last"]];
 const SYN=[["big","large"],["small","little"],["happy","glad"],["kind","nice"],["shout","yell"],["quick","fast"],["begin","start"],["angry","mad"],["tired","sleepy"],["scared","afraid"],["pretty","beautiful"],["speak","talk"],["close","shut"],["gift","present"],["smart","clever"],["noisy","loud"],["easy","simple"],["sad","unhappy"],["end","finish"],["jump","leap"]];
 const COMP=[["sun","flower"],["grand","mother"],["bed","room"],["foot","ball"],["rain","bow"],["some","one"],["cup","cake"],["class","room"],["home","work"],["pan","cake"],["butter","fly"],["book","shelf"],["birth","day"],["sea","shell"],["snow","man"],["tooth","brush"],["hair","cut"],["play","ground"],["back","pack"],["sun","shine"],["fire","fighter"],["news","paper"],["door","bell"],["week","end"],["mail","box"],["class","mate"],["air","plane"],["gold","fish"],["grand","father"],["note","book"]];
 
@@ -824,81 +824,195 @@ u.cats=[
 ];
 })();
 
-/* ===================== GRADE 3 · UNIT 2 · ANIMALS AROUND THE WORLD (original content; full-length rebuild still to come) ===================== */
+/* ===================== GRADE 3 · UNIT 2 · ANIMALS AROUND THE WORLD (original content) ===================== */
+(function(){
+const f=(q,a,o,why)=>({lv:"find",q,o:[a].concat(o),a:[a],why});
+const t=(q,a,o,why)=>({lv:"think",q,o:[a].concat(o),a:[a],why});
 UNITS.push({
 id:"animals", num:2, emoji:"🐘🐪🐙", title:"Animals Around the World", badge:"🏅 Animal Explorer",
 
 stories:[
+/* ---------- 1. STORY ---------- */
 {title:"Pip's Trip Around the World", e:"🐦", kind:"Story", pages:[
- {pic:"🐦🗺️", text:"Pip was a small blue bird with a big dream. One morning, Pip looked at an old map and said, \"I want to meet animals from all around the world!\" So Pip flew away from home.",
-  qs:[{q:"What did Pip want to do?",o:["Meet animals around the world","Build a new nest","Find some seeds"],a:["Meet animals around the world"],why:"Pip said, \"I want to meet animals from all around the world!\""}]},
- {pic:"🏜️🐪", text:"First, Pip flew to a hot, dry desert. There was sand everywhere. There Pip met a camel named Kamal. \"How do you live here?\" asked Pip. Kamal smiled. \"My hump stores fat, so I can go a long time without food. I can also drink a lot of water very fast.\"",
-  qs:[{q:"What does Kamal's hump store?",o:["Water","Fat","Sand"],a:["Fat"],why:"Kamal said his hump stores fat, not water."}]},
- {pic:"🌾🐘", text:"Next, Pip flew to the grasslands of Africa. A herd of elephants walked slowly to a river. The smallest elephant lifted her trunk and sprayed water on Pip. Splash! Pip laughed and shook his wet feathers.",
-  qs:[{q:"What is a group of elephants called?",o:["A herd","A flock","A team"],a:["A herd"],why:"The story says \"a herd of elephants\"."}]},
- {pic:"🧊🐻‍❄️", text:"Then Pip flew far north to the cold Arctic. Everything was white with snow and ice. A polar bear named Nanuk was fishing near the water. \"Aren't you cold?\" asked Pip. \"No,\" said Nanuk. \"My thick fur keeps me warm.\"",
-  qs:[{q:"Why is Nanuk not cold?",o:["He sits in the sun","His thick fur keeps him warm","He drinks hot water"],a:["His thick fur keeps him warm"],why:"Nanuk said, \"My thick fur keeps me warm.\""}]},
- {pic:"🌏🦘", text:"After that, Pip flew to Australia. A kangaroo hopped past with a baby in her pouch. The baby peeked out and waved. \"That is my joey,\" said the mother. \"He rides in my pouch until he is big enough to hop.\"",
-  qs:[{q:"Where does the baby kangaroo ride?",o:["On her back","In her pouch","In a tree"],a:["In her pouch"],why:"The joey rides in his mother's pouch."}]},
- {pic:"🌊🐙", text:"Last, Pip flew over the deep blue ocean. An octopus waved its eight arms from a rock. \"Hello, little bird! Did you know I have three hearts?\" Pip was amazed. That night, Pip flew home, tired but happy. \"The world is full of wonderful animals,\" Pip thought.",
-  qs:[{q:"How did Pip feel at the end of the trip?",o:["Angry and sad","Tired but happy","Scared and lost"],a:["Tired but happy"],why:"The story says Pip flew home \"tired but happy\"."}]}
-]}
+ {pic:"🐦🗺️", text:"Pip was a small blue bird with a big dream. Every night, Pip looked at an old map that was stuck to the wall of the bird shop. \"There are so many places in the world,\" Pip said. \"I want to meet the animals that live there!\" One sunny morning, Pip flew out of the open window and began a great adventure.",
+  qs:[f("What did Pip want to do?","Meet animals from all over the world",["Build a new nest","Find some seeds"],"Pip said, \"I want to meet the animals that live there!\""),
+      t("Which word best describes Pip?","Curious",["Lazy","Angry"],"Pip wants to explore and learn about the world. That is being curious.")]},
+ {pic:"🏜️🐪", text:"First, Pip flew to a hot, dry desert. There was sand everywhere and no trees for shade. There Pip met a camel named Kamal. \"How do you live in such a dry place?\" asked Pip. Kamal smiled. \"My hump stores fat, so I can go a long time without food. When I find water, I can drink a lot very fast. And my long eyelashes keep the sand out of my eyes.\"",
+  qs:[f("What does Kamal's hump store?","Fat",["Water","Sand"],"Kamal says, \"My hump stores fat.\""),
+      t("Why does a camel need long eyelashes?","To keep sand out of its eyes",["To look beautiful","To catch flies"],"The desert is windy and sandy. Long eyelashes protect the camel's eyes.")]},
+ {pic:"🌾🐘", text:"Next, Pip flew to the grasslands of Africa. The grass was tall and golden. A herd of elephants walked slowly to a river. The smallest elephant, a calf named Tembo, filled her trunk with water and sprayed it all over Pip. Splash! Pip laughed and shook his wet feathers. \"Elephants use their trunks to drink, to smell and to say hello,\" Tembo explained.",
+  qs:[f("What is a baby elephant called?","A calf",["A cub","A chick"],"The story says the smallest elephant was \"a calf named Tembo\"."),
+      f("What do elephants use their trunks for?","Drinking, smelling and saying hello",["Flying","Digging holes"],"Tembo explains that elephants use their trunks to drink, to smell and to say hello.")]},
+ {pic:"🧊🐻‍❄️", text:"Then Pip flew far north to the freezing Arctic. Everything was white with snow and ice. Pip's feet were so cold! A polar bear named Nanuk was waiting near a hole in the ice, hoping to catch a seal. \"Aren't you cold?\" asked Pip, shivering. \"No,\" said Nanuk. \"My thick fur and a layer of fat keep me warm. You should fly somewhere warmer, little bird!\"",
+  qs:[f("What was Nanuk hoping to catch?","A seal",["A fish","A bird"],"Nanuk was waiting near a hole in the ice, hoping to catch a seal."),
+      t("Why did Nanuk tell Pip to fly somewhere warmer?","Pip was shivering and does not have thick fur",["Nanuk wanted to be alone","Pip was too noisy"],"Pip was shivering. A small bird is not made for the freezing Arctic like a polar bear.")]},
+ {pic:"🌏🦘", text:"After that, Pip flew to Australia. The sun was warm again. A kangaroo hopped past with something wiggling in her pouch. A tiny head peeked out and waved. \"This is my joey,\" said the mother kangaroo. \"He rides in my pouch where he is safe and warm. When he is bigger, he will hop beside me.\"",
+  qs:[f("Where does the joey ride?","In his mother's pouch",["On her back","In a tree"],"\"He rides in my pouch where he is safe and warm.\""),
+      t("Why does the joey ride in the pouch?","He is too small to keep up and stay safe by himself",["He is lazy","He cannot see"],"The mother says the pouch keeps him safe and warm until he is bigger.")]},
+ {pic:"🌊🐙", text:"Last, Pip flew over the deep blue ocean. An octopus waved two of her eight arms from a rock. \"Hello, little bird! Did you know I have three hearts and blue blood?\" Pip was amazed. That night, Pip flew home to the bird shop, tired but happy. He looked at the old map again. \"The world is full of wonderful animals,\" he thought, \"and every one of them lives in the home that suits it best.\"",
+  qs:[f("How did Pip feel at the end of the trip?","Tired but happy",["Angry and sad","Scared and lost"],"The story says Pip flew home \"tired but happy\"."),
+      t("What did Pip learn on his trip?","Every animal lives in the home that suits it best",["The Arctic is the best place","Birds should never fly far"],"Pip thinks: every animal lives in the home that suits it best.")]}
+], turn:{q:"If you could fly anywhere in the world like Pip, where would you go? Which animal would you like to meet there? Write two sentences.",model:"I would fly to the rainforest in Brazil. I would like to meet a sloth."}},
+
+/* ---------- 2. STORY ---------- */
+{title:"Ravi and the Baby Turtles", e:"🐢", kind:"Story", pages:[
+ {pic:"🏖️🌙", text:"Ravi lived with his Aunt Leela in a small house near a warm, sandy beach. Aunt Leela was a scientist who protected sea turtles. \"Every summer,\" she told Ravi, \"mother turtles swim back to this beach. They crawl out of the ocean at night to lay their eggs in the sand.\"",
+  qs:[f("What was Aunt Leela's job?","A scientist who protected sea turtles",["A teacher","A fisher"],"\"Aunt Leela was a scientist who protected sea turtles.\""),
+      f("When do mother turtles come out of the ocean to lay eggs?","At night",["At lunchtime","In the early morning"],"They crawl out of the ocean at night.")]},
+ {pic:"🐢🥚", text:"One quiet night, Ravi and Aunt Leela hid behind some bushes and watched. A huge mother turtle pulled herself slowly up the beach. With her back flippers, she dug a deep hole and laid about one hundred eggs. Then she covered them with sand and crawled back to the sea. \"She will never meet her babies,\" whispered Aunt Leela. \"They must find the ocean all by themselves.\"",
+  qs:[f("About how many eggs did the turtle lay?","About one hundred",["About ten","About two"],"She laid about one hundred eggs."),
+      t("Why did Ravi and Aunt Leela hide behind the bushes?","So they would not scare the mother turtle",["Because it was raining","To play hide-and-seek"],"Scientists watch quietly so they do not disturb wild animals.")]},
+ {pic:"🦀🚧", text:"The next morning, Aunt Leela put a small fence around the nest. \"This will protect the eggs from crabs, dogs and people's feet,\" she said. Every day, Ravi checked the nest. Weeks went by. Then, after about two months, Ravi saw the sand begin to move!",
+  qs:[f("Why did Aunt Leela put a fence around the nest?","To protect the eggs",["To keep the turtle inside","To mark a football goal"],"\"This will protect the eggs from crabs, dogs and people's feet.\""),
+      f("About how long did the eggs take to hatch?","About two months",["One day","One year"],"After about two months, the sand began to move.")]},
+ {pic:"🐢💡", text:"That night, tiny turtles popped out of the sand, one after another. They were small enough to fit in Ravi's hand. Most of them scrambled towards the shining sea. But a few turned the wrong way and crawled towards the bright lights of a hotel. \"Oh no!\" cried Ravi. \"They're going the wrong way!\"",
+  qs:[f("Where did some baby turtles crawl by mistake?","Towards the bright lights of a hotel",["Into a cave","Up a tree"],"A few turned towards the bright lights of a hotel."),
+      t("How did Ravi feel when he saw this?","Worried",["Bored","Sleepy"],"He cried, \"Oh no!\" because the babies were in danger.")]},
+ {pic:"🏨🔦", text:"\"Baby turtles follow the brightest light,\" Aunt Leela explained. \"They think it is the moon shining on the water.\" Ravi ran up to the hotel as fast as he could. \"Please turn off your beach lights!\" he begged the manager. \"The baby turtles are lost!\" The manager switched off the lights straight away. In the dark, the little turtles turned around and headed for the moonlit sea.",
+  qs:[f("Why do baby turtles follow bright lights?","They think it is the moon shining on the water",["They like hotels","They are looking for food"],"Aunt Leela explains that they think it is the moon on the water."),
+      t("Which word best describes Ravi in this part?","Brave",["Shy","Lazy"],"Ravi ran to the hotel and spoke to the manager to save the turtles.")]},
+ {pic:"🌊💛", text:"Ravi watched the very last turtle reach the waves. \"Will they ever come back?\" he asked. \"If they survive, the girls will return to this same beach to lay their own eggs, many years from now,\" said Aunt Leela. Ravi smiled. He knew what he wanted to be when he grew up: a scientist who protects animals, just like his aunt.",
+  qs:[f("Who will come back to the beach one day?","The girl turtles, to lay their own eggs",["All the crabs","The hotel manager"],"The girls will return to the same beach to lay their own eggs."),
+      t("What is the big message of this story?","People can help protect animals",["Hotels are bad","Turtles are scary"],"Ravi and Aunt Leela show that people can help animals survive.")]}
+], turn:{q:"What can you do to help animals or nature near your home? Write two sentences.",model:"I can put out water for birds in summer. I can pick up rubbish in the park."}},
+
+/* ---------- 3. FACT TEXT ---------- */
+{title:"Animal Homes Around the World", e:"🌍", kind:"Fact text", pages:[
+ {pic:"🏞️🌍", text:"Every animal has a <b>habitat</b>. A habitat is the natural home where an animal finds food, water, shelter and space. The Earth has many different habitats. Some are hot and some are freezing. Some are wet and some are dry. Each animal's body is suited to its own habitat.",
+  qs:[f("What is a habitat?","The natural home where an animal finds what it needs",["A kind of food","A house for pets"],"The text says a habitat is the natural home where an animal finds food, water, shelter and space."),
+      f("Which FOUR things does an animal find in its habitat?","Food, water, shelter and space",["Toys, beds, books and shoes","Only food"],"Food, water, shelter and space.")]},
+ {pic:"🏜️🦎", text:"<b>Deserts</b> are very dry places. Some deserts are burning hot in the day and cold at night. The Sahara in Africa is the biggest hot desert in the world. Desert animals, like camels, lizards and fennec foxes, can live with very little water. Many of them sleep in the day and come out in the cool night.",
+  qs:[f("What is the biggest hot desert in the world?","The Sahara",["The Arctic","The Amazon"],"The Sahara in Africa is the biggest hot desert in the world."),
+      t("Why do many desert animals come out at night?","It is cooler at night",["They are afraid of the sun","They cannot see in the day"],"Desert days are burning hot, so many animals stay hidden and come out in the cool night.")]},
+ {pic:"🧊🐧", text:"The <b>polar</b> regions are the coldest places on Earth. The Arctic is at the top of the world, and Antarctica is at the bottom. Polar bears and Arctic foxes live in the Arctic. Penguins live in Antarctica and other cold southern places. These animals have thick fur, warm feathers or a layer of fat to keep them warm.",
+  qs:[f("Where do penguins live?","In Antarctica and other cold southern places",["In the Sahara","In the Arctic with polar bears"],"Penguins live in Antarctica and other cold southern places. Polar bears and penguins never meet in the wild!"),
+      f("How do polar animals stay warm?","Thick fur, warm feathers or a layer of fat",["They wear coats","They drink hot water"],"They have thick fur, warm feathers or a layer of fat.")]},
+ {pic:"🌊🐋", text:"The <b>ocean</b> covers more than two-thirds of the Earth. It is home to tiny fish and to the blue whale, the biggest animal that has ever lived. Fish breathe underwater with <b>gills</b>. Whales and dolphins are not fish. They must swim up to the surface to breathe air.",
+  qs:[f("What is the biggest animal that has ever lived?","The blue whale",["The elephant","The shark"],"The blue whale is the biggest animal that has ever lived."),
+      t("Why must a dolphin swim up to the surface?","It needs to breathe air",["It wants to look at the sky","It is chasing birds"],"Dolphins are not fish. They have no gills, so they must breathe air.")]},
+ {pic:"🌳🦥", text:"<b>Rainforests</b> are hot, wet forests where it rains almost every day. The trees grow very tall and close together. More than half of all the kinds of plants and animals on Earth live in rainforests. Monkeys swing in the branches, sloths hang upside down, and colourful parrots fly between the trees.",
+  qs:[f("What is the weather like in a rainforest?","Hot and wet",["Cold and dry","Snowy"],"Rainforests are hot, wet forests where it rains almost every day."),
+      f("How many kinds of plants and animals live in rainforests?","More than half of all kinds on Earth",["Only a few","None"],"More than half of all the kinds of plants and animals on Earth live in rainforests.")]},
+ {pic:"🌾🦓", text:"<b>Grasslands</b> are wide, open lands covered in grass, with only a few trees. In Africa, zebras, giraffes and elephants eat the grass and leaves. Lions and cheetahs hunt them. When people cut down forests or build on grasslands, animals lose their homes. That is why it is important to protect habitats.",
+  qs:[f("Which animals hunt in the African grasslands?","Lions and cheetahs",["Zebras and giraffes","Penguins"],"Lions and cheetahs hunt the grass-eating animals."),
+      t("Why is it important to protect habitats?","Animals lose their homes when habitats are destroyed",["Habitats are pretty","So people can build more roads"],"The text says that when forests are cut down or grasslands are built on, animals lose their homes.")]}
+], turn:{q:"Which habitat would you most like to visit? Write two sentences saying why.",model:"I would like to visit the ocean. I want to see a whale and swim with colourful fish."}},
+
+/* ---------- 4. FACT TEXT ---------- */
+{title:"Clever Ways Animals Survive", e:"🦊", kind:"Fact text", pages:[
+ {pic:"🦊❄️", text:"Animals have special ways to <b>survive</b>, which means to stay alive. Some ways are part of their bodies, like thick fur or sharp claws. Other ways are things they do, like hiding or travelling. These special features are called <b>adaptations</b>.",
+  qs:[f("What does \"survive\" mean?","To stay alive",["To fall asleep","To swim fast"],"The text says survive means to stay alive."),
+      f("What are special features that help animals survive called?","Adaptations",["Habitats","Hobbies"],"These special features are called adaptations.")]},
+ {pic:"🦎🍃", text:"Some animals use <b>camouflage</b>. Their colours or shapes help them blend in so other animals cannot see them. A stick insect looks just like a twig. The Arctic fox has white fur in the snowy winter. In summer, its coat turns brown or grey to match the rocks and earth.",
+  qs:[f("What colour is the Arctic fox's fur in winter?","White",["Brown","Orange"],"The Arctic fox has white fur in the snowy winter."),
+      t("Why does the Arctic fox's coat change colour in summer?","To match the rocks and earth when the snow melts",["Because it gets dirty","To look different for fun"],"In summer there is no snow, so a brown or grey coat blends in better.")]},
+ {pic:"🐻💤", text:"Some animals <b>hibernate</b>. In winter, food is hard to find and the weather is very cold. So these animals eat a lot in autumn, then go into a deep sleep in a safe place. Hedgehogs sleep in nests of leaves, and bears rest in dens. Their bodies slow down, and they wake up again in spring.",
+  qs:[f("When do animals that hibernate wake up?","In spring",["In winter","At midnight"],"They wake up again in spring."),
+      t("Why do these animals eat a lot in autumn?","They need to store energy for their long winter sleep",["They are bored","Autumn food tastes better"],"They will not eat while they sleep, so they must build up fat first.")]},
+ {pic:"🦋✈️", text:"Some animals <b>migrate</b>. This means they make a long journey to a new place when the seasons change. Every autumn, monarch butterflies fly from Canada and the United States all the way to Mexico, where it is warmer. The Arctic tern, a small seabird, flies from the top of the world to the bottom and back again every year!",
+  qs:[f("Where do monarch butterflies fly to in autumn?","Mexico",["The Arctic","Australia"],"They fly from Canada and the United States all the way to Mexico."),
+      f("What does \"migrate\" mean?","To make a long journey to a new place when the seasons change",["To sleep all winter","To change colour"],"The text explains: migrate means a long journey when the seasons change.")]},
+ {pic:"☀️🌿🦓🦁", text:"Every animal needs food for energy. A <b>food chain</b> shows who eats what. The sun helps grass grow. A zebra eats the grass. A lion eats the zebra. Animals that hunt other animals are called <b>predators</b>. The animals they hunt are called <b>prey</b>.",
+  qs:[f("In the food chain, what does the zebra eat?","Grass",["Lions","The sun"],"A zebra eats the grass."),
+      t("In this food chain, which animal is the predator?","The lion",["The zebra","The grass"],"The lion hunts the zebra, so the lion is the predator and the zebra is the prey.")]},
+ {pic:"🌍🤝", text:"Hiding, sleeping, travelling and hunting are all ways animals survive in their habitats. Every living thing is connected. If one animal disappears, the animals that eat it, and the plants it helps, are affected too. That is why scientists work hard to protect animals, big and small.",
+  qs:[f("Which of these is NOT a way animals survive, in this text?","Going shopping",["Hiding","Travelling"],"Hiding, sleeping, travelling and hunting are all in the text. Shopping is not!"),
+      t("What happens if one animal disappears from a food chain?","Other animals and plants are affected too",["Nothing changes","All the plants grow bigger"],"The text says every living thing is connected.")]}
+], turn:{q:"Choose one adaptation from this text (camouflage, hibernation or migration). Explain it in your own words in two sentences.",model:"Hibernation is a long winter sleep. Bears hibernate because there is not much food in winter."}},
+
+/* ---------- 5. FABLE ---------- */
+{title:"Kiko the Chameleon (a fable)", e:"🦎", kind:"Fable", pages:[
+ {pic:"🦎🌈", text:"By a quiet lake at the edge of a forest lived a young chameleon named Kiko. Kiko's skin changed colour with his feelings. When he was calm, he was leafy green. When he was excited, he glowed bright yellow. When he was sad, he turned dark brown.",
+  qs:[f("What colour was Kiko when he was excited?","Bright yellow",["Dark brown","Leafy green"],"When he was excited, he glowed bright yellow."),
+      t("What did Kiko's colours show?","His feelings",["The weather","The time of day"],"His skin changed colour with his feelings.")]},
+ {pic:"🦩💗", text:"Kiko's best friend was Flora the flamingo. Flora was always a beautiful pink. \"I wish I were pink all the time, like you,\" Kiko sighed. \"Everyone can see my feelings. It's embarrassing! If I were one colour, everyone would think I'm beautiful.\"",
+  qs:[f("What did Kiko wish?","To be pink all the time",["To fly like Flora","To live in the lake"],"\"I wish I were pink all the time, like you.\""),
+      t("Why did Kiko feel embarrassed?","Everyone could see his feelings",["He could not swim","Flora laughed at him"],"Kiko said, \"Everyone can see my feelings. It's embarrassing!\"")]},
+ {pic:"😐🦎", text:"So Kiko tried very hard to feel nothing at all, so he would stay the same colour. He would not laugh at jokes. He would not cry at sad stories. He stopped playing games with his friends. Soon Kiko became grey, tired and grumpy, and his friends stopped coming to visit.",
+  qs:[f("What happened when Kiko tried to feel nothing?","He became grey, tired and grumpy",["He turned pink","He became very popular"],"Soon Kiko became grey, tired and grumpy."),
+      t("Was Kiko's plan a good idea?","No, it made him unhappy and lonely",["Yes, it made him happy"],"Hiding all his feelings made Kiko tired, grumpy and alone.")]},
+ {pic:"🐦😢", text:"One morning, Kiko heard a baby bird crying under a bush. It had fallen out of its nest. Kiko felt so sorry for it that his skin turned dark brown. He climbed up the tall tree, step by careful step, and found the nest. When the baby bird was safe with its mother again, Kiko felt so happy that he glowed bright yellow from head to tail.",
+  qs:[f("Why was the baby bird crying?","It had fallen out of its nest",["It was hungry","It had lost a toy"],"It had fallen out of its nest."),
+      t("Why did Kiko glow bright yellow at the end?","He was happy that the baby bird was safe",["He was cold","He was sick"],"Yellow shows Kiko is excited and happy.")]},
+ {pic:"🦎💛🦩", text:"The mother bird sang, \"Thank you, Kiko! Your colours showed us your kind heart.\" Flora hugged him with her long wing. \"Your colours are what make you YOU,\" she said. From that day on, Kiko never wished to be pink again. He laughed, cried and played, and he was proud of every colour he turned. <b>Lesson: Be proud of who you are.</b>",
+  qs:[t("What is the lesson of this fable?","Be proud of who you are",["Always stay the same colour","Never climb trees"],"Kiko learned that his changing colours made him special."),
+      f("What did the mother bird say Kiko's colours showed?","His kind heart",["His age","The way home"],"\"Your colours showed us your kind heart.\"")]}
+], turn:{q:"What is something that makes YOU special? Write two sentences.",model:"I can speak three languages. I am also very good at making people laugh."}},
+
+/* ---------- 6. REAL-WORLD TEXT ---------- */
+{title:"Real-world reading: A day at the zoo", e:"🎫", kind:"Real-world text", pages:[
+ {pic:"🦒🎫", text:"Read this sign at the entrance of Green Hill Zoo.<div class=\"realdoc\"><b>🦁 Welcome to Green Hill Zoo! 🦁</b><br>Open every day: 9:00 a.m. to 5:00 p.m.<br>Last entry: 4:00 p.m.<br><br><b>Please help us care for our animals:</b><br>🚫 Do not feed the animals.<br>🚫 Do not tap on the glass.<br>🤫 Use quiet voices near sleeping animals.<br>🧼 Wash your hands after the Petting Farm.<br>🗑️ Put rubbish in the bins.</div>",
+  qs:[f("What time does the zoo close?","5:00 p.m.",["4:00 p.m.","9:00 a.m."],"Open from 9:00 a.m. to 5:00 p.m."),
+      f("What is the latest time you can go in?","4:00 p.m.",["5:00 p.m.","9:00 a.m."],"Last entry: 4:00 p.m."),
+      t("Why should you not feed the animals?","Human food can make them sick",["They are never hungry","It is too expensive"],"Zookeepers give animals the right food. Our food can make them ill."),
+      t("Why should you wash your hands after the Petting Farm?","To wash away germs from the animals",["To make your hands smell nice","Because the animals are dirty"],"Animals can carry germs, so washing your hands keeps you healthy.")]},
+ {pic:"🐧🕐", text:"This is the zoo's feeding timetable. Visitors can watch the animals being fed.<table class=\"realtbl\"><tr><th>Time</th><th>Animal</th><th>Where</th></tr><tr><td>10:30 a.m.</td><td>Penguins 🐧</td><td>Ice Coast</td></tr><tr><td>11:15 a.m.</td><td>Elephants 🐘</td><td>Savanna Path</td></tr><tr><td>1:00 p.m.</td><td>Sea lions 🦭</td><td>Ocean Pool</td></tr><tr><td>2:30 p.m.</td><td>Giraffes 🦒</td><td>Savanna Path</td></tr><tr><td>3:45 p.m.</td><td>Monkeys 🐒</td><td>Rainforest House</td></tr></table>",
+  qs:[f("When are the penguins fed?","10:30 a.m.",["1:00 p.m.","3:45 p.m."],"Penguins: 10:30 a.m. at Ice Coast."),
+      f("Where can you watch the sea lions being fed?","Ocean Pool",["Ice Coast","Savanna Path"],"Sea lions: 1:00 p.m. at Ocean Pool."),
+      f("Which TWO animals are fed on the Savanna Path?","Elephants and giraffes",["Penguins and monkeys","Sea lions and penguins"],"Elephants (11:15) and giraffes (2:30) are both on the Savanna Path."),
+      t("Mia arrives at 2:00 p.m. Which feeding can she still see first?","The giraffes",["The penguins","The sea lions"],"After 2:00 p.m., the next feeding is the giraffes at 2:30.")]}
+], turn:{q:"Write a short sign with two rules for visitors to a park or a zoo. Explain why one of the rules is important.",model:"Please stay on the path. Do not pick the flowers, because bees need them for food."}}
 ],
 
-poem:{title:"Around the World with Pip",
- lines:["Pip flew east and Pip flew west,","To see which animal home was best.","The camel liked the desert sand,","The kangaroo hopped on dry land.","The polar bear loved snow and ice,","The octopus found the ocean nice.","But when the stars came out at night,","Pip's own small nest felt just right."],
- qs:[{q:"Which word rhymes with 'ice'?",o:["nice","snow","sand"],a:["nice"],why:"Ice and nice end with the same sound: -ice."}]},
+poems:[
+ {title:"Around the World with Pip",
+  lines:["Pip flew east and Pip flew west,","To see which animal home was best.","The camel liked the desert sand,","The kangaroo hopped on dry land.","The polar bear loved snow and ice,","The octopus found the ocean nice.","But when the stars came out at night,","Pip's own small nest felt just right."],
+  qs:[f("Which word rhymes with 'ice'?","nice",["snow","sand"],"Ice and nice end with the same sound: -ice."),
+      f("Which animal liked the desert sand?","The camel",["The polar bear","The octopus"],"\"The camel liked the desert sand.\""),
+      t("What does the last line mean?","Pip was happiest back in his own home",["Pip wanted a new nest","Pip was lost"],"After seeing many homes, Pip felt his own nest was just right for him.")]},
+ {title:"Winter Sleep",
+  lines:["When leaves fall down and winds blow cold,","The bear goes to her den so old.","She curls up tight, she shuts her eyes,","And sleeps beneath the winter skies.","The hedgehog snuggles in his bed","Of crunchy leaves above his head.","Wake up, wake up! The spring is here!","Good morning, friends! Another year!"],
+  qs:[f("Which word rhymes with 'cold'?","old",["leaves","bear"],"Cold and old end with the same sound: -old."),
+      f("Where does the hedgehog sleep?","In a bed of crunchy leaves",["In a den","In the river"],"\"The hedgehog snuggles in his bed of crunchy leaves.\""),
+      t("What is this poem about?","Animals that hibernate in winter",["Animals that migrate","A day at the beach"],"The bear and the hedgehog sleep all winter and wake in spring: they hibernate.")]}
+],
 
-setNames:["Animal words"],
 words:[
  {w:"habitat",e:"🏞️",m:"the natural home of an animal or plant",ex:"The Arctic is the habitat of the polar bear.",fill:"A forest is the ___ of many birds and monkeys."},
  {w:"desert",e:"🏜️",m:"a very dry place where it almost never rains",ex:"Camels can live in the hot desert.",fill:"It almost never rains in the ___."},
- {w:"arctic",e:"🧊",m:"the very cold area at the top of the world",ex:"There is snow and ice in the Arctic all year.",fill:"Polar bears live in the cold ___."},
+ {w:"Arctic",e:"🧊",m:"the very cold area at the top of the world",ex:"There is snow and ice in the Arctic all year.",fill:"Polar bears live in the cold ___."},
  {w:"ocean",e:"🌊",m:"a very big area of salty water",ex:"Whales swim in the ocean.",fill:"Whales and octopuses swim in the ___."},
- {w:"herd",e:"🐘",m:"a big group of animals that live and move together",ex:"A herd of elephants walked to the river.",fill:"A ___ of cows ate grass in the field."},
+ {w:"rainforest",e:"🌳",m:"a hot, wet forest where it rains almost every day",ex:"Monkeys swing through the rainforest.",fill:"Sloths and parrots live in the hot, wet ___."},
+ {w:"grassland",e:"🌾",m:"wide, open land covered with grass",ex:"Zebras eat grass on the grassland.",fill:"Lions and zebras live on the open ___."},
+ {w:"pond",e:"🐸",m:"a small area of still water",ex:"A frog jumped into the pond.",fill:"Ducks swim on the little ___ in the park."},
+ {w:"nest",e:"🪺",m:"a home that a bird builds for its eggs",ex:"The bird laid three eggs in her nest.",fill:"The robin built a ___ out of twigs."},
+ {w:"burrow",e:"🕳️",m:"a hole in the ground that an animal digs to live in",ex:"The rabbit hid in its burrow.",fill:"The rabbit dug a ___ under the ground."},
+ {w:"den",e:"🐻",m:"the hidden home of a wild animal, like a bear or a fox",ex:"The bear slept in her den all winter.",fill:"The fox cubs played outside their ___."},
+
  {w:"trunk",e:"🐘",m:"the long nose of an elephant",ex:"The elephant sprayed water with its trunk.",fill:"The elephant picked up a peanut with its ___."},
  {w:"hump",e:"🐪",m:"the round bump on a camel's back",ex:"The camel's hump stores fat.",fill:"The camel has a big ___ on its back."},
  {w:"pouch",e:"🦘",m:"a pocket of skin where a kangaroo carries its baby",ex:"The joey sleeps in the pouch.",fill:"The baby kangaroo sleeps in its mother's ___."},
  {w:"fur",e:"🐻‍❄️",m:"the thick, soft hair on an animal",ex:"The polar bear's fur keeps it warm.",fill:"The rabbit has soft, white ___."},
+ {w:"feathers",e:"🪶",m:"the soft, light coverings on a bird's body",ex:"Pip shook his wet feathers.",fill:"The parrot has bright green and red ___."},
+ {w:"scales",e:"🐍",m:"small, hard, flat plates that cover fish and snakes",ex:"The snake's scales are smooth and shiny.",fill:"A fish is covered in shiny ___."},
+ {w:"fins",e:"🐟",m:"flat parts on a fish's body that help it swim",ex:"The fish moved its fins to swim.",fill:"The shark used its ___ to swim fast."},
+ {w:"beak",e:"🦜",m:"the hard, pointed mouth of a bird",ex:"The bird picked up a seed with its beak.",fill:"The parrot cracked the nut with its strong ___."},
+ {w:"claws",e:"🐾",m:"sharp, curved nails on an animal's feet",ex:"The cat has sharp claws.",fill:"The eagle held the fish in its sharp ___."},
+ {w:"tusks",e:"🦣",m:"two very long, pointed teeth, like an elephant's",ex:"The elephant has two long tusks.",fill:"The walrus has two long white ___."},
+
+ {w:"hunt",e:"🦁",m:"to chase and catch animals for food",ex:"Lions hunt zebras on the grassland.",fill:"Owls ___ for mice at night."},
+ {w:"prey",e:"🐭",m:"an animal that is hunted and eaten by another animal",ex:"The mouse is prey for the owl.",fill:"The zebra is ___ for the lion."},
+ {w:"predator",e:"🦈",m:"an animal that hunts other animals for food",ex:"The shark is a fast predator.",fill:"The lion is a ___ because it hunts other animals."},
+ {w:"camouflage",e:"🦎",m:"colours or shapes that help an animal hide",ex:"The stick insect uses camouflage to look like a twig.",fill:"The tiger's stripes are ___ in the tall grass."},
+ {w:"hibernate",e:"💤",m:"to sleep deeply through the whole winter",ex:"Hedgehogs hibernate in nests of leaves.",fill:"Some bears ___ in their dens all winter."},
+ {w:"migrate",e:"🦋",m:"to travel far to a new place when the seasons change",ex:"Monarch butterflies migrate to Mexico.",fill:"Many birds ___ south when winter comes."},
+ {w:"hatch",e:"🐣",m:"to break out of an egg",ex:"The baby turtles hatch from their eggs.",fill:"The chicks will ___ from their eggs soon."},
+ {w:"survive",e:"💪",m:"to stay alive",ex:"Camels can survive in the hot desert.",fill:"Plants need water to ___."},
+ {w:"protect",e:"🛡️",m:"to keep someone or something safe",ex:"The fence will protect the turtle eggs.",fill:"A mother bird will ___ her babies."},
+ {w:"herd",e:"🐃",m:"a big group of animals that live and move together",ex:"A herd of elephants walked to the river.",fill:"A ___ of cows ate grass in the field."},
+
+ {w:"enormous",e:"🐋",m:"very, very big",ex:"The blue whale is enormous.",fill:"The elephant is ___ compared to the mouse."},
+ {w:"tiny",e:"🐜",m:"very, very small",ex:"An ant is a tiny insect.",fill:"The baby turtle was so ___ it fit in my hand."},
+ {w:"fierce",e:"🐯",m:"angry, strong and ready to attack",ex:"The fierce tiger roared loudly.",fill:"The ___ lion showed its sharp teeth."},
+ {w:"swift",e:"🐆",m:"able to move very fast",ex:"The swift cheetah ran across the grass.",fill:"The ___ horse won the race."},
+ {w:"wild",e:"🌿",m:"living free in nature, not with people",ex:"Wild animals find their own food.",fill:"Lions are ___ animals, not pets."},
+ {w:"rare",e:"💎",m:"not seen or found very often",ex:"The white tiger is very rare.",fill:"It is ___ to see a snow leopard."},
+ {w:"endangered",e:"🐼",m:"in danger of disappearing from the Earth forever",ex:"Some sea turtles are endangered.",fill:"We must protect ___ animals so they do not disappear."},
+ {w:"curious",e:"🧐",m:"wanting to know or learn about something",ex:"The curious monkey looked inside the bag.",fill:"The ___ kitten wanted to see what was in the box."},
+ {w:"explore",e:"🧭",m:"to travel around a place to learn about it",ex:"Pip wanted to explore the world.",fill:"Let's ___ the forest and look for animal tracks."},
  {w:"amazed",e:"😲",m:"very, very surprised",ex:"Pip was amazed to meet an octopus.",fill:"We were ___ to see a whale jump out of the water."}
 ],
 
-grammar:[
- {id:"plural", e:"🐑🐑", t:"One or many? (Plurals)",
-  intro:"When there is more than one, the word changes. Here are the rules:",
-  rules:[
-   {r:"Most words: add <b>-s</b>",ex:["camel → camels","bird → birds"]},
-   {r:"Words ending in <b>-s, -x, -sh, -ch</b>: add <b>-es</b>",ex:["fox → foxes","bus → buses"]},
-   {r:"Consonant + <b>y</b>: change y to <b>-ies</b>",ex:["puppy → puppies","bunny → bunnies"]},
-   {r:"Many words ending in <b>-f</b>: change to <b>-ves</b>",ex:["wolf → wolves","leaf → leaves"]},
-   {r:"<b>Special words</b> — learn them by heart",ex:["mouse → mice","goose → geese","sheep → sheep"]}
-  ],
-  tries:[
-   {id:"g_p1",type:"type",q:"One camel, two ___.",a:["camels"],hint:"Most words just add -s.",why:"Camel → camels. Just add -s."},
-   {id:"g_p2",type:"mc",q:"One fox, three ___.",o:["foxs","foxes","foxies"],a:["foxes"],hint:"Fox ends in -x.",why:"Words ending in -x add -es: fox → foxes."},
-   {id:"g_p3",type:"type",q:"One puppy, two ___.",a:["puppies"],hint:"Look at the last letters: consonant + y.",why:"Puppy → puppies. Change y to -ies."},
-   {id:"g_p4",type:"mc",q:"One wolf, many ___.",o:["wolfs","wolves","wolfes"],a:["wolves"],hint:"Think of leaf → leaves.",why:"Wolf → wolves. The f changes to -ves."},
-   {id:"g_p5",type:"mc",q:"One goose, two ___.",o:["gooses","geese","geeses"],a:["geese"],hint:"It is a special word, like mouse → mice.",why:"Goose is special: goose → geese."},
-   {id:"g_p6",type:"type",q:"One sheep, ten ___.",a:["sheep"],hint:"This special word does not change at all!",why:"Sheep stays the same: one sheep, ten sheep."}
-  ]},
- {id:"past", e:"⏪", t:"Yesterday words (Past tense)",
-  intro:"In Pip's story, everything already happened, so we use past tense. Look: Pip <b>flew</b>, <b>met</b>, <b>smiled</b>, <b>laughed</b>.",
-  rules:[
-   {r:"Most verbs: add <b>-ed</b>",ex:["walk → walked","laugh → laughed"]},
-   {r:"Verbs ending in <b>e</b>: just add <b>-d</b>",ex:["smile → smiled","wave → waved"]},
-   {r:"<b>Special verbs</b> change in their own way",ex:["fly → flew","see → saw","swim → swam","eat → ate","meet → met"]}
-  ],
-  tries:[
-   {id:"g_t1",type:"type",q:"Today the elephants walk. Yesterday they ___.",a:["walked"],hint:"Walk is a regular verb. Add -ed.",why:"Walk → walked."},
-   {id:"g_t2",type:"mc",q:"Yesterday Pip ___ to the desert.",o:["fly","flew","flied"],a:["flew"],hint:"Fly is a special verb. Look back at the story!",why:"Fly is special: fly → flew."},
-   {id:"g_t3",type:"type",q:"Today I see a whale. Yesterday I ___ a whale.",a:["saw"],hint:"See is a special verb with only 3 letters in the past.",why:"See is special: see → saw."},
-   {id:"g_t4",type:"mc",q:"The fish ___ in the river last night.",o:["swim","swam","swimmed"],a:["swam"],hint:"Swim is special. Only one letter changes.",why:"Swim → swam."},
-   {id:"g_t5",type:"type",q:"Today the kangaroo smiles. Yesterday it ___.",a:["smiled"],hint:"Smile ends in e. Just add -d.",why:"Smile → smiled."},
-   {id:"g_t6",type:"mc",q:"The bear ___ a big fish yesterday.",o:["eat","ate","eated"],a:["ate"],hint:"Eat is special.",why:"Eat → ate."}
-  ]}
-],
-
-spellTitle:"Animal words",
 spelling:[
  {w:"animal",s:"A camel is a desert animal."},
  {w:"camel",s:"The camel walked across the sand."},
@@ -913,88 +1027,367 @@ spelling:[
  {w:"feather",s:"Pip lost a blue feather.",tip:"f-ea-th-er. The 'ea' sounds like 'e'."},
  {w:"kangaroo",s:"The kangaroo hopped away.",tip:"Double o at the end: kangar-oo."},
  {w:"world",s:"Pip flew around the world."},
- {w:"cold",s:"The Arctic is very cold."},
- {w:"jump",s:"Kangaroos can jump very far."}
-],
-
-think:[
- {q:"🤔 Odd one out: which animal does NOT live in the ocean?",o:["Shark","Octopus","Camel","Whale"],a:["Camel"],why:"Sharks, octopuses and whales live in the ocean. A camel lives in the desert."},
- {q:"🔥 Which animal would find it HARDEST to live in a hot desert?",o:["Camel","Lizard","Polar bear"],a:["Polar bear"],why:"A polar bear's thick fur is made for the cold. In a hot desert, it would get far too hot."},
- {q:"🐸 A frog's life: egg → ___ → frog. What comes in the middle?",o:["Tadpole","Fish","Snake"],a:["Tadpole"],why:"A frog starts as an egg, then becomes a tadpole that swims, and then grows legs and becomes a frog."},
- {q:"🧩 Riddle: I have a pouch and strong back legs, and I hop. Who am I?",o:["Penguin","Kangaroo","Monkey"],a:["Kangaroo"],why:"Pouch + hopping = kangaroo!"},
- {q:"🐪 A camel's hump is small and floppy. What probably happened?",o:["It used up the fat in its hump","It drank too much water","It is too cold"],a:["It used up the fat in its hump"],why:"The hump stores fat. When the camel uses the fat for energy, the hump gets smaller and floppy."},
- {q:"🔗 Elephant is to trunk as bird is to ___.",o:["beak","tail","fur"],a:["beak"],why:"An elephant picks up food with its trunk. A bird picks up food with its beak."}
+ {w:"turtle",s:"The turtle swam into the sea.",tip:"t-ur-t-le. The ending '-le' sounds like 'ul'."},
+ {w:"monkey",s:"The monkey swung from the tree.",tip:"Ends in -ey: monk-ey."}
 ],
 
 facts:[
+ {e:"🐙",c:"An octopus has three hearts.",t:true,x:"True! Two hearts pump blood to its gills and one pumps blood to the rest of its body. Its blood is blue!"},
  {e:"🐪",c:"A camel's hump is full of water.",t:false,x:"Not true! The hump stores fat. The camel's body can turn that fat into energy."},
- {e:"🐙",c:"An octopus has three hearts.",t:true,x:"True! Two hearts pump blood to its gills and one pumps blood to the rest of its body."},
  {e:"🐻‍❄️",c:"Polar bears have black skin under their white fur.",t:true,x:"True! Their dark skin helps them soak up warmth from the sun."},
- {e:"🐧",c:"Penguins can fly high in the sky.",t:false,x:"Not true! Penguins cannot fly, but they are super swimmers. Their wings work like flippers."},
- {e:"🐦",c:"Hummingbirds can fly backwards.",t:true,x:"True! Hummingbirds can fly forwards, backwards, and even stay still in the air."},
- {e:"🦦",c:"Sea otters sometimes hold paws while they sleep.",t:true,x:"True! It helps them stay together so they don't float away from each other."},
- {e:"🦘",c:"A baby kangaroo is called a cub.",t:false,x:"Not true! A baby kangaroo is called a joey."},
- {e:"🦥",c:"Sloths move so slowly that tiny green plants can grow on their fur.",t:true,x:"True! Tiny plants called algae grow on their fur. The green colour helps them hide in trees."}
+ {e:"🦋",c:"Butterflies taste with their feet.",t:true,x:"True! Butterflies have taste sensors on their feet, so they can taste a leaf just by standing on it."},
+ {e:"🕷️",c:"Spiders are insects.",t:false,x:"Not true! Insects have six legs. Spiders have eight legs, so they belong to a different group called arachnids."},
+ {e:"🦇",c:"Bats are blind.",t:false,x:"Not true! Bats can see. Many bats also use echoes to find their way in the dark."},
+ {e:"🐬",c:"Dolphins sleep with one half of their brain at a time.",t:true,x:"True! One half rests while the other half stays awake, so the dolphin can keep swimming and breathing."},
+ {e:"🐠",c:"Goldfish can only remember things for three seconds.",t:false,x:"Not true! Scientists have shown that goldfish can remember things for months."},
+ {e:"🦉",c:"An owl can turn its head most of the way around.",t:true,x:"True! An owl cannot move its eyes, so it turns its head instead, about three-quarters of the way around."},
+ {e:"🐸",c:"Frogs can drink water through their skin.",t:true,x:"True! Frogs soak up water through their skin instead of drinking with their mouths."},
+ {e:"⭐",c:"A starfish is a kind of fish.",t:false,x:"Not true! A starfish has no gills, fins or bones. Scientists now call it a sea star."},
+ {e:"🐨",c:"Koalas can sleep for up to 20 hours a day.",t:true,x:"True! Koalas eat eucalyptus leaves, which give them very little energy, so they rest most of the day."}
 ],
 
 writing:[
  {e:"🦋",t:"Imagine you are an animal",level:"Step 1 · Sentences",
-  prompt:"If you could be any animal for one day, which animal would you be? Where would you live? What would you do? Write at least 3 sentences and use a word from the word bank.",
-  minS:3,minWords:1,
+  prompt:"If you could be any animal for one day, which animal would you be? Where would you live? What would you eat? What would you do all day? Write at least 4 sentences and use a word from the word bank.",
+  minS:4,minWords:1,
   rx:[["^\\s*[A-Z]","I started with a capital letter"],["[.!?]\\s*$","I ended with a full stop (or ? or !)"],["^(?![\\s\\S]*\\bi\\b)","I wrote I as a capital letter"]],
-  starters:["If I were a ","I would live in ","I would ","My best friend would be "],
-  model:"If I were a dolphin, I would live in the ocean. I would swim fast and jump over the waves. My best friend would be a sea turtle."}
+  starters:["If I were a ","I would live in ","I would eat ","All day, I would ","My best friend would be "],
+  model:"If I were a dolphin, I would live in the ocean. I would eat fish and squid. All day, I would swim fast and jump over the waves. My best friend would be a curious sea turtle."},
+ {e:"📝",t:"An animal fact report",level:"Step 2 · Report",
+  prompt:"Choose one real animal. Write a report of at least 6 sentences. Say where it lives (its habitat), what it eats, what its body is like, how it survives, and one amazing fact. Use at least 3 words from the word bank.",
+  minS:6,minWords:3,
+  rx:[["^\\s*[A-Z]","I started with a capital letter"],["[.!?]\\s*$","I ended with a full stop (or ? or !)"],["^(?![\\s\\S]*\\bi\\b)","I wrote I as a capital letter"]],
+  starters:["The ","lives in ","Its habitat is ","It eats ","Its body has ","To survive, it ","An amazing fact is that "],
+  model:"The emperor penguin is a large bird. Its habitat is the icy land and ocean of Antarctica. It eats fish and squid that it catches in the ocean. Its body has thick feathers and a layer of fat to survive the cold. Penguins huddle together in a big group to stay warm. An amazing fact is that the father penguin keeps the egg warm on his feet for about two months."},
+ {e:"📖",t:"Pip's new adventure",level:"Step 3 · Story",
+  prompt:"Write a story of at least 7 sentences about Pip visiting a new animal in a new habitat. Write in the past tense (Pip flew, Pip saw, Pip asked). Give your story a beginning, a middle and an end. Use time words like First, Then, Next and Finally.",
+  minS:7,minWords:2,
+  rx:[["^\\s*[A-Z]","I started with a capital letter"],["[.!?]\\s*$","I ended with a full stop (or ? or !)"],
+      ["\\b(First|Then|Next|After that|Finally|Later|One day)\\b","I used a time word (First, Then, Next, Finally…)"],
+      ["(\\b(\\w+ed|flew|saw|went|said|met|ate|swam|ran|came|found|took|had|was|were|made|got|told|sang|slept|caught|dug|hid|knew|thought)\\b[\\s\\S]*){3}","I used at least 3 past-tense verbs"]],
+  starters:["One day, Pip flew to ","First, ","Then, ","Pip asked, \"","Next, ","Finally, Pip "],
+  model:"One day, Pip flew to the rainforest. First, he saw tall trees and heard parrots singing. Then he met a sloth hanging upside down from a branch. \"Why do you move so slowly?\" Pip asked. The sloth yawned and said that moving slowly helps it save energy. Next, Pip saw that tiny green plants were growing on the sloth's fur, which was perfect camouflage. Finally, Pip flew home and told his friends about his amazing new friend."}
 ]
 });
+})();
 
-/* ===================== UNIT 2 · SKILL LIST (full rebuild of content still to come) ===================== */
+/* ===================== UNIT 2 · SKILL BANKS AND SKILL LIST (original content) ===================== */
 (function(){
 const u=UNITS.find(x=>x.id==="animals");
+const set=k=>u.words.slice(k*10,k*10+10);
 const MIX=(...g)=>()=>R(g)();
-const PL=[
- ...["camel","bird","frog","lion","tiger","snake","horse","zebra","monkey","donkey","turtle","shark","whale","seal","rabbit","elephant","kangaroo"].map(w=>[w,w+"s","Most words: add -s."]),
- ...["fox","box","bus","dish","brush","peach","lunch","glass","dress","wish"].map(w=>[w,w+"es","Words ending in -s, -x, -sh, -ch: add -es."]),
- ...[["puppy","puppies"],["bunny","bunnies"],["baby","babies"],["pony","ponies"],["butterfly","butterflies"],["berry","berries"],["city","cities"],["story","stories"],["fly","flies"]].map(p=>[p[0],p[1],"Consonant + y: change y to -ies."]),
- ...[["wolf","wolves"],["leaf","leaves"],["calf","calves"],["half","halves"],["shelf","shelves"],["knife","knives"],["loaf","loaves"]].map(p=>[p[0],p[1],"Many words ending in -f or -fe change to -ves."])
-];
-const SPECIAL=[["mouse","mice"],["goose","geese"],["sheep","sheep"],["deer","deer"],["fish","fish"],["child","children"],["foot","feet"],["tooth","teeth"],["man","men"],["woman","women"],["ox","oxen"]];
-const wrongPlurals=(w,c)=>uniq([w+"s",w+"es",w.replace(/y$/,"ies"),w.replace(/fe?$/,"ves"),w]).filter(x=>x!==c).slice(0,2);
-const plural=list=>()=>{const p=R(list);const why=(p[2]||"This is a special word. Learn it by heart.")+` One ${p[0]}, two <b>${p[1]}</b>.`;
-  return Math.random()<.5?{type:"type",q:`One ${p[0]}, two ___.`,a:[p[1]],why,hint:p[2]||"It is a special word."}
-   :mcQ(`One ${p[0]}, many ___.`,p[1],wrongPlurals(p[0],p[1]),why,p[2]||"It is a special word.")};
-const special=()=>plural(SPECIAL.map(p=>[p[0],p[1],null]))();
+const box=(t,txt)=>`<div class="qbox" style="margin:0 0 12px;font-size:18px;line-height:1.6;font-weight:400"><b>${t}</b><br>${txt}</div>`;
+const NUM=["two","three","four","five","six","seven","eight","nine","ten"];
 
-const REG=[["walk","walked"],["jump","jumped"],["play","played"],["laugh","laughed"],["help","helped"],["kick","kicked"],["climb","climbed"],["look","looked"],["open","opened"],["cook","cooked"],["watch","watched"],["clean","cleaned"],["smile","smiled"],["wave","waved"],["dance","danced"],["bake","baked"],["live","lived"],["hop","hopped"],["stop","stopped"],["clap","clapped"],["hug","hugged"],["cry","cried"],["carry","carried"],["try","tried"]];
-const IRR=[["fly","flew"],["see","saw"],["swim","swam"],["eat","ate"],["run","ran"],["go","went"],["come","came"],["sing","sang"],["drink","drank"],["give","gave"],["take","took"],["sleep","slept"],["find","found"],["catch","caught"],["make","made"],["sit","sat"],["write","wrote"],["get","got"],["have","had"],["tell","told"],["meet","met"],["ride","rode"]];
-const SUBJ=["the elephants","the birds","we","they","the kangaroos","the monkeys","I","the penguins"];
-const past=(list,rule)=>()=>{const v=R(list),s=R(SUBJ);const S=s==="I"?"I":cap(s);
-  const why=`${v[0]} → <b>${v[1]}</b>. ${rule(v)}`;
-  if(Math.random()<.5)return {type:"type",q:`Today ${s} ${v[0]}. Yesterday ${s} ___.`,a:[v[1]],why,hint:rule(v)};
-  return mcQ(`Yesterday ${s} ___.<br><span style="color:var(--muted);font-size:16px">(${v[0]})</span>`,v[1],uniq([v[0],v[0]+"ed",v[0].replace(/e$/,"")+"ed"]).filter(x=>x!==v[1]).slice(0,2),why,rule(v))};
-const regRule=v=>/ied$/.test(v[1])?"Consonant + y: change y to i and add -ed.":/(.)\1ed$/.test(v[1])?"Short word ending consonant-vowel-consonant: double the last letter and add -ed.":/e$/.test(v[0])?"Ends in e: just add -d.":"Most verbs: add -ed.";
-const irrRule=()=>"This is a special (irregular) verb. Learn it by heart.";
-const HOME=[["camel","desert"],["lizard","desert"],["scorpion","desert"],["polar bear","Arctic"],["seal","Arctic"],["Arctic fox","Arctic"],["octopus","ocean"],["whale","ocean"],["shark","ocean"],["lion","grassland"],["zebra","grassland"],["elephant","grassland"],["monkey","rainforest"],["sloth","rainforest"],["toucan","rainforest"],["frog","pond"],["duck","pond"]];
-const home=()=>{const h=R(HOME);return mcQ(`Which habitat is home to the <b>${h[0]}</b>?`,h[1],SAMPLE(uniq(HOME.map(x=>x[1])).filter(x=>x!==h[1]),3),`The ${h[0]} lives in the <b>${h[1]}</b>.`,"Think: hot or cold? Wet or dry? Land or water?")};
-const PUZ=u.think.map(t=>({q:t.q,o:t.o,a:t.a[0],why:t.why}));
-const OLD=u.grammar.flatMap(g=>g.tries);
-const mixed=()=>{const t=Object.assign({},R(OLD));if(t.o)t.o=shuffle(t.o.slice());return t};
+/* ================= GRAMMAR: PLURALS ================= */
+const PL_S=[...["camel","bird","frog","lion","tiger","snake","horse","zebra","monkey","donkey","turtle","shark","whale","seal","rabbit","elephant","kangaroo","parrot","penguin","giraffe","dolphin","owl","eagle","beaver","koala","nest","egg","claw","tusk","feather"].map(w=>[w,w+"s","Most words: just add -s."]),
+ ...["fox","box","bus","dish","brush","peach","lunch","glass","bench","bush","finch","ostrich","walrus","octopus"].map(w=>[w,w+"es","Words ending in -s, -x, -sh or -ch: add -es."])];
+const PL_IES=[["puppy","puppies"],["bunny","bunnies"],["baby","babies"],["pony","ponies"],["butterfly","butterflies"],["berry","berries"],["city","cities"],["story","stories"],["fly","flies"],["lady","ladies"],["family","families"],["daisy","daisies"],["party","parties"],["cherry","cherries"],["country","countries"]].map(p=>[p[0],p[1],"Consonant + y: change the y to i and add -es."]);
+const PL_YS=[["monkey","monkeys"],["donkey","donkeys"],["day","days"],["toy","toys"],["boy","boys"],["key","keys"],["turkey","turkeys"],["jay","jays"]].map(p=>[p[0],p[1],"Vowel + y (ay, ey, oy): just add -s."]);
+const PL_VES=[["wolf","wolves"],["leaf","leaves"],["calf","calves"],["half","halves"],["shelf","shelves"],["knife","knives"],["loaf","loaves"],["wife","wives"],["life","lives"],["thief","thieves"],["scarf","scarves"],["hoof","hooves"]].map(p=>[p[0],p[1],"Many words ending in -f or -fe: change to -ves."]);
+const SPECIAL=[["mouse","mice"],["goose","geese"],["sheep","sheep"],["deer","deer"],["moose","moose"],["child","children"],["foot","feet"],["tooth","teeth"],["man","men"],["woman","women"],["ox","oxen"],["person","people"]].map(p=>[p[0],p[1],"This is a special word. Learn it by heart."]);
+function wrongPl(w,c){return SAMPLE(uniq([w,w+"s",w+"es",w.replace(/y$/,"ies"),w.replace(/y$/,"ys"),w.replace(/fe?$/,"ves"),w.replace(/fe$/,"fs")]).filter(x=>x!==c),2)}
+function plQ(list){return ()=>{const p=R(list);const why=`${p[2]} One ${p[0]}, two <b>${p[1]}</b>.`;const n=R(NUM);
+  const r=Math.random();
+  if(r<.4)return {type:"type",q:`Write the plural:<br><b>one ${p[0]} → ${n} ___</b>`,a:[p[1]],why,hint:p[2]};
+  if(r<.8){const w=wrongPl(p[0],p[1]);while(w.length<2)w.push(p[0]+(w.length?"z":"s"));return mcQ(`One ${p[0]}, ${n} ___.`,p[1],w.filter(x=>x!==p[1]),why,p[2])}
+  const s=R(list.filter(x=>x!==p));return mcQ(`Which plural is spelled correctly?`,p[1],[wrongPl(p[0],p[1])[0]||p[0]+"s",wrongPl(s[0],s[1])[0]||s[0]+"es"].filter(x=>x!==p[1]),why,p[2])}}
+const PLACES=["in the forest","at the zoo","by the river","in the tree","on the farm","in the field","near the pond","on the beach"];
+const plFix=()=>{const p=R(PL_S.concat(PL_IES,PL_VES,SPECIAL,PL_YS));const n=R(NUM);const pl=R(PLACES);
+  return {type:"type",q:`Fix the mistake. Type the correct plural word:<br><b>There are ${n} ${p[0]} ${pl}.</b>`,a:[p[1]],why:`There are ${n} <b>${p[1]}</b> ${pl}. ${p[2]}`,hint:`More than one ${p[0]}: what is the plural?`}};
+const SING=["The camel","A lion","My puppy","The baby elephant","The octopus","This turtle","The fox","The mouse","The sheep","Pip"];
+const PLUR=["The camels","Two lions","My puppies","The elephants","The foxes","These turtles","The mice","The geese","The wolves","Three bunnies"];
+const COMPL=["thirsty","asleep","in the water","very fast","hungry","hiding in the grass","in the tree","very noisy","tired","happy"];
+const isAre=()=>{const pl=Math.random()<.5;let s=R(pl?PLUR:SING);if(s==="The sheep")s="The little sheep";const c=R(COMPL);const ans=pl?"are":"is";
+  return mcQ(`Choose <b>is</b> or <b>are</b>:<br><b>${s} ___ ${c}.</b>`,ans,[pl?"is":"are"],`<b>${s}</b> is ${pl?"more than one (plural), so we use <b>are</b>":"just one (singular), so we use <b>is</b>"}.`,"Is it one, or more than one?")};
+const sp=()=>{const all=PL_S.concat(PL_IES,PL_VES,SPECIAL);const p=R(all);const asP=Math.random()<.5;const w=asP?p[1]:p[0];
+  if(p[0]===p[1])return sp();
+  return mcQ(`Is <b>${w}</b> singular (one) or plural (more than one)?`,asP?"plural (more than one)":"singular (one)",[asP?"singular (one)":"plural (more than one)"],`<b>${p[0]}</b> is singular and <b>${p[1]}</b> is plural.`,"Think: one, or more than one?")};
+
+/* ================= GRAMMAR: PAST TENSE ================= */
+const REG=[["walk","walked"],["jump","jumped"],["play","played"],["climb","climbed"],["look","looked"],["kick","kicked"],["laugh","laughed"],["help","helped"],["open","opened"],["cook","cooked"],["watch","watched"],["clean","cleaned"],["pull","pulled"],["push","pushed"],["roar","roared"],["hunt","hunted"],["crawl","crawled"],["splash","splashed"],["rest","rested"],["howl","howled"],["paint","painted"],["visit","visited"],["listen","listened"],["follow","followed"]];
+const RULES=[["smile","smiled","Ends in e: just add -d."],["wave","waved","Ends in e: just add -d."],["dance","danced","Ends in e: just add -d."],["bake","baked","Ends in e: just add -d."],["live","lived","Ends in e: just add -d."],["chase","chased","Ends in e: just add -d."],["hope","hoped","Ends in e: just add -d."],["race","raced","Ends in e: just add -d."],["hop","hopped","Short word, one vowel, one last consonant: double it and add -ed."],["stop","stopped","Short word, one vowel, one last consonant: double it and add -ed."],["clap","clapped","Short word, one vowel, one last consonant: double it and add -ed."],["hug","hugged","Short word, one vowel, one last consonant: double it and add -ed."],["drop","dropped","Short word, one vowel, one last consonant: double it and add -ed."],["grab","grabbed","Short word, one vowel, one last consonant: double it and add -ed."],["flap","flapped","Short word, one vowel, one last consonant: double it and add -ed."],["trot","trotted","Short word, one vowel, one last consonant: double it and add -ed."],["cry","cried","Consonant + y: change y to i and add -ed."],["carry","carried","Consonant + y: change y to i and add -ed."],["try","tried","Consonant + y: change y to i and add -ed."],["hurry","hurried","Consonant + y: change y to i and add -ed."],["copy","copied","Consonant + y: change y to i and add -ed."],["dry","dried","Consonant + y: change y to i and add -ed."]];
+const IRR=[["fly","flew"],["see","saw"],["swim","swam"],["eat","ate"],["run","ran"],["go","went"],["come","came"],["sing","sang"],["drink","drank"],["give","gave"],["take","took"],["sleep","slept"],["find","found"],["catch","caught"],["make","made"],["sit","sat"],["write","wrote"],["get","got"],["have","had"],["tell","told"],["meet","met"],["ride","rode"],["dig","dug"],["hide","hid"],["grow","grew"],["bite","bit"],["fall","fell"],["hold","held"],["know","knew"],["wake","woke"],["feed","fed"],["build","built"],["swing","swung"],["throw","threw"]];
+const SUBJ=["the elephants","the birds","we","they","the kangaroos","the monkeys","I","the penguins","the turtles","the foxes"];
+const OBJ={walk:"to the river",jump:"over the log",play:"in the park",climb:"the tree",look:"at the clouds",kick:"the ball",laugh:"at the joke",help:"the zookeeper",open:"the box",cook:"dinner",watch:"the stars",clean:"the cage",pull:"the rope",push:"the cart",roar:"loudly",hunt:"for food",crawl:"under the log",splash:"in the water",rest:"in the shade",howl:"at the moon",paint:"a picture",visit:"the zoo",listen:"to the birds",follow:"the path",smile:"at the baby",wave:"hello",dance:"in the rain",bake:"bread",live:"near the sea",chase:"the ball",hope:"for rain",race:"to the tree",hop:"over the rock",stop:"at the river",clap:"loudly",hug:"each other",drop:"the ball",grab:"the rope",flap:"in the wind",trot:"along the path",cry:"at the sad story",carry:"the bags",try:"again",hurry:"home",copy:"the words",dry:"the dishes",fly:"over the sea",see:"a rainbow",swim:"in the lake",eat:"some fruit",run:"to the river",go:"to the forest",come:"home",sing:"a song",drink:"cold water",give:"us a gift",take:"a nap",sleep:"in the den",find:"a shiny shell",catch:"a fish",make:"a nest",sit:"under the tree",write:"a letter",get:"wet",have:"lunch",tell:"a story",meet:"a new friend",ride:"on a boat",dig:"a hole",hide:"behind a rock",grow:"bigger",bite:"the apple",fall:"asleep",hold:"the baby",know:"the way",wake:"up early",feed:"the ducks",build:"a dam",swing:"on the branches",throw:"the ball"};
+const pastWrong=(v,c)=>SAMPLE(uniq([v,v+"s",v+"ed",v+v.slice(-1)+"ed",v.replace(/e$/,"")+"ed",v.replace(/y$/,"ied"),v+"d"]).filter(x=>x!==c),2);
+function pastQ(list,ruleOf){return ()=>{const v=R(list),s=R(SUBJ);const rule=ruleOf(v);const why=`${v[0]} → <b>${v[1]}</b>. ${rule}`;const o=OBJ[v[0]]?" "+OBJ[v[0]]:"";
+  if(Math.random()<.5)return {type:"type",q:`Today ${s} ${v[0]}${o}.<br>Yesterday ${s} ___${o}.`,a:[v[1]],why,hint:rule};
+  return mcQ(`Yesterday ${s} ___${o}.<br><span style="color:var(--muted);font-size:16px">(${v[0]})</span>`,v[1],pastWrong(v[0],v[1]),why,rule)}}
+const regRule=()=>"Most verbs: add -ed.";
+const irrRule=()=>"This is a special (irregular) verb. It does not use -ed. Learn it by heart.";
+const pastFix=()=>{const all=REG.concat(RULES.map(x=>[x[0],x[1]]),IRR);const v=R(all);const s=R(["the bear","the monkey","the owl","Pip","the zebra","my cat","the baby turtle","the fox"]);const o=OBJ[v[0]]||R(["at the zoo","in the forest","by the river"]);
+  const verb3=v[0]==="have"?"has":/(s|sh|ch|x|o)$/.test(v[0])?v[0]+"es":/[^aeiou]y$/.test(v[0])?v[0].replace(/y$/,"ies"):v[0]+"s";
+  return {type:"type",q:`Fix the verb. This happened yesterday, so it must be in the past:<br><b>Yesterday ${s} ${verb3} ${o}.</b><br>Type only the correct verb.`,a:[v[1]],why:`Yesterday ${s} <b>${v[1]}</b> ${o}.`,hint:`What is the past tense of "${v[0]}"?`}};
+const INTR=[["walk","walked"],["jump","jumped"],["play","played"],["climb","climbed"],["swim","swam"],["fly","flew"],["run","ran"],["sleep","slept"],["sing","sang"],["hide","hid"],["hop","hopped"],["crawl","crawled"],["splash","splashed"],["roar","roared"],["hunt","hunted"],["rest","rested"],["dance","danced"],["eat","ate"],["dig","dug"],["howl","howled"]];
+const SUBJ2=["the monkeys","the birds","the lions","the frogs","the children","the penguins","the wolves","the dolphins"];
+const PRES_T=["Every day,","Every morning,","Usually,","Each night,","Every summer,"],PAST_T=["Yesterday,","Last night,","Last week,","Long ago,","Last summer,"];
+const tense=()=>{const v=R(INTR),s=R(SUBJ2),pl=R(PLACES);const k=Math.random();
+  if(k<.5){const past=Math.random()<.5;const sent=`${past?R(PAST_T):R(PRES_T)} ${s} ${past?v[1]:v[0]} ${pl}.`;
+    return mcQ(`Does this sentence tell about the <b>present</b> (it happens now or often) or the <b>past</b> (it already happened)?<br><b>${sent}</b>`,past?"past":"present",[past?"present":"past"],past?`It already happened. Look at the time words and the verb <b>${v[1]}</b>.`:`It happens often. Look at the time words and the verb <b>${v[0]}</b>.`,"Look at the time words at the start.")}
+  const past=Math.random()<.5;const tw=past?R(PAST_T):R(PRES_T);
+  return mcQ(`Choose the verb that matches the time words:<br><b>${tw} ${s} ___ ${pl}.</b>`,past?v[1]:v[0],[past?v[0]:v[1]],`<b>${tw}</b> tells us it ${past?"already happened, so we use the past: <b>"+v[1]+"</b>":"happens often, so we use the present: <b>"+v[0]+"</b>"}.`,"Do the time words tell about the past or about now?")};
+const WSING=["The lion","The baby elephant","I","My cat","The octopus","Pip","She","He","It","The camel","Our teacher"];
+const WPLUR=["The lions","We","They","You","The penguins","My cats","The baby turtles","The zebras","Ravi and his aunt"];
+const WCOMP=["hungry","very tired","in the water","asleep","happy","under the tree","cold","noisy","at the zoo","excited"];
+const wasWere=()=>{const pl=Math.random()<.5;const s=R(pl?WPLUR:WSING);const ans=(pl||s==="You")?"were":"was";const disp=/^(Pip|Ravi|I)\b/.test(s)?s:s.charAt(0).toLowerCase()+s.slice(1);
+  return mcQ(`Choose <b>was</b> or <b>were</b>:<br><b>Yesterday, ${disp} ___ ${R(WCOMP)}.</b>`,ans,[ans==="was"?"were":"was"],ans==="was"?`Use <b>was</b> with one person or thing (and with I).`:`Use <b>were</b> with more than one, and with <b>you</b>, <b>we</b> and <b>they</b>.`,"One, or more than one? (Remember: I was, you were.)")};
+
+/* ================= GRAMMAR: SENTENCES (review from Unit 1 with animal sentences) ================= */
+const SENT=["Pip flew to Australia.","The camel lives in the Sahara Desert.","Kamal has a big hump.","The elephants walked to the river.","Nanuk is a polar bear.","Ravi helped the baby turtles.","Aunt Leela is a scientist.","Monarch butterflies fly to Mexico.","The joey sleeps in the pouch.","Tembo sprayed water on Pip.","Penguins live in Antarctica.","I saw a whale in the ocean.","The fox hid in its den.","My cat has sharp claws.","Kiko changed colour.","The owl hunts at night.","We visited Green Hill Zoo on Saturday.","The bear sleeps all winter.","Flora the flamingo is pink.","I fed the ducks at the pond.","The cheetah ran very fast.","Sloths live in the rainforest.","The zebra has black and white stripes.","Leo and I watched the monkeys."];
+const fix=()=>{const s=R(SENT);return {type:"type",strict:true,q:`Fix this sentence. Add the capital letters and the full stop:<br><b>${breakSentence(s)}</b>`,a:[s],hint:"Capital letter at the start, capitals for names, places and I, and a full stop at the end.",why:`Correct: <b>${s}</b>`}};
+
+/* ================= WRITE YOUR OWN ================= */
+const PASTV="\\b(\\w+ed|flew|saw|went|swam|ate|ran|came|found|took|had|was|were|made|got|told|sang|slept|caught|dug|hid|met|fed|built|grew|fell|held|knew|woke|rode|sat|gave|drank|bit|swung|threw|said)\\b";
+const D=[CHK.cap,CHK.end,CHK.w4,CHK.I];
+const WP=[
+ {q:"Write a sentence about an animal and its habitat.",checks:D,model:"Camels live in the hot desert."},
+ {q:"Write a sentence using a <b>plural</b> animal word (more than one animal).",checks:[...D,["\\b\\w+(s|ies|ves)\\b|\\b(mice|geese|sheep|deer|children|teeth|feet)\\b","Uses a plural word"]],model:"Three foxes ran into the forest."},
+ {q:"Write a sentence about something you did <b>yesterday</b>. Use the past tense.",checks:[...D,[PASTV,"Uses a past-tense verb"]],model:"Yesterday I played football with my brother."},
+ {q:"Write a sentence about something an animal did. Use a <b>special</b> past verb like flew, swam, ate or ran.",checks:[...D,["\\b(flew|saw|went|swam|ate|ran|came|found|took|made|caught|dug|hid|slept|sang|grew|fell|built)\\b","Uses a special past-tense verb"]],model:"The duck swam across the pond."},
+ {q:"Write a sentence with <b>was</b> or <b>were</b>.",checks:[...D,["\\b(was|were)\\b","Uses was or were"]],model:"The penguins were very noisy."},
+ {q:"Write a sentence describing an animal's body. Use a word like fur, feathers, scales, claws or beak.",checks:[...D,["\\b(fur|feathers?|scales?|claws?|beak|fins?|trunk|hump|tusks?|pouch|tail|wings?|shell)\\b","Names a body part"]],model:"The parrot has bright green feathers."},
+ {q:"Write a question you would like to ask a zookeeper.",checks:[CHK.cap,CHK.q,CHK.w3,CHK.I],model:"What do the giraffes eat every day?"},
+ {q:"Write a sentence explaining how one animal survives. Use the word <b>because</b>.",checks:[...D,["\\bbecause\\b","Uses because"]],model:"Polar bears stay warm because they have thick fur."},
+ {q:"Write a sentence using the word <b>predator</b> or <b>prey</b>.",checks:[...D,["\\b(predators?|prey)\\b","Uses predator or prey"]],model:"The owl is a predator that hunts mice."},
+ {q:"Write an exclaiming sentence about an amazing animal.",checks:[CHK.cap,["!\\s*$","Ends with an exclamation mark"],CHK.w3],model:"Wow, that whale is enormous!"}
+];
+
+/* ================= VOCABULARY ================= */
+const HOME=[["camel","desert"],["lizard","desert"],["scorpion","desert"],["fennec fox","desert"],["polar bear","Arctic"],["Arctic fox","Arctic"],["walrus","Arctic"],["octopus","ocean"],["whale","ocean"],["shark","ocean"],["sea turtle","ocean"],["lion","grassland"],["zebra","grassland"],["giraffe","grassland"],["cheetah","grassland"],["monkey","rainforest"],["sloth","rainforest"],["toucan","rainforest"],["jaguar","rainforest"],["frog","pond"],["duck","pond"],["dragonfly","pond"]];
+const HAB=uniq(HOME.map(x=>x[1]));
+const homeQ=()=>{const h=R(HOME);if(Math.random()<.6)return mcQ(`Which habitat is home to the <b>${h[0]}</b>?`,h[1],SAMPLE(HAB.filter(x=>x!==h[1]),3),`The ${h[0]} lives in the <b>${h[1]}</b>.`,"Think: hot or cold? Wet or dry? Land or water?");
+  const others=SAMPLE(HOME.filter(x=>x[1]!==h[1]),3).map(x=>x[0]);return mcQ(`Which animal lives in the <b>${h[1]}</b>?`,h[0],others,`The <b>${h[0]}</b> lives in the ${h[1]}.`,"Picture the habitat. Which animal fits there?")};
+const BABY=[["elephant","calf"],["cow","calf"],["whale","calf"],["giraffe","calf"],["bear","cub"],["lion","cub"],["tiger","cub"],["fox","cub"],["kangaroo","joey"],["koala","joey"],["hen","chick"],["penguin","chick"],["cat","kitten"],["dog","puppy"],["horse","foal"],["zebra","foal"],["sheep","lamb"],["frog","tadpole"],["duck","duckling"],["goat","kid"],["pig","piglet"],["goose","gosling"]];
+const BN=uniq(BABY.map(x=>x[1]));
+const babyQ=()=>{const b=R(BABY);if(Math.random()<.6)return mcQ(`What is a baby <b>${b[0]}</b> called?`,b[1],SAMPLE(BN.filter(x=>x!==b[1]),3),`A baby ${b[0]} is called a <b>${b[1]}</b>.`,"Think of the story words: Tembo the calf, the joey in the pouch…");
+  const wrong=SAMPLE(BABY.filter(x=>x[1]!==b[1]),3).map(x=>x[0]);return mcQ(`A <b>${b[1]}</b> is the baby of which animal?`,b[0],wrong,`A <b>${b[1]}</b> is a baby ${BABY.filter(x=>x[1]===b[1]).map(x=>x[0]).join(" or ")}.`,"Which animal has babies with this name?")};
+const GROUP=[["elephants","herd"],["cows","herd"],["zebras","herd"],["birds","flock"],["sheep","flock"],["wolves","pack"],["fish","school"],["lions","pride"],["bees","swarm"],["ants","colony"],["penguins","colony"],["dolphins","pod"],["whales","pod"],["monkeys","troop"]];
+const GN=uniq(GROUP.map(x=>x[1]));
+const groupQ=()=>{const g=R(GROUP);return mcQ(`A group of <b>${g[0]}</b> is called a ___.`,g[1],SAMPLE(GN.filter(x=>x!==g[1]),3),`A <b>${g[1]}</b> of ${g[0]}.`,"Some groups have special names. Which one fits?")};
+const SOUND=[["lion","roars"],["dog","barks"],["cow","moos"],["snake","hisses"],["bee","buzzes"],["duck","quacks"],["horse","neighs"],["wolf","howls"],["mouse","squeaks"],["owl","hoots"],["pig","oinks"],["sheep","baas"],["frog","croaks"],["elephant","trumpets"],["cat","purrs"],["hen","clucks"]];
+const SN=uniq(SOUND.map(x=>x[1]));
+const soundQ=()=>{const s=R(SOUND);if(Math.random()<.6)return mcQ(`What sound does a <b>${s[0]}</b> make? A ${s[0]} ___.`,s[1],SAMPLE(SN.filter(x=>x!==s[1]),3),`A ${s[0]} <b>${s[1]}</b>.`,"Say the sound out loud!");
+  return mcQ(`Which animal <b>${s[1]}</b>?`,s[0],SAMPLE(SOUND.filter(x=>x!==s),3).map(x=>x[0]),`A <b>${s[0]}</b> ${s[1]}.`,"Imagine the sound.")};
+const BODY=[["a trunk","elephant"],["a hump","camel"],["a pouch for its baby","kangaroo"],["a hard shell on its back","turtle"],["a big furry mane","lion"],["a curved beak and colourful feathers","parrot"],["fins and gills","shark"],["a very long neck","giraffe"],["black-and-white stripes","zebra"],["eight arms","octopus"],["no legs at all","snake"],["thick white fur","polar bear"],["sharp spines on its back","hedgehog"],["wings made of skin","bat"]];
+const bodyQ=()=>{const b=R(BODY);return mcQ(`Which animal has <b>${b[0]}</b>?`,"the "+b[1],SAMPLE(BODY.filter(x=>x!==b),3).map(x=>"the "+x[1]),`The <b>${b[1]}</b> has ${b[0]}.`,"Picture each animal in your head.")};
+const OPP=[["big","small"],["fast","slow"],["fierce","gentle"],["hot","cold"],["wet","dry"],["day","night"],["predator","prey"],["loud","quiet"],["rough","smooth"],["heavy","light"],["long","short"],["deep","shallow"],["rare","common"],["asleep","awake"],["safe","dangerous"],["above","below"],["strong","weak"],["young","old"],["full","empty"]];
+const SYN=[["big","large"],["tiny","little"],["swift","fast"],["fierce","savage"],["curious","nosy"],["scared","afraid"],["shout","yell"],["look","see"],["hop","jump"],["home","house"],["amazed","surprised"],["protect","guard"],["discover","find"],["sleepy","tired"],["wild","untamed"],["happy","glad"],["rest","relax"],["noisy","loud"]];
+
+/* ================= SPELLING ================= */
+const SP=u.spelling.concat([
+ {w:"tiger",s:"The tiger has orange and black stripes."},{w:"zebra",s:"The zebra ran across the grass."},{w:"rabbit",s:"The rabbit hid in its burrow.",tip:"Double b: ra-bb-it."},
+ {w:"penguin",s:"A penguin cannot fly.",tip:"pen-gu-in. The 'u' is quiet."},{w:"giraffe",s:"The giraffe has a long neck.",tip:"g sounds like j. Double f and an e at the end: gi-ra-ffe."},
+ {w:"dolphin",s:"The dolphin jumped out of the water.",tip:"'ph' sounds like 'f': dol-ph-in."},{w:"jungle",s:"Monkeys live in the jungle."},{w:"forest",s:"The fox lives in the forest."},
+ {w:"nest",s:"The bird built a nest."},{w:"eagle",s:"The eagle flew high in the sky.",tip:"'ea' says its name: ea-gle."},{w:"octopus",s:"The octopus has eight arms."},
+ {w:"insect",s:"A bee is an insect."},{w:"wild",s:"Lions are wild animals."},{w:"claws",s:"The cat has sharp claws.",tip:"'aw' as in saw: cl-aw-s."},{w:"lion",s:"The lion roared loudly."}
+]);
+const SPP=[{w:"foxes",s:"Three foxes ran into the forest.",tip:"Ends in x: add -es."},{w:"puppies",s:"The puppies are playing.",tip:"y → ies."},{w:"wolves",s:"The wolves howled at the moon.",tip:"f → ves."},{w:"mice",s:"The mice ate the cheese.",tip:"Special plural: mouse → mice."},{w:"leaves",s:"The leaves fell from the tree.",tip:"f → ves."},{w:"geese",s:"The geese flew south.",tip:"Special plural: goose → geese."},{w:"butterflies",s:"The butterflies landed on the flowers.",tip:"y → ies."},{w:"buses",s:"Two buses went to the zoo.",tip:"Ends in s: add -es."},{w:"babies",s:"The babies are sleeping.",tip:"y → ies."},{w:"teeth",s:"The shark has sharp teeth.",tip:"Special plural: tooth → teeth."},{w:"feet",s:"Ducks have webbed feet.",tip:"Special plural: foot → feet."},{w:"children",s:"The children watched the penguins.",tip:"Special plural: child → children."},{w:"dishes",s:"The zookeeper washed the food dishes.",tip:"Ends in sh: add -es."},{w:"calves",s:"The calves walked with their mothers.",tip:"f → ves."},{w:"bunnies",s:"The bunnies hopped away.",tip:"y → ies."},{w:"monkeys",s:"The monkeys swung in the trees.",tip:"Vowel + y: just add -s."},{w:"lunches",s:"We ate our lunches at the zoo.",tip:"Ends in ch: add -es."},{w:"knives",s:"The cooks used sharp knives.",tip:"fe → ves."},{w:"sheep",s:"The sheep are on the hill.",tip:"Sheep stays the same."},{w:"cherries",s:"The birds ate the cherries.",tip:"y → ies."}];
+const CHOOSE=[["animal","aminal","animel"],["elephant","elefant","eliphant"],["giraffe","jiraffe","girafe"],["penguin","pengwin","pengin"],["kangaroo","kangaru","kangeroo"],["dolphin","dolfin","dolphen"],["ocean","oshun","ocian"],["rabbit","rabit","rabbitt"],["turtle","turtel","tirtle"],["monkey","monkee","munkey"],["feather","fether","feathre"],["camel","camle","cammel"],["octopus","octopuss","ocktopus"],["desert","dessert","dezert"],["world","wurld","whorld"],["eagle","eegle","egle"],["insect","insekt","insecd"],["habitat","habbitat","habitate"],["puppies","puppys","puppyes"],["wolves","wolfs","wolfes"],["foxes","foxs","foxies"],["mice","mouses","mices"],["butterflies","butterflys","buterflies"],["leaves","leafs","leafes"]].map(x=>({w:x[0],bad:[x[1],x[2]],tip:(SP.concat(SPP).find(y=>y.w===x[0])||{}).tip||(x[0]==="desert"?"desert (one s) is sandy; dessert (two s) is the sweet food after dinner!":undefined)}));
+
+/* ================= READING ================= */
+const DETAIL=[
+ ["The Busy Beaver","Beavers live near rivers and streams. They cut down small trees with their strong front teeth. Then they use sticks and mud to build a dam across the water. A beaver's front teeth never stop growing, so chewing wood keeps them the right size.",[["What do beavers use to cut down trees?","Their strong front teeth",["Their claws","Their tails"]],["What do beavers build across the water?","A dam",["A nest","A bridge of stones"]],["Why is chewing wood good for a beaver's teeth?","It keeps them the right size",["It makes them white","It makes them fall out"]]]],
+ ["Owls at Night","Most owls hunt at night. They have huge eyes that help them see in the dark. Their soft feathers let them fly without making a sound, so mice do not hear them coming. An owl cannot move its eyes, so it turns its head instead.",[["When do most owls hunt?","At night",["In the morning","At lunchtime"]],["Why don't mice hear owls coming?","Owls fly without making a sound",["Owls are very small","Mice cannot hear"]],["What does an owl do because it cannot move its eyes?","It turns its head",["It closes its eyes","It flies away"]]]],
+ ["The Giant Panda","Giant pandas live in the mountain forests of China. They are black and white and very round. Pandas eat bamboo for many hours every day. A newborn panda is pink, tiny and about the size of a stick of butter.",[["Where do giant pandas live?","In the mountain forests of China",["In the Sahara","In the Arctic"]],["What do pandas eat for many hours every day?","Bamboo",["Fish","Grass"]],["What colour is a newborn panda?","Pink",["Black and white","Brown"]]]],
+ ["Penguin Dads","Emperor penguins live in Antarctica. After the mother lays an egg, the father holds it on his feet under a warm fold of skin. He keeps it warm for about two months while the mother goes to the sea to eat. The dads huddle together to stay warm in the freezing wind.",[["Who keeps the egg warm?","The father penguin",["The mother penguin","A seal"]],["Where does the father hold the egg?","On his feet",["In a nest","In the water"]],["Why do the dads huddle together?","To stay warm",["To play a game","To catch fish"]]]],
+ ["Honeybees","Honeybees live together in a hive. Worker bees fly from flower to flower to collect a sweet juice called nectar. They turn the nectar into honey. When a bee finds good flowers, it does a special dance to tell the other bees where to go.",[["What is the sweet juice in flowers called?","Nectar",["Honey","Pollen"]],["Where do honeybees live?","In a hive",["In a burrow","In a den"]],["How does a bee tell others where the flowers are?","It does a special dance",["It sings","It draws a map"]]]],
+ ["The Cheetah","The cheetah is the fastest land animal in the world. It can run as fast as a car on a highway, but only for a short time. Cheetahs have spots that help them hide in the long, dry grass. They hunt in the daytime, when lions are often resting.",[["What is special about the cheetah?","It is the fastest land animal",["It is the biggest cat","It can fly"]],["How long can a cheetah run very fast?","Only for a short time",["All day","All night"]],["What helps cheetahs hide?","Their spots",["Their long tails","Their loud roar"]]]],
+ ["The Blue Whale","The blue whale is the biggest animal that has ever lived. It is longer than two buses. Its heart is about the size of a small car! But blue whales eat tiny animals called krill. They gulp huge mouthfuls of water and krill, then push the water out.",[["What is the blue whale's heart about the size of?","A small car",["A football","A house"]],["What do blue whales eat?","Tiny animals called krill",["Big sharks","Seaweed only"]],["How long is a blue whale?","Longer than two buses",["About as long as a pencil","As long as a cat"]]]],
+ ["The Monarch Butterfly","Monarch butterflies are orange and black. Their caterpillars eat only one kind of plant, called milkweed. Every autumn, millions of monarchs fly from Canada and the United States to Mexico. They rest together in the same forests every year.",[["What colours are monarch butterflies?","Orange and black",["Blue and white","Green and yellow"]],["What do monarch caterpillars eat?","Milkweed",["Grass","Leaves of any tree"]],["Where do monarchs fly in autumn?","To Mexico",["To the Arctic","To Africa"]]]],
+ ["Koalas","Koalas live in Australia. They spend almost all their lives in eucalyptus trees and eat the leaves. Koalas sleep for up to 20 hours a day. Many people call them koala bears, but they are not bears at all. Like kangaroos, they carry their babies in a pouch.",[["Where do koalas live?","In Australia",["In Canada","In China"]],["Are koalas bears?","No",["Yes"]],["How are koalas like kangaroos?","They carry their babies in a pouch",["They hop","They live in the ocean"]]]],
+ ["Clever Crows","Crows are some of the cleverest birds in the world. Some crows use sticks as tools to pull insects out of holes in trees. Crows can also remember people's faces for years. If a person is kind to them, they may even bring small gifts like shiny buttons!",[["What do some crows use sticks for?","To pull insects out of holes",["To build a fire","To scratch their backs"]],["What can crows remember for years?","People's faces",["Songs","Phone numbers"]],["What might a crow bring to a kind person?","Small gifts like shiny buttons",["Fish","Flowers"]]]]
+];
+const detail=()=>{const p=R(DETAIL),x=R(p[2]);return mcQ(`${box(p[0],p[1])}${x[0]}`,x[1],x[2],`Look back at the text: the answer is there.`,"Read the text again and find the words.",{say:p[1]+" "+x[0]})};
+const MAIN=[
+ ["Camels have long eyelashes to keep out sand. Their wide feet do not sink into the sand. Their humps store fat for energy. They can go a long time without water.","Camels are well suited to life in the desert.",["Camels have long eyelashes.","Sand is very hot."]],
+ ["Dogs help people in many ways. Some dogs guide people who cannot see. Some dogs help find people who are lost. Others work on farms to look after sheep.","Dogs help people in many ways.",["Some dogs live on farms.","Sheep are fluffy."]],
+ ["Bees are very busy insects. They collect nectar from flowers to make honey. While they do this, they carry pollen from one flower to another, which helps plants grow fruit.","Bees are busy and helpful insects.",["Honey is sticky.","Flowers are colourful."]],
+ ["Many animals live in the ocean. Tiny shrimp swim near the surface. Colourful fish live on coral reefs. Giant whales travel through the deep, dark water.","Many different animals live in the ocean.",["Whales are giant.","Coral reefs are colourful."]],
+ ["Sea turtles are in danger. Plastic bags in the sea look like jellyfish, and turtles try to eat them. Bright lights on beaches confuse the babies. People are working hard to help them.","Sea turtles are in danger, and people are trying to help.",["Jellyfish live in the sea.","Beaches have bright lights."]],
+ ["Penguins are birds, but they cannot fly. Instead, they are amazing swimmers. Their wings work like flippers, and their smooth bodies glide through the water.","Penguins cannot fly, but they swim very well.",["Penguins have wings.","Water is cold."]],
+ ["A spider's web is a clever trap. The spider spins sticky silk between branches. When an insect flies into the web, it gets stuck. Then the spider comes to eat it.","A spider's web is a clever trap for insects.",["Branches are made of wood.","Insects can fly."]],
+ ["Some animals sleep in the day and wake up at night. Owls, bats and foxes come out in the dark to find food. These animals are called nocturnal animals.","Nocturnal animals are awake at night.",["Bats are animals.","It is dark at night."]],
+ ["Elephants are very caring animals. They live in family groups led by the oldest female. The adults protect the babies, and the whole herd helps if one elephant is hurt.","Elephants are caring animals that look after each other.",["Elephants are big and grey.","The oldest female is the leader."]],
+ ["Frogs change a lot as they grow. They start as tiny eggs in a pond. The eggs hatch into tadpoles with tails. Slowly, the tadpoles grow legs and lose their tails, and become frogs.","Frogs change a lot as they grow.",["Ponds have water.","Tadpoles have tails."]],
+ ["Pets need a lot of care. They need fresh food and water every day. They need a safe, clean place to sleep. They also need exercise, love and visits to the vet.","Pets need a lot of care.",["Vets are doctors for animals.","Water is important."]],
+ ["The Arctic is one of the coldest places on Earth. The sea freezes into ice. Snow covers the land for most of the year. In winter, the sun does not rise for weeks.","The Arctic is a very cold place.",["The sun is hot.","Snow is white."]]
+];
+const mainIdea=()=>{const m=R(MAIN);return mcQ(`${box("Read",m[0])}What is the <b>main idea</b>? (What is it mostly about?)`,m[1],m[2],`The main idea is what the whole text is about: <b>${m[1]}</b>`,"Which answer fits ALL the sentences, not just one?",{say:m[0]})};
+const FACTS=["A spider has eight legs.","Penguins live in Antarctica.","A baby kangaroo is called a joey.","Camels store fat in their humps.","Whales breathe air.","The cheetah is the fastest land animal.","Bees make honey.","Frogs start life as tadpoles.","An octopus has eight arms.","Polar bears live in the Arctic.","Some birds migrate in winter.","Fish breathe with gills.","Elephants are mammals.","A group of lions is called a pride.","Monarch butterflies fly to Mexico."];
+const OPIN=["Pandas are the cutest animals.","Snakes are scary.","Dogs make better pets than cats.","Penguins are the funniest birds.","Lions are the most beautiful animals.","Going to the zoo is the best day out.","Spiders are disgusting.","Parrots are more fun than fish.","Elephants are the smartest animals.","Horses are boring.","Butterflies are the prettiest insects.","Monkeys are the best animals to watch.","Owls are more interesting than eagles.","Cats are lazy."];
+const factOp=()=>{const f=Math.random()<.5;const s=f?R(FACTS):R(OPIN);return mcQ(`Is this a <b>fact</b> or an <b>opinion</b>?<br><b>${s}</b>`,f?"Fact":"Opinion",[f?"Opinion":"Fact"],f?"A <b>fact</b> can be checked in a book or by a scientist, and it is true for everyone.":"An <b>opinion</b> is what someone thinks or feels. Other people may think differently.","Could you check it in a science book? Or do people feel differently about it?")};
+const SEQ=[["A frog lays eggs in a pond","The eggs hatch into tadpoles","The tadpoles grow legs","The young frog leaves the water"],["A butterfly lays an egg on a leaf","A caterpillar hatches and eats leaves","The caterpillar makes a chrysalis","A butterfly comes out"],["A hen lays an egg","The chick grows inside the egg","The chick hatches","The chick grows into a hen"],["The mother turtle lays eggs in the sand","The eggs stay warm for about two months","The baby turtles hatch","The babies crawl to the sea"],["Pip leaves the bird shop","Pip meets Kamal the camel","Pip meets Nanuk the polar bear","Pip flies home"],["The bear eats a lot in autumn","The bear goes into her den","The bear sleeps all winter","The bear wakes up in spring"],["The beaver cuts down small trees","The beaver drags the sticks to the river","The beaver piles up sticks and mud","The dam holds back the water"],["Kiko wishes to be pink","Kiko tries to feel nothing","Kiko helps the baby bird","Kiko is proud of his colours"],["The bee finds a flower","The bee collects nectar","The bee flies back to the hive","The bees make honey"],["The sun helps the grass grow","The zebra eats the grass","The lion hunts the zebra"]];
+const order=()=>{const s=R(SEQ),t=R(["first","last","next"]);
+  if(t==="first")return mcQ(`What happens <b>FIRST</b>?`,s[0],SAMPLE(s.slice(1),2),`Order: ${s.join(" → ")}`,"What must happen before everything else?");
+  if(t==="last")return mcQ(`What happens <b>LAST</b>?`,s[s.length-1],SAMPLE(s.slice(0,-1),2),`Order: ${s.join(" → ")}`,"What happens at the very end?");
+  const k=Math.floor(Math.random()*(s.length-1));return mcQ(`What happens right <b>AFTER</b> this?<br><b>${s[k]}</b>`,s[k+1],SAMPLE(s.filter((_,i)=>i!==k&&i!==k+1),Math.min(2,s.length-2)),`Order: ${s.join(" → ")}`,"What is the very next step?")};
+const CE=[["Because the night was very cold, the puppies curled up together.","the night was very cold","the puppies curled up together"],["The baby turtles turned the wrong way because the hotel lights were too bright.","the hotel lights were too bright","the baby turtles turned the wrong way"],["The pond froze, so the ducks flew south.","the pond froze","the ducks flew south"],["Because Pip was shivering, Nanuk told him to fly somewhere warmer.","Pip was shivering","Nanuk told him to fly somewhere warmer"],["The monkey dropped its banana because a loud noise scared it.","a loud noise scared it","the monkey dropped its banana"],["It rained for many days, so the river flooded.","it rained for many days","the river flooded"],["Because the zebra heard a lion, it ran away.","the zebra heard a lion","it ran away"],["The bird built a nest, so it had a safe place for its eggs.","the bird built a nest","it had a safe place for its eggs"],["Kiko felt sorry for the baby bird, so his skin turned brown.","Kiko felt sorry for the baby bird","his skin turned brown"],["The camel could not find water, so it used the fat in its hump.","the camel could not find water","it used the fat in its hump"],["Because the cat was hungry, it meowed loudly.","the cat was hungry","it meowed loudly"],["The manager turned off the lights, so the turtles found the sea.","the manager turned off the lights","the turtles found the sea"],["Because winter was coming, the squirrel buried acorns.","winter was coming","the squirrel buried acorns"],["The dog rolled in the mud, so it needed a bath.","the dog rolled in the mud","it needed a bath"],["Because the snow melted, the Arctic fox's coat turned brown.","the snow melted","the Arctic fox's coat turned brown"],["The elephant was thirsty, so it walked to the river.","the elephant was thirsty","it walked to the river"]];
+const cause=()=>{const c=R(CE),other=R(CE.filter(x=>x!==c));const askCause=Math.random()<.5;
+  return mcQ(`${box("Read",c[0])}What is the <b>${askCause?"cause":"effect"}</b>? <span style="color:var(--muted);font-size:15px">(${askCause?"WHY it happened":"WHAT happened"})</span>`,askCause?c[1]:c[2],[askCause?c[2]:c[1],askCause?other[1]:other[2]],`Cause (why): <b>${c[1]}</b>. Effect (what happened): <b>${c[2]}</b>.`,"Look for the words because and so. The cause comes after because, and the effect comes after so.",{say:c[0]})};
+
+/* ================= THINKING ================= */
+const PUZ=[
+ {q:"🧩 Riddle: I have a long trunk and big ears, but I am not a tree. Who am I?",o:["An elephant","A giraffe","A mouse"],a:"An elephant",why:"A trunk and big ears: an elephant!"},
+ {q:"🧩 Riddle: I carry my house on my back and move very slowly. Who am I?",o:["A snail","A rabbit","An eagle"],a:"A snail",why:"A snail's shell is its home, and it moves slowly."},
+ {q:"🧩 Riddle: I have black-and-white stripes and I look like a horse. Who am I?",o:["A zebra","A tiger","A panda"],a:"A zebra",why:"Stripes and a horse shape: a zebra."},
+ {q:"🧩 Riddle: I have eight legs and I spin a web. Who am I?",o:["A spider","An ant","A crab"],a:"A spider",why:"Spiders have eight legs and spin webs."},
+ {q:"🧩 Riddle: I am a bird, but I cannot fly. I swim in icy water. Who am I?",o:["A penguin","A parrot","An owl"],a:"A penguin",why:"Penguins cannot fly but are great swimmers."},
+ {q:"🐕 You see a dog you don't know in the park. What should you do?",o:["Ask its owner before you touch it","Run up and hug it","Pull its tail"],a:"Ask its owner before you touch it",why:"Always ask the owner first. Even friendly-looking dogs can get scared."},
+ {q:"🦝 You see a wild animal, like a raccoon, near your home. What should you do?",o:["Stay away and tell a grown-up","Try to pick it up","Give it your sandwich"],a:"Stay away and tell a grown-up",why:"Wild animals can bite and carry germs. Never touch or feed them."},
+ {q:"🐹 Your class hamster's water bottle is empty. What should you do?",o:["Tell the teacher so it can be filled","Ignore it","Give it juice"],a:"Tell the teacher so it can be filled",why:"Pets need fresh water every day."},
+ {q:"🐦 You find a baby bird on the ground. What is the best thing to do?",o:["Tell a grown-up and don't take it home","Put it in your pocket","Feed it bread"],a:"Tell a grown-up and don't take it home",why:"A grown-up can check if it needs help. Its parents are often close by."},
+ {q:"🌊 Why is it bad to throw plastic bags into the sea?",o:["Sea animals can eat them and get sick","They make the water warm","Fish like to play with them"],a:"Sea animals can eat them and get sick",why:"Turtles think plastic bags are jellyfish and try to eat them."},
+ {q:"🦒 Why does a giraffe have such a long neck?",o:["To reach leaves high in the trees","To see the ocean","To swim"],a:"To reach leaves high in the trees",why:"A long neck lets giraffes eat leaves other animals cannot reach."},
+ {q:"🐧 Polar bears and penguins: do they meet in the wild?",o:["No: polar bears live in the north and penguins in the south","Yes, every day","Only in summer"],a:"No: polar bears live in the north and penguins in the south",why:"The Arctic is at the top of the world, and Antarctica is at the bottom."},
+ {q:"🐆 A cheetah is very fast but gets tired quickly. When is the best time for it to start chasing?",o:["When it is very close to its prey","From very far away","After it has eaten"],a:"When it is very close to its prey",why:"Cheetahs creep close first, because they can only run fast for a short time."},
+ {q:"🐫 Which animal would be BEST at living in the desert?",o:["A camel","A penguin","A dolphin"],a:"A camel",why:"Camels can survive with very little water."},
+ {q:"🌙 Which animal is MOST likely to be awake at midnight?",o:["An owl","A butterfly","A chicken"],a:"An owl",why:"Owls are nocturnal: they are awake at night."},
+ {q:"🐋 A whale lives in the ocean. Is a whale a fish?",o:["No, it is a mammal that breathes air","Yes, it is a big fish"],a:"No, it is a mammal that breathes air",why:"Whales breathe air and feed their babies milk, so they are mammals."},
+ {q:"🍂 It is autumn. A squirrel is burying lots of nuts. Why?",o:["To have food in winter","To grow new trees on purpose","Because it is bored"],a:"To have food in winter",why:"Food is hard to find in winter, so squirrels save nuts in autumn."},
+ {q:"🦎 Which animal is LEAST likely to be seen in the snow?",o:["A lizard","An Arctic fox","A polar bear"],a:"A lizard",why:"Lizards need warmth from the sun. Arctic foxes and polar bears live in the snow."}
+];
+const LEGS=[["bird",2],["duck",2],["hen",2],["cat",4],["dog",4],["horse",4],["cow",4],["ant",6],["bee",6],["beetle",6],["spider",8],["snake",0]];
+const pl=(n,w)=>n===1?w:(w==="mouse"?"mice":w.endsWith("ch")?w+"es":w+"s");
+const maths=()=>{const t=R(["legs1","legs2","feed","group","eggs"]);let q,ans,why;
+  if(t==="legs1"){const a=R(LEGS.filter(x=>x[1])),n=2+Math.floor(Math.random()*4);ans=a[1]*n;q=`A ${a[0]} has ${a[1]} legs. How many legs do ${n} ${pl(n,a[0])} have?`;why=`${n} × ${a[1]} = ${ans}.`}
+  else if(t==="legs2"){const a=R(LEGS.filter(x=>x[1]===2)),b=R(LEGS.filter(x=>x[1]===4)),n=1+Math.floor(Math.random()*3),m=1+Math.floor(Math.random()*3);ans=n*2+m*4;q=`On a farm there ${n===1?"is":"are"} ${n} ${pl(n,a[0])} and ${m} ${pl(m,b[0])}. How many legs are there altogether?`;why=`${n} × 2 = ${n*2} and ${m} × 4 = ${m*4}. ${n*2} + ${m*4} = ${ans}.`}
+  else if(t==="feed"){const k=2+Math.floor(Math.random()*4),p=2+Math.floor(Math.random()*4);ans=p;q=`A zookeeper has ${k*p} fish. She gives ${k} fish to each penguin. How many penguins get fish?`;why=`${k*p} ÷ ${k} = ${p}, because ${p} × ${k} = ${k*p}.`}
+  else if(t==="group"){const a=3+Math.floor(Math.random()*8),b=2+Math.floor(Math.random()*8);ans=a+b;q=`A herd has ${a} elephants. ${b} more elephants join the herd. How many elephants are in the herd now?`;why=`${a} + ${b} = ${ans}.`}
+  else{const a=6+Math.floor(Math.random()*10),b=1+Math.floor(Math.random()*(a-2));ans=a-b;q=`A turtle laid ${a} eggs. ${b} eggs have hatched. How many eggs have not hatched yet?`;why=`${a} − ${b} = ${ans}.`}
+  const wr=uniq([ans+1,ans-1,ans+2,ans*2,ans+4].filter(x=>x>=0&&x!==ans)).slice(0,3);
+  return mcQ("🔢 "+q,String(ans),SAMPLE(wr,2).map(String),why,"Draw it, or count in groups.")};
+const CLASS={mammal:["elephant","camel","polar bear","kangaroo","whale","dolphin","bat","lion","monkey","koala","zebra","giraffe"],bird:["penguin","eagle","parrot","owl","ostrich","hummingbird","duck","flamingo"],fish:["shark","goldfish","salmon","tuna","clownfish"],reptile:["snake","lizard","crocodile","turtle","chameleon"],amphibian:["frog","toad","salamander"],insect:["ant","bee","butterfly","beetle","ladybug","grasshopper"]};
+const CDESC={mammal:"Mammals have hair or fur, breathe air and feed their babies milk.",bird:"Birds have feathers, a beak and lay eggs.",fish:"Fish live in water, breathe with gills and have fins.",reptile:"Reptiles have dry, scaly skin and most lay eggs on land.",amphibian:"Amphibians start life in water and can live on land too. They have smooth, wet skin.",insect:"Insects have six legs and three body parts."};
+const classify=()=>{const k=R(Object.keys(CLASS)),a=R(CLASS[k]);
+  if(Math.random()<.6)return mcQ(`What kind of animal is a <b>${a}</b>?`,k,SAMPLE(Object.keys(CLASS).filter(x=>x!==k),2),`A ${a} is a <b>${k}</b>. ${CDESC[k]}`,"Think: fur? feathers? scales? gills? six legs?");
+  const wrong=SAMPLE(Object.keys(CLASS).filter(x=>x!==k),2).map(x=>R(CLASS[x]));return mcQ(`Which animal is a <b>${k}</b>?`,a,wrong,`The <b>${a}</b> is a ${k}. ${CDESC[k]}`,CDESC[k])};
+const odd=()=>{const ks=Object.keys(CLASS);const k=R(ks.filter(x=>CLASS[x].length>=4)),k2=R(ks.filter(x=>x!==k));const three=SAMPLE(CLASS[k],3),o=R(CLASS[k2]);
+  return mcQ(`🤔 Which animal does NOT belong?`,o,three,`${three.join(", ")} are all ${k}s. The <b>${o}</b> is a ${k2}.`,"Find what three of them have in common: fur, feathers, scales, gills or six legs?")};
+const CHAIN=[
+ {q:"Food chain: sun → grass → ___ → lion",a:"zebra",o:["shark","acorn"],why:"The zebra eats grass, and the lion eats the zebra."},
+ {q:"Food chain: sun → grass → ___ → fox",a:"rabbit",o:["whale","eagle"],why:"Rabbits eat grass, and foxes hunt rabbits."},
+ {q:"Food chain: sun → seeds → ___ → owl",a:"mouse",o:["lion","fish"],why:"Mice eat seeds, and owls hunt mice."},
+ {q:"Food chain: sun → leaves → ___ → bird",a:"caterpillar",o:["zebra","seal"],why:"Caterpillars eat leaves, and birds eat caterpillars."},
+ {q:"Food chain: sun → tiny sea plants → small fish → ___ → polar bear",a:"seal",o:["grass","mouse"],why:"Seals eat fish, and polar bears hunt seals."},
+ {q:"Food chain: sun → acorns → ___ → hawk",a:"squirrel",o:["shark","cow"],why:"Squirrels eat acorns, and hawks hunt squirrels."},
+ {q:"Food chain: sun → ___ → zebra → lion",a:"grass",o:["fish","mouse"],why:"Zebras eat grass. Plants are at the start of food chains."},
+ {q:"Food chain: sun → grass → rabbit → ___",a:"fox",o:["flower","caterpillar"],why:"A fox hunts rabbits. It is the predator at the end of this chain."},
+ {q:"Food chain: sun → leaves → grasshopper → frog → ___",a:"snake",o:["leaf","seed"],why:"Snakes eat frogs."},
+ {q:"What gives energy to the plants at the start of every food chain?",a:"the sun",o:["the moon","the lion"],why:"Plants use sunlight to make their food."},
+ {q:"In the chain grass → zebra → lion, which one is the PREY?",a:"the zebra",o:["the lion","the sun"],why:"The zebra is hunted by the lion, so it is the prey."},
+ {q:"In the chain seeds → mouse → owl, which one is the PREDATOR?",a:"the owl",o:["the mouse","the seeds"],why:"The owl hunts the mouse, so it is the predator."},
+ {q:"In a food chain, what do the arrows (→) mean?",a:"is eaten by",o:["is bigger than","lives with"],why:"grass → zebra means grass is eaten by the zebra."},
+ {q:"If all the rabbits disappeared, what would happen to the foxes that eat them?",a:"They would have less food",o:["They would have more food","Nothing would change"],why:"Every living thing in a food chain is connected."}
+];
+const ANA=[["Bird is to nest as bear is to ___.","den",["pond","hump"]],["Fish is to fins as bird is to ___.","wings",["fur","gills"]],["Cat is to kitten as dog is to ___.","puppy",["calf","cub"]],["Cow is to calf as sheep is to ___.","lamb",["foal","chick"]],["Lion is to roar as dog is to ___.","bark",["moo","hiss"]],["Camel is to desert as polar bear is to ___.","Arctic",["rainforest","pond"]],["Elephant is to trunk as bird is to ___.","beak",["tail","claws"]],["Fish is to scales as bird is to ___.","feathers",["fur","fins"]],["Bee is to hive as rabbit is to ___.","burrow",["nest","pond"]],["Big is to enormous as small is to ___.","tiny",["fierce","swift"]],["Predator is to hunt as prey is to ___.","hide",["roar","eat"]],["Cub is to lion as joey is to ___.","kangaroo",["horse","penguin"]],["Wolves are to pack as fish are to ___.","school",["herd","flock"]],["Day is to awake as night is to ___.","asleep",["hungry","fast"]],["Cheetah is to fast as snail is to ___.","slow",["tall","loud"]],["Hen is to egg as cow is to ___.","milk",["wool","honey"]]];
+const analogy=()=>{const x=R(ANA);return mcQ("🔗 "+x[0],x[1],x[2],`${x[0].replace("___","<b>"+x[1]+"</b>")} Think about how the first two words are linked.`,"How are the first two words linked? Use the same link.")};
+
+/* ================= LEARN NOTES ================= */
+const L={
+ detail:"Read the short text carefully. The answer is <b>in the text</b>. Go back and find the words that match the question.",
+ main:"The <b>main idea</b> is what the whole text is mostly about. It fits <b>all</b> the sentences, not just one of them.",
+ factop:"A <b>fact</b> can be checked and is true for everyone: <i>A spider has eight legs.</i><br>An <b>opinion</b> is what someone thinks or feels: <i>Spiders are scary.</i> Words like <b>cutest, best, scary, boring</b> often show an opinion.",
+ order:"Life cycles and stories happen in <b>order</b>. Think about what must happen <b>first</b>, <b>next</b> and <b>last</b>.",
+ cause:"The <b>cause</b> is <b>why</b> something happened. The <b>effect</b> is <b>what</b> happened.<br><i>Because the pond froze</i> (cause), <i>the ducks flew south</i> (effect).<br>Look for <b>because</b> and <b>so</b>.",
+ vocab:"Read the word, say it aloud, and think of a sentence that uses it. If you are not sure, look for it in the stories.",
+ home:"A <b>habitat</b> is an animal's natural home: <b>desert</b> (dry), <b>Arctic</b> (freezing), <b>ocean</b> (salty water), <b>rainforest</b> (hot and wet), <b>grassland</b> (open grass), <b>pond</b> (small, still water).",
+ baby:"Many baby animals have special names: calf (elephant, cow, whale), cub (bear, lion, fox), joey (kangaroo, koala), chick (birds), foal (horse), lamb (sheep), tadpole (frog), duckling (duck).",
+ group:"Groups of animals have special names: a <b>herd</b> of elephants, a <b>flock</b> of birds, a <b>pack</b> of wolves, a <b>school</b> of fish, a <b>pride</b> of lions, a <b>swarm</b> of bees, a <b>pod</b> of dolphins.",
+ sound:"Animal sounds are action words: the lion <b>roars</b>, the snake <b>hisses</b>, the bee <b>buzzes</b>, the horse <b>neighs</b>, the owl <b>hoots</b>.",
+ body:"Animal bodies help them survive: an elephant's <b>trunk</b> drinks and smells, a camel's <b>hump</b> stores fat, a fish's <b>gills</b> breathe underwater.",
+ opp:"<b>Opposites</b> mean very different things: enormous ↔ tiny, predator ↔ prey.",
+ syn:"<b>Synonyms</b> mean almost the same thing: big = large, swift = fast. Synonyms make your writing more interesting.",
+ plS:"<b>Most words:</b> add <b>-s</b> (camel → camels).<br><b>Words ending in s, x, sh, ch:</b> add <b>-es</b> (fox → foxes, bus → buses, dish → dishes, peach → peaches).",
+ plIes:"<b>Consonant + y:</b> change y to <b>i</b> and add <b>-es</b> (puppy → puppies).<br><b>Vowel + y</b> (ay, ey, oy): just add <b>-s</b> (monkey → monkeys, toy → toys).",
+ plVes:"Many words ending in <b>f</b> or <b>fe</b>: change to <b>-ves</b> (wolf → wolves, leaf → leaves, knife → knives).",
+ plSp:"Some plurals are special. Learn them by heart: mouse → <b>mice</b>, goose → <b>geese</b>, child → <b>children</b>, foot → <b>feet</b>, tooth → <b>teeth</b>, person → <b>people</b>. Some never change: <b>sheep, deer, moose</b>.",
+ sp:"<b>Singular</b> means one (a fox). <b>Plural</b> means more than one (three foxes).<br>With one, use <b>is</b>: The fox is hungry. With more than one, use <b>are</b>: The foxes are hungry.",
+ plFix:"When there is more than one, the noun must be plural: <i>three fox</i> ❌ → <i>three foxes</i> ✅. Use the plural rules you learned.",
+ pastReg:"The <b>past tense</b> tells about things that already happened. Most verbs add <b>-ed</b>: walk → walked, jump → jumped.",
+ pastRules:"<b>Ends in e:</b> add <b>-d</b> (smile → smiled).<br><b>Short word, one vowel, one last consonant:</b> double it, add <b>-ed</b> (hop → hopped).<br><b>Consonant + y:</b> change y to i, add <b>-ed</b> (cry → cried).",
+ pastIrr:"<b>Special (irregular) verbs</b> do not use -ed. They change in their own way: go → <b>went</b>, see → <b>saw</b>, fly → <b>flew</b>, eat → <b>ate</b>, swim → <b>swam</b>, catch → <b>caught</b>.",
+ tense:"<b>Present:</b> happens now or often. Time words: <i>every day, usually, each night</i>.<br><b>Past:</b> already happened. Time words: <i>yesterday, last night, last week, long ago</i>.",
+ wasWere:"Use <b>was</b> with one person or thing: <i>The lion was hungry. I was tired.</i><br>Use <b>were</b> with more than one and with <b>you</b>: <i>The lions were hungry. You were late.</i>",
+ pastFix:"If something happened <b>yesterday</b> or <b>last week</b>, the verb must be in the past tense: <i>Yesterday the bear catches a fish</i> ❌ → <i>Yesterday the bear caught a fish</i> ✅.",
+ fix:"Check 3 things: <b>1.</b> capital letter at the start, <b>2.</b> capitals for names, places and I, <b>3.</b> a full stop at the end.",
+ orderW:"Find the word with the capital letter: it goes first. Then think: <b>who? does what? where or when?</b> Add the full stop.",
+ write:"Plan in your head first. Then write: capital letter, complete idea, end mark. Read it aloud to check.",
+ spell:"Use <b>Look → Say → Cover → Write → Check</b>. Say the word slowly and listen to each sound.",
+ spellPl:"Listen carefully to the end of the word. Is it <b>-s</b>, <b>-es</b>, <b>-ies</b>, <b>-ves</b>, or a special plural like <b>mice</b>?",
+ choose:"Say the word slowly in your head and picture it. Which one <b>looks</b> right? Watch out for <b>ph</b> (elephant, dolphin) and double letters (rabbit, giraffe).",
+ think:"Read the question twice. Think about what you <b>know</b>, then choose. In real-life questions, choose the <b>safe and kind</b> answer.",
+ maths:"Find the numbers. Is it <b>more</b> (add), <b>less</b> (take away), <b>groups of</b> (multiply) or <b>sharing equally</b> (divide)?",
+ classify:"<b>Mammals:</b> fur or hair, feed babies milk (whales too!).<br><b>Birds:</b> feathers and beaks.<br><b>Fish:</b> gills and fins.<br><b>Reptiles:</b> dry scaly skin.<br><b>Amphibians:</b> start in water, smooth wet skin.<br><b>Insects:</b> six legs.",
+ odd:"Three animals belong to the same group. Find the group, then find the animal that is <b>not</b> in it.",
+ chain:"A <b>food chain</b> shows who eats what. It starts with the <b>sun</b> and a <b>plant</b>. The arrow → means <b>is eaten by</b>: grass → zebra → lion.",
+ ana:"Find how the first two words are linked (a bird <b>lives in</b> a nest). Use the <b>same link</b> for the next pair (a bear <b>lives in</b> a den)."
+};
+
+/* ================= THE SKILL LIST ================= */
 u.cats=[
- {n:"Reading",e:"📖",items:[{id:"r_story1",t:"Story: Pip's Trip Around the World",act:"story",si:0},{id:"r_poem",t:"Poem: Around the World with Pip",act:"poem"}]},
+ {n:"Reading",e:"📖",items:[
+  {id:"r_t1",t:"Story: Pip's Trip Around the World",act:"story",si:0},
+  {id:"r_t2",t:"Story: Ravi and the Baby Turtles",act:"story",si:1},
+  {id:"r_t3",t:"Fact text: Animal Homes Around the World",act:"story",si:2},
+  {id:"r_t4",t:"Fact text: Clever Ways Animals Survive",act:"story",si:3},
+  {id:"r_t5",t:"Fable: Kiko the Chameleon",act:"story",si:4},
+  {id:"r_t6",t:"Real-world reading: A day at the zoo",act:"story",si:5},
+  {id:"r_p1",t:"Poem: Around the World with Pip",act:"poem",pi:0},
+  {id:"r_p2",t:"Poem: Winter Sleep",act:"poem",pi:1},
+  {id:"r_detail",t:"Read and find the details",learn:L.detail,gen:detail},
+  {id:"r_main",t:"Find the main idea",learn:L.main,gen:mainIdea},
+  {id:"r_factop",t:"Fact or opinion?",learn:L.factop,gen:factOp},
+  {id:"r_order",t:"Order of events and life cycles",learn:L.order,gen:order},
+  {id:"r_cause",t:"Cause and effect",learn:L.cause,gen:cause}]},
  {n:"Vocabulary",e:"🔤",items:[
-  {id:"v_words",t:"Animal words",learn:"Say each word aloud and think of the animal it goes with.",gen:MIX(F.word(u.words),F.meaning(u.words))},
-  {id:"v_fill",t:"Use the right word in a sentence",learn:"Read the whole sentence, then choose the word that makes sense.",gen:F.fill(u.words)},
-  {id:"v_home",t:"Animal homes (habitats)",learn:"A <b>habitat</b> is the natural home of an animal: desert, Arctic, ocean, grassland, rainforest or pond.",gen:home}]},
+  {id:"v_s1",t:"Habitat words",learn:L.vocab,gen:MIX(F.word(set(0)),F.meaning(set(0)))},
+  {id:"v_s2",t:"Animal body words",learn:L.vocab,gen:MIX(F.word(set(1)),F.meaning(set(1)))},
+  {id:"v_s3",t:"Survival words",learn:L.vocab,gen:MIX(F.word(set(2)),F.meaning(set(2)))},
+  {id:"v_s4",t:"Describing and adventure words",learn:L.vocab,gen:MIX(F.word(set(3)),F.meaning(set(3)))},
+  {id:"v_fill",t:"Use the right word in a sentence",learn:L.vocab,gen:F.fill(u.words)},
+  {id:"v_home",t:"Which animal lives where?",learn:L.home,gen:homeQ},
+  {id:"v_body",t:"Which animal has this body part?",learn:L.body,gen:bodyQ},
+  {id:"v_baby",t:"Baby animal names",learn:L.baby,gen:babyQ},
+  {id:"v_group",t:"Animal group names",learn:L.group,gen:groupQ},
+  {id:"v_sound",t:"Animal sounds",learn:L.sound,gen:soundQ},
+  {id:"v_opp",t:"Opposites",learn:L.opp,gen:F.pairs(OPP,"opposite")},
+  {id:"v_syn",t:"Synonyms",learn:L.syn,gen:F.pairs(SYN,"synonym")}]},
  {n:"Grammar",e:"🧩",items:[
-  {id:"g_plural",t:"Plurals: -s, -es, -ies, -ves",learn:"Most words add <b>-s</b>. Words ending in s, x, sh, ch add <b>-es</b>. Consonant + y → <b>-ies</b>. Many words ending in f → <b>-ves</b>.",gen:plural(PL)},
-  {id:"g_special",t:"Special plurals",learn:"Some words change in their own way: mouse → mice, tooth → teeth, child → children. Some don't change: sheep, deer, fish.",gen:special},
-  {id:"g_pastreg",t:"Past tense: regular verbs",learn:"Most verbs add <b>-ed</b> (walked). Ending in e: add <b>-d</b> (smiled). Short words like hop: double the last letter (hopped). Consonant + y: <b>-ied</b> (cried).",gen:past(REG,regRule)},
-  {id:"g_pastirr",t:"Past tense: special verbs",learn:"Special verbs change in their own way: go → went, see → saw, fly → flew, eat → ate.",gen:past(IRR,irrRule)},
-  {id:"g_mixed",t:"Mixed grammar review",learn:"Use all the rules you have learned.",gen:mixed}]},
+  {id:"g_sp",t:"Singular or plural?",learn:L.sp,gen:sp},
+  {id:"g_pls",t:"Plurals: add -s or -es",learn:L.plS,gen:plQ(PL_S)},
+  {id:"g_plies",t:"Plurals: words ending in y",learn:L.plIes,gen:plQ(PL_IES.concat(PL_YS))},
+  {id:"g_plves",t:"Plurals: f and fe → ves",learn:L.plVes,gen:plQ(PL_VES)},
+  {id:"g_plsp",t:"Special plurals",learn:L.plSp,gen:plQ(SPECIAL)},
+  {id:"g_isare",t:"Is or are?",learn:L.sp,gen:isAre},
+  {id:"g_plfix",t:"Fix the plural in a sentence",learn:L.plFix,gen:plFix},
+  {id:"g_preg",t:"Past tense: add -ed",learn:L.pastReg,gen:pastQ(REG,regRule)},
+  {id:"g_prules",t:"Past tense spelling rules (-d, double, -ied)",learn:L.pastRules,gen:pastQ(RULES,v=>v[2])},
+  {id:"g_pirr",t:"Past tense: special verbs",learn:L.pastIrr,gen:pastQ(IRR,irrRule)},
+  {id:"g_tense",t:"Present or past?",learn:L.tense,gen:tense},
+  {id:"g_waswere",t:"Was or were?",learn:L.wasWere,gen:wasWere},
+  {id:"g_pfix",t:"Fix the verb in a sentence",learn:L.pastFix,gen:pastFix},
+  {id:"g_fix",t:"Fix the sentence (capitals and full stops)",learn:L.fix,gen:fix},
+  {id:"g_order",t:"Put the words in order",learn:L.orderW,gen:G.order(SENT.filter(x=>(x.match(/\b[A-Z]/g)||[]).length===1))},
+  {id:"g_write",t:"Write your own sentences",learn:L.write,gen:F.write(WP)},
+  {id:"g_mixed",t:"Mixed grammar review",learn:"Use all the plural and past-tense rules you have learned.",gen:MIX(plQ(PL_S),plQ(PL_IES),plQ(PL_VES),plQ(SPECIAL),isAre,pastQ(REG,regRule),pastQ(RULES,v=>v[2]),pastQ(IRR,irrRule),tense,wasWere,pastFix,plFix)}]},
  {n:"Spelling",e:"🎧",items:[
-  {id:"s_listen",t:"Animal words: listen and write",learn:"Use <b>Look → Say → Cover → Write → Check</b>.",gen:F.listen(u.spelling)},
-  {id:"s_missing",t:"Missing letters",learn:"Say the word slowly and listen for every sound.",gen:F.missing(u.spelling)}]},
- {n:"Thinking",e:"🧠",items:[{id:"t_puz",t:"Animal puzzles",learn:"Read the question twice and think about what you know.",gen:F.bank(PUZ)}]},
- {n:"Explore and write",e:"✏️",items:[{id:"x_facts",t:"Did you know? Amazing animal facts",act:"facts"},{id:"x_w1",t:"Writing: Imagine you are an animal",act:"write",wi:0}]}
+  {id:"s_animals",t:"Animal words: listen and write",learn:L.spell,gen:F.listen(SP)},
+  {id:"s_plurals",t:"Plural words: listen and write",learn:L.spellPl,gen:F.listen(SPP)},
+  {id:"s_choose",t:"Choose the correct spelling",learn:L.choose,gen:F.chooseSpelling(CHOOSE)},
+  {id:"s_missing",t:"Missing letters",learn:L.spell,gen:F.missing(SP)}]},
+ {n:"Thinking and science",e:"🧠",items:[
+  {id:"t_puz",t:"Animal puzzles and real-life questions",learn:L.think,gen:F.bank(PUZ)},
+  {id:"t_class",t:"Mammal, bird, fish, reptile, amphibian or insect?",learn:L.classify,gen:classify},
+  {id:"t_odd",t:"Odd one out",learn:L.odd,gen:odd},
+  {id:"t_chain",t:"Food chains",learn:L.chain,gen:F.bank(CHAIN)},
+  {id:"t_maths",t:"Animal maths stories",learn:L.maths,gen:maths},
+  {id:"t_ana",t:"Word links (analogies)",learn:L.ana,gen:analogy}]},
+ {n:"Explore and write",e:"✏️",items:[
+  {id:"x_facts",t:"Did you know? Amazing animal facts",act:"facts"},
+  {id:"x_w1",t:"Writing step 1: Imagine you are an animal",act:"write",wi:0},
+  {id:"x_w2",t:"Writing step 2: An animal fact report",act:"write",wi:1},
+  {id:"x_w3",t:"Writing step 3: Pip's new adventure (story)",act:"write",wi:2}]}
 ];
 })();
 
@@ -1092,7 +1485,7 @@ function nextBtn(nx,label,fn){const b=document.createElement("button");b.classNa
 function gain(s){return s<30?8:s<60?6:s<80?4:s<90?3:2}
 function loss(s){return s<30?3:s<60?5:s<80?7:s<90?9:12}
 const recent=[];
-const qkey=q=>q.q+"|"+(q.o||[]).slice().sort().join("|")+"|"+q.a[0];
+const qkey=q=>q.q+"|"+(q.o||[]).slice().sort().join("|")+"|"+((q.a||[q.model])[0]);
 function newQ(it){let q;for(let k=0;k<25;k++){q=it.gen();if(!recent.includes(qkey(q)))break}recent.push(qkey(q));if(recent.length>12)recent.shift();return q}
 function practice(id){
   const f=findItem(id);if(!f)return;const it=f.it;
