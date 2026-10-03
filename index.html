@@ -48,6 +48,7 @@ input.ans{width:100%;padding:12px;font-size:18px;border:1px solid var(--gb);bord
 .link{color:var(--g);cursor:pointer;font-weight:600;background:none;border:0;padding:0;font-size:14px}
 .storypic{font-size:64px;text-align:center;background:var(--gl);border:1px solid var(--gb);border-radius:14px;padding:18px;margin:12px 0;letter-spacing:6px}
 .story{font-size:19px;line-height:1.7}
+.poem{font-size:20px;line-height:1.8;text-align:center;font-style:italic;background:var(--sun);border-radius:14px;padding:18px;margin:12px 0}
 .vw{background:var(--mint);border:0;border-radius:6px;padding:0 4px;font:inherit;color:var(--gd);font-weight:700;cursor:pointer}
 .qbox{background:var(--gl);border:1px solid var(--gb);border-radius:12px;padding:14px;margin-top:14px}
 .flash{text-align:center;background:var(--gl);border:1px solid var(--gb);border-radius:16px;padding:26px 18px;margin:12px 0}
@@ -74,7 +75,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px 16px;bor
     <svg width="28" height="28" viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#2D6A4F"/><path d="M13 20v-7" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M13 13c0-3-2-5-5-5 0 3 2 5 5 5z" fill="#fff"/><path d="M13 12c0-3 2-5 5-5 0 3-2 5-5 5z" fill="#D8F3DC"/></svg>
     <span id="siteName"></span>
   </div>
-  <button class="btn small" onclick="openUnit()">Start Free</button>
+  <button class="btn small" onclick="openGrade()">Start Free</button>
 </header>
 
 <main>
@@ -82,8 +83,8 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px 16px;bor
     <div class="hero">
       <span class="pill">Free · No sign-up</span>
       <h1>Learn English by exploring the world</h1>
-      <p>Stories, new words, puzzles, amazing facts and writing — from Grade 1 to college.</p>
-      <button class="btn" onclick="openUnit()">Start exploring →</button>
+      <p>Stories, new words, poems, puzzles, amazing facts and writing — from Grade 1 to college.</p>
+      <button class="btn" onclick="openGrade()">Start exploring →</button>
     </div>
     <h2>Choose your level</h2>
     <p class="sub">More grades are on the way.</p>
@@ -95,7 +96,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px 16px;bor
     <div class="hero" style="margin-top:12px">
       <span class="pill">Grade 3</span>
       <h1>Grade 3 English</h1>
-      <p>Each unit is a journey into one topic of the world.</p>
+      <p>12 units. Each one is a journey into one topic of the world.</p>
     </div>
     <h2>Units</h2>
     <div class="grid" id="unitGrid"></div>
@@ -104,20 +105,21 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px 16px;bor
   <section id="v-unit" class="hidden">
     <button class="link" onclick="openGrade()">← Grade 3 units</button>
     <div class="hero" style="margin-top:12px">
-      <div style="font-size:44px">🐘🐪🐙</div>
-      <h1>Animals Around the World</h1>
+      <div style="font-size:44px" id="unitEmoji"></div>
+      <span class="pill" id="unitNum"></span>
+      <h1 id="unitTitle"></h1>
       <p id="unitStars"></p>
       <div id="unitBadge"></div>
     </div>
     <h2>Your journey</h2>
     <p class="sub">Go in order for the best learning.</p>
     <div class="grid" id="partGrid"></div>
-    <p style="text-align:center;margin-top:24px"><button class="link" onclick="resetAll()">Reset my progress</button></p>
+    <p style="text-align:center;margin-top:24px"><button class="link" onclick="resetUnit()">Reset my progress in this unit</button></p>
   </section>
 
   <section id="v-part" class="hidden">
     <div class="row">
-      <button class="link" onclick="openUnit()">← Back to unit</button>
+      <button class="link" onclick="openUnit(U.id)">← Back to unit</button>
       <span class="pill" id="partTag"></span>
     </div>
     <div id="pbody"></div>
@@ -131,9 +133,100 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px 16px;bor
 /* ================= SETTINGS ================= */
 const SITE_NAME = "Sprout English";   // placeholder name — change this one line later
 
-/* ================= UNIT CONTENT (all original) ================= */
-const UNIT = {
-story: [
+/* ================= GRADE 3 UNITS (all content original) ================= */
+const UNITS = [
+/* ---------------- UNIT 1 ---------------- */
+{id:"me", num:1, emoji:"👧🏽👨‍👩‍👧‍👦", title:"All About Me and My Family", badge:"🌟 Family Star",
+story:[
+ {pic:"👧🏽🏡", text:"Hello! My name is Mia. I am eight years old. I live in a small yellow house with my family. Do you want to meet them? Come with me!",
+  q:{q:"How old is Mia?",o:["Six","Eight","Ten"],a:["Eight"],why:"Mia says, \"I am eight years old.\""}},
+ {pic:"👩‍⚕️👨‍🍳", text:"This is my mother. She is a nurse, and she helps sick people get better. This is my father. He is a baker. He wakes up very early to make fresh bread for the town.",
+  q:{q:"What does Mia's father do?",o:["He is a nurse","He is a baker","He is a pilot"],a:["He is a baker"],why:"Mia says her father is a baker who makes fresh bread."}},
+ {pic:"👵🏽📚", text:"My grandmother lives with us too. Every night, she tells us stories about when she was a little girl. Her stories are long, funny and full of surprises.",
+  q:{q:"What does grandmother do every night?",o:["She bakes a cake","She tells stories","She plays football"],a:["She tells stories"],why:"Every night, she tells stories about when she was a little girl."}},
+ {pic:"👦🏻⚽", text:"I have one brother. His name is Leo. He is six, and he loves football. Sometimes Leo is noisy, but he always shares his snacks with me.",
+  q:{q:"What does Leo always do?",o:["He shares his snacks","He reads books","He sleeps early"],a:["He shares his snacks"],why:"Leo is sometimes noisy, but he always shares his snacks."}},
+ {pic:"🎨🔬", text:"I am good at drawing. My favourite colour is green, like the leaves on our tree. When I grow up, I want to be an artist or a scientist. Maybe both!",
+  q:{q:"What does Mia want to be when she grows up?",o:["A baker","An artist or a scientist","A nurse"],a:["An artist or a scientist"],why:"Mia wants to be an artist or a scientist. Maybe both!"}},
+ {pic:"🍲🌙", text:"At the end of the day, we all sit together for dinner. We talk, we laugh, and sometimes we argue! My family is not perfect, but it is mine, and I love it.",
+  q:{q:"How does Mia feel about her family?",o:["She loves it","She is angry","She is bored"],a:["She loves it"],why:"Mia says, \"My family is not perfect, but it is mine, and I love it.\""}}
+],
+poem:{title:"My Family Tree",
+ lines:["My family is a tall, tall tree,","With roots and branches, just like me.","Grandma is the oldest root,","Her stories make us laugh and hoot.","Mom and Dad are branches strong,","They hold us up the whole day long.","Leo and I are leaves so green,","The noisiest leaves you've ever seen!"],
+ q:{q:"In the poem, which word rhymes with 'strong'?",o:["long","tall","tree"],a:["long"],why:"Strong and long end with the same sound: -ong."}},
+words:[
+ {w:"family",e:"👨‍👩‍👧",m:"the people you live with or are related to",ex:"My family eats dinner together.",fill:"My mother, father and brother are my ___."},
+ {w:"grandmother",e:"👵",m:"your mother's mother or your father's mother",ex:"My grandmother tells funny stories.",fill:"My father's mother is my ___."},
+ {w:"nurse",e:"🧑‍⚕️",m:"a person who takes care of sick people",ex:"The nurse helped me feel better.",fill:"The ___ at the hospital gave me a bandage."},
+ {w:"baker",e:"🥖",m:"a person who makes bread and cakes",ex:"The baker wakes up very early.",fill:"The ___ makes fresh bread every morning."},
+ {w:"share",e:"🤝",m:"to give some of what you have to others",ex:"Leo shares his snacks with Mia.",fill:"Please ___ your crayons with your friend."},
+ {w:"noisy",e:"📢",m:"making a lot of loud sound",ex:"The playground is noisy at lunchtime.",fill:"The classroom was ___ before the teacher came in."},
+ {w:"favourite",e:"⭐",m:"the one you like the most",ex:"Green is Mia's favourite colour.",fill:"Blue is my ___ colour.",alt:["favorite"]},
+ {w:"artist",e:"🎨",m:"a person who draws, paints or makes art",ex:"The artist painted a big tree.",fill:"The ___ painted a picture of the sea."},
+ {w:"scientist",e:"🔬",m:"a person who studies how the world works",ex:"A scientist asks questions and does tests.",fill:"A ___ looked at a tiny bug under a microscope."},
+ {w:"together",e:"🫂",m:"with each other",ex:"We sit together for dinner.",fill:"My friends and I play ___ in the park."}
+],
+grammar:[
+ {id:"sentences", e:"❓❗", t:"Three kinds of sentences",
+  intro:"Every sentence starts with a <b>capital letter</b>. How it ends depends on what kind of sentence it is.",
+  rules:[
+   {r:"A <b>telling</b> sentence ends with a full stop <b>.</b>",ex:["My name is Mia."]},
+   {r:"An <b>asking</b> sentence ends with a question mark <b>?</b>",ex:["How old are you?"]},
+   {r:"An <b>exclaiming</b> sentence shows strong feeling and ends with <b>!</b>",ex:["What a big family!"]}
+  ],
+  tries:[
+   {id:"g_s1",type:"mc",q:"Which sentence is an ASKING sentence?",o:["Mia has a brother.","Do you have a brother?","What a funny story!"],a:["Do you have a brother?"],hint:"Asking sentences end with a question mark.",why:"\"Do you have a brother?\" asks something, so it ends with ?"},
+   {id:"g_s2",type:"mc",q:"Which mark goes at the end? <b>My grandmother tells stories___</b>",o:[".","?","!"],a:["."],hint:"Is it telling, asking, or showing strong feeling?",why:"It tells us something, so it ends with a full stop."},
+   {id:"g_s3",type:"mc",q:"Which mark goes at the end? <b>Where do you live___</b>",o:[".","?","!"],a:["?"],hint:"Where, what, who and how often start questions.",why:"It asks a question, so it ends with ?"},
+   {id:"g_s4",type:"mc",q:"Which mark goes at the end? <b>Wow, that cake is huge___</b>",o:[".","?","!"],a:["!"],hint:"\"Wow\" shows a big feeling.",why:"It shows surprise, so it ends with !"},
+   {id:"g_s5",type:"mc",q:"Which sentence is written correctly?",o:["my dog is brown.","My dog is brown.","My dog is brown"],a:["My dog is brown."],hint:"Check the first letter and the last mark.",why:"A capital letter at the start and a full stop at the end."},
+   {id:"g_s6",type:"type",strict:true,q:"Fix this sentence. Add a capital letter and a full stop: <b>leo likes football</b>",a:["Leo likes football."],hint:"Leo is a name, and it starts the sentence. Don't forget the full stop!",why:"Leo likes football. (capital L, full stop at the end)"}
+  ]},
+ {id:"nouns", e:"🏷️", t:"Naming words (Nouns)",
+  intro:"A <b>noun</b> is a word that names a person, place, animal or thing.",
+  rules:[
+   {r:"<b>Common nouns</b> name any person, place or thing",ex:["girl","city","dog","school"]},
+   {r:"<b>Proper nouns</b> name a special one, and always start with a <b>capital letter</b>",ex:["Mia","Toronto","Leo","India"]},
+   {r:"Days and months are proper nouns too",ex:["Monday","June"]}
+  ],
+  tries:[
+   {id:"g_n1",type:"mc",q:"Which word is a noun?",o:["happy","garden","run"],a:["garden"],hint:"A noun names a place, person, animal or thing.",why:"A garden is a place, so it is a noun."},
+   {id:"g_n2",type:"mc",q:"Which is a PROPER noun?",o:["city","Paris","river"],a:["Paris"],hint:"A proper noun is the name of one special place or person.",why:"Paris is the name of one special city, so it has a capital letter."},
+   {id:"g_n3",type:"mc",q:"Which word should start with a capital letter?",o:["brother","monday","school"],a:["monday"],hint:"Days of the week are special names.",why:"Days of the week are proper nouns: Monday."},
+   {id:"g_n4",type:"type",strict:true,q:"<b>My friend lives in india.</b> Type the word that needs a capital letter, written correctly.",a:["India"],hint:"Which word is the name of a country?",why:"India is the name of a country, so it needs a capital: India."},
+   {id:"g_n5",type:"mc",q:"Find the COMMON noun: <b>Mia hugged her grandmother.</b>",o:["Mia","hugged","grandmother"],a:["grandmother"],hint:"Mia is a name (proper). Hugged is an action.",why:"Grandmother is a common noun. Mia is a proper noun."},
+   {id:"g_n6",type:"mc",q:"Which sentence is correct?",o:["my cat is called Tiger.","My cat is called tiger.","My cat is called Tiger."],a:["My cat is called Tiger."],hint:"Two words need capitals: the first word and the cat's name.",why:"Capital M to start, capital T for the name Tiger."}
+  ]}
+],
+think:[
+ {q:"🔢 Mia is 8. Leo is 2 years younger. How old is Leo?",o:["6","10","4"],a:["6"],why:"8 take away 2 is 6. Leo is six."},
+ {q:"🤔 Odd one out: which one is NOT a family member?",o:["Mother","Brother","Grandmother","Teacher"],a:["Teacher"],why:"Mother, brother and grandmother are family. A teacher works at school."},
+ {q:"👵 Your mother's mother is your ___.",o:["grandmother","aunt","sister"],a:["grandmother"],why:"Your mother's mother (and your father's mother) is your grandmother."},
+ {q:"🔗 Baker is to bread as artist is to ___.",o:["picture","bus","soup"],a:["picture"],why:"A baker makes bread. An artist makes pictures."},
+ {q:"🌅 Mia's father wakes up very early. Why?",o:["To make bread before people come to buy it","Because he is noisy","To play football"],a:["To make bread before people come to buy it"],why:"Bread takes time to bake, so a baker starts early to have it fresh in the morning."},
+ {q:"🧩 Riddle: I am your father's brother. Who am I?",o:["Your uncle","Your cousin","Your grandfather"],a:["Your uncle"],why:"Your father's brother (or your mother's brother) is your uncle."}
+],
+facts:[
+ {e:"🦴",c:"A new baby has more bones than a grown-up.",t:true,x:"True! A baby has about 300 bones. Some join together as we grow, so grown-ups have 206."},
+ {e:"☝️",c:"Twins have exactly the same fingerprints.",t:false,x:"Not true! Every person has their own fingerprints, even twins who look the same."},
+ {e:"👀",c:"You blink thousands of times every day.",t:true,x:"True! You blink about 15 times a minute, so it adds up to thousands every day."},
+ {e:"🧠",c:"Your brain switches off when you sleep.",t:false,x:"Not true! Your brain stays busy while you sleep. It sorts out what you learned during the day."},
+ {e:"🦷",c:"Children have 20 baby teeth.",t:true,x:"True! Most children have 20 baby teeth. Later, 32 grown-up teeth take their place."},
+ {e:"🌍",c:"Every family in the world speaks only one language at home.",t:false,x:"Not true! Millions of families speak two or more languages at home."},
+ {e:"💪",c:"Your bones are alive and can mend when they break.",t:true,x:"True! Bones are living parts of your body. A broken bone slowly grows back together."},
+ {e:"👶",c:"Babies are born knowing how to read.",t:false,x:"Not true! Babies learn to talk first by listening. Reading comes years later."}
+],
+imagine:{
+ prompts:[
+  {e:"🙋",t:"Write about yourself: your name, your age, your family and what you love to do."},
+  {e:"💖",t:"Write about one special person in your family. What do they look like? What makes them special?"}
+ ],
+ starters:["My name is ","I am ","I live with ","My favourite ","One special thing about my family is "]
+}
+},
+/* ---------------- UNIT 2 ---------------- */
+{id:"animals", num:2, emoji:"🐘🐪🐙", title:"Animals Around the World", badge:"🏅 Animal Explorer",
+story:[
  {pic:"🐦🗺️", text:"Pip was a small blue bird with a big dream. One morning, Pip looked at an old map and said, \"I want to meet animals from all around the world!\" So Pip flew away from home.",
   q:{q:"What did Pip want to do?",o:["Meet animals around the world","Build a new nest","Find some seeds"],a:["Meet animals around the world"],why:"Pip said, \"I want to meet animals from all around the world!\""}},
  {pic:"🏜️🐪", text:"First, Pip flew to a hot, dry desert. There was sand everywhere. There Pip met a camel named Kamal. \"How do you live here?\" asked Pip. Kamal smiled. \"My hump stores fat, so I can go a long time without food. I can also drink a lot of water very fast.\"",
@@ -147,7 +240,10 @@ story: [
  {pic:"🌊🐙", text:"Last, Pip flew over the deep blue ocean. An octopus waved its eight arms from a rock. \"Hello, little bird! Did you know I have three hearts?\" Pip was amazed. That night, Pip flew home, tired but happy. \"The world is full of wonderful animals,\" Pip thought.",
   q:{q:"How did Pip feel at the end of the trip?",o:["Angry and sad","Tired but happy","Scared and lost"],a:["Tired but happy"],why:"The story says Pip flew home \"tired but happy\"."}}
 ],
-words: [
+poem:{title:"Around the World with Pip",
+ lines:["Pip flew east and Pip flew west,","To see which animal home was best.","The camel liked the desert sand,","The kangaroo hopped on dry land.","The polar bear loved snow and ice,","The octopus found the ocean nice.","But when the stars came out at night,","Pip's own small nest felt just right."],
+ q:{q:"In the poem, which word rhymes with 'ice'?",o:["nice","snow","sand"],a:["nice"],why:"Ice and nice end with the same sound: -ice."}},
+words:[
  {w:"habitat",e:"🏞️",m:"the natural home of an animal or plant",ex:"The Arctic is the habitat of the polar bear.",fill:"A forest is the ___ of many birds and monkeys."},
  {w:"desert",e:"🏜️",m:"a very dry place where it almost never rains",ex:"Camels can live in the hot desert.",fill:"It almost never rains in the ___."},
  {w:"arctic",e:"🧊",m:"the very cold area at the top of the world",ex:"There is snow and ice in the Arctic all year.",fill:"Polar bears live in the cold ___."},
@@ -159,7 +255,7 @@ words: [
  {w:"fur",e:"🐻‍❄️",m:"the thick, soft hair on an animal",ex:"The polar bear's fur keeps it warm.",fill:"The rabbit has soft, white ___."},
  {w:"amazed",e:"😲",m:"very, very surprised",ex:"Pip was amazed to meet an octopus.",fill:"We were ___ to see a whale jump out of the water."}
 ],
-grammar: [
+grammar:[
  {id:"plural", e:"🐑🐑", t:"One or many? (Plurals)",
   intro:"When there is more than one, the word changes. Here are the rules:",
   rules:[
@@ -193,7 +289,7 @@ grammar: [
    {id:"g_t6",type:"mc",q:"The bear ___ a big fish yesterday.",o:["eat","ate","eated"],a:["ate"],hint:"Eat is special.",why:"Eat → ate."}
   ]}
 ],
-think: [
+think:[
  {q:"🤔 Odd one out: which animal does NOT live in the ocean?",o:["Shark","Octopus","Camel","Whale"],a:["Camel"],why:"Sharks, octopuses and whales live in the ocean. A camel lives in the desert."},
  {q:"🔥 Which animal would find it HARDEST to live in a hot desert?",o:["Camel","Lizard","Polar bear"],a:["Polar bear"],why:"A polar bear's thick fur is made for the cold. In a hot desert, it would get far too hot."},
  {q:"🐸 A frog's life: egg → ___ → frog. What comes in the middle?",o:["Tadpole","Fish","Snake"],a:["Tadpole"],why:"A frog starts as an egg, then becomes a tadpole that swims, and then grows legs and becomes a frog."},
@@ -201,7 +297,7 @@ think: [
  {q:"🐪 A camel's hump is small and floppy. What probably happened?",o:["It used up the fat in its hump","It drank too much water","It is too cold"],a:["It used up the fat in its hump"],why:"The hump stores fat. When the camel uses the fat for energy, the hump gets smaller and floppy."},
  {q:"🔗 Elephant is to trunk as bird is to ___.",o:["beak","tail","fur"],a:["beak"],why:"An elephant picks up food with its trunk. A bird picks up food with its beak."}
 ],
-facts: [
+facts:[
  {e:"🐪",c:"A camel's hump is full of water.",t:false,x:"Not true! The hump stores fat. The camel's body can turn that fat into energy."},
  {e:"🐙",c:"An octopus has three hearts.",t:true,x:"True! Two hearts pump blood to its gills and one pumps blood to the rest of its body."},
  {e:"🐻‍❄️",c:"Polar bears have black skin under their white fur.",t:true,x:"True! Their dark skin helps them soak up warmth from the sun."},
@@ -211,19 +307,21 @@ facts: [
  {e:"🦘",c:"A baby kangaroo is called a cub.",t:false,x:"Not true! A baby kangaroo is called a joey."},
  {e:"🦥",c:"Sloths move so slowly that tiny green plants can grow on their fur.",t:true,x:"True! Tiny plants called algae grow on their fur. The green colour helps them hide in trees."}
 ],
-imagine: {
+imagine:{
  prompts:[
   {e:"🦋",t:"If you could be any animal for one day, which animal would you be? What would you do?"},
   {e:"🦄",t:"Invent a brand-new animal! What does it look like? What is its habitat? What can it do?"}
  ],
  starters:["If I were a ","I would live in ","My animal has ","It can ","One day, it "]
 }
-};
+}
+];
+const COMING=[["🌱","How Plants Grow"],["🌦️","Weather and Seasons"],["🚀","Space and the Planets"],["🌊","Life in the Ocean"],["⏰","Time, Shapes and Money"],["💡","Amazing Inventions"],["🤝","Friends and Feelings"],["🗺️","Countries and Cultures"],["🍎","My Healthy Body"],["📚","Stories and Fables"]];
 
 const PARTS=[
- {k:"read",e:"📖",t:"1. Read the story",d:"Pip's trip around the world"},
- {k:"words",e:"🔤",t:"2. New words",d:"10 animal words"},
- {k:"grammar",e:"🧩",t:"3. Grammar",d:"Plurals and past tense"},
+ {k:"read",e:"📖",t:"1. Read",d:"A story and a poem"},
+ {k:"words",e:"🔤",t:"2. New words",d:"10 new words"},
+ {k:"grammar",e:"🧩",t:"3. Grammar",d:"Two mini-lessons"},
  {k:"think",e:"🧠",t:"4. Think",d:"Puzzles and riddles"},
  {k:"facts",e:"💡",t:"5. Did you know?",d:"Guess: true or false?"},
  {k:"imagine",e:"✏️",t:"6. Imagine & write",d:"Write your own ideas"},
@@ -231,13 +329,18 @@ const PARTS=[
 ];
 
 /* ================= SAVED PROGRESS (this browser only) ================= */
-const KEY="sprout_v2";
+const KEY="sprout_v3";
 let S;
 try{S=JSON.parse(localStorage.getItem(KEY))}catch(e){}
-if(!S||!S.parts)S={parts:{},cards:{},writing:"",gram:{}};
+if(!S||!S.u){
+  S={u:{}};
+  try{const old=JSON.parse(localStorage.getItem("sprout_v2"));if(old&&old.parts)S.u.animals=old}catch(e){} // keep earlier progress
+}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
-function resetAll(){if(confirm("Reset all progress for this unit?")){S={parts:{},cards:{},writing:"",gram:{}};save();openUnit()}}
-function markDone(k){S.parts[k]=true;save()}
+let U=UNITS[0];
+function st(){return S.u[U.id]||(S.u[U.id]={parts:{},cards:{},writing:"",gram:{}})}
+function resetUnit(){if(confirm("Reset all progress for this unit?")){delete S.u[U.id];save();openUnit(U.id)}}
+function markDone(k){st().parts[k]=true;save()}
 
 /* ================= HELPERS ================= */
 const $=id=>document.getElementById(id);
@@ -245,13 +348,14 @@ const body=()=>$("pbody");
 const norm=s=>s.toLowerCase().trim().replace(/[.!?]+$/,"").replace(/\s+/g," ");
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function go(v){["home","grade","unit","part"].forEach(x=>$("v-"+x).classList.toggle("hidden",x!==v));window.scrollTo(0,0);try{speechSynthesis.cancel()}catch(e){}}
-function say(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t.replace(/<[^>]+>/g,""));u.lang="en-US";u.rate=0.9;speechSynthesis.speak(u)}catch(e){}}
+function say(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t.replace(/<[^>]+>/g,"").replace(/___/g,"blank"));u.lang="en-US";u.rate=0.9;speechSynthesis.speak(u)}catch(e){}}
 let toastT;
 function toast(html){const t=$("toast");t.innerHTML=html;t.classList.remove("hidden");clearTimeout(toastT);toastT=setTimeout(()=>t.classList.add("hidden"),4500)}
 function cap(w){return w.charAt(0).toUpperCase()+w.slice(1)}
+function pick(a){return a[Math.floor(Math.random()*a.length)]}
 function doneScreen(e,title,msg){
   body().innerHTML=`<div style="text-align:center"><div class="big">${e}</div><h2 style="margin-top:0">${title}</h2><p class="sub">${msg}</p>
-  <p style="margin-top:20px"><button class="btn" onclick="openUnit()">Back to the journey →</button></p></div>`;
+  <p style="margin-top:20px"><button class="btn" onclick="openUnit(U.id)">Back to the journey →</button></p></div>`;
 }
 
 /* ================= FSRS (v4.5 default weights) ================= */
@@ -271,21 +375,25 @@ function fsrs(c,g,now){ // g: 1 = wrong, 3 = right
 }
 
 /* ================= QUESTION RUNNER (used by every part) ================= */
+function isRight(it,val){
+  if(it.strict){const v=val.trim().replace(/\s+/g," ");return it.a.includes(v)}
+  return it.a.map(norm).includes(norm(val));
+}
 function runQuestions(list,opt){
   const q=list.slice();let i=0,first=0,seen=new Set(),retries={},answered=false,answeredAt=0;
   function show(){
     answered=false;const it=q[i];
     body().innerHTML=`<div class="bar"><div style="width:${i/q.length*100}%"></div></div>
-      <div class="row"><span class="pill">Question ${Math.min(i+1,q.length)} of ${q.length}</span>
+      <div class="row"><span class="pill">Question ${i+1} of ${q.length}</span>
       <button class="btn ghost small" id="sayQ">🔊 Listen</button></div>
       <div class="q">${it.q}</div><div id="qa"></div>
       ${opt.hints&&it.hint?`<button class="link" id="hintBtn" style="margin-top:10px">💡 Need a hint?</button><div id="hint"></div>`:""}
       <div id="fb"></div><div id="nx" style="margin-top:14px"></div>`;
-    $("sayQ").onclick=()=>say(it.q.replace(/___/g,"blank"));
+    $("sayQ").onclick=()=>say(it.q);
     if(opt.hints&&it.hint)$("hintBtn").onclick=()=>{$("hint").innerHTML=`<div class="hintbox">💡 ${it.hint}</div>`;$("hintBtn").remove()};
     const qa=$("qa");
     if(it.type==="type"){
-      const inp=document.createElement("input");inp.className="ans";inp.placeholder="Type your answer";inp.autocomplete="off";inp.setAttribute("autocapitalize","off");
+      const inp=document.createElement("input");inp.className="ans";inp.placeholder="Type your answer";inp.autocomplete="off";inp.setAttribute("autocapitalize","off");inp.setAttribute("spellcheck","false");
       inp.onkeydown=e=>{if(e.key==="Enter"&&inp.value.trim()){e.preventDefault();check(inp.value)}};
       const b=document.createElement("button");b.className="btn";b.textContent="Check";b.onclick=()=>{if(inp.value.trim())check(inp.value)};
       qa.append(inp,b);inp.focus();
@@ -297,21 +405,21 @@ function runQuestions(list,opt){
   }
   function check(val,btn){
     if(answered)return;answered=true;answeredAt=Date.now();
-    const it=q[i];const ok=it.a.map(norm).includes(norm(val));
+    const it=q[i];const ok=isRight(it,val);
     if(opt.onAnswer)opt.onAnswer(it,ok);
-    if(!seen.has(it.id||it.q)){seen.add(it.id||it.q);if(ok)first++}
+    const key=it.id||it.q;
+    if(!seen.has(key)){seen.add(key);if(ok)first++}
     $("qa").querySelectorAll("button,input").forEach(el=>el.disabled=true);
     if(it.type!=="type")$("qa").querySelectorAll(".opt").forEach(b=>{if(it.a.includes(b.textContent))b.classList.add("right");else if(b===btn)b.classList.add("wrong")});
     if($("hintBtn"))$("hintBtn").remove();
     $("fb").innerHTML=`<div class="fb ${ok?"ok":"no"}"><b>${ok?pick(["Correct! 🎉","Great job! ⭐","Yes! 👏","Well done! 🌱"]):"Not quite. The answer is: "+it.a[0]}</b><br>${it.why||""}</div>`;
-    if(!ok&&(retries[it.id||it.q]||0)<2){retries[it.id||it.q]=(retries[it.id||it.q]||0)+1;q.splice(Math.min(i+3,q.length),0,it)}
+    if(!ok&&(retries[key]||0)<2){retries[key]=(retries[key]||0)+1;q.splice(Math.min(i+3,q.length),0,it)}
     const nb=document.createElement("button");nb.className="btn";nb.textContent=i+1<q.length?"Next →":"Finish ✓";
     nb.onclick=()=>{if(Date.now()-answeredAt<250)return;i++;if(i>=q.length)opt.onDone(first,seen.size);else show()};
     $("nx").appendChild(nb);setTimeout(()=>nb.focus(),50);
   }
   show();
 }
-function pick(a){return a[Math.floor(Math.random()*a.length)]}
 
 /* ================= HOME / GRADE / UNIT ================= */
 $("siteName").textContent=SITE_NAME;$("footName").textContent=SITE_NAME;document.title=SITE_NAME;
@@ -319,22 +427,27 @@ $("gradeGrid").innerHTML=[...Array(12)].map((_,i)=>"Grade "+(i+1)).concat(["Coll
   const open=i===2;
   return `<div class="card ${open?"click":"locked"}" ${open?'onclick="openGrade()"':""}>
     <span class="pill">${open?"Open":"Coming soon"}</span><h3>${g}</h3>
-    <p>${open?"Animals, space, weather and more":"In progress"}</p></div>`}).join("");
+    <p>${open?"Family, animals, plants, space and more":"In progress"}</p></div>`}).join("");
 
-const UNITS=[["🐘","Animals Around the World",1],["🚀","Space and the Planets"],["🌦️","Weather and Seasons"],["🌱","How Plants Grow"],["🌊","Life in the Ocean"],["💡","Amazing Inventions"],["⏰","Time, Shapes and Money"],["🤝","Friends and Feelings"]];
 function openGrade(){
-  $("unitGrid").innerHTML=UNITS.map(u=>`<div class="card ${u[2]?"click":"locked"}" ${u[2]?'onclick="openUnit()"':""}>
-    <div class="em">${u[0]}</div><span class="pill">${u[2]?"Open":"Coming soon"}</span><h3>${u[1]}</h3></div>`).join("");
+  const built=UNITS.map(u=>{
+    const s=S.u[u.id],n=s?PARTS.filter(p=>s.parts[p.k]).length:0;
+    return `<div class="card click" onclick="openUnit('${u.id}')"><div class="em">${u.emoji}</div>
+      <span class="pill">Unit ${u.num} · ${n===PARTS.length?"Complete ✓":n?"⭐ "+n+"/"+PARTS.length:"Open"}</span><h3>${u.title}</h3></div>`});
+  const soon=COMING.map((c,i)=>`<div class="card locked"><div class="em">${c[0]}</div><span class="pill">Unit ${UNITS.length+i+1} · Coming soon</span><h3>${c[1]}</h3></div>`);
+  $("unitGrid").innerHTML=built.concat(soon).join("");
   go("grade");
 }
-function openUnit(){
-  const n=PARTS.filter(p=>S.parts[p.k]).length;
+function openUnit(id){
+  U=UNITS.find(u=>u.id===id)||UNITS[0];
+  const s=st(),n=PARTS.filter(p=>s.parts[p.k]).length;
+  $("unitEmoji").textContent=U.emoji;$("unitNum").textContent="Unit "+U.num;$("unitTitle").textContent=U.title;
   $("unitStars").textContent=`⭐ ${n} of ${PARTS.length} parts complete`;
-  $("unitBadge").innerHTML=n===PARTS.length?`<div class="badge">🏅 Animal Explorer badge earned!</div>`:"";
+  $("unitBadge").innerHTML=n===PARTS.length?`<div class="badge">${U.badge} badge earned!</div>`:"";
   $("partGrid").innerHTML=PARTS.map(p=>{
-    const locked=p.k==="review"&&!(S.parts.words&&S.parts.grammar);
+    const locked=p.k==="review"&&!(s.parts.words&&s.parts.grammar);
     return `<div class="card ${locked?"locked":"click"}" ${locked?"":`onclick="openPart('${p.k}')"`}>
-      <div class="em">${p.e}</div><span class="pill">${S.parts[p.k]?"Done ⭐":locked?"🔒 After parts 2 & 3":"Start"}</span>
+      <div class="em">${p.e}</div><span class="pill">${s.parts[p.k]?"Done ⭐":locked?"🔒 After parts 2 & 3":"Start"}</span>
       <h3>${p.t}</h3><p>${p.d}</p></div>`}).join("");
   go("unit");
 }
@@ -344,73 +457,87 @@ function openPart(k){
   ({read:readPart,words:wordsPart,grammar:grammarPart,think:thinkPart,facts:factsPart,imagine:imaginePart,review:reviewPart})[k]();
 }
 
-/* ================= 1. READ ================= */
+/* ================= 1. READ (story + poem) ================= */
 function highlight(text){
   let out=text;
-  UNIT.words.forEach((w,i)=>{out=out.replace(new RegExp("\\b("+w.w+")\\b","i"),m=>`<button class="vw" onclick="showWord(${i})">${m}</button>`)});
+  U.words.forEach((w,i)=>{out=out.replace(new RegExp("\\b("+w.w+")(s|es|d|ed)?\\b","i"),m=>`<button class="vw" onclick="showWord(${i})">${m}</button>`)});
   return out;
 }
-function showWord(i){const w=UNIT.words[i];say(w.w);toast(`${w.e} <b>${w.w}</b>: ${w.m}`)}
+function showWord(i){const w=U.words[i];say(w.w);toast(`${w.e} <b>${w.w}</b>: ${w.m}`)}
+function askOne(boxId,fbId,nextId,qq,nextLabel,onNext){
+  shuffle(qq.o.slice()).forEach(o=>{
+    const b=document.createElement("button");b.className="opt";b.textContent=o;
+    b.onclick=()=>{
+      const ok=qq.a.includes(o);
+      $(boxId).querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(qq.a.includes(x.textContent))x.classList.add("right");else if(x===b)x.classList.add("wrong")});
+      $(fbId).innerHTML=`<div class="fb ${ok?"ok":"no"}"><b>${ok?"Correct! 🎉":"Not quite."}</b> ${qq.why}</div>`;
+      const nb=document.createElement("button");nb.className="btn";nb.textContent=nextLabel;nb.onclick=onNext;$(nextId).appendChild(nb);
+    };
+    $(boxId).appendChild(b);
+  });
+}
 function readPart(pg=0){
-  const p=UNIT.story[pg],n=UNIT.story.length;
-  body().innerHTML=`<div class="bar"><div style="width:${pg/n*100}%"></div></div>
+  const n=U.story.length,total=n+1;
+  if(pg===n)return poemPage();
+  const p=U.story[pg];
+  body().innerHTML=`<div class="bar"><div style="width:${pg/total*100}%"></div></div>
     <div class="storypic">${p.pic}</div>
-    <div class="row"><span class="pill">Page ${pg+1} of ${n}</span><button class="btn ghost small" onclick="say(UNIT.story[${pg}].text)">🔊 Read to me</button></div>
+    <div class="row"><span class="pill">Page ${pg+1} of ${total}</span><button class="btn ghost small" onclick="say(U.story[${pg}].text)">🔊 Read to me</button></div>
     <p class="story">${highlight(p.text)}</p>
     <p style="color:var(--muted);font-size:13px;margin:0">Tip: tap a <span class="vw">green word</span> to learn what it means.</p>
     <div class="qbox"><b>${p.q.q}</b><div class="opts" id="sq" style="margin-top:10px"></div><div id="sfb"></div></div>
     <div id="snext" style="margin-top:14px"></div>`;
-  shuffle(p.q.o.slice()).forEach(o=>{
-    const b=document.createElement("button");b.className="opt";b.textContent=o;
-    b.onclick=()=>{
-      const ok=p.q.a.includes(o);
-      $("sq").querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(p.q.a.includes(x.textContent))x.classList.add("right");else if(x===b)x.classList.add("wrong")});
-      $("sfb").innerHTML=`<div class="fb ${ok?"ok":"no"}"><b>${ok?"Correct! 🎉":"Not quite."}</b> ${p.q.why}</div>`;
-      const nb=document.createElement("button");nb.className="btn";nb.textContent=pg+1<n?"Next page →":"Finish the story ✓";
-      nb.onclick=()=>{if(pg+1<n)readPart(pg+1);else{markDone("read");doneScreen("📖","Story complete!","You travelled the world with Pip. Next, learn the new words from the story.")}};
-      $("snext").appendChild(nb);
-    };
-    $("sq").appendChild(b);
-  });
+  askOne("sq","sfb","snext",p.q,pg+1<n?"Next page →":"Now read the poem →",()=>readPart(pg+1));
+}
+function poemPage(){
+  const p=U.poem,total=U.story.length+1;
+  body().innerHTML=`<div class="bar"><div style="width:${(total-1)/total*100}%"></div></div>
+    <div class="row"><span class="pill">Page ${total} of ${total} · Poem</span><button class="btn ghost small" onclick="say(U.poem.lines.join(' '))">🔊 Read the poem</button></div>
+    <h2 style="margin-top:14px">${p.title}</h2>
+    <div class="poem">${p.lines.join("<br>")}</div>
+    <p class="sub">Read it aloud yourself too. Can you hear the rhymes?</p>
+    <div class="qbox"><b>${p.q.q}</b><div class="opts" id="sq" style="margin-top:10px"></div><div id="sfb"></div></div>
+    <div id="snext" style="margin-top:14px"></div>`;
+  askOne("sq","sfb","snext",p.q,"Finish reading ✓",()=>{markDone("read");doneScreen("📖","Reading complete!","You read the story and the poem. Next, learn the new words.")});
 }
 
 /* ================= 2. WORDS ================= */
 function wordsPart(wi=0){
-  const w=UNIT.words[wi],n=UNIT.words.length;
+  const w=U.words[wi],n=U.words.length;
   body().innerHTML=`<div class="bar"><div style="width:${wi/n*100}%"></div></div>
     <div class="flash"><div class="em">${w.e}</div><div class="word">${cap(w.w)}</div>
-      <button class="btn ghost small" onclick="say(UNIT.words[${wi}].w)">🔊 Say it</button>
+      <button class="btn ghost small" onclick="say(U.words[${wi}].w)">🔊 Say it</button>
       <div id="meanBox"><p style="margin-top:16px"><button class="btn" id="showM">Show the meaning</button></p></div>
     </div>
     <div class="row"><button class="btn ghost" ${wi===0?"disabled":""} onclick="wordsPart(${wi-1})">← Back</button>
     <span class="pill">Word ${wi+1} of ${n}</span>
     <button class="btn" onclick="${wi+1<n?`wordsPart(${wi+1})`:"wordCheck()"}">${wi+1<n?"Next →":"Quick check →"}</button></div>`;
-  $("showM").onclick=()=>{$("meanBox").innerHTML=`<div class="mean">${w.m}</div><div class="ex">"${w.ex}" <button class="link" onclick="say(UNIT.words[${wi}].ex)">🔊</button></div>`;say(w.m)};
+  $("showM").onclick=()=>{$("meanBox").innerHTML=`<div class="mean">${w.m}</div><div class="ex">"${w.ex}" <button class="link" onclick="say(U.words[${wi}].ex)">🔊</button></div>`;say(w.m)};
 }
-function wordMC(w){return {id:"w_m_"+w.w,type:"mc",q:`Which word means: <b>${w.m}</b>?`,o:shuffle([w.w].concat(shuffle(UNIT.words.filter(x=>x.w!==w.w)).slice(0,2).map(x=>x.w))),a:[w.w],why:`${w.e} <b>${w.w}</b>: ${w.ex}`}}
-function wordFill(w){return {id:"w_f_"+w.w,type:"type",q:w.fill,a:[w.w],why:`${w.e} <b>${w.w}</b> = ${w.m}`}}
+function wordMC(w){return {id:"w_m_"+w.w,type:"mc",q:`Which word means: <b>${w.m}</b>?`,o:shuffle([w.w].concat(shuffle(U.words.filter(x=>x.w!==w.w)).slice(0,2).map(x=>x.w))),a:[w.w],why:`${w.e} <b>${w.w}</b>: ${w.ex}`}}
+function wordFill(w){return {id:"w_f_"+w.w,type:"type",q:w.fill,a:[w.w].concat(w.alt||[]),why:`${w.e} <b>${w.w}</b> = ${w.m}`}}
 function wordCheck(){
-  runQuestions(shuffle(UNIT.words.slice()).slice(0,5).map(wordMC),{onDone:(f,t)=>{markDone("words");doneScreen("🔤","Words learned!",`You got ${f} of ${t} right on the first try. These words will come back in Review so you remember them.`)}});
+  runQuestions(shuffle(U.words.slice()).slice(0,5).map(wordMC),{onDone:(f,t)=>{markDone("words");doneScreen("🔤","Words learned!",`You got ${f} of ${t} right on the first try. These words will come back in Review so you remember them.`)}});
 }
 
 /* ================= 3. GRAMMAR ================= */
 function grammarPart(){
   body().innerHTML=`<h2>Two mini-lessons</h2><p class="sub">Learn the rule first, then try it with hints.</p>
-   <div class="grid">${UNIT.grammar.map((g,i)=>`<div class="card click" onclick="grammarLesson(${i})"><div class="em">${g.e}</div>
-   <span class="pill">${S.gram[g.id]?"Done ⭐":"Start"}</span><h3>${g.t}</h3></div>`).join("")}</div>`;
+   <div class="grid">${U.grammar.map((g,i)=>`<div class="card click" onclick="grammarLesson(${i})"><div class="em">${g.e}</div>
+   <span class="pill">${st().gram[g.id]?"Done ⭐":"Start"}</span><h3>${g.t}</h3></div>`).join("")}</div>`;
 }
 function grammarLesson(i){
-  const g=UNIT.grammar[i];
+  const g=U.grammar[i];
   body().innerHTML=`<div class="storypic">${g.e}</div><h2 style="margin-top:0">${g.t}</h2>
    <p class="story" style="font-size:17px">${g.intro}</p>
-   ${g.rules.map(r=>`<div class="rule"><div>${r.r}</div><div>${r.ex.map(x=>`<span class="chip" onclick="say('${x.replace(" → ",", ")}')">🔊 ${x}</span>`).join("")}</div></div>`).join("")}
+   ${g.rules.map((r,ri)=>`<div class="rule"><div>${r.r}</div><div>${r.ex.map((x,xi)=>`<span class="chip" onclick="say(U.grammar[${i}].rules[${ri}].ex[${xi}].replace(' → ',', '))">🔊 ${x}</span>`).join("")}</div></div>`).join("")}
    <p style="text-align:center;margin-top:18px"><button class="btn" onclick="grammarTry(${i})">I understand — let me try (with hints) →</button></p>`;
 }
 function grammarTry(i){
-  const g=UNIT.grammar[i];
+  const g=U.grammar[i];
   runQuestions(g.tries,{hints:true,onDone:(f,t)=>{
-    S.gram[g.id]=true;save();
-    const both=UNIT.grammar.every(x=>S.gram[x.id]);
+    st().gram[g.id]=true;save();
+    const both=U.grammar.every(x=>st().gram[x.id]);
     if(both)markDone("grammar");
     doneScreen("🧩","Lesson complete!",`You got ${f} of ${t} right on the first try.`+(both?" Both grammar lessons are done!":" Now try the other grammar lesson."));
     if(!both)body().insertAdjacentHTML("beforeend",`<p style="text-align:center"><button class="btn ghost" onclick="grammarPart()">Go to the next lesson</button></p>`);
@@ -419,12 +546,12 @@ function grammarTry(i){
 
 /* ================= 4. THINK ================= */
 function thinkPart(){
-  runQuestions(UNIT.think.map((x,i)=>Object.assign({id:"th"+i,type:"mc"},x)),{onDone:(f,t)=>{markDone("think");doneScreen("🧠","Super thinker!",`You solved ${f} of ${t} on the first try. Great brain work!`)}});
+  runQuestions(U.think.map((x,i)=>Object.assign({id:"th"+i,type:"mc"},x)),{onDone:(f,t)=>{markDone("think");doneScreen("🧠","Super thinker!",`You solved ${f} of ${t} on the first try. Great brain work!`)}});
 }
 
 /* ================= 5. DID YOU KNOW? ================= */
 function factsPart(fi=0,score=0){
-  const f=UNIT.facts[fi],n=UNIT.facts.length;
+  const f=U.facts[fi],n=U.facts.length;
   body().innerHTML=`<div class="bar"><div style="width:${fi/n*100}%"></div></div>
    <div class="flash"><div class="em">${f.e}</div><p style="color:var(--muted);margin:6px 0">Guess first: true or false?</p>
    <div class="q" style="font-weight:700">${f.c}</div>
@@ -444,18 +571,18 @@ function factsPart(fi=0,score=0){
 /* ================= 6. IMAGINE & WRITE ================= */
 let promptIdx=0;
 function imaginePart(){
-  const im=UNIT.imagine;
+  const im=U.imagine;
   body().innerHTML=`<h2 style="margin-top:10px">Choose your idea</h2>
-   <div class="grid">${im.prompts.map((p,i)=>`<div class="card click" id="pr${i}" onclick="setPrompt(${i})" style="${i===promptIdx?"border-color:var(--g);border-width:2px":""}"><div class="em">${p.e}</div><p style="color:var(--text);font-size:15px">${p.t}</p></div>`).join("")}</div>
+   <div class="grid">${im.prompts.map((p,i)=>`<div class="card click" onclick="setPrompt(${i})" style="${i===promptIdx?"border-color:var(--g);border-width:2px":""}"><div class="em">${p.e}</div><p style="color:var(--text);font-size:15px">${p.t}</p></div>`).join("")}</div>
    <p style="margin:16px 0 4px"><b>Sentence starters</b> (tap to add):</p>
-   <div>${im.starters.map((s,i)=>`<span class="chip" onclick="ins(UNIT.imagine.starters[${i}])">${s}…</span>`).join("")}</div>
+   <div>${im.starters.map((s,i)=>`<span class="chip" onclick="ins(U.imagine.starters[${i}])">${s}…</span>`).join("")}</div>
    <p style="margin:12px 0 4px"><b>Word bank</b> (try to use one!):</p>
-   <div>${UNIT.words.map((w,i)=>`<span class="chip" onclick="ins(UNIT.words[${i}].w+' ')">${w.e} ${w.w}</span>`).join("")}</div>
+   <div>${U.words.map((w,i)=>`<span class="chip" onclick="ins(U.words[${i}].w+' ')">${w.e} ${w.w}</span>`).join("")}</div>
    <textarea id="wr" style="margin-top:14px" placeholder="Write at least 2 sentences here…"></textarea>
    <div id="checks" style="margin:10px 0"></div>
    <div class="row"><button class="btn ghost" onclick="say($('wr').value||'Write something first!')">🔊 Read my writing</button>
    <button class="btn" onclick="saveWriting()">Save my writing ✓</button></div><div id="wfb"></div>`;
-  $("wr").value=S.writing||"";$("wr").oninput=updateChecks;updateChecks();
+  $("wr").value=st().writing||"";$("wr").oninput=updateChecks;updateChecks();
 }
 function setPrompt(i){promptIdx=i;const v=$("wr").value;imaginePart();$("wr").value=v;updateChecks()}
 function ins(t){const a=$("wr"),s=a.selectionStart??a.value.length;a.value=a.value.slice(0,s)+t+a.value.slice(a.selectionEnd??s);a.focus();a.selectionStart=a.selectionEnd=s+t.length;updateChecks()}
@@ -465,25 +592,25 @@ function writingChecks(v){
     [sentences>=2,"I wrote at least 2 sentences"],
     [/^\s*[A-Z]/.test(v),"I started with a capital letter"],
     [/[.!?]\s*$/.test(v.trim()),"I ended with a full stop (.), ! or ?"],
-    [UNIT.words.some(w=>new RegExp("\\b"+w.w+"\\b","i").test(v)),"I used a word from the word bank"]
+    [U.words.some(w=>new RegExp("\\b"+w.w,"i").test(v)),"I used a word from the word bank"]
   ];
 }
 function updateChecks(){$("checks").innerHTML=writingChecks($("wr").value).map(c=>`<div class="check">${c[0]?"✅":"⬜"} ${c[1]}</div>`).join("")}
 function saveWriting(){
-  const v=$("wr").value;S.writing=v;save();
+  const v=$("wr").value;st().writing=v;save();
   const all=writingChecks(v).every(c=>c[0]);
   if(all){markDone("imagine");$("wfb").innerHTML=`<div class="fb ok"><b>Wonderful writing! ✏️⭐</b><br>Your writing is saved. Read it aloud to someone at home!</div>`}
   else $("wfb").innerHTML=`<div class="fb no"><b>Saved!</b> Tick all the boxes above to finish this part.</div>`;
 }
 
 /* ================= 7. REVIEW (FSRS spaced repetition) ================= */
-function reviewItems(){return UNIT.words.flatMap(w=>[wordMC(w),wordFill(w)]).concat(UNIT.grammar.flatMap(g=>g.tries))}
+function reviewItems(){return U.words.flatMap(w=>[wordMC(w),wordFill(w)]).concat(U.grammar.flatMap(g=>g.tries))}
 function reviewPart(){
-  const now=Date.now(),all=reviewItems();
-  const due=shuffle(all.filter(i=>S.cards[i.id]&&S.cards[i.id].due<=now)).slice(0,10);
-  const fresh=shuffle(all.filter(i=>!S.cards[i.id])).slice(0,Math.max(0,Math.min(6,10-due.length)));
-  let list=shuffle(due.concat(fresh));
-  const learned=all.filter(i=>S.cards[i.id]&&S.cards[i.id].streak>=2).length;
+  const s=st(),now=Date.now(),all=reviewItems();
+  const due=shuffle(all.filter(i=>s.cards[i.id]&&s.cards[i.id].due<=now)).slice(0,10);
+  const fresh=shuffle(all.filter(i=>!s.cards[i.id])).slice(0,Math.max(0,Math.min(6,10-due.length)));
+  const list=shuffle(due.concat(fresh));
+  const learned=all.filter(i=>s.cards[i.id]&&s.cards[i.id].streak>=2).length;
   if(!list.length){
     body().innerHTML=`<div style="text-align:center"><div class="big">🌙</div><h2 style="margin-top:0">All caught up!</h2>
      <p class="sub">${learned} of ${all.length} items learned. Your next review is scheduled. Come back tomorrow!</p>
@@ -491,10 +618,10 @@ function reviewPart(){
   }
   startReview(list);
 }
-function extraReview(){startReview(reviewItems().sort((a,b)=>((S.cards[a.id]||{}).s||0)-((S.cards[b.id]||{}).s||0)).slice(0,10))}
+function extraReview(){const c=st().cards;startReview(reviewItems().sort((a,b)=>((c[a.id]||{}).s||0)-((c[b.id]||{}).s||0)).slice(0,10))}
 function startReview(list){
-  runQuestions(list,{onAnswer:(it,ok)=>{S.cards[it.id]=S.cards[it.id]||{};fsrs(S.cards[it.id],ok?3:1,Date.now());save()},
-    onDone:(f,t)=>{markDone("review");const all=reviewItems();const learned=all.filter(i=>S.cards[i.id]&&S.cards[i.id].streak>=2).length;
+  runQuestions(list,{onAnswer:(it,ok)=>{const c=st().cards;c[it.id]=c[it.id]||{};fsrs(c[it.id],ok?3:1,Date.now());save()},
+    onDone:(f,t)=>{markDone("review");const s=st(),all=reviewItems();const learned=all.filter(i=>s.cards[i.id]&&s.cards[i.id].streak>=2).length;
       doneScreen("🔁","Review done!",`${f} of ${t} right on the first try. ${learned} of ${all.length} items learned so far. The ones you found hard will come back sooner.`)}});
 }
 </script>
