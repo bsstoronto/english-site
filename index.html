@@ -764,6 +764,8 @@ const L={
  ana:"Find how the first two words are linked (a baker <b>makes</b> bread). Use the <b>same link</b> for the next pair (an artist <b>makes</b> pictures)."
 };
 
+/* exported for spiral review in later units */
+u.review=MIX(complete,G.capStart(SENT),G.capI(SENT),G.endMark(SENT,ASK,EXCL),G.kind(SENT,ASK,EXCL),qword,matchQ,makeQ,findNoun,commonProper,capName,G.fix(SENT.concat(ASK)),F.word(u.words),F.fill(u.words));
 /* ---------- The skill list ---------- */
 u.cats=[
  {n:"Reading",e:"📖",items:[
@@ -1324,6 +1326,8 @@ const L={
  ana:"Find how the first two words are linked (a bird <b>lives in</b> a nest). Use the <b>same link</b> for the next pair (a bear <b>lives in</b> a den)."
 };
 
+/* exported for spiral review in later units */
+u.review=MIX(plQ(PL_S),plQ(PL_IES.concat(PL_YS)),plQ(PL_VES),plQ(SPECIAL),isAre,pastQ(REG,regRule),pastQ(RULES,v=>v[2]),pastQ(IRR,irrRule),tense,wasWere,pastFix,plFix,homeQ,babyQ,groupQ,classify,F.word(u.words),F.fill(u.words));
 /* ================= THE SKILL LIST ================= */
 u.cats=[
  {n:"Reading",e:"📖",items:[
@@ -1391,9 +1395,537 @@ u.cats=[
 ];
 })();
 
+/* ===================== GRADE 3 · UNIT 3 · HOW PLANTS GROW (original content) ===================== */
+(function(){
+const f=(q,a,o,why)=>({lv:"find",q,o:[a].concat(o),a:[a],why});
+const t=(q,a,o,why)=>({lv:"think",q,o:[a].concat(o),a:[a],why});
+UNITS.push({
+id:"plants", num:3, emoji:"🌱🌻🍎", title:"How Plants Grow", badge:"🌻 Green Thumb",
+
+stories:[
+/* ---------- 1. STORY ---------- */
+{title:"Mia's Bean Plant", e:"🌱", kind:"Story", pages:[
+ {pic:"🏫🫘", text:"On Monday, Mr. Lee gave every child in Grade 3 a dry bean seed and a paper cup. \"Your job is to grow a bean plant,\" he said. \"Each day, write down what you observe in your plant diary.\" Mia looked at her tiny seed. It was hard, smooth and brown. \"How can a whole plant come out of this?\" she wondered.",
+  qs:[f("What did Mr. Lee give each child?","A bean seed and a paper cup",["A flower and a pot","A book and a pencil"],"He gave every child a dry bean seed and a paper cup."),
+      t("What does \"observe\" mean here?","Look carefully and notice",["Throw away","Eat quickly"],"Scientists observe: they look carefully and write down what they notice.")]},
+ {pic:"🪴💧", text:"At home, Mia filled her cup with soil. She pushed the seed into the soil with her finger, about as deep as her first knuckle. Then she sprinkled water on top until the soil was damp, but not soaking wet. She put the cup on the kitchen windowsill, where the sun shone in every morning.",
+  qs:[f("How deep did Mia plant the seed?","About as deep as her first knuckle",["On top of the soil","At the bottom of a deep hole"],"She pushed it in about as deep as her first knuckle."),
+      t("Why did Mia put the cup on the windowsill?","So the plant would get sunlight",["So the cat could not reach it","Because it looked pretty"],"The sun shone in every morning. Plants need sunlight to grow.")]},
+ {pic:"😟🪴", text:"For five days, nothing happened. Mia checked her cup every morning. \"Maybe my seed is broken,\" she said sadly. Grandmother smiled. \"Seeds are busy underground, where you cannot see. Be patient.\" On the eighth day, Mia shouted, \"It's growing!\" A tiny green shoot was pushing up through the soil.",
+  qs:[f("On which day did Mia see the shoot?","The eighth day",["The first day","The fifth day"],"On the eighth day, Mia shouted, \"It's growing!\""),
+      t("What did Grandmother mean by \"Seeds are busy underground\"?","The seed was growing roots even though Mia could not see it",["Insects were eating it","The seed was sleeping forever"],"Roots grow first, under the soil, before the shoot comes up.")]},
+ {pic:"🌱☀️", text:"The seedling grew quickly. Two round leaves opened at the top, then more leaves appeared. One day, Mia noticed something strange. Her plant was leaning towards the window! She turned the cup around. Two days later, the plant had bent back towards the window again. \"It's following the light!\" Mia laughed.",
+  qs:[f("Which way was the plant leaning?","Towards the window",["Towards the door","Towards the floor"],"Her plant was leaning towards the window."),
+      t("Why did the plant bend towards the window?","Plants grow towards light",["The wind blew it","It was too heavy"],"Mia discovered that plants grow towards the light they need.")]},
+ {pic:"🌸🐝", text:"After four weeks, Mia's plant was taller than her ruler. She tied it gently to a stick so it would not fall over. Then small white flowers opened along the stem. Mia moved the cup outside onto the balcony, and a bee came buzzing from flower to flower. Soon the flowers dried up, and little green pods began to grow in their place.",
+  qs:[f("What grew in the place of the flowers?","Little green pods",["Red apples","More leaves"],"Little green pods began to grow in their place."),
+      t("Why did Mia tie the plant to a stick?","To hold it up so it would not fall over",["To measure it","To stop the bee"],"The tall stem needed support.")]},
+ {pic:"🫘📒", text:"Mia opened one of the pods. Inside were five new bean seeds, just like the one she had planted! She wrote in her diary: \"One seed made a plant, and the plant made many seeds. It is a circle that never ends.\" The next spring, Mia planted her new seeds in Grandmother's garden.",
+  qs:[f("How many seeds were inside the pod?","Five",["One","Twenty"],"Inside were five new bean seeds."),
+      t("Why did Mia say \"It is a circle that never ends\"?","The plant made new seeds that can grow into new plants",["The pod was round","Her diary had a circle on it"],"Seed → plant → flowers → new seeds → new plants. This is a life cycle.")]}
+], turn:{q:"Have you ever grown a plant or helped in a garden? If not, what would you like to grow? Write two sentences.",model:"I would like to grow tomatoes on my balcony. I would water them every evening."}},
+
+/* ---------- 2. STORY ---------- */
+{title:"The Seed That Travelled", e:"🌬️", kind:"Story", pages:[
+ {pic:"🌼🌬️", text:"I am a dandelion seed. I was born in a fluffy white ball at the top of a tall stem, with hundreds of brothers and sisters. Each of us has a tiny parachute made of soft white hairs. One morning, a girl picked our stem, made a wish and blew. Whoosh! Away we flew!",
+  qs:[f("What does each dandelion seed have?","A tiny parachute of soft white hairs",["Wings like a bird","Sharp hooks"],"Each seed has a tiny parachute made of soft white hairs."),
+      t("Who is telling this story?","The dandelion seed",["The girl","A bird"],"The story says \"I am a dandelion seed.\" The seed is telling it.")]},
+ {pic:"☁️🌳", text:"The wind carried me high over the houses. I floated past a tall oak tree, where a squirrel was burying acorns. \"Why are you hiding those?\" I called. \"To eat in winter,\" said the squirrel. \"But I always forget a few, and they grow into new oak trees!\"",
+  qs:[f("What was the squirrel doing?","Burying acorns",["Eating flowers","Building a nest"],"A squirrel was burying acorns."),
+      t("How does the squirrel help oak trees?","It forgets some acorns, which grow into new trees",["It waters the trees","It cuts the branches"],"The forgotten acorns grow into new oak trees. Animals help spread seeds.")]},
+ {pic:"🐕🌰", text:"Next, I drifted down near a field. A dog ran past with something stuck to its fur. \"What are those?\" I asked. \"Burrs,\" said a burr seed, holding on tightly with its tiny hooks. \"We catch a ride on animals. When the dog scratches, we fall off far away and grow there.\"",
+  qs:[f("How does the burr seed hold on to the dog?","With tiny hooks",["With glue","With a parachute"],"It holds on tightly with its tiny hooks."),
+      t("What do the dandelion, the acorn and the burr have in common?","They all travel to new places to grow",["They are all fruits we eat","They all grow underwater"],"Each seed has a different way to travel away from its parent plant.")]},
+ {pic:"🍒🐦", text:"A robin landed on a branch and ate a bright red berry. \"Birds help seeds travel too,\" she sang. \"I eat the berry, fly away, and drop the seeds far from here.\" Then the wind blew harder, and I was carried over a river. A coconut bobbed below me. \"I can float across the sea to a new island!\" it called.",
+  qs:[f("How does the coconut travel?","It floats on water",["A bird carries it","It rolls down hills"],"\"I can float across the sea to a new island!\""),
+      t("Why is it good for seeds to travel far from the parent plant?","They get their own space, light and water",["They get lonely","Parent plants are scary"],"If all the seeds landed under the parent plant, they would have to share sunlight, water and space.")]},
+ {pic:"🌧️🟫", text:"At last, the wind grew calm, and I landed softly in a crack of dark, damp soil beside a path. Rain fell, and I soaked it up. I felt my coat split open. A tiny root wiggled down into the soil, and a little green shoot reached up towards the sun.",
+  qs:[f("Where did the seed land?","In a crack of soil beside a path",["In the river","On the robin's back"],"It landed in a crack of dark, damp soil beside a path."),
+      f("What grew first from the seed?","A tiny root",["A yellow flower","A fluffy ball"],"A tiny root wiggled down first, then a shoot reached up.")]},
+ {pic:"🌼☀️", text:"Now I am a bright yellow dandelion, smiling at everyone who walks by. Soon my flower will turn into a fluffy white ball, full of seeds with tiny parachutes. And one day, a child will pick me, make a wish and blow. Whoosh! A new journey will begin.",
+  qs:[t("What will happen to the dandelion next?","Its flower will become a fluffy ball of new seeds",["It will turn into a tree","It will fly away as a flower"],"The life cycle starts again: flower → seeds → new plants."),
+      t("What is this story mostly about?","How seeds travel and grow",["How to make a wish","How dogs play"],"The story shows many ways seeds travel: wind, animals, birds and water.")]}
+], turn:{q:"Choose one way that seeds travel (wind, animals, birds or water). Explain it in two sentences.",model:"Some seeds travel on the wind. A dandelion seed has a tiny parachute that helps it float far away."}},
+
+/* ---------- 3. FACT TEXT ---------- */
+{title:"The Parts of a Plant", e:"🌿", kind:"Fact text", pages:[
+ {pic:"🌳🌻🌵", text:"Plants come in many shapes and sizes, from tiny moss to giant trees. But most plants have the same main parts: <b>roots</b>, a <b>stem</b>, <b>leaves</b> and <b>flowers</b>. Each part has its own job, and all the parts work together to keep the plant alive.",
+  qs:[f("What are the four main parts of most plants?","Roots, stem, leaves and flowers",["Eyes, ears, nose and mouth","Bark, sand, rocks and water"],"Roots, a stem, leaves and flowers."),
+      t("Why must all the parts work together?","Each part does a different job the plant needs",["They are all the same","Plants have only one part"],"Each part has its own job, and together they keep the plant alive.")]},
+ {pic:"🥕🟫", text:"The <b>roots</b> grow under the ground. They hold the plant firmly in the soil so the wind cannot blow it away. Roots also <b>absorb</b> (soak up) water and nutrients from the soil. Some plants, like carrots and radishes, store food in their big roots.",
+  qs:[f("What do roots absorb from the soil?","Water and nutrients",["Sunlight","Air and rain"],"Roots absorb water and nutrients from the soil."),
+      f("Which vegetable is a root?","A carrot",["A lettuce","An apple"],"Carrots and radishes store food in their big roots.")]},
+ {pic:"🌱⬆️", text:"The <b>stem</b> holds the plant up towards the light. It works like a straw. Tiny tubes inside the stem carry water from the roots up to the leaves and flowers. A tree trunk is a very big, hard stem covered in bark.",
+  qs:[f("How is a stem like a straw?","Tubes inside carry water up the plant",["It is made of plastic","You can drink from it"],"Tiny tubes inside the stem carry water from the roots to the leaves."),
+      f("What is a tree trunk?","A very big, hard stem",["A root","A leaf"],"A tree trunk is a very big, hard stem covered in bark.")]},
+ {pic:"🍃☀️", text:"The <b>leaves</b> make food for the plant. They use sunlight, water and air to make sugar, which gives the plant energy. This is called <b>photosynthesis</b>. While they make food, leaves give out <b>oxygen</b>, the gas that people and animals need to breathe.",
+  qs:[f("What three things do leaves use to make food?","Sunlight, water and air",["Soil, rocks and sand","Milk, bread and honey"],"Leaves use sunlight, water and air to make sugar."),
+      t("Why are plants important for people and animals?","They give out the oxygen we breathe",["They are good for climbing","They make the weather hot"],"Leaves give out oxygen, the gas people and animals need to breathe.")]},
+ {pic:"🌸🐝", text:"The <b>flowers</b> make seeds. Many flowers have bright petals and a sweet smell to attract bees, butterflies and birds. These animals drink sweet nectar and carry a yellow dust called <b>pollen</b> from flower to flower. This is called <b>pollination</b>. After a flower is pollinated, it can make seeds.",
+  qs:[f("What is the yellow dust in flowers called?","Pollen",["Nectar","Soil"],"A yellow dust called pollen."),
+      t("Why do many flowers have bright petals and a sweet smell?","To attract bees, butterflies and birds",["To scare animals away","To keep warm"],"Bright colours and smells attract the animals that carry pollen.")]},
+ {pic:"🍎🌰", text:"Many plants grow a <b>fruit</b> around their seeds to protect them. Apples, oranges, tomatoes and peppers are all fruits with seeds inside. When animals eat the fruit, they help spread the seeds. Next time you eat an apple, count its seeds. Each one could grow into a new apple tree!",
+  qs:[f("What does a fruit do for the seeds?","It protects them",["It eats them","It hides them underground"],"Many plants grow a fruit around their seeds to protect them."),
+      t("A tomato has seeds inside. What does this tell us?","A tomato is a fruit",["A tomato is a root","A tomato is a leaf"],"In science, a fruit is the part of the plant that holds the seeds. So tomatoes are fruits!")]}
+], turn:{q:"Which part of a plant do you think is the most important? Write two sentences explaining why.",model:"I think the roots are the most important. Without roots, the plant could not get water."}},
+
+/* ---------- 4. FACT TEXT ---------- */
+{title:"The Life Cycle of a Plant", e:"🔄", kind:"Fact text", pages:[
+ {pic:"🔄🌱", text:"All living things go through a <b>life cycle</b>. A life cycle is the set of stages a living thing goes through as it grows, makes new living things, and dies. For a flowering plant, the life cycle has five main stages: seed, sprout, young plant, adult plant with flowers, and new seeds.",
+  qs:[f("What is a life cycle?","The stages a living thing goes through as it grows and makes new life",["A kind of bicycle","A plant's favourite season"],"A life cycle is the set of stages a living thing goes through."),
+      f("How many main stages does this text name?","Five",["Two","Ten"],"Seed, sprout, young plant, adult plant with flowers, and new seeds: five.")]},
+ {pic:"🫘💧", text:"<b>Stage 1: Seed.</b> A seed has a baby plant and a store of food inside, all wrapped in a hard coat. A seed can wait for a long time, even years, until it finds the right conditions. Most seeds need water, air and warmth to start growing.",
+  qs:[f("What is inside a seed?","A baby plant and a store of food",["Water and sand","Nothing at all"],"A seed has a baby plant and a store of food inside."),
+      f("What do most seeds need to start growing?","Water, air and warmth",["Snow and ice","Darkness and salt"],"Most seeds need water, air and warmth.")]},
+ {pic:"🌱🟫", text:"<b>Stage 2: Sprout.</b> When a seed soaks up water, its coat splits open. This is called <b>germination</b>. First, a root grows down into the soil. Then a shoot grows up towards the light. The baby plant uses the food stored in the seed until its first leaves open.",
+  qs:[f("What grows first when a seed germinates?","A root",["A flower","A fruit"],"First, a root grows down into the soil."),
+      t("Why does the baby plant need the food stored in the seed?","It has no leaves yet to make its own food",["It does not like soil","It is too cold"],"Leaves make food. Until the first leaves open, the seed's food store feeds the plant.")]},
+ {pic:"🪴🌿", text:"<b>Stage 3: Young plant.</b> The young plant, called a <b>seedling</b>, grows more leaves and longer roots. Now it can make its own food from sunlight. Seedlings are delicate. They need the right amount of water, light and space to grow strong.",
+  qs:[f("What is a young plant called?","A seedling",["A pod","A pollen"],"The young plant is called a seedling."),
+      f("What does \"delicate\" mean in this text?","Easily hurt or damaged",["Very heavy","Very old"],"Seedlings are delicate: they can be hurt easily.")]},
+ {pic:"🌻🐝", text:"<b>Stage 4: Adult plant.</b> The plant grows tall and strong, and it makes flowers. Insects and birds visit the flowers and carry pollen between them. Once a flower is pollinated, its petals fall off and the seeds begin to grow, often inside a fruit.",
+  qs:[f("What happens after a flower is pollinated?","The petals fall off and seeds begin to grow",["The plant shrinks","The roots fly away"],"Once a flower is pollinated, its petals fall off and the seeds begin to grow."),
+      t("Which stage comes just before seeds are made?","Pollination of the flower",["Germination","The seed coat splitting"],"Flowers must be pollinated before they can make seeds.")]},
+ {pic:"🍂🔄", text:"<b>Stage 5: New seeds.</b> The new seeds are carried away by wind, water or animals. Some plants, like sunflowers, live for just one year. Others, like oak trees, can live for hundreds of years and make millions of seeds. When a new seed lands in a good place, the life cycle begins again.",
+  qs:[f("Which plant can live for hundreds of years?","An oak tree",["A sunflower","A bean"],"Oak trees can live for hundreds of years."),
+      t("Why is it called a CYCLE?","It goes round and round and begins again",["It has wheels","It only happens once"],"A cycle repeats: seed → plant → flower → seed → plant…")]}
+], turn:{q:"Draw the life cycle in words. Write the stages of a plant's life cycle in order, using arrows (→) or the words first, next, then and finally.",model:"First there is a seed. Next it sprouts. Then it grows into a seedling. Finally it becomes an adult plant with flowers and new seeds."}},
+
+/* ---------- 5. FABLE ---------- */
+{title:"Bella Bunny and the Carrot Seeds (a fable)", e:"🐰", kind:"Fable", pages:[
+ {pic:"🐰🐢", text:"In spring, Bella Bunny and Old Tortoise each planted a row of carrot seeds. \"I can't wait to eat my carrots!\" said Bella, bouncing up and down. Old Tortoise slowly patted the soil and watered his row. \"Good things take time,\" he said.",
+  qs:[f("What did Bella and Tortoise plant?","Carrot seeds",["Apple trees","Sunflowers"],"They each planted a row of carrot seeds."),
+      t("How was Bella different from Tortoise?","Bella was impatient and Tortoise was calm",["Bella was slow and Tortoise was fast","They were exactly the same"],"Bella bounced and could not wait. Tortoise said, \"Good things take time.\"")]},
+ {pic:"🐰🕳️", text:"The next morning, Bella dug up one of her seeds. \"Nothing yet!\" she sighed, and pushed it back into the soil. The next day, she dug it up again. And the next day, and the next. Every day, she pulled up her seeds to see if they were growing.",
+  qs:[f("What did Bella do every day?","She dug up her seeds to check them",["She watered her seeds","She sang to her seeds"],"Every day, she pulled up her seeds to see if they were growing."),
+      t("Is digging up seeds every day a good idea?","No, it hurts the tiny roots",["Yes, it helps them grow faster"],"Digging up the seeds breaks the tiny roots before they can grow.")]},
+ {pic:"🐢🌱", text:"Meanwhile, Old Tortoise gave his row a drink of water each evening and pulled out the weeds. Then he left his seeds alone. After two weeks, feathery green leaves popped up all along his row. Bella's row was still bare, brown soil.",
+  qs:[f("What did Tortoise do for his seeds?","Watered them and pulled out weeds",["Dug them up","Moved them every day"],"He gave his row water each evening and pulled out the weeds."),
+      f("What did Bella's row look like after two weeks?","Bare, brown soil",["Full of carrots","Covered in flowers"],"Bella's row was still bare, brown soil.")]},
+ {pic:"😢🥕", text:"\"It isn't fair!\" cried Bella. \"My seeds must be broken.\" Old Tortoise shook his head gently. \"Your seeds were not broken, little one. Each time you dug them up, you broke their tiny roots. A seed needs time and peace to grow.\" Bella's ears drooped. \"May I try again?\" she asked.",
+  qs:[f("Why did Bella's seeds not grow?","She broke their roots by digging them up",["The seeds were broken","There was no sun"],"\"Each time you dug them up, you broke their tiny roots.\""),
+      t("How did Bella feel when she understood?","Sorry, but ready to try again",["Angry at Tortoise","Happy about her bare row"],"Her ears drooped, but she asked to try again.")]},
+ {pic:"🥕🐰🐢", text:"So Bella planted new seeds. This time, she watered them, pulled the weeds and waited, even when it was very hard. By the end of summer, she pulled up a fat orange carrot. It was the sweetest carrot she had ever tasted. <b>Lesson: Good things take time. Be patient.</b>",
+  qs:[t("What is the lesson of this fable?","Good things take time, so be patient",["Always dig up your seeds","Tortoises are better than bunnies"],"Bella learned that some things cannot be rushed."),
+      t("Why did the carrot taste so sweet to Bella?","She had worked hard and waited for it",["It had sugar on it","Tortoise gave it to her"],"Things we work and wait for often feel extra special.")]}
+], turn:{q:"Write about something you had to be patient for. How did you feel when it finally happened?",model:"I had to wait a whole year for my birthday party. When it finally came, I felt so happy and excited."}},
+
+/* ---------- 6. REAL-WORLD TEXT ---------- */
+{title:"Real-world reading: A seed packet and a growth chart", e:"📦", kind:"Real-world text", pages:[
+ {pic:"🌻📦", text:"Read the back of this seed packet.<div class=\"realdoc\" style=\"text-align:left\"><b>🌻 GIANT SUNFLOWER SEEDS</b><br>☀️ <b>Sunlight:</b> Full sun (6 or more hours a day)<br>📏 <b>Plant:</b> 2 cm deep, 30 cm apart<br>💧 <b>Water:</b> Keep soil damp until sprouts appear<br>🌱 <b>Sprouts in:</b> 7 to 10 days<br>🌼 <b>Flowers in:</b> about 80 days<br>📐 <b>Height:</b> up to 3 metres!<br><br>⚠️ Plant after the last frost, when the soil is warm.</div>",
+  qs:[f("How deep should you plant the seeds?","2 cm deep",["30 cm deep","3 metres deep"],"Plant: 2 cm deep, 30 cm apart."),
+      f("How many hours of sun do sunflowers need each day?","6 or more",["1 or 2","None"],"Full sun: 6 or more hours a day."),
+      f("How long until the seeds sprout?","7 to 10 days",["80 days","One year"],"Sprouts in: 7 to 10 days."),
+      t("Why should seeds be planted 30 cm apart?","So each plant has enough space, water and light",["So they look tidy","To make them grow shorter"],"Plants planted too close together must share water, light and space."),
+      t("What does \"after the last frost\" mean?","When the cold, icy nights of winter are over",["In the middle of winter","On a rainy day"],"Frost is ice that forms on cold nights. Young plants can be killed by frost.")]},
+ {pic:"📏📈", text:"Mia measured her bean plant and wrote the results in this chart.<table class=\"realtbl\"><tr><th>Day</th><th>Height of plant</th><th>What Mia noticed</th></tr><tr><td>Day 3</td><td>0 cm</td><td>Nothing yet</td></tr><tr><td>Day 8</td><td>1 cm</td><td>A tiny shoot!</td></tr><tr><td>Day 12</td><td>5 cm</td><td>Two round leaves</td></tr><tr><td>Day 16</td><td>11 cm</td><td>Leaning to the window</td></tr><tr><td>Day 24</td><td>22 cm</td><td>First flowers</td></tr></table>",
+  qs:[f("How tall was the plant on Day 12?","5 cm",["1 cm","11 cm"],"Day 12: 5 cm."),
+      f("On which day did Mia see the first flowers?","Day 24",["Day 8","Day 16"],"Day 24: First flowers."),
+      t("How much did the plant grow between Day 12 and Day 16?","6 cm",["11 cm","4 cm"],"11 cm − 5 cm = 6 cm."),
+      t("Why does Mia write the date AND the height?","So she can see how the plant changes over time",["Because Mr. Lee likes numbers","To fill the page"],"Scientists record results over time so they can see patterns.")]}
+], turn:{q:"Write two instructions for looking after a plant. Start each one with an action word, like Water, Put or Check.",model:"Water the plant when the soil feels dry. Put it near a sunny window."}}
+],
+
+poems:[
+ {title:"Little Seed",
+  lines:["Little seed, so small and round,","Sleeping softly underground.","Rain comes down to give a drink,","Sun comes out to help you think.","Push your root and stretch up high,","Reach your green arms to the sky!","Soon you'll bloom, so bright and new,","And make more little seeds like you."],
+  qs:[f("Which word rhymes with 'round'?","underground",["seed","small"],"Round and underground end with the same sound: -ound."),
+      t("In the poem, what are the seed's \"green arms\"?","Its leaves and stems",["Real arms","Its roots"],"The poet imagines the plant's leaves and stems as arms reaching up. This is called personification."),
+      f("What will the seed make at the end?","More little seeds",["A cake","A nest"],"\"And make more little seeds like you.\"")]},
+ {title:"The Tree in Four Seasons",
+  lines:["In spring, my tree wears blossoms white,","In summer, leaves of green so bright.","In autumn, red and gold come down,","They float and twirl onto the ground.","In winter, branches bare and grey","Wait for the sun to come and play.","Then spring returns, and look! Hooray!","The blossoms bloom again today."],
+  qs:[f("What colour are the leaves in summer?","Green",["Red and gold","White"],"\"In summer, leaves of green so bright.\""),
+      f("What happens to the tree in winter?","Its branches are bare",["It has white blossoms","It has red leaves"],"\"In winter, branches bare and grey.\""),
+      t("Why does the poem end with spring again?","The seasons go round in a cycle",["The poet forgot winter","Trees only grow in spring"],"Spring, summer, autumn, winter… and then spring again. Like a life cycle, seasons repeat.")]}
+],
+
+words:[
+ {w:"seed",e:"🫘",m:"the small part of a plant that can grow into a new plant",ex:"Mia planted a bean seed in a cup.",fill:"A tiny ___ can grow into a giant tree."},
+ {w:"roots",e:"🥕",m:"the parts of a plant that grow under the ground and take in water",ex:"The roots hold the plant in the soil.",fill:"The tree's ___ grow deep under the ground."},
+ {w:"stem",e:"🌱",m:"the main part of a plant that holds up the leaves and flowers",ex:"Water travels up the stem.",fill:"The flower sits at the top of a long, green ___."},
+ {w:"leaf",e:"🍃",m:"a flat, green part of a plant that makes food from sunlight",ex:"A leaf fell from the tree.",fill:"A green ___ uses sunlight to make food."},
+ {w:"petal",e:"🌸",m:"one of the coloured parts of a flower",ex:"The rose has soft red petals.",fill:"The daisy has a white ___ all around its middle."},
+ {w:"bud",e:"🌷",m:"a small, closed flower or leaf that has not opened yet",ex:"A tiny bud opened into a flower.",fill:"The rose ___ will open into a flower soon."},
+ {w:"fruit",e:"🍎",m:"the part of a plant that holds and protects its seeds",ex:"An apple is a fruit with seeds inside.",fill:"An orange is a ___ with seeds inside."},
+ {w:"branch",e:"🌳",m:"a part of a tree that grows out from the trunk",ex:"The robin sat on a branch.",fill:"The bird built a nest on a high ___ of the tree."},
+ {w:"bark",e:"🪵",m:"the rough, hard outside layer of a tree",ex:"The bark of the old oak tree is rough.",fill:"The tree trunk is covered in rough brown ___."},
+ {w:"seedling",e:"🪴",m:"a very young plant that has just grown from a seed",ex:"The seedling has two small leaves.",fill:"The little ___ grew two tiny leaves."},
+
+ {w:"soil",e:"🟫",m:"the top layer of earth where plants grow",ex:"Mia filled her cup with soil.",fill:"Plant the seed in dark, damp ___."},
+ {w:"sunlight",e:"☀️",m:"the light that comes from the sun",ex:"Plants need sunlight to make food.",fill:"Put the plant by the window so it gets ___."},
+ {w:"nutrients",e:"🧪",m:"things in soil and food that help living things grow",ex:"Roots take nutrients from the soil.",fill:"Good soil is full of ___ that help plants grow."},
+ {w:"sprout",e:"🌱",m:"to begin to grow and push out of the soil",ex:"The beans began to sprout after a week.",fill:"The seeds will ___ in about ten days."},
+ {w:"germinate",e:"🫘",m:"(of a seed) to start growing",ex:"Seeds need water to germinate.",fill:"A seed needs water and warmth to ___."},
+ {w:"harvest",e:"🧺",m:"to pick and gather crops when they are ready",ex:"Farmers harvest the wheat in autumn.",fill:"In autumn, the farmers ___ the apples."},
+ {w:"compost",e:"♻️",m:"old plants and food scraps that rot and become rich soil",ex:"We put banana peels in the compost.",fill:"Grandmother puts old leaves and fruit peels in the ___ bin."},
+ {w:"gardener",e:"🧑‍🌾",m:"a person who looks after a garden",ex:"The gardener planted roses.",fill:"The ___ waters the flowers every morning."},
+ {w:"greenhouse",e:"🏡",m:"a glass building that keeps plants warm",ex:"Tomatoes grow in the warm greenhouse.",fill:"In winter, the plants stay warm in the glass ___."},
+ {w:"wilt",e:"🥀",m:"(of a plant) to droop and become weak, often from too little water",ex:"Plants wilt if you forget to water them.",fill:"If you forget to water the flowers, they will ___."},
+
+ {w:"pollen",e:"🌼",m:"yellow dust made by flowers that helps them make seeds",ex:"The bee's legs were covered in pollen.",fill:"Bees carry yellow ___ from flower to flower."},
+ {w:"pollinate",e:"🐝",m:"to carry pollen from one flower to another so seeds can grow",ex:"Bees pollinate the apple flowers.",fill:"Bees and butterflies help ___ flowers."},
+ {w:"nectar",e:"🍯",m:"a sweet juice inside flowers",ex:"Butterflies drink nectar from flowers.",fill:"The hummingbird drinks sweet ___ from the flower."},
+ {w:"absorb",e:"🧽",m:"to soak up",ex:"Roots absorb water from the soil.",fill:"A sponge can ___ a lot of water."},
+ {w:"oxygen",e:"🫁",m:"a gas in the air that people and animals need to breathe",ex:"Leaves give out oxygen.",fill:"Trees give out ___, the gas we breathe."},
+ {w:"energy",e:"⚡",m:"the power that living things need to move and grow",ex:"Food gives us energy.",fill:"Breakfast gives you ___ for the morning."},
+ {w:"scatter",e:"🌬️",m:"to spread things in many different directions",ex:"The wind scatters dandelion seeds.",fill:"The wind will ___ the seeds across the field."},
+ {w:"crop",e:"🌾",m:"a plant that farmers grow for food",ex:"Rice is an important crop in India.",fill:"Wheat is a ___ that farmers grow to make flour."},
+ {w:"cycle",e:"🔄",m:"a set of events that happen again and again in the same order",ex:"Seed, plant, flower and seed again is a life cycle.",fill:"Spring, summer, autumn and winter are a ___ that repeats."},
+ {w:"mature",e:"🌳",m:"fully grown",ex:"A mature oak tree is very tall.",fill:"It takes many years for a tree to become ___."},
+
+ {w:"delicate",e:"🦋",m:"easily broken or hurt; needs gentle care",ex:"The seedling's leaves are delicate.",fill:"Be careful with the ___ flower petals."},
+ {w:"sturdy",e:"🪨",m:"strong and not easily broken",ex:"The old oak has a sturdy trunk.",fill:"The ___ table did not wobble at all."},
+ {w:"fragrant",e:"🌹",m:"having a sweet, pleasant smell",ex:"The roses are very fragrant.",fill:"The ___ flowers smell lovely."},
+ {w:"ripe",e:"🍌",m:"(of fruit) ready to eat",ex:"The yellow banana is ripe.",fill:"The red strawberries are ___ and ready to pick."},
+ {w:"lush",e:"🌿",m:"full of thick, healthy green plants",ex:"The rainforest is lush and green.",fill:"After the rain, the garden was green and ___."},
+ {w:"sprinkle",e:"💦",m:"to drop small amounts of something, like water",ex:"Sprinkle water gently on the seeds.",fill:"___ a little water on the soil."},
+ {w:"measure",e:"📏",m:"to find out the size or amount of something",ex:"Mia used a ruler to measure her plant.",fill:"Use a ruler to ___ how tall the plant is."},
+ {w:"observe",e:"🔍",m:"to watch carefully and notice things",ex:"Scientists observe plants as they grow.",fill:"Every day, ___ your plant and write what you see."},
+ {w:"patient",e:"⏳",m:"able to wait calmly without getting upset",ex:"Grandmother told Mia to be patient.",fill:"Seeds take time to grow, so be ___."},
+ {w:"gradually",e:"🐢",m:"slowly, a little at a time",ex:"The plant grew gradually.",fill:"The sky ___ got darker as the sun went down."}
+],
+
+spelling:[
+ {w:"plant",s:"Mia has a bean plant."},
+ {w:"seed",s:"She planted a seed in the soil.",tip:"Double e: s-ee-d."},
+ {w:"root",s:"The root grows down.",tip:"Double o: r-oo-t."},
+ {w:"leaf",s:"A leaf fell from the tree.",tip:"'ea' says its name: l-ea-f."},
+ {w:"flower",s:"The flower is yellow.",tip:"'ow' as in cow: fl-ow-er."},
+ {w:"grow",s:"Plants grow towards the light.",tip:"'ow' as in snow: gr-ow."},
+ {w:"water",s:"Plants need water."},
+ {w:"soil",s:"Push the seed into the soil.",tip:"'oi' as in coin: s-oi-l."},
+ {w:"green",s:"The leaves are green."},
+ {w:"garden",s:"Grandmother has a garden."},
+ {w:"tree",s:"The tree is very tall."},
+ {w:"sunlight",s:"Plants need sunlight.",tip:"sun + light. The 'gh' is silent."},
+ {w:"fruit",s:"An apple is a fruit.",tip:"'ui' sounds like 'oo': fr-ui-t."},
+ {w:"bloom",s:"The roses bloom in summer."},
+ {w:"stem",s:"Water goes up the stem."}
+],
+
+facts:[
+ {e:"🎋",c:"Some kinds of bamboo can grow almost one metre in a single day.",t:true,x:"True! Some bamboo plants are among the fastest-growing plants on Earth."},
+ {e:"🌻",c:"Young sunflowers turn their heads to follow the sun across the sky.",t:true,x:"True! Young sunflowers face east in the morning and turn west during the day."},
+ {e:"🪤",c:"Some plants catch and eat insects.",t:true,x:"True! The Venus flytrap snaps its leaves shut when an insect lands inside."},
+ {e:"🍅",c:"A tomato is a vegetable, not a fruit.",t:false,x:"Not true! In science, a tomato is a fruit, because it holds the plant's seeds."},
+ {e:"🍓",c:"Strawberries have their seeds on the outside.",t:true,x:"True! A strawberry has about 200 tiny seeds on its skin."},
+ {e:"🌲",c:"The tallest trees in the world are taller than a 30-storey building.",t:true,x:"True! Coast redwood trees in California can grow more than 110 metres tall."},
+ {e:"🟫",c:"All plants need soil to grow.",t:false,x:"Not true! Some plants grow in water, and air plants grow on trees with no soil at all."},
+ {e:"🍌",c:"Bananas grow on trees.",t:false,x:"Not true! A banana plant looks like a tree, but it has no wood. It is actually a giant herb."},
+ {e:"🌴",c:"A seed about 2,000 years old was once planted, and it grew!",t:true,x:"True! Scientists grew a date palm from a very old seed found in Israel."},
+ {e:"🥕",c:"All carrots are orange.",t:false,x:"Not true! Carrots can also be purple, yellow, red or white."},
+ {e:"🥜",c:"Peanuts grow under the ground.",t:true,x:"True! After the flower is pollinated, the peanut pods grow down into the soil."},
+ {e:"🌵",c:"A cactus's spines are a special kind of leaf.",t:true,x:"True! The thin spines lose less water than flat leaves, and they protect the cactus from animals."}
+],
+
+writing:[
+ {e:"🌷",t:"Describe a plant using your senses",level:"Step 1 · Sentences",
+  prompt:"Choose a plant, flower, fruit or tree you know well. Write at least 4 sentences describing it. What does it look like? How does it feel? Does it have a smell or a taste? Use at least 2 describing words from the word bank.",
+  minS:4,minWords:2,
+  rx:[["^\\s*[A-Z]","I started with a capital letter"],["[.!?]\\s*$","I ended with a full stop (or ? or !)"],["^(?![\\s\\S]*\\bi\\b)","I wrote I as a capital letter"]],
+  starters:["My plant is a ","It looks ","Its leaves feel ","It smells ","I like it because "],
+  model:"My favourite plant is the jasmine bush in our garden. It has small white flowers with soft, delicate petals. The flowers are very fragrant, especially in the evening. Its leaves are dark green and smooth. I like it because it reminds me of my grandmother."},
+ {e:"📋",t:"How to plant a seed (instructions)",level:"Step 2 · Instructions",
+  prompt:"Write instructions that teach someone how to plant a seed and look after it. Write at least 5 steps. Start each step with a time word (First, Next, Then, After that, Finally) and an action word (Fill, Push, Water, Put, Wait…).",
+  minS:5,minWords:2,
+  rx:[["^\\s*[A-Z]","I started with a capital letter"],["[.!?]\\s*$","I ended with a full stop"],
+      ["\\bFirst\\b","I used First"],["\\bFinally\\b","I used Finally"],
+      ["\\b([Ff]ill|[Pp]ush|[Pp]ut|[Ww]ater|[Pp]lant|[Pp]lace|[Cc]over|[Ww]ait|[Cc]heck|[Ss]prinkle|[Dd]ig|[Mm]easure|[Cc]hoose|[Gg]et|[Kk]eep|[Pp]our|[Oo]bserve)\\b","I used action words (fill, push, water…)"]],
+  starters:["You will need: ","First, ","Next, ","Then, ","After that, ","Finally, "],
+  model:"You will need a cup, some soil, a bean seed and water.\nFirst, fill the cup with soil.\nNext, push the seed into the soil, about 2 cm deep.\nThen, sprinkle water on the soil until it is damp.\nAfter that, put the cup on a sunny windowsill.\nFinally, observe your seed every day and be patient!"},
+ {e:"✨",t:"The magic seed (story)",level:"Step 3 · Story",
+  prompt:"Imagine you find a magic seed. You plant it, and something amazing grows! Write a story of at least 7 sentences. What did you find? What happened when you planted it? What grew? How did the story end? Write in the past tense and use time words.",
+  minS:7,minWords:2,
+  rx:[["^\\s*[A-Z]","I started with a capital letter"],["[.!?]\\s*$","I ended with a full stop (or ? or !)"],
+      ["\\b(First|Then|Next|After that|Finally|Later|One day|The next morning|Soon)\\b","I used a time word (One day, Then, Finally…)"],
+      ["(\\b(\\w+ed|found|grew|saw|went|said|was|were|had|made|took|ran|came|thought|knew|began|became|gave|flew|told|felt)\\b[\\s\\S]*){3}","I used at least 3 past-tense verbs"]],
+  starters:["One day, I found a ","I planted it ","The next morning, ","I could not believe ","Then ","Finally, "],
+  model:"One day, I found a shiny blue seed under my bed. I planted it in a pot and watered it before school. The next morning, a giant stem had grown right through my bedroom ceiling! I climbed up the stem, higher and higher. At the top, I found a garden in the clouds with fruit that tasted like ice cream. I picked some ripe fruit for my family. Finally, I climbed down, and we shared a delicious cloud-fruit breakfast together."}
+]
+});
+})();
+
+/* ===================== UNIT 3 · SKILL BANKS AND SKILL LIST (original content) ===================== */
+(function(){
+const u=UNITS.find(x=>x.id==="plants");
+const set=k=>u.words.slice(k*10,k*10+10);
+const MIX=(...g)=>()=>R(g)();
+const box=(t,txt)=>`<div class="qbox" style="margin:0 0 12px;font-size:18px;line-height:1.6;font-weight:400"><b>${t}</b><br>${txt}</div>`;
+
+/* ================= GRAMMAR: PRESENT TENSE AND AGREEMENT ================= */
+const PS=["Mia","Leo","The farmer","My grandmother","She","He","The gardener","Mr. Lee","My uncle","Aunt Leela"];
+const PP=["The farmers","We","They","You","I","Mia and Leo","The children","My parents","The gardeners","Grandmother and I"];
+const V=[
+ {b:"water",s:"waters",o:"the plants"},{b:"plant",s:"plants",o:"seeds in spring"},{b:"pick",s:"picks",o:"ripe apples"},{b:"dig",s:"digs",o:"a hole for the tree"},
+ {b:"smell",s:"smells",o:"the roses"},{b:"eat",s:"eats",o:"fresh fruit"},{b:"climb",s:"climbs",o:"the old oak tree"},{b:"help",s:"helps",o:"in the garden"},
+ {b:"like",s:"likes",o:"sunflowers"},{b:"love",s:"loves",o:"the vegetable garden"},{b:"make",s:"makes",o:"compost"},{b:"measure",s:"measures",o:"the bean plant"},
+ {b:"watch",s:"watches",o:"the bees",r:"es"},{b:"wash",s:"washes",o:"the carrots",r:"es"},{b:"push",s:"pushes",o:"the wheelbarrow",r:"es"},{b:"fix",s:"fixes",o:"the garden fence",r:"es"},
+ {b:"catch",s:"catches",o:"the falling leaves",r:"es"},{b:"brush",s:"brushes",o:"the soil off the potatoes",r:"es"},{b:"mix",s:"mixes",o:"the soil and compost",r:"es"},{b:"reach",s:"reaches",o:"for the highest apple",r:"es"},
+ {b:"carry",s:"carries",o:"the basket",r:"ies"},{b:"try",s:"tries",o:"a juicy strawberry",r:"ies"},{b:"hurry",s:"hurries",o:"to the greenhouse",r:"ies"},{b:"worry",s:"worries",o:"about the seedlings",r:"ies"},{b:"bury",s:"buries",o:"the seeds in the soil",r:"ies"},{b:"dry",s:"dries",o:"the sunflower seeds",r:"ies"},
+ {b:"go",s:"goes",o:"to the farm",r:"es"},{b:"do",s:"does",o:"the weeding",r:"es"},{b:"have",s:"has",o:"a big garden",r:"x"},
+ {b:"play",s:"plays",o:"under the tree",r:"ays"},{b:"say",s:"says",o:"hello to the plants",r:"ays"},{b:"enjoy",s:"enjoys",o:"the fresh air",r:"ays"}
+];
+const RULE={undefined:"With he, she, it or one person, add <b>-s</b> to the verb.",es:"Verbs ending in s, sh, ch, x or o: add <b>-es</b> (watches, goes).",ies:"Consonant + y: change y to i and add <b>-es</b> (carries).",ays:"Vowel + y: just add <b>-s</b> (plays).",x:"<b>have</b> is special: he, she or it <b>has</b>."};
+const subj=pl=>R(pl?PP:PS);
+const agree=()=>{const v=R(V),pl=Math.random()<.5,s=subj(pl);const ans=pl?v.b:v.s;
+  return mcQ(`Choose the correct verb:<br><b>Every day, ${/^(I\b|Mia|Leo|Mr|Aunt|Grandmother)/.test(s)?s:s.charAt(0).toLowerCase()+s.slice(1)} ___ ${v.o}.</b>`,ans,[pl?v.s:v.b],
+   pl?`<b>${s}</b> is more than one person (or I/you/we/they), so the verb has no -s: <b>${v.b}</b>.`:`<b>${s}</b> is one person (he, she or it), so the verb takes an ending: <b>${v.s}</b>. ${RULE[v.r]}`,"One person (he/she/it), or more than one (they/we/you/I)?")};
+const spellS=list=>()=>{const v=R(list);const s=R(PS);const S=/^(Mia|Leo|Mr|Aunt)/.test(s)?s:s.charAt(0).toLowerCase()+s.slice(1);
+  return {type:"type",q:`Write the verb in the present tense:<br><b>Every morning, ${S} ___ ${v.o}.</b><br><span style="color:var(--muted);font-size:16px">(${v.b})</span>`,a:[v.s],why:`Every morning, ${S} <b>${v.s}</b> ${v.o}. ${RULE[v.r]}`,hint:RULE[v.r]}};
+const agreeFix=()=>{const v=R(V),pl=Math.random()<.5,s=subj(pl);const wrong=pl?v.s:v.b,right=pl?v.b:v.s;
+  return {type:"type",q:`Fix the verb so it matches the subject:<br><b>${s} ${wrong} ${v.o}.</b><br>Type only the correct verb.`,a:[right],why:`${s} <b>${right}</b> ${v.o}.`,hint:pl?"More than one (or I/you/we/they): no -s.":"One person (he/she/it): the verb needs an ending."}};
+const whichRight=()=>{const v=R(V),pl=Math.random()<.5,s=subj(pl);const right=`${s} ${pl?v.b:v.s} ${v.o}.`,wrong=`${s} ${pl?v.s:v.b} ${v.o}.`;
+  const v2=R(V.filter(x=>x!==v)),s2=subj(!pl),wrong2=`${s2} ${pl?v2.b:v2.s} ${v2.o}.`;
+  return mcQ("Which sentence is correct?",right,[wrong,wrong2],`<b>${right}</b> The subject and the verb match.`,"Check that the verb matches the subject: one person → verb with -s.")};
+const HSUBJ=[["Mia","has"],["The tree","has"],["She","has"],["He","has"],["My grandmother","has"],["The flower","has"],["It","has"],["I","have"],["We","have"],["They","have"],["You","have"],["The plants","have"],["Sunflowers","have"],["Mia and Leo","have"]];
+const HOBJ=["a big garden","green leaves","yellow petals","a watering can","long roots","many seeds","a vegetable patch","sharp thorns","a sunny window"];
+const hasHave=()=>{const h=R(HSUBJ);return mcQ(`Choose <b>has</b> or <b>have</b>:<br><b>${h[0]} ___ ${R(HOBJ)}.</b>`,h[1],[h[1]==="has"?"have":"has"],h[1]==="has"?"Use <b>has</b> with he, she, it or one person or thing.":"Use <b>have</b> with I, you, we, they or more than one.","One (he/she/it) → has. I, you, we, they, or more than one → have.")};
+const DOQ=[["___ the plant need water?","Does"],["___ bees like flowers?","Do"],["___ Mia water her bean every day?","Does"],["___ you have a garden?","Do"],["___ the sun help plants grow?","Does"],["___ they grow tomatoes?","Do"],["___ your grandmother have a greenhouse?","Does"],["___ seeds need light to sprout?","Do"],["___ he like carrots?","Does"],["___ we need a bigger pot?","Do"]];
+const DONT=[["Cactuses ___ need much water.","don't"],["A cactus ___ need much water.","doesn't"],["Leo ___ like spinach.","doesn't"],["I ___ like spinach.","don't"],["The seeds ___ grow in the dark cupboard.","don't"],["The bean plant ___ grow in the dark.","doesn't"],["We ___ pick unripe fruit.","don't"],["She ___ forget to water the plants.","doesn't"],["Plants ___ like frost.","don't"],["It ___ rain much in the desert.","doesn't"]];
+const doDoes=()=>{if(Math.random()<.5){const d=R(DOQ);return mcQ(`Choose <b>Do</b> or <b>Does</b>:<br><b>${d[0]}</b>`,d[1],[d[1]==="Do"?"Does":"Do"],d[1]==="Does"?"Use <b>Does</b> with he, she, it or one person or thing.":"Use <b>Do</b> with I, you, we, they or more than one.","One → Does. More than one, or I/you/we/they → Do.")}
+  const d=R(DONT);return mcQ(`Choose <b>don't</b> or <b>doesn't</b>:<br><b>${d[0]}</b>`,d[1],[d[1]==="don't"?"doesn't":"don't"],d[1]==="doesn't"?"Use <b>doesn't</b> (does not) with he, she, it or one thing.":"Use <b>don't</b> (do not) with I, you, we, they or more than one.","One → doesn't. More than one, or I/you/we/they → don't.")};
+const AMS=[["I","am"],["She","is"],["He","is"],["It","is"],["The flower","is"],["Mia","is"],["We","are"],["They","are"],["You","are"],["The seeds","are"],["The apples","are"],["Leo and Mia","are"]];
+const ACOMP=["in the garden","very tall","ready to pick","thirsty","busy today","next to the window","green and healthy","happy"];
+const amIsAre=()=>{const a=R(AMS);return mcQ(`Choose <b>am</b>, <b>is</b> or <b>are</b>:<br><b>${a[0]} ___ ${R(ACOMP)}.</b>`,a[1],["am","is","are"].filter(x=>x!==a[1]),`<b>I am</b> · he/she/it/one thing <b>is</b> · we/you/they/more than one <b>are</b>.`,"I → am. One → is. More than one, or you/we/they → are.")};
+const SENT=["Mia waters her bean plant every day.","The roots grow under the soil.","Bees carry pollen from flower to flower.","Grandmother has a big garden.","The seedling needs sunlight.","Leo picks ripe strawberries.","I plant seeds in spring.","Mr. Lee measures the plants.","The wind scatters the seeds.","We put compost on the soil.","The sunflower turns towards the sun.","My uncle grows rice in India.","The leaves make food for the plant.","Squirrels bury acorns in autumn.","The gardener pulls out the weeds."];
+const fix=()=>{const s=R(SENT);return {type:"type",strict:true,q:`Fix this sentence. Add the capital letters and the full stop:<br><b>${breakSentence(s)}</b>`,a:[s],hint:"Capital letter at the start, capitals for names, places and I, and a full stop at the end.",why:`Correct: <b>${s}</b>`}};
+const D=[CHK.cap,CHK.end,CHK.w4,CHK.I];
+const WP=[
+ {q:"Write a sentence about what a plant needs. Start with <b>A plant needs</b>.",checks:[["^\\s*A plant needs\\b","Starts with A plant needs"],CHK.end,CHK.w4],model:"A plant needs sunlight, water and air."},
+ {q:"Write a sentence about something your friend or a family member does every day. Use <b>he</b> or <b>she</b> and a verb ending in -s.",checks:[...D,["\\b(He|She|he|she)\\b","Uses he or she"],["\\b(He|She|he|she)\\s+\\w+s\\b","The verb after he/she ends in -s"]],model:"She waters the plants every morning."},
+ {q:"Write a sentence about something YOU do every day, using <b>I</b>.",checks:[...D,["\\bI\\b","Uses the word I"]],model:"I walk to school with my brother."},
+ {q:"Write a question that starts with <b>Does</b>.",checks:[["^\\s*Does\\b","Starts with Does"],CHK.q,CHK.w3],model:"Does a cactus need a lot of water?"},
+ {q:"Write a sentence with <b>has</b> or <b>have</b>.",checks:[...D,["\\b(has|have)\\b","Uses has or have"]],model:"Our school has a small vegetable garden."},
+ {q:"Write a sentence explaining the job of one part of a plant (roots, stem, leaves or flowers).",checks:[...D,["\\b(roots?|stems?|leaf|leaves|flowers?|petals?)\\b","Names a plant part"]],model:"The roots soak up water from the soil."},
+ {q:"Write an instruction for looking after a plant. Start with an action word.",checks:[CHK.cap,CHK.end,CHK.w3,["^\\s*(Water|Put|Place|Give|Keep|Check|Pull|Move|Sprinkle|Turn|Feed|Plant|Dig|Cover|Pick)\\b","Starts with an action word"]],model:"Water the plant when the soil feels dry."},
+ {q:"Write a sentence using the word <b>doesn't</b>.",checks:[...D,["\\bdoesn't\\b","Uses doesn't"]],model:"A cactus doesn't need much water."},
+ {q:"Write a sentence describing a fruit or vegetable using a describing word (ripe, juicy, crunchy, sweet…).",checks:[...D,["\\b(ripe|juicy|crunchy|sweet|sour|fresh|crisp|soft|fragrant|green|red|yellow|orange|purple|smooth|bumpy)\\b","Uses a describing word"]],model:"The ripe mango is sweet and juicy."}
+];
+
+/* ================= VOCABULARY ================= */
+const EAT=[["carrot","root"],["radish","root"],["beetroot","root"],["turnip","root"],["celery","stem"],["asparagus","stem"],["sugarcane","stem"],["lettuce","leaves"],["spinach","leaves"],["cabbage","leaves"],["mint","leaves"],["broccoli","flower"],["cauliflower","flower"],["apple","fruit"],["tomato","fruit"],["cucumber","fruit"],["pumpkin","fruit"],["mango","fruit"],["peas","seeds"],["rice","seeds"],["beans","seeds"],["sunflower seeds","seeds"],["corn","seeds"]];
+const PARTS=["root","stem","leaves","flower","fruit","seeds"];
+const eatQ=()=>{const e=R(EAT);return mcQ(`When we eat <b>${e[0]}</b>, which part of the plant are we eating?`,e[1],SAMPLE(PARTS.filter(x=>x!==e[1]),3),`${cap(e[0])}: we eat the <b>${e[1]}</b>.${e[1]==="fruit"?" It holds the plant's seeds.":""}`,"Think: does it grow under the ground? Is it a leaf? Does it have seeds inside?")};
+const JOBS=[["roots",["hold the plant in the soil","soak up water from the soil","take in nutrients from the soil"]],["stem",["carries water up to the leaves","holds the plant up towards the light"]],["leaves",["make food using sunlight","give out oxygen"]],["flower",["makes seeds","attracts bees with bright petals"]],["fruit",["protects the seeds"]],["seed",["can grow into a new plant","has a baby plant and food inside"]]];
+const jobQ=()=>{const j=R(JOBS);return mcQ(`Which part of a plant <b>${R(j[1])}</b>?`,"the "+j[0],SAMPLE(JOBS.filter(x=>x!==j),3).map(x=>"the "+x[0]),`The <b>${j[0]}</b> ${j[1].join(", and ")}.`,"Picture a plant from the bottom (roots) to the top (flowers).")};
+const MM=[
+ ["bark","The bark of the old tree is rough.","the outside layer of a tree","the sound a dog makes"],["bark","I heard the dog bark at the cat.","the sound a dog makes","the outside layer of a tree"],
+ ["trunk","The elephant lifted its trunk.","an elephant's long nose","the main stem of a tree"],["trunk","Leo climbed up the tree trunk.","the main stem of a tree","an elephant's long nose"],
+ ["leaves","The leaves turn red in autumn.","more than one leaf","goes away"],["leaves","Dad leaves for work at eight o'clock.","goes away","more than one leaf"],
+ ["plant","Let's plant the seeds today.","to put in the ground to grow","a living thing with leaves"],["plant","Mia's plant has white flowers.","a living thing with leaves","to put in the ground to grow"],
+ ["spring","Flowers bloom in spring.","the season after winter","a metal coil that bounces back"],["spring","The toy has a spring inside, so it jumps.","a metal coil that bounces back","the season after winter"],
+ ["rose","She smelled the red rose.","a flower","went up"],["rose","The sun rose in the morning.","went up","a flower"],
+ ["fall","Leaves fall from the trees.","drop down","a kind of fruit"],["palm","He held the seed in his palm.","the inside of your hand","a kind of tree"],["palm","Coconuts grow on a palm.","a kind of tree","the inside of your hand"],
+ ["bat","The bat flew out of the cave.","a flying animal","a stick for hitting a ball"],["bat","Leo hit the ball with his bat.","a stick for hitting a ball","a flying animal"],
+ ["wave","A big wave crashed on the beach.","moving water in the sea","to move your hand to say hello"],["wave","Wave goodbye to Grandmother.","to move your hand to say hello","moving water in the sea"],
+ ["light","The feather is very light.","not heavy","brightness from the sun or a lamp"],["light","Plants need light to grow.","brightness from the sun or a lamp","not heavy"],
+ ["watch","Let's watch the bees.","look at","a small clock on your wrist"],["watch","My watch says it is three o'clock.","a small clock on your wrist","look at"],
+ ["fly","A fly landed on the apple.","a small insect","to move through the air"],["fly","Birds fly south in winter.","to move through the air","a small insect"],
+ ["bank","We had a picnic on the river bank.","the land beside a river","a place to keep money"],["bank","Mom put money in the bank.","a place to keep money","the land beside a river"],
+ ["rock","The lizard sat on a warm rock.","a stone","to move gently from side to side"],["rock","Rock the baby to sleep.","to move gently from side to side","a stone"]
+];
+const mmQ=()=>{const m=R(MM);return mcQ(`What does <b>${m[0]}</b> mean in this sentence?<br><b>${m[1].replace(new RegExp("\\b"+m[0]+"\\b","i"),x=>"<u>"+x+"</u>")}</b>`,m[2],[m[3]],`Here, <b>${m[0]}</b> means ${m[2]}. Some words have more than one meaning. The other words in the sentence help you choose.`,"Read the whole sentence. Which meaning makes sense?")};
+const SYN=[["shout","yell"],["begin","start"],["grab","snatch"],["glad","happy"],["damp","moist"],["sturdy","strong"],["observe","watch"],["gather","collect"],["delicate","fragile"],["gradually","slowly"],["enormous","gigantic"],["tidy","neat"],["dash","rush"],["sleepy","drowsy"],["finish","complete"],["chilly","cold"],["quiet","silent"],["giggle","laugh"],["fragrant","sweet-smelling"],["ripe","ready to eat"]];
+const OPP=[["tall","short"],["wet","dry"],["alive","dead"],["sturdy","weak"],["ripe","unripe"],["open","closed"],["push","pull"],["heavy","light"],["thick","thin"],["sunny","cloudy"],["inside","outside"],["up","down"],["fresh","rotten"],["empty","full"],["rough","smooth"],["early","late"],["sweet","sour"],["deep","shallow"],["bloom","wilt"],["above","below"]];
+const COMP=[["sun","flower"],["sun","light"],["green","house"],["wheel","barrow"],["water","melon"],["pine","apple"],["straw","berry"],["butter","cup"],["blue","berry"],["grape","fruit"],["earth","worm"],["honey","bee"],["lady","bug"],["sea","weed"],["rain","drop"],["back","yard"],["flower","pot"],["sun","shine"],["bird","house"],["tree","house"],["foot","path"],["rose","bud"],["pop","corn"],["grass","hopper"],["snow","drop"],["water","fall"],["dragon","fly"],["pea","nut"],["cup","board"],["sun","set"]];
+
+/* ================= SPELLING ================= */
+const SP=u.spelling.concat([{w:"carrot",s:"The rabbit ate a carrot.",tip:"Double r: ca-rr-ot."},{w:"apple",s:"The apple is red.",tip:"Double p: a-pp-le."},{w:"leaves",s:"The leaves are green.",tip:"leaf → leaves: f changes to v."},{w:"grass",s:"The grass is wet.",tip:"Double s at the end."},{w:"rain",s:"The rain helps plants grow.",tip:"'ai' says long a."},{w:"bee",s:"A bee visited the flower."},{w:"forest",s:"The forest has tall trees."},{w:"branch",s:"A bird sat on the branch.",tip:"Ends with -nch."},{w:"pumpkin",s:"We grew a huge pumpkin."},{w:"orange",s:"I ate an orange."},{w:"vegetable",s:"A carrot is a vegetable.",tip:"veg-e-ta-ble: four parts."},{w:"seedling",s:"The seedling has two leaves."},{w:"bloom",s:"Roses bloom in June."},{w:"thorn",s:"Ouch! A thorn pricked my finger.",tip:"'th' at the start, 'or' in the middle."},{w:"insect",s:"A bee is a helpful insect."}]);
+const MAGIC=[["cap","cape"],["tap","tape"],["mad","made"],["hat","hate"],["can","cane"],["man","mane"],["plan","plane"],["kit","kite"],["bit","bite"],["pin","pine"],["rid","ride"],["hid","hide"],["fin","fine"],["dim","dime"],["hop","hope"],["not","note"],["rob","robe"],["cod","code"],["tub","tube"],["cub","cube"],["cut","cute"],["slid","slide"],["glob","globe"],["twin","twine"]];
+const VS={a:"a",i:"i",o:"o",u:"u"};
+const magicAdd=()=>{const m=R(MAGIC);const v=m[0].match(/[aeiou]/)[0];return {type:"type",q:`✨ Add a magic <b>e</b> to the end of <b>${m[0]}</b>. What new word do you make?`,a:[m[1]],say:`${m[0]}. Add magic e. ${m[1]}.`,why:`${m[0]} + e = <b>${m[1]}</b>. The magic e makes the <b>${v}</b> say its name (long ${v}).`,hint:`Just write ${m[0]} with an e on the end, then say it: the ${v} says its name!`}};
+const magicLong=()=>{const m=R(MAGIC),o=R(MAGIC.filter(x=>x!==m));return mcQ(`Which word has a <b>long vowel</b> sound (the vowel says its name)?`,m[1],[m[0],o[0]],`In <b>${m[1]}</b>, the magic e makes the vowel say its name. <b>${m[0]}</b> and <b>${o[0]}</b> have short vowel sounds.`,"Look for the word that ends with a silent e.")};
+const magicPick=()=>{const m=R(MAGIC);const long=Math.random()<.5;const w=long?m[1]:m[0];return mcQ(`🎧 Listen. Which word did you hear?`,w,[long?m[0]:m[1]],`You heard <b>${w}</b>. ${long?"The magic e makes the vowel say its name.":"No magic e, so the vowel is short."}`,"Is the vowel short, or does it say its name?",{say:w,autoSay:true})};
+const MAGICS=[{w:"kite",s:"Leo flew his kite in the park."},{w:"plane",s:"The plane flew over the farm."},{w:"hope",s:"I hope the seeds grow."},{w:"cube",s:"Put an ice cube in the water."},{w:"grape",s:"The farmer grows purple grapes."},{w:"bike",s:"Mia rides her bike to the garden."},{w:"smile",s:"The flowers make me smile."},{w:"stone",s:"There is a stone in the soil."},{w:"rose",s:"The rose has sharp thorns."},{w:"lake",s:"Ducks swim on the lake."},{w:"rope",s:"Tie the plant with a rope."},{w:"tube",s:"Water moves up a tube in the stem."},{w:"slide",s:"The children went down the slide."},{w:"shade",s:"We sat in the shade of the tree."},{w:"prize",s:"Our pumpkin won a prize."},{w:"globe",s:"Find India on the globe."},{w:"nine",s:"The pod has nine peas."},{w:"tame",s:"The rabbit is tame."},{w:"flute",s:"She plays the flute."},{w:"bone",s:"The dog buried a bone in the garden."}];
+const CHOOSE=[["flower","flowr","flouer"],["seed","sead","seid"],["leaf","leef","lefe"],["water","wotter","watter"],["garden","gardin","gardon"],["sunlight","sunlite","sunlihgt"],["soil","soyl","soile"],["fruit","froot","fruite"],["grow","groe","growe"],["carrot","carot","carrit"],["apple","aple","appel"],["vegetable","vegtable","vegitable"],["pumpkin","pumkin","pumpkn"],["thorn","thron","forn"],["kite","kyte","kit"],["plane","plaen","plan"],["smile","smyle","smil"],["grape","graip","grap"],["stone","stoan","ston"],["branch","brannch","branche"],["bloom","blume","bloome"],["seedling","seadling","seedlin"]].map(x=>({w:x[0],bad:[x[1],x[2]],tip:(SP.concat(MAGICS).find(y=>y.w===x[0])||{}).tip||(/e$/.test(x[0])&&MAGIC.some(m=>m[1]===x[0])?"Don't forget the magic e!":undefined)}));
+
+/* ================= READING ================= */
+const DETAIL=[
+ ["The Giant Sunflower","Sunflowers can grow taller than a grown-up. Their big yellow heads are really made of hundreds of tiny flowers. Each tiny flower makes one seed. People and birds love to eat sunflower seeds.",[["What is a sunflower's head really made of?","Hundreds of tiny flowers",["One big petal","Leaves"]],["How many seeds does each tiny flower make?","One",["Ten","None"]],["Who loves to eat sunflower seeds?","People and birds",["Only cows","Nobody"]]]],
+ ["Rice Farming","Rice is one of the most important crops in the world. Farmers often grow it in flooded fields called paddies. The young rice plants grow in the water. When the rice is ripe, the fields are drained and the farmers harvest the grain.",[["What are flooded rice fields called?","Paddies",["Deserts","Orchards"]],["What happens to the fields when the rice is ripe?","They are drained",["They are frozen","They are painted"]]]],
+ ["Cactus Survival","Cactuses live in hot, dry deserts. Their thick stems store water for a long time. Instead of flat leaves, they have sharp spines. The spines lose less water and protect the cactus from thirsty animals.",[["Where does a cactus store water?","In its thick stem",["In its flowers","In the sand"]],["What does a cactus have instead of flat leaves?","Sharp spines",["Feathers","Big petals"]],["How do the spines help the cactus?","They lose less water and protect it",["They help it fly","They make it taste sweet"]]]],
+ ["The Mighty Oak","An oak tree grows from a small nut called an acorn. It can take many years for an oak to become mature. Some oak trees live for hundreds of years. Birds, squirrels and insects all find food and shelter in an oak tree.",[["What does an oak tree grow from?","An acorn",["A pinecone","A bean"]],["Who finds food and shelter in an oak tree?","Birds, squirrels and insects",["Only people","Fish"]]]],
+ ["Busy Bees","Bees visit flowers to drink nectar. As they move, pollen sticks to their fuzzy bodies. When they visit the next flower, some pollen rubs off. This helps the flowers make seeds and fruit. Without bees, we would have far fewer apples and strawberries.",[["What sticks to a bee's fuzzy body?","Pollen",["Water","Soil"]],["What would happen without bees?","We would have far fewer apples and strawberries",["We would have more honey","Flowers would grow taller"]]]],
+ ["Maple Syrup","In early spring in Canada, sap starts to flow inside maple trees. Farmers make a small hole in the trunk and collect the sap in buckets. Then they boil it for many hours until it becomes thick, sweet maple syrup.",[["When does sap start to flow in maple trees?","In early spring",["In late autumn","In midsummer"]],["What do farmers do to the sap to make syrup?","Boil it for many hours",["Freeze it","Mix it with salt"]],["In which country does this text take place?","Canada",["India","Australia"]]]],
+ ["The Venus Flytrap","The Venus flytrap is a plant that eats insects. Its leaves look like an open mouth with spiky edges. When a fly touches the tiny hairs inside, the leaves snap shut. The plant then slowly digests the insect.",[["What do the flytrap's leaves look like?","An open mouth with spiky edges",["A round ball","A long rope"]],["What makes the leaves snap shut?","A fly touching the tiny hairs inside",["A loud noise","Rain"]]]],
+ ["School Garden","Our school has a small garden behind the gym. Each class looks after one bed. Grade 3 grows tomatoes, beans and lettuce. In June, we pick the vegetables and make a big salad for the whole school.",[["Where is the school garden?","Behind the gym",["On the roof","In the classroom"]],["What does Grade 3 grow?","Tomatoes, beans and lettuce",["Apples and pears","Rice and corn"]],["What do they make in June?","A big salad",["A cake","Soup"]]]],
+ ["Seeds in the Fridge","Some seeds can be stored for a very long time. In Norway, there is a special seed vault deep inside a frozen mountain. It keeps more than a million kinds of seeds safe, in case crops are ever lost because of floods, fires or wars.",[["Where is the special seed vault?","Inside a frozen mountain in Norway",["Under the sea","In a desert"]],["Why are the seeds kept there?","In case crops are ever lost",["To sell them","To feed birds"]]]],
+ ["Leaves in Autumn","In autumn, many trees lose their leaves. The days get shorter, so leaves stop making food. The green colour fades, and we see the yellow, orange and red colours that were hidden underneath. Then the leaves fall to the ground.",[["Why do leaves stop making food in autumn?","The days get shorter",["It rains more","The roots stop working"]],["Where were the yellow and red colours before autumn?","Hidden underneath the green",["Inside the roots","In the soil"]]]]
+];
+const detail=()=>{const p=R(DETAIL),x=R(p[2]);return mcQ(`${box(p[0],p[1])}${x[0]}`,x[1],x[2],`Look back at the text: the answer is there.`,"Read the text again and find the words.",{say:p[1]+" "+x[0]})};
+const MAIN=[
+ ["Plants need sunlight to make food. They need water, which their roots soak up. They need air, which enters through their leaves. And they need space to grow.","Plants need sunlight, water, air and space.",["Roots soak up water.","Leaves are green."]],
+ ["Trees give us many things. They give us wood to build houses. They give us fruit and nuts to eat. They give shade on hot days and oxygen to breathe.","Trees give us many useful things.",["Wood is used for houses.","Nuts are tasty."]],
+ ["Seeds travel in many ways. Some float on the wind. Some stick to animal fur. Some are eaten by birds, and some float on water.","Seeds travel in many different ways.",["Birds eat berries.","Wind is strong."]],
+ ["A garden needs care. Gardeners water the plants when it is dry. They pull out weeds that steal water. They add compost to make the soil rich.","Gardens need care to grow well.",["Weeds are plants.","Compost is brown."]],
+ ["Some plants are dangerous to eat. Some berries and mushrooms that grow in the wild are poisonous. Never eat a wild plant unless a grown-up who knows plants says it is safe.","Some wild plants are dangerous to eat.",["Mushrooms grow in forests.","Berries are small."]],
+ ["Farmers grow the food we eat. They plant seeds in their fields. They water and protect the crops. When the crops are ripe, they harvest them and send them to shops.","Farmers grow the food we eat.",["Shops sell food.","Fields are big."]],
+ ["Leaves come in many shapes. Maple leaves look like hands. Pine needles are thin and sharp. Banana leaves are long and wide. Each shape helps the plant in its habitat.","Leaves come in many different shapes.",["Pine needles are sharp.","Banana leaves are wide."]],
+ ["Flowers have different ways to attract animals. Some have bright colours. Some have a sweet smell. Some make sweet nectar. All of these help bring bees, butterflies and birds.","Flowers attract animals in different ways.",["Nectar is sweet.","Butterflies are colourful."]],
+ ["Bamboo is a very useful plant. People use it to build houses and bridges. They make furniture, baskets and even bicycles from it. Pandas eat it, too.","Bamboo is a very useful plant.",["Pandas are black and white.","Bicycles have wheels."]],
+ ["Compost is good for gardens. Fruit peels, old leaves and grass slowly rot into dark, rich soil. This soil is full of nutrients that help plants grow strong.","Compost makes rich soil that helps plants grow.",["Leaves fall in autumn.","Grass is green."]],
+ ["Water lilies are special plants. Their roots grow in the mud at the bottom of a pond. Their round leaves float on top of the water. Frogs often sit on them.","Water lilies are plants that grow in ponds.",["Frogs can jump.","Mud is wet."]],
+ ["Plants help keep the Earth healthy. They give out oxygen. Their roots hold soil in place so rain does not wash it away. They give homes and food to many animals.","Plants help keep the Earth healthy.",["Rain falls from clouds.","Animals need homes."]]
+];
+const mainIdea=()=>{const m=R(MAIN);return mcQ(`${box("Read",m[0])}What is the <b>main idea</b>? (What is it mostly about?)`,m[1],m[2],`The main idea is what the whole text is about: <b>${m[1]}</b>`,"Which answer fits ALL the sentences, not just one?",{say:m[0]})};
+const FACTS=["Plants need water to live.","Bees carry pollen.","Roots grow under the ground.","A seed can grow into a plant.","Leaves give out oxygen.","Cactuses grow in deserts.","An acorn can grow into an oak tree.","Some plants eat insects.","Apples have seeds inside.","Maple syrup comes from maple trees.","Rice is a crop.","Many trees lose their leaves in autumn.","Sunflowers can grow taller than a grown-up.","Carrots are roots."];
+const OPIN=["Roses are the most beautiful flowers.","Gardening is boring.","Strawberries are the best fruit.","Broccoli tastes horrible.","Sunflowers are prettier than tulips.","Picking apples is the most fun job.","Cactuses are ugly.","Autumn is the best season.","Spinach is yucky.","Big gardens are better than small ones.","Tomatoes taste better than carrots.","Oak trees are the nicest trees.","Weeding is hard work and no fun.","Purple carrots look silly."];
+const factOp=()=>{const f=Math.random()<.5;const s=f?R(FACTS):R(OPIN);return mcQ(`Is this a <b>fact</b> or an <b>opinion</b>?<br><b>${s}</b>`,f?"Fact":"Opinion",[f?"Opinion":"Fact"],f?"A <b>fact</b> can be checked in a book or by a scientist, and it is true for everyone.":"An <b>opinion</b> is what someone thinks or feels. Other people may think differently.","Could you check it? Or do people feel differently about it?")};
+const SEQ=[["A seed is planted in the soil","The seed soaks up water","A root grows down","A shoot grows up","Leaves open"],["Fill a pot with soil","Push the seed into the soil","Water the soil","Put the pot in a sunny place"],["A flower is pollinated by a bee","The petals fall off","A fruit grows","The fruit holds new seeds"],["The girl blows the dandelion","The seed floats on the wind","The seed lands in the soil","A new dandelion grows"],["Mia plants a bean","A shoot appears on day 8","White flowers open","Pods grow with new beans"],["Bella plants carrot seeds","Bella digs them up every day","Bella's row stays bare","Bella waits patiently and grows a carrot"],["Farmers make a hole in the maple tree","They collect the sap","They boil the sap","It becomes maple syrup"],["The leaves stop making food","The green colour fades","The leaves turn red and yellow","The leaves fall to the ground"],["A squirrel buries an acorn","The squirrel forgets it","The acorn sprouts","An oak tree grows"],["Pick the ripe tomatoes","Wash them","Cut them up","Eat them in a salad"]];
+const order=()=>{const s=R(SEQ),t=R(["first","last","next"]);
+  if(t==="first")return mcQ(`What happens <b>FIRST</b>?`,s[0],SAMPLE(s.slice(1),2),`Order: ${s.join(" → ")}`,"What must happen before everything else?");
+  if(t==="last")return mcQ(`What happens <b>LAST</b>?`,s[s.length-1],SAMPLE(s.slice(0,-1),2),`Order: ${s.join(" → ")}`,"What happens at the very end?");
+  const k=Math.floor(Math.random()*(s.length-1));return mcQ(`What happens right <b>AFTER</b> this?<br><b>${s[k]}</b>`,s[k+1],SAMPLE(s.filter((_,i)=>i!==k&&i!==k+1),2),`Order: ${s.join(" → ")}`,"What is the very next step?")};
+const CE=[["Because Mia forgot to water her plant, it wilted.","Mia forgot to water her plant","it wilted"],["The plant grew towards the window because it needed light.","it needed light","the plant grew towards the window"],["Bella dug up her seeds every day, so their roots broke.","Bella dug up her seeds every day","their roots broke"],["Because the bees visited the flowers, the tree grew lots of apples.","the bees visited the flowers","the tree grew lots of apples"],["There was a frost last night, so the young plants died.","there was a frost last night","the young plants died"],["Because the soil was full of compost, the vegetables grew big.","the soil was full of compost","the vegetables grew big"],["The wind blew hard, so the dandelion seeds flew away.","the wind blew hard","the dandelion seeds flew away"],["The days got shorter, so the leaves changed colour.","the days got shorter","the leaves changed colour"],["Because it did not rain for weeks, the grass turned brown.","it did not rain for weeks","the grass turned brown"],["The squirrel forgot an acorn, so an oak tree grew.","the squirrel forgot an acorn","an oak tree grew"],["Because the seeds were planted too close together, the plants stayed small.","the seeds were planted too close together","the plants stayed small"],["Mia tied the plant to a stick, so it did not fall over.","Mia tied the plant to a stick","it did not fall over"],["Because the weeds took the water, the carrots did not grow well.","the weeds took the water","the carrots did not grow well"],["The tomatoes turned red, so Grandmother picked them.","the tomatoes turned red","Grandmother picked them"]];
+const cause=()=>{const c=R(CE),other=R(CE.filter(x=>x!==c));const askCause=Math.random()<.5;
+  return mcQ(`${box("Read",c[0])}What is the <b>${askCause?"cause":"effect"}</b>? <span style="color:var(--muted);font-size:15px">(${askCause?"WHY it happened":"WHAT happened"})</span>`,askCause?c[1]:c[2],[askCause?c[2]:c[1],askCause?other[1]:other[2]],`Cause (why): <b>${c[1]}</b>. Effect (what happened): <b>${c[2]}</b>.`,"Look for because and so. The cause comes after because; the effect comes after so.",{say:c[0]})};
+const HOWTO=[
+ {t:"How to make a bird feeder",steps:["Get a clean, empty plastic bottle.","Ask a grown-up to cut two small holes in the side.","Push a wooden spoon through the holes.","Fill the bottle with bird seed.","Hang it on a tree branch."]},
+ {t:"How to press a flower",steps:["Pick a flat, dry flower.","Place it between two sheets of paper.","Put the paper inside a heavy book.","Wait for two weeks.","Open the book carefully."]},
+ {t:"How to grow cress on cotton wool",steps:["Put some cotton wool in a small dish.","Pour on water until the cotton wool is wet.","Sprinkle cress seeds on top.","Put the dish on a sunny windowsill.","Keep the cotton wool damp every day."]},
+ {t:"How to make a compost bin",steps:["Choose a shady corner of the garden.","Put a big box or bin there.","Add fruit peels, old leaves and grass.","Mix it every week with a stick.","Use the dark compost in your garden after a few months."]}
+];
+const howto=()=>{const h=R(HOWTO);const t=Math.random();const list=`${box(h.t,h.steps.map((s,i)=>`${i+1}. ${s}`).join("<br>"))}`;
+  if(t<.35){const k=Math.floor(Math.random()*h.steps.length);return mcQ(`${list}What is step <b>${k+1}</b>?`,h.steps[k],SAMPLE(h.steps.filter((_,i)=>i!==k),2),`Step ${k+1}: ${h.steps[k]}`,"Count the steps carefully.",{say:h.t+". "+h.steps.join(" ")})}
+  if(t<.7){const k=1+Math.floor(Math.random()*(h.steps.length-1));return mcQ(`${list}What do you do just <b>before</b> this step?<br><b>${h.steps[k]}</b>`,h.steps[k-1],SAMPLE(h.steps.filter((_,i)=>i!==k&&i!==k-1),2),`Before "${h.steps[k]}" comes "${h.steps[k-1]}"`,"Look at the step just above it.",{say:h.t+". "+h.steps.join(" ")})}
+  return mcQ(`${list}Why do instructions have numbered steps?`,"So you do things in the right order",["To make them look long","Because numbers are fun"],"Numbers show the order. If you do the steps in the wrong order, it may not work!","What would happen if you did the last step first?",{say:h.t})};
+
+/* ================= THINKING AND SCIENCE ================= */
+const PUZ=[
+ {q:"🧩 Riddle: I have roots you cannot see. I am taller than a house. I have leaves but no book. What am I?",o:["A tree","A flower","A carrot"],a:"A tree",why:"Trees have roots, are tall, and have leaves."},
+ {q:"🧩 Riddle: I am yellow, and I turn to face the sun. Birds love my seeds. What am I?",o:["A sunflower","A tomato","A cactus"],a:"A sunflower",why:"Young sunflowers follow the sun, and their seeds feed birds."},
+ {q:"🧩 Riddle: I grow under the ground. Rabbits love me. I am orange (most of the time). What am I?",o:["A carrot","An apple","A leaf"],a:"A carrot",why:"A carrot is a root."},
+ {q:"🧩 Riddle: I have spines instead of leaves, and I live in the desert. What am I?",o:["A cactus","A rose","An oak tree"],a:"A cactus",why:"A cactus stores water and has spines."},
+ {q:"🍄 You find bright red berries growing in the park. What should you do?",o:["Don't eat them, and ask a grown-up","Eat a few to see if they taste nice","Feed them to your dog"],a:"Don't eat them, and ask a grown-up",why:"Some wild berries are poisonous. Never eat a wild plant unless a grown-up who knows plants says it is safe."},
+ {q:"🌹 Your friend wants to pick flowers in the public park. What is the best thing to say?",o:["Let's leave them so everyone can enjoy them, and the bees can use them","Pick as many as you can","Only pick the biggest ones"],a:"Let's leave them so everyone can enjoy them, and the bees can use them",why:"Flowers in public places are for everyone, and they feed bees and butterflies."},
+ {q:"🪴 Your plant's leaves are drooping and the soil is dry. What does it most likely need?",o:["Water","More darkness","A colder room"],a:"Water",why:"Dry soil and droopy leaves mean the plant is thirsty. It has wilted."},
+ {q:"🌑 Mia puts one bean plant in a dark cupboard and one on a sunny windowsill. She gives them the same water. Which will grow better?",o:["The one on the windowsill","The one in the cupboard","They will grow the same"],a:"The one on the windowsill",why:"Plants need light to make food. The only difference is the light, so this is a fair test."},
+ {q:"🔬 Leo wants to test if plants need water. What is the FAIR way to test it?",o:["Two plants, same pot, same light: water only one","Put one plant in sun and one in the dark, water only one","Use a big plant and a tiny plant"],a:"Two plants, same pot, same light: water only one",why:"In a fair test, you change only ONE thing. Everything else stays the same."},
+ {q:"🌡️ Why do farmers in Canada wait until late spring to plant tomatoes outside?",o:["Frost can kill young plants","Tomatoes like snow","The soil is too wet in summer"],a:"Frost can kill young plants",why:"Young plants are delicate. Frost in early spring can kill them."},
+ {q:"🐝 What would happen to apple trees if there were no bees?",o:["They would make far fewer apples","They would grow taller","Nothing would change"],a:"They would make far fewer apples",why:"Bees pollinate apple flowers. Without pollination, fewer apples grow."},
+ {q:"🌳 Why is it bad to cut down a whole forest?",o:["Animals lose their homes and there is less oxygen","There will be too much shade","Trees grow back the next day"],a:"Animals lose their homes and there is less oxygen",why:"Forests are habitats for animals, and trees give out oxygen."},
+ {q:"🥀 Which plant is NOT living anymore?",o:["A brown, dry, crumbly plant that has not grown for months","A small green seedling","A tree with buds in spring"],a:"A brown, dry, crumbly plant that has not grown for months",why:"Living plants grow and change. A dry, crumbly plant that never grows is dead."},
+ {q:"☀️ Which of these do plants NOT need?",o:["Chocolate","Sunlight","Water"],a:"Chocolate",why:"Plants need sunlight, water, air, space and nutrients from soil."},
+ {q:"🪨 Is a rock a living thing?",o:["No, it does not grow, eat or breathe","Yes, it gets bigger"],a:"No, it does not grow, eat or breathe",why:"Living things grow, need food or energy, and make new living things. Rocks do not."},
+ {q:"🌱 Why do we plant seeds in spring and not in winter?",o:["Spring is warm and has more sunlight","Seeds like ice","Winter has too many flowers"],a:"Spring is warm and has more sunlight",why:"Most seeds need warmth to germinate, and young plants need sunlight."}
+];
+const maths=()=>{const t=R(["grew","weekly","rows","share","date","pods"]);let q,ans,why;
+  if(t==="grew"){const a=2+Math.floor(Math.random()*10),b=a+2+Math.floor(Math.random()*12);ans=b-a;q=`On Monday, the plant was ${a} cm tall. On Friday, it was ${b} cm tall. How many centimetres did it grow?`;why=`${b} − ${a} = ${ans} cm.`}
+  else if(t==="weekly"){const g=2+Math.floor(Math.random()*4),n=2+Math.floor(Math.random()*4);ans=g*n;q=`A bean plant grows ${g} cm every week. How much will it grow in ${n} weeks?`;why=`${n} × ${g} = ${ans} cm.`}
+  else if(t==="rows"){const r=2+Math.floor(Math.random()*5),c=2+Math.floor(Math.random()*5);ans=r*c;q=`Grandmother plants ${r} rows of carrots. There are ${c} carrots in each row. How many carrots does she plant?`;why=`${r} rows × ${c} = ${ans} carrots.`}
+  else if(t==="share"){const p=2+Math.floor(Math.random()*4),k=2+Math.floor(Math.random()*5);ans=k;q=`Leo picks ${p*k} strawberries. He shares them equally among ${p} friends. How many does each friend get?`;why=`${p*k} ÷ ${p} = ${k}.`}
+  else if(t==="date"){const d=1+Math.floor(Math.random()*15),s=6+Math.floor(Math.random()*6);ans=d+s;q=`Mia plants a seed on May ${d}. It sprouts ${s} days later. On which date in May does it sprout?`;why=`${d} + ${s} = ${ans}, so May ${ans}.`;
+    const wr=uniq([ans+1,ans-1,ans+2,d]).filter(x=>x!==ans&&x>0).slice(0,2);return mcQ("🔢 "+q,"May "+ans,wr.map(x=>"May "+x),why,"Count on from the planting day.")}
+  else{const p=2+Math.floor(Math.random()*5),s=3+Math.floor(Math.random()*4);ans=p*s;q=`Mia's bean plant has ${p} pods. Each pod has ${s} beans. How many beans are there altogether?`;why=`${p} × ${s} = ${ans} beans.`}
+  const wr=uniq([ans+1,ans-1,ans+2,ans+10,ans*2].filter(x=>x>0&&x!==ans));
+  return mcQ("🔢 "+q,String(ans),SAMPLE(wr,2).map(String),why,"Is it more, less, groups of, or sharing?")};
+const GRP={"roots we eat":["carrot","radish","beetroot","turnip"],"leaves we eat":["lettuce","spinach","cabbage","mint"],"fruits":["apple","tomato","mango","cucumber","pumpkin"],"seeds we eat":["peas","rice","beans","corn"],"flowers":["rose","tulip","daisy","sunflower","lily"],"trees":["oak","maple","pine","palm","banyan"],"plant parts":["root","stem","leaf","flower","seed"]};
+const odd=()=>{const ks=Object.keys(GRP);const k=R(ks),k2=R(ks.filter(x=>x!==k));const three=SAMPLE(GRP[k],3),o=R(GRP[k2].filter(x=>!GRP[k].includes(x)));
+  return mcQ(`🤔 Which one does NOT belong?`,o,three,`${three.join(", ")} are all ${k}. <b>${o}</b> is not.`,"Find what three of them have in common.")};
+const ANA=[["Bird is to nest as bee is to ___.","hive",["root","petal"]],["Seed is to plant as egg is to ___.","chick",["leaf","stem"]],["Root is to water as leaf is to ___.","sunlight",["soil","bark"]],["Apple is to tree as grape is to ___.","vine",["cloud","river"]],["Petal is to flower as leaf is to ___.","tree",["sky","stone"]],["Wet is to dry as ripe is to ___.","unripe",["sweet","fresh"]],["Summer is to hot as winter is to ___.","cold",["green","sunny"]],["Bean is to pod as pea is to ___.","pod",["shell","nest"]],["Farmer is to crops as gardener is to ___.","flowers",["books","cars"]],["Acorn is to oak as seed is to ___.","plant",["rock","cloud"]],["Bark is to tree as skin is to ___.","person",["leaf","flower"]],["Rain is to wet as sun is to ___.","warm",["cold","dark"]],["Bee is to pollen as squirrel is to ___.","acorn",["nectar","honey"]],["Sprout is to seedling as bud is to ___.","flower",["root","soil"]]];
+const analogy=()=>{const x=R(ANA);return mcQ("🔗 "+x[0],x[1],x[2],`${x[0].replace("___","<b>"+x[1]+"</b>")} Think about how the first two words are linked.`,"How are the first two words linked? Use the same link.")};
+
+/* ================= LEARN NOTES ================= */
+const L={
+ detail:"Read the short text carefully. The answer is <b>in the text</b>. Go back and find the words that match the question.",
+ main:"The <b>main idea</b> is what the whole text is mostly about. It fits <b>all</b> the sentences, not just one.",
+ factop:"A <b>fact</b> can be checked: <i>Bees carry pollen.</i><br>An <b>opinion</b> is a feeling or belief: <i>Roses are the most beautiful flowers.</i>",
+ order:"Life cycles, stories and instructions happen in <b>order</b>. What comes <b>first</b>, <b>next</b> and <b>last</b>?",
+ cause:"The <b>cause</b> is <b>why</b> something happened. The <b>effect</b> is <b>what</b> happened.<br><i>Because Mia forgot to water her plant</i> (cause), <i>it wilted</i> (effect).",
+ howto:"<b>Instructions</b> tell you how to do something. They have a title, a list of things you need, and <b>numbered steps</b> in order. Each step starts with an action word: <i>Fill, Push, Water</i>.",
+ vocab:"Read the word, say it aloud, and think of a sentence that uses it. If you are not sure, look for it in the stories.",
+ eat:"We eat different parts of plants:<br><b>roots</b> (carrot) · <b>stems</b> (celery) · <b>leaves</b> (lettuce) · <b>flowers</b> (broccoli) · <b>fruits</b> (apple, tomato) · <b>seeds</b> (peas, rice).",
+ job:"<b>Roots</b> hold the plant and soak up water. <b>Stem</b> carries water and holds the plant up. <b>Leaves</b> make food from sunlight. <b>Flowers</b> make seeds. <b>Fruit</b> protects seeds.",
+ mm:"Some words have <b>more than one meaning</b>. Read the whole sentence. The other words are clues that tell you which meaning is used.",
+ syn:"<b>Synonyms</b> mean almost the same: damp = moist, observe = watch. Using synonyms makes your writing more interesting.",
+ opp:"<b>Opposites</b> mean very different things: ripe ↔ unripe, bloom ↔ wilt.",
+ comp:"A <b>compound word</b> is two small words joined together: sun + flower = <b>sunflower</b>, green + house = <b>greenhouse</b>.",
+ agree:"The verb must <b>match</b> the subject.<br>One person or thing (he, she, it): <b>The plant grows.</b><br>More than one, or I/you/we/they: <b>The plants grow. I grow.</b>",
+ spellS:"Adding the ending for he/she/it:<br>Most verbs: <b>-s</b> (grows) · s, sh, ch, x, o: <b>-es</b> (watches, goes) · consonant + y: <b>-ies</b> (carries) · vowel + y: <b>-s</b> (plays) · have → <b>has</b>.",
+ hasHave:"<b>has</b> → he, she, it, one person or thing: <i>Mia has a garden.</i><br><b>have</b> → I, you, we, they, more than one: <i>We have a garden.</i>",
+ doDoes:"<b>Does / doesn't</b> → he, she, it, one thing: <i>Does the plant need water? It doesn't.</i><br><b>Do / don't</b> → I, you, we, they, more than one: <i>Do bees like flowers? They don't like rain.</i>",
+ am:"<b>I am</b> · <b>he/she/it is</b> · <b>we/you/they are</b>.",
+ fix:"Check 3 things: <b>1.</b> capital letter at the start, <b>2.</b> capitals for names, places and I, <b>3.</b> a full stop at the end.",
+ orderW:"Find the word with the capital letter: it goes first. Then think: <b>who? does what? where or when?</b> Add the full stop.",
+ write:"Plan in your head first. Then write: capital letter, complete idea, end mark. Read it aloud to check.",
+ spell:"Use <b>Look → Say → Cover → Write → Check</b>. Say the word slowly and listen to each sound.",
+ magic:"A <b>magic e</b> at the end of a word is silent, but it makes the vowel before it <b>say its name</b>:<br>cap → cap<b>e</b> · kit → kit<b>e</b> · hop → hop<b>e</b> · cub → cub<b>e</b>.",
+ choose:"Say the word slowly and picture it. Watch out for words that sound the same but are spelled differently: <b>flower/flour</b>, <b>plane/plain</b>.",
+ think:"Read carefully and think about what plants need. In real-life questions, choose the <b>safe</b> answer.",
+ fair:"In a <b>fair test</b>, you change only <b>one thing</b> and keep everything else the same. That way you know what made the difference.",
+ maths:"Find the numbers. Is it <b>more</b> (add), <b>less</b> (take away), <b>groups of</b> (multiply) or <b>sharing equally</b> (divide)?",
+ odd:"Three belong to the same group. Find the group, then find the one that does <b>not</b> belong.",
+ ana:"Find how the first two words are linked (a bird <b>lives in</b> a nest). Use the <b>same link</b> for the next pair (a bee <b>lives in</b> a hive).",
+ review:"These questions come from earlier units, so you keep everything you learned fresh."
+};
+const u1=UNITS.find(x=>x.id==="me"),u2=UNITS.find(x=>x.id==="animals");
+
+/* ================= THE SKILL LIST ================= */
+u.cats=[
+ {n:"Reading",e:"📖",items:[
+  {id:"r_t1",t:"Story: Mia's Bean Plant",act:"story",si:0},
+  {id:"r_t2",t:"Story: The Seed That Travelled",act:"story",si:1},
+  {id:"r_t3",t:"Fact text: The Parts of a Plant",act:"story",si:2},
+  {id:"r_t4",t:"Fact text: The Life Cycle of a Plant",act:"story",si:3},
+  {id:"r_t5",t:"Fable: Bella Bunny and the Carrot Seeds",act:"story",si:4},
+  {id:"r_t6",t:"Real-world reading: A seed packet and a growth chart",act:"story",si:5},
+  {id:"r_p1",t:"Poem: Little Seed",act:"poem",pi:0},
+  {id:"r_p2",t:"Poem: The Tree in Four Seasons",act:"poem",pi:1},
+  {id:"r_detail",t:"Read and find the details",learn:L.detail,gen:detail},
+  {id:"r_main",t:"Find the main idea",learn:L.main,gen:mainIdea},
+  {id:"r_factop",t:"Fact or opinion?",learn:L.factop,gen:factOp},
+  {id:"r_order",t:"Order of events and life cycles",learn:L.order,gen:order},
+  {id:"r_cause",t:"Cause and effect",learn:L.cause,gen:cause},
+  {id:"r_howto",t:"Read and follow instructions",learn:L.howto,gen:howto}]},
+ {n:"Vocabulary",e:"🔤",items:[
+  {id:"v_s1",t:"Plant part words",learn:L.vocab,gen:MIX(F.word(set(0)),F.meaning(set(0)))},
+  {id:"v_s2",t:"Growing and gardening words",learn:L.vocab,gen:MIX(F.word(set(1)),F.meaning(set(1)))},
+  {id:"v_s3",t:"Plant science words",learn:L.vocab,gen:MIX(F.word(set(2)),F.meaning(set(2)))},
+  {id:"v_s4",t:"Describing and action words",learn:L.vocab,gen:MIX(F.word(set(3)),F.meaning(set(3)))},
+  {id:"v_fill",t:"Use the right word in a sentence",learn:L.vocab,gen:F.fill(u.words)},
+  {id:"v_job",t:"What does each plant part do?",learn:L.job,gen:jobQ},
+  {id:"v_eat",t:"Which part of the plant do we eat?",learn:L.eat,gen:eatQ},
+  {id:"v_mm",t:"Words with more than one meaning",learn:L.mm,gen:mmQ},
+  {id:"v_syn",t:"Synonyms",learn:L.syn,gen:F.pairs(SYN,"synonym")},
+  {id:"v_opp",t:"Opposites",learn:L.opp,gen:F.pairs(OPP,"opposite")},
+  {id:"v_comp",t:"Compound words",learn:L.comp,gen:MIX(F.compoundJoin(COMP),F.compoundPick(COMP))}]},
+ {n:"Grammar",e:"🧩",items:[
+  {id:"g_agree",t:"Subject and verb agreement (grows or grow?)",learn:L.agree,gen:agree},
+  {id:"g_spells",t:"Present tense spelling (-s, -es, -ies)",learn:L.spellS,gen:spellS(V)},
+  {id:"g_which",t:"Which sentence is correct?",learn:L.agree,gen:whichRight},
+  {id:"g_afix",t:"Fix the verb so it matches",learn:L.agree,gen:agreeFix},
+  {id:"g_has",t:"Has or have?",learn:L.hasHave,gen:hasHave},
+  {id:"g_do",t:"Do or does? Don't or doesn't?",learn:L.doDoes,gen:doDoes},
+  {id:"g_am",t:"Am, is or are?",learn:L.am,gen:amIsAre},
+  {id:"g_fix",t:"Fix the sentence (capitals and full stops)",learn:L.fix,gen:fix},
+  {id:"g_order",t:"Put the words in order",learn:L.orderW,gen:G.order(SENT.filter(x=>(x.match(/\b[A-Z]/g)||[]).length===1))},
+  {id:"g_write",t:"Write your own sentences",learn:L.write,gen:F.write(WP)},
+  {id:"g_mixed",t:"Mixed grammar review",learn:"Use all the present-tense rules from this unit.",gen:MIX(agree,spellS(V),whichRight,agreeFix,hasHave,doDoes,amIsAre)}]},
+ {n:"Spelling",e:"🎧",items:[
+  {id:"s_plants",t:"Plant words: listen and write",learn:L.spell,gen:F.listen(SP)},
+  {id:"s_magic",t:"Magic e: make a new word",learn:L.magic,gen:MIX(magicAdd,magicLong)},
+  {id:"s_magicl",t:"Magic e words: listen and write",learn:L.magic,gen:MIX(F.listen(MAGICS),magicPick)},
+  {id:"s_choose",t:"Choose the correct spelling",learn:L.choose,gen:F.chooseSpelling(CHOOSE)},
+  {id:"s_missing",t:"Missing letters",learn:L.spell,gen:F.missing(SP)}]},
+ {n:"Thinking and science",e:"🧠",items:[
+  {id:"t_puz",t:"Plant puzzles, fair tests and real-life questions",learn:L.fair,gen:F.bank(PUZ)},
+  {id:"t_maths",t:"Garden maths stories",learn:L.maths,gen:maths},
+  {id:"t_odd",t:"Odd one out",learn:L.odd,gen:odd},
+  {id:"t_ana",t:"Word links (analogies)",learn:L.ana,gen:analogy}]},
+ {n:"Review earlier units",e:"🔁",items:[
+  {id:"rv_u1",t:"Review: Unit 1 (sentences, question words, nouns)",learn:L.review,gen:u1.review},
+  {id:"rv_u2",t:"Review: Unit 2 (plurals, past tense, animals)",learn:L.review,gen:u2.review}]},
+ {n:"Explore and write",e:"✏️",items:[
+  {id:"x_facts",t:"Did you know? Amazing plant facts",act:"facts"},
+  {id:"x_w1",t:"Writing step 1: Describe a plant using your senses",act:"write",wi:0},
+  {id:"x_w2",t:"Writing step 2: How to plant a seed (instructions)",act:"write",wi:1},
+  {id:"x_w3",t:"Writing step 3: The magic seed (story)",act:"write",wi:2}]}
+];
+})();
+
 /* ================= SETTINGS ================= */
 const SITE_NAME = "Sprout English";   // placeholder name — change this one line later
-const COMING=[["🌱","How Plants Grow"],["🌦️","Weather and Seasons"],["🚀","Space and the Planets"],["🌊","Life in the Ocean"],["⏰","Time, Shapes and Money"],["💡","Amazing Inventions"],["🤝","Friends and Feelings"],["🗺️","Countries and Cultures"],["🍎","My Healthy Body"],["📚","Stories and Fables"]];
+const COMING=[["🌦️","Weather and Seasons"],["🚀","Space and the Planets"],["🌊","Life in the Ocean"],["⏰","Time, Shapes and Money"],["💡","Amazing Inventions"],["🤝","Friends and Feelings"],["🗺️","Countries and Cultures"],["🍎","My Healthy Body"],["📚","Stories and Fables"]];
 
 /* ================= SAVED PROGRESS (this browser only) ================= */
 const KEY="sprout_v5";
@@ -1499,7 +2031,7 @@ function practice(id){
   $("learnBtn").onclick=()=>{const b=$("learnBox");b.innerHTML=b.innerHTML?"":`<div class="rule">${it.learn||""}</div>`};
   const s=st();
   function paint(){const sc=s.sc[id]||0;$("scNum").textContent=sc;$("scBar").style.width=sc+"%";
-    $("scInfo").textContent=`${s.n[id]||0} questions answered`+(sc>=90&&sc<100?" · 🔥 Challenge zone: keep going!":"")}
+    $("scInfo").textContent=`${s.n[id]||0} question${(s.n[id]||0)===1?"":"s"} answered`+(sc>=90&&sc<100?" · 🔥 Challenge zone: keep going!":"")}
   function ask(){paint();
     if((s.sc[id]||0)>=100&&!s._keep){return mastered()}
     askQ($("qArea"),newQ(it),(ok,nx)=>{
