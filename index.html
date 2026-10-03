@@ -1860,6 +1860,7 @@ const L={
 };
 const u1=UNITS.find(x=>x.id==="me"),u2=UNITS.find(x=>x.id==="animals");
 
+u.review=MIX(agree,spellS(V),whichRight,agreeFix,hasHave,doDoes,amIsAre,eatQ,jobQ,mmQ,magicAdd,F.word(u.words),F.fill(u.words));
 /* ================= THE SKILL LIST ================= */
 u.cats=[
  {n:"Reading",e:"📖",items:[
@@ -1923,9 +1924,557 @@ u.cats=[
 ];
 })();
 
+/* ===================== GRADE 3 · UNIT 4 · WEATHER AND SEASONS (original content, plus one public-domain poem) ===================== */
+(function(){
+const f=(q,a,o,why)=>({lv:"find",q,o:[a].concat(o),a:[a],why});
+const t=(q,a,o,why)=>({lv:"think",q,o:[a].concat(o),a:[a],why});
+UNITS.push({
+id:"weather", num:4, emoji:"🌦️❄️☀️", title:"Weather and Seasons", badge:"🌈 Weather Watcher",
+
+stories:[
+/* ---------- 1. STORY ---------- */
+{title:"The Snow Day", e:"❄️", kind:"Story", pages:[
+ {pic:"🌨️🪟", text:"Mia woke up and pulled back the curtains. Everything outside was white! Thick, fluffy snow covered the cars, the trees and the street. The radio said, \"All schools in Toronto are closed today because of the snowstorm.\" Mia ran to Leo's room. \"Leo! Wake up! It's a snow day!\"",
+  qs:[f("Why were the schools closed?","Because of the snowstorm",["Because it was a holiday","Because the teachers were sick"],"The radio said schools were closed because of the snowstorm."),
+      t("How did Mia feel when she saw the snow?","Excited",["Bored","Angry"],"She ran to wake Leo and shouted, \"It's a snow day!\"")]},
+ {pic:"🧤🧣", text:"\"Not so fast,\" said Mom. \"It is minus fifteen degrees outside. That is freezing cold!\" Mia and Leo put on their warmest clothes: thick socks, snow pants, puffy coats, woolly hats, scarves and mittens. \"Cover your ears and fingers,\" Mom said. \"In this cold, skin can get frostbite.\"",
+  qs:[f("What was the temperature outside?","Minus fifteen degrees",["Fifteen degrees","Thirty degrees"],"Mom said it was minus fifteen degrees outside."),
+      t("Why did Mom tell them to cover their ears and fingers?","To protect their skin from frostbite",["To look nice","To keep the snow clean"],"Very cold air can hurt bare skin. This is called frostbite.")]},
+ {pic:"⛄🥕", text:"Outside, the snow crunched under their boots. The air was so cold that their breath made little clouds. They rolled three snowballs: a big one, a bigger one and the biggest one of all. They stacked them up to make a snowman. Leo gave it a carrot nose, and Mia used pebbles for its eyes.",
+  qs:[f("What did Leo use for the snowman's nose?","A carrot",["A pebble","A stick"],"Leo gave it a carrot nose."),
+      t("Which snowball went at the BOTTOM of the snowman?","The biggest one",["The big one","The smallest one"],"The biggest, heaviest snowball goes at the bottom so the snowman does not fall.")]},
+ {pic:"📏❄️", text:"Grandmother brought out a ruler. \"Let's be weather scientists,\" she said. Mia pushed the ruler straight down into the snow. \"Thirty centimetres!\" she read. \"That is the deepest snow I have ever seen!\" Grandmother laughed. \"When I first came to Canada, I had never seen snow at all.\"",
+  qs:[f("How deep was the snow?","Thirty centimetres",["Three centimetres","Three metres"],"Mia read \"Thirty centimetres!\" on the ruler."),
+      t("Why had Grandmother never seen snow before she came to Canada?","She came from a warm place where it did not snow",["She did not like going outside","She was always asleep in winter"],"Some countries are warm all year and never get snow.")]},
+ {pic:"🛷🏔️", text:"After lunch, the children took their sled to the big hill in the park. They zoomed down, faster and faster, and landed in a soft pile of snow. Their cheeks turned pink, and their noses felt icy. \"One more time!\" shouted Leo, again and again, until the sun began to set.",
+  qs:[f("Where did they go sledding?","The big hill in the park",["The school roof","The kitchen"],"They took their sled to the big hill in the park."),
+      f("What happened to their cheeks?","They turned pink",["They turned blue","They turned green"],"Their cheeks turned pink in the cold.")]},
+ {pic:"☕🔥", text:"Back inside, Mom made hot chocolate with tiny marshmallows. The children wrapped themselves in cosy blankets and watched the snowflakes falling past the window. \"Winter is the best season,\" said Leo. \"No,\" said Mia, \"summer is!\" Grandmother smiled. \"Every season has something special.\"",
+  qs:[f("What did Mom make when they came inside?","Hot chocolate",["Ice cream","Lemonade"],"Mom made hot chocolate with tiny marshmallows."),
+      t("\"Winter is the best season\" is a…","Opinion",["Fact"],"Leo and Mia feel differently. A sentence about what is \"best\" is an opinion.")]}
+], turn:{q:"What do you like to do on a cold or rainy day? Write two sentences.",model:"On a rainy day, I like to read books under a blanket. Sometimes I also bake cookies with my dad."}},
+
+/* ---------- 2. STORY ---------- */
+{title:"Waiting for the Monsoon", e:"🌧️", kind:"Story", pages:[
+ {pic:"☀️🥵", text:"In Dev's village in India, the summer was scorching hot. For weeks, the sun burned in a clear sky. The fields were dry and cracked, and the pond had almost disappeared. Every evening, Dev's grandfather looked at the sky. \"Soon,\" he said. \"The monsoon will come soon.\"",
+  qs:[f("What were the fields like?","Dry and cracked",["Green and wet","Covered in snow"],"The fields were dry and cracked."),
+      t("What is a monsoon?","A season of very heavy rain",["A kind of tree","A hot, dry wind with no rain"],"In India and other places, the monsoon brings months of heavy rain after the hot summer.")]},
+ {pic:"🧑‍🌾🌾", text:"Dev's grandfather was a farmer. He grew rice, and rice needs a lot of water. \"Without the monsoon rain, my rice cannot grow,\" he explained. \"And if the rice does not grow, many families will not have enough food.\" Dev looked up at the empty sky and hoped very hard.",
+  qs:[f("What does Dev's grandfather grow?","Rice",["Apples","Cotton"],"He grew rice, and rice needs a lot of water."),
+      t("Why is the monsoon so important to farmers?","Their crops need the rain to grow",["They like getting wet","It makes the days longer"],"Without rain, the rice cannot grow, and families may not have enough food.")]},
+ {pic:"☁️🌬️", text:"One afternoon, the air felt heavy and humid. A cool wind began to blow. Dark, gloomy clouds rolled across the sky like giant grey elephants. Birds flew low, and the cows mooed. Then Dev heard a deep rumble of thunder far away. \"It's coming!\" Grandfather shouted.",
+  qs:[f("What were the clouds compared to?","Giant grey elephants",["Fluffy white sheep","Tall green trees"],"Dark clouds rolled across the sky like giant grey elephants."),
+      t("What clues told them the rain was coming?","Heavy air, cool wind, dark clouds and thunder",["Bright sunshine and a clear sky","The pond getting smaller"],"The weather changed in many ways just before the storm.")]},
+ {pic:"🌧️💃", text:"Big, warm raindrops began to fall: plop, plop, plop! Then the rain poured down like a waterfall. Dev ran outside with his sister and danced in the rain. The dry earth gave off a wonderful, fresh smell. Grandfather stood in the field with his arms wide open, laughing.",
+  qs:[f("What did Dev and his sister do when the rain started?","They danced in the rain",["They hid under the bed","They went to sleep"],"Dev ran outside with his sister and danced in the rain."),
+      t("Why was Grandfather laughing?","He was happy because his rice could now grow",["He slipped in the mud","Someone told him a joke"],"The rain meant his crops would grow.")]},
+ {pic:"⛵💧", text:"For the next weeks, it rained almost every day. The pond filled up, the fields turned green, and frogs croaked all night. Dev and his friends made paper boats and raced them in the puddles. But Grandfather warned them, \"Never play near the river now. When it floods, the water is fast and dangerous.\"",
+  qs:[f("What did Dev and his friends race in the puddles?","Paper boats",["Toy cars","Snowballs"],"They made paper boats and raced them in the puddles."),
+      t("Why did Grandfather warn them about the river?","Flood water is fast and dangerous",["The river was too cold","There were sharks in the river"],"Heavy rain can make rivers flood. Flood water can sweep people away.")]},
+ {pic:"🌾🌈", text:"By autumn, Grandfather's fields were full of tall, golden rice. Dev helped him with the harvest. \"The monsoon gives us life,\" Grandfather said, \"but we must respect its power.\" That evening, a bright rainbow stretched across the sky, and Dev thought it was the most beautiful sight in the world.",
+  qs:[f("What colour was the rice by autumn?","Golden",["Blue","White"],"The fields were full of tall, golden rice."),
+      t("What did Grandfather mean by \"we must respect its power\"?","The rain is helpful, but it can also be dangerous",["The rain is always gentle","They should be scared of rainbows"],"The monsoon brings water for crops, but floods can be dangerous.")]}
+], turn:{q:"Describe the weather where you live today. Write two sentences.",model:"Today it is cloudy and chilly in Toronto. A cold wind is blowing the leaves off the trees."}},
+
+/* ---------- 3. FACT TEXT ---------- */
+{title:"Why Do We Have Seasons?", e:"🌍", kind:"Fact text", pages:[
+ {pic:"🌸☀️🍂❄️", text:"Many places on Earth have four <b>seasons</b>: spring, summer, autumn (also called fall) and winter. In summer, days are long and warm. In winter, days are short and cold. But why do the seasons change? The answer is all about how the Earth moves.",
+  qs:[f("What are the four seasons?","Spring, summer, autumn and winter",["Morning, noon, evening and night","Sun, rain, wind and snow"],"Spring, summer, autumn (fall) and winter."),
+      f("What is another name for autumn?","Fall",["Spring","Frost"],"Autumn is also called fall.")]},
+ {pic:"🌍🔄☀️", text:"The Earth travels around the Sun in a big path called an <b>orbit</b>. One trip all the way around takes about 365 days, which is one year. At the same time, the Earth spins like a top. One spin takes 24 hours, which gives us day and night.",
+  qs:[f("How long does the Earth take to travel once around the Sun?","About 365 days (one year)",["24 hours","One week"],"One trip around the Sun takes about 365 days."),
+      t("What makes day and night?","The Earth spinning",["The Sun turning off","Clouds covering the Sun"],"One spin of the Earth takes 24 hours, which gives us day and night.")]},
+ {pic:"🌐📐", text:"Here is the secret: the Earth is <b>tilted</b>. It leans a little to one side as it travels around the Sun. For part of the year, the top half of the Earth leans towards the Sun. The sunlight hits it more directly, and the days are longer. That half has summer.",
+  qs:[f("What does \"tilted\" mean?","Leaning to one side",["Spinning fast","Very hot"],"The Earth is tilted: it leans a little to one side."),
+      t("When the top half of the Earth leans towards the Sun, what season does it have?","Summer",["Winter","Autumn"],"More direct sunlight and longer days make summer.")]},
+ {pic:"🌏❄️☀️", text:"Six months later, the Earth is on the other side of the Sun. Now the top half leans away from the Sun. The sunlight is weaker, and the days are shorter. That half has winter. Many people think winter happens because the Earth is farther from the Sun, but that is not true. It is because of the tilt!",
+  qs:[f("Why does winter happen?","The Earth's half leans away from the Sun",["The Earth is farther from the Sun","The Sun gets smaller"],"The text says winter is caused by the tilt, not by distance."),
+      t("Which sentence is a mistake that many people believe?","Winter happens because the Earth is farther from the Sun",["The Earth is tilted","Days are shorter in winter"],"The text tells us this common idea is not true.")]},
+ {pic:"🇨🇦🇦🇺", text:"When it is winter in the top half of the Earth, it is summer in the bottom half. So when children in Canada are building snowmen in December, children in Australia are swimming at the beach! Their seasons are the opposite of ours.",
+  qs:[f("What season is it in Australia in December?","Summer",["Winter","Autumn"],"When Canada has winter, Australia has summer."),
+      t("Why are the seasons opposite in Canada and Australia?","They are on different halves of the tilted Earth",["Australia is closer to the Moon","Canada has more trees"],"When one half leans towards the Sun, the other half leans away.")]},
+ {pic:"🌴☀️", text:"Places near the middle of the Earth, close to a line called the <b>equator</b>, get strong sunlight all year. They are warm all year and do not have a cold winter. Instead, many of them have a wet season and a dry season. The monsoon in India is part of a wet season.",
+  qs:[f("What is the imaginary line around the middle of the Earth called?","The equator",["The orbit","The tilt"],"A line called the equator."),
+      t("Why don't places near the equator have a cold winter?","They get strong sunlight all year",["They have no clouds","They are always at night"],"Places near the equator get strong sunlight all year, so they stay warm.")]}
+], turn:{q:"Which season do you like best? Write two sentences explaining why.",model:"I like autumn best. The leaves turn red and gold, and the air feels cool and fresh."}},
+
+/* ---------- 4. FACT TEXT ---------- */
+{title:"The Amazing Water Cycle", e:"💧", kind:"Fact text", pages:[
+ {pic:"💧🔄", text:"The water you drink today may once have been drunk by a dinosaur! That is because the Earth keeps using the same water again and again. Water moves from the ground to the sky and back down in a never-ending journey called the <b>water cycle</b>.",
+  qs:[f("What is the water's never-ending journey called?","The water cycle",["The life cycle","The food chain"],"It is called the water cycle."),
+      t("Why might your water once have been drunk by a dinosaur?","The Earth uses the same water again and again",["Dinosaurs are still alive","Water comes from dinosaur bones"],"The same water keeps going around the water cycle for millions of years.")]},
+ {pic:"☀️🌊⬆️", text:"<b>Step 1: Evaporation.</b> The Sun warms the water in oceans, lakes and puddles. The warm water slowly turns into an invisible gas called <b>water vapour</b> and rises into the air. That is why puddles disappear on a sunny day.",
+  qs:[f("What does the Sun's heat turn water into?","Water vapour",["Ice","Sand"],"The warm water turns into an invisible gas called water vapour."),
+      t("Why do puddles disappear on a sunny day?","The water evaporates into the air",["Animals drink them","They sink into the clouds"],"The Sun warms the puddle, and the water rises as vapour.")]},
+ {pic:"☁️❄️", text:"<b>Step 2: Condensation.</b> High in the sky, the air is cold. The water vapour cools down and turns back into tiny droplets of water. Millions of these droplets join together to make <b>clouds</b>. You can see condensation at home too: look at the drops on the outside of a cold glass of juice.",
+  qs:[f("What are clouds made of?","Millions of tiny droplets of water",["Cotton","Smoke"],"Millions of droplets join together to make clouds."),
+      f("Where can you see condensation at home?","On the outside of a cold glass",["Inside a hot oven","On a dry towel"],"Look at the drops on the outside of a cold glass of juice.")]},
+ {pic:"🌧️🌨️", text:"<b>Step 3: Precipitation.</b> The droplets in a cloud bump into each other and grow bigger and heavier. When they are too heavy to float, they fall back to the ground. This is called <b>precipitation</b>. It can be rain, snow, sleet or hail, depending on how cold the air is.",
+  qs:[f("Name a kind of precipitation.","Snow",["Wind","Sunshine"],"Precipitation can be rain, snow, sleet or hail."),
+      t("Why does precipitation sometimes fall as snow instead of rain?","The air is cold enough to freeze the water",["The cloud is angry","There is no wind"],"It depends on how cold the air is.")]},
+ {pic:"🏞️🌊", text:"<b>Step 4: Collection.</b> The water that falls collects in oceans, rivers, lakes and the ground. Plants drink it through their roots, animals drink it, and people use it. Then the Sun warms it again, and the whole cycle starts over.",
+  qs:[f("Where does the water collect?","In oceans, rivers, lakes and the ground",["Only in clouds","In the Sun"],"The water collects in oceans, rivers, lakes and the ground."),
+      t("What happens after collection?","The Sun warms the water and it evaporates again",["The water disappears forever","The water turns into rocks"],"It is a cycle, so it starts over with evaporation.")]},
+ {pic:"🚰🌍", text:"Only a very small part of all the water on Earth is fresh water that people can drink. Most water is salty ocean water, and a lot of fresh water is frozen in ice. That is why it is important not to waste water. Turning off the tap while you brush your teeth helps!",
+  qs:[f("Where is most of the Earth's water?","In the salty oceans",["In rivers","In bottles"],"Most water is salty ocean water."),
+      t("Why should we not waste water?","Only a small part of Earth's water is fresh water we can drink",["Water is too heavy","Taps are expensive"],"Fresh drinking water is precious.")]}
+], turn:{q:"Write two ways you could save water at home or at school.",model:"I can turn off the tap while I brush my teeth. I can take a shorter shower."}},
+
+/* ---------- 5. FABLE ---------- */
+{title:"Nimbus the Little Cloud (a fable)", e:"☁️", kind:"Fable", pages:[
+ {pic:"☁️😊", text:"High above a valley floated a little cloud named Nimbus. He was soft, white and very proud of himself. All day long, he drifted in the sunshine and admired his reflection in the lake below. \"I am the fluffiest cloud in the whole sky,\" he said.",
+  qs:[f("What did Nimbus look at in the lake?","His reflection",["The fish","The boats"],"He admired his reflection in the lake below."),
+      t("Which word best describes Nimbus at the start?","Proud",["Shy","Kind"],"He thought he was the fluffiest cloud in the whole sky.")]},
+ {pic:"🌧️☁️", text:"As the days went by, Nimbus grew bigger and heavier with water. The other clouds began to rain on the valley, but Nimbus refused. \"If I rain, I will become small and thin,\" he said. \"I want to stay big and beautiful forever.\" So he held on to every drop.",
+  qs:[f("Why did Nimbus refuse to rain?","He was afraid he would become small and thin",["He had no water","The wind told him not to"],"\"If I rain, I will become small and thin.\""),
+      t("Was Nimbus thinking about others or only about himself?","Only about himself",["About others"],"He only cared about staying big and beautiful.")]},
+ {pic:"🥀🐑", text:"Below Nimbus, there was a small farm. The farmer's garden began to wilt. The grass turned brown, and the sheep had little to eat. A thirsty sunflower looked up and called, \"Please, Nimbus, we need your rain!\" But Nimbus turned away.",
+  qs:[f("What happened to the farmer's garden?","It began to wilt",["It grew huge","It was covered in snow"],"The farmer's garden began to wilt."),
+      t("Why did the farm need Nimbus's rain?","The plants and animals needed water",["The farmer wanted to swim","The sheep were too hot"],"Without rain, the garden wilted and the sheep had little to eat.")]},
+ {pic:"🌧️🌻", text:"That night, Nimbus watched the sad, droopy sunflower in the moonlight, and his heart felt heavy too. At last, he let go. Gentle rain fell softly onto the farm all night. In the morning, Nimbus was small and thin, but the garden sparkled, and the sunflower lifted its face. \"Thank you, Nimbus!\"",
+  qs:[f("What happened to Nimbus after he rained?","He became small and thin",["He grew bigger","He turned into the Sun"],"In the morning, Nimbus was small and thin."),
+      t("Why did Nimbus finally decide to rain?","He felt sorry for the plants and animals",["He was tired","The farmer paid him"],"His heart felt heavy when he saw the droopy sunflower.")]},
+ {pic:"☀️☁️💛", text:"Then something wonderful happened. The warm sun shone on the wet fields and the lake, and tiny drops of water rose into the sky. They gathered around Nimbus, and soon he was round and fluffy again. \"When you give, you are filled up again,\" whispered the wind. <b>Lesson: Sharing what you have makes the world, and you, richer.</b>",
+  qs:[t("How did Nimbus become fluffy again?","Water evaporated and rose back up to him",["He ate some cotton","The wind blew him"],"This is the water cycle! The water evaporated and condensed into his cloud again."),
+      t("What is the lesson of this fable?","Sharing makes the world, and you, richer",["Clouds should never rain","Always stay the same size"],"Nimbus gave his rain, and he was filled up again.")]}
+], turn:{q:"Write about a time you shared something or helped someone. How did it make you feel?",model:"I shared my lunch with a new boy who forgot his. It made me feel warm and happy inside."}},
+
+/* ---------- 6. REAL-WORLD TEXT ---------- */
+{title:"Real-world reading: A weather forecast and storm safety", e:"📺", kind:"Real-world text", pages:[
+ {pic:"📺🌤️", text:"This is the 5-day forecast for Toronto in October.<table class=\"realtbl\"><tr><th>Day</th><th>Weather</th><th>High</th><th>Low</th><th>Chance of rain</th></tr><tr><td>Monday</td><td>☀️ Sunny</td><td>18 °C</td><td>9 °C</td><td>0%</td></tr><tr><td>Tuesday</td><td>⛅ Partly cloudy</td><td>16 °C</td><td>8 °C</td><td>20%</td></tr><tr><td>Wednesday</td><td>🌧️ Rain</td><td>12 °C</td><td>7 °C</td><td>90%</td></tr><tr><td>Thursday</td><td>🌬️ Windy</td><td>10 °C</td><td>3 °C</td><td>30%</td></tr><tr><td>Friday</td><td>🌥️ Cloudy, frost overnight</td><td>7 °C</td><td>−1 °C</td><td>10%</td></tr></table>",
+  qs:[f("What is the weather on Wednesday?","Rain",["Sunny","Windy"],"Wednesday: 🌧️ Rain, 90% chance."),
+      f("Which day has the highest temperature?","Monday",["Wednesday","Friday"],"Monday's high is 18 °C, the warmest of the week."),
+      t("On which day should you take an umbrella?","Wednesday",["Monday","Friday"],"Wednesday has a 90% chance of rain."),
+      t("What is the pattern in the temperatures this week?","They get colder each day",["They get warmer each day","They stay the same"],"The highs go 18, 16, 12, 10, 7. It is getting colder: autumn is turning towards winter."),
+      t("Why is the low on Friday written as −1 °C?","It is below zero, so there will be frost",["It is a typing mistake","It means very hot"],"Temperatures below 0 °C are freezing, so water turns to ice (frost).")]},
+ {pic:"⛈️🏠", text:"Read this safety card about thunderstorms.<div class=\"realdoc\" style=\"text-align:left\"><b>⚡ When Thunder Roars, Go Indoors! ⚡</b><br>1. As soon as you hear thunder, go inside a building or a car.<br>2. Stay away from tall trees, metal fences and water.<br>3. Do not use the bath or shower during a storm.<br>4. Wait 30 minutes after the last thunder before going outside again.<br><br>💡 <b>Did you know?</b> Count the seconds between a lightning flash and the thunder. Every 3 seconds means the storm is about 1 kilometre away.</div>",
+  qs:[f("What should you do as soon as you hear thunder?","Go inside a building or a car",["Stand under a tall tree","Go swimming"],"Rule 1: As soon as you hear thunder, go inside."),
+      f("How long should you wait after the last thunder?","30 minutes",["30 seconds","3 days"],"Rule 4: Wait 30 minutes after the last thunder."),
+      t("Why should you stay away from tall trees in a storm?","Lightning often strikes tall things",["Trees might fall asleep","Leaves are slippery"],"Lightning usually hits the tallest objects nearby."),
+      t("You count 6 seconds between the flash and the thunder. How far away is the storm?","About 2 kilometres",["About 6 kilometres","About 1 kilometre"],"Every 3 seconds is about 1 km, so 6 seconds is about 2 km.")]}
+], turn:{q:"Write two sentences telling a younger child what to do if they hear thunder while playing outside.",model:"If you hear thunder, go inside straight away. Do not stand under a tree."}}
+],
+
+poems:[
+ {title:"Who Has Seen the Wind? (by Christina Rossetti, 1872)",
+  lines:["Who has seen the wind?","Neither I nor you:","But when the leaves hang trembling,","The wind is passing through.","","Who has seen the wind?","Neither you nor I:","But when the trees bow down their heads,","The wind is passing by."],
+  qs:[f("Can we see the wind, according to the poem?","No, but we can see what it does",["Yes, it is blue","Yes, but only at night"],"\"Who has seen the wind? Neither I nor you.\" We see the leaves trembling and the trees bowing."),
+      t("What does \"the trees bow down their heads\" really mean?","The wind bends the tops of the trees",["The trees are being polite","The trees are sleeping"],"The poet describes trees like people bowing. This is called personification."),
+      f("This poem was written in 1872. About how old is it?","More than 150 years old",["About 10 years old","About 1,000 years old"],"From 1872 to today is more than 150 years. It is a classic poem that children have loved for a very long time.")]},
+ {title:"Puddle Jumping",
+  lines:["Pitter-patter on the pane,","Hooray, hooray, it's rain again!","Boots on, coat on, out the door,","Splash! Splash! Splash! I jump some more.","The puddles are my favourite things,","I splash until the doorbell rings.","And when the sun comes out to play,","A rainbow paints the sky today."],
+  qs:[f("Which words in the poem sound like the rain?","Pitter-patter",["Boots on","Grey and grand"],"Pitter-patter copies the sound of rain. These are sound words (onomatopoeia)."),
+      f("Which word rhymes with 'things'?","rings",["splash","door"],"Things and rings end with the same sound: -ings."),
+      t("How does the child in the poem feel about rain?","Happy and excited",["Scared","Bored"],"\"Hooray, hooray, it's rain again!\"")]}
+],
+
+words:[
+ {w:"weather",e:"🌦️",m:"what the air outside is like: hot, cold, wet, dry, windy or calm",ex:"The weather today is sunny and warm.",fill:"Let's check the ___ before we go to the beach."},
+ {w:"temperature",e:"🌡️",m:"how hot or cold something is",ex:"The temperature outside is 20 degrees.",fill:"The ___ dropped below zero last night."},
+ {w:"forecast",e:"📺",m:"a report that tells what the weather will probably be like",ex:"The forecast says it will rain tomorrow.",fill:"The weather ___ says it will snow on Friday."},
+ {w:"thermometer",e:"🌡️",m:"a tool that measures temperature",ex:"The thermometer shows 25 degrees.",fill:"Look at the ___ to see how cold it is."},
+ {w:"breeze",e:"🍃",m:"a gentle, light wind",ex:"A cool breeze blew across the beach.",fill:"A gentle ___ moved the leaves."},
+ {w:"drizzle",e:"🌦️",m:"very light rain with tiny drops",ex:"It was only a drizzle, so we didn't need umbrellas.",fill:"It is not pouring, just a light ___."},
+ {w:"thunder",e:"⛈️",m:"the loud rumbling sound that comes after lightning",ex:"Dev heard a deep rumble of thunder.",fill:"The dog hid under the bed when it heard the ___."},
+ {w:"lightning",e:"⚡",m:"a bright flash of electricity in the sky during a storm",ex:"A flash of lightning lit up the sky.",fill:"A flash of ___ lit up the dark sky."},
+ {w:"fog",e:"🌫️",m:"a cloud close to the ground that makes it hard to see",ex:"The fog was so thick we couldn't see the bridge.",fill:"Drive slowly in the thick ___."},
+ {w:"frost",e:"🧊",m:"thin white ice that forms on cold nights",ex:"There was frost on the car this morning.",fill:"In the morning, the grass was white with ___."},
+
+ {w:"season",e:"🍂",m:"one of the four parts of the year: spring, summer, autumn or winter",ex:"Winter is the coldest season.",fill:"Spring is the ___ when flowers start to bloom."},
+ {w:"autumn",e:"🍁",m:"the season between summer and winter, also called fall",ex:"Leaves turn red and gold in autumn.",fill:"In ___, the leaves fall from the trees.",alt:["fall"]},
+ {w:"monsoon",e:"🌧️",m:"a season of very heavy rain in some parts of the world",ex:"The monsoon brings rain to India's farms.",fill:"During the ___, it rains almost every day in India."},
+ {w:"equator",e:"🌐",m:"an imaginary line around the middle of the Earth",ex:"Countries near the equator are warm all year.",fill:"It is hot all year in places near the ___."},
+ {w:"orbit",e:"🔄",m:"the path one object takes as it travels around another",ex:"The Earth's orbit around the Sun takes one year.",fill:"The Moon travels in an ___ around the Earth."},
+ {w:"tilt",e:"📐",m:"to lean to one side",ex:"The Earth's tilt causes the seasons.",fill:"If you ___ the glass, the water will spill."},
+ {w:"daylight",e:"🌅",m:"the natural light of the day",ex:"In summer, there are many hours of daylight.",fill:"In winter, we have fewer hours of ___."},
+ {w:"shiver",e:"🥶",m:"to shake because you are cold or afraid",ex:"Pip began to shiver in the Arctic.",fill:"Without a coat, you will ___ in the cold wind."},
+ {w:"sunrise",e:"🌄",m:"the time in the morning when the sun comes up",ex:"Grandfather wakes up before sunrise.",fill:"The farmer wakes up at ___, when the sun appears."},
+ {w:"sunset",e:"🌇",m:"the time in the evening when the sun goes down",ex:"The sky turned pink at sunset.",fill:"We went home at ___, when the sky turned orange."},
+
+ {w:"evaporate",e:"♨️",m:"(of water) to change into a gas and rise into the air",ex:"The puddle will evaporate in the sun.",fill:"The sun makes the water in puddles ___."},
+ {w:"condense",e:"🥛",m:"(of a gas) to cool down and turn into liquid drops",ex:"Water vapour condenses to make clouds.",fill:"Water vapour will ___ into drops on a cold glass."},
+ {w:"precipitation",e:"🌨️",m:"water that falls from clouds: rain, snow, sleet or hail",ex:"Snow is a kind of precipitation.",fill:"Rain and snow are kinds of ___."},
+ {w:"vapour",e:"💨",m:"water in the form of an invisible gas in the air",ex:"Steam from the kettle is water vapour.",fill:"When water evaporates, it turns into water ___.",alt:["vapor"]},
+ {w:"droplet",e:"💧",m:"a very small drop of liquid",ex:"Clouds are made of tiny droplets.",fill:"A tiny ___ of water hung on the leaf."},
+ {w:"puddle",e:"🟦",m:"a small pool of water on the ground, often after rain",ex:"Leo jumped into the puddle.",fill:"After the rain, there was a big ___ on the path."},
+ {w:"flood",e:"🌊",m:"a lot of water covering land that is usually dry",ex:"Heavy rain caused a flood near the river.",fill:"The river rose over its banks and caused a ___."},
+ {w:"drought",e:"🏜️",m:"a long time with little or no rain",ex:"The crops died during the drought.",fill:"There was no rain for months, so there was a ___."},
+ {w:"humid",e:"🥵",m:"(of air) warm and wet, so it feels heavy and sticky",ex:"The air felt humid before the storm.",fill:"On a ___ day, the air feels sticky and wet."},
+ {w:"collect",e:"🪣",m:"to gather things together in one place",ex:"Rain collects in lakes and rivers.",fill:"We put out a bucket to ___ rainwater."},
+
+ {w:"freezing",e:"❄️",m:"extremely cold",ex:"It was freezing on the snow day.",fill:"Put on your mittens. It's ___ outside!"},
+ {w:"chilly",e:"🧥",m:"a little bit cold",ex:"Bring a sweater; the evening is chilly.",fill:"It's a bit ___, so wear a jacket."},
+ {w:"mild",e:"🌤️",m:"not too hot and not too cold",ex:"Spring days are often mild.",fill:"Today is ___: not too hot and not too cold."},
+ {w:"scorching",e:"🔥",m:"very, very hot",ex:"The summer in Dev's village was scorching.",fill:"It was a ___ day, so we stayed in the shade."},
+ {w:"gloomy",e:"🌥️",m:"dark and grey, often making people feel sad",ex:"The sky was grey and gloomy.",fill:"The sky looked ___ and dark before the storm."},
+ {w:"stormy",e:"🌩️",m:"with strong winds, heavy rain and often thunder",ex:"It was a stormy night.",fill:"The sea was rough on the ___ night."},
+ {w:"gusty",e:"🌬️",m:"with sudden strong bursts of wind",ex:"The gusty wind blew my hat away.",fill:"The ___ wind blew my umbrella inside out."},
+ {w:"sparkling",e:"✨",m:"shining with little flashes of light",ex:"The snow was sparkling in the sun.",fill:"The ___ snow glittered in the sunshine."},
+ {w:"cosy",e:"🛋️",m:"warm, comfortable and safe",ex:"We were cosy under our blankets.",fill:"The little room by the fire was warm and ___.",alt:["cozy"]},
+ {w:"damp",e:"🧦",m:"a little bit wet",ex:"My socks were damp after the walk.",fill:"The towel is still ___ from my shower."}
+],
+
+spelling:[
+ {w:"rain",s:"The rain fell all night.",tip:"'ai' says long a: r-ai-n."},
+ {w:"snow",s:"The snow is white and soft.",tip:"'ow' as in grow."},
+ {w:"cloud",s:"A dark cloud covered the sun.",tip:"'ou' as in out: cl-ou-d."},
+ {w:"windy",s:"It is a windy day."},
+ {w:"sunny",s:"It is sunny and warm.",tip:"Double n: su-nn-y."},
+ {w:"storm",s:"The storm was very loud."},
+ {w:"cold",s:"Winter is cold."},
+ {w:"warm",s:"Summer is warm.",tip:"'ar' sounds like 'or' after w: w-ar-m."},
+ {w:"summer",s:"We swim in summer.",tip:"Double m: su-mm-er."},
+ {w:"winter",s:"It snows in winter."},
+ {w:"spring",s:"Flowers bloom in spring."},
+ {w:"weather",s:"The weather is lovely today.",tip:"w-ea-th-er. Don't mix it up with whether!"},
+ {w:"thunder",s:"We heard thunder in the night."},
+ {w:"rainbow",s:"A rainbow appeared after the rain.",tip:"rain + bow."},
+ {w:"autumn",s:"Leaves fall in autumn.",tip:"The 'n' at the end is silent: autum-n."}
+],
+
+facts:[
+ {e:"⚡",c:"Lightning is hotter than the surface of the Sun.",t:true,x:"True! A bolt of lightning can heat the air to about five times hotter than the surface of the Sun."},
+ {e:"💧",c:"Falling raindrops are shaped like tears.",t:false,x:"Not true! Small raindrops are round, and bigger ones are flattened, a bit like a burger bun."},
+ {e:"🌈",c:"To see a rainbow, the sun must be behind you.",t:true,x:"True! Sunlight shines from behind you into the raindrops in front of you, and they split it into colours."},
+ {e:"🏜️",c:"Antarctica is a desert.",t:true,x:"True! A desert is a place with very little precipitation, and Antarctica gets very little snow or rain each year."},
+ {e:"⛈️",c:"Lightning never strikes the same place twice.",t:false,x:"Not true! Tall buildings like Toronto's CN Tower are struck by lightning many times every year."},
+ {e:"🌫️",c:"Fog is really a cloud on the ground.",t:true,x:"True! Fog is made of the same tiny water droplets as a cloud. It just forms near the ground."},
+ {e:"🇮🇳",c:"One of the wettest places on Earth is in India.",t:true,x:"True! Mawsynram in north-east India gets more rain than almost anywhere else in the world."},
+ {e:"🥶",c:"A place in Canada once got as cold as −63 °C.",t:true,x:"True! In 1947, a village called Snag in the Yukon reached −63 °C, the coldest temperature ever recorded in North America."},
+ {e:"🧊",c:"Hailstones can be as big as a grapefruit.",t:true,x:"True! Most hail is small, but some hailstones have been bigger than a grapefruit."},
+ {e:"☁️",c:"Clouds are so light that they weigh almost nothing.",t:false,x:"Not true! An ordinary fluffy cloud can hold as much water as the weight of about 100 elephants. The droplets are just spread out very thinly."},
+ {e:"🌍",c:"Winter happens because the Earth moves farther away from the Sun.",t:false,x:"Not true! Winter happens because your half of the Earth is tilted away from the Sun."},
+ {e:"❄️",c:"Most snowflakes have six sides or six points.",t:true,x:"True! Because of the way water freezes, snowflakes usually form with six sides or six arms."}
+],
+
+writing:[
+ {e:"📺",t:"Be a weather reporter",level:"Step 1 · Sentences",
+  prompt:"Pretend you are on TV. Write a weather report for today in at least 4 sentences. Say what the sky looks like, the temperature, and what people should wear or bring. Use at least 2 weather words from the word bank.",
+  minS:4,minWords:2,
+  rx:[["^\\s*[A-Z]","I started with a capital letter"],["[.!?]\\s*$","I ended with a full stop (or ? or !)"],["^(?![\\s\\S]*\\bi\\b)","I wrote I as a capital letter"]],
+  starters:["Good morning! Here is the weather for ","Today will be ","The temperature is ","Don't forget your ","Tomorrow, the forecast says "],
+  model:"Good morning! Here is the weather for Toronto. Today will be chilly and gloomy, with a light drizzle in the afternoon. The temperature is 9 degrees. Don't forget your umbrella and a warm jacket! Tomorrow, the forecast says it will be sunny and mild."},
+ {e:"🍁",t:"My favourite season",level:"Step 2 · Paragraph",
+  prompt:"Write a paragraph of at least 6 sentences about your favourite season. Describe what you can see, hear, feel, smell or taste. Say what you like to do. Use at least 3 describing words (adjectives) and a list with commas, like \"red, orange and yellow leaves\".",
+  minS:6,minWords:2,
+  rx:[["^\\s*[A-Z]","I started with a capital letter"],["[.!?]\\s*$","I ended with a full stop (or ? or !)"],["^(?![\\s\\S]*\\bi\\b)","I wrote I as a capital letter"],
+      ["\\w+, \\w+(, \\w+)* (and|or) \\w+","I wrote a list with commas (red, orange and yellow)"]],
+  starters:["My favourite season is ","In this season, I can see ","I can hear ","The air smells ","I love to ","This season is special because "],
+  model:"My favourite season is autumn. In autumn, I can see red, orange and yellow leaves falling from the trees. I can hear the leaves crunching under my boots. The air is chilly and smells of rain and woodsmoke. I love to jump into big piles of leaves with my brother. Autumn is special because we eat warm pumpkin soup and the days feel cosy."},
+ {e:"⚖️",t:"Compare two seasons",level:"Step 3 · Compare",
+  prompt:"Choose two seasons. Write at least 6 sentences comparing them. How are they the same? How are they different? Use comparing words like warmer, colder, longer, shorter, the hottest or the coldest. Use \"but\" to show a difference, and finish by saying which one you like better and why.",
+  minS:6,minWords:2,
+  rx:[["^\\s*[A-Z]","I started with a capital letter"],["[.!?]\\s*$","I ended with a full stop (or ? or !)"],
+      ["\\b\\w+(er|est)\\b[\\s\\S]*\\b\\w+(er|est)\\b|\\b(better|best|worse|worst|more|most)\\b","I used comparing words (warmer, coldest, better…)"],
+      ["\\bbut\\b","I used but to show a difference"],["\\b([Bb]oth|[Ss]ame|[Aa]like|[Aa]lso)\\b","I said how they are the same (both, also…)"]],
+  starters:["Summer and winter are ","Both seasons ","Summer is warmer than ","but ","Winter has the shortest ","I like ___ better because "],
+  model:"Summer and winter are very different seasons. Both seasons are fun for children, and both have school holidays. Summer is much warmer than winter, but freezing winter has beautiful, sparkling snow. The days in summer are longer, and winter has the shortest days of the year. In summer we swim, but in winter we go sledding. I like winter better because building a snowman is the most fun thing I know."}
+]
+});
+})();
+
+/* ===================== UNIT 4 · SKILL BANKS AND SKILL LIST (original content) ===================== */
+(function(){
+const u=UNITS.find(x=>x.id==="weather");
+const set=k=>u.words.slice(k*10,k*10+10);
+const MIX=(...g)=>()=>R(g)();
+const box=(t,txt)=>`<div class="qbox" style="margin:0 0 12px;font-size:18px;line-height:1.6;font-weight:400"><b>${t}</b><br>${txt}</div>`;
+
+/* ================= GRAMMAR: ADJECTIVES ================= */
+const AS=[["The cold wind blew all night.",["cold"],["wind","blew","night"]],["Mia wore a red scarf.",["red"],["Mia","wore","scarf"]],["The gloomy clouds covered the sky.",["gloomy"],["clouds","covered","sky"]],["We built a huge snowman.",["huge"],["built","snowman","We"]],["Leo jumped in the muddy puddle.",["muddy"],["jumped","puddle","Leo"]],["The hot sun shone brightly.",["hot"],["sun","shone","brightly"]],["A gentle breeze moved the leaves.",["gentle"],["breeze","moved","leaves"]],["The sparkling snow covered the hill.",["sparkling"],["snow","covered","hill"]],["Dev saw a bright rainbow.",["bright"],["saw","rainbow","Dev"]],["We drank warm milk by the fire.",["warm"],["drank","milk","fire"]],["The tall trees bent in the wind.",["tall"],["trees","bent","wind"]],["A loud crash of thunder woke me.",["loud"],["crash","thunder","woke"]],["The frosty grass crunched under my boots.",["frosty"],["grass","crunched","boots"]],["Grandmother knitted a woolly hat.",["woolly"],["knitted","hat","Grandmother"]],["The stormy sea crashed on the rocks.",["stormy"],["sea","crashed","rocks"]],["Fluffy white clouds floated by.",["Fluffy","white"],["clouds","floated","by"]]];
+const findAdj=()=>{const x=R(AS),a=R(x[1]);return mcQ(`Which word is an <b>adjective</b> (a describing word)?<br><b>${x[0]}</b>`,a,SAMPLE(x[2],2),`<b>${a}</b> describes a noun. It tells us what something is like.`,"An adjective tells you what something is like: its size, colour, feel or look.")};
+const BEST=[["The ___ sun made us sweat.","scorching",["freezing","frosty"]],["Put on your mittens. It's ___ outside!","freezing",["scorching","humid"]],["The ___ wind blew my hat away.","gusty",["gentle","calm"]],["We sat by the fire, warm and ___.","cosy",["damp","stormy"]],["The sky was dark and ___.","gloomy",["sunny","sparkling"]],["After walking in the rain, my socks were ___.","damp",["dry","scorching"]],["The ___ snow glittered in the sunlight.","sparkling",["gloomy","muddy"]],["Spring days are often ___, not too hot and not too cold.","mild",["freezing","scorching"]],["Bring a sweater. The evening is a little ___.","chilly",["scorching","humid"]],["On a ___ day, the air feels sticky and heavy.","humid",["frosty","icy"]],["The ___ sea tossed the little boat.","stormy",["calm","dry"]],["Be careful on the ___ path. You might slip!","icy",["sunny","warm"]],["The baby kitten has ___ fur.","soft",["sharp","rough"]],["A ___ elephant walked slowly to the river.","huge",["tiny","thin"]],["The lemon tasted very ___.","sour",["sweet","salty"]],["The ___ lake looked like a mirror.","calm",["stormy","gusty"]]];
+const bestAdj=()=>{const b=R(BEST);return mcQ(`Choose the best adjective:<br><b>${b[0]}</b>`,b[1],b[2],`<b>${b[1]}</b> fits best: ${b[0].replace("___",b[1])}`,"Read the whole sentence. Which describing word makes sense?")};
+
+/* ---- comparing ---- */
+const ONE="cold warm tall fast long short dark bright high low small strong loud soft old young kind deep quick cool".split(" ").map(w=>[w,w+"er",w+"est","Most short adjectives: add <b>-er</b> and <b>-est</b>."]);
+const E="wide nice large safe cute wise brave pale".split(" ").map(w=>[w,w+"r",w+"st","Ends in e: just add <b>-r</b> and <b>-st</b>."]);
+const DBL=[["big","bigger","biggest"],["hot","hotter","hottest"],["wet","wetter","wettest"],["thin","thinner","thinnest"],["sad","sadder","saddest"],["flat","flatter","flattest"],["fit","fitter","fittest"]].map(x=>x.concat(["Short word, one vowel, one last consonant: <b>double</b> the last letter, then add -er or -est."]));
+const Y=[["sunny","sunnier","sunniest"],["windy","windier","windiest"],["rainy","rainier","rainiest"],["cloudy","cloudier","cloudiest"],["happy","happier","happiest"],["busy","busier","busiest"],["funny","funnier","funniest"],["snowy","snowier","snowiest"],["icy","icier","iciest"],["easy","easier","easiest"],["heavy","heavier","heaviest"],["noisy","noisier","noisiest"],["stormy","stormier","stormiest"],["chilly","chillier","chilliest"],["dry","drier","driest"],["early","earlier","earliest"]].map(x=>x.concat(["Ends in consonant + y: change y to <b>i</b>, then add -er or -est."]));
+const LONG="beautiful colourful dangerous wonderful comfortable exciting important delicious interesting careful famous peaceful".split(" ").map(w=>[w,"more "+w,"most "+w,"Long adjectives: use <b>more</b> and <b>the most</b>, not -er and -est."]);
+const IRR=[["good","better","best"],["bad","worse","worst"],["far","farther","farthest"],["many","more","most"],["little","less","least"]].map(x=>x.concat(["This adjective is special. Learn it by heart."]));
+const ADJ={one:ONE,e:E,dbl:DBL,y:Y,long:LONG,irr:IRR};
+const N1=["Monday","the morning","my sister","the river","this box","the first hill","Leo","this rope","the red kite","this road"];
+const wrongComp=(a,form)=>{const b=a[0];const c=form===1?a[1]:a[2];return SAMPLE(uniq([b+(form===1?"er":"est"),"more "+(form===1?a[1]:a[1]),form===1?a[2]:a[1],"most "+b,"more "+b,b]).filter(x=>x!==c&&x!=="more more "+b),2)};
+const comp=list=>()=>{const a=R(list);const form=Math.random()<.5?1:2;const c=a[form];
+  const q=form===1?`Compare TWO things. Choose the right word:<br><b>This one is ${a[0]}, but that one is even ___.</b>`:`Compare THREE or more things. Choose the right word:<br><b>Of all of them, this one is the ___.</b>`;
+  if(Math.random()<.45&&!/^(more|most) /.test(c))return {type:"type",q:q+`<br><span style="color:var(--muted);font-size:16px">(${a[0]})</span>`,a:[c],why:`${a[0]} → ${a[1]} → ${a[2]}. ${a[3]}`,hint:a[3]};
+  return mcQ(q+`<br><span style="color:var(--muted);font-size:16px">(${a[0]})</span>`,c,wrongComp(a,form),`${a[0]} → <b>${a[1]}</b> (two things) → <b>the ${a[2]}</b> (three or more). ${a[3]}`,a[3])};
+const ALL=ONE.concat(E,DBL,Y,LONG,IRR);
+const erEst=()=>{const a=R(ALL.filter(x=>x[0]!=="many"&&x[0]!=="little"));const two=Math.random()<.5;
+  const pair=["the two kittens","the two days","my two cousins","the two puddles","the two hills"],group=["all the kittens","all the days this week","all my cousins","all the puddles","all the hills"];
+  const k=Math.floor(Math.random()*pair.length);const thing=two?pair[k]:group[k];
+  return mcQ(`Of ${thing}, this one is ___.`,two?a[1]:"the "+a[2],[two?"the "+a[2]:a[1]],two?`Comparing <b>two</b> things: use <b>${a[1]}</b>.`:`Comparing <b>three or more</b>: use <b>the ${a[2]}</b>.`,"Two things → -er (or more). Three or more → -est (or most).")};
+const compFix=()=>{const a=R(ONE.concat(E,DBL,Y));const two=Math.random()<.5;const wrong=two?"more "+a[1]:"most "+a[2];const right=two?a[1]:a[2];
+  return {type:"type",q:`Fix the mistake. Type only the correct comparing word:<br><b>${two?"Today is "+wrong+" than yesterday.":"It was the "+wrong+" day of the year."}</b>`,a:[right],why:`Do not use <b>more</b> or <b>most</b> with -er or -est. Just say <b>${right}</b>.`,hint:"Never use more/most AND -er/-est together."}};
+const moreMost=()=>{const a=R(LONG.concat(ONE.slice(0,6),Y.slice(0,5)));const two=Math.random()<.5;const c=two?a[1]:a[2];const n=a[0];
+  const wr=two?uniq([n+"er","more "+n+"er",a[2],"most "+n]).filter(x=>x!==c):uniq([n+"est","most "+n+"est",a[1],"more "+n]).filter(x=>x!==c);
+  return mcQ(two?`<b>This one is ___ than that one.</b> <span style="color:var(--muted);font-size:16px">(${n})</span>`:`<b>Of all of them, this one is the ___.</b> <span style="color:var(--muted);font-size:16px">(${n})</span>`,c,SAMPLE(wr,2),`${n} → <b>${a[1]}</b> → <b>the ${a[2]}</b>. ${a[3]}`,"Is it a short word (-er/-est) or a long word (more/most)?")};
+const goodBad=()=>{const x=R([["good","better","best"],["bad","worse","worst"]]);const t=R([0,1]);
+  if(t===0)return mcQ(`<b>Leo's painting is ___ than mine.</b> <span style="color:var(--muted);font-size:16px">(${x[0]})</span>`,x[1],[x[0]+"er","more "+x[0],x[2]],`${x[0]} → <b>${x[1]}</b> → <b>the ${x[2]}</b>. This adjective is special!`,"good and bad do not use -er or -est.");
+  return mcQ(`<b>This is the ___ storm we have ever had.</b> <span style="color:var(--muted);font-size:16px">(${x[0]})</span>`,x[2],[x[0]+"est","most "+x[0],x[1]],`${x[0]} → <b>${x[1]}</b> → <b>the ${x[2]}</b>. This adjective is special!`,"good and bad do not use -er or -est.")};
+
+/* ---- commas in lists ---- */
+const LISTS=[["I packed","a hat","a scarf","mittens"],["We saw","rain","snow","hail"],["Mia likes","spring","summer","autumn"],["The rainbow had","red","orange","yellow"],["Dev's grandfather grows","rice","wheat","lentils"],["Put on","your boots","your coat","your gloves"],["The forecast says","sun","clouds","wind"],["In the park we saw","ducks","geese","swans"],["For the picnic we brought","apples","sandwiches","juice"],["Leo can hear","thunder","rain","wind"],["The snowman has","a carrot nose","pebble eyes","a woolly hat"],["Grandmother bought","milk","bread","eggs"]];
+const listRight=l=>`${l[0]} ${l[1]}, ${l[2]} and ${l[3]}.`;
+const commaQ=()=>{const l=R(LISTS);const right=listRight(l);
+  if(Math.random()<.5){const w1=`${l[0]} ${l[1]} ${l[2]}, and, ${l[3]}.`,w2=`${l[0]}, ${l[1]}, ${l[2]}, ${l[3]}.`,w3=`${l[0]} ${l[1]} ${l[2]} and ${l[3]}.`;
+    return mcQ("Which sentence uses commas correctly?",right,SAMPLE([w1,w2,w3],2),`<b>${right}</b> Put a comma between the items in a list, and use <b>and</b> before the last item.`,"Commas separate the items. Use and before the last one.")}
+  const plain=`${l[0]} ${l[1]} ${l[2]} and ${l[3]}.`;
+  return {type:"type",strict:true,q:`Add the missing comma to this list:<br><b>${plain}</b>`,a:[right,`${l[0]} ${l[1]}, ${l[2]}, and ${l[3]}.`],hint:"Put a comma after the first item. No comma before the first item.",why:`Correct: <b>${right}</b>`}};
+
+/* ================= HOMOPHONES ================= */
+const HOM=[["I can ___ the boats on the sea.","see","sea"],["Fish swim in the ___.","sea","see"],["The wind ___ my hat away.","blew","blue"],["The sky is bright ___ today.","blue","blew"],["Come over ___ and sit by the fire.","here","hear"],["I can ___ the thunder.","hear","here"],["I ___ all the answers.","knew","new"],["Mia got ___ boots for winter.","new","knew"],["Turn ___ at the corner.","right","write"],["Please ___ your name on the paper.","write","right"],["We ___ our bikes to the park yesterday.","rode","road"],["The ___ was covered in snow.","road","rode"],["There are seven days in a ___.","week","weak"],["After being sick, Leo felt ___.","weak","week"],["The mouse ran into a ___ in the wall.","hole","whole"],["Leo ate the ___ pizza by himself!","whole","hole"],["Mia ___ an apple for lunch.","ate","eight"],["Leo is ___ years old.","eight","ate"],["I have ___ eyes.","two","to"],["We walked ___ the park.","to","two"],["The ___ is shining brightly.","sun","son"],["Mr. Lee's ___ is called Tom.","son","sun"],["The ___ ran into the forest.","deer","dear"],["I wrote: ___ Grandfather, I miss you.","Dear","Deer"],["She bought a new ___ of mittens.","pair","pear"],["A ___ is a sweet, green fruit.","pear","pair"],["The tree branches were ___ in winter.","bare","bear"],["The polar ___ lives in the Arctic.","bear","bare"],["The ___ is sunny today.","weather","whether"],["I don't know ___ it will rain.","whether","weather"],["We heard the bells ___ at noon.","ring","wring"],["Our dog wags its ___.","tail","tale"],["Grandmother told us a ___ about a dragon.","tale","tail"],["Please ___ me at the bus stop.","meet","meat"],["The ___ in the fridge is for dinner.","meat","meet"],["The farmer grows ___ for bread.","flour","flower"]];
+const HOMfix=HOM.filter(h=>!(h[1]==="flour"));
+const homQ=()=>{const h=R(HOMfix);return mcQ(`Choose the correct word:<br><b>${h[0]}</b>`,h[1],[h[2]],`<b>${h[1]}</b> and <b>${h[2]}</b> sound the same but have different spellings and meanings. These are <b>homophones</b>.`,"Both words sound the same. Which spelling has the right meaning?")};
+
+/* ================= WRITE YOUR OWN ================= */
+const D=[CHK.cap,CHK.end,CHK.w4,CHK.I];
+const WP=[
+ {q:"Write a sentence about today's weather. Use at least one adjective.",checks:[...D,["\\b(sunny|cloudy|rainy|windy|snowy|cold|hot|warm|chilly|freezing|mild|gloomy|stormy|bright|grey|gray|humid|foggy|wet|dry|cool|icy|frosty)\\b","Uses a weather adjective"]],model:"Today is cold and windy."},
+ {q:"Write a sentence comparing two things using a word ending in <b>-er</b> and the word <b>than</b>.",checks:[...D,["\\b\\w+er\\b","Uses a word ending in -er"],["\\bthan\\b","Uses than"]],model:"My brother is taller than me."},
+ {q:"Write a sentence using a word ending in <b>-est</b>.",checks:[...D,["\\b\\w+est\\b","Uses a word ending in -est"]],model:"January is the coldest month in Toronto."},
+ {q:"Write a sentence with a list of three things. Use commas and the word <b>and</b>.",checks:[...D,["\\w+, \\w+[\\w ]*,? and \\w+","Has a list with a comma and and"]],model:"In winter, I wear a hat, a scarf and mittens."},
+ {q:"Write a sentence using <b>better</b> or <b>best</b>.",checks:[...D,["\\b(better|best)\\b","Uses better or best"]],model:"Summer is the best season for swimming."},
+ {q:"Write a sentence using <b>more</b> or <b>most</b> with a long adjective (like beautiful or exciting).",checks:[...D,["\\b(more|most)\\s+\\w{6,}\\b","Uses more or most with a long adjective"]],model:"The rainbow was the most beautiful thing I saw today."},
+ {q:"Write a sentence using the word <b>hear</b> or <b>here</b> correctly.",checks:[...D,["\\b(hear|here)\\b","Uses hear or here"]],model:"I can hear the rain on the roof."},
+ {q:"Write a sentence describing a storm using two adjectives.",checks:[...D,["\\bstorm","Mentions a storm"]],model:"The loud, scary storm lasted all night."},
+ {q:"Write a sentence explaining what you should wear on a freezing day.",checks:[...D,["\\b(coat|jacket|hat|mittens|gloves|scarf|boots|sweater|snow pants)\\b","Names warm clothing"]],model:"On a freezing day, you should wear a warm coat and mittens."}
+];
+
+/* ================= VOCABULARY ================= */
+const SYM=[["☀️","sunny"],["🌧️","rainy"],["❄️","snowy"],["⛈️","thunderstorm"],["🌫️","foggy"],["🌬️","windy"],["☁️","cloudy"],["🌈","rainbow"],["🌡️","temperature"],["🌪️","tornado"]];
+const symQ=()=>{const s=R(SYM);return mcQ(`What does this weather symbol show?<div style="font-size:64px;text-align:center">${s[0]}</div>`,s[1],SAMPLE(SYM.filter(x=>x!==s).map(x=>x[1]),3),`${s[0]} means <b>${s[1]}</b>.`,"Weather maps use these symbols.")};
+const WEAR=[["It is freezing and snowy.","a warm coat, hat and mittens",["shorts and sandals","a swimsuit"]],["It is pouring with rain.","a raincoat and rubber boots",["sunglasses only","a woolly hat only"]],["It is scorching hot and sunny.","a sun hat, sunscreen and light clothes",["a thick winter coat","snow pants"]],["It is chilly and windy.","a jacket",["a swimsuit","nothing extra"]],["There is a thunderstorm.","stay indoors",["fly a kite","go swimming"]],["It is foggy.","bright clothes so drivers can see you",["dark clothes","sunglasses"]],["The pavement is icy.","boots with good grip",["roller skates","flip-flops"]],["It is a mild spring day.","a light sweater",["a heavy snowsuit","a swimsuit"]]];
+const wearQ=()=>{const w=R(WEAR);return mcQ(`${w[0]} What should you wear or do?`,w[1],w[2],`${w[0]} The best choice is: <b>${w[1]}</b>.`,"Think about staying warm, dry, cool and safe.")};
+const SEAS=[["Leaves turn red and gold and fall from the trees.","autumn"],["Snow covers the ground and days are short.","winter"],["Flowers bloom and baby birds hatch.","spring"],["Days are long and hot, and we go swimming.","summer"],["We rake leaves and pick pumpkins.","autumn"],["We build snowmen and go sledding.","winter"],["The snow melts and the first green buds appear.","spring"],["Schools close for the long summer holiday in Canada.","summer"],["The days begin to get longer after the coldest time of year.","spring"],["Farmers harvest apples and corn.","autumn"]];
+const seasQ=()=>{const s=R(SEAS);return mcQ(`Which season is it?<br><b>${s[0]}</b>`,s[1],["spring","summer","autumn","winter"].filter(x=>x!==s[1]),`This describes <b>${s[1]}</b> (in places like Canada).`,"Think about the weather, plants and activities.")};
+const SYN=[["chilly","cool"],["damp","moist"],["scorching","blazing"],["gloomy","dull"],["cosy","snug"],["huge","enormous"],["shiver","tremble"],["gusty","blustery"],["sparkle","glitter"],["start","begin"],["calm","peaceful"],["shout","yell"],["quick","fast"],["frightened","scared"],["finish","end"],["pretty","lovely"],["soaked","drenched"],["tiny","minute"]];
+const OPP=[["hot","cold"],["wet","dry"],["sunny","cloudy"],["sunrise","sunset"],["summer","winter"],["day","night"],["calm","stormy"],["light","dark"],["warm","cool"],["early","late"],["melt","freeze"],["rise","fall"],["inside","outside"],["heavy","light"],["loud","quiet"],["high","low"],["flood","drought"],["humid","dry"]].filter((p,i,a)=>!a.some((q,j)=>j<i&&(q.includes(p[0])||q.includes(p[1]))));
+const COMP=[["rain","bow"],["snow","flake"],["snow","man"],["sun","shine"],["thunder","storm"],["rain","coat"],["sun","light"],["sun","rise"],["sun","set"],["rain","drop"],["snow","ball"],["wind","mill"],["sun","glasses"],["head","band"],["snow","storm"],["sky","light"],["hail","stone"],["rain","forest"],["day","light"],["fire","place"],["out","side"],["down","pour"],["mid","night"],["sea","side"]];
+
+/* ================= SPELLING ================= */
+const SP=u.spelling.concat([{w:"cloudy",s:"It is a cloudy day."},{w:"freezing",s:"It is freezing outside."},{w:"sunshine",s:"We played in the sunshine.",tip:"sun + shine."},{w:"snowflake",s:"A snowflake landed on my nose.",tip:"snow + flake."},{w:"puddle",s:"Leo jumped in the puddle.",tip:"Double d: pu-dd-le."},{w:"umbrella",s:"Take your umbrella.",tip:"Double l: umbre-ll-a."},{w:"lightning",s:"Lightning lit up the sky.",tip:"No 'e': light-ning (not lightening)."},{w:"breeze",s:"A cool breeze blew.",tip:"'ee' then a magic e: br-ee-ze."},{w:"season",s:"Winter is my favourite season.",tip:"'ea' says long e: s-ea-son."},{w:"sky",s:"The sky is blue."},{w:"wind",s:"The wind is strong."},{w:"frost",s:"There is frost on the window."},{w:"ice",s:"The pond turned to ice."},{w:"hot",s:"Summer is hot."},{w:"storm",s:"The storm passed quickly."}]);
+const SPC=[{w:"bigger",s:"This snowball is bigger than that one.",tip:"Double g: bi-gg-er."},{w:"hottest",s:"July is the hottest month.",tip:"Double t: ho-tt-est."},{w:"sunnier",s:"Today is sunnier than yesterday.",tip:"y → i: sunn-i-er."},{w:"happiest",s:"That was the happiest day of my life.",tip:"y → i: happ-i-est."},{w:"wetter",s:"April is wetter than March.",tip:"Double t: we-tt-er."},{w:"colder",s:"It is colder today."},{w:"warmest",s:"This is the warmest coat I have."},{w:"windiest",s:"It was the windiest day of the year.",tip:"y → i."},{w:"larger",s:"The pumpkin is larger than the melon.",tip:"Ends in e: just add -r."},{w:"nicest",s:"That was the nicest weather all week.",tip:"Ends in e: just add -st."},{w:"better",s:"I feel better today.",tip:"Special word: good → better."},{w:"worst",s:"That was the worst storm ever.",tip:"Special word: bad → worse → worst."},{w:"heavier",s:"Snow is heavier than feathers.",tip:"y → i."},{w:"thinnest",s:"This is the thinnest ice on the pond.",tip:"Double n."},{w:"safer",s:"It is safer inside during a storm.",tip:"Ends in e: just add -r."}];
+const CHOOSE=[["weather","wether","wheather"],["cloudy","clowdy","cloudey"],["sunny","suny","sunney"],["umbrella","umbrela","umberella"],["lightning","lightening","litening"],["autumn","autum","awtumn"],["thunder","thundar","tunder"],["rainbow","rainbo","rainebow"],["breeze","breze","breaze"],["freezing","freezeing","freesing"],["bigger","biger","biggr"],["hottest","hotest","hottist"],["sunnier","sunnyer","sunier"],["happiest","happyest","hapiest"],["temperature","temprature","temperture"],["season","seson","seeson"],["snowflake","snoflake","snowflak"],["puddle","pudle","puddel"],["better","gooder","beter"],["worst","baddest","worsest"]].map(x=>({w:x[0],bad:[x[1],x[2]],tip:(SP.concat(SPC).find(y=>y.w===x[0])||{}).tip}));
+
+/* ================= READING ================= */
+const DETAIL=[
+ ["Rainbows","A rainbow appears when sunlight shines through raindrops. Each drop bends the light and splits it into seven colours: red, orange, yellow, green, blue, indigo and violet. You can only see a rainbow when the sun is behind you.",[["How many colours are in a rainbow?","Seven",["Three","Ten"]],["What splits sunlight into colours?","Raindrops",["Clouds","Snowflakes"]],["Where must the sun be to see a rainbow?","Behind you",["In front of you","Under the ground"]]]],
+ ["Tornadoes","A tornado is a spinning column of wind that stretches from a storm cloud down to the ground. Its winds can be stronger than any other storm on Earth. Tornadoes can pick up cars and destroy houses. If there is a tornado warning, go to a basement or a small room with no windows.",[["What is a tornado?","A spinning column of wind",["A kind of rain","A big wave"]],["Where should you go during a tornado warning?","A basement or a small room with no windows",["Outside to watch","The top floor near a window"]]]],
+ ["Snowflakes","Snowflakes form high in the clouds when tiny drops of water freeze around a speck of dust. As they fall, more water freezes onto them, and they grow beautiful patterns. Most snowflakes have six arms. Scientists think no two snowflakes are exactly alike.",[["What do water drops freeze around?","A speck of dust",["A raindrop","A leaf"]],["How many arms do most snowflakes have?","Six",["Four","Eight"]]]],
+ ["Hurricanes","Hurricanes are huge storms that form over warm oceans. They bring very strong winds and heavy rain. Hurricanes are given names, like people, so that it is easy to talk about them. The calm centre of a hurricane is called the eye.",[["Where do hurricanes form?","Over warm oceans",["Over cold mountains","In deserts"]],["What is the calm centre of a hurricane called?","The eye",["The heart","The nose"]],["Why are hurricanes given names?","So it is easy to talk about them",["Because they are pets","To make them stronger"]]]],
+ ["Fog","Fog is a cloud that forms close to the ground. It happens when warm, wet air cools down quickly, often at night or early in the morning. Fog can make it hard for drivers to see, so they must drive slowly and turn on their lights.",[["What is fog?","A cloud close to the ground",["Smoke from a fire","Snow"]],["When does fog often form?","At night or early in the morning",["At lunchtime","Only in summer"]],["What should drivers do in fog?","Drive slowly and turn on their lights",["Drive faster","Close their eyes"]]]],
+ ["The Hottest and the Coldest","The hottest places on Earth are deserts near the equator. The coldest place is Antarctica, at the bottom of the world. In winter, it can be colder than −80 °C there. Even in summer, most of Antarctica stays below freezing.",[["Where are the hottest places on Earth?","Deserts near the equator",["Antarctica","The Arctic Ocean"]],["Which is the coldest place on Earth?","Antarctica",["Canada","India"]]]],
+ ["Weather Scientists","Scientists who study the weather are called meteorologists. They use thermometers, weather balloons, radar and satellites in space to collect information. Then they use computers to make forecasts that tell us what the weather will be like.",[["What are weather scientists called?","Meteorologists",["Astronauts","Gardeners"]],["What do they use computers for?","To make forecasts",["To play games","To make it rain"]]]],
+ ["Hibernating Through Winter","When winter comes in Canada, some animals hibernate. Groundhogs dig burrows and sleep until spring. Their hearts beat very slowly, and their bodies get cold. Every year on February 2, people in Canada and the United States celebrate Groundhog Day.",[["Where do groundhogs sleep in winter?","In burrows",["In nests","In trees"]],["What happens to a groundhog's heart when it hibernates?","It beats very slowly",["It stops forever","It beats faster"]],["What date is Groundhog Day?","February 2",["December 25","July 1"]]]],
+ ["Wind Power","Wind can be used to make electricity. Tall wind turbines have giant blades that spin when the wind blows. The spinning makes electricity for homes and schools. Wind is a clean kind of energy because it does not make smoke.",[["What spins on a wind turbine?","Giant blades",["Wheels","Doors"]],["Why is wind a clean kind of energy?","It does not make smoke",["It is very cold","It is free to buy"]]]],
+ ["Cherry Blossoms","In spring, the cherry trees in High Park, Toronto, burst into soft pink flowers. Thousands of people come to see them. The blossoms only last for about one or two weeks, so visitors must come at the right time.",[["What colour are the cherry blossoms?","Pink",["Yellow","Blue"]],["How long do the blossoms last?","About one or two weeks",["All year","One day"]],["In which season do they bloom?","Spring",["Winter","Autumn"]]]]
+];
+const detail=()=>{const p=R(DETAIL),x=R(p[2]);return mcQ(`${box(p[0],p[1])}${x[0]}`,x[1],x[2],`Look back at the text: the answer is there.`,"Read the text again and find the words.",{say:p[1]+" "+x[0]})};
+const MAIN=[
+ ["Weather affects what we wear. On cold days, we wear coats and mittens. On rainy days, we wear raincoats and boots. On hot days, we wear shorts and sun hats.","Weather affects what we wear.",["Mittens keep hands warm.","Boots are for rain."]],
+ ["Thunderstorms can be dangerous. Lightning can strike tall trees and people. Strong winds can knock down branches. Heavy rain can cause floods.","Thunderstorms can be dangerous.",["Trees are tall.","Rain is wet."]],
+ ["Winter in Canada is full of fun. Children build snowmen and go sledding. Families skate on frozen ponds. Some people go skiing in the mountains.","Winter in Canada is full of fun activities.",["Ponds freeze in winter.","Skiing is in the mountains."]],
+ ["The water cycle never stops. Water evaporates from oceans. It condenses into clouds. It falls as rain or snow, and then it collects in rivers and oceans again.","The water cycle keeps moving water around and around.",["Oceans are salty.","Clouds are white."]],
+ ["Many animals get ready for winter. Squirrels store nuts. Bears eat lots of food and then hibernate. Many birds fly south to warmer places.","Animals get ready for winter in different ways.",["Bears like food.","Birds can fly."]],
+ ["Farmers watch the weather closely. Rain helps their crops grow, but too much rain can cause floods. Frost can kill young plants. A drought can dry up their fields.","Weather is very important to farmers.",["Floods are wet.","Fields are big."]],
+ ["Sunscreen protects your skin. The sun's rays can burn your skin, even on cloudy days. Sunscreen blocks some of these rays. You should put it on before going outside in summer.","Sunscreen protects your skin from the sun.",["Summer is hot.","Clouds are grey."]],
+ ["Some places have very strange weather. In parts of Chile, it almost never rains. In parts of India, it rains for months. In Antarctica, the sun does not set for weeks in summer.","Some places have very unusual weather.",["Chile is a country.","India has rain."]],
+ ["Clouds come in different types. Cumulus clouds are white and fluffy. Stratus clouds are flat and grey, like a blanket. Tall, dark cumulonimbus clouds bring thunderstorms.","There are different types of clouds.",["Some clouds are grey.","Blankets are warm."]],
+ ["Spring is a time of new life. Seeds sprout and flowers bloom. Baby birds hatch from their eggs. Trees grow fresh green leaves.","Spring is a season of new life.",["Birds lay eggs.","Leaves are green."]],
+ ["Drinking water is important on hot days. Your body loses water when you sweat. If you do not drink enough, you can feel tired and dizzy. So carry a water bottle in summer.","Drink plenty of water on hot days.",["Sweat is salty.","Bottles are useful."]],
+ ["Ice can be dangerous. Icy roads make cars slide. Icy pavements make people slip and fall. Thin ice on ponds can break if you walk on it.","Ice can be dangerous.",["Ponds are cold.","Cars have wheels."]]
+];
+const mainIdea=()=>{const m=R(MAIN);return mcQ(`${box("Read",m[0])}What is the <b>main idea</b>? (What is it mostly about?)`,m[1],m[2],`The main idea is what the whole text is about: <b>${m[1]}</b>`,"Which answer fits ALL the sentences, not just one?",{say:m[0]})};
+const FACTS=["Water freezes at 0 °C.","Snow is a kind of precipitation.","Lightning comes before thunder.","There are four seasons in Canada.","The Earth goes around the Sun.","Antarctica is very cold.","A thermometer measures temperature.","Clouds are made of tiny water droplets.","India has a monsoon season.","The days are shorter in winter.","Rainbows have seven colours.","Fog is a cloud near the ground.","Hurricanes form over warm oceans.","The Earth is tilted."];
+const OPIN=["Winter is the best season.","Rainy days are boring.","Snow is more fun than rain.","Thunderstorms are exciting.","Autumn is the prettiest season.","Hot weather is the worst.","Sledding is more fun than swimming.","Foggy mornings are spooky.","Summer holidays are too short.","Rainbows are the most beautiful thing in the sky.","Cold weather is nicer than hot weather.","Puddle jumping is the best game.","Spring smells wonderful.","Wind is annoying."];
+const factOp=()=>{const f=Math.random()<.5;const s=f?R(FACTS):R(OPIN);return mcQ(`Is this a <b>fact</b> or an <b>opinion</b>?<br><b>${s}</b>`,f?"Fact":"Opinion",[f?"Opinion":"Fact"],f?"A <b>fact</b> can be checked with a thermometer, a book or a scientist.":"An <b>opinion</b> is what someone thinks or feels. Other people may think differently.","Could you check it? Or do people feel differently about it?")};
+const SEQ=[["Water evaporates from the ocean","The water vapour rises and cools","It condenses into clouds","Rain falls","The water collects in rivers and lakes"],["Spring","Summer","Autumn","Winter"],["Dark clouds roll in","Thunder rumbles","Heavy rain pours down","A rainbow appears"],["The monsoon rain falls","The rice fields fill with water","The rice grows tall","The farmers harvest the rice"],["Mia hears the snow day news","Mia and Leo get dressed warmly","They build a snowman","They drink hot chocolate"],["Nimbus refuses to rain","The garden wilts","Nimbus rains on the farm","Water evaporates and Nimbus grows again"],["Drops of water freeze around dust","Ice crystals grow into a snowflake","The snowflake falls to the ground"],["The sun rises","It is noon and the sun is high","The sun sets","It is night"],["See the lightning flash","Hear the thunder","Go inside","Wait 30 minutes after the last thunder"],["Leaves change colour","Leaves fall from the trees","Branches are bare in winter","New buds grow in spring"]];
+const order=()=>{const s=R(SEQ),t=R(["first","last","next"]);
+  if(t==="first")return mcQ(`What happens <b>FIRST</b>?`,s[0],SAMPLE(s.slice(1),2),`Order: ${s.join(" → ")}`,"What must happen before everything else?");
+  if(t==="last")return mcQ(`What happens <b>LAST</b>?`,s[s.length-1],SAMPLE(s.slice(0,-1),2),`Order: ${s.join(" → ")}`,"What happens at the very end?");
+  const k=Math.floor(Math.random()*(s.length-1));return mcQ(`What happens right <b>AFTER</b> this?<br><b>${s[k]}</b>`,s[k+1],SAMPLE(s.filter((_,i)=>i!==k&&i!==k+1),Math.min(2,s.length-2)),`Order: ${s.join(" → ")}`,"What is the very next step?")};
+const CE=[["Because it was minus fifteen degrees, Mia wore mittens.","it was minus fifteen degrees","Mia wore mittens"],["The sun came out, so the puddles evaporated.","the sun came out","the puddles evaporated"],["Because the monsoon came, the rice fields turned green.","the monsoon came","the rice fields turned green"],["It rained for days, so the river flooded.","it rained for days","the river flooded"],["Because there was a snowstorm, the schools closed.","there was a snowstorm","the schools closed"],["The road was icy, so the car slid.","the road was icy","the car slid"],["Because it did not rain all summer, there was a drought.","it did not rain all summer","there was a drought"],["We heard thunder, so we went inside.","we heard thunder","we went inside"],["Because the fog was thick, the plane was late.","the fog was thick","the plane was late"],["The wind was gusty, so my umbrella turned inside out.","the wind was gusty","my umbrella turned inside out"],["Because the temperature dropped below zero, the pond froze.","the temperature dropped below zero","the pond froze"],["Leo played in the snow without a hat, so his ears got cold.","Leo played in the snow without a hat","his ears got cold"],["Because Nimbus rained, the sunflower lifted its face.","Nimbus rained","the sunflower lifted its face"],["The days got shorter, so the leaves changed colour.","the days got shorter","the leaves changed colour"]];
+const cause=()=>{const c=R(CE),other=R(CE.filter(x=>x!==c));const askCause=Math.random()<.5;
+  return mcQ(`${box("Read",c[0])}What is the <b>${askCause?"cause":"effect"}</b>? <span style="color:var(--muted);font-size:15px">(${askCause?"WHY it happened":"WHAT happened"})</span>`,askCause?c[1]:c[2],[askCause?c[2]:c[1],askCause?other[1]:other[2]],`Cause (why): <b>${c[1]}</b>. Effect (what happened): <b>${c[2]}</b>.`,"Look for because and so.",{say:c[0]})};
+const CMP=[
+ ["Rain and snow both fall from clouds. Rain is liquid water, but snow is made of frozen ice crystals. Rain can fall in any season, but snow only falls when it is very cold.","Both fall from clouds","Snow is frozen, but rain is liquid",["Both are always hot","Rain is white and fluffy"]],
+ ["Summer and winter are both seasons. Summer has long, hot days, but winter has short, cold days. Children enjoy both seasons in different ways.","Both are seasons","Summer is hot, but winter is cold",["Both have snow","Winter has longer days"]],
+ ["Hurricanes and tornadoes are both dangerous storms with strong spinning winds. Hurricanes form over warm oceans and are very wide. Tornadoes form over land and are much narrower.","Both have strong spinning winds","Hurricanes form over oceans, but tornadoes form over land",["Both are gentle","Tornadoes are wider"]],
+ ["Fog and clouds are both made of tiny water droplets. Clouds float high in the sky, but fog forms close to the ground.","Both are made of tiny water droplets","Clouds are high, but fog is near the ground",["Both are made of smoke","Fog is higher than clouds"]],
+ ["Canada and Australia both have four seasons. But when it is winter in Canada, it is summer in Australia.","Both have four seasons","Their seasons happen at opposite times",["Both have winter in December","Australia has no seasons"]],
+ ["Mia and Dev both love rain. Mia lives in Canada, where rain often turns to snow in winter. Dev lives in India, where the monsoon brings heavy rain in summer.","Both love rain","Mia lives in Canada, but Dev lives in India",["Both live in India","Mia has never seen rain"]],
+ ["A thermometer and a ruler are both measuring tools. A thermometer measures temperature, but a ruler measures length.","Both are measuring tools","One measures temperature, and the other measures length",["Both measure rain","A ruler is hot"]],
+ ["Hail and sleet are both icy precipitation. Hail falls as hard balls of ice, sometimes during summer storms. Sleet is a mix of rain and snow that falls in cold weather.","Both are icy precipitation","Hail is balls of ice, but sleet is a mix of rain and snow",["Both are warm","Sleet is bigger than hail"]],
+ ["Spring and autumn are both mild seasons. In spring, plants start to grow and flowers bloom. In autumn, leaves change colour and fall.","Both are mild seasons","In spring plants grow, but in autumn leaves fall",["Both are freezing","Leaves fall in spring"]],
+ ["Wind and sunlight can both be used to make clean electricity. Wind turbines use moving air, but solar panels use the sun's light.","Both can make clean electricity","Turbines use wind, but solar panels use sunlight",["Both make smoke","Solar panels use wind"]]
+];
+const compare=()=>{const c=R(CMP);const same=Math.random()<.5;
+  return mcQ(`${box("Read",c[0])}${same?"How are they the <b>same</b>?":"What is one <b>difference</b>?"}`,same?c[1]:c[2],[same?c[2]:c[1],R(c[3])],same?`Same: <b>${c[1]}</b>. Look for the words <b>both</b> and <b>and</b>.`:`Different: <b>${c[2]}</b>. Look for the word <b>but</b>.`,same?"Look for the word both.":"Look for the word but.",{say:c[0]})};
+
+/* ================= THINKING AND SCIENCE ================= */
+const PUZ=[
+ {q:"🧩 Riddle: I fall from the sky but I never get hurt. I am white and cold. What am I?",o:["Snow","Rain","A leaf"],a:"Snow",why:"Snow is white and cold, and falls from clouds."},
+ {q:"🧩 Riddle: You can hear me but never see me. I come after a flash. What am I?",o:["Thunder","Wind","Fog"],a:"Thunder",why:"Thunder is the sound that comes after lightning."},
+ {q:"🧩 Riddle: I have seven colours but no paint. I appear after the rain. What am I?",o:["A rainbow","A flower","A crayon"],a:"A rainbow",why:"A rainbow has seven colours and appears when sun shines through raindrops."},
+ {q:"🧩 Riddle: I can push sailboats and spin windmills, but no one can see me. What am I?",o:["Wind","Rain","The sun"],a:"Wind",why:"Wind is moving air. We see what it does, not the wind itself."},
+ {q:"⚡ You are playing football and hear thunder. What should you do?",o:["Go inside a building straight away","Keep playing until it rains","Stand under a tall tree"],a:"Go inside a building straight away",why:"When thunder roars, go indoors. Lightning can strike before the rain starts."},
+ {q:"🥵 It is very hot and you feel dizzy at the park. What should you do?",o:["Rest in the shade, drink water and tell a grown-up","Run faster","Lie in the sun"],a:"Rest in the shade, drink water and tell a grown-up",why:"Dizziness on a hot day can mean your body is too hot. Cool down and drink water."},
+ {q:"🧊 Your friend wants to walk on a frozen pond. What should you say?",o:["No! The ice might be too thin and break","Yes, let's run on it","Only if we jump"],a:"No! The ice might be too thin and break",why:"Never walk on ice unless a grown-up says it is safe. Thin ice can break."},
+ {q:"🌊 The river near your home is flooding. What should you do?",o:["Stay far away from the water","Go and swim in it","Throw stones in it"],a:"Stay far away from the water",why:"Flood water moves fast and can sweep people away."},
+ {q:"🇦🇺 It is December. Where would children be MOST likely to swim outside at the beach?",o:["Australia","Canada","Norway"],a:"Australia",why:"December is summer in Australia, because it is on the other half of the tilted Earth."},
+ {q:"☀️ Why do puddles dry up faster on a hot, sunny day?",o:["The sun makes the water evaporate faster","The ground drinks more","Birds drink them"],a:"The sun makes the water evaporate faster",why:"Heat speeds up evaporation."},
+ {q:"🥛 Why do drops of water appear on the outside of a cold glass?",o:["Water vapour in the air condenses on the cold glass","The glass is leaking","Someone spilled water"],a:"Water vapour in the air condenses on the cold glass",why:"Cold surfaces cool the water vapour, which turns back into drops. This is condensation."},
+ {q:"🌡️ Which temperature is colder: −5 °C or 5 °C?",o:["−5 °C","5 °C","They are the same"],a:"−5 °C",why:"Numbers below zero (with a minus sign) are colder than zero."},
+ {q:"❄️ Water freezes into ice at which temperature?",o:["0 °C","20 °C","100 °C"],a:"0 °C",why:"Water freezes at 0 °C and boils at 100 °C."},
+ {q:"🌍 What causes the seasons?",o:["The tilt of the Earth","Clouds blocking the Sun","The Moon"],a:"The tilt of the Earth",why:"As the tilted Earth travels around the Sun, each half gets more or less direct sunlight."},
+ {q:"🌙 What causes day and night?",o:["The Earth spinning","The Sun going out","Clouds covering the sky"],a:"The Earth spinning",why:"The Earth spins once every 24 hours."},
+ {q:"🧥 Which is the best way to stay warm in winter?",o:["Wear several layers of clothes","Wear one thin T-shirt","Get wet"],a:"Wear several layers of clothes",why:"Layers trap warm air close to your body."}
+];
+const WCYC=[
+ {q:"In the water cycle, what is it called when water turns into vapour and rises?",a:"evaporation",o:["condensation","precipitation"],why:"Evaporation: the sun warms water and it rises as vapour."},
+ {q:"What is it called when water vapour cools and turns into droplets?",a:"condensation",o:["evaporation","collection"],why:"Condensation makes clouds."},
+ {q:"What is it called when water falls from clouds as rain or snow?",a:"precipitation",o:["evaporation","condensation"],why:"Precipitation is any water that falls from clouds."},
+ {q:"What is it called when water gathers in oceans, lakes and rivers?",a:"collection",o:["condensation","evaporation"],why:"Collection: the water gathers, ready to evaporate again."},
+ {q:"What gives the energy to start evaporation?",a:"the sun",o:["the moon","the wind only"],why:"The sun's heat warms the water."},
+ {q:"Which step comes right after condensation?",a:"precipitation",o:["evaporation","collection"],why:"Clouds form (condensation), then the drops fall (precipitation)."},
+ {q:"Which step comes right after evaporation?",a:"condensation",o:["collection","precipitation"],why:"The vapour rises and cools into clouds (condensation)."},
+ {q:"Steam rising from a hot cup of tea is an example of…",a:"evaporation",o:["precipitation","collection"],why:"The hot water turns into vapour and rises."},
+ {q:"A cloud forming in the sky is an example of…",a:"condensation",o:["evaporation","collection"],why:"Water vapour cools and forms droplets."},
+ {q:"Snow falling on the mountains is an example of…",a:"precipitation",o:["evaporation","condensation"],why:"Snow is water falling from clouds."},
+ {q:"Rainwater flowing into a lake is an example of…",a:"collection",o:["evaporation","condensation"],why:"The water collects in the lake."}
+];
+const maths=()=>{const t=R(["warmer","colder","week","below","umbrella","snow"]);let q,ans,why;
+  if(t==="warmer"){const a=2+Math.floor(Math.random()*10),d=3+Math.floor(Math.random()*10);ans=d;q=`In the morning, it was ${a} °C. In the afternoon, it was ${a+d} °C. How many degrees warmer was the afternoon?`;why=`${a+d} − ${a} = ${d} degrees warmer.`}
+  else if(t==="colder"){const a=12+Math.floor(Math.random()*15),d=3+Math.floor(Math.random()*9);ans=a-d;q=`At lunchtime, it was ${a} °C. By night, it was ${d} degrees colder. What was the temperature at night?`;why=`${a} − ${d} = ${ans} °C.`}
+  else if(t==="week"){const days=[...Array(5)].map(()=>1+Math.floor(Math.random()*25));const mx=Math.max(...days);const names=["Monday","Tuesday","Wednesday","Thursday","Friday"];const i=days.indexOf(mx);
+    return mcQ(`🌡️ The temperatures this week were: ${names.map((n,k)=>`${n} ${days[k]} °C`).join(", ")}. Which day was the warmest?`,names[i],SAMPLE(names.filter((_,k)=>days[k]!==mx),2),`${names[i]} was the warmest at ${mx} °C.`,"Find the biggest number.")}
+  else if(t==="below"){const a=-(1+Math.floor(Math.random()*15)),b=1+Math.floor(Math.random()*15);const colder=Math.random()<.5;
+    return mcQ(`🌡️ Which temperature is ${colder?"colder":"warmer"}: ${a} °C or ${b} °C?`,colder?`${a} °C`:`${b} °C`,[colder?`${b} °C`:`${a} °C`],`Temperatures with a minus sign are below zero, so ${a} °C is colder than ${b} °C.`,"A minus sign means below zero: freezing!")}
+  else if(t==="umbrella"){const k=3+Math.floor(Math.random()*5),r=2+Math.floor(Math.random()*4);ans=k*r;q=`It rained on ${r} days each week for ${k} weeks. On how many days did it rain?`;why=`${k} × ${r} = ${ans} days.`}
+  else{const a=5+Math.floor(Math.random()*15),b=3+Math.floor(Math.random()*15);ans=a+b;q=`On Monday, ${a} cm of snow fell. On Tuesday, ${b} cm more fell. How much snow fell altogether?`;why=`${a} + ${b} = ${ans} cm.`}
+  const wr=uniq([ans+1,ans-1,ans+2,ans+10].filter(x=>x>=0&&x!==ans));
+  return mcQ("🔢 "+q,String(ans),SAMPLE(wr,2).map(String),why,"Is it more (add), less (take away), or groups of (multiply)?")};
+const GRP={"kinds of precipitation":["rain","snow","hail","sleet"],"seasons":["spring","summer","autumn","winter"],"winter clothes":["mittens","scarf","snow pants","woolly hat"],"summer things":["sunscreen","swimsuit","sandals","sun hat"],"weather tools":["thermometer","rain gauge","weather vane","barometer"],"storms":["hurricane","tornado","blizzard","thunderstorm"],"months":["January","April","July","October"]};
+const odd=()=>{const ks=Object.keys(GRP);const k=R(ks),k2=R(ks.filter(x=>x!==k));const three=SAMPLE(GRP[k],3),o=R(GRP[k2]);
+  return mcQ(`🤔 Which one does NOT belong?`,o,three,`${three.join(", ")} are all ${k}. <b>${o}</b> is not.`,"Find what three of them have in common.")};
+const ANA=[["Hot is to summer as cold is to ___.","winter",["spring","sun"]],["Rain is to umbrella as sun is to ___.","sunscreen",["boots","mittens"]],["Thermometer is to temperature as ruler is to ___.","length",["rain","time"]],["Snow is to winter as flowers are to ___.","spring",["night","ice"]],["Lightning is to see as thunder is to ___.","hear",["taste","smell"]],["Ice is to cold as fire is to ___.","hot",["wet","blue"]],["Sunrise is to morning as sunset is to ___.","evening",["noon","breakfast"]],["Big is to bigger as hot is to ___.","hotter",["hottest","hoter"]],["Good is to better as bad is to ___.","worse",["badder","worst"]],["Cold is to coldest as sunny is to ___.","sunniest",["sunnyest","sunnier"]],["Drizzle is to downpour as breeze is to ___.","storm",["drop","shade"]],["Flood is to too much rain as drought is to ___.","too little rain",["too much snow","too many clouds"]],["See is to sea as hear is to ___.","here",["hair","ear"]],["Canada is to winter in December as Australia is to ___.","summer in December",["winter in December","snow in December"]]];
+const analogy=()=>{const x=R(ANA);return mcQ("🔗 "+x[0],x[1],x[2],`${x[0].replace("___","<b>"+x[1]+"</b>")} Think about how the first two words are linked.`,"How are the first two words linked? Use the same link.")};
+
+/* ================= LEARN NOTES ================= */
+const L={
+ detail:"Read the short text carefully. The answer is <b>in the text</b>. Go back and find the words that match the question.",
+ main:"The <b>main idea</b> is what the whole text is mostly about. It fits <b>all</b> the sentences, not just one.",
+ factop:"A <b>fact</b> can be checked: <i>Water freezes at 0 °C.</i><br>An <b>opinion</b> is a feeling: <i>Winter is the best season.</i>",
+ order:"The water cycle, the seasons and stories happen in <b>order</b>. What comes <b>first</b>, <b>next</b> and <b>last</b>?",
+ cause:"The <b>cause</b> is <b>why</b>. The <b>effect</b> is <b>what happened</b>.<br><i>Because there was a snowstorm</i> (cause), <i>the schools closed</i> (effect).",
+ compare:"To <b>compare</b>, find how things are the <b>same</b> (look for <b>both</b>, <b>also</b>, <b>alike</b>).<br>To <b>contrast</b>, find how they are <b>different</b> (look for <b>but</b>, <b>however</b>, <b>instead</b>).",
+ vocab:"Read the word, say it aloud, and think of a sentence that uses it. If you are not sure, look for it in the stories.",
+ sym:"Weather maps use symbols: ☀️ sunny, ☁️ cloudy, 🌧️ rainy, ❄️ snowy, ⛈️ thunderstorm, 🌫️ foggy, 🌬️ windy.",
+ wear:"Choose clothes that keep you <b>warm</b> in the cold, <b>dry</b> in the rain, <b>cool and protected</b> in the sun, and <b>safe</b> in storms.",
+ seas:"In Canada: <b>spring</b> (snow melts, flowers bloom), <b>summer</b> (hot, long days), <b>autumn</b> (leaves fall, harvest), <b>winter</b> (snow, short days).",
+ hom:"<b>Homophones</b> sound the same but have different spellings and meanings: <b>sea</b> (ocean) / <b>see</b> (with your eyes), <b>hear</b> (with your ears) / <b>here</b> (this place).",
+ syn:"<b>Synonyms</b> mean almost the same: chilly = cool, damp = moist.",
+ opp:"<b>Opposites</b> mean very different things: sunrise ↔ sunset, flood ↔ drought.",
+ comp:"A <b>compound word</b> is two words joined: rain + bow = <b>rainbow</b>, snow + flake = <b>snowflake</b>.",
+ adj:"An <b>adjective</b> is a describing word. It tells us what a noun is like: <i>a <b>cold</b> wind, a <b>red</b> scarf, a <b>huge</b> snowman</i>.",
+ best:"Choose the adjective that fits the <b>meaning</b> of the whole sentence. Is it hot or cold? Wet or dry? Calm or stormy?",
+ one:"To compare <b>two</b> things, add <b>-er</b> (+ than): <i>colder than</i>.<br>To compare <b>three or more</b>, use <b>the</b> + <b>-est</b>: <i>the coldest</i>.",
+ rules:"<b>Ends in e:</b> add -r/-st (nicer, nicest).<br><b>Short word, one vowel, one consonant:</b> double it (big → bigger, biggest).<br><b>Consonant + y:</b> y → i (sunny → sunnier, sunniest).",
+ erEst:"<b>Two</b> things → <b>-er</b> or <b>more</b>.<br><b>Three or more</b> → <b>the -est</b> or <b>the most</b>.",
+ moreMost:"Long adjectives use <b>more</b> and <b>the most</b>: <i>more beautiful, the most exciting</i>.<br>Short adjectives use -er/-est: <i>colder, the coldest</i>.",
+ goodBad:"Some adjectives are special:<br><b>good → better → best</b><br><b>bad → worse → worst</b><br><b>far → farther → farthest</b>",
+ compFix:"Never use <b>more/most</b> together with <b>-er/-est</b>. ❌ <i>more colder</i> ✅ <i>colder</i>.",
+ comma:"In a list, put a <b>comma</b> between the items and use <b>and</b> before the last item:<br><i>I packed a hat<b>,</b> a scarf <b>and</b> mittens.</i>",
+ fix:"Check 3 things: <b>1.</b> capital letter at the start, <b>2.</b> capitals for names, places and I, <b>3.</b> a full stop at the end.",
+ orderW:"Find the word with the capital letter: it goes first. Then think: <b>who? does what? where or when?</b> Add the full stop.",
+ write:"Plan in your head first. Then write: capital letter, complete idea, end mark. Read it aloud to check.",
+ spell:"Use <b>Look → Say → Cover → Write → Check</b>.",
+ spellC:"Listen to the ending: <b>-er</b> (two things) or <b>-est</b> (three or more). Remember the rules: double letters, y → i, and drop the extra e.",
+ choose:"Say the word slowly and picture it. Watch out for <b>lightning</b> (no e!) and <b>weather</b> (not whether).",
+ think:"Read carefully. In safety questions, always choose the <b>safe</b> answer.",
+ wcyc:"<b>Evaporation</b> (water rises as vapour) → <b>Condensation</b> (vapour cools into clouds) → <b>Precipitation</b> (rain or snow falls) → <b>Collection</b> (water gathers) → and again!",
+ maths:"Warmer means <b>higher</b> numbers. Colder means <b>lower</b> numbers. Below zero (−) is freezing!",
+ odd:"Three belong to the same group. Find the group, then find the one that does <b>not</b> belong.",
+ ana:"Find how the first two words are linked. Use the <b>same link</b> for the next pair.",
+ review:"These questions come from earlier units, so you keep everything you learned fresh."
+};
+const R1=UNITS.find(x=>x.id==="me").review,R2=UNITS.find(x=>x.id==="animals").review,R3=UNITS.find(x=>x.id==="plants").review;
+const SENT=["Mia built a snowman in the park.","The forecast says it will rain.","Dev danced in the monsoon rain.","Leo wore his warmest coat.","The puddles dried up in the sun.","It snowed all day in Toronto.","The thunder was very loud.","Grandmother made hot chocolate.","We saw a rainbow after the storm.","The wind blew the leaves away.","Water freezes at zero degrees.","I love the smell of rain.","The sun rises in the east.","Clouds are made of tiny drops.","Autumn leaves are red and gold."];
+const fix=()=>{const s=R(SENT);return {type:"type",strict:true,q:`Fix this sentence. Add the capital letters and the full stop:<br><b>${breakSentence(s)}</b>`,a:[s],hint:"Capital letter at the start, capitals for names, places and I, and a full stop at the end.",why:`Correct: <b>${s}</b>`}};
+u.review=MIX(findAdj,bestAdj,comp(ALL),erEst,compFix,moreMost,goodBad,commaQ,homQ,seasQ,F.word(u.words),F.fill(u.words));
+
+/* ================= THE SKILL LIST ================= */
+u.cats=[
+ {n:"Reading",e:"📖",items:[
+  {id:"r_t1",t:"Story: The Snow Day",act:"story",si:0},
+  {id:"r_t2",t:"Story: Waiting for the Monsoon",act:"story",si:1},
+  {id:"r_t3",t:"Fact text: Why Do We Have Seasons?",act:"story",si:2},
+  {id:"r_t4",t:"Fact text: The Amazing Water Cycle",act:"story",si:3},
+  {id:"r_t5",t:"Fable: Nimbus the Little Cloud",act:"story",si:4},
+  {id:"r_t6",t:"Real-world reading: A weather forecast and storm safety",act:"story",si:5},
+  {id:"r_p1",t:"Classic poem: Who Has Seen the Wind?",act:"poem",pi:0},
+  {id:"r_p2",t:"Poem: Puddle Jumping",act:"poem",pi:1},
+  {id:"r_detail",t:"Read and find the details",learn:L.detail,gen:detail},
+  {id:"r_main",t:"Find the main idea",learn:L.main,gen:mainIdea},
+  {id:"r_factop",t:"Fact or opinion?",learn:L.factop,gen:factOp},
+  {id:"r_order",t:"Order of events and cycles",learn:L.order,gen:order},
+  {id:"r_cause",t:"Cause and effect",learn:L.cause,gen:cause},
+  {id:"r_compare",t:"Compare and contrast (same and different)",learn:L.compare,gen:compare}]},
+ {n:"Vocabulary",e:"🔤",items:[
+  {id:"v_s1",t:"Weather words",learn:L.vocab,gen:MIX(F.word(set(0)),F.meaning(set(0)))},
+  {id:"v_s2",t:"Seasons and Earth words",learn:L.vocab,gen:MIX(F.word(set(1)),F.meaning(set(1)))},
+  {id:"v_s3",t:"Water cycle words",learn:L.vocab,gen:MIX(F.word(set(2)),F.meaning(set(2)))},
+  {id:"v_s4",t:"Weather describing words",learn:L.vocab,gen:MIX(F.word(set(3)),F.meaning(set(3)))},
+  {id:"v_fill",t:"Use the right word in a sentence",learn:L.vocab,gen:F.fill(u.words)},
+  {id:"v_sym",t:"Weather symbols",learn:L.sym,gen:symQ},
+  {id:"v_wear",t:"What should you wear or do?",learn:L.wear,gen:wearQ},
+  {id:"v_seas",t:"Which season is it?",learn:L.seas,gen:seasQ},
+  {id:"v_hom",t:"Homophones (sea or see?)",learn:L.hom,gen:homQ},
+  {id:"v_syn",t:"Synonyms",learn:L.syn,gen:F.pairs(SYN,"synonym")},
+  {id:"v_opp",t:"Opposites",learn:L.opp,gen:F.pairs(OPP,"opposite")},
+  {id:"v_comp",t:"Compound words",learn:L.comp,gen:MIX(F.compoundJoin(COMP),F.compoundPick(COMP))}]},
+ {n:"Grammar",e:"🧩",items:[
+  {id:"g_adj",t:"Find the adjective",learn:L.adj,gen:findAdj},
+  {id:"g_best",t:"Choose the best adjective",learn:L.best,gen:bestAdj},
+  {id:"g_er",t:"Comparing: -er and -est",learn:L.one,gen:comp(ONE)},
+  {id:"g_rules",t:"Comparing spelling rules (bigger, nicer, sunnier)",learn:L.rules,gen:comp(E.concat(DBL,Y))},
+  {id:"g_erest",t:"Two things or three? (-er or -est)",learn:L.erEst,gen:erEst},
+  {id:"g_more",t:"More and most",learn:L.moreMost,gen:moreMost},
+  {id:"g_good",t:"Good, better, best · Bad, worse, worst",learn:L.goodBad,gen:goodBad},
+  {id:"g_cfix",t:"Fix the comparing word",learn:L.compFix,gen:compFix},
+  {id:"g_comma",t:"Commas in a list",learn:L.comma,gen:commaQ},
+  {id:"g_fix",t:"Fix the sentence (capitals and full stops)",learn:L.fix,gen:fix},
+  {id:"g_order",t:"Put the words in order",learn:L.orderW,gen:G.order(SENT.filter(x=>(x.match(/\b[A-Z]/g)||[]).length===1))},
+  {id:"g_write",t:"Write your own sentences",learn:L.write,gen:F.write(WP)},
+  {id:"g_mixed",t:"Mixed grammar review",learn:"Use all the adjective, comparing and comma rules from this unit.",gen:MIX(findAdj,bestAdj,comp(ALL),erEst,moreMost,goodBad,compFix,commaQ)}]},
+ {n:"Spelling",e:"🎧",items:[
+  {id:"s_weather",t:"Weather words: listen and write",learn:L.spell,gen:F.listen(SP)},
+  {id:"s_comp",t:"Comparing words: listen and write (bigger, hottest)",learn:L.spellC,gen:F.listen(SPC)},
+  {id:"s_choose",t:"Choose the correct spelling",learn:L.choose,gen:F.chooseSpelling(CHOOSE)},
+  {id:"s_missing",t:"Missing letters",learn:L.spell,gen:F.missing(SP)}]},
+ {n:"Thinking and science",e:"🧠",items:[
+  {id:"t_puz",t:"Weather puzzles and safety",learn:L.think,gen:F.bank(PUZ)},
+  {id:"t_wcyc",t:"The water cycle",learn:L.wcyc,gen:F.bank(WCYC)},
+  {id:"t_maths",t:"Temperature and weather maths",learn:L.maths,gen:maths},
+  {id:"t_odd",t:"Odd one out",learn:L.odd,gen:odd},
+  {id:"t_ana",t:"Word links (analogies)",learn:L.ana,gen:analogy}]},
+ {n:"Review earlier units",e:"🔁",items:[
+  {id:"rv_u1",t:"Review: Unit 1 (sentences, question words, nouns)",learn:L.review,gen:R1},
+  {id:"rv_u2",t:"Review: Unit 2 (plurals, past tense, animals)",learn:L.review,gen:R2},
+  {id:"rv_u3",t:"Review: Unit 3 (present tense, plant science, magic e)",learn:L.review,gen:R3}]},
+ {n:"Explore and write",e:"✏️",items:[
+  {id:"x_facts",t:"Did you know? Amazing weather facts",act:"facts"},
+  {id:"x_w1",t:"Writing step 1: Be a weather reporter",act:"write",wi:0},
+  {id:"x_w2",t:"Writing step 2: My favourite season",act:"write",wi:1},
+  {id:"x_w3",t:"Writing step 3: Compare two seasons",act:"write",wi:2}]}
+];
+})();
+
 /* ================= SETTINGS ================= */
 const SITE_NAME = "Sprout English";   // placeholder name — change this one line later
-const COMING=[["🌦️","Weather and Seasons"],["🚀","Space and the Planets"],["🌊","Life in the Ocean"],["⏰","Time, Shapes and Money"],["💡","Amazing Inventions"],["🤝","Friends and Feelings"],["🗺️","Countries and Cultures"],["🍎","My Healthy Body"],["📚","Stories and Fables"]];
+const COMING=[["🚀","Space and the Planets"],["🌊","Life in the Ocean"],["⏰","Time, Shapes and Money"],["💡","Amazing Inventions"],["🤝","Friends and Feelings"],["🗺️","Countries and Cultures"],["🍎","My Healthy Body"],["📚","Stories and Fables"]];
 
 /* ================= SAVED PROGRESS (this browser only) ================= */
 const KEY="sprout_v5";
