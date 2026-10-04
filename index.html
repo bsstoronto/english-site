@@ -314,7 +314,7 @@ words:[
  {w:"librarian",e:"📚",m:"a person who works in a library and helps you find books",ex:"The librarian found me a book about space.",fill:"The ___ helped me find a book about dinosaurs."},
 
  {w:"tall",e:"🦒",m:"high from the bottom to the top",ex:"My uncle is very tall.",fill:"My brother is so ___ that he can reach the top shelf."},
- {w:"curly",e:"〰️",m:"(of hair) full of round curls, not straight",ex:"Ana has curly hair.",fill:"Her hair is ___, not straight."},
+ {w:"curly",e:"👩‍🦱",m:"(of hair) full of round curls, not straight",ex:"Ana has curly hair.",fill:"Her hair is ___, not straight."},
  {w:"kind",e:"💛",m:"friendly, caring and helpful to others",ex:"Leo is kind to his sister.",fill:"It was ___ of you to help me carry my bag."},
  {w:"brave",e:"🦁",m:"not afraid to do something hard or scary",ex:"The firefighter was very brave.",fill:"The ___ girl spoke in front of the whole school."},
  {w:"shy",e:"🙈",m:"a little nervous with people you do not know",ex:"The new boy was shy on his first day.",fill:"My cousin is ___, so she hides behind her mother."},
@@ -3414,7 +3414,7 @@ words:[
  {w:"bay",e:"⛵",m:"a part of the sea that curves into the land",ex:"The Bay of Fundy has very high tides.",fill:"The boats sheltered in the calm ___."},
  {w:"island",e:"🏝️",m:"land with water all around it",ex:"The coconut floated to a new island.",fill:"We took a boat to the little ___ in the middle of the lake."},
  {w:"lagoon",e:"🏝️",m:"a calm area of salt water separated from the sea",ex:"We swam in the warm, calm lagoon.",fill:"The water in the ___ was calm and clear."},
- {w:"trench",e:"⬇️",m:"a long, deep, narrow hole, like a ditch",ex:"The Mariana Trench is the deepest place in the ocean.",fill:"The deepest part of the ocean is a ___."},
+ {w:"trench",e:"🕳️",m:"a long, deep, narrow hole, like a ditch",ex:"The Mariana Trench is the deepest place in the ocean.",fill:"The deepest part of the ocean is a ___."},
  {w:"mangrove",e:"🌳",m:"a tree that grows in salty water along tropical coasts",ex:"Mangrove roots protect the village from big waves.",fill:"A ___ tree can grow in salty water."},
 
  {w:"coral",e:"🪸",m:"a hard material made by tiny sea animals, which forms reefs",ex:"Coral is made by tiny animals called polyps.",fill:"Tiny animals build ___ reefs."},
@@ -4134,7 +4134,7 @@ words:[
  {w:"circle",e:"⭕",m:"a perfectly round flat shape",ex:"A wheel is a circle.",fill:"A coin is shaped like a ___."},
  {w:"triangle",e:"🔺",m:"a flat shape with three sides and three corners",ex:"The roof is shaped like a triangle.",fill:"A slice of pizza often looks like a ___."},
  {w:"square",e:"🟥",m:"a flat shape with four equal sides and four corners",ex:"Each box on the chessboard is a square.",fill:"A ___ has four sides that are all the same length."},
- {w:"rectangle",e:"▭",m:"a flat shape with four sides and four corners, with two sides longer than the others",ex:"A door is a rectangle.",fill:"My book is shaped like a ___."},
+ {w:"rectangle",e:"🚪",m:"a flat shape with four sides and four corners, with two sides longer than the others",ex:"A door is a rectangle.",fill:"My book is shaped like a ___."},
  {w:"hexagon",e:"⬡",m:"a flat shape with six sides",ex:"Bees build honeycombs from hexagons.",fill:"A ___ has six sides."},
  {w:"cube",e:"🎲",m:"a solid shape with six square faces",ex:"A dice is a cube.",fill:"An ice ___ is shaped like a box."},
  {w:"sphere",e:"⚽",m:"a solid shape that is round all over, like a ball",ex:"The Earth is almost a sphere.",fill:"A football is a ___."},
@@ -4964,7 +4964,7 @@ function openUnit(id){
   $("unitEmoji").textContent=U.emoji;$("unitNum").textContent="Unit "+U.num;$("unitTitle").textContent=U.title;
   $("unitStars").textContent=`⭐ ${x.done} of ${x.total} skills mastered`;
   $("unitBadge").innerHTML=(x.done===x.total?`<div class="badge">${U.badge} badge earned!</div>`:"")+
-    `<p style="margin:14px 0 0"><button class="btn" onclick="reviewStart()">🔁 Daily review${due?" ("+due+" due)":""}</button></p>`;
+    `<p style="margin:14px 0 0"><button class="btn" onclick="reviewStart()">🔁 Daily review${due?" ("+due+" due)":""}</button> <button class="btn ghost" onclick="openDict()">📖 Picture dictionary</button></p>`;
   $("partGrid").innerHTML=U.cats.map((c,ci)=>{const m=c.items.filter(it=>isMastered(it)).length;
     return `<div class="cat"><h3>${c.e} ${String.fromCharCode(65+ci)}. ${c.n} <span class="pill">${m}/${c.items.length}</span></h3>
      ${c.items.map((it,ii)=>{const sc=s.sc[it.id]||0,done=isMastered(it);
@@ -4984,6 +4984,51 @@ function doneScreen(e,title,msg){
 function hlOnce(html,w,i){let done=false;const rx=new RegExp("\\b"+w+"(s|es|d|ed)?\\b","i");
   return html.split(/(<[^>]+>)/).map(seg=>{if(done||seg.startsWith("<"))return seg;return seg.replace(rx,m=>{done=true;return `<button class="vw" onclick="showWord(${i})">${m}</button>`})}).join("")}
 function highlight(text){let out=text;U.words.forEach((w,i)=>{out=hlOnce(out,w.w,i)});return out}
+/* ================= PICTURE DICTIONARY ================= */
+function dictSets(){const its=(U.cats.find(c=>c.n==="Vocabulary")||{items:[]}).items;let v=its.filter(it=>/^v_s[1-4]$/.test(it.id)).map(it=>it.t);if(v.length!==4)v=its.filter(it=>/^v_(fam|jobw|desc|home)$/.test(it.id)).map(it=>it.t);
+  return v.length===4?v:["Words 1–10","Words 11–20","Words 21–30","Words 31–40"]}
+let DSET=-1,DQ="";
+function openDict(){$("partTag").textContent="📖 Picture dictionary";go("part");DSET=-1;DQ="";dictRender()}
+function dictRender(){const sets=dictSets();
+  const list=U.words.map((w,i)=>({w,i})).filter(x=>(DSET<0||Math.floor(x.i/10)===DSET)&&(!DQ||x.w.w.toLowerCase().startsWith(DQ)));
+  body().innerHTML=`<h2 style="margin-top:0">📖 Picture dictionary</h2><p class="sub">${U.words.length} words from <b>${U.title}</b>. Tap a picture to hear the word and see what it means.</p>
+   <div class="row" style="flex-wrap:wrap;gap:6px;justify-content:flex-start;margin:10px 0">
+    <button class="btn small ${DSET<0?"":"ghost"}" onclick="DSET=-1;dictRender()">All</button>
+    ${sets.map((t,k)=>`<button class="btn small ${DSET===k?"":"ghost"}" onclick="DSET=${k};dictRender()">${t}</button>`).join("")}</div>
+   <div class="row" style="gap:8px;justify-content:flex-start;flex-wrap:wrap;margin-bottom:12px">
+    <input id="dq" placeholder="🔍 Find a word" value="${DQ}" style="flex:1;min-width:160px;padding:10px 12px;border:2px solid var(--line,#cfe3d6);border-radius:12px;font-size:17px">
+    <button class="btn" onclick="dictQuiz()">🎯 Picture quiz</button></div>
+   <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px">
+    ${list.map(x=>`<button onclick="dictCard(${x.i})" style="background:#fff;border:2px solid #d6eadd;border-radius:16px;padding:12px 6px;cursor:pointer;text-align:center;font:inherit">
+      <div style="font-size:52px;line-height:1.15">${x.w.e}</div><div style="font-size:19px;font-weight:700;margin-top:6px;color:#1d3b2c">${x.w.w}</div></button>`).join("")||`<p class="sub">No words found.</p>`}
+   </div>
+   <p style="margin-top:20px"><button class="btn ghost" onclick="openUnit(U.id)">← Back to the unit</button></p>`;
+  const dq=$("dq");dq.oninput=()=>{DQ=dq.value.trim().toLowerCase();const pos=dq.selectionStart;dictRender();const n=$("dq");n.focus();n.setSelectionRange(pos,pos)}}
+function dictCard(i){const w=U.words[i],n=U.words.length;say(w.w+". "+w.m);
+  const exHL=w.ex.replace(new RegExp("\\b("+w.w+"(s|es|d|ed)?)\\b","i"),"<b style=\"color:#2f6b4f\">$1</b>");
+  body().innerHTML=`<div style="text-align:center">
+   <div style="font-size:110px;line-height:1.1;margin-top:6px">${w.e}</div>
+   <h2 style="margin:8px 0 2px;font-size:38px">${w.w}</h2>
+   <p style="margin:6px 0 14px"><button class="btn ghost small" onclick="say(U.words[${i}].w)">🔊 Say the word</button> <button class="btn ghost small" onclick="say(U.words[${i}].w+'. '+U.words[${i}].ex)">🔊 Say the sentence</button></p>
+   <div class="qbox" style="text-align:left;font-size:19px;line-height:1.6"><b>What it means:</b> ${w.m}<br><b>Example:</b> ${exHL}</div>
+   <div class="row" style="justify-content:space-between;margin-top:16px">
+    <button class="btn ghost" onclick="dictCard(${(i+n-1)%n})">← Back</button>
+    <button class="btn ghost" onclick="dictRender()">All words</button>
+    <button class="btn" onclick="dictCard(${(i+1)%n})">Next →</button></div></div>`}
+let DQZ=null;
+function dictQuiz(){const pool=DSET<0?U.words.map((_,i)=>i):U.words.map((_,i)=>i).filter(i=>Math.floor(i/10)===DSET);DQZ={order:SAMPLE(pool,Math.min(10,pool.length)),k:0,right:0};dictQ()}
+function dictQ(){const z=DQZ;if(z.k>=z.order.length){body().innerHTML=`<div style="text-align:center"><div class="big">${z.right>=z.order.length-1?"🏆":"🌟"}</div><h2 style="margin-top:0">${z.right} out of ${z.order.length}!</h2><p class="sub">${z.right===z.order.length?"Perfect! You know all these words.":"Look at the dictionary again, then try another quiz."}</p>
+   <p><button class="btn" onclick="dictQuiz()">🎯 Another quiz</button> <button class="btn ghost" onclick="dictRender()">📖 Dictionary</button></p></div>`;return}
+  const i=z.order[z.k],w=U.words[i];const others=SAMPLE(U.words.filter(x=>x!==w&&x.e!==w.e),3);const opts=shuffle([w].concat(others));const pic=Math.random()<.5;
+  body().innerHTML=`<div style="text-align:center"><p class="sub">Question ${z.k+1} of ${z.order.length} · ⭐ ${z.right}</p>
+   ${pic?`<div style="font-size:100px;line-height:1.1">${w.e}</div><h3>Which word matches the picture?</h3>`:`<button class="btn ghost" onclick="say('${w.w.replace(/'/g,"\\'")}')" style="font-size:20px">🔊 Listen again</button><h3>Which picture shows the word you heard?</h3>`}
+   <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:440px;margin:0 auto">
+   ${opts.map(o=>`<button data-ok="${o===w?1:0}" style="background:#fff;border:2px solid #d6eadd;border-radius:16px;padding:14px 6px;cursor:pointer;font:inherit;${pic?"font-size:21px;font-weight:700":"font-size:56px"}">${pic?o.w:o.e}</button>`).join("")}</div>
+   <p id="dfb" style="min-height:28px;font-size:18px;margin-top:12px"></p></div>`;
+  if(!pic)setTimeout(()=>say(w.w),250);
+  body().querySelectorAll("[data-ok]").forEach(b=>b.onclick=()=>{const ok=b.dataset.ok==="1";body().querySelectorAll("[data-ok]").forEach(x=>{x.disabled=true;if(x.dataset.ok==="1")x.style.borderColor="#2f9a5f",x.style.background="#e3f6ea"});
+    if(!ok)b.style.borderColor="#d9534f",b.style.background="#fdecea";if(ok)z.right++;say(ok?"Yes! "+w.w:"It is "+w.w);
+    $("dfb").innerHTML=`${ok?"✅ Yes!":"Not quite."} ${w.e} <b>${w.w}</b>: ${w.m}<br><button class="btn" style="margin-top:10px" onclick="DQZ.k++;dictQ()">Next →</button>`})}
 function showWord(i){const w=U.words[i];say(w.w+". "+w.m);toast(`${w.e} <b>${w.w}</b>: ${w.m}`)}
 function askMany(container,qs,onAll){
   let left=qs.length;
