@@ -6653,9 +6653,612 @@ u.cats=[
 ];
 })();
 
+/* ===================== GRADE 3 · UNIT 11 · MY HEALTHY BODY (original content, plus one public-domain poem) ===================== */
+(function(){
+const f=(q,a,o,why)=>({lv:"find",q,o:[a].concat(o),a:[a],why});
+const t=(q,a,o,why)=>({lv:"think",q,o:[a].concat(o),a:[a],why});
+const p=(q,a,o,why)=>({lv:"predict",q,o:[a].concat(o),a:[a],why});
+UNITS.push({
+id:"health", num:11, emoji:"🍎💪🫀", title:"My Healthy Body", badge:"💪 Health Hero",
+
+stories:[
+/* ---------- 1. FACT PAGE: FOOD ---------- */
+{title:"Food Fuels Your Body", e:"🥗", kind:"Fact page", pages:[
+ {pic:"🚗⛽", text:"A car needs fuel to go. Your body needs fuel too, and that fuel is <b>food</b>. Food gives you energy to run, play, think and grow. It also helps your body fix itself when you get a scrape or a cold. Different foods do different jobs, so the best way to eat is to have a <b>variety</b>, which means lots of different kinds.",
+  qs:[f("What is the body's fuel?","Food",["Petrol","Sunlight only"],"Your body needs fuel too, and that fuel is food."),
+      f("What does 'variety' mean?","Lots of different kinds",["Only one kind","Nothing at all"],"…a variety, which means lots of different kinds."),
+      t("Why is it good to eat many different foods?","Different foods do different jobs in the body",["It is the law","One food has everything"],"Different foods do different jobs.")]},
+ {pic:"🥦🍓", text:"<b>Vegetables and fruits</b> are full of vitamins, minerals and fibre. Vitamins help your eyes see, your skin heal and your body fight germs. Try to make half your plate vegetables and fruits. A smart trick is to <b>eat the rainbow</b>: red tomatoes, orange carrots, yellow corn, green spinach, blue blueberries and purple grapes. Each colour gives your body something special.",
+  qs:[f("What do vitamins help your body do?","See, heal and fight germs",["Fly","Grow wings"],"Vitamins help your eyes see, your skin heal and your body fight germs."),
+      f("How much of your plate should be vegetables and fruits?","Half",["None","A tiny bit"],"Try to make half your plate vegetables and fruits."),
+      t("What does 'eat the rainbow' mean?","Eat fruits and vegetables of many colours",["Eat only sweets","Eat colourful paint"],"Each colour gives your body something special.")]},
+ {pic:"🍞🥚", text:"<b>Whole grains</b>, like brown rice, oats, whole-wheat bread and roti, give you long-lasting energy. <b>Protein foods</b>, like beans, lentils, eggs, fish, nuts, tofu, chicken and dal, help build strong muscles. Milk, yogurt and cheese, or calcium-rich foods like fortified soy drinks, help build strong bones and teeth. Families around the world combine these foods in delicious ways.",
+  qs:[f("Which foods give long-lasting energy?","Whole grains",["Candy","Fizzy drinks"],"Whole grains… give you long-lasting energy."),
+      f("Which foods help build muscles?","Protein foods like beans, eggs and fish",["Juice only","Butter only"],"Protein foods… help build strong muscles."),
+      t("Which meal has a vegetable, a grain and a protein?","Rice with dal and spinach",["A bag of chips","A glass of juice"],"Rice is a grain, dal is a protein and spinach is a vegetable.")]},
+ {pic:"💧🥤", text:"Your body is more than half water! You lose water when you breathe, sweat and go to the bathroom, so you need to drink water every day, and more when it is hot or when you exercise. <b>Water is the best drink.</b> Sweet drinks like pop have lots of sugar, which isn't good for your teeth. They are a 'sometimes' drink, not an everyday drink.",
+  qs:[f("How much of your body is water?","More than half",["None","A tiny drop"],"Your body is more than half water!"),
+      f("What is the best drink?","Water",["Pop","Juice"],"Water is the best drink."),
+      t("When should you drink more water?","When it is hot or when you exercise",["Only at night","Never"],"…more when it is hot or when you exercise.")]},
+ {pic:"🍰🎉", text:"Is cake bad? No food is 'bad'! Treats like cake, chips and candy are <b>sometimes foods</b>. They are fun at birthday parties and festivals, and it is fine to enjoy them. <b>Everyday foods</b>, like vegetables, fruits, grains and proteins, are the ones that help your body most, so we eat them every day. Listen to your body: eat when you are hungry and stop when you feel full.",
+  qs:[f("What are 'sometimes foods'?","Treats like cake, chips and candy",["Vegetables","Water"],"Treats like cake, chips and candy are sometimes foods."),
+      t("Is it okay to enjoy a treat at a party?","Yes, sometimes foods can be enjoyed now and then",["No, never","Only if nobody sees"],"It is fine to enjoy them."),
+      t("What does 'listen to your body' mean?","Eat when you're hungry and stop when you're full",["Put your ear on your tummy","Never eat"],"Eat when you are hungry and stop when you feel full."),
+      t("What is the main idea of this whole fact page?","Eating a variety of foods gives your body what it needs",["Only eat cake","Food isn't important"],"Every page shows how different foods help the body.")]}
+], turn:{q:"Describe a healthy meal you love. Which foods does it have from different groups?",model:"I love chicken curry with brown rice and a cucumber salad. It has protein, a whole grain and a vegetable."}},
+
+/* ---------- 2. FACT PAGE: EXERCISE ---------- */
+{title:"Move Your Body!", e:"🏃", kind:"Fact page", pages:[
+ {pic:"❤️🏃", text:"When you run, jump or dance, your heart beats faster. Your heart is a muscle, and exercise makes it stronger, just like lifting a backpack makes your arms stronger. A strong heart pumps blood around your body more easily. Doctors say children should be active for about <b>60 minutes</b> every day. That can be in small pieces: walking to school, playing tag at recess and riding your bike after school.",
+  qs:[f("What kind of body part is your heart?","A muscle",["A bone","A lung"],"Your heart is a muscle."),
+      f("How long should children be active every day?","About 60 minutes",["About 5 minutes","Ten hours"],"Children should be active for about 60 minutes every day."),
+      t("Does the 60 minutes have to be all at once?","No, it can be in small pieces",["Yes, all at once","Only on Sundays"],"That can be in small pieces.")]},
+ {pic:"🦴💪", text:"Exercise is good for more than your heart. Jumping and running help make your <b>bones</b> strong. Climbing and swimming build your <b>muscles</b>. Stretching keeps you <b>flexible</b>, so you can bend and reach easily. Exercise also helps your brain! After you play outside, it is often easier to focus in class.",
+  qs:[f("Which activities help make bones strong?","Jumping and running",["Watching TV","Sleeping"],"Jumping and running help make your bones strong."),
+      f("What does stretching do?","Keeps you flexible",["Makes you taller instantly","Makes you sleepy"],"Stretching keeps you flexible."),
+      t("Why might it be easier to focus after playing outside?","Exercise helps your brain",["You are too tired to talk","The teacher is happier"],"Exercise also helps your brain!")]},
+ {pic:"😊🌳", text:"Moving your body is good for your feelings too. When you exercise, your brain makes chemicals that help you feel happy and calm. Playing a sport with friends teaches teamwork. Even a short walk outside in nature can help when you feel worried or grumpy.",
+  qs:[f("How does exercise help your feelings?","It helps you feel happy and calm",["It makes you angry","It doesn't help"],"…chemicals that help you feel happy and calm."),
+      f("What does playing a sport with friends teach?","Teamwork",["Spelling","Cooking"],"Playing a sport with friends teaches teamwork.")]},
+ {pic:"🏏⚽", text:"Children around the world love to move. In India and Pakistan, many children play <b>cricket</b>. In Brazil, <b>soccer</b> is played on beaches and streets. In Canada, children skate and play <b>hockey</b> on frozen ponds. In China, many people practise <b>tai chi</b>, slow and graceful movements. In Kenya, some of the world's greatest long-distance runners train on high mountain roads.",
+  qs:[f("Which sport do many children play in India and Pakistan?","Cricket",["Hockey","Tai chi"],"In India and Pakistan, many children play cricket."),
+      f("What is tai chi?","Slow and graceful movements",["A fast car race","A kind of food"],"…tai chi, slow and graceful movements."),
+      t("Why do children in Canada play hockey on ponds?","The ponds freeze in winter",["Ponds are warm","There are no schools"],"…skate and play hockey on frozen ponds.")]},
+ {pic:"🧘💤", text:"Your body also needs <b>rest</b>. After exercise, drink water and stretch. Muscles grow stronger while you rest and sleep. Remember to stay safe: wear a helmet when you ride a bike or scooter, warm up before sports, and stop if something hurts. Then tell a grown-up. Find a way to move that you love, and do it every day!",
+  qs:[f("When do muscles grow stronger?","While you rest and sleep",["Only while you eat candy","Never"],"Muscles grow stronger while you rest and sleep."),
+      f("What should you wear when you ride a bike?","A helmet",["Flip-flops only","Nothing on your head"],"Wear a helmet when you ride a bike or scooter."),
+      t("What should you do if something hurts during exercise?","Stop and tell a grown-up",["Keep going even harder","Hide it"],"Stop if something hurts. Then tell a grown-up."),
+      t("What is the main idea of this fact page?","Exercise helps your heart, bones, muscles, brain and feelings",["Exercise is boring","Only grown-ups exercise"],"Every page shows a different way moving helps you.")]}
+], turn:{q:"What is your favourite way to move your body? Write two sentences about how it makes you feel.",model:"My favourite way to move is dancing to music. It makes me feel happy and full of energy."}},
+
+/* ---------- 3. FACT TEXT: BODY ---------- */
+{title:"Amazing Body Systems", e:"🫀", kind:"Fact text", pages:[
+ {pic:"🫀🩸", text:"Your <b>heart</b> is about the size of your fist. It pumps blood all around your body through tubes called blood vessels. Blood carries oxygen and food to every part of you. Your heart beats about 100,000 times a day, without you even thinking about it! You can feel your heartbeat, called your <b>pulse</b>, on your wrist or your neck.",
+  qs:[f("How big is your heart?","About the size of your fist",["The size of a watermelon","The size of a pea"],"Your heart is about the size of your fist."),
+      f("About how many times does your heart beat each day?","About 100,000 times",["About 10 times","About 100 times"],"Your heart beats about 100,000 times a day."),
+      f("Where can you feel your pulse?","On your wrist or your neck",["On your hair","On your teeth"],"You can feel… your pulse, on your wrist or your neck.")]},
+ {pic:"🫁🌬️", text:"Your <b>lungs</b> are like two big, spongy balloons in your chest. When you breathe in, they fill with air, and oxygen goes into your blood. When you breathe out, you get rid of a gas called carbon dioxide. Plants use that gas to make food, and they give us oxygen back. We are a team!",
+  qs:[f("What do your lungs look like?","Two big, spongy balloons",["Two hard rocks","One long tube"],"Your lungs are like two big, spongy balloons."),
+      f("What gas do you breathe out?","Carbon dioxide",["Oxygen","Helium"],"When you breathe out, you get rid of a gas called carbon dioxide."),
+      t("Why does the text say people and plants are a team?","Plants use the gas we breathe out and give us oxygen",["Plants can play sports","People eat all plants"],"Plants use carbon dioxide and give us oxygen back.")]},
+ {pic:"🦴🦵", text:"Your <b>skeleton</b> is made of bones. It holds you up, gives you shape and protects your soft insides. Your skull protects your brain, and your ribs protect your heart and lungs. A grown-up has 206 bones. A baby is born with more, about 270, but some of them join together as the baby grows! Places where bones meet, like your knees and elbows, are called <b>joints</b>.",
+  qs:[f("How many bones does a grown-up have?","206",["20","1,000"],"A grown-up has 206 bones."),
+      f("What protects your brain?","Your skull",["Your ribs","Your knees"],"Your skull protects your brain."),
+      t("Why does a baby have more bones than a grown-up?","Some baby bones join together as they grow",["Grown-ups lose bones","Babies are bigger"],"Some of them join together as the baby grows!")]},
+ {pic:"💪🧠", text:"You have more than 600 <b>muscles</b>. They pull on your bones to make you move. Some muscles work without you thinking, like your heart. Your <b>brain</b> is the boss of your whole body. It sends messages along nerves faster than a racing car. It helps you think, remember, feel and move. That's why you should always protect your head with a helmet!",
+  qs:[f("How many muscles do you have?","More than 600",["Six","Sixty"],"You have more than 600 muscles."),
+      f("Which body part is the boss of your body?","The brain",["The stomach","The thumb"],"Your brain is the boss of your whole body."),
+      t("Why does the text say to wear a helmet?","To protect your brain",["To look cool","To keep your hair dry"],"Your brain is so important that you should always protect your head.")]},
+ {pic:"🍽️😴", text:"When you eat, your food goes on a long journey. You chew it with your teeth, swallow it, and it travels down to your <b>stomach</b>, where it is mashed into a soupy mix. Then your intestines take out the goodness for your body. Your <b>skin</b> is the biggest organ of all! It keeps germs out, helps you feel hot and cold, and sweats to cool you down. All these parts work together every second to keep you alive and well.",
+  qs:[f("What happens to food in your stomach?","It is mashed into a soupy mix",["It turns into bones","It disappears"],"…your stomach, where it is mashed into a soupy mix."),
+      f("What is the biggest organ of the body?","Your skin",["Your heart","Your thumb"],"Your skin is the biggest organ of all!"),
+      t("Why do you sweat?","To cool your body down",["To make your skin shiny","Because you are sad"],"Your skin… sweats to cool you down."),
+      t("What is the main idea of this whole text?","Many body parts work together to keep you alive and well",["The heart is the only important part","Bones are soft"],"All these parts work together every second.")]}
+], turn:{q:"Which body part do you think is the most amazing? Write two sentences and explain why.",model:"I think the brain is the most amazing body part. It helps me think, remember and feel everything."}},
+
+/* ---------- 4. STORY: GERMS ---------- */
+{title:"The Glitter Germ Experiment", e:"✨", kind:"Story", pages:[
+ {pic:"🤧🏫", text:"It was flu season, and half of Mr. Ali's class had colds. \"Achoo!\" sneezed Leo, right into his hands. Then he picked up a marker and passed it to Mia. Mr. Ali smiled. \"Today, class, we are going to be germ detectives. Germs are tiny living things that can make us sick. They are so small that you can't see them. So we'll use glitter to pretend.\"",
+  qs:[f("Why were so many children sick?","It was flu season",["It was summer","They ate too much"],"It was flu season, and half of Mr. Ali's class had colds."),
+      f("What are germs?","Tiny living things that can make us sick",["Small toys","A kind of glitter"],"Germs are tiny living things that can make us sick."),
+      p("What do you think the glitter will show?","How germs spread from person to person",["How to make art","How to clean glitter"],"Mr. Ali said they will use glitter to pretend to be germs.")]},
+ {pic:"✨🤝", text:"Mr. Ali sprinkled glitter on Leo's hands. \"Leo, please shake hands with Mia.\" Then Mia gave a pencil to Ada. Ada opened the door. Ten minutes later, there was glitter everywhere: on six children's hands, on the door handle, on the pencils and even on Wei's nose! \"Wow,\" said Leo. \"It started with just my hands.\"",
+  qs:[f("Whose hands got glitter first?","Leo's",["Mia's","Wei's"],"Mr. Ali sprinkled glitter on Leo's hands."),
+      f("How many children had glitter on their hands after ten minutes?","Six",["One","Twenty"],"…on six children's hands…"),
+      t("What did the glitter show the class?","Germs spread easily from hands to things and people",["Glitter is pretty","Doors are dirty"],"It started with one person's hands and spread everywhere.")]},
+ {pic:"🧼💧", text:"\"Now let's try to get it off,\" said Mr. Ali. First, the children rinsed their hands with water only. Most of the glitter stayed. Then Mr. Ali gave instructions: \"Wet your hands. Put on soap. Rub your palms, the backs of your hands, between your fingers and under your nails. Scrub for 20 seconds. Then rinse and dry.\" This time, the glitter washed away.",
+  qs:[f("What happened when they used water only?","Most of the glitter stayed",["All the glitter came off","The glitter grew"],"…with water only. Most of the glitter stayed."),
+      f("How long should you scrub your hands?","20 seconds",["2 seconds","20 minutes"],"Scrub for 20 seconds."),
+      t("What does this experiment show about soap?","Soap helps wash germs away much better than water alone",["Soap is useless","Water is better than soap"],"With soap, the glitter washed away.")]},
+ {pic:"🎶⏱️", text:"\"How do we know when 20 seconds are up?\" asked Ada. \"Sing 'Happy Birthday' twice!\" said Mr. Ali. The class laughed and sang. Then Mr. Ali showed them how to sneeze into their elbow instead of their hands. \"If you cough or sneeze into your elbow, the germs don't get on your hands, so you don't pass them to your friends.\"",
+  qs:[f("How can you count 20 seconds while washing?","Sing 'Happy Birthday' twice",["Count to two","Clap once"],"\"Sing 'Happy Birthday' twice!\""),
+      f("Where should you sneeze?","Into your elbow",["Into your hands","On a friend"],"…how to sneeze into their elbow instead of their hands."),
+      t("Why is sneezing into your elbow better than into your hands?","Germs don't get on your hands and spread",["It is louder","Elbows are softer"],"If you cough or sneeze into your elbow, the germs don't get on your hands.")]},
+ {pic:"🏆🧴", text:"The class made a poster for the hallway: <b>BE A GERM BUSTER! Wash your hands. Sneeze into your elbow. Don't share cups. Stay home when you are sick.</b> Over the next weeks, fewer children got sick. Leo was proud. \"I started the glitter mess,\" he said, \"but now I'm the best germ buster in the class!\"",
+  qs:[f("What did the class make?","A poster",["A cake","A robot"],"The class made a poster for the hallway."),
+      t("Why did fewer children get sick?","They washed their hands and sneezed into their elbows",["The glitter scared the germs","They stopped going to school"],"Following the germ-buster rules stopped germs spreading."),
+      t("What kind of sentences are on the poster?","Instructions that tell people what to do",["Questions","Jokes"],"Wash your hands. Sneeze into your elbow. These are instructions.")]}
+], turn:{q:"Write three instructions to stop germs from spreading. Start each one with a verb.",model:"Wash your hands with soap. Cover your cough with your elbow. Stay home when you are sick."}},
+
+/* ---------- 5. STORY: SLEEP ---------- */
+{title:"Sam's Super Sleep Plan", e:"😴", kind:"Story", pages:[
+ {pic:"📱🌙", text:"Sam loved his tablet. Every night, after Mom said \"Lights out!\", he secretly played games under his blanket. He stayed up until ten, eleven, sometimes even later. In the morning, Sam's alarm rang and rang, but he could hardly open his eyes. He yawned all the way to school.",
+  qs:[f("What did Sam do after 'Lights out'?","Played games on his tablet",["Read a book","Went to sleep"],"…he secretly played games under his blanket."),
+      t("Why was Sam so tired in the morning?","He stayed up too late",["He ate too much","He ran a race"],"He stayed up until ten, eleven, sometimes even later."),
+      p("What do you think will happen at school?","Sam will have trouble paying attention",["Sam will win a prize for being awake","Nothing will happen"],"Being very tired makes it hard to focus.")]},
+ {pic:"😩⚽", text:"At school, Sam couldn't focus on his spelling test. He forgot the answers he knew yesterday. At recess, he missed an easy goal and snapped at his friend Dev. \"Leave me alone!\" Dev looked hurt. By lunch, Sam had a headache. The school nurse, Ms. Okafor, asked him kindly, \"How much did you sleep last night, Sam?\"",
+  qs:[f("Who did Sam snap at?","Dev",["Mr. Ali","His mom"],"…snapped at his friend Dev."),
+      f("Who is Ms. Okafor?","The school nurse",["The principal","Sam's aunt"],"The school nurse, Ms. Okafor…"),
+      t("How did being tired affect Sam?","He couldn't focus, got grumpy and had a headache",["He felt full of energy","He was happier"],"He forgot answers, snapped at Dev and had a headache.")]},
+ {pic:"🩺🧠", text:"Ms. Okafor explained, \"Children your age need about 9 to 12 hours of sleep every night. While you sleep, your body grows, your muscles repair, and your brain sorts out everything you learned that day. Without enough sleep, it's harder to remember, harder to stay calm, and easier to get sick.\" Sam's eyes went wide. \"So sleep is like charging a battery?\" \"Exactly!\"",
+  qs:[f("How much sleep do children Sam's age need?","About 9 to 12 hours",["About 3 hours","About 20 hours"],"Children your age need about 9 to 12 hours of sleep every night."),
+      f("What does your brain do while you sleep?","Sorts out what you learned that day",["Turns off forever","Plays games"],"…your brain sorts out everything you learned that day."),
+      t("Why did Sam compare sleep to charging a battery?","Sleep gives your body and brain new energy",["Sleep needs a plug","Batteries are sleepy"],"Like a battery, your body recharges while you sleep.")]},
+ {pic:"📋🛁", text:"That night, Sam and his mom made a <b>Super Sleep Plan</b> and stuck it on his door:<br>1. Put the tablet in the kitchen at 7:30.<br>2. Have a warm bath and brush your teeth.<br>3. Read a book or listen to quiet music.<br>4. Turn off the light at 8:30.<br>5. Wake up at 7:00, feeling great!",
+  qs:[f("Where does the tablet go at 7:30?","In the kitchen",["Under the pillow","In Sam's bed"],"Put the tablet in the kitchen at 7:30."),
+      f("What time does Sam turn off the light?","8:30",["10:30","7:00"],"Turn off the light at 8:30."),
+      t("How many hours of sleep will Sam get from 8:30 p.m. to 7:00 a.m.?","Ten and a half hours",["Two hours","Fifteen hours"],"From 8:30 to 7:00 is ten and a half hours."),
+      t("Why does the plan say to put the tablet away?","Screens can keep you awake",["Tablets need sleep too","The kitchen is lonely"],"Bright screens and exciting games make it harder to fall asleep.")]},
+ {pic:"🌞😃", text:"The first few nights were hard. Sam missed his games. But after a week, something amazing happened. He woke up before his alarm! He got a perfect score on his spelling test and scored two goals at recess. He even said sorry to Dev for snapping at him. \"My Super Sleep Plan is my superpower,\" Sam told the class. \"Who knew that the best way to get stronger was to go to sleep?\"",
+  qs:[f("What happened after a week?","Sam woke up before his alarm",["Sam stopped sleeping","Sam lost his tablet"],"He woke up before his alarm!"),
+      f("What did Sam do about snapping at Dev?","He said sorry",["He ignored Dev","He snapped again"],"He even said sorry to Dev for snapping at him."),
+      t("What is the lesson of this story?","Getting enough sleep helps your body and brain",["Games are bad","Alarms are loud"],"Once Sam slept enough, he felt and did better in every way.")]}
+], turn:{q:"Write your own bedtime routine with three or four steps. Start each step with a verb.",model:"Brush your teeth. Put on your pyjamas. Read a book with Mom. Turn off the light at eight o'clock."}},
+
+/* ---------- 6. REAL-WORLD TEXT ---------- */
+{title:"Real-world reading: A recipe card and a bike safety poster", e:"📋", kind:"Real-world text", pages:[
+ {pic:"🍓🍌", text:"<div class=\"realdoc\" style=\"text-align:left\"><b>🌈 Rainbow Fruit Skewers</b> · Makes 6 skewers · Time: 15 minutes<br><br><b>You will need:</b><br>• 6 strawberries (red) • 1 orange, peeled (orange) • 1 banana (yellow) • 2 kiwis, peeled (green) • 12 blueberries (blue) • 12 purple grapes • 6 wooden skewers<br><br><b>Steps:</b><br>1. Wash your hands with soap.<br>2. Wash the fruit.<br>3. Ask a grown-up to help you cut the fruit into bite-sized pieces.<br>4. Slide the fruit onto each skewer in rainbow order: red, orange, yellow, green, blue, purple.<br>5. Serve right away, or keep them cold in the fridge.<br><br>⚠️ <i>Skewers are sharp. Be careful, and always have a grown-up nearby.</i></div>",
+  qs:[f("How many skewers does the recipe make?","6",["12","1"],"Makes 6 skewers."),
+      f("What is the first step?","Wash your hands with soap",["Cut the fruit","Eat the skewers"],"1. Wash your hands with soap."),
+      f("Which fruit is green?","Kiwi",["Banana","Grape"],"2 kiwis, peeled (green)"),
+      t("Why should a grown-up help with step 3?","Cutting with a knife can be dangerous",["Grown-ups like fruit","Children can't wash fruit"],"Knives are sharp. Safety first."),
+      t("What kind of sentences are the steps?","Instructions",["Questions","Exclamations"],"Each step starts with a verb and tells you what to do.")]},
+ {pic:"🚲⛑️", text:"<div class=\"realdoc\"><b>🚲 RIDE SAFE, RIDE SMART! 🚲</b><br><br>✅ <b>Always wear a helmet.</b> It should sit level on your head, just above your eyebrows.<br>✅ <b>Check your brakes</b> before you ride.<br>✅ <b>Wear bright colours</b> so drivers can see you.<br>✅ <b>Ride on the right side</b> of the road, in the same direction as cars.<br>✅ <b>Stop and look</b> both ways at every corner.<br>❌ <b>Don't wear headphones</b> while you ride.<br>❌ <b>Don't ride at night</b> without lights.<br><br><i>A helmet can protect your brain in a fall. You only get one brain. Protect it!</i></div>",
+  qs:[f("Where should your helmet sit?","Level on your head, just above your eyebrows",["On the back of your head","Around your neck"],"It should sit level on your head, just above your eyebrows."),
+      f("Why should you wear bright colours?","So drivers can see you",["To match your bike","Because it's warm"],"Wear bright colours so drivers can see you."),
+      t("Why shouldn't you wear headphones while riding?","You need to hear cars and other sounds",["Headphones are heavy","Music is too quiet"],"Hearing traffic helps keep you safe."),
+      f("Which side of the road should you ride on (in Canada)?","The right side",["The left side","The middle"],"Ride on the right side of the road."),
+      t("What does 'You only get one brain' mean?","Your brain is precious and can't be replaced",["You have two brains","Brains are cheap"],"That's why protecting your head matters so much.")]}
+], turn:{q:"Write three instructions for staying safe at the playground. Start each with a verb.",model:"Wait for your turn on the slide. Hold on tightly on the climbing frame. Tie your shoelaces before you run."}}
+],
+
+poems:[
+ {title:"The Land of Counterpane (by Robert Louis Stevenson, 1885)",
+  lines:["When I was sick and lay a-bed,","I had two pillows at my head,","And all my toys beside me lay,","To keep me happy all the day.","","And sometimes for an hour or so","I watched my leaden soldiers go,","With different uniforms and drills,","Among the bed-clothes, through the hills;","","And sometimes sent my ships in fleets","All up and down among the sheets;","Or brought my trees and houses out,","And planted cities all about.","","I was the giant great and still","That sits upon the pillow-hill,","And sees before him, dale and plain,","The pleasant land of counterpane."],
+  qs:[f("Why was the child in bed?","He was sick",["It was night","He was lazy"],"\"When I was sick and lay a-bed.\""),
+      f("What did the child have beside him?","His toys",["His dog","His homework"],"\"And all my toys beside me lay.\""),
+      t("What is a 'counterpane'?","A bedspread (a blanket on top of the bed)",["A window","A kind of pain"],"The bed covers become a pretend land of hills and cities."),
+      t("How did the child stay happy while sick?","He used his imagination to play with his toys",["He watched TV","He went to school"],"He turned the sheets into seas and hills."),
+      f("Which word rhymes with 'head'?","a-bed",["lay","day"],"Head and a-bed end with the same sound.")]},
+ {title:"My Body Can",
+  lines:["My legs can run, my arms can swing,","My lungs can breathe, my voice can sing.","My heart goes thump, a steady drum,","My tummy rumbles: \"Food, please, come!\"","So I should eat a rainbow plate,","And drink my water, sleep till late…","Well, not TOO late, but eight or nine,","Then wake up feeling super-fine!"],
+  qs:[f("What does the heart sound like in the poem?","A steady drum",["A whistle","A bell"],"\"My heart goes thump, a steady drum.\""),
+      f("Which word rhymes with 'swing'?","sing",["run","drum"],"Swing and sing end with the same sound."),
+      t("What does 'My tummy rumbles: Food, please, come!' mean?","The child is hungry",["The child is sleepy","The child has a drum"],"A rumbling tummy is a sign of hunger."),
+      t("Which healthy habits does the poem mention?","Eating a rainbow plate, drinking water and sleeping",["Watching TV all day","Skipping meals"],"\"So I should eat a rainbow plate, and drink my water, sleep…\"")]}
+],
+
+words:[
+ /* body */
+ {w:"heart",e:"🫀",m:"the muscle in your chest that pumps blood",ex:"Your heart beats faster when you run.",fill:"My ___ is beating fast after the race."},
+ {w:"lungs",e:"🫁",m:"the two organs in your chest that fill with air when you breathe",ex:"Your lungs fill with air when you breathe in.",fill:"Take a deep breath and fill your ___ with air."},
+ {w:"brain",e:"🧠",m:"the organ in your head that controls your body and helps you think",ex:"Your brain is the boss of your body.",fill:"Use your ___ to solve the puzzle."},
+ {w:"muscle",e:"💪",m:"a part of the body that pulls on bones to make you move",ex:"Climbing builds strong muscles.",fill:"Your heart is a ___ that never stops working."},
+ {w:"bone",e:"🦴",m:"one of the hard parts that make up your skeleton",ex:"Milk helps build strong bones.",fill:"He broke a ___ in his arm."},
+ {w:"skeleton",e:"💀",m:"all the bones of the body together",ex:"Your skeleton holds you up.",fill:"The ___ in the science room has 206 bones."},
+ {w:"stomach",e:"🍽️",m:"the part inside your body where food goes after you swallow it",ex:"Food is mashed up in your stomach.",fill:"My ___ is full after that big lunch."},
+ {w:"skin",e:"✋",m:"the outer covering of your body",ex:"Your skin keeps germs out.",fill:"Wear sunscreen to protect your ___."},
+ {w:"blood",e:"🩸",m:"the red liquid that carries oxygen around your body",ex:"Your heart pumps blood all around your body.",fill:"A small cut can make a drop of ___."},
+ {w:"joint",e:"🦵",m:"a place where two bones meet, like your knee or elbow",ex:"Your knee is a joint.",fill:"Your elbow is a ___ that lets your arm bend."},
+ /* food */
+ {w:"vegetable",e:"🥦",m:"a plant or part of a plant that we eat, like a carrot or spinach",ex:"Broccoli is a green vegetable.",fill:"A carrot is a crunchy orange ___."},
+ {w:"protein",e:"🥚",m:"a part of food that helps build muscles, found in beans, eggs, fish and nuts",ex:"Lentils are full of protein.",fill:"Eggs and beans give you ___ to build muscles."},
+ {w:"grain",e:"🌾",m:"seeds like rice, wheat and oats that we eat",ex:"Brown rice is a whole grain.",fill:"Oats are a healthy ___ for breakfast."},
+ {w:"vitamin",e:"🍊",m:"something in food that your body needs to stay healthy",ex:"Oranges have lots of vitamin C.",fill:"Fruits and vegetables are full of ___s."},
+ {w:"balanced",e:"⚖️",m:"having the right amount of different things",ex:"A balanced meal has foods from different groups.",fill:"Rice, dal and vegetables make a ___ meal."},
+ {w:"snack",e:"🥕",m:"a small amount of food eaten between meals",ex:"An apple is a healthy snack.",fill:"I had yogurt for a ___ after school."},
+ {w:"nutritious",e:"🥗",m:"full of the good things your body needs",ex:"Vegetable soup is very nutritious.",fill:"Fruit is a ___ snack."},
+ {w:"digest",e:"🔄",m:"to break down food in your body so it can be used",ex:"Your stomach helps you digest food.",fill:"It takes hours to ___ a big meal."},
+ {w:"hydrated",e:"💧",m:"having enough water in your body",ex:"Drink water to stay hydrated.",fill:"On hot days, drink lots of water to stay ___."},
+ {w:"fibre",e:"🌽",m:"a part of plant foods that helps your body digest",ex:"Whole grains and beans have lots of fibre.",fill:"Fruits and vegetables are full of ___.",alt:["fiber"]},
+ /* exercise */
+ {w:"exercise",e:"🏃",m:"activity that moves your body and keeps it healthy",ex:"Exercise makes your heart stronger.",fill:"Riding a bike is great ___."},
+ {w:"stretch",e:"🤸",m:"to make your body long by reaching out your arms or legs",ex:"Stretch before you play sports.",fill:"___ your arms up high to the sky."},
+ {w:"breathe",e:"🌬️",m:"to take air into your lungs and let it out",ex:"Breathe in slowly through your nose.",fill:"___ in deeply and count to four."},
+ {w:"sweat",e:"💦",m:"to make salty water on your skin when you are hot",ex:"We sweat when we run on a hot day.",fill:"Running in the sun made me ___."},
+ {w:"balance",e:"🧍",m:"to stay steady without falling",ex:"Can you balance on one foot?",fill:"It is hard to ___ on a skateboard."},
+ {w:"strength",e:"🏋️",m:"how strong someone is",ex:"Climbing builds strength.",fill:"It takes ___ to lift a heavy box."},
+ {w:"pulse",e:"💓",m:"the beat of your heart that you can feel in your wrist or neck",ex:"Put two fingers on your wrist to feel your pulse.",fill:"After running, my ___ was very fast."},
+ {w:"flexible",e:"🧘",m:"able to bend easily",ex:"Stretching keeps you flexible.",fill:"Gymnasts are very ___."},
+ {w:"active",e:"⚽",m:"moving around and doing things",ex:"Children should be active every day.",fill:"Stay ___ by playing outside."},
+ {w:"rest",e:"🛌",m:"to stop doing things and relax or sleep",ex:"Muscles grow stronger while you rest.",fill:"After the race, sit down and ___."},
+ /* hygiene, safety and silent letters */
+ {w:"germ",e:"🦠",m:"a tiny living thing that can make you sick",ex:"Washing your hands removes germs.",fill:"A ___ is too small to see without a microscope."},
+ {w:"hygiene",e:"🧼",m:"keeping yourself and things around you clean to stay healthy",ex:"Brushing your teeth is good hygiene.",fill:"Washing your hands is an important part of ___."},
+ {w:"soap",e:"🧴",m:"something you use with water to wash and clean",ex:"Use soap to wash away germs.",fill:"Wash your hands with ___ and water."},
+ {w:"cough",e:"😷",m:"to push air out of your throat with a sudden noise",ex:"Cough into your elbow.",fill:"Please ___ into your elbow, not your hand."},
+ {w:"sneeze",e:"🤧",m:"to blow air out of your nose suddenly, with an 'achoo!'",ex:"Leo sneezed into his hands.",fill:"Pepper makes me ___!"},
+ {w:"knee",e:"🦵",m:"the joint in the middle of your leg",ex:"I scraped my knee on the playground.",fill:"Bend your ___ and jump!"},
+ {w:"thumb",e:"👍",m:"the short, thick finger on the side of your hand",ex:"Give me a thumbs-up!",fill:"Your ___ helps you hold a pencil."},
+ {w:"wrist",e:"⌚",m:"the joint between your hand and your arm",ex:"You can feel your pulse on your wrist.",fill:"I wear my watch on my ___."},
+ {w:"knuckle",e:"✊",m:"one of the joints in your fingers",ex:"He knocked on the door with his knuckles.",fill:"Make a fist and look at each ___."},
+ {w:"helmet",e:"⛑️",m:"a hard hat that protects your head",ex:"Always wear a helmet on your bike.",fill:"Put on your ___ before you ride your scooter."}
+],
+
+spelling:[
+ {w:"body",s:"Take care of your body."},
+ {w:"head",s:"Wear a helmet on your head.",tip:"'ea' sounds like short e."},
+ {w:"heart",s:"My heart is beating.",tip:"It has 'ear' inside: h-ear-t."},
+ {w:"knee",s:"I bent my knee.",tip:"Silent k! k-nee."},
+ {w:"thumb",s:"Give me a thumbs-up.",tip:"Silent b at the end."},
+ {w:"wash",s:"Wash your hands.",tip:"'a' sounds like 'o': w-a-sh."},
+ {w:"hands",s:"Clean hands stop germs."},
+ {w:"teeth",s:"Brush your teeth twice a day.",tip:"Double e."},
+ {w:"sleep",s:"I need to sleep.",tip:"Double e."},
+ {w:"water",s:"Drink water every day."},
+ {w:"healthy",s:"Eat healthy food.",tip:"health + y."},
+ {w:"food",s:"Food gives us energy.",tip:"Double o."},
+ {w:"strong",s:"Exercise makes you strong."},
+ {w:"doctor",s:"The doctor checked my ears.",tip:"It ends with -or."},
+ {w:"exercise",s:"Exercise is good for you.",tip:"ex-er-cise."}
+],
+
+facts:[
+ {e:"🫀",c:"Your heart beats about 100,000 times a day.",t:true,x:"True! And it never takes a break, even while you sleep."},
+ {e:"🦴",c:"Babies have more bones than grown-ups.",t:true,x:"True! Babies have about 270 bones. Some of them join together as they grow, so adults have 206."},
+ {e:"👃",c:"You can taste food better when your nose is blocked.",t:false,x:"Not true! Smell helps you taste. That's why food tastes boring when you have a cold."},
+ {e:"💧",c:"Your body is more than half water.",t:true,x:"True! That's why drinking water every day is so important."},
+ {e:"🦷",c:"Tooth enamel is the hardest substance in the human body.",t:true,x:"True! It is even harder than bone. But sugar can still damage it, so brush twice a day."},
+ {e:"🧼",c:"Rinsing with water alone removes germs as well as soap does.",t:false,x:"Not true! Soap and scrubbing for 20 seconds remove far more germs."},
+ {e:"😴",c:"Your body grows and repairs itself while you sleep.",t:true,x:"True! That's one reason children need 9 to 12 hours of sleep."},
+ {e:"👣",c:"More than a quarter of your bones are in your feet.",t:true,x:"True! Each foot has 26 bones, so your two feet have 52 of your 206 bones."},
+ {e:"🧠",c:"Your brain stops working when you sleep.",t:false,x:"Not true! Your brain is busy at night, sorting memories and helping you learn."},
+ {e:"💪",c:"You have more than 600 muscles.",t:true,x:"True! Even smiling uses many muscles in your face."},
+ {e:"🍰",c:"Some foods are 'bad' and must never be eaten.",t:false,x:"Not true! Treats are 'sometimes foods' that can be enjoyed now and then. Everyday foods help your body most."},
+ {e:"✋",c:"Your skin is the biggest organ of your body.",t:true,x:"True! It protects you from germs and helps you feel hot, cold and touch."}
+],
+
+writing:[
+ {e:"🌞",t:"My healthy day",level:"Step 1 · Sentences",
+  prompt:"Write at least 5 sentences about a healthy day in your life, from morning to night. Write about food, exercise, cleanliness and sleep. Use at least 2 words from the word bank, and use can or should at least once.",
+  minS:5,minWords:2,
+  rx:[["^\\s*[A-Z]","I started with a capital letter"],["[.!?]\\s*$","I ended with a full stop"],["\\b(can|should)\\b","I used can or should"],["\\b(eat|ate|breakfast|lunch|dinner|fruit|vegetable|rice|water)\\w*","I wrote about food or drink"],["\\b(run|play|walk|ride|swim|dance|exercise|jump|soccer|cricket|bike|active)\\w*","I wrote about moving my body"],["^(?![\\s\\S]*\\bi\\b)","I wrote I as a capital letter"]],
+  starters:["In the morning, I ","For breakfast, I ","At recess, I ","Before lunch, I wash ","At night, I should "],
+  model:"In the morning, I brush my teeth and eat oatmeal with blueberries. I walk to school with my brother, so I am active before class even starts. At recess, I play soccer until I sweat. Before lunch, I wash my hands with soap for 20 seconds. After school, I drink water and have an apple for a snack. At night, I should turn off my tablet early so I can sleep for ten hours."},
+ {e:"🪥",t:"How to… (instructions)",level:"Step 2 · Instructions",
+  prompt:"Choose a healthy habit (brushing your teeth, washing your hands, making a healthy snack, getting ready for bed). Write clear instructions with at least 5 steps. Start each step with a verb, like Wet, Put, Scrub, Rinse. Use order words: First, Next, Then, Finally.",
+  minS:5,minWords:2,
+  rx:[["\\b(First|Start)\\b","I used First"],["\\b(Next|Then|After that)\\b","I used Next or Then"],["\\b(Finally|Last)\\b","I used Finally"],["(\\b(First|Next|Then|After that|Finally)\\b,?\\s+(wash|wet|put|scrub|rinse|dry|brush|squeeze|spit|take|cut|add|mix|pour|turn|read|get|go|choose|place|open|hold|move|rub)\\b[\\s\\S]*){3}","At least 3 steps start with a verb after the order word"],["[.!?]\\s*$","I ended with a full stop"]],
+  starters:["How to Brush Your Teeth\n","First, put ","Next, brush ","Then, ","Finally, rinse "],
+  model:"How to Brush Your Teeth\nFirst, put a small dab of toothpaste on your toothbrush. Next, brush the front of your teeth in small circles. Then, brush the backs and the tops of your teeth. After that, gently brush your tongue to get rid of germs. Spit out the toothpaste, but don't swallow it. Finally, rinse your toothbrush and put it away. Brush for two minutes, twice a day! Good hygiene stops every germ from hurting your teeth."},
+ {e:"📢",t:"Healthy-tips poster",level:"Step 3 · Poster",
+  prompt:"Make a poster to help children be healthy. Give it a catchy title. Then write at least 6 tips, each on its own line. Most tips should be instructions that start with a verb (Eat…, Drink…, Wash…). Include at least one tip with should and one with can. Finish with an exciting sentence that ends with !",
+  minS:6,minWords:2,
+  rx:[["^\\s*\\S.*\\n","I wrote a title on the first line"],["(\\n\\s*[^a-z\\n]{0,3}\\s*(Eat|Drink|Wash|Sleep|Play|Move|Brush|Wear|Get|Go|Try|Turn|Cover|Stretch|Choose|Take|Ride|Walk|Run|Remember|Stay|Put|Have|Don't)\\b[^\\n]*){4}","At least 4 tips start with an instruction verb"],["\\bshould\\b","I used should"],["\\bcan\\b","I used can"],["!","I used an exclamation mark"]],
+  starters:["BE A HEALTH HERO!\n","Eat a rainbow of fruits and vegetables.\n","Drink ","Wash ","You should ","You can "],
+  model:"BE A HEALTH HERO!\nEat a rainbow of fruits and vegetables every day.\nDrink water instead of pop.\nWash your hands with soap for 20 seconds.\nPlay outside for at least an hour.\nYou should sleep for 9 to 12 hours every night.\nWear a helmet when you ride your bike.\nCover your cough with your elbow.\nYou can be strong, smart and healthy. Start today!"}
+]
+});
+})();
+
+/* ===================== UNIT 11 · SKILL BANKS AND SKILL LIST (original content) ===================== */
+(function(){
+const u=UNITS.find(x=>x.id==="health");
+const set=k=>u.words.slice(k*10,k*10+10);
+const MIX=(...g)=>()=>R(g)();
+const box=(t,txt)=>`<div class="qbox" style="margin:0 0 12px;font-size:18px;line-height:1.6;font-weight:400"><b>${t}</b><br>${txt}</div>`;
+
+/* ================= GRAMMAR: INSTRUCTIONS (IMPERATIVES) ================= */
+const INS=["Wash your hands with soap.","Drink a glass of water.","Brush your teeth twice a day.","Wear a helmet on your bike.","Cover your cough with your elbow.","Stretch your arms up high.","Eat a rainbow of vegetables.","Turn off the tablet at bedtime.","Put on sunscreen before you go outside.","Wait for your turn on the slide.","Tie your shoelaces.","Look both ways before you cross.","Take a deep breath.","Sit up straight.","Rinse the fruit before you eat it.","Don't run by the pool.","Don't share cups when you are sick.","Please close the door quietly.","Hold the rail on the stairs.","Rest when you feel tired."];
+const STM=["Leo washes his hands with soap.","Mia drinks a glass of water.","The dentist checked my teeth.","Sam wears a helmet on his bike.","My heart beats fast when I run.","Grandma stretched after her walk.","We ate a rainbow of vegetables.","The tablet is in the kitchen.","Dev put on sunscreen.","The children waited for their turn.","Bones are hard and strong.","Muscles pull on bones."];
+const QS=["Did you wash your hands?","Do you drink water every day?","How long should you brush your teeth?","Where is your helmet?","Can you touch your toes?","Why do we sweat?","Is your shoelace untied?","What time do you go to bed?"];
+const isIns=()=>{const r=R(INS);return mcQ("Which sentence is an <b>instruction</b> (it tells you what to do)?",r,[R(STM),R(QS)],`<b>${r}</b> tells you what to do. Instructions usually start with a <b>verb</b> (an action word), like <i>Wash</i>, <i>Drink</i> or <i>Don't</i>.`,"Instructions start with an action word and tell someone what to do.")};
+const INSV=[["___ your hands with soap and water.","Wash",["Sleep","Throw"]],["___ a helmet when you ride your bike.","Wear",["Eat","Drop"]],["___ your teeth for two minutes.","Brush",["Kick","Paint"]],["___ your cough with your elbow.","Cover",["Show","Lose"]],["___ water when you are thirsty.","Drink",["Spill","Throw"]],["___ both ways before you cross the street.","Look",["Run","Sleep"]],["___ your arms and legs before you play.","Stretch",["Hide","Forget"]],["___ the fruit before you eat it.","Wash",["Throw","Hide"]],["___ off the screen an hour before bed.","Turn",["Eat","Kick"]],["___ a deep breath when you feel worried.","Take",["Throw","Lose"]],["___ on sunscreen on sunny days.","Put",["Eat","Sing"]],["___ for your turn in line.","Wait",["Push","Shout"]],["___ your shoelaces so you don't trip.","Tie",["Eat","Throw"]],["___ a grown-up if you get hurt.","Tell",["Hide from","Forget"]],["___ your hands with a clean towel.","Dry",["Wet","Lick"]],["___ fruits and vegetables every day.","Eat",["Throw","Hide"]],["___ outside for at least an hour.","Play",["Sleep","Sit still"]],["___ in through your nose and out through your mouth.","Breathe",["Shout","Chew"]],["___ the soap between your fingers.","Rub",["Throw","Eat"]],["___ when you feel tired after exercise.","Rest",["Run faster","Shout"]]];
+const insVerb=()=>{const x=R(INSV);return mcQ(`Choose the best verb to start this instruction:<br><b>${x[0]}</b>`,x[1],x[2],`<b>${x[0].replace("___",x[1])}</b> An instruction starts with an action word.`,"Which action makes sense and is safe and healthy?")};
+const TOI=[["You should wash your hands.","Wash your hands."],["You should drink more water.","Drink more water."],["You should wear your helmet.","Wear your helmet."],["You should brush your teeth.","Brush your teeth."],["You should stretch before you run.","Stretch before you run."],["You should go to bed early.","Go to bed early."],["You should eat your vegetables.","Eat your vegetables."],["You should cover your cough.","Cover your cough."],["You should not run by the pool.","Don't run by the pool."],["You should not share your cup.","Don't share your cup."],["You should look both ways.","Look both ways."],["You should tie your shoelaces.","Tie your shoelaces."],["You should rinse the fruit.","Rinse the fruit."],["You should take a deep breath.","Take a deep breath."],["You should put on sunscreen.","Put on sunscreen."],["You should not touch the hot stove.","Don't touch the hot stove."],["You should rest after the race.","Rest after the race."],["You should wash the fruit.","Wash the fruit."],["You should sit up straight.","Sit up straight."],["You should not eat too fast.","Don't eat too fast."],["You should drink water every day.","Drink water every day."],["You should hold the rail.","Hold the rail."]];
+const toIns=()=>{const x=R(TOI);return {type:"type",q:`Turn this into an <b>instruction</b>. Start with the verb:<br><b>${x[0]}</b>`,a:[x[1],x[1].replace("Don't","Do not"),x[1].replace(/\.$/,"!")],why:`<b>${x[1]}</b> An instruction starts with the verb. We don't need "You should".${x[1].startsWith("Don't")?" For 'should not', start with Don't.":""}`,hint:"Take away 'You should' and start with the action word. 'Should not' becomes 'Don't'."}};
+const insFix=()=>{const s=R(INS);const low=s.charAt(0).toLowerCase()+s.slice(1,-1);return {type:"type",strict:true,q:`Fix this instruction. Add the capital letter and the full stop:<br><b>${low}</b>`,a:[s,s.replace(/\.$/,"!")],why:`Correct: <b>${s}</b>`,hint:"Capital letter at the start, full stop (or !) at the end."}};
+
+/* ================= GRAMMAR: CAN AND SHOULD ================= */
+const CS=[["Fish ___ breathe under water.","can","should","Fish are able to breathe under water, so we use can."],["You ___ wash your hands before you eat.","should","can","This is good advice, so we use should."],["Birds ___ fly.","can","should","Birds are able to fly."],["You ___ wear a helmet when you ride a bike.","should","can","This is a safety rule, so we use should."],["My little sister ___ count to twenty.","can","should","She is able to count, so we use can."],["Children ___ sleep for 9 to 12 hours.","should","can","This is health advice."],["Cheetahs ___ run very fast.","can","should","They are able to run fast."],["We ___ drink water when it is hot.","should","can","This is good advice."],["Leo ___ swim across the pool.","can","should","He is able to swim."],["You ___ cover your mouth when you cough.","should","can","This is good advice."],["Our hearts ___ beat without us thinking.","can","should","Hearts are able to do this by themselves."],["You ___ eat lots of fruits and vegetables.","should","can","This is health advice."],["Gymnasts ___ do cartwheels and flips.","can","should","They are able to do them."],["You ___ stretch before you play sports.","should","can","This is good advice."],["Dogs ___ hear sounds that people can't.","can","should","Dogs are able to hear them."],["You ___ tell a grown-up if you feel sick.","should","can","This is the right thing to do."],["Some people ___ speak three languages.","can","should","They are able to speak them."],["You ___ brush your teeth twice a day.","should","can","This is health advice."],["Babies ___ crawl before they walk.","can","should","They are able to crawl."],["You ___ look both ways before you cross the road.","should","can","This is a safety rule."],["A kangaroo ___ jump very far.","can","should","It is able to jump far."],["You ___ turn off screens before bedtime.","should","can","This is good advice for sleep."],["I ___ touch my toes!","can","should","I am able to do it."],["We ___ be kind to our bodies.","should","can","This is good advice."]];
+const canShould=()=>{const x=R(CS);return mcQ(`Choose <b>can</b> or <b>should</b>:<br><b>${x[0]}</b>`,x[1],[x[2]],`<b>${x[0].replace("___",x[1])}</b> ${x[3]}<br><b>can</b> = able to · <b>should</b> = a good idea / advice.`,"can = is able to · should = it's a good idea")};
+const CSN=[["You ___ eat candy for breakfast every day.","shouldn't","can't","It isn't a good idea, so we use shouldn't."],["Penguins ___ fly.","can't","shouldn't","Penguins are not able to fly."],["You ___ swim alone in the sea.","shouldn't","can't","It isn't safe."],["Fish ___ live out of water.","can't","shouldn't","They are not able to."],["You ___ stay up until midnight on a school night.","shouldn't","can't","It isn't a good idea."],["A baby ___ read a book by itself.","can't","shouldn't","A baby is not able to read yet."],["You ___ share your toothbrush.","shouldn't","can't","It spreads germs."],["I ___ see in the dark like an owl.","can't","shouldn't","People are not able to."],["You ___ touch a hot stove.","shouldn't","can't","It is dangerous."],["Snails ___ run fast.","can't","shouldn't","They are not able to."],["You ___ ride your bike without a helmet.","shouldn't","can't","It isn't safe."],["Elephants ___ jump.","can't","shouldn't","Elephants are not able to jump."],["You ___ leave your shoelaces untied.","shouldn't","can't","You might trip."],["Turtles ___ run as fast as rabbits.","can't","shouldn't","They are not able to."],["You ___ drink pop every day.","shouldn't","can't","It isn't good for your teeth."],["People ___ breathe under water without special equipment.","can't","shouldn't","People are not able to."],["You ___ eat food that fell in the dirt.","shouldn't","can't","It may have germs."],["My baby brother ___ walk yet.","can't","shouldn't","He is not able to yet."],["You ___ look straight at the sun.","shouldn't","can't","It can hurt your eyes."],["Cats ___ talk like people.","can't","shouldn't","Cats are not able to."],["You ___ run with scissors.","shouldn't","can't","It is dangerous."],["We ___ see germs without a microscope.","can't","shouldn't","They are too small to see."]];
+const cantShouldnt=()=>{const x=R(CSN);return mcQ(`Choose <b>can't</b> or <b>shouldn't</b>:<br><b>${x[0]}</b>`,x[1],[x[2]],`<b>${x[0].replace("___",x[1])}</b> ${x[3]}<br><b>can't</b> = not able to · <b>shouldn't</b> = not a good idea.`,"can't = not able · shouldn't = not a good idea")};
+const canType=()=>{const x=R(CS);return {type:"type",q:`Type <b>can</b> or <b>should</b>:<br><b>${x[0]}</b>`,a:[x[1]],why:`<b>${x[0].replace("___",x[1])}</b> ${x[3]}`,hint:"Is it about being ABLE to do something (can), or a GOOD IDEA (should)?"}};
+
+/* ================= SILENT LETTERS ================= */
+const SIL=[["knee","k","I hurt my knee."],["know","k","I know the answer."],["knife","k","Ask a grown-up to use the knife."],["knock","k","Knock on the door."],["knot","k","Tie a knot."],["knuckle","k","I bumped my knuckle."],["kneel","k","Kneel on the mat."],["knit","k","Grandma can knit a scarf."],["write","w","Write your name."],["wrist","w","My watch is on my wrist."],["wrong","w","That answer is wrong."],["wrap","w","Wrap the present."],["wrinkle","w","My shirt has a wrinkle."],["thumb","b","Give me a thumbs-up."],["lamb","b","The lamb is in the field."],["climb","b","Climb the ladder carefully."],["comb","b","Comb your hair."],["crumb","b","There's a crumb on your chin."],["numb","b","My fingers are numb with cold."],["half","l","Cut the apple in half."],["calf","l","A calf is a baby cow."],["talk","l","Let's talk about healthy food."],["walk","l","Walk to school."],["chalk","l","Draw with chalk."],["listen","t","Listen to your body."],["castle","t","The castle is old."],["whistle","t","Blow the whistle."],["sign","g","Read the sign."],["gnaw","g","The dog likes to gnaw on a bone."],["hour","h","Play outside for an hour."],["honest","h","Be honest."],["island","s","We sailed to the island."],["answer","w","Write the answer."],["sword","w","The knight had a sword."],["ghost","h","I dressed as a ghost."],["scissors","c","Use the scissors carefully."]];
+const silFind=()=>{const x=R(SIL);const letters=uniq(x[0].split("").filter(c=>c!==x[1]&&!(c==="e"&&x[0].endsWith("e"))&&!(c==="h"&&/wh|gh/.test(x[0]))));const wr=SAMPLE(letters,2);
+  return mcQ(`🎧 Which letter is <b>silent</b> in <b>${x[0]}</b>?`,x[1],wr,`In <b>${x[0]}</b>, the <b>${x[1]}</b> is silent. We write it, but we don't say it.`,"Say the word slowly. Which letter can't you hear?",{say:x[0],autoSay:true})};
+const silMiss=()=>{const x=R(SIL);const i=x[0].indexOf(x[1]);const shown=x[0].slice(0,i)+"_"+x[0].slice(i+1);
+  return {type:"type",q:`🎧 This word is missing its <b>silent letter</b>. Type the whole word:<br><b style="letter-spacing:3px">${shown}</b>`,a:[x[0]],say:`${x[0]}. ${x[2]}`,autoSay:true,why:`<b>${x[0]}</b>: the silent letter is <b>${x[1]}</b>.`,hint:`Common silent letters: k (knee), w (write), b (thumb), l (half), t (listen).`}};
+const NOSIL=["kite","window","bat","lamp","tent","goat","hat","sun","bag","dog","milk","bed","jump","nest","frog","plant"];
+const silWhich=()=>{const x=R(SIL);return mcQ(`🎧 Which word has a <b>silent letter</b>?`,x[0],SAMPLE(NOSIL,2),`<b>${x[0]}</b> has a silent <b>${x[1]}</b>.`,"Say each word. Is there a letter you write but don't say?")};
+const SILLIST=SIL.map(x=>({w:x[0],s:x[2],tip:`Silent ${x[1]}!`}));
+
+/* ================= HEALTH KNOWLEDGE ================= */
+const BODY=[
+ {q:"Which body part pumps blood around your body?",a:"The heart",o:["The lungs","The stomach"],why:"The heart is a strong muscle pump."},
+ {q:"Which body part helps you breathe?",a:"The lungs",o:["The heart","The bones"],why:"Lungs fill with air."},
+ {q:"Which body part is the boss of the body?",a:"The brain",o:["The knee","The skin"],why:"The brain sends messages to every part of you."},
+ {q:"What protects your brain?",a:"Your skull",o:["Your ribs","Your knees"],why:"The skull is a hard, bony helmet."},
+ {q:"What protects your heart and lungs?",a:"Your ribs",o:["Your skull","Your toes"],why:"Ribs make a cage around them."},
+ {q:"What do muscles do?",a:"Pull on bones to make you move",o:["Pump blood","Digest food"],why:"Muscles and bones work together."},
+ {q:"Where does food go after you swallow it?",a:"To your stomach",o:["To your lungs","To your brain"],why:"The stomach mashes food up."},
+ {q:"What is the biggest organ of your body?",a:"Your skin",o:["Your heart","Your brain"],why:"Skin covers your whole body."},
+ {q:"How many bones does a grown-up have?",a:"206",o:["26","2,000"],why:"Babies start with about 270."},
+ {q:"What are the places where bones meet called?",a:"Joints",o:["Muscles","Veins"],why:"Knees, elbows and wrists are joints."},
+ {q:"What does blood carry around your body?",a:"Oxygen and food",o:["Bones","Air bubbles only"],why:"Blood delivers oxygen and nutrients."},
+ {q:"Where can you feel your pulse?",a:"On your wrist or neck",o:["On your hair","On your nails"],why:"Your pulse is your heartbeat."},
+ {q:"What do your teeth do?",a:"Bite and chew food",o:["Help you hear","Pump blood"],why:"Chewing is the first step of digestion."},
+ {q:"Which gas do your lungs take into your blood?",a:"Oxygen",o:["Carbon dioxide","Steam"],why:"You breathe in oxygen and out carbon dioxide."},
+ {q:"What does your skin do when you are hot?",a:"It sweats to cool you down",o:["It turns blue","It gets hard"],why:"Sweat evaporates and cools you."},
+ {q:"Which sense uses your nose?",a:"Smell",o:["Taste","Touch"],why:"Smell also helps you taste."},
+ {q:"Which sense uses your ears?",a:"Hearing",o:["Sight","Smell"],why:"Ears catch sounds."},
+ {q:"Which sense uses your skin?",a:"Touch",o:["Hearing","Sight"],why:"Skin feels hot, cold, soft and rough."},
+ {q:"Which body part bends in the middle of your leg?",a:"Your knee",o:["Your elbow","Your wrist"],why:"The knee is a joint."},
+ {q:"How many senses do people usually talk about?",a:"Five",o:["Two","Ten"],why:"Sight, hearing, smell, taste and touch."},
+ {q:"What do nerves do?",a:"Carry messages between the brain and the body",o:["Hold food","Make blood"],why:"Messages zoom along nerves."},
+ {q:"How many muscles do you have?",a:"More than 600",o:["About 10","Exactly 6"],why:"Even smiling uses many muscles."}
+];
+const FOODG=[["carrot","vegetables and fruits"],["apple","vegetables and fruits"],["spinach","vegetables and fruits"],["banana","vegetables and fruits"],["broccoli","vegetables and fruits"],["mango","vegetables and fruits"],["brown rice","whole grains"],["oatmeal","whole grains"],["whole-wheat bread","whole grains"],["roti","whole grains"],["quinoa","whole grains"],["beans","protein foods"],["lentils (dal)","protein foods"],["eggs","protein foods"],["fish","protein foods"],["tofu","protein foods"],["nuts","protein foods"],["chicken","protein foods"],["pear","vegetables and fruits"],["peas","vegetables and fruits"],["barley","whole grains"],["whole-wheat pasta","whole grains"],["chickpeas","protein foods"],["peanut butter","protein foods"]];
+const foodQ=()=>{const x=R(FOODG);return mcQ(`🍽️ Which food group does <b>${x[0]}</b> belong to?`,x[1],["vegetables and fruits","whole grains","protein foods"].filter(z=>z!==x[1]),`<b>${cap(x[0])}</b> belongs to <b>${x[1]}</b>.`,"Vegetables and fruits grow on plants · grains are seeds like rice and wheat · proteins help build muscles.")};
+const HAB=[
+ {q:"🥤 You are thirsty after playing. What is the best drink?",o:["Water","Pop","Coffee"],a:"Water",why:"Water is the best drink for your body."},
+ {q:"🍎 Which is an everyday snack?",o:["An apple with peanut butter","A big bag of candy","A can of pop"],a:"An apple with peanut butter",why:"Fruit and protein give lasting energy. Candy is a sometimes food."},
+ {q:"😴 It's a school night. What time should a Grade 3 child go to sleep?",o:["Around 8 or 8:30","Midnight","Whenever they want"],a:"Around 8 or 8:30",why:"Children need 9 to 12 hours of sleep."},
+ {q:"🧼 When should you wash your hands?",o:["Before eating and after using the toilet","Only on Sundays","Never"],a:"Before eating and after using the toilet",why:"Washing removes germs."},
+ {q:"🤧 You need to sneeze. What should you do?",o:["Sneeze into your elbow or a tissue","Sneeze on your friend","Sneeze into your hands and touch the door"],a:"Sneeze into your elbow or a tissue",why:"This stops germs from spreading."},
+ {q:"🦷 How often should you brush your teeth?",o:["Twice a day","Once a month","Only when they hurt"],a:"Twice a day",why:"Morning and night, for two minutes."},
+ {q:"☀️ It's a sunny summer day. What should you put on before going outside?",o:["Sunscreen and a hat","A winter coat","Nothing"],a:"Sunscreen and a hat",why:"The sun can burn your skin."},
+ {q:"🚲 What should you always wear on a bike?",o:["A helmet","Sandals","A blindfold"],a:"A helmet",why:"A helmet protects your brain."},
+ {q:"🏃 How much active play should children have each day?",o:["About 60 minutes","About 1 minute","None"],a:"About 60 minutes",why:"It can be in small pieces."},
+ {q:"📱 Why is it good to stop using screens before bedtime?",o:["Screens can make it harder to fall asleep","Screens get tired","It's the law"],a:"Screens can make it harder to fall asleep",why:"Bright light and exciting games keep the brain awake."},
+ {q:"🤒 You feel sick and have a fever. What should you do?",o:["Tell a grown-up and rest at home","Go to school and share snacks","Run a race"],a:"Tell a grown-up and rest at home",why:"Resting helps you get better and stops germs spreading."},
+ {q:"💊 You find some pills on the table. What should you do?",o:["Don't touch them and tell a grown-up","Eat them","Share them with friends"],a:"Don't touch them and tell a grown-up",why:"Medicine is only safe when a grown-up gives it to you."},
+ {q:"🍰 It's your friend's birthday party. Is it okay to have a slice of cake?",o:["Yes, treats are fine sometimes","No, never","Only if you eat it secretly"],a:"Yes, treats are fine sometimes",why:"Sometimes foods can be enjoyed now and then."},
+ {q:"🥗 What makes a balanced lunch?",o:["A sandwich on whole-grain bread, carrots and an apple","Only chips","Only cookies"],a:"A sandwich on whole-grain bread, carrots and an apple",why:"It has a grain, a protein and vegetables and fruit."},
+ {q:"🧘 You feel worried. Which healthy thing could help?",o:["Take deep breaths or go for a walk","Eat a whole box of cookies","Stay awake all night"],a:"Take deep breaths or go for a walk",why:"Breathing and moving help your body calm down."},
+ {q:"⚽ Why should you warm up before sports?",o:["To get your muscles ready and avoid injuries","To get tired","Because it's boring"],a:"To get your muscles ready and avoid injuries",why:"Warm muscles stretch more easily."},
+ {q:"🦵 You hurt your knee while playing. What should you do first?",o:["Stop and tell a grown-up","Keep playing harder","Hide it"],a:"Stop and tell a grown-up",why:"Grown-ups can help you clean and care for it."},
+ {q:"🥛 Which foods help build strong bones?",o:["Milk, yogurt and cheese (or calcium-rich foods)","Candy","Pop"],a:"Milk, yogurt and cheese (or calcium-rich foods)",why:"Calcium helps bones and teeth."},
+ {q:"👂 What does 'listen to your body' mean when you eat?",o:["Eat when you're hungry and stop when you're full","Put your ear on your plate","Eat until it hurts"],a:"Eat when you're hungry and stop when you're full",why:"Your body tells you what it needs."},
+ {q:"🏊 Why should you never swim alone?",o:["Someone needs to be there to help if there's trouble","Water is lonely","It's too quiet"],a:"Someone needs to be there to help if there's trouble",why:"Always swim with a grown-up watching."},
+ {q:"🌈 Why should you eat fruits and vegetables of many colours?",o:["Each colour gives different vitamins","They look pretty only","They are all the same"],a:"Each colour gives different vitamins",why:"Eat the rainbow!"},
+ {q:"🍽️ Why is breakfast helpful?",o:["It gives you energy for the morning","It makes you sleepy","It isn't helpful"],a:"It gives you energy for the morning",why:"Your body has rested all night and needs fuel."},
+ {q:"🪥 Why shouldn't you share a toothbrush?",o:["It spreads germs","It's too long","Toothbrushes are expensive"],a:"It spreads germs",why:"Each person needs their own."},
+ {q:"🌳 Which is a healthy way to spend a Saturday afternoon?",o:["Playing outside with friends","Sitting with a screen for six hours","Skipping lunch"],a:"Playing outside with friends",why:"Fresh air, movement and friends are great for you."},
+ {q:"💤 What happens to your body while you sleep?",o:["It grows and repairs itself","It stops working","It shrinks"],a:"It grows and repairs itself",why:"Sleep recharges your body and brain."}
+];
+
+/* ================= OTHER VOCABULARY ================= */
+const SYN=[["healthy","well"],["strong","powerful"],["tired","sleepy"],["sick","ill"],["exercise","workout"],["breathe","inhale and exhale"],["quick","fast"],["clean","wash"],["rest","relax"],["hurt","injure"],["shout","yell"],["begin","start"],["tasty","delicious"],["sweat","perspire"],["tiny","small"],["doctor","physician"],["happy","cheerful"],["fix","repair"],["nutritious","good for you"],["active","energetic"]];
+const OPP=[["healthy","unhealthy"],["strong","weak"],["awake","asleep"],["clean","dirty"],["hungry","full"],["active","lazy"],["early","late"],["fast","slow"],["push","pull"],["inhale","exhale"],["hot","cold"],["sick","well"],["sit","stand"],["bend","straighten"],["tired","energetic"],["safe","dangerous"],["always","never"],["before","after"],["start","stop"],["wet","dry"]];
+const COMP=[["tooth","brush"],["tooth","paste"],["back","bone"],["eye","brow"],["head","ache"],["finger","nail"],["hair","cut"],["foot","ball"],["basket","ball"],["work","out"],["break","fast"],["lunch","box"],["play","ground"],["sun","screen"],["bed","time"],["wheel","chair"],["arm","pit"],["eye","lash"],["skate","board"],["night","time"],["water","melon"],["pop","corn"],["butter","milk"],["sun","burn"]];
+
+/* ================= READING ================= */
+const DETAIL=[
+ ["Your Amazing Teeth","Children have 20 baby teeth. Around the age of six, they start to fall out, and bigger adult teeth grow in. Adults usually have 32 teeth. The outside of a tooth is covered in enamel, the hardest material in your body. Brushing twice a day keeps enamel strong.",[["How many baby teeth do children have?","20",["32","10"]],["When do baby teeth start to fall out?","Around the age of six",["At age one","At age twenty"]],["What covers the outside of a tooth?","Enamel",["Skin","Hair"]]]],
+ ["Why We Yawn","Everybody yawns, even babies before they are born! Scientists aren't completely sure why we yawn. Some think it helps cool the brain. Yawns are also catching: when you see someone yawn, you often yawn too. Even reading about yawning can make you yawn!",[["Do scientists know exactly why we yawn?","No, they aren't completely sure",["Yes, they know everything","Yawning doesn't exist"]],["What might yawning help do?","Cool the brain",["Grow taller","Make you hungry"]],["What happens when you see someone yawn?","You often yawn too",["You sneeze","You laugh"]]]],
+ ["Florence Nightingale","Florence Nightingale was a nurse from England. In the 1850s, she cared for injured soldiers in a hospital that was dirty and crowded. She made sure the hospital was cleaned, the windows were opened and the soldiers had clean water and good food. Many more soldiers got better. She showed the world that cleanliness saves lives.",[["What was Florence Nightingale's job?","A nurse",["A teacher","A pilot"]],["What was the hospital like at first?","Dirty and crowded",["Clean and quiet","Brand new"]],["What did she show the world?","Cleanliness saves lives",["Hospitals aren't needed","Soldiers don't get sick"]]]],
+ ["Hiccups","Hiccups happen when a muscle under your lungs, called the diaphragm, suddenly tightens. This makes you breathe in quickly, and a small flap in your throat snaps shut with a 'hic!' Hiccups usually go away on their own in a few minutes. Sipping water slowly can sometimes help.",[["What muscle causes hiccups?","The diaphragm",["The heart","The biceps"]],["How long do hiccups usually last?","A few minutes",["A few years","All day, every day"]],["What can sometimes help?","Sipping water slowly",["Running fast","Shouting"]]]],
+ ["Your Bones Grow","Children's bones grow longer every year. At the ends of long bones are growth plates, where new bone is made. Running, jumping and dancing help bones grow strong. Foods with calcium, like milk, yogurt, cheese, tofu and leafy greens, help too. Most people stop growing taller when they are around 18 years old.",[["Where is new bone made?","At the growth plates",["In the stomach","In the hair"]],["Which activities help bones grow strong?","Running, jumping and dancing",["Sitting still all day","Sleeping on the floor"]],["Around what age do most people stop growing taller?","Around 18",["Around 5","Around 60"]]]],
+ ["Frederick Banting","Frederick Banting was a Canadian doctor. In 1921, at the University of Toronto, he and Charles Best found a way to use insulin as a medicine for people with diabetes. Before that, diabetes was very dangerous. Banting won the Nobel Prize, and his work has helped millions of people live healthy lives.",[["Which country was Banting from?","Canada",["Japan","India"]],["What did he and Charles Best find a way to use?","Insulin",["Vitamins","Bandages"]],["Which prize did Banting win?","The Nobel Prize",["An Olympic medal","A spelling prize"]]]],
+ ["Sweat","Sweat is mostly water with a little salt. When you get hot, tiny holes in your skin called pores let sweat out. As the sweat dries, it carries heat away from your body and cools you down. That's why you need to drink extra water when you exercise or when it is hot.",[["What is sweat mostly made of?","Water with a little salt",["Sugar","Oil"]],["What are pores?","Tiny holes in your skin",["Small bones","Kinds of muscle"]],["How does sweat cool you down?","As it dries, it carries heat away",["It freezes","It makes you shiver"]]]],
+ ["Yoga","Yoga began in India thousands of years ago. It combines stretching, balancing and slow breathing. Some yoga poses are named after animals, like cat, cobra and downward dog. Today, people all over the world do yoga to stay flexible, strong and calm.",[["Where did yoga begin?","India",["Canada","Brazil"]],["What does yoga combine?","Stretching, balancing and slow breathing",["Running and jumping only","Eating and sleeping"]],["Which is a yoga pose named after an animal?","Downward dog",["Flying fish","Running rabbit"]]]],
+ ["Germs Under a Microscope","Germs are so tiny that you need a microscope to see them. Some germs, called bacteria, are shaped like balls, rods or spirals. Many bacteria are actually helpful, like the ones in your tummy that help you digest food. Others can make you sick, which is why we wash our hands.",[["What do you need to see germs?","A microscope",["Sunglasses","A telescope"]],["What shapes can bacteria be?","Balls, rods or spirals",["Stars and hearts","Squares only"]],["Are all bacteria harmful?","No, many are helpful",["Yes, all of them","Bacteria don't exist"]]]],
+ ["The Paralympic Games","The Paralympic Games are a big sports event for athletes with disabilities. They take place after the Olympic Games, in the same city. Athletes race in wheelchairs, swim, play basketball, ski and much more. The Paralympics show that people of all abilities can be strong, fast and determined.",[["Who competes in the Paralympic Games?","Athletes with disabilities",["Only robots","Only children"]],["When do the Paralympics take place?","After the Olympic Games",["Before breakfast","Every day"]],["What do the Paralympics show?","People of all abilities can be strong and determined",["Sports are only for some people","Wheelchairs are slow"]]]],
+ ["Sleep in the Animal World","Different animals need very different amounts of sleep. Koalas may sleep up to 20 hours a day! Giraffes sleep for only a few short naps, adding up to less than 5 hours. Dolphins rest one half of their brain at a time, so they can keep swimming and come up to breathe.",[["How long may koalas sleep each day?","Up to 20 hours",["1 hour","Never"]],["How do giraffes sleep?","In a few short naps",["For 20 hours straight","Upside down"]],["How do dolphins rest?","One half of their brain at a time",["They never rest","On the beach"]]]],
+ ["Water in Your Body","Your body is more than half water. Your blood is mostly water, and so is your brain. You lose water every day when you breathe, sweat and go to the bathroom. Feeling thirsty, tired or having a headache can be signs that you need a drink. Pale yellow pee usually means you are drinking enough!",[["How much of your body is water?","More than half",["None","Just a tiny bit"]],["Which is a sign you may need a drink?","Feeling thirsty or having a headache",["Feeling full","Laughing"]],["What does pale yellow pee usually mean?","You are drinking enough",["You are sick","You ate too much"]]]]
+];
+const detail=()=>{const p=R(DETAIL),x=R(p[2]);return mcQ(`${box(p[0],p[1])}${x[0]}`,x[1],x[2],`Look back at the text: the answer is there.`,"Read the text again and find the words.",{say:p[1]+" "+x[0]})};
+const MAIN=[
+ ["Sleep is important for your body. It helps you grow. It helps your muscles repair. It helps your brain remember what you learned.","Sleep is important for your body.",["Muscles are strong.","Brains are big."]],
+ ["Washing your hands keeps you healthy. It removes germs. It stops germs from spreading to friends. It helps you stay out of the doctor's office.","Washing your hands keeps you healthy.",["Doctors are kind.","Friends are fun."]],
+ ["Exercise helps your whole body. It makes your heart strong. It builds muscles and bones. It even helps you feel happy.","Exercise helps your whole body.",["Hearts beat.","Bones are white."]],
+ ["Water is the best drink. Your body needs it to work properly. It keeps you cool. It has no sugar to hurt your teeth.","Water is the best drink.",["Teeth are white.","Sugar is sweet."]],
+ ["Your skeleton does many jobs. It holds you up. It protects your organs. It works with your muscles so you can move.","Your skeleton does many jobs.",["Organs are inside.","You can move."]],
+ ["Fruits and vegetables are full of goodness. They have vitamins. They have fibre. They come in every colour of the rainbow.","Fruits and vegetables are full of goodness.",["Rainbows are pretty.","Fibre is a word."]],
+ ["Helmets protect your brain. If you fall off your bike, the helmet takes the bump. It should fit snugly. You should wear one every time you ride.","Helmets protect your brain.",["Bikes have wheels.","Falling hurts."]],
+ ["Your heart works hard all day and night. It beats about 100,000 times a day. It pumps blood to every part of you. It never takes a break.","Your heart works hard all day and night.",["Blood is red.","Days are long."]],
+ ["Germs spread in many ways. They spread through coughs and sneezes. They spread on hands. They spread on shared cups and toys.","Germs spread in many ways.",["Toys are fun.","Cups hold water."]],
+ ["Breakfast helps you start the day. It gives you energy after a long night. It helps you focus in class. It keeps your tummy from rumbling.","Breakfast helps you start the day.",["Nights are long.","Tummies rumble."]],
+ ["Stretching is good for your body. It keeps you flexible. It helps prevent injuries. It feels good after sitting for a long time.","Stretching is good for your body.",["Sitting is easy.","Injuries hurt."]],
+ ["Being outside is healthy. Sunlight helps your body make vitamin D. Fresh air feels good. There is lots of space to run and play.","Being outside is healthy.",["Air is invisible.","The sun is hot."]],
+ ["Our five senses help us understand the world. We see with our eyes. We hear with our ears. We smell, taste and touch too.","Our five senses help us understand the world.",["Eyes are blue.","Ears are on the side."]],
+ ["Brushing your teeth keeps them healthy. It removes bits of food. It stops cavities. It keeps your breath fresh.","Brushing your teeth keeps them healthy.",["Breath is air.","Food is tasty."]],
+ ["Feelings and health are connected. When you are stressed, your tummy may hurt. When you are happy, you feel full of energy. Taking care of your feelings helps your body too.","Feelings and health are connected.",["Tummies are soft.","Energy is good."]],
+ ["Doctors and nurses help us stay healthy. They check how we are growing. They give vaccines to protect us. They help when we are sick or hurt.","Doctors and nurses help us stay healthy.",["Vaccines are small.","Hospitals are big."]],
+ ["Sports are played all over the world. Children play cricket in India. They play soccer in Brazil. They play hockey in Canada.","Sports are played all over the world.",["Brazil is big.","Hockey is cold."]],
+ ["A balanced meal has foods from different groups. It has vegetables and fruits. It has whole grains. It has protein foods.","A balanced meal has foods from different groups.",["Groups have members.","Fruits are sweet."]],
+ ["Your lungs and plants work together. You breathe out carbon dioxide. Plants use it to make food. Then plants give out oxygen for you to breathe.","Your lungs and plants work together.",["Plants are green.","Air is everywhere."]],
+ ["Screens can affect your health. Too much screen time means less time moving. Screens before bed make it hard to sleep. Taking breaks helps your eyes and body.","Too much screen time can affect your health.",["Eyes can see.","Beds are soft."]],
+ ["Safety rules protect us. We wear helmets on bikes. We look both ways before crossing. We swim only with a grown-up watching.","Safety rules protect us.",["Bikes are fast.","Swimming is fun."]],
+ ["Your brain controls everything you do. It helps you think and remember. It tells your muscles to move. It even controls your breathing while you sleep.","Your brain controls everything you do.",["Muscles move.","Sleep is quiet."]],
+ ["Everybody's body is different. People come in different sizes and shapes. Some people use wheelchairs or glasses. Every body deserves care and respect.","Everybody's body is different and deserves respect.",["Glasses help you see.","Wheels are round."]],
+ ["Healthy habits start small. You can drink one more glass of water. You can add one vegetable to dinner. You can walk instead of riding in the car.","Healthy habits start with small steps.",["Cars are fast.","Dinner is tasty."]]
+];
+const mainIdea=()=>{const m=R(MAIN);return mcQ(`${box("Read",m[0])}What is the <b>main idea</b>? (What is it mostly about?)`,m[1],m[2],`The main idea is what the whole text is about: <b>${m[1]}</b>`,"Which answer fits ALL the sentences, not just one?",{say:m[0]})};
+const FACTS=["Your heart is a muscle.","A grown-up has 206 bones.","You have two lungs.","Children have 20 baby teeth.","Soap helps remove germs.","Your skin is your biggest organ.","Your brain controls your body.","Yoga began in India.","Sweat helps cool your body.","Your skull protects your brain.","Children need 9 to 12 hours of sleep.","Carrots are vegetables.","Lentils are a protein food.","Brown rice is a whole grain.","Your knee is a joint.","Helmets protect your head.","Florence Nightingale was a nurse.","Frederick Banting was Canadian.","Your body is more than half water.","You can feel your pulse on your wrist.","The diaphragm causes hiccups.","Koalas sleep for many hours a day.","The letter k in knee is silent.","Germs are too small to see without a microscope.","You breathe out carbon dioxide."];
+const OPIN=["Soccer is the best sport.","Broccoli is delicious.","Yoga is more fun than running.","Swimming is the best exercise.","Mangoes are the tastiest fruit.","Going to bed early is boring.","Strawberry smoothies are better than banana ones.","Doctors have the most important job.","Cricket is more exciting than hockey.","Green vegetables are the yummiest.","Dancing is the most fun way to exercise.","Morning is the best time to exercise.","Carrots taste better than peas.","Brushing your teeth is boring.","Riding a bike is more fun than walking.","Hiccups are funny.","Blue helmets are the coolest.","Yogurt is the best snack.","Tai chi is relaxing.","Gym class is everyone's favourite.","Apples are better than oranges.","Rainy days are perfect for yoga.","Tofu tastes amazing.","Skipping rope is easy.","Fruit salad is the best dessert."];
+const factOp=()=>{const f=Math.random()<.5;const s=f?R(FACTS):R(OPIN);return mcQ(`Is this a <b>fact</b> or an <b>opinion</b>?<br><b>${s}</b>`,f?"Fact":"Opinion",[f?"Opinion":"Fact"],f?"A <b>fact</b> can be checked by a doctor, a scientist or a book.":"An <b>opinion</b> is what someone thinks or feels. Others may disagree.","Could you check it? Or is it a feeling?")};
+const SEQ=[["Wet your hands","Put on soap","Scrub for 20 seconds","Rinse and dry"],["Put toothpaste on the brush","Brush for two minutes","Spit out the toothpaste","Rinse your toothbrush"],["Chew the food","Swallow it","The stomach mashes it","The intestines take out the goodness"],["Breathe in","Lungs fill with air","Oxygen goes into the blood","Breathe out carbon dioxide"],["Warm up","Play the game","Cool down and stretch","Drink water and rest"],["Put the tablet away","Have a bath and brush your teeth","Read a quiet book","Turn off the light"],["Wash your hands","Wash the fruit","Cut the fruit with a grown-up","Slide it onto skewers"],["Glitter goes on Leo's hands","Leo shakes Mia's hand","Glitter spreads around the class","Everyone washes with soap"],["Sam stays up late","He feels tired at school","The nurse explains sleep","Sam makes a sleep plan"],["Check your brakes","Put on your helmet","Look both ways","Ride on the right side"],["Baby teeth grow in","Baby teeth get loose","Baby teeth fall out","Adult teeth grow in"],["Feel your heart beating slowly","Run around the playground","Feel your heart beating fast","Rest and feel it slow down"]];
+const order=()=>{const s=R(SEQ),t=R(["first","last","next"]);
+  if(t==="first")return mcQ(`What comes <b>FIRST</b>?`,s[0],SAMPLE(s.slice(1),2),`Order: ${s.join(" → ")}`,"What must come before everything else?");
+  if(t==="last")return mcQ(`What comes <b>LAST</b>?`,s[s.length-1],SAMPLE(s.slice(0,-1),2),`Order: ${s.join(" → ")}`,"What comes at the very end?");
+  const k=Math.floor(Math.random()*(s.length-1));return mcQ(`What comes right <b>AFTER</b> this?<br><b>${s[k]}</b>`,s[k+1],SAMPLE(s.filter((_,i)=>i!==k&&i!==k+1),2),`Order: ${s.join(" → ")}`,"What is the very next step?")};
+const CE=[["Because Leo sneezed into his hands, the germs spread.","Leo sneezed into his hands","the germs spread"],["The children used soap, so the glitter washed away.","the children used soap","the glitter washed away"],["Because Sam stayed up late, he was tired at school.","Sam stayed up late","he was tired at school"],["Sam followed his sleep plan, so he felt great.","Sam followed his sleep plan","he felt great"],["Because Mia ran around the playground, her heart beat faster.","Mia ran around the playground","her heart beat faster"],["It was very hot, so we drank lots of water.","it was very hot","we drank lots of water"],["Because Dev wore a helmet, his head was safe when he fell.","Dev wore a helmet","his head was safe when he fell"],["Ada forgot her sunscreen, so she got a sunburn.","Ada forgot her sunscreen","she got a sunburn"],["Because we stretched first, nobody hurt their muscles.","we stretched first","nobody hurt their muscles"],["Leo brushed his teeth twice a day, so the dentist found no cavities.","Leo brushed his teeth twice a day","the dentist found no cavities"],["Because Wei had a fever, he stayed home to rest.","Wei had a fever","he stayed home to rest"],["The class washed their hands more often, so fewer children got sick.","the class washed their hands more often","fewer children got sick"],["Because you sweat when you are hot, you lose water.","you sweat when you are hot","you lose water"],["Florence Nightingale cleaned the hospital, so more soldiers got better.","Florence Nightingale cleaned the hospital","more soldiers got better"],["Because Sofia ate a good breakfast, she had energy all morning.","Sofia ate a good breakfast","she had energy all morning"],["The diaphragm suddenly tightened, so Neel got the hiccups.","the diaphragm suddenly tightened","Neel got the hiccups"],["Because the pool floor was wet, the sign said walk, don't run.","the pool floor was wet","the sign said walk, don't run"],["Asha took deep breaths, so she felt calm before the test.","Asha took deep breaths","she felt calm before the test"],["Because Leo shared a cup with his sick friend, he caught a cold.","Leo shared a cup with his sick friend","he caught a cold"],["We played outside all afternoon, so we slept well that night.","we played outside all afternoon","we slept well that night"]];
+const cause=()=>{const c=R(CE),other=R(CE.filter(x=>x!==c));const askCause=Math.random()<.5;
+  return mcQ(`${box("Read",c[0])}What is the <b>${askCause?"cause":"effect"}</b>? <span style="color:var(--muted);font-size:15px">(${askCause?"WHY it happened":"WHAT happened"})</span>`,askCause?c[1]:c[2],[askCause?c[2]:c[1],askCause?other[1]:other[2]],`Cause (why): <b>${c[1]}</b>. Effect (what happened): <b>${c[2]}</b>.`,"Look for because and so.",{say:c[0]})};
+const CMP=[
+ ["Your heart and your lungs are both in your chest. Your heart pumps blood. Your lungs fill with air when you breathe.","Both are in your chest","The heart pumps blood, but the lungs fill with air",["Both pump blood","The lungs pump blood"]],
+ ["Bones and muscles both help you move. Bones are hard and hold you up. Muscles are soft and pull on the bones.","Both help you move","Bones are hard, but muscles are soft and pull",["Both are hard","Muscles hold you up alone"]],
+ ["Water and pop are both drinks. Water has no sugar and is the best drink. Pop has lots of sugar and is a sometimes drink.","Both are drinks","Water has no sugar, but pop has lots of sugar",["Both have lots of sugar","Pop is the best drink"]],
+ ["Running and yoga are both exercise. Running is fast and makes your heart beat quickly. Yoga is slow and uses stretching and breathing.","Both are exercise","Running is fast, but yoga is slow",["Both are fast","Yoga is fast"]],
+ ["Can and should are both helping words. Can means able to. Should means it's a good idea.","Both are helping words","Can means able to, but should means a good idea",["Both mean able to","Should means able to"]],
+ ["Knee and knife both start with a silent k. A knee is part of your leg. A knife is a tool for cutting.","Both start with a silent k","A knee is part of your leg, but a knife is a tool",["Both are body parts","A knife is part of your leg"]],
+ ["Sam at the start and Sam at the end were both the same boy. At the start, he stayed up late and felt grumpy. At the end, he slept well and felt great.","Both were the same boy","At first he stayed up late, but at the end he slept well",["He always slept well","He felt grumpy at the end"]],
+ ["Baby teeth and adult teeth are both for chewing. Children have 20 baby teeth. Adults usually have 32 teeth.","Both are for chewing","Children have 20 baby teeth, but adults have 32",["Both number 20","Adults have 20 teeth"]],
+ ["Everyday foods and sometimes foods can both be part of life. Everyday foods help your body most. Sometimes foods are treats for special times.","Both can be part of life","Everyday foods help most, but sometimes foods are treats",["Both should be eaten all day","Sometimes foods help most"]],
+ ["A cough and a sneeze can both spread germs. A cough comes from your throat and chest. A sneeze comes from your nose.","Both can spread germs","A cough comes from the chest, but a sneeze from the nose",["Neither spreads germs","A sneeze comes from the chest"]],
+ ["Florence Nightingale and Frederick Banting both helped people stay healthy. Florence was a nurse who kept hospitals clean. Banting was a doctor who helped make insulin a medicine.","Both helped people stay healthy","Florence kept hospitals clean, but Banting helped make insulin a medicine",["Both made insulin","Banting was a nurse"]],
+ ["Instructions and questions are both kinds of sentences. An instruction tells you what to do. A question asks something and ends with a question mark.","Both are kinds of sentences","An instruction tells you what to do, but a question asks something",["Both end with ?","A question tells you what to do"]]
+];
+const compare=()=>{const c=R(CMP);const same=Math.random()<.5;
+  return mcQ(`${box("Read",c[0])}${same?"How are they the <b>same</b>?":"What is one <b>difference</b>?"}`,same?c[1]:c[2],[same?c[2]:c[1],R(c[3])],same?`Same: <b>${c[1]}</b>.`:`Different: <b>${c[2]}</b>.`,same?"Look for the word both.":"Look for the word but.",{say:c[0]})};
+
+/* ================= THINKING ================= */
+const PUZ=[
+ {q:"🧩 Riddle: I have a face and hands, but I'm not a person… wait, I AM part of you! I'm on the end of your arm. What am I?",o:["Your hand","Your foot","Your nose"],a:"Your hand",why:"Your hands have fingers, thumbs and knuckles."},
+ {q:"🧩 Riddle: I thump all day and night, but I'm not a drum. What am I?",o:["Your heart","Your stomach","Your brain"],a:"Your heart",why:"Your heart beats like a drum."},
+ {q:"🧩 Riddle: I'm full of air, and I'm not a balloon. You have two of me. What am I?",o:["Your lungs","Your ears","Your eyes"],a:"Your lungs",why:"Lungs fill with air."},
+ {q:"🧩 Riddle: I'm white and hard, I hold you up, and you have 206 of me. What am I?",o:["Bones","Teeth","Nails"],a:"Bones",why:"Adults have 206 bones."},
+ {q:"🧩 Riddle: I'm tiny, you can't see me, and I can make you sick. Soap washes me away. What am I?",o:["A germ","A crumb","A hair"],a:"A germ",why:"Germs are washed away with soap."},
+ {q:"🧩 Riddle: I bubble when you rub me, and I help keep your hands clean. What am I?",o:["Soap","Water","A towel"],a:"Soap",why:"Soap makes bubbles."},
+ {q:"🧩 Which word has a silent letter: knee, kite or kind?",o:["knee","kite","kind"],a:"knee",why:"The k in knee is silent."},
+ {q:"🔢 Your heart beats 10 times in 6 seconds. About how many times in 1 minute (60 seconds)?",o:["100","60","10"],a:"100",why:"60 seconds is 10 × 6 seconds, so 10 × 10 = 100 beats."},
+ {q:"🔢 You play outside for 20 minutes before school and 40 minutes after school. How many minutes is that?",o:["60","20","40"],a:"60",why:"20 + 40 = 60 minutes: perfect!"},
+ {q:"🔢 You brush your teeth twice a day. How many times is that in a week?",o:["14","7","2"],a:"14",why:"2 × 7 = 14."},
+ {q:"🔢 You go to bed at 8 p.m. and wake up at 7 a.m. How many hours did you sleep?",o:["11","15","7"],a:"11",why:"8 p.m. to 7 a.m. is 11 hours."},
+ {q:"🔢 There are 6 strawberries. You put 2 on each skewer. How many skewers can you make?",o:["3","12","4"],a:"3",why:"6 ÷ 2 = 3."},
+ {q:"🔢 Each hand has 5 fingers (including the thumb). How many fingers are on 4 hands?",o:["20","10","9"],a:"20",why:"5 × 4 = 20."},
+ {q:"🔢 You drink 2 glasses of water in the morning and 4 in the afternoon. How many glasses altogether?",o:["6","8","2"],a:"6",why:"2 + 4 = 6."},
+ {q:"🔢 You scrub your hands for 20 seconds. Your friend scrubs for 5 seconds. How much longer did you scrub?",o:["15 seconds","25 seconds","5 seconds"],a:"15 seconds",why:"20 − 5 = 15."},
+ {q:"🤔 Why does food taste less when you have a cold?",o:["Your blocked nose can't smell it","Your tongue falls asleep","Food changes when you're sick"],a:"Your blocked nose can't smell it",why:"Smell is a big part of taste."},
+ {q:"🤔 After running, why does your heart beat faster?",o:["Your muscles need more oxygen","Your heart is scared","It wants to finish first"],a:"Your muscles need more oxygen",why:"The heart pumps faster to deliver more oxygen."},
+ {q:"🤔 Why do you shiver when you are cold?",o:["Your muscles shake to make heat","You are scared","Your bones are loose"],a:"Your muscles shake to make heat",why:"Shivering warms you up."},
+ {q:"🤔 Why is it hard to taste food when you hold your nose?",o:["Smell helps you taste","Your mouth closes","The food disappears"],a:"Smell helps you taste",why:"Try it with an apple and an onion!"},
+ {q:"⚠️ The floor by the pool is wet. What should you do?",o:["Walk slowly","Run as fast as you can","Do cartwheels"],a:"Walk slowly",why:"Wet floors are slippery."},
+ {q:"⚠️ Your friend wants to share her water bottle, but she has a cold. What could you say?",o:["\"No thanks, I'll use my own so we don't share germs.\"","\"Sure, let's share.\"","\"Yuck, you're gross!\""],a:"\"No thanks, I'll use my own so we don't share germs.\"",why:"Be kind and healthy at the same time."},
+ {q:"⚠️ You see a broken glass on the kitchen floor. What should you do?",o:["Stay away and tell a grown-up","Pick it up with bare hands","Walk on it"],a:"Stay away and tell a grown-up",why:"Broken glass can cut you."},
+ {q:"🌍 In which country did yoga begin?",o:["India","Canada","Mexico"],a:"India",why:"Yoga is thousands of years old."},
+ {q:"🧠 Which instruction is correct?",o:["Wash your hands.","Your hands wash.","Hands your wash."],a:"Wash your hands.",why:"An instruction starts with the verb."},
+ {q:"🧠 Which sentence uses 'should' correctly?",o:["You should wear a helmet.","You should can swim.","You shoulds eat."],a:"You should wear a helmet.",why:"should + plain verb."},
+ {q:"🧠 Which sentence uses 'can' correctly?",o:["A cheetah can run fast.","A cheetah can runs fast.","A cheetah cans run."],a:"A cheetah can run fast.",why:"can + plain verb (no -s)."}
+];
+const GRP={"body organs":["heart","lungs","brain","stomach","skin"],"bones":["skull","ribs","spine","thigh bone"],"vegetables":["carrot","spinach","broccoli","peas","cucumber"],"whole grains":["brown rice","oats","quinoa","whole-wheat bread"],"protein foods":["beans","eggs","lentils","tofu","fish"],"ways to exercise":["running","swimming","dancing","cycling","yoga"],"words with a silent k":["knee","knife","knock","know","knot"],"ways to stop germs":["washing hands","sneezing into your elbow","using your own cup","staying home when sick"]};
+const odd=()=>{const ks=Object.keys(GRP);const k=R(ks),k2=R(ks.filter(x=>x!==k));const three=SAMPLE(GRP[k],3),o=R(GRP[k2].filter(x=>!GRP[k].includes(x)));
+  return mcQ(`🤔 Which one does NOT belong?`,o,three,`${three.join(", ")} are all ${k}. <b>${o}</b> is not.`,"Find what three of them have in common.")};
+const ANA=[["Heart is to blood as lungs are to ___.","air",["food","bones"]],["Eyes are to seeing as ears are to ___.","hearing",["smelling","tasting"]],["Nose is to smell as tongue is to ___.","taste",["touch","sight"]],["Skull is to brain as ribs are to ___.","heart and lungs",["feet","hair"]],["Knee is to leg as elbow is to ___.","arm",["head","foot"]],["Toothbrush is to teeth as soap is to ___.","hands",["shoes","books"]],["Helmet is to head as sunscreen is to ___.","skin",["teeth","hair"]],["Can is to able as should is to ___.","good idea",["unable","silly"]],["Knee is to silent k as thumb is to ___.","silent b",["silent t","silent h"]],["Write is to silent w as listen is to ___.","silent t",["silent l","silent n"]],["Carrot is to vegetable as rice is to ___.","grain",["fruit","protein"]],["Lentils are to protein as apple is to ___.","fruit",["grain","dairy"]],["Morning is to breakfast as night is to ___.","sleep",["recess","lunch"]],["Run is to legs as throw is to ___.","arms",["ears","knees"]],["Hot is to sweat as cold is to ___.","shiver",["sneeze","yawn"]],["Fish is to gills as person is to ___.","lungs",["fins","feathers"]],["Doctor is to patient as teacher is to ___.","student",["nurse","dentist"]],["Dentist is to teeth as eye doctor is to ___.","eyes",["knees","hair"]],["Wash is to clean as exercise is to ___.","strong",["dirty","sleepy"]],["Tired is to rest as thirsty is to ___.","drink water",["run","sneeze"]]];
+const analogy=()=>{const x=R(ANA);return mcQ("🔗 "+x[0],x[1],x[2],`${x[0].replace("___","<b>"+x[1]+"</b>")} Think about how the first two words are linked.`,"How are the first two words linked? Use the same link.")};
+
+/* ================= SPELLING ================= */
+const SP=u.spelling.concat([{w:"muscle",s:"Your heart is a muscle.",tip:"Silent c: mus-cle."},{w:"stomach",s:"My stomach is full.",tip:"'ch' sounds like k: sto-mach."},{w:"skeleton",s:"The skeleton has 206 bones.",tip:"skel-e-ton."},{w:"brain",s:"Use your brain.",tip:"'ai' says long a."},{w:"lungs",s:"Fill your lungs with air."},{w:"blood",s:"Blood is red.",tip:"'oo' sounds like 'u' here: bl-oo-d."},{w:"breathe",s:"Breathe in slowly.",tip:"breath (noun) + e = breathe (verb)."},{w:"germ",s:"Wash away every germ.",tip:"g sounds like j."},{w:"soap",s:"Use soap and water.",tip:"'oa' says long o."},{w:"vegetable",s:"Eat a vegetable at every meal.",tip:"veg-e-ta-ble."},{w:"protein",s:"Beans have protein.",tip:"pro-tein."},{w:"helmet",s:"Wear a helmet."},{w:"wrist",s:"Feel your pulse on your wrist.",tip:"Silent w."},{w:"cough",s:"Cough into your elbow.",tip:"'ough' says 'off' here."},{w:"sneeze",s:"Achoo! I have to sneeze!",tip:"Double e, and z with magic e."}]);
+const CHOOSE=[["knee","nee","kneee"],["thumb","thum","thumm"],["wrist","rist","wrisst"],["muscle","mussle","muscel"],["stomach","stomack","stumach"],["breathe","breeth","breathh"],["exercise","exersize","excercise"],["healthy","helthy","healthie"],["vegetable","vegtable","vegetabel"],["skeleton","skeletin","skelleton"],["sneeze","sneez","sneaze"],["cough","coff","cogh"],["listen","lisen","listin"],["climb","clime","clim"],["write","rwite","writte"],["half","haf","harf"],["helmet","helment","helmit"],["doctor","docter","doktor"],["teeth","teath","teef"],["germ","jerm","gurm"]].map(x=>({w:x[0],bad:[x[1],x[2]],tip:(SP.find(y=>y.w===x[0])||SILLIST.find(y=>y.w===x[0])||{}).tip}));
+
+/* ================= SENTENCES AND WRITING ================= */
+const SENT=["Wash your hands before lunch.","Leo sneezed into his elbow.","Sam goes to bed at eight o'clock.","Mr. Ali showed us the glitter experiment.","Florence Nightingale was a nurse in England.","Yoga began in India.","Drink water when you are thirsty.","Ms. Okafor is the school nurse.","Brush your teeth twice a day.","My heart beats fast when I run.","You should wear a helmet.","A cheetah can run very fast.","We should eat a rainbow of vegetables.","Frederick Banting was a doctor in Toronto.","Stretch your arms before you play.","Children need lots of sleep.","My knee hurts a little.","Put the tablet away at bedtime.","Dev plays cricket on Saturday.","I can touch my toes."];
+const fix=()=>{const s=R(SENT);return {type:"type",strict:true,q:`Fix this sentence. Add the capital letters and the full stop:<br><b>${breakSentence(s)}</b>`,a:[s],hint:"Capital letter at the start, capitals for names, places, days and I, and a full stop at the end.",why:`Correct: <b>${s}</b>`}};
+const D=[CHK.cap,CHK.end,CHK.w4,CHK.I];
+const VERBS="Wash|Drink|Eat|Brush|Wear|Cover|Stretch|Sleep|Play|Put|Take|Turn|Look|Walk|Run|Tie|Rinse|Dry|Rest|Sit|Stand|Breathe|Go|Get|Try|Choose|Hold|Tell|Remember|Stay|Use|Don't|Do not|Please";
+const WP=[
+ {q:"Write an <b>instruction</b> about washing your hands. Start with a verb.",checks:[["^\\s*(Wash|Wet|Scrub|Rub|Rinse|Use|Put|Dry)\\b","Starts with a verb"],["[.!]\\s*$","Ends with . or !"],CHK.w3],model:"Wash your hands with soap for 20 seconds."},
+ {q:"Write an instruction for staying safe on a bike.",checks:[[`^\\s*(${VERBS}|Check|Ride|Stop)\\b`,"Starts with a verb"],["[.!]\\s*$","Ends with . or !"],CHK.w3],model:"Wear your helmet every time you ride."},
+ {q:"Write an instruction that starts with <b>Don't</b>.",checks:[["^\\s*Don['’]t\\b","Starts with Don't"],["[.!]\\s*$","Ends with . or !"],CHK.w3],model:"Don't run near the pool."},
+ {q:"Write a sentence using <b>can</b> to tell something you are able to do.",checks:[...D,["\\bcan\\b","Uses can"]],model:"I can swim across the pool."},
+ {q:"Write a sentence using <b>should</b> to give healthy advice.",checks:[...D,["\\bshould\\b","Uses should"]],model:"You should drink water when you exercise."},
+ {q:"Write a sentence using <b>can't</b>.",checks:[...D,["\\bcan['’]t\\b","Uses can't"]],model:"Penguins can't fly, but they can swim."},
+ {q:"Write a sentence using <b>shouldn't</b>.",checks:[...D,["\\bshouldn['’]t\\b","Uses shouldn't"]],model:"You shouldn't share your toothbrush."},
+ {q:"Write a sentence with a word that has a <b>silent letter</b> (knee, thumb, write, half…).",checks:[...D,["\\b(knee|knees|know|knife|knock|knot|knuckles?|kneel|knit|write|wrist|wrong|wrap|thumbs?|lamb|climb|comb|crumbs?|half|calf|talk|walk|chalk|listen|castle|whistle|sign|hour|honest|island|answer|ghost)\\b","Uses a silent-letter word"]],model:"I scraped my knee when I fell."},
+ {q:"Write a sentence about your favourite healthy food.",checks:[...D,["\\b(favourite|favorite|love|like)\\b","Says you like it"]],model:"My favourite healthy food is mango."},
+ {q:"Write a sentence about how exercise helps your body.",checks:[...D,["\\b([Ee]xercise|[Rr]unning|[Ss]wimming|[Dd]ancing|[Pp]laying|[Ss]ports?)\\b","Mentions exercise"]],model:"Exercise makes my heart and muscles stronger."},
+ {q:"Write a sentence about why sleep is important. Use <b>because</b>.",checks:[...D,["\\bbecause\\b","Uses because"],["\\b([Ss]leep|[Rr]est)\\w*","Mentions sleep"]],model:"Sleep is important because your body grows at night."},
+ {q:"Write a sentence that names two body parts.",checks:[...D,["(\\b(heart|lungs?|brain|muscles?|bones?|skin|stomach|knees?|thumbs?|wrists?|elbows?|feet|foot|hands?|teeth|eyes?|ears?|nose|legs?|arms?|skull|ribs)\\b[\\s\\S]*){2}","Names two body parts"]],model:"My skull protects my brain."},
+ {q:"Write a question you would ask a doctor.",checks:[CHK.cap,CHK.q,CHK.w3],model:"How can I keep my bones strong?"},
+ {q:"Write two instructions for getting ready for bed.",checks:[CHK.cap,["[.!]\\s+\\S[\\s\\S]*[.!]\\s*$","Has two instructions"],[`^\\s*(${VERBS})\\b`,"Starts with a verb"]],model:"Brush your teeth. Put on your pyjamas."},
+ {q:"Write a sentence describing how you feel after exercise.",checks:[...D,["\\b(feel|felt)\\b","Uses feel or felt"]],model:"After soccer, I feel tired but happy."},
+ {q:"Write a sentence about a balanced meal.",checks:[...D,["\\b(rice|bread|roti|oats|pasta|beans|dal|lentils|eggs?|fish|chicken|tofu|vegetables?|fruits?|salad|carrots?|spinach|apples?)\\b","Names a healthy food"]],model:"A balanced meal is rice, dal and spinach."},
+ {q:"Write a sentence using <b>should</b> and <b>because</b>.",checks:[...D,["\\bshould\\b","Uses should"],["\\bbecause\\b","Uses because"]],model:"You should wear sunscreen because the sun can burn your skin."},
+ {q:"Write an exciting healthy tip that ends with an exclamation mark.",checks:[CHK.cap,["!\\s*$","Ends with !"],CHK.w3],model:"Eat the rainbow every day!"},
+ {q:"Write a sentence about a sport from another country.",checks:[...D,["\\b(cricket|soccer|football|hockey|tai chi|yoga|basketball|tennis|badminton|kabaddi|rugby|skiing|swimming)\\b","Names a sport"]],model:"Many children in India play cricket."},
+ {q:"Write a sentence using <b>first</b> and <b>then</b> about washing your hands.",checks:[...D,["\\b[Ff]irst\\b","Uses first"],["\\b[Tt]hen\\b","Uses then"]],model:"First, wet your hands, and then rub on some soap."}
+];
+
+/* ================= LEARN NOTES ================= */
+const L={
+ detail:"Read the short text carefully. The answer is <b>in the text</b>.",
+ main:"The <b>main idea</b> is what the whole text is mostly about. It fits <b>all</b> the sentences.",
+ factop:"A <b>fact</b> can be checked. An <b>opinion</b> is a feeling: <i>Broccoli is delicious.</i>",
+ order:"Instructions, recipes and body processes all have an <b>order</b>. What comes first, next and last?",
+ cause:"The <b>cause</b> is <b>why</b>. The <b>effect</b> is <b>what happened</b>. Look for <b>because</b> and <b>so</b>.",
+ compare:"<b>Same:</b> look for <b>both</b>, <b>also</b>. <b>Different:</b> look for <b>but</b>.",
+ vocab:"Read the word, say it aloud, and think of a sentence that uses it.",
+ body:"<b>Heart</b> pumps blood · <b>lungs</b> breathe · <b>brain</b> is the boss · <b>stomach</b> mashes food · <b>skull</b> protects the brain · <b>ribs</b> protect the heart and lungs · <b>skin</b> is the biggest organ.",
+ food:"<b>Vegetables and fruits</b> (half your plate) · <b>whole grains</b> (rice, oats, roti) · <b>protein foods</b> (beans, dal, eggs, fish, tofu). <b>Water</b> is the best drink.",
+ hab:"Healthy habits: eat a variety, drink water, move every day, wash your hands, brush twice a day, sleep 9–12 hours, and stay safe.",
+ syn:"<b>Synonyms</b> mean almost the same: sick = ill, tired = sleepy.",
+ opp:"<b>Opposites</b>: healthy ↔ unhealthy, awake ↔ asleep, inhale ↔ exhale.",
+ comp:"<b>Compound words</b>: tooth + brush = toothbrush, sun + screen = sunscreen.",
+ ins:"An <b>instruction</b> tells someone what to do. It starts with a <b>verb</b> (an action word) and usually ends with a full stop: <i><b>Wash</b> your hands. <b>Drink</b> water.</i><br>To tell someone NOT to do something, start with <b>Don't</b>: <i><b>Don't</b> run by the pool.</i>",
+ can:"<b>can</b> = able to: <i>Fish <b>can</b> swim.</i><br><b>should</b> = a good idea (advice): <i>You <b>should</b> wear a helmet.</i><br>After can and should, use the plain verb: <i>can run</i> (not can runs).",
+ cant:"<b>can't</b> = not able to: <i>Penguins <b>can't</b> fly.</i><br><b>shouldn't</b> = not a good idea: <i>You <b>shouldn't</b> share cups.</i>",
+ sil:"Some words have <b>silent letters</b>: we write them but don't say them.<br><b>k</b>nee, <b>k</b>nife · <b>w</b>rite, <b>w</b>rist · thum<b>b</b>, clim<b>b</b> · ha<b>l</b>f, wa<b>l</b>k · lis<b>t</b>en · <b>h</b>our.",
+ fix:"Check: <b>1.</b> capital letter at the start, <b>2.</b> capitals for names, places, days and I, <b>3.</b> a full stop at the end.",
+ orderW:"Find the word with the capital letter: it goes first. Instructions start with the <b>verb</b>!",
+ write:"Plan in your head first. Then write: capital letter, complete idea, end mark.",
+ spell:"Use <b>Look → Say → Cover → Write → Check</b>.",
+ choose:"Watch for silent letters (<b>k</b>nee, thum<b>b</b>, <b>w</b>rist, mus<b>c</b>le) and tricky spellings (st<b>o</b>ma<b>ch</b>, c<b>ough</b>).",
+ think:"Think like a doctor: read carefully, stay safe, and look after your body.",
+ odd:"Three belong to the same group. Find the one that does <b>not</b> belong.",
+ ana:"Find how the first two words are linked. Use the <b>same link</b> for the next pair.",
+ review:"These questions come from earlier units, so you keep everything you learned fresh."
+};
+const RV=id=>UNITS.find(x=>x.id===id).review;
+u.review=MIX(isIns,insVerb,toIns,canShould,cantShouldnt,silFind,silMiss,silWhich,foodQ,F.bank(BODY),F.bank(HAB),F.vocab(u.words));
+
+/* ================= THE SKILL LIST ================= */
+u.cats=[
+ {n:"Reading",e:"📖",items:[
+  {id:"r_t1",t:"Fact page: Food Fuels Your Body",act:"story",si:0},
+  {id:"r_t2",t:"Fact page: Move Your Body!",act:"story",si:1},
+  {id:"r_t3",t:"Fact text: Amazing Body Systems",act:"story",si:2},
+  {id:"r_t4",t:"Story: The Glitter Germ Experiment",act:"story",si:3},
+  {id:"r_t5",t:"Story: Sam's Super Sleep Plan",act:"story",si:4},
+  {id:"r_t6",t:"Real-world reading: A recipe card and a bike safety poster",act:"story",si:5},
+  {id:"r_p1",t:"Classic poem: The Land of Counterpane (Robert Louis Stevenson)",act:"poem",pi:0},
+  {id:"r_p2",t:"Poem: My Body Can",act:"poem",pi:1},
+  {id:"r_detail",t:"Read and find the details",learn:L.detail,gen:detail},
+  {id:"r_main",t:"Find the main idea",learn:L.main,gen:mainIdea},
+  {id:"r_factop",t:"Fact or opinion?",learn:L.factop,gen:factOp},
+  {id:"r_order",t:"Order and sequence (steps)",learn:L.order,gen:order},
+  {id:"r_cause",t:"Cause and effect",learn:L.cause,gen:cause},
+  {id:"r_compare",t:"Compare and contrast",learn:L.compare,gen:compare}]},
+ {n:"Vocabulary",e:"🔤",items:[
+  {id:"v_s1",t:"Body words",learn:L.vocab,gen:F.vocab(set(0))},
+  {id:"v_s2",t:"Food words",learn:L.vocab,gen:F.vocab(set(1))},
+  {id:"v_s3",t:"Exercise words",learn:L.vocab,gen:F.vocab(set(2))},
+  {id:"v_s4",t:"Hygiene, safety and silent-letter words",learn:L.vocab,gen:F.vocab(set(3))},
+  {id:"v_fill",t:"Use the right word in a sentence",learn:L.vocab,gen:F.fill(u.words)},
+  {id:"v_body",t:"What does each body part do?",learn:L.body,gen:F.bank(BODY)},
+  {id:"v_food",t:"Food groups",learn:L.food,gen:foodQ},
+  {id:"v_syn",t:"Synonyms",learn:L.syn,gen:F.pairs(SYN,"synonym")},
+  {id:"v_opp",t:"Opposites",learn:L.opp,gen:F.pairs(OPP,"opposite")},
+  {id:"v_comp",t:"Compound words",learn:L.comp,gen:MIX(F.compoundJoin(COMP),F.compoundPick(COMP))}]},
+ {n:"Grammar",e:"🧩",items:[
+  {id:"g_ins",t:"Instructions: which sentence tells you what to do?",learn:L.ins,gen:isIns},
+  {id:"g_insverb",t:"Instructions: choose the verb",learn:L.ins,gen:insVerb},
+  {id:"g_toins",t:"Turn advice into an instruction",learn:L.ins,gen:toIns},
+  {id:"g_insfix",t:"Fix the instruction (capital letter and full stop)",learn:L.ins,gen:insFix},
+  {id:"g_can",t:"Can or should?",learn:L.can,gen:MIX(canShould,canType)},
+  {id:"g_cant",t:"Can't or shouldn't?",learn:L.cant,gen:cantShouldnt},
+  {id:"g_fix",t:"Fix the sentence (capitals and full stops)",learn:L.fix,gen:fix},
+  {id:"g_order",t:"Put the words in order",learn:L.orderW,gen:G.order(SENT.filter(x=>(x.match(/\b[A-Z]/g)||[]).length===1&&!/'/.test(x)))},
+  {id:"g_write",t:"Write your own sentences and instructions",learn:L.write,gen:F.write(WP)},
+  {id:"g_mixed",t:"Mixed grammar review",learn:"Use all the instruction and can/should rules from this unit.",gen:MIX(isIns,insVerb,toIns,insFix,canShould,canType,cantShouldnt)}]},
+ {n:"Spelling",e:"🎧",items:[
+  {id:"s_body",t:"Health and body words: listen and write",learn:L.spell,gen:F.listen(SP)},
+  {id:"s_silfind",t:"Silent letters: which letter is silent?",learn:L.sil,gen:MIX(silFind,silWhich)},
+  {id:"s_silmiss",t:"Silent letters: add the missing letter",learn:L.sil,gen:silMiss},
+  {id:"s_sil",t:"Silent-letter words: listen and write",learn:L.sil,gen:F.listen(SILLIST)},
+  {id:"s_choose",t:"Choose the correct spelling",learn:L.choose,gen:F.chooseSpelling(CHOOSE)},
+  {id:"s_missing",t:"Missing letters",learn:L.spell,gen:F.missing(SP)}]},
+ {n:"Thinking and health",e:"🧠",items:[
+  {id:"t_hab",t:"Healthy habits and safe choices",learn:L.hab,gen:F.bank(HAB)},
+  {id:"t_puz",t:"Body puzzles and health maths",learn:L.think,gen:F.bank(PUZ)},
+  {id:"t_odd",t:"Odd one out",learn:L.odd,gen:odd},
+  {id:"t_ana",t:"Word links (analogies)",learn:L.ana,gen:analogy}]},
+ {n:"Review earlier units",e:"🔁",items:[
+  {id:"rv_u1",t:"Review: Unit 1 (sentences, question words, nouns)",learn:L.review,gen:RV("me")},
+  {id:"rv_u2",t:"Review: Unit 2 (plurals, past tense, animals)",learn:L.review,gen:RV("animals")},
+  {id:"rv_u3",t:"Review: Unit 3 (present tense, plants, magic e)",learn:L.review,gen:RV("plants")},
+  {id:"rv_u4",t:"Review: Unit 4 (adjectives, comparing, homophones)",learn:L.review,gen:RV("weather")},
+  {id:"rv_u5",t:"Review: Unit 5 (future tense, a/an/the, space)",learn:L.review,gen:RV("space")},
+  {id:"rv_u6",t:"Review: Unit 6 (prepositions, pronouns, un-/re-)",learn:L.review,gen:RV("ocean")},
+  {id:"rv_u7",t:"Review: Unit 7 (has/have, question words, time, money)",learn:L.review,gen:RV("maths")},
+  {id:"rv_u8",t:"Review: Unit 8 (was/were, joining words, -tion)",learn:L.review,gen:RV("inventions")},
+  {id:"rv_u9",t:"Review: Unit 9 (adverbs, contractions, -ful/-less)",learn:L.review,gen:RV("friends")},
+  {id:"rv_u10",t:"Review: Unit 10 (possessives, proper nouns, maps)",learn:L.review,gen:RV("world")}]},
+ {n:"Explore and write",e:"✏️",items:[
+  {id:"x_facts",t:"Did you know? Amazing body facts",act:"facts"},
+  {id:"x_w1",t:"Writing step 1: My healthy day",act:"write",wi:0},
+  {id:"x_w2",t:"Writing step 2: How to… (instructions)",act:"write",wi:1},
+  {id:"x_w3",t:"Writing step 3: Healthy-tips poster",act:"write",wi:2}]}
+];
+})();
+
 /* ================= SETTINGS ================= */
 const SITE_NAME = "Sprout English";   // placeholder name — change this one line later
-const COMING=[["🍎","My Healthy Body"],["📚","Stories and Fables"]];
+const COMING=[["📚","Stories and Fables"]];
 
 /* ================= SAVED PROGRESS (this browser only) ================= */
 const KEY="sprout_v5";
