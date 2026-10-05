@@ -6009,9 +6009,653 @@ u.cats=[
 ];
 })();
 
+/* ===================== GRADE 3 · UNIT 10 · COUNTRIES AND CULTURES (original content, plus one public-domain poem and one retold folktale) ===================== */
+(function(){
+const f=(q,a,o,why)=>({lv:"find",q,o:[a].concat(o),a:[a],why});
+const t=(q,a,o,why)=>({lv:"think",q,o:[a].concat(o),a:[a],why});
+const p=(q,a,o,why)=>({lv:"predict",q,o:[a].concat(o),a:[a],why});
+const card=(pic,place,body,sign)=>`<div class="realdoc" style="text-align:left"><div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><b>${pic} ${place}</b><span style="border:2px dashed #b8962e;padding:2px 8px;border-radius:6px;font-size:14px">📮 stamp</span></div><br>${body}<br><br>${sign}</div>`;
+UNITS.push({
+id:"world", num:10, emoji:"🗺️🌍✈️", title:"Countries and Cultures", badge:"🌍 World Explorer",
+
+stories:[
+/* ---------- 1. POSTCARDS ---------- */
+{title:"Postcards from Grandma Kiran", e:"📮", kind:"Postcards", pages:[
+ {pic:"🧳✈️", text:"When Grandma Kiran retired, she decided to travel around the world. Before she left Toronto, she gave her grandchildren, Asha and Neel, a big world map. \"Every time I visit a new country, I'll send you a postcard,\" she promised. \"Put a pin on the map so you can follow my journey.\" A week later, the first postcard arrived.",
+  qs:[f("Where does Grandma Kiran live?","Toronto",["Paris","Cairo"],"Before she left Toronto…"),
+      f("What did she give her grandchildren?","A big world map",["A suitcase","A camera"],"She gave her grandchildren, Asha and Neel, a big world map."),
+      t("Why did she ask them to put pins on the map?","So they could follow her journey",["To decorate their room","To practise sewing"],"\"Put a pin on the map so you can follow my journey.\"")]},
+ {pic:"🦒🌍", text:card("🦒","Nairobi, Kenya","Jambo, Asha and Neel! That means hello in Swahili, one of Kenya's languages. Yesterday, our guide's jeep drove through the Maasai Mara. I saw giraffes, zebras and a lion's cub sleeping in the grass! Kenya is in East Africa, and the equator runs right through it. It's sunny and warm. Tonight, a Maasai family's village welcomed us with singing and dancing.","Love, Grandma Kiran"),
+  qs:[f("What does 'Jambo' mean?","Hello",["Goodbye","Thank you"],"\"Jambo… That means hello in Swahili.\""),
+      f("Which animals did Grandma see?","Giraffes, zebras and a lion's cub",["Penguins and seals","Kangaroos and koalas"],"I saw giraffes, zebras and a lion's cub."),
+      f("Which part of Africa is Kenya in?","East Africa",["West Africa","South Africa"],"Kenya is in East Africa."),
+      t("In 'a lion's cub', what does the 's show?","The cub belongs to the lion",["There are many lions","It is a question"],"The apostrophe s shows ownership: the lion's cub = the cub of the lion.")]},
+ {pic:"🌸🏯", text:card("🌸","Kyoto, Japan","Konnichiwa! That means hello in Japanese. I'm in Kyoto, a city full of old temples and gardens. The cherry blossoms are blooming, and everything is pink! People have picnics under the trees. This custom is called hanami. I took a super-fast bullet train from Tokyo. It went almost 300 kilometres an hour! I ate noodles with chopsticks, and I only dropped a few.","Love, Grandma Kiran"),
+  qs:[f("What is hanami?","Having picnics under the cherry blossoms",["A kind of noodle","A fast train"],"People have picnics under the trees. This custom is called hanami."),
+      f("How did Grandma travel from Tokyo?","On a bullet train",["On a bicycle","On a camel"],"I took a super-fast bullet train from Tokyo."),
+      t("Why are the cities Kyoto and Tokyo written with capital letters?","They are names of places (proper nouns)",["They are long words","They start sentences"],"Names of cities, countries and languages always start with a capital letter."),
+      f("What language is 'Konnichiwa'?","Japanese",["Swahili","Spanish"],"\"Konnichiwa! That means hello in Japanese.\"")]},
+ {pic:"🌮💀", text:card("🌮","Mexico City, Mexico","¡Hola! That's hello in Spanish. I arrived just in time for the Day of the Dead. It isn't scary at all! Families remember the people they love who have died. They build colourful altars with marigold flowers, candles, photos and their loved ones' favourite foods. I ate tacos with fresh salsa, and I tried hot chocolate with cinnamon. Mexico is south of the United States.","Love, Grandma Kiran"),
+  qs:[f("What do families do on the Day of the Dead?","Remember loved ones who have died",["Go swimming","Have a race"],"Families remember the people they love who have died."),
+      f("Which flowers are on the altars?","Marigolds",["Roses","Tulips"],"…colourful altars with marigold flowers…"),
+      f("Which direction is Mexico from the United States?","South",["North","East"],"Mexico is south of the United States."),
+      t("Why does Grandma say the day 'isn't scary at all'?","It is a loving celebration, not a scary one",["Because it is daytime","Because she is brave"],"It is about remembering and loving family.")]},
+ {pic:"🐪🔺", text:card("🐪","Cairo, Egypt","Marhaba! That means hello in Arabic. Today I stood in front of the Great Pyramid of Giza. It's more than 4,500 years old! I rode a camel across the sand, and it was bumpy. Later, I sailed on the Nile River in a boat called a felucca. The Nile is one of the longest rivers in the world. Egypt is in the north-east corner of Africa.","Love, Grandma Kiran"),
+  qs:[f("How old is the Great Pyramid?","More than 4,500 years old",["About 45 years old","Brand new"],"It's more than 4,500 years old!"),
+      f("What is a felucca?","A kind of boat",["A camel","A pyramid"],"…sailed on the Nile River in a boat called a felucca."),
+      f("What language is 'Marhaba'?","Arabic",["Japanese","Spanish"],"\"Marhaba! That means hello in Arabic.\""),
+      t("Which continent is Egypt in?","Africa",["Asia","Europe"],"Egypt is in the north-east corner of Africa.")]},
+ {pic:"🗺️📍", text:"The last postcard came from India, where Grandma Kiran was born. <i>\"Namaste! I'm in Kolkata, visiting my cousins for Durga Puja, a big festival with music, lights and beautiful statues. I'll be home next week!\"</i> Asha and Neel put the last pin on the map. Five pins now made a line around the world. When Grandma came home, she brought souvenirs: a Kenyan bracelet, Japanese chopsticks, a Mexican paper flower, an Egyptian scarf and Indian sweets. \"The world is big,\" she said, \"but people everywhere love their families, their food and a good celebration.\"",
+  qs:[f("Where was Grandma Kiran born?","India",["Japan","Egypt"],"…from India, where Grandma Kiran was born."),
+      f("What does 'Namaste' mean?","Hello (a respectful greeting in Hindi)",["Goodbye forever","Let's eat"],"Namaste is a greeting used in India."),
+      t("How many countries did Grandma visit?","Five",["Two","Ten"],"Kenya, Japan, Mexico, Egypt and India: five pins."),
+      t("What did Grandma learn about people around the world?","People everywhere love family, food and celebrations",["Everyone is exactly the same","People in other countries don't celebrate"],"\"People everywhere love their families, their food and a good celebration.\"")]}
+], turn:{q:"If you could send a postcard from any country, which would you choose? Write two sentences about what you would see there.",model:"I would send a postcard from Brazil. I would see the Amazon rainforest and colourful parrots."}},
+
+/* ---------- 2. STORY ---------- */
+{title:"World Lunch Day", e:"🍲", kind:"Story", pages:[
+ {pic:"🏫🍽️", text:"Ms. Chen had an exciting announcement. \"On Friday, we will have World Lunch Day. Please bring a dish that your family loves, and tell us where it comes from.\" The class buzzed with excitement. Leo frowned. \"My family is from Canada,\" he said. \"We just eat normal food.\" Ms. Chen smiled. \"Every family's food has a story, Leo. Ask your parents.\"",
+  qs:[f("When is World Lunch Day?","Friday",["Monday","Sunday"],"\"On Friday, we will have World Lunch Day.\""),
+      t("Why did Leo frown?","He thought his family's food wasn't special",["He was hungry","He didn't like Ms. Chen"],"\"We just eat normal food.\""),
+      p("What do you think Leo will find out from his parents?","His family's food has an interesting story too",["His family doesn't eat","He has no family"],"Ms. Chen said every family's food has a story.")]},
+ {pic:"🥟🥘", text:"On Friday, the tables were full. Ada brought jollof rice, a spicy tomato rice from Nigeria. Wei brought dumplings from China, folded like little purses. Yuki brought onigiri from Japan. Mia's grandma made samosas, crispy pastries filled with spiced potatoes, from India. Sofia brought pastéis de nata, small custard tarts from Portugal. The classroom smelled amazing.",
+  qs:[f("What did Ada bring?","Jollof rice from Nigeria",["Dumplings from China","Samosas from India"],"Ada brought jollof rice, a spicy tomato rice from Nigeria."),
+      f("What are pastéis de nata?","Small custard tarts from Portugal",["Spicy rice","Folded dumplings"],"…pastéis de nata, small custard tarts from Portugal."),
+      t("In 'Mia's grandma', who does the grandma belong to?","Mia",["Leo","Ada"],"Mia's grandma = the grandma of Mia.")]},
+ {pic:"🥞🍁", text:"Leo carried a big plate covered with a towel. \"I asked my dad,\" he said shyly. \"My great-great-grandparents came from Poland and Ukraine more than a hundred years ago. They brought this recipe.\" He lifted the towel. \"Pierogi! Dumplings filled with potato and cheese. And this,\" he added, pointing to a small bottle, \"is maple syrup from my uncle's farm in Quebec, for dessert pancakes.\"",
+  qs:[f("Where did Leo's great-great-grandparents come from?","Poland and Ukraine",["Nigeria","Japan"],"…came from Poland and Ukraine more than a hundred years ago."),
+      f("What are pierogi filled with?","Potato and cheese",["Chocolate","Rice and fish"],"Dumplings filled with potato and cheese."),
+      f("Where is the maple syrup from?","His uncle's farm in Quebec",["A shop in Japan","His school"],"…maple syrup from my uncle's farm in Quebec."),
+      t("What did Leo discover?","His family's food has a history too",["He doesn't like pierogi","Canada has no food"],"His family's recipe travelled from Europe a long time ago.")]},
+ {pic:"🧭🌎", text:"Ms. Chen pinned a world map to the board. Each child put a sticker on the country their dish came from. Nigeria and Kenya were in Africa. China, Japan and India were in Asia. Poland, Ukraine and Portugal were in Europe. Canada was in North America. \"Look,\" said Ms. Chen. \"Our class lunch covers four continents!\"",
+  qs:[f("Which continent are China, Japan and India in?","Asia",["Europe","Africa"],"China, Japan and India were in Asia."),
+      f("How many continents did the lunch cover?","Four",["Two","Seven"],"\"Our class lunch covers four continents!\""),
+      t("Which continent is Portugal in?","Europe",["Asia","North America"],"Poland, Ukraine and Portugal were in Europe.")]},
+ {pic:"😋🤝", text:"Everyone tried a little of everything. Wei loved the samosas. Ada asked for Leo's recipe. Leo had three of Sofia's custard tarts! Then each child taught the class how to say \"thank you\" in their family's language: <i>asante</i> (Swahili), <i>xièxie</i> (Mandarin), <i>arigatō</i> (Japanese), <i>dhanyavaad</i> (Hindi), <i>obrigado</i> (Portuguese) and <i>dziękuję</i> (Polish). Leo grinned. \"I thought my food was normal. Now I know every family's food has a story, even mine.\"",
+  qs:[f("What does 'obrigado' mean?","Thank you in Portuguese",["Hello in Japanese","Goodbye in Swahili"],"…obrigado (Portuguese)…"),
+      f("Whose recipe did Ada ask for?","Leo's",["Wei's","Yuki's"],"Ada asked for Leo's recipe."),
+      t("What is the message of this story?","Every family's food and culture has a special story",["Only some families are interesting","Lunch is boring"],"\"Every family's food has a story, even mine.\""),
+      t("How did Leo's feelings change?","From unsure to proud of his family's story",["From happy to angry","He didn't change"],"At first he thought his food was 'normal'. Then he felt proud.")]}
+], turn:{q:"What dish does your family love? Where does it come from? Write two or three sentences.",model:"My family loves biryani. It comes from India. My mom makes it with rice, chicken and lots of spices."}},
+
+/* ---------- 3. FACT TEXT ---------- */
+{title:"Our World: Continents and Oceans", e:"🌍", kind:"Fact text", pages:[
+ {pic:"🌍🧭", text:"Our planet has seven big areas of land called <b>continents</b>: Asia, Africa, North America, South America, Antarctica, Europe and Australia (sometimes called Oceania). <b>Asia</b> is the biggest continent, and it has the most people. <b>Australia</b> is the smallest. Each continent has many countries, except Antarctica, which has no countries at all, only scientists who visit to study the ice.",
+  qs:[f("How many continents are there?","Seven",["Five","Ten"],"Our planet has seven big areas of land called continents."),
+      f("Which is the biggest continent?","Asia",["Africa","Australia"],"Asia is the biggest continent."),
+      t("Why does Antarctica have no countries?","Nobody lives there all the time; only scientists visit",["It is too small","It is underwater"],"…only scientists who visit to study the ice.")]},
+ {pic:"🌊🐋", text:"Between the continents are five great <b>oceans</b>: the Pacific, the Atlantic, the Indian, the Arctic and the Southern Ocean. The Pacific is the biggest and deepest. The Atlantic is between the Americas and Europe and Africa. Oceans cover about seventy out of every one hundred parts of the Earth's surface. That's why the Earth looks blue from space!",
+  qs:[f("How many oceans are there?","Five",["Seven","Two"],"…five great oceans."),
+      f("Which ocean is between the Americas and Europe and Africa?","The Atlantic",["The Pacific","The Arctic"],"The Atlantic is between the Americas and Europe and Africa."),
+      t("Why does the Earth look blue from space?","Most of its surface is ocean",["The sky paints it","The land is blue"],"Oceans cover about seventy out of every one hundred parts of the Earth's surface.")]},
+ {pic:"🧭⬆️", text:"To find our way, we use four main directions: <b>north</b>, <b>south</b>, <b>east</b> and <b>west</b>. A <b>compass</b> has a needle that always points north. On most maps, north is at the top, south is at the bottom, east is on the right and west is on the left. The sun rises in the east and sets in the west. Here's a trick to remember the order clockwise: <b>N</b>ever <b>E</b>at <b>S</b>oggy <b>W</b>affles!",
+  qs:[f("Where is north on most maps?","At the top",["At the bottom","On the left"],"On most maps, north is at the top."),
+      f("Where does the sun rise?","In the east",["In the west","In the north"],"The sun rises in the east."),
+      f("What does 'Never Eat Soggy Waffles' help you remember?","North, East, South, West",["The planets","The oceans"],"Never Eat Soggy Waffles = N, E, S, W."),
+      t("On a map, if you move to the right, which direction are you going?","East",["West","South"],"East is on the right.")]},
+ {pic:"🟰🌡️", text:"The <b>equator</b> is an imaginary line around the middle of the Earth. Places near the equator, like Kenya and Brazil, are hot all year. The part of the Earth above the equator is the Northern Hemisphere, and the part below is the Southern Hemisphere. Seasons are opposite! When it is summer in Canada, it is winter in Australia and Argentina.",
+  qs:[f("What is the equator?","An imaginary line around the middle of the Earth",["A real fence","A river"],"The equator is an imaginary line around the middle of the Earth."),
+      f("What are places near the equator like?","Hot all year",["Snowy all year","Dark all year"],"Places near the equator… are hot all year."),
+      t("It is July and summer in Toronto. What season is it in Australia?","Winter",["Summer","Spring"],"Seasons are opposite in the two hemispheres.")]},
+ {pic:"🏙️🚩", text:"There are about 195 countries in the world. Each country has its own <b>flag</b>, its own <b>capital city</b> and its own government. Ottawa is the capital of Canada, New Delhi is the capital of India, and Tokyo is the capital of Japan. Some countries are huge, like Russia and Canada, the two largest. Others are tiny, like Vatican City, which is smaller than many city parks!",
+  qs:[f("What is the capital of Canada?","Ottawa",["Toronto","Vancouver"],"Ottawa is the capital of Canada."),
+      f("What is the capital of India?","New Delhi",["Mumbai","Kolkata"],"New Delhi is the capital of India."),
+      f("Which are the two largest countries?","Russia and Canada",["Japan and Egypt","Mexico and Peru"],"Some countries are huge, like Russia and Canada, the two largest."),
+      t("What is the main idea of this whole text?","The world has continents, oceans and countries, and directions help us find our way",["Only Canada is important","Maps are boring"],"Each page teaches a different part of world geography.")]}
+], turn:{q:"Which continent do you live on? Write two sentences about where you live using direction words.",model:"I live in North America. My city, Toronto, is north of Lake Ontario."}},
+
+/* ---------- 4. FACT TEXT ---------- */
+{title:"Festivals Around the World", e:"🎉", kind:"Fact text", pages:[
+ {pic:"🪔✨", text:"<b>Diwali</b> is the festival of lights, celebrated by Hindus, Sikhs, Jains and many others, in India and around the world. Families light small clay lamps called diyas, make colourful rangoli patterns, share sweets and wear new clothes. Diwali celebrates light winning over darkness and good winning over evil. It usually comes in October or November.",
+  qs:[f("What is Diwali called?","The festival of lights",["The festival of snow","The festival of kites"],"Diwali is the festival of lights."),
+      f("What are diyas?","Small clay lamps",["Sweets","New clothes"],"…small clay lamps called diyas…"),
+      t("What does Diwali celebrate?","Light winning over darkness and good over evil",["The start of summer","A football match"],"Diwali celebrates light winning over darkness and good winning over evil.")]},
+ {pic:"🧧🐉", text:"<b>Lunar New Year</b> is celebrated in China, Vietnam, Korea and by many families around the world. It starts on the new moon, between late January and February. People clean their homes to sweep away bad luck, give red envelopes with money for good luck, and watch dragon and lion dances. Each year is named after one of twelve animals, like the Rabbit, the Dragon or the Horse.",
+  qs:[f("Why do people clean their homes?","To sweep away bad luck",["To find coins","Because guests are messy"],"People clean their homes to sweep away bad luck."),
+      f("What colour are the envelopes for good luck?","Red",["Blue","Black"],"…give red envelopes with money for good luck."),
+      f("How many animals are years named after?","Twelve",["Seven","Five"],"Each year is named after one of twelve animals.")]},
+ {pic:"🌙🍬", text:"<b>Eid al-Fitr</b> is a happy celebration for Muslims around the world. It comes at the end of Ramadan, a month when many adults fast from sunrise to sunset. On Eid, families go to the mosque to pray, wear their best clothes, visit relatives, give gifts and share delicious food. Many families also give money or food to people in need. People greet each other by saying \"Eid Mubarak!\"",
+  qs:[f("When does Eid al-Fitr come?","At the end of Ramadan",["At the start of winter","On every birthday"],"It comes at the end of Ramadan."),
+      f("What do people say to greet each other on Eid?","\"Eid Mubarak!\"",["\"Happy Halloween!\"","\"Good night!\""],"People greet each other by saying \"Eid Mubarak!\""),
+      t("Why do many families give food or money on Eid?","To help people in need",["To show off","Because it is the law"],"Many families also give money or food to people in need.")]},
+ {pic:"🕎🎄", text:"In winter, many families celebrate festivals of light and joy. During <b>Hanukkah</b>, Jewish families light one more candle on a menorah each night for eight nights, eat foods fried in oil like potato latkes, and play a spinning-top game called dreidel. At <b>Christmas</b>, many Christian families decorate trees, sing carols, give gifts and share a big meal on December 25.",
+  qs:[f("How many nights does Hanukkah last?","Eight",["Two","Twelve"],"…each night for eight nights."),
+      f("What is a dreidel?","A spinning top",["A candle holder","A kind of cake"],"…a spinning-top game called dreidel."),
+      f("On what date is Christmas?","December 25",["January 1","July 1"],"…on December 25.")]},
+ {pic:"🎨🌈", text:"<b>Holi</b>, the festival of colours, welcomes spring in India and Nepal. People throw bright coloured powder and water at each other, laugh, dance and eat sweets. Everyone ends up covered in colour, and it doesn't matter who you are! Festivals like these remind us that people around the world celebrate family, kindness, light and new beginnings, each in their own special way.",
+  qs:[f("What does Holi celebrate?","The coming of spring",["The end of school","Winter snow"],"Holi, the festival of colours, welcomes spring."),
+      f("What do people throw during Holi?","Coloured powder and water",["Snowballs","Flowers only"],"People throw bright coloured powder and water at each other."),
+      t("What is the main idea of this whole text?","People around the world celebrate in different but similar ways",["Only one festival matters","Festivals are only for children"],"Every page shows a festival with family, light, kindness or new beginnings.")]}
+], turn:{q:"Write about a festival or celebration your family enjoys. What do you do, eat or wear?",model:"My family celebrates Eid. We wear new clothes, visit my aunt and eat sweet vermicelli."}},
+
+/* ---------- 5. FOLKTALE ---------- */
+{title:"Anansi and the Pot of Wisdom (a folktale from Ghana, retold)", e:"🕷️", kind:"Folktale", pages:[
+ {pic:"🕷️🌳", text:"Long ago in West Africa, the Ashanti people told stories about Anansi, a clever spider who was sometimes too clever for his own good. One day, Anansi decided that he wanted to be the wisest creature in the world. So he went around collecting every bit of wisdom he could find and put it all into one big clay pot.",
+  qs:[f("Who is Anansi?","A clever spider",["A lion","A farmer"],"…Anansi, a clever spider…"),
+      f("Which people told stories about Anansi?","The Ashanti people of West Africa",["The Maasai of Kenya","The Inuit of Canada"],"…the Ashanti people told stories about Anansi."),
+      f("Where did Anansi put the wisdom?","In a big clay pot",["In a box","Under his bed"],"…put it all into one big clay pot.")]},
+ {pic:"🏺🔒", text:"\"Now I have all the wisdom in the world,\" Anansi said proudly, \"and I won't share it with anyone.\" He decided to hide the pot at the top of the tallest tree in the forest, where nobody could reach it. He tied the pot to his front with a vine and began to climb. But the big pot was in the way. He slipped and slid. He tried again and again, but he couldn't climb.",
+  qs:[f("Where did Anansi want to hide the pot?","At the top of the tallest tree",["In a river","In a cave"],"…at the top of the tallest tree in the forest."),
+      t("Why couldn't Anansi climb?","The pot on his front was in the way",["The tree was too slippery","He was too tired"],"He tied the pot to his front… But the big pot was in the way."),
+      t("What does Anansi's plan show about him?","He was selfish with the wisdom",["He was generous","He was shy"],"\"I won't share it with anyone.\"")]},
+ {pic:"👦🏾🕷️", text:"Anansi's young son, Ntikuma, was watching from below. \"Father,\" he called, \"why don't you tie the pot on your back? Then you can hold the tree with all your legs.\" Anansi stopped. It was such a simple idea, and he hadn't thought of it! He was so angry that someone else had wisdom he didn't have that he threw the pot down.",
+  qs:[f("What was the name of Anansi's son?","Ntikuma",["Kwame","Tilly"],"Anansi's young son, Ntikuma…"),
+      f("What did Ntikuma suggest?","Tying the pot on his back",["Throwing the pot away","Asking a bird to carry it"],"\"Why don't you tie the pot on your back?\""),
+      p("What do you think will happen to the pot?","It will break, and the wisdom will spill out",["It will fly away","It will stay safe"],"Clay pots break when they fall.")]},
+ {pic:"🏺💨", text:"The pot crashed onto a rock and broke into pieces. All the wisdom inside spilled out. Then a strong wind blew, and it carried the wisdom all over the world: across rivers, over mountains, to every village and every town. Bits of wisdom landed on every person, young and old.",
+  qs:[f("What happened to the pot?","It broke on a rock",["It floated away","It got bigger"],"The pot crashed onto a rock and broke into pieces."),
+      f("What carried the wisdom around the world?","A strong wind",["A river","A bird"],"…a strong wind blew, and it carried the wisdom all over the world."),
+      t("Why does the story say wisdom landed on everyone?","To explain why everybody has some wisdom",["Because the wind was angry","Because the pot was magic"],"Folktales often explain how things came to be.")]},
+ {pic:"🌍💡", text:"And that, the Ashanti say, is why no single person has all the wisdom in the world. Everyone has a little, and when we share what we know, we all become wiser. Even a small child can teach a grown-up something new! Stories about Anansi travelled with people to the Caribbean and the Americas, and they are still told today.",
+  qs:[t("What is the lesson of this folktale?","Nobody has all the wisdom; we learn by sharing",["Spiders are bad climbers","Keep everything for yourself"],"Everyone has a little wisdom, and sharing makes us wiser."),
+      f("Where did Anansi stories travel?","To the Caribbean and the Americas",["To the Moon","Only to Asia"],"Stories about Anansi travelled with people to the Caribbean and the Americas."),
+      t("How does Ntikuma prove the lesson?","A small child had a wise idea his father didn't",["He climbed the tree","He was the fastest"],"\"Even a small child can teach a grown-up something new!\"")]}
+], turn:{q:"Write about something you taught a grown-up, or something a younger child taught you.",model:"I taught my grandpa how to send a video message. He was very happy and called me his little teacher."}},
+
+/* ---------- 6. REAL-WORLD TEXT ---------- */
+{title:"Real-world reading: A town map and a departures board", e:"🗺️", kind:"Real-world text", pages:[
+ {pic:"🗺️🧭", text:"Here is a map of Maple Town. North is at the top.<table class=\"realtbl\" style=\"text-align:center\"><tr><td>🌲 Forest</td><td>🏔️ Lookout Hill</td><td>🏰 Museum</td></tr><tr><td>🏫 School</td><td>⛲ Town Square</td><td>🏥 Hospital</td></tr><tr><td>🏊 Pool</td><td>🛒 Market</td><td>🚉 Train Station</td></tr></table><div style=\"text-align:center;font-weight:700;margin-top:6px\">⬆️ N &nbsp;·&nbsp; ➡️ E &nbsp;·&nbsp; ⬇️ S &nbsp;·&nbsp; ⬅️ W</div>",
+  qs:[f("What is in the middle of the map?","The Town Square",["The Museum","The Pool"],"⛲ Town Square is in the centre."),
+      t("What is directly north of the Town Square?","Lookout Hill",["The Market","The School"],"North is up. Above the Town Square is Lookout Hill."),
+      t("What is directly east of the School?","The Town Square",["The Forest","The Pool"],"East is to the right. To the right of the School is the Town Square."),
+      t("You are at the Market. Which direction is the Train Station?","East",["West","North"],"The Train Station is to the right (east) of the Market."),
+      t("Which place is in the south-west corner?","The Pool",["The Museum","The Forest"],"South is the bottom and west is the left: the bottom-left corner is the Pool.")]},
+ {pic:"✈️🕓", text:"Grandma Kiran checked the departures board at Toronto Pearson Airport.<table class=\"realtbl\"><tr><th>Time</th><th>Flight to</th><th>Country</th><th>Gate</th></tr><tr><td>14:05</td><td>Nairobi</td><td>Kenya</td><td>B12</td></tr><tr><td>14:40</td><td>Tokyo</td><td>Japan</td><td>C3</td></tr><tr><td>15:15</td><td>Mexico City</td><td>Mexico</td><td>A7</td></tr><tr><td>16:00</td><td>Cairo</td><td>Egypt</td><td>B4</td></tr><tr><td>18:30</td><td>Delhi</td><td>India</td><td>C9</td></tr></table><i>Please arrive at your gate 30 minutes before departure.</i>",
+  qs:[f("Which gate is the flight to Tokyo?","C3",["B12","A7"],"14:40 · Tokyo · Japan · C3"),
+      f("What time is the flight to Cairo?","16:00",["14:05","18:30"],"16:00 · Cairo · Egypt"),
+      t("Which flight leaves first?","The flight to Nairobi",["The flight to Delhi","The flight to Cairo"],"14:05 is the earliest time."),
+      t("The flight to Mexico City leaves at 15:15. By what time should you be at the gate?","14:45",["15:45","15:15"],"30 minutes before 15:15 is 14:45."),
+      f("Which city is in Egypt?","Cairo",["Nairobi","Tokyo"],"Cairo · Egypt")]}
+], turn:{q:"Write directions from your home to a place nearby (a park, a shop or your school). Use words like north, left, right and next to.",model:"Walk out of my front door and turn left. Go straight for two blocks. The park is next to the library."}}
+],
+
+poems:[
+ {title:"Foreign Lands (by Robert Louis Stevenson, 1885)",
+  lines:["Up into the cherry tree","Who should climb but little me?","I held the trunk with both my hands","And looked abroad on foreign lands.","","I saw the next door garden lie,","Adorned with flowers, before my eye,","And many pleasant places more","That I had never seen before.","","I saw the dimpling river pass","And be the sky's blue looking-glass;","The dusty roads go up and down","With people tramping in to town.","","If I could find a higher tree","Farther and farther I should see,","To where the grown-up river slips","Into the sea among the ships,","","To where the roads on either hand","Lead onward into fairy land,","Where all the children dine at five,","And all the playthings come alive."],
+  qs:[f("What did the child climb?","A cherry tree",["A mountain","A ladder"],"\"Up into the cherry tree who should climb but little me?\""),
+      t("What does 'foreign lands' mean in this poem?","Places the child had never seen before",["Only other countries","The child's bedroom"],"From the tree, the child sees \"pleasant places… that I had never seen before.\""),
+      t("What does 'the sky's blue looking-glass' mean?","The river reflects the sky like a mirror",["The sky is made of glass","A blue window"],"A looking-glass is an old word for a mirror."),
+      t("What does the child wish for?","A higher tree to see even farther",["To climb down","To go to sleep"],"\"If I could find a higher tree, farther and farther I should see.\""),
+      f("Which word rhymes with 'tree'?","see",["ships","town"],"Tree and see end with the same sound.")]},
+ {title:"Hello Around the World",
+  lines:["In France they say bonjour with a smile,","In Spain it's hola, warm all the while.","In India, namaste with hands held tight,","In Japan, konnichiwa, polite and bright.","In Kenya, jambo rings out clear,","In China, nǐ hǎo, friendly and near.","So many words, but they all say the same:","\"Hello, my friend! What is your name?\""],
+  qs:[f("How do people say hello in Spain?","Hola",["Bonjour","Jambo"],"\"In Spain it's hola.\""),
+      f("In which country do people say 'jambo'?","Kenya",["Japan","France"],"\"In Kenya, jambo rings out clear.\""),
+      t("What is the message of the last two lines?","Different words can share the same friendly meaning",["Everyone speaks French","Names are not important"],"\"So many words, but they all say the same.\""),
+      f("Which word rhymes with 'tight'?","bright",["clear","same"],"Tight and bright end with the same sound.")]}
+],
+
+words:[
+ /* geography */
+ {w:"continent",e:"🌍",m:"one of the seven very large areas of land on Earth",ex:"Asia is the biggest continent.",fill:"Africa is a ___ with more than fifty countries."},
+ {w:"country",e:"🇨🇦",m:"an area of land with its own government and flag",ex:"Canada is a very big country.",fill:"Japan is a ___ in Asia."},
+ {w:"capital",e:"🏛️",m:"the city where a country's government is",ex:"Ottawa is the capital of Canada.",fill:"New Delhi is the ___ of India."},
+ {w:"city",e:"🏙️",m:"a large, busy town where many people live",ex:"Tokyo is a huge city.",fill:"Toronto is the biggest ___ in Canada."},
+ {w:"border",e:"🚧",m:"the line where one country ends and another begins",ex:"Canada and the United States share a long border.",fill:"We crossed the ___ into Mexico."},
+ {w:"globe",e:"🌐",m:"a round model of the Earth",ex:"I spun the globe and pointed to India.",fill:"The ___ in our classroom spins around."},
+ {w:"compass",e:"🧭",m:"a tool with a needle that always points north",ex:"The hikers used a compass to find their way.",fill:"The ___ needle pointed north."},
+ {w:"equator",e:"🟰",m:"an imaginary line around the middle of the Earth",ex:"Kenya is on the equator.",fill:"Countries near the ___ are hot all year."},
+ {w:"population",e:"👨‍👩‍👧‍👦",m:"the number of people who live in a place",ex:"India has a very large population.",fill:"The ___ of our town is ten thousand people."},
+ {w:"flag",e:"🚩",m:"a piece of cloth with a design that stands for a country",ex:"The Canadian flag has a red maple leaf.",fill:"Each country has its own ___."},
+ /* maps and directions */
+ {w:"north",e:"⬆️",m:"the direction towards the top of most maps",ex:"The Arctic is far north of Toronto.",fill:"A compass needle always points ___."},
+ {w:"south",e:"⬇️",m:"the direction opposite north",ex:"Mexico is south of the United States.",fill:"Birds fly ___ for the winter."},
+ {w:"east",e:"➡️",m:"the direction where the sun rises",ex:"The sun rises in the east.",fill:"Japan is far to the ___ of India."},
+ {w:"west",e:"⬅️",m:"the direction where the sun sets",ex:"The sun sets in the west.",fill:"Vancouver is in the ___ of Canada."},
+ {w:"map",e:"🗺️",m:"a drawing that shows where places are",ex:"Grandma gave us a world map.",fill:"Look at the ___ to find the museum."},
+ {w:"direction",e:"🧭",m:"the way something is going or pointing",ex:"Which direction is the station?",fill:"We walked in the wrong ___ and got lost."},
+ {w:"route",e:"🛣️",m:"the way you take to get from one place to another",ex:"The bus took a long route through the city.",fill:"What is the quickest ___ to school?"},
+ {w:"nearby",e:"📍",m:"not far away; close",ex:"There is a park nearby.",fill:"Is there a shop ___?"},
+ {w:"landmark",e:"🗼",m:"a famous building or place that is easy to recognize",ex:"The CN Tower is a famous landmark in Toronto.",fill:"The pyramids are a famous ___ in Egypt."},
+ {w:"symbol",e:"🔣",m:"a picture or sign that stands for something",ex:"On the map, a tree symbol shows a forest.",fill:"The maple leaf is a ___ of Canada."},
+ /* culture */
+ {w:"culture",e:"🎎",m:"the way of life, beliefs, arts and customs of a group of people",ex:"Food and music are part of a culture.",fill:"We learned about Japanese ___ at the museum."},
+ {w:"custom",e:"🙏",m:"something people in a place usually do",ex:"Picnics under cherry trees are a Japanese custom.",fill:"It is a ___ to take off your shoes in some homes."},
+ {w:"festival",e:"🎉",m:"a special time of celebration",ex:"Diwali is the festival of lights.",fill:"Holi is a colourful ___ in India."},
+ {w:"language",e:"🗣️",m:"the words people use to speak and write",ex:"Swahili is a language spoken in Kenya.",fill:"How many ___s can you speak?"},
+ {w:"greeting",e:"👋",m:"a word or action used to say hello",ex:"Namaste is a respectful greeting.",fill:"A handshake is a ___ in many countries."},
+ {w:"costume",e:"👘",m:"special clothes worn for a festival, a show or a tradition",ex:"The dancers wore colourful costumes.",fill:"She wore a lion ___ for the dance."},
+ {w:"recipe",e:"📝",m:"instructions for making a dish",ex:"Leo's family brought the pierogi recipe from Europe.",fill:"Grandma wrote down the ___ for samosas."},
+ {w:"heritage",e:"🧬",m:"the traditions and history that come from your family and ancestors",ex:"Leo is proud of his Polish and Ukrainian heritage.",fill:"Learning your family's language is part of your ___."},
+ {w:"community",e:"🏘️",m:"a group of people who live in the same area or share something",ex:"Our community has people from many countries.",fill:"The whole ___ came to the street festival."},
+ {w:"ancestor",e:"👴",m:"a family member who lived a long time ago",ex:"My ancestors came from Ireland.",fill:"An ___ is someone in your family from long ago."},
+ /* travel and describing */
+ {w:"passport",e:"🛂",m:"an official book you need to travel to other countries",ex:"Grandma showed her passport at the airport.",fill:"You need a ___ to fly to another country."},
+ {w:"luggage",e:"🧳",m:"the bags and suitcases you take on a trip",ex:"Our luggage was very heavy.",fill:"Put your ___ on the cart."},
+ {w:"souvenir",e:"🎁",m:"something you buy or keep to remember a place",ex:"Grandma brought souvenirs from every country.",fill:"I bought a little Eiffel Tower as a ___."},
+ {w:"tourist",e:"📸",m:"a person who visits a place on holiday",ex:"Many tourists visit the pyramids.",fill:"The ___ took photos of the castle."},
+ {w:"foreign",e:"🌏",m:"from another country",ex:"Learning a foreign language is fun.",fill:"She speaks three ___ languages."},
+ {w:"local",e:"🏡",m:"from the area where you live",ex:"We buy vegetables from local farmers.",fill:"The ___ library is open on Saturdays."},
+ {w:"crowded",e:"🚇",m:"full of people",ex:"The market in Mexico City was crowded.",fill:"The train was so ___ that we had to stand."},
+ {w:"traditional",e:"🪭",m:"done or made in the same way for a long time",ex:"They wore traditional clothes for the festival.",fill:"Pierogi are a ___ food in Poland."},
+ {w:"delicious",e:"😋",m:"tasting very good",ex:"The samosas were delicious.",fill:"Mmm, this soup is ___!"},
+ {w:"spicy",e:"🌶️",m:"having a strong, hot taste",ex:"Jollof rice can be spicy.",fill:"This curry is too ___ for me!"}
+],
+
+spelling:[
+ {w:"world",s:"The world is big.",tip:"'or' sounds like 'ur': w-or-ld."},
+ {w:"country",s:"Canada is a country.",tip:"'ou' sounds like 'u': c-ou-ntry."},
+ {w:"city",s:"Tokyo is a big city.",tip:"c sounds like s."},
+ {w:"north",s:"Go north.",tip:"'or' as in for."},
+ {w:"south",s:"Birds fly south.",tip:"'ou' as in out."},
+ {w:"east",s:"The sun rises in the east.",tip:"'ea' says long e."},
+ {w:"west",s:"The sun sets in the west."},
+ {w:"flag",s:"Wave the flag."},
+ {w:"language",s:"I speak two languages.",tip:"lan-guage. The 'u' after g is easy to forget."},
+ {w:"people",s:"Many people live here.",tip:"'eo' sounds like long e: p-eo-ple."},
+ {w:"holiday",s:"We went on holiday.",tip:"holi + day."},
+ {w:"festival",s:"Diwali is a festival.",tip:"fes-ti-val."},
+ {w:"globe",s:"Spin the globe.",tip:"Magic e: gl-o-be."},
+ {w:"capital",s:"Ottawa is the capital.",tip:"cap-i-tal."},
+ {w:"culture",s:"Music is part of culture.",tip:"cul-ture."}
+],
+
+facts:[
+ {e:"🌍",c:"There are seven continents.",t:true,x:"True! Asia, Africa, North America, South America, Antarctica, Europe and Australia."},
+ {e:"🗣️",c:"There are about 7,000 languages spoken in the world.",t:true,x:"True! Some are spoken by millions of people and some by only a few hundred."},
+ {e:"🍁",c:"Toronto is the capital of Canada.",t:false,x:"Not true! Ottawa is the capital of Canada. Toronto is the capital of Ontario."},
+ {e:"🐧",c:"Antarctica has many countries.",t:false,x:"Not true! Antarctica has no countries. Only scientists live there for part of the year."},
+ {e:"☀️",c:"When it is summer in Canada, it is winter in Australia.",t:true,x:"True! The Northern and Southern Hemispheres have opposite seasons."},
+ {e:"🇨🇦",c:"Canada has two official languages, English and French.",t:true,x:"True! And many Indigenous languages are spoken there too."},
+ {e:"🇮🇳",c:"India has more than 20 officially recognized languages.",t:true,x:"True! Hindi, Bengali, Tamil, Telugu, Marathi and many more."},
+ {e:"🌊",c:"The Pacific is the biggest ocean.",t:true,x:"True! It is bigger than all the land on Earth put together."},
+ {e:"🧭",c:"A compass needle always points south.",t:false,x:"Not true! A compass needle points north."},
+ {e:"🏔️",c:"Mount Everest, the highest mountain, is in Asia.",t:true,x:"True! It is on the border of Nepal and China."},
+ {e:"🦘",c:"Kangaroos live wild in Africa.",t:false,x:"Not true! Wild kangaroos live only in Australia."},
+ {e:"🏞️",c:"The Nile is one of the longest rivers in the world.",t:true,x:"True! It flows through eleven countries in Africa."}
+],
+
+writing:[
+ {e:"🌏",t:"A country I would love to visit",level:"Step 1 · Sentences",
+  prompt:"Choose a country you would love to visit. Write at least 4 sentences: where it is (which continent), what language people speak, what you would see or eat, and why you want to go. Remember capital letters for countries, cities and languages!",
+  minS:4,minWords:2,
+  rx:[["^\\s*[A-Z]","I started with a capital letter"],["[.!?]\\s*$","I ended with a full stop"],["\\b(Asia|Africa|Europe|North America|South America|Australia|Oceania|Antarctica)\\b","I named a continent with a capital letter"],["\\b(English|French|Spanish|Hindi|Bengali|Japanese|Swahili|Arabic|Portuguese|Mandarin|Chinese|Italian|German|Korean|Polish|Ukrainian|Urdu|Punjabi|Tamil|Russian|Greek|Turkish|Vietnamese|Tagalog)\\b","I named a language with a capital letter"],["\\bbecause\\b","I used because"]],
+  starters:["I would love to visit ","It is in ","People there speak ","I would see ","I want to go because "],
+  model:"I would love to visit Brazil. It is in South America. People there speak Portuguese. I would see the Amazon rainforest and colourful parrots, and I would taste delicious food. I want to go because I love animals and the rainforest has thousands of them."},
+ {e:"🧭",t:"Giving directions",level:"Step 2 · Directions",
+  prompt:"Write directions to help a visitor get from your school (or your home) to a place nearby. Write at least 5 sentences. Use direction words (north, south, east, west, left, right, straight, next to, across from) and order words (First, Then, Next, Finally).",
+  minS:5,minWords:2,
+  rx:[["\\b(First|Start)\\b","I used First (or Start)"],["\\b(Then|Next|After that)\\b","I used Then, Next or After that"],["\\b(Finally|At last)\\b","I used Finally"],["(\\b(north|south|east|west|left|right|straight|next to|across from|opposite|behind|between)\\b[\\s\\S]*){3}","I used at least 3 direction words"],["[.!?]\\s*$","I ended with a full stop"]],
+  starters:["First, walk out of ","Then, turn left at ","Next, go straight ","The park is next to ","Finally, "],
+  model:"First, walk out of the school's front door and turn left. Then, go straight along Maple Street for two blocks. Next, turn right at the big red mailbox and walk north. Cross the road carefully at the traffic lights. Finally, you will see the library on your left, next to the bakery and across from the park."},
+ {e:"📮",t:"A postcard to a friend",level:"Step 3 · Postcard",
+  prompt:"Imagine you are on a trip to another country. Write a postcard to a friend. Include a greeting (Dear …,), where you are, at least 4 sentences about what you have seen, eaten or learned, how you feel, and a closing with your name. Use at least one possessive (like Grandma's house or the city's market).",
+  minS:4,minWords:2,
+  rx:[["\\bDear\\s+[A-Z]\\w*,","I wrote a greeting (Dear …,)"],["\\b(I'm in|I am in|I'm visiting|I am visiting|Greetings from|Hello from)\\b","I said where I am"],["\\b[A-Z][a-z]+\\b[\\s\\S]*\\b[A-Z][a-z]+\\b","I used capital letters for places"],["\\b\\w+'s\\b|\\b\\w+s'\\s","I used a possessive ('s)"],["\\b(happy|excited|amazed|tired|wonderful|love|miss|fun)\\b","I told how I feel"],["(Your friend|Love|From|See you soon|Best wishes),\\s*\\n\\s*[A-Z]\\w*","I wrote a closing and my name"]],
+  starters:["Dear ,\n","Greetings from ","Today I saw ","I ate ","I'm having a wonderful time! ","Your friend,\n"],
+  model:"Dear Ava,\nGreetings from Rome, Italy! Today I saw the Colosseum, a huge ancient stadium. I ate the most delicious pizza in a tiny restaurant near my aunt's apartment. Tomorrow we're going to throw a coin into the Trevi Fountain because people say it means you will come back. Italians say ciao for hello and goodbye. I'm having a wonderful time, but I miss you!\n\nYour friend,\nNeel"}
+]
+});
+})();
+
+/* ===================== UNIT 10 · SKILL BANKS AND SKILL LIST (original content) ===================== */
+(function(){
+const u=UNITS.find(x=>x.id==="world");
+const set=k=>u.words.slice(k*10,k*10+10);
+const MIX=(...g)=>()=>R(g)();
+const box=(t,txt)=>`<div class="qbox" style="margin:0 0 12px;font-size:18px;line-height:1.6;font-weight:400"><b>${t}</b><br>${txt}</div>`;
+const AP=s=>[s,s.replace(/'/g,"’")];
+
+/* ================= GRAMMAR: POSSESSIVES ================= */
+const OWN1=["Mia","Leo","Asha","Neel","Grandma","Yuki","Ada","Wei","Sofia","my sister","the teacher","the dog","the cat","my brother","Dad","the girl","the boy","Kenya","the city","the country"];
+const OWNP=["the girls","the boys","the teachers","my parents","the dogs","the students","the tourists","the players","my cousins","the farmers"];
+const OWNI=[["children","children's"],["people","people's"],["men","men's"],["women","women's"],["mice","mice's"]];
+const THINGS={"Kenya":["flag","capital","animals"],"the city":["market","streets","museum"],"the country":["flag","capital","border"],"the dog":["bone","bowl","tail"],"the cat":["toy","bed","whiskers"],"the dogs":["bones","bowls","leads"]};
+const GEN=["bag","hat","passport","map","book","suitcase","postcard","bike","lunch","camera","scarf","ticket"];
+const thing=o=>R(THINGS[o]||GEN);
+const posMake=()=>{const k=R(["s","p","i"]);let o,a,why;
+  if(k==="s"){o=R(OWN1.filter(x=>!/^(the dog|the cat|Kenya|the city|the country)$/.test(x)||Math.random()<.4));const t=thing(o);a=`${o}'s ${t}`;why=`One owner → add <b>'s</b>: <b>${a}</b>.`;return {type:"type",q:`Write it the short way, with an apostrophe:<br><b>the ${t} that belongs to ${o}</b>`,a:AP(a).concat(AP(a.replace(/^the /,"The ")),AP(a.replace(/^the /,""))),why,hint:"Owner + 's + the thing."}}
+  if(k==="p"){o=R(OWNP);let t=thing(o);if(!THINGS[o])t=t==="lunch"?"lunches":t==="scarf"?"scarves":t+"s";a=`${o}' ${t}`;why=`More than one owner ending in s → add just an <b>apostrophe</b> after the s: <b>${a}</b>.`;return {type:"type",q:`Write it the short way, with an apostrophe:<br><b>the ${t} that belong to ${o}</b>`,a:AP(a).concat(AP(a.replace(/^(the|my) /,""))),why,hint:"The owner already ends in s, so just add ' after the s."}}
+  const x=R(OWNI);const t=R(["toys","books","coats","shoes","games"]);a=`the ${x[1]} ${t}`;why=`<b>${x[0]}</b> is plural but does not end in s, so add <b>'s</b>: <b>${a}</b>.`;
+  return {type:"type",q:`Write it the short way, with an apostrophe:<br><b>the ${t} that belong to the ${x[0]}</b>`,a:AP(a),why,hint:"This plural does not end in s, so add 's."}};
+const posChoose=()=>{const k=R(["s","p","i"]);let right,wr,why,ctx;
+  if(k==="s"){const o=R(["Mia","Leo","Asha","Grandma","Yuki","Neel","Wei"]);const t=R(GEN);right=`${o}'s`;wr=[`${o}s`,`${o}s'`];ctx=`___ ${t} is on the table.`;why=`One owner (${o}) → <b>${o}'s</b>.`}
+  else if(k==="p"){const o=R(["girls","boys","students","tourists","players","farmers"]);const t=R(GEN.map(g=>g+"s"));right=`The ${o}'`;wr=[`The ${o}'s`,`The ${o}`];ctx=`___ ${t} are on the bus.`;why=`More than one owner ending in s → <b>${o}'</b> (apostrophe after the s).`}
+  else{const x=R(OWNI);right=`The ${x[1]}`;wr=[`The ${x[0]}'`,`The ${x[0]}s'`];ctx=`___ coats are in the hall.`;why=`<b>${x[0]}</b> doesn't end in s, so add 's: <b>${x[1]}</b>.`}
+  return mcQ(`Choose the correct word to show who owns something:<br><b>${ctx}</b>`,right,wr,why,"One owner → 's · More than one owner ending in s → s' · children, people, men, women → 's")};
+const PP=[["Leo's","Leos","His mom's car is red. ___ bike is blue.","owner"],["Leos","Leo's","There are three boys named Leo in my class. There are three ___!","plural"],["cats","cat's","We have two ___ at home.","plural"],["cat's","cats","The ___ bowl is empty.","owner"],["countries","country's","We visited four ___.","plural"],["country's","countries","Ottawa is the ___ capital.","owner"],["girls","girl's","Six ___ are on the team.","plural"],["girl's","girls","The ___ kite is stuck in the tree.","owner"],["postcards","postcard's","Grandma sent five ___.","plural"],["Grandma's","Grandmas","We visited ___ house.","owner"],["birds","bird's","The ___ are singing.","plural"],["bird's","birds","The ___ nest is in the tree.","owner"],["maps","map's","We looked at three ___.","plural"],["teacher's","teachers","The ___ desk is tidy.","owner"],["students","student's","Twenty ___ went on the trip.","plural"],["Mia's","Mias","___ grandma made samosas.","owner"],["cities","city's","Grandma visited five ___.","plural"],["city's","cities","The ___ market is very busy.","owner"],["tourists","tourist's","Many ___ visit the pyramids.","plural"],["tourist's","tourists","The ___ camera fell in the river.","owner"],["festivals","festival's","India has many ___.","plural"],["Kenya's","Kenyas","___ capital is Nairobi.","owner"],["languages","language's","Neel can say hello in four ___.","plural"],["dog's","dogs","The ___ tail is wagging.","owner"],["dogs","dog's","Three ___ are playing in the park.","plural"],["Neel's","Neels","___ passport is in his bag.","owner"]];
+const posPlural=()=>{const x=R(PP);const s=x[2].replace("___",x[2].startsWith("___")?cap("___"):"___");
+  return mcQ(`Choose the correct word. Does it show <b>more than one</b> or <b>who owns it</b>?<br><b>${x[2]}</b>`,x[0],[x[1]],x[3]==="owner"?`<b>${x[0]}</b> shows that something <b>belongs</b> to someone, so it needs an apostrophe.`:`<b>${x[0]}</b> just means <b>more than one</b>, so no apostrophe is needed.`,"Does something belong to it? Use 's. Is it just more than one? Just add s.")};
+
+/* ================= GRAMMAR: PROPER NOUNS FOR PLACES AND LANGUAGES ================= */
+const CL=[["Canada","English","Canadian"],["France","French","French"],["Spain","Spanish","Spanish"],["Mexico","Spanish","Mexican"],["Japan","Japanese","Japanese"],["China","Mandarin","Chinese"],["India","Hindi","Indian"],["Kenya","Swahili","Kenyan"],["Egypt","Arabic","Egyptian"],["Brazil","Portuguese","Brazilian"],["Portugal","Portuguese","Portuguese"],["Italy","Italian","Italian"],["Germany","German","German"],["Poland","Polish","Polish"],["Greece","Greek","Greek"],["Korea","Korean","Korean"],["Russia","Russian","Russian"],["Turkey","Turkish","Turkish"],["Bangladesh","Bengali","Bangladeshi"],["Vietnam","Vietnamese","Vietnamese"]];
+const LBAN={Canada:["French"],Kenya:["English"],India:["Bengali","English"],Bangladesh:["Hindi","English"]};
+const langQ=()=>{const x=R(CL);const L2=uniq(CL.map(y=>y[1])).filter(z=>z!==x[1]&&!(LBAN[x[0]]||[]).includes(z));
+  if(Math.random()<.4)return {type:"type",strict:true,q:`Type the main language of <b>${x[0]}</b>. Remember the capital letter!${x[0]==="India"?" (Hint: the most widely spoken one starts with H.)":x[0]==="China"?" (Hint: it starts with M.)":x[0]==="Kenya"?" (Hint: it starts with S.)":x[0]==="Canada"?" (Canada has two official languages; type the one that starts with E.)":""}`,a:[x[1]],why:`People in ${x[0]} speak <b>${x[1]}</b>${x[0]==="Canada"?" and French":""}. Languages always start with a <b>capital letter</b>.`,hint:`It starts with "${x[1][0]}".`};
+  return mcQ(`Which language do many people speak in <b>${x[0]}</b>?`,x[1],SAMPLE(L2,2),`In ${x[0]}, many people speak <b>${x[1]}</b>.`,"Many language names sound like the country name.")};
+const peopleQ=()=>{const x=R(CL.filter(y=>y[2]!==y[1]||Math.random()<.5));return mcQ(`A person from <b>${x[0]}</b> is…`,x[2],SAMPLE(uniq(CL.map(y=>y[2])).filter(z=>z!==x[2]),2),`A person from ${x[0]} is <b>${x[2]}</b>. These words also start with a capital letter.`,"These words come from the country's name.")};
+const CAPS=["canada","toronto","india","japan","paris","kenya","the nile","french","spanish","hindi","asia","africa","europe","ottawa","mexico","cairo","delhi","english","japanese","the atlantic ocean","egypt","tokyo","swahili","brazil","portuguese","arabic","china","mandarin","italy","italian"];
+const NOCAP=["city","country","river","language","ocean","mountain","map","continent","town","street","school","festival","holiday","capital","border","flag","globe","culture","village","park"];
+const capWhich=()=>{const p=R(CAPS);const w=SAMPLE(NOCAP,2);return mcQ("Which one needs a <b>capital letter</b>?",p,w,`<b>${p.replace(/\b\w/g,c=>c.toUpperCase()).replace(/^The /,"the ")}</b> is the name of a particular place or language, so it is a <b>proper noun</b> and needs a capital letter.`,"Names of particular countries, cities, rivers, oceans and languages need capitals. General words do not.")};
+const SENT=["Grandma Kiran flew from Toronto to Nairobi.","People in Kenya speak Swahili and English.","Yuki is from Kyoto in Japan.","The Nile flows through Egypt.","Mexico City is the capital of Mexico.","Ottawa is the capital of Canada.","Ada's family is from Nigeria.","Leo's ancestors came from Poland.","Sofia speaks Portuguese.","Diwali is celebrated in India.","The Pacific Ocean is the biggest ocean.","Neel learned to say hello in Japanese.","Wei's grandmother lives in China.","Asia is the biggest continent.","We visited Paris in July.","Mount Everest is in Asia.","My cousin lives in Vancouver.","Holi is a festival in India and Nepal.","The pyramids are in Egypt.","Brazil is in South America.","I can speak English and French.","Tokyo is a very big city.","Kenya is in East Africa.","The Amazon is in South America."];
+const fix=()=>{const s=R(SENT);return {type:"type",strict:true,q:`Fix this sentence. Add the capital letters and the full stop:<br><b>${breakSentence(s)}</b>`,a:[s],hint:"Capitals for the first word, I, and names of people, countries, cities, rivers, oceans, continents and languages.",why:`Correct: <b>${s}</b>`}};
+
+/* ================= MAPS AND DIRECTIONS ================= */
+const PLACES=["🏫 School","🏥 Hospital","⛲ Fountain","🌲 Forest","🏰 Museum","🛒 Market","🚉 Station","🏊 Pool","📚 Library","🏞️ Park","🍞 Bakery","⛪ Old Church","🏟️ Stadium","🐘 Zoo","🎡 Fair","🏪 Shop"];
+const DIRS=[[-1,0,"north"],[1,0,"south"],[0,1,"east"],[0,-1,"west"]];
+const gridMap=()=>{const pl=SAMPLE(PLACES,9);const g=[[0,1,2],[3,4,5],[6,7,8]].map(r=>r.map(i=>pl[i]));
+  const tbl=`<table class="realtbl" style="text-align:center;font-size:15px">${g.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("")}</table><div style="text-align:center;font-weight:700;margin:4px 0 8px">⬆️ N · ➡️ E · ⬇️ S · ⬅️ W</div>`;
+  let r,c,d,nr,nc;do{r=Math.floor(Math.random()*3);c=Math.floor(Math.random()*3);d=R(DIRS);nr=r+d[0];nc=c+d[1]}while(nr<0||nr>2||nc<0||nc>2);
+  const from=g[r][c],to=g[nr][nc];const nm=s=>s.replace(/^\S+ /,"");
+  if(Math.random()<.5){const wr=SAMPLE(pl.filter(x=>x!==to&&x!==from),2).map(nm);return mcQ(`${tbl}What is directly <b>${d[2]}</b> of the <b>${nm(from)}</b>?`,nm(to),wr,`North is up, south is down, east is right and west is left. Directly ${d[2]} of the ${nm(from)} is the <b>${nm(to)}</b>.`,"North = up · South = down · East = right · West = left")}
+  return mcQ(`${tbl}You are at the <b>${nm(from)}</b>. Which direction is the <b>${nm(to)}</b>?`,d[2],["north","south","east","west"].filter(z=>z!==d[2]).slice(0,3),`The ${nm(to)} is ${d[2]==="north"?"above":d[2]==="south"?"below":d[2]==="east"?"to the right of":"to the left of"} the ${nm(from)}, so it is <b>${d[2]}</b>.`,"North = up · South = down · East = right · West = left")};
+const CW=["north","east","south","west"];
+const turnQ=()=>{const s=Math.floor(Math.random()*4);const t=R(["right","left","around"]);const e=t==="right"?(s+1)%4:t==="left"?(s+3)%4:(s+2)%4;
+  if(Math.random()<.5)return mcQ(`🧭 You are facing <b>${CW[s]}</b>. You turn <b>${t==="around"?"all the way around":t}</b>. Which way are you facing now?`,CW[e],CW.filter(z=>z!==CW[e]).slice(0,3),`Going clockwise: north → east → south → west. Facing ${CW[s]} and turning ${t==="around"?"around":t} → <b>${CW[e]}</b>.`,"Never Eat Soggy Waffles: turning right goes N → E → S → W.");
+  if(Math.random()<.4){const a=R(["right","left"]),b=R(["right","left"]);const e2=(s+(a==="right"?1:3)+(b==="right"?1:3))%4;return mcQ(`🧭 You are facing <b>${CW[s]}</b>. You turn <b>${a}</b>, and then you turn <b>${b}</b>. Which way are you facing now?`,CW[e2],CW.filter(z=>z!==CW[e2]).slice(0,3),`${CW[s]} → turn ${a} → ${CW[(s+(a==="right"?1:3))%4]} → turn ${b} → <b>${CW[e2]}</b>.`,"Do one turn at a time. Right turns go N → E → S → W.")}
+  const o=(s+2)%4;return mcQ(`🧭 What is the <b>opposite</b> direction of <b>${CW[s]}</b>?`,CW[o],CW.filter(z=>z!==CW[o]&&z!==CW[s]),`North ↔ south · east ↔ west. The opposite of ${CW[s]} is <b>${CW[o]}</b>.`,"North and south are opposites. East and west are opposites.")};
+const DW=[
+ {q:"On most maps, where is north?",a:"At the top",o:["At the bottom","On the right"],why:"North is usually at the top."},
+ {q:"Where does the sun rise?",a:"In the east",o:["In the west","In the north"],why:"The sun rises in the east and sets in the west."},
+ {q:"Where does the sun set?",a:"In the west",o:["In the east","In the south"],why:"The sun sets in the west."},
+ {q:"What tool always points north?",a:"A compass",o:["A ruler","A thermometer"],why:"A compass needle points north."},
+ {q:"What does a map key (legend) tell you?",a:"What the symbols on the map mean",o:["Where the map was bought","How old the map is"],why:"A key explains the map's symbols."},
+ {q:"On a map, a small blue line usually shows…",a:"A river",o:["A road","A mountain"],why:"Blue usually shows water."},
+ {q:"Which words help remember N, E, S, W in order?",a:"Never Eat Soggy Waffles",o:["My Very Excellent Mother","Every Good Boy Does Fine"],why:"Never Eat Soggy Waffles."},
+ {q:"North-east is between which two directions?",a:"North and east",o:["South and west","North and south"],why:"North-east is between north and east."},
+ {q:"South-west is between which two directions?",a:"South and west",o:["North and east","East and west"],why:"South-west is between south and west."},
+ {q:"What do we call a famous place that is easy to recognize, like the CN Tower?",a:"A landmark",o:["A border","A symbol"],why:"Landmarks help people find their way."},
+ {q:"What is a route?",a:"The way you take to get somewhere",o:["A kind of map key","A type of compass"],why:"A route is your path."},
+ {q:"Which word means 'not far away'?",a:"Nearby",o:["Distant","Foreign"],why:"Nearby = close."},
+ {q:"Which direction is Mexico from Canada?",a:"South",o:["North","East"],why:"Mexico is south of the United States and Canada."},
+ {q:"Which direction is the Arctic from Toronto?",a:"North",o:["South","West"],why:"The Arctic is at the top of the world."},
+ {q:"Which side of Canada is Vancouver on?",a:"The west",o:["The east","The south pole"],why:"Vancouver is on Canada's west coast, by the Pacific Ocean."},
+ {q:"Which side of Canada is Nova Scotia on?",a:"The east",o:["The west","The middle"],why:"Nova Scotia is on the Atlantic, the east coast."},
+ {q:"What is the line around the middle of the Earth called?",a:"The equator",o:["The border","The compass"],why:"The equator divides the Northern and Southern Hemispheres."},
+ {q:"What does 'across from' mean?",a:"On the other side of something, facing it",o:["Exactly on top of it","Far away in another city"],why:"The park is across from the library: on the other side of the street."},
+ {q:"You turn left, then left again. Which way are you facing compared to before?",a:"The opposite way",o:["The same way","Straight up"],why:"Two left turns make a half turn."},
+ {q:"What is a globe?",a:"A round model of the Earth",o:["A flat drawing of a city","A kind of compass"],why:"A globe shows the whole Earth as a ball."}
+];
+
+/* ================= WORLD KNOWLEDGE ================= */
+const CAPC=[["Canada","Ottawa"],["India","New Delhi"],["Japan","Tokyo"],["France","Paris"],["Kenya","Nairobi"],["Egypt","Cairo"],["Mexico","Mexico City"],["England (the United Kingdom)","London"],["Italy","Rome"],["China","Beijing"],["Spain","Madrid"],["Brazil","Brasília"],["Australia","Canberra"],["Germany","Berlin"],["the United States","Washington, D.C."],["Bangladesh","Dhaka"],["Portugal","Lisbon"],["Nigeria","Abuja"]];
+const capQ=()=>{const x=R(CAPC);if(Math.random()<.5)return mcQ(`🏛️ What is the capital city of <b>${x[0]}</b>?`,x[1],SAMPLE(CAPC.filter(y=>y!==x).map(y=>y[1]),2),`The capital of ${x[0]} is <b>${x[1]}</b>.`,"The capital is where the country's government is. It is not always the biggest city!");
+  return mcQ(`🏛️ <b>${x[1]}</b> is the capital of which country?`,cap(x[0]),SAMPLE(CAPC.filter(y=>y!==x).map(y=>cap(y[0])),2),`<b>${x[1]}</b> is the capital of ${x[0]}.`,"Think about the postcards and fact pages.")};
+const CONT=[["Kenya","Africa"],["Egypt","Africa"],["Nigeria","Africa"],["Ghana","Africa"],["Japan","Asia"],["India","Asia"],["China","Asia"],["Bangladesh","Asia"],["France","Europe"],["Poland","Europe"],["Portugal","Europe"],["Italy","Europe"],["Canada","North America"],["Mexico","North America"],["the United States","North America"],["Brazil","South America"],["Peru","South America"],["Argentina","South America"],["Australia","Australia (Oceania)"],["New Zealand","Australia (Oceania)"]];
+const contQ=()=>{const x=R(CONT);return mcQ(`🌍 Which continent is <b>${x[0]}</b> in?`,x[1],SAMPLE(uniq(CONT.map(y=>y[1])).filter(z=>z!==x[1]),2),`${cap(x[0])} is in <b>${x[1]}</b>.`,"Asia, Africa, North America, South America, Antarctica, Europe, Australia.")};
+const CULT=[
+ {q:"How do you say hello in Spanish?",a:"Hola",o:["Bonjour","Jambo"],why:"Hola is Spanish."},
+ {q:"How do you say hello in French?",a:"Bonjour",o:["Ciao","Namaste"],why:"Bonjour is French. It is spoken in France and in Quebec, Canada."},
+ {q:"Which greeting is used in India, often with the hands pressed together?",a:"Namaste",o:["Konnichiwa","Hola"],why:"Namaste is a respectful greeting."},
+ {q:"How do you say hello in Japanese?",a:"Konnichiwa",o:["Ni hao","Marhaba"],why:"Konnichiwa means hello."},
+ {q:"How do you say hello in Swahili?",a:"Jambo",o:["Ciao","Olá"],why:"Jambo is a friendly Swahili hello."},
+ {q:"Which word means hello in Mandarin Chinese?",a:"Nǐ hǎo",o:["Bonjour","Jambo"],why:"Nǐ hǎo means hello."},
+ {q:"Which word means hello in Arabic?",a:"Marhaba",o:["Hola","Namaste"],why:"Marhaba is a common Arabic greeting."},
+ {q:"Which word means thank you in Japanese?",a:"Arigatō",o:["Merci","Gracias"],why:"Arigatō means thank you."},
+ {q:"Which word means thank you in Spanish?",a:"Gracias",o:["Danke","Asante"],why:"Gracias means thank you."},
+ {q:"Which word means thank you in Swahili?",a:"Asante",o:["Merci","Obrigado"],why:"Asante means thank you."},
+ {q:"Which festival is called the festival of lights and uses diyas?",a:"Diwali",o:["Holi","Hanami"],why:"Diyas are clay lamps lit for Diwali."},
+ {q:"Which festival is called the festival of colours?",a:"Holi",o:["Diwali","Hanukkah"],why:"People throw coloured powder."},
+ {q:"What do people say to greet each other at the end of Ramadan?",a:"Eid Mubarak",o:["Happy Holi","Merry Christmas"],why:"Eid Mubarak means blessed Eid."},
+ {q:"During which celebration do people give red envelopes for good luck?",a:"Lunar New Year",o:["Diwali","Day of the Dead"],why:"Red is a lucky colour."},
+ {q:"During which festival do families light a menorah for eight nights?",a:"Hanukkah",o:["Eid","Holi"],why:"One more candle each night."},
+ {q:"Which country celebrates the Day of the Dead with marigolds?",a:"Mexico",o:["Japan","Kenya"],why:"Families remember loved ones."},
+ {q:"In Japan, what is hanami?",a:"Picnics under the cherry blossoms",o:["A noodle soup","A dance"],why:"Hana = flower, mi = looking."},
+ {q:"What is jollof rice?",a:"A spicy tomato rice from West Africa",o:["A dessert from Japan","A bread from France"],why:"It is popular in Nigeria and Ghana."},
+ {q:"What are pierogi?",a:"Filled dumplings from Poland and Ukraine",o:["Spicy rice","Tacos"],why:"Often filled with potato and cheese."},
+ {q:"What are samosas?",a:"Crispy pastries with spiced filling, from South Asia",o:["Japanese rice balls","Custard tarts"],why:"Often filled with spiced potatoes and peas."},
+ {q:"What do people often use to eat noodles in Japan and China?",a:"Chopsticks",o:["Forks only","Spoons only"],why:"Chopsticks are two thin sticks."},
+ {q:"Which country is famous for the pyramids of Giza?",a:"Egypt",o:["Mexico","Kenya"],why:"They are more than 4,500 years old."},
+ {q:"Which country is famous for the maple leaf flag?",a:"Canada",o:["Japan","India"],why:"The maple leaf is a Canadian symbol."},
+ {q:"Who were the Ashanti people who told Anansi stories?",a:"A people of Ghana in West Africa",o:["A people of Japan","A people of Canada"],why:"Anansi stories come from Ghana."}
+];
+const WHERE=[["I see giraffes on the savanna and say jambo to my guide.","Kenya",["Japan","Canada"]],["I'm eating noodles with chopsticks under pink cherry blossoms.","Japan",["Mexico","Egypt"]],["I'm riding a camel near the pyramids, close to the Nile.","Egypt",["India","Brazil"]],["Families are building altars with marigolds for the Day of the Dead.","Mexico",["Kenya","Japan"]],["I'm lighting diyas for Diwali, and everyone says namaste.","India",["France","Mexico"]],["I'm standing under the Eiffel Tower and saying bonjour.","France",["Italy","Egypt"]],["I'm in the Amazon rainforest, and people speak Portuguese.","Brazil",["Japan","Kenya"]],["I'm watching kangaroos hop across the red desert.","Australia",["Canada","India"]],["I'm eating pizza near the ancient Colosseum and saying ciao.","Italy",["Japan","Egypt"]],["I'm at the CN Tower, and I can see Lake Ontario.","Canada",["France","Brazil"]],["I'm walking on the Great Wall, and people say nǐ hǎo.","China",["Mexico","Kenya"]],["I'm in Ottawa, the capital city, and it is snowing.","Canada",["Egypt","India"]],["I'm watching a dragon dance for Lunar New Year in Beijing.","China",["France","Brazil"]],["I'm having afternoon tea in London, near Big Ben.","England (the United Kingdom)",["Japan","Kenya"]],["I'm eating tacos in a busy market in Mexico City.","Mexico",["India","France"]],["I'm in Kolkata, enjoying the Durga Puja festival.","India",["Italy","Mexico"]],["I'm sailing on a felucca, and the guide says marhaba.","Egypt",["Japan","Canada"]],["I'm taking a bullet train from Tokyo to Kyoto.","Japan",["Brazil","Kenya"]],["I'm in Lisbon, eating a pastel de nata.","Portugal",["China","Egypt"]],["I'm watching penguins on the ice. There are no countries here, only scientists.","Antarctica",["Canada","Australia"]]];
+const whereQ=()=>{const x=R(WHERE);return mcQ(`${box("📮 Where am I?",x[0])}Which country (or place) is this?`,x[1],x[2],`The clues point to <b>${x[1]}</b>.`,"Look for clues: landmarks, food, festivals and greetings.",{say:x[0]})};
+
+/* ================= OTHER VOCABULARY ================= */
+const SYN=[["journey","trip"],["country","nation"],["delicious","tasty"],["crowded","busy"],["foreign","from abroad"],["custom","tradition"],["celebration","festival"],["travel","journey"],["big","huge"],["small","tiny"],["route","way"],["nearby","close"],["visit","see"],["souvenir","keepsake"],["town","village"],["happy","joyful"],["begin","start"],["famous","well-known"],["gift","present"],["look","glance"]].filter(p=>p[0]!=="travel");
+const OPP=[["north","south"],["east","west"],["near","far"],["local","foreign"],["crowded","empty"],["arrive","depart"],["inside","outside"],["ancient","modern"],["hot","cold"],["top","bottom"],["left","right"],["up","down"],["city","countryside"],["above","below"],["start","finish"],["first","last"],["open","closed"],["sunrise","sunset"],["noisy","quiet"],["same","different"]];
+const COMP=[["air","port"],["sea","side"],["sun","rise"],["sun","set"],["land","mark"],["home","land"],["passport","office"].slice(0,0),["suit","case"],["sight","seeing"],["water","fall"],["rain","forest"],["main","land"],["sail","boat"],["head","quarters"].slice(0,0),["post","card"],["camp","site"],["country","side"],["high","way"],["down","town"],["rail","way"],["light","house"],["bed","room"],["week","end"],["moon","light"]].filter(x=>x.length===2);
+
+/* ================= SPELLING ================= */
+const SP=u.spelling.concat([{w:"continent",s:"Africa is a continent.",tip:"con-ti-nent."},{w:"passport",s:"Show your passport.",tip:"pass + port."},{w:"journey",s:"It was a long journey.",tip:"'our' sounds like 'ur': j-our-ney."},{w:"map",s:"Look at the map."},{w:"travel",s:"I love to travel."},{w:"visit",s:"We will visit Grandma.",tip:"vis-it."},{w:"border",s:"We crossed the border."},{w:"compass",s:"Use the compass.",tip:"com-pass. Double s."},{w:"equator",s:"Kenya is on the equator.",tip:"'qu' says 'kw'."},{w:"custom",s:"It is a custom here."},{w:"recipe",s:"Read the recipe.",tip:"re-ci-pe: three syllables!"},{w:"tourist",s:"The tourist took photos.",tip:"tour + ist."},{w:"foreign",s:"She speaks a foreign language.",tip:"The 'g' is silent: for-eig-n."},{w:"delicious",s:"The food was delicious.",tip:"de-li-cious. Ends with -cious."},{w:"souvenir",s:"I bought a souvenir.",tip:"sou-ve-nir. It comes from French."}]);
+const NAMES=["Canada","India","Japan","Kenya","Egypt","Mexico","France","Brazil","China","Africa","Asia","Europe","English","French","Spanish","Hindi","Japanese","Swahili","Arabic","Portuguese"].map(w=>({w,s:`${w} starts with a capital letter.`,tip:"Names of countries, continents and languages always start with a capital letter."}));
+const NS={Canada:"I live in Canada.",India:"Diwali is celebrated in India.",Japan:"Yuki is from Japan.",Kenya:"Giraffes live in Kenya.",Egypt:"The pyramids are in Egypt.",Mexico:"Tacos come from Mexico.",France:"Paris is in France.",Brazil:"The Amazon is in Brazil.",China:"The Great Wall is in China.",Africa:"Kenya is in Africa.",Asia:"Japan is in Asia.",Europe:"Poland is in Europe.",English:"I speak English.",French:"Bonjour is French.",Spanish:"Hola is Spanish.",Hindi:"Namaste is a Hindi greeting.",Japanese:"Arigatō is Japanese.",Swahili:"Jambo is Swahili.",Arabic:"Marhaba is Arabic.",Portuguese:"People in Brazil speak Portuguese."};
+NAMES.forEach(x=>x.s=NS[x.w]);
+const CHOOSE=[["world","wurld","worl"],["country","cuntry","countrey"],["language","langauge","languige"],["people","peeple","peopel"],["foreign","foriegn","forein"],["journey","jurney","journy"],["festival","festivel","festivle"],["capital","capitel","capitle"],["continent","contenent","continant"],["delicious","delishus","delicous"],["souvenir","souvenier","suvenir"],["passport","pasport","passpourt"],["equator","equater","ekwator"],["recipe","resipe","recipie"],["culture","culchure","cultur"],["compass","compas","cumpass"],["tourist","turist","touryst"],["Japan","japan","Japon"],["Egypt","Egipt","egypt"],["Mexico","Mexeco","mexico"]].map(x=>({w:x[0],bad:[x[1],x[2]],tip:(SP.find(y=>y.w===x[0])||NAMES.find(y=>y.w===x[0])||{}).tip}));
+
+/* ================= READING ================= */
+const DETAIL=[
+ ["The Great Wall of China","The Great Wall of China is one of the most famous landmarks in the world. It was built over hundreds of years to protect China from invaders. All its parts together stretch for thousands of kilometres across mountains and deserts. Millions of tourists walk along it every year.",[["Why was the Great Wall built?","To protect China from invaders",["To hold water","To be a road for cars"]],["What does the wall stretch across?","Mountains and deserts",["Oceans","Cities only"]],["How many tourists visit it every year?","Millions",["About ten","None"]]]],
+ ["The Inuit","The Inuit are Indigenous people who live in the Arctic, in northern Canada, Greenland and Alaska. For thousands of years, they hunted seals and caribou and travelled by dog sled and kayak. The word kayak comes from the Inuit language, Inuktitut. Today, many Inuit live in modern towns, and they keep their language and traditions alive.",[["Where do the Inuit live?","In the Arctic",["In the desert","In the rainforest"]],["Which English word comes from Inuktitut?","Kayak",["Pizza","Taco"]],["How did the Inuit travel long ago?","By dog sled and kayak",["By train","By camel"]]]],
+ ["The Amazon Rainforest","The Amazon is the largest rainforest in the world. Most of it is in Brazil, but it also spreads into other countries in South America. It is home to millions of kinds of insects, plants and animals, including jaguars, sloths and colourful macaws. The Amazon River is one of the longest rivers on Earth.",[["Which country has most of the Amazon?","Brazil",["Mexico","Kenya"]],["Which animals live in the Amazon?","Jaguars, sloths and macaws",["Polar bears and penguins","Kangaroos and koalas"]],["Which continent is the Amazon in?","South America",["Africa","Asia"]]]],
+ ["Canada's Two Languages","Canada has two official languages: English and French. Most people in Quebec speak French. Signs, food packages and government papers in Canada are written in both languages. Many Canadian children learn both at school. Many Indigenous languages, like Cree and Inuktitut, are also spoken in Canada.",[["What are Canada's two official languages?","English and French",["Spanish and Hindi","German and Italian"]],["Where do most people speak French?","Quebec",["British Columbia","Alberta"]],["Which is an Indigenous language spoken in Canada?","Cree",["Swahili","Japanese"]]]],
+ ["Chopsticks","People in China, Japan, Korea and Vietnam have used chopsticks for thousands of years. Chopsticks are two thin sticks held in one hand. They can be made of wood, bamboo, metal or plastic. In Japan, it is polite not to point with your chopsticks or stick them straight up in a bowl of rice.",[["How many sticks are there in a pair of chopsticks?","Two",["Three","One"]],["What can chopsticks be made of?","Wood, bamboo, metal or plastic",["Paper only","Glass only"]],["What is not polite in Japan?","Sticking chopsticks straight up in rice",["Eating noodles","Saying thank you"]]]],
+ ["Holi","Holi is the festival of colours, celebrated in India and Nepal at the end of winter. People throw bright coloured powder called gulal and spray coloured water at each other. Friends and neighbours, young and old, laugh and dance together. Holi celebrates spring, friendship and the victory of good over evil.",[["What is the coloured powder called?","Gulal",["Rangoli","Diya"]],["When is Holi celebrated?","At the end of winter",["In the middle of summer","At midnight"]],["What does Holi celebrate?","Spring, friendship and good over evil",["The end of school","A football final"]]]],
+ ["The Day of the Dead","The Day of the Dead, or Día de los Muertos, is celebrated in Mexico on November 1 and 2. Families make ofrendas, special altars with photos, candles, marigolds and food. They believe the spirits of loved ones visit to enjoy the celebration. People paint their faces like colourful skulls and share sweet bread called pan de muerto.",[["When is the Day of the Dead?","November 1 and 2",["July 1","December 25"]],["What is an ofrenda?","A special altar",["A dance","A kind of sweet"]],["What is pan de muerto?","A sweet bread",["A flower","A costume"]]]],
+ ["Lunar New Year Animals","Lunar New Year uses a cycle of twelve animals: the Rat, Ox, Tiger, Rabbit, Dragon, Snake, Horse, Goat, Monkey, Rooster, Dog and Pig. Each year is named after one animal, and the cycle repeats every twelve years. Some people believe that you share personality traits with the animal of the year you were born.",[["How many animals are in the cycle?","Twelve",["Seven","Ten"]],["How often does the cycle repeat?","Every twelve years",["Every year","Every hundred years"]],["Which is one of the animals?","The Dragon",["The Penguin","The Kangaroo"]]]],
+ ["Maple Syrup","Maple syrup is made from the sap of maple trees. In early spring, farmers in Quebec and Ontario collect the sap, which looks like water. They boil it for hours until most of the water disappears and thick, sweet syrup is left. It takes about 40 litres of sap to make just one litre of syrup! Indigenous peoples were the first to make maple syrup.",[["What is maple syrup made from?","The sap of maple trees",["Honey","Sugar cane"]],["How many litres of sap make one litre of syrup?","About 40",["About 2","About 1,000"]],["Who first made maple syrup?","Indigenous peoples",["Tourists","Scientists in Japan"]]]],
+ ["Kenya's Great Migration","Every year, more than a million wildebeest, along with zebras and gazelles, travel between Tanzania and Kenya looking for fresh grass and water. This journey is called the Great Migration. The animals must cross the Mara River, where crocodiles wait. Tourists come from around the world to watch.",[["Which animals travel in the Great Migration?","Wildebeest, zebras and gazelles",["Penguins and seals","Bears and wolves"]],["Why do they travel?","To find fresh grass and water",["To escape the snow","To go to school"]],["What waits in the Mara River?","Crocodiles",["Sharks","Whales"]]]],
+ ["The Eiffel Tower","The Eiffel Tower is in Paris, the capital of France. It was built for a big world fair in 1889. At first, many people thought it was ugly! Today, it is one of the most loved landmarks in the world. It is made of iron and is about 330 metres tall. At night, it sparkles with thousands of lights.",[["Where is the Eiffel Tower?","Paris, France",["Rome, Italy","London, England"]],["When was it built?","1889",["1989","1066"]],["What did many people think of it at first?","That it was ugly",["That it was too small","That it was made of gold"]]]],
+ ["Olympic Rings","The Olympic Games bring athletes from more than 200 countries together. The Olympic flag has five coloured rings joined together: blue, yellow, black, green and red. The five rings stand for the five areas of the world that take part, joined in friendship. At least one of these colours appears on every country's flag.",[["How many rings are on the Olympic flag?","Five",["Seven","Three"]],["What do the joined rings stand for?","Areas of the world joined in friendship",["Five gold medals","Five oceans"]],["How many countries send athletes?","More than 200",["About 10","Only 5"]]]]
+];
+const detail=()=>{const p=R(DETAIL),x=R(p[2]);return mcQ(`${box(p[0],p[1])}${x[0]}`,x[1],x[2],`Look back at the text: the answer is there.`,"Read the text again and find the words.",{say:p[1]+" "+x[0]})};
+const MAIN=[
+ ["People around the world say hello in different ways. In Japan, people bow. In India, people say namaste. In many countries, people shake hands.","People around the world say hello in different ways.",["Japan is in Asia.","Hands have fingers."]],
+ ["Food tells the story of a culture. Recipes are passed from grandparents to children. Special dishes are made for festivals. Spices show where a family comes from.","Food tells the story of a culture.",["Spices are hot.","Grandparents are old."]],
+ ["Maps help us in many ways. They show where places are. They help us plan a route. They show rivers, mountains and roads.","Maps help us in many ways.",["Rivers are wet.","Roads are long."]],
+ ["Canada is a country of many cultures. People have come from all over the world. Indigenous peoples have lived there for thousands of years. Many languages are spoken in Canadian cities.","Canada is a country of many cultures.",["Cities are big.","Languages have words."]],
+ ["Festivals bring people together. Families gather to share meals. Neighbours celebrate in the streets. Friends exchange gifts and greetings.","Festivals bring people together.",["Gifts are wrapped.","Streets are long."]],
+ ["The world's continents are very different. Antarctica is icy and cold. Africa has deserts and rainforests. Asia has the highest mountains.","The world's continents are very different.",["Ice is cold.","Mountains are high."]],
+ ["Learning a new language opens doors. You can make friends in other countries. You can understand new songs and stories. You can help people who are new to your country.","Learning a new language opens doors.",["Songs have music.","Doors open."]],
+ ["Travel teaches us about the world. We see new places. We taste new food. We meet people who live differently from us.","Travel teaches us about the world.",["Food is tasty.","Places have names."]],
+ ["A compass helps people find their way. Its needle points north. Sailors and hikers use compasses. Even if you are lost in a forest, a compass can help.","A compass helps people find their way.",["Forests have trees.","Sailors use boats."]],
+ ["Many English words come from other languages. Pyjamas and shampoo come from Hindi. Kayak comes from Inuktitut. Pizza comes from Italian.","Many English words come from other languages.",["Pizza is tasty.","Kayaks float."]],
+ ["Landmarks help people recognize places. The Eiffel Tower stands for Paris. The pyramids stand for Egypt. The CN Tower stands for Toronto.","Landmarks help people recognize places.",["Towers are tall.","Egypt is hot."]],
+ ["Children around the world play similar games. Many play tag and hide-and-seek. Many kick a ball around. Many play clapping games with songs.","Children around the world play similar games.",["Balls are round.","Songs are fun."]],
+ ["Oceans connect the world. Ships carry goods between countries. Fish and whales travel across them. Long ago, explorers crossed them to reach new lands.","Oceans connect the world.",["Whales are big.","Ships are heavy."]],
+ ["Indigenous peoples have deep knowledge of the land. They know which plants are good to eat. They know the seasons and the animals. They have cared for the land for thousands of years.","Indigenous peoples have deep knowledge of the land.",["Plants are green.","Seasons change."]],
+ ["Every country has its own flag. Flags have colours and symbols. They are flown on special days. People feel proud of their flag.","Every country has its own flag.",["Colours are bright.","Days are long."]],
+ ["People in different places wear different clothes. In cold places, people wear thick coats. In hot places, people wear light, loose clothes. For festivals, many wear traditional costumes.","People in different places wear different clothes.",["Coats are warm.","Festivals are fun."]],
+ ["Respecting other cultures is important. We can ask questions politely. We can try new foods. We can learn about other people's festivals.","Respecting other cultures is important.",["Food is tasty.","Questions end with ?"]],
+ ["The Earth has many kinds of homes. Some people live in tall apartment buildings. Some live in houses on stilts. Some move their tents from place to place.","People around the world live in many kinds of homes.",["Tents are light.","Buildings are tall."]],
+ ["Postcards are a fun way to share a trip. They have a picture on the front. You write a short message on the back. Then you add a stamp and post it.","Postcards are a fun way to share a trip.",["Stamps are small.","Pictures are pretty."]],
+ ["The equator affects the weather. Countries near it are hot all year. Countries far from it have cold winters. The poles are the coldest places of all.","The equator affects the weather.",["Poles are long.","Winters are cold."]],
+ ["Music is a language everyone can share. People dance to drums in Africa. They play sitars in India. They sing folk songs in every country.","Music is something people everywhere share.",["Drums are loud.","Sitars have strings."]],
+ ["Big cities are full of life. They have tall buildings and busy streets. People from many countries live there. There are museums, parks and markets.","Big cities are full of life.",["Parks have trees.","Streets are long."]],
+ ["Families keep their heritage alive. They speak their language at home. They cook traditional dishes. They tell stories about their ancestors.","Families keep their heritage alive.",["Dishes are plates.","Stories are long."]],
+ ["Stories travel around the world. Anansi stories travelled from Ghana to the Caribbean. Fables from Greece are told in many languages. Grandparents share stories with grandchildren everywhere.","Stories travel around the world.",["Ghana is in Africa.","Grandparents are kind."]]
+];
+const mainIdea=()=>{const m=R(MAIN);return mcQ(`${box("Read",m[0])}What is the <b>main idea</b>? (What is it mostly about?)`,m[1],m[2],`The main idea is what the whole text is about: <b>${m[1]}</b>`,"Which answer fits ALL the sentences, not just one?",{say:m[0]})};
+const FACTS=["Ottawa is the capital of Canada.","There are seven continents.","Asia is the biggest continent.","The Pacific is the biggest ocean.","People in Brazil speak Portuguese.","Kenya is on the equator.","The pyramids are in Egypt.","A compass points north.","The sun rises in the east.","Canada has two official languages.","The Eiffel Tower is in Paris.","Diwali uses clay lamps called diyas.","Mexico is south of the United States.","Antarctica has no countries.","Tokyo is the capital of Japan.","Hola means hello in Spanish.","The Nile flows through Egypt.","The Amazon is in South America.","The Olympic flag has five rings.","Kayak is an Inuktitut word.","Seasons are opposite in Australia and Canada.","Maple syrup is made from tree sap.","Holi is the festival of colours.","New Delhi is the capital of India.","The Great Wall is in China."];
+const OPIN=["Japan is the most beautiful country.","Tacos are the best food in the world.","French is the prettiest language.","Holi is more fun than any other festival.","Big cities are better than small towns.","Everyone should visit Egypt.","Postcards are better than emails.","Pierogi are tastier than dumplings.","The Eiffel Tower is the most amazing landmark.","Hot countries are nicer than cold ones.","Learning languages is easy.","Camels are funnier than horses.","The best way to travel is by train.","Spicy food is the most delicious.","Maps are more fun than globes.","Summer holidays are the best time to travel.","Cherry blossoms are the prettiest flowers.","Swahili is easier than Japanese.","Museums are boring.","Festival costumes are beautiful.","Canada's flag is the nicest flag.","Mexico City is the most exciting city.","Kenya's animals are the best in the world.","The Day of the Dead is the most colourful festival.","Airport food is terrible."];
+const factOp=()=>{const f=Math.random()<.5;const s=f?R(FACTS):R(OPIN);return mcQ(`Is this a <b>fact</b> or an <b>opinion</b>?<br><b>${s}</b>`,f?"Fact":"Opinion",[f?"Opinion":"Fact"],f?"A <b>fact</b> can be checked on a map, in a book or in an atlas.":"An <b>opinion</b> is what someone thinks or feels. Others may disagree.","Could you check it? Or is it a feeling?")};
+const SEQ=[["Grandma leaves Toronto","She visits Kenya","She visits Japan","She comes home with souvenirs"],["Kenya","Japan","Mexico","Egypt"],["Ms. Chen announces World Lunch Day","Leo asks his dad","Everyone brings a dish","They learn to say thank you"],["Anansi collects wisdom in a pot","He tries to climb the tree","Ntikuma gives him an idea","The pot breaks and wisdom spreads"],["Pack your luggage","Show your passport at the airport","Board the plane","Land in a new country"],["Write the greeting","Write your message","Write the closing and your name","Add a stamp and post it"],["Collect the maple sap","Boil it for hours","The water disappears","Thick syrup is left"],["North","East","South","West"],["Clean the house","Give red envelopes","Watch the dragon dance","Wish everyone a happy new year"],["Ramadan begins","Adults fast from sunrise to sunset","Ramadan ends","Families celebrate Eid"],["Plan your route on a map","Walk out of the door","Follow the directions","Arrive at the place"],["Light one candle","Light two candles","Light three candles","Light all eight candles"]];
+const order=()=>{const s=R(SEQ),t=R(["first","last","next"]);
+  if(t==="first")return mcQ(`What comes <b>FIRST</b>?`,s[0],SAMPLE(s.slice(1),2),`Order: ${s.join(" → ")}`,"What must come before everything else?");
+  if(t==="last")return mcQ(`What comes <b>LAST</b>?`,s[s.length-1],SAMPLE(s.slice(0,-1),2),`Order: ${s.join(" → ")}`,"What comes at the very end?");
+  const k=Math.floor(Math.random()*(s.length-1));return mcQ(`What comes right <b>AFTER</b> this?<br><b>${s[k]}</b>`,s[k+1],SAMPLE(s.filter((_,i)=>i!==k&&i!==k+1),2),`Order: ${s.join(" → ")}`,"What is the very next step?")};
+const CE=[["Because Kenya is on the equator, it is warm all year.","Kenya is on the equator","it is warm all year"],["The cherry blossoms bloomed, so families had picnics.","the cherry blossoms bloomed","families had picnics"],["Because Grandma sent postcards, the children put pins on the map.","Grandma sent postcards","the children put pins on the map"],["Leo asked his dad, so he learned about his heritage.","Leo asked his dad","he learned about his heritage"],["Because Anansi threw the pot, the wisdom spilled out.","Anansi threw the pot","the wisdom spilled out"],["The wind blew, so the wisdom spread around the world.","the wind blew","the wisdom spread around the world"],["Because it is winter in Australia in July, people wear coats there.","it is winter in Australia in July","people wear coats there"],["The Earth spins, so the sun seems to rise in the east.","the Earth spins","the sun seems to rise in the east"],["Because people in Quebec speak French, signs there are in French.","people in Quebec speak French","signs there are in French"],["We used a compass, so we didn't get lost.","we used a compass","we didn't get lost"],["Because the market was crowded, we couldn't find Grandma.","the market was crowded","we couldn't find Grandma"],["The flight was early, so we woke up at four o'clock.","the flight was early","we woke up at four o'clock"],["Because Ada brought jollof rice, everyone learned about Nigeria.","Ada brought jollof rice","everyone learned about Nigeria"],["Neel forgot his passport, so he couldn't get on the plane.","Neel forgot his passport","he couldn't get on the plane"],["Because the Nile brings water, people have farmed beside it for thousands of years.","the Nile brings water","people have farmed beside it for thousands of years"],["The wildebeest need fresh grass, so they travel to Kenya.","the wildebeest need fresh grass","they travel to Kenya"],["Because the curry was spicy, Leo drank lots of water.","the curry was spicy","Leo drank lots of water"],["Asha learned Japanese, so she could talk to Yuki's grandma.","Asha learned Japanese","she could talk to Yuki's grandma"],["Because the map had a key, we understood the symbols.","the map had a key","we understood the symbols"],["The sun was setting, so we knew which way was west.","the sun was setting","we knew which way was west"]];
+const cause=()=>{const c=R(CE),other=R(CE.filter(x=>x!==c));const askCause=Math.random()<.5;
+  return mcQ(`${box("Read",c[0])}What is the <b>${askCause?"cause":"effect"}</b>? <span style="color:var(--muted);font-size:15px">(${askCause?"WHY it happened":"WHAT happened"})</span>`,askCause?c[1]:c[2],[askCause?c[2]:c[1],askCause?other[1]:other[2]],`Cause (why): <b>${c[1]}</b>. Effect (what happened): <b>${c[2]}</b>.`,"Look for because and so.",{say:c[0]})};
+const CMP=[
+ ["Diwali and Hanukkah are both festivals of light. Diwali uses clay lamps called diyas. Hanukkah uses candles on a menorah for eight nights.","Both are festivals of light","Diwali uses diyas, but Hanukkah uses a menorah",["Both use red envelopes","Hanukkah uses diyas"]],
+ ["Japan and Kenya were both on Grandma's trip. In Japan, she saw cherry blossoms. In Kenya, she saw giraffes and zebras.","Both were on Grandma's trip","She saw cherry blossoms in Japan, but giraffes in Kenya",["Both are in Europe","She saw giraffes in Japan"]],
+ ["A map and a globe both show where places are. A map is flat. A globe is round like the Earth.","Both show where places are","A map is flat, but a globe is round",["Both are flat","A globe is flat"]],
+ ["Canada and Australia are both big countries. Canada is in North America and has cold winters. Australia is in the Southern Hemisphere and is warm in December.","Both are big countries","Canada is cold in December, but Australia is warm",["Both are in Asia","Australia has cold Decembers"]],
+ ["Mexico and Brazil are both in the Americas. People in Mexico speak Spanish. People in Brazil speak Portuguese.","Both are in the Americas","Mexico speaks Spanish, but Brazil speaks Portuguese",["Both speak French","Brazil speaks Spanish"]],
+ ["Pierogi and dumplings are both filled foods. Pierogi come from Poland and Ukraine. Dumplings like Wei's come from China.","Both are filled foods","Pierogi come from Europe, but Wei's dumplings come from China",["Both are desserts","Dumplings come from Poland"]],
+ ["Holi and the Day of the Dead are both colourful celebrations. Holi welcomes spring with coloured powder. The Day of the Dead remembers loved ones with marigolds.","Both are colourful celebrations","Holi welcomes spring, but the Day of the Dead remembers loved ones",["Both happen in Canada","Holi uses marigold altars"]],
+ ["Anansi and the crow both faced a problem. Anansi was selfish and wanted to keep all the wisdom. The crow was patient and solved her problem with pebbles.","Both faced a problem","Anansi was selfish, but the crow was patient",["Both were spiders","The crow was selfish"]],
+ ["Ottawa and Toronto are both cities in Ontario. Ottawa is the capital of Canada. Toronto is the biggest city in Canada.","Both are cities in Ontario","Ottawa is the capital, but Toronto is the biggest",["Both are capitals of Canada","Toronto is the capital of Canada"]],
+ ["A postcard and a letter both carry messages. A postcard has a picture and a short message. A letter is longer and goes in an envelope.","Both carry messages","A postcard is short with a picture, but a letter is longer",["Both go in envelopes","A letter has a picture on the front"]],
+ ["The Arctic and Antarctica are both very cold. The Arctic is at the top of the world, around the North Pole. Antarctica is at the bottom, around the South Pole.","Both are very cold","The Arctic is at the top, but Antarctica is at the bottom",["Both are hot","Antarctica is at the top"]],
+ ["Swahili and Arabic are both languages spoken in Africa. Swahili is spoken in East Africa, like Kenya. Arabic is spoken in North Africa, like Egypt.","Both are languages spoken in Africa","Swahili is spoken in East Africa, but Arabic in North Africa",["Both are spoken only in Japan","Arabic is spoken mainly in Kenya"]]
+];
+const compare=()=>{const c=R(CMP);const same=Math.random()<.5;
+  return mcQ(`${box("Read",c[0])}${same?"How are they the <b>same</b>?":"What is one <b>difference</b>?"}`,same?c[1]:c[2],[same?c[2]:c[1],R(c[3])],same?`Same: <b>${c[1]}</b>.`:`Different: <b>${c[2]}</b>.`,same?"Look for the word both.":"Look for the word but.",{say:c[0]})};
+
+/* ================= THINKING ================= */
+const PUZ=[
+ {q:"🌍 It is morning in Toronto. Is it also morning in India?",o:["No, it's already evening in India","Yes, it's the same time everywhere","India has no time"],a:"No, it's already evening in India",why:"Different places have different time zones."},
+ {q:"☀️ It is December, and it is snowing in Canada. What season is it in Australia?",o:["Summer","Winter","Autumn"],a:"Summer",why:"Seasons are opposite in the Southern Hemisphere."},
+ {q:"🧳 What must you have to fly to another country?",o:["A passport","A library card","A bus ticket"],a:"A passport",why:"Passports show which country you are from."},
+ {q:"🙏 You visit a home where people take off their shoes at the door. What should you do?",o:["Take off your shoes too","Keep your shoes on","Laugh at the custom"],a:"Take off your shoes too",why:"Respecting customs is polite."},
+ {q:"🍲 Someone offers you a food you've never tried. What is a polite way to answer?",o:["\"Thank you! I'd like to try a little.\"","\"Ew, gross!\"","Push it away"],a:"\"Thank you! I'd like to try a little.\"",why:"Being polite about others' food shows respect."},
+ {q:"🗣️ A new classmate speaks a different language at home. What is a kind thing to do?",o:["Ask them to teach you a word","Tell them to speak only English","Ignore them"],a:"Ask them to teach you a word",why:"Learning from each other is kind and fun."},
+ {q:"🧭 You are lost in a forest with a compass. Your camp is north. What should you do?",o:["Walk the way the needle points","Walk the opposite way","Walk in circles"],a:"Walk the way the needle points",why:"The needle points north."},
+ {q:"🌅 In the evening, you see the sun setting. Which direction are you looking?",o:["West","East","North"],a:"West",why:"The sun sets in the west."},
+ {q:"🌍 Which continent has no countries?",o:["Antarctica","Africa","Europe"],a:"Antarctica",why:"Only scientists visit Antarctica."},
+ {q:"🏔️ Which is the tallest mountain in the world?",o:["Mount Everest","The CN Tower","Mount Royal"],a:"Mount Everest",why:"It is in the Himalayas, in Asia."},
+ {q:"🌊 Which ocean would you cross to fly from Toronto to London?",o:["The Atlantic","The Pacific","The Indian"],a:"The Atlantic",why:"The Atlantic is between North America and Europe."},
+ {q:"🌊 Which ocean would you cross to fly from Vancouver to Tokyo?",o:["The Pacific","The Atlantic","The Arctic"],a:"The Pacific",why:"The Pacific is between North America and Asia."},
+ {q:"🧩 I am a country shaped like a boot, and pizza comes from me. What am I?",o:["Italy","Japan","Kenya"],a:"Italy",why:"Italy's shape on a map looks like a boot."},
+ {q:"🧩 I have a red maple leaf on my flag. What country am I?",o:["Canada","Japan","India"],a:"Canada",why:"The maple leaf is a symbol of Canada."},
+ {q:"🧩 I'm an imaginary line, and countries near me are hot all year. What am I?",o:["The equator","A border","A river"],a:"The equator",why:"The equator circles the middle of the Earth."},
+ {q:"🧩 I have a needle but I don't sew. I always point north. What am I?",o:["A compass","A clock","A ruler"],a:"A compass",why:"A compass needle points north."},
+ {q:"🧩 I'm round like the Earth and I spin on a stand. What am I?",o:["A globe","A ball","A map"],a:"A globe",why:"A globe is a model of the Earth."},
+ {q:"🛂 Grandma's passport is ___. (Which shows it belongs to Grandma?)",o:["Grandma's","Grandmas","Grandmas'"],a:"Grandma's",why:"One owner → 's."},
+ {q:"✈️ A flight leaves at 3 o'clock and takes 2 hours. When does it land (same time zone)?",o:["5 o'clock","1 o'clock","3 o'clock"],a:"5 o'clock",why:"3 + 2 = 5."},
+ {q:"📮 Grandma sent 5 postcards. Each had 1 stamp. How many stamps did she use?",o:["5","10","1"],a:"5",why:"5 × 1 = 5."},
+ {q:"🌍 There are 7 continents. You have visited 2. How many are left?",o:["5","9","3"],a:"5",why:"7 − 2 = 5."},
+ {q:"🧭 You walk 3 blocks north and then 3 blocks south. Where are you?",o:["Back where you started","6 blocks north","3 blocks east"],a:"Back where you started",why:"North and south are opposites, so they cancel out."},
+ {q:"🗺️ On a map, what does a key (legend) help you do?",o:["Understand the symbols","Open a door","Lock the map"],a:"Understand the symbols",why:"It explains what each symbol means."},
+ {q:"🌏 Why do people in hot countries often wear light, loose clothes?",o:["To stay cool","To stay warm","Because it's the law"],a:"To stay cool",why:"Light, loose clothes let air move."},
+ {q:"🏘️ Why is it good that people from many cultures live in the same city?",o:["We can learn from each other's food, languages and festivals","Everyone must be the same","It makes the city smaller"],a:"We can learn from each other's food, languages and festivals",why:"Different cultures make communities richer."},
+ {q:"🕷️ What lesson did Anansi learn?",o:["Nobody has all the wisdom","Spiders can fly","Pots are strong"],a:"Nobody has all the wisdom",why:"Even his young son was wise."}
+];
+const GRP={"continents":["Asia","Africa","Europe","Antarctica","Australia"],"oceans":["Pacific","Atlantic","Indian","Arctic","Southern"],"languages":["French","Swahili","Hindi","Japanese","Arabic"],"directions":["north","south","east","west"],"festivals":["Diwali","Holi","Eid","Hanukkah","Lunar New Year"],"capital cities":["Ottawa","Tokyo","Paris","Cairo","Nairobi"],"travel things":["passport","luggage","ticket","map","suitcase"]};
+const odd=()=>{const ks=Object.keys(GRP);const k=R(ks),k2=R(ks.filter(x=>x!==k));const three=SAMPLE(GRP[k],3),o=R(GRP[k2].filter(x=>!GRP[k].includes(x)));
+  return mcQ(`🤔 Which one does NOT belong?`,o,three,`${three.join(", ")} are all ${k}. <b>${o}</b> is not.`,"Find what three of them have in common.")};
+const ANA=[["Japan is to Japanese as France is to ___.","French",["Paris","Spanish"]],["Canada is to Ottawa as Japan is to ___.","Tokyo",["Kyoto","Delhi"]],["North is to south as east is to ___.","west",["north","up"]],["Hola is to Spanish as bonjour is to ___.","French",["Italian","Hindi"]],["Kenya is to Africa as India is to ___.","Asia",["Europe","Africa"]],["Diwali is to diyas as Hanukkah is to ___.","a menorah",["marigolds","red envelopes"]],["Mexico is to tacos as Poland is to ___.","pierogi",["sushi","samosas"]],["Sunrise is to east as sunset is to ___.","west",["north","south"]],["Egypt is to pyramids as France is to ___.","the Eiffel Tower",["the Great Wall","the CN Tower"]],["Mia is to Mia's as children is to ___.","children's",["childrens'","childrens"]],["Girl is to girl's as girls is to ___.","girls'",["girl's","girls's"]],["Map is to flat as globe is to ___.","round",["square","tall"]],["Ship is to ocean as camel is to ___.","desert",["river","snow"]],["Arigatō is to Japanese as asante is to ___.","Swahili",["Arabic","Hindi"]],["Atlantic is to ocean as Asia is to ___.","continent",["river","city"]],["Passport is to travel as library card is to ___.","borrowing books",["flying","swimming"]],["Equator is to hot as poles are to ___.","cold",["sunny","sandy"]],["Toronto is to city as Canada is to ___.","country",["continent","ocean"]],["Compass is to direction as clock is to ___.","time",["weight","money"]],["Nile is to Egypt as Amazon is to ___.","Brazil",["Kenya","Japan"]]];
+const analogy=()=>{const x=R(ANA);return mcQ("🔗 "+x[0],x[1],x[2],`${x[0].replace("___","<b>"+x[1]+"</b>")} Think about how the first two words are linked.`,"How are the first two words linked? Use the same link.")};
+
+/* ================= WRITING PROMPTS ================= */
+const D=[CHK.cap,CHK.end,CHK.w4,CHK.I];
+const WP=[
+ {q:"Write a sentence with a possessive that has <b>'s</b> (like Mia's bag).",checks:[...D,["\\b\\w+['’]s\\b","Uses 's"]],model:"Grandma's suitcase was very heavy."},
+ {q:"Write a sentence about something that belongs to more than one person, using <b>s'</b> (like the girls' bikes).",checks:[...D,["\\b\\w+s['’](\\s|$)","Uses s'"]],model:"The students' postcards are on the wall."},
+ {q:"Write a sentence that names a country and its language.",checks:[...D,["\\b[A-Z][a-z]+\\b[\\s\\S]*\\b(English|French|Spanish|Hindi|Bengali|Japanese|Swahili|Arabic|Portuguese|Mandarin|Chinese|Italian|German|Polish|Korean|Urdu|Punjabi|Tamil)\\b","Names a language with a capital letter"]],model:"People in Brazil speak Portuguese."},
+ {q:"Write a sentence that names a city and the country it is in.",checks:[...D,["\\b[A-Z][a-z]+\\b[\\s\\S]*\\b[A-Z][a-z]+\\b","Uses capital letters for both names"]],model:"Nairobi is a big city in Kenya."},
+ {q:"Write a sentence using <b>north</b>, <b>south</b>, <b>east</b> or <b>west</b>.",checks:[...D,["\\b(north|south|east|west)\\b","Uses a direction word"]],model:"The sun rises in the east."},
+ {q:"Write a sentence that tells where something is on a map, using <b>next to</b>, <b>between</b> or <b>across from</b>.",checks:[...D,["\\b(next to|between|across from|opposite)\\b","Uses a position phrase"]],model:"The library is across from the park."},
+ {q:"Write a sentence about a festival. Remember the capital letter for its name!",checks:[...D,["\\b(Diwali|Holi|Eid|Hanukkah|Christmas|Lunar New Year|Day of the Dead|Durga Puja|Vaisakhi|Navratri|Easter|Thanksgiving|Kwanzaa|Canada Day)\\b","Names a festival with a capital letter"]],model:"We light diyas at Diwali."},
+ {q:"Write a sentence saying hello in another language.",checks:[...D,["\\b(hola|bonjour|namaste|konnichiwa|jambo|marhaba|ciao|olá|ola|ni hao|nǐ hǎo|salaam|hallo|annyeong)\\b","Uses a greeting from another language"]],model:"In Kenya, people say jambo."},
+ {q:"Write a sentence about your family's heritage.",checks:[...D,["\\b(family|grandparents?|ancestors?|parents?|heritage|grandma|grandpa)\\b","Mentions family or heritage"]],model:"My grandparents came from Bangladesh."},
+ {q:"Write a sentence about a landmark you would like to see.",checks:[...D,["\\b(Tower|Pyramid|Wall|Falls|Colosseum|Taj Mahal|Bridge|Mountain|Everest|Temple|Statue|Opera House)s?\\b","Names a landmark with a capital letter"]],model:"I would like to see the Taj Mahal in India."},
+ {q:"Write a question you would ask someone from another country.",checks:[CHK.cap,CHK.q,CHK.w3],model:"What is your favourite festival in your country?"},
+ {q:"Write a sentence about something you would pack in your luggage.",checks:[...D,["\\b(pack|bring|take|suitcase|luggage|bag)\\b","Talks about packing"]],model:"I would pack a warm sweater and my passport."},
+ {q:"Write a sentence about a food from another country.",checks:[...D,["\\b[A-Z][a-z]+\\b","Names a country (with a capital letter)"]],model:"Sushi is a famous food from Japan."},
+ {q:"Write a sentence comparing two countries using <b>but</b>.",checks:[...D,["\\bbut\\b","Uses but"]],model:"Canada is cold in January, but Australia is hot."},
+ {q:"Write the greeting and first sentence of a postcard.",checks:[["^\\s*Dear\\s+[A-Z]\\w*,","Starts with Dear and a name"],["[.!?]\\s*$","Ends with an end mark"]],model:"Dear Leo,\nGreetings from Cairo!"},
+ {q:"Write a sentence with a possessive for a plural that doesn't end in s (children, people, men, women).",checks:[...D,["\\b(children|people|men|women)['’]s\\b","Uses children's, people's, men's or women's"]],model:"The children's paintings were beautiful."},
+ {q:"Write a sentence naming a continent and an ocean.",checks:[...D,["\\b(Asia|Africa|Europe|North America|South America|Australia|Antarctica)\\b","Names a continent"],["\\b(Pacific|Atlantic|Indian|Arctic|Southern)\\b","Names an ocean"]],model:"The Atlantic Ocean is between Africa and South America."},
+ {q:"Write a sentence about a custom in your family.",checks:[...D,["\\b(we|my family|our)\\b","Talks about your family"]],model:"In my family, we eat dinner together every Sunday."},
+ {q:"Write directions using <b>turn left</b> or <b>turn right</b>.",checks:[...D,["\\b[Tt]urn (left|right)\\b","Uses turn left or turn right"]],model:"Turn left at the bakery and walk straight."},
+ {q:"Write a sentence about why it is good to learn about other cultures.",checks:[...D,["\\bbecause\\b","Uses because"]],model:"It is good to learn about other cultures because we can make friends everywhere."}
+];
+
+/* ================= LEARN NOTES ================= */
+const L={
+ detail:"Read the short text carefully. The answer is <b>in the text</b>.",
+ main:"The <b>main idea</b> is what the whole text is mostly about. It fits <b>all</b> the sentences.",
+ factop:"A <b>fact</b> can be checked on a map or in a book. An <b>opinion</b> is a feeling: <i>Japan is the most beautiful country.</i>",
+ order:"Journeys, festivals and instructions all have an <b>order</b>. What comes first, next and last?",
+ cause:"The <b>cause</b> is <b>why</b>. The <b>effect</b> is <b>what happened</b>. Look for <b>because</b> and <b>so</b>.",
+ compare:"<b>Same:</b> look for <b>both</b>, <b>also</b>. <b>Different:</b> look for <b>but</b>.",
+ where:"Use the clues like a detective: <b>landmarks</b> (pyramids), <b>greetings</b> (jambo), <b>food</b> (tacos) and <b>festivals</b> (Diwali).",
+ vocab:"Read the word, say it aloud, and think of a sentence that uses it.",
+ cap:"A <b>capital city</b> is where a country's government is. Ottawa (Canada) · New Delhi (India) · Tokyo (Japan) · Paris (France) · Nairobi (Kenya) · Cairo (Egypt).",
+ cont:"The 7 continents: <b>Asia</b> (biggest), <b>Africa</b>, <b>North America</b>, <b>South America</b>, <b>Antarctica</b>, <b>Europe</b>, <b>Australia/Oceania</b> (smallest).",
+ cult:"Learn greetings and customs: hola (Spanish), bonjour (French), namaste (India), konnichiwa (Japanese), jambo (Swahili), marhaba (Arabic), nǐ hǎo (Mandarin).",
+ syn:"<b>Synonyms</b> mean almost the same: journey = trip, delicious = tasty.",
+ opp:"<b>Opposites</b>: north ↔ south, east ↔ west, local ↔ foreign, arrive ↔ depart.",
+ comp:"<b>Compound words</b>: air + port = airport, post + card = postcard, land + mark = landmark.",
+ pos:"A <b>possessive</b> shows who owns something.<br>One owner → add <b>'s</b>: <i>Mia<b>'s</b> bag, the dog<b>'s</b> bowl</i>.<br>More than one owner ending in s → add just <b>'</b>: <i>the girls<b>'</b> bikes</i>.<br>Plurals without s → add <b>'s</b>: <i>the children<b>'s</b> toys, people<b>'s</b> homes</i>.",
+ posPl:"<b>Plural</b> (more than one): just add <b>s</b> → <i>three cats</i>.<br><b>Possessive</b> (belongs to): add <b>'s</b> → <i>the cat's bowl</i>.",
+ proper:"<b>Proper nouns</b> are names of particular things and always start with a <b>capital letter</b>: countries (<i>Kenya</i>), cities (<i>Tokyo</i>), continents (<i>Asia</i>), oceans and rivers (<i>the Nile</i>), languages (<i>Spanish</i>) and people from a country (<i>Mexican</i>).<br>General words like <i>city, country, river</i> do not need capitals.",
+ map:"<b>North</b> = up · <b>South</b> = down · <b>East</b> = right · <b>West</b> = left.<br>Remember: <b>N</b>ever <b>E</b>at <b>S</b>oggy <b>W</b>affles (clockwise).",
+ turn:"Facing north, a <b>right</b> turn → east, another right → south, another → west. A <b>left</b> turn goes the other way. Turning <b>around</b> → the opposite direction.",
+ dw:"Map words: <b>compass</b>, <b>key/legend</b>, <b>symbol</b>, <b>route</b>, <b>landmark</b>, <b>nearby</b>, <b>across from</b>, <b>between</b>, <b>next to</b>.",
+ fix:"Check: <b>1.</b> capital letter at the start, <b>2.</b> capitals for names of people, places and languages, <b>3.</b> a full stop at the end.",
+ orderW:"Find the word with the capital letter that starts the sentence. Remember that place names also have capitals!",
+ write:"Plan in your head first. Then write: capital letter, complete idea, end mark.",
+ spell:"Use <b>Look → Say → Cover → Write → Check</b>.",
+ names:"Names of countries, continents and languages always start with a <b>capital letter</b>.",
+ choose:"Watch out for: l<b>angu</b>age, peo<b>ple</b>, for<b>eig</b>n, j<b>our</b>ney, and capital letters for names!",
+ think:"Think like a world explorer: use maps, directions and respect for every culture.",
+ odd:"Three belong to the same group. Find the one that does <b>not</b> belong.",
+ ana:"Find how the first two words are linked. Use the <b>same link</b> for the next pair.",
+ review:"These questions come from earlier units, so you keep everything you learned fresh."
+};
+const RV=id=>UNITS.find(x=>x.id===id).review;
+u.review=MIX(posMake,posChoose,posPlural,langQ,capWhich,gridMap,turnQ,capQ,contQ,whereQ,F.bank(CULT),F.vocab(u.words));
+
+/* ================= THE SKILL LIST ================= */
+u.cats=[
+ {n:"Reading",e:"📖",items:[
+  {id:"r_t1",t:"Postcards: Postcards from Grandma Kiran",act:"story",si:0},
+  {id:"r_t2",t:"Story: World Lunch Day",act:"story",si:1},
+  {id:"r_t3",t:"Fact text: Our World, Continents and Oceans",act:"story",si:2},
+  {id:"r_t4",t:"Fact text: Festivals Around the World",act:"story",si:3},
+  {id:"r_t5",t:"Folktale from Ghana: Anansi and the Pot of Wisdom",act:"story",si:4},
+  {id:"r_t6",t:"Real-world reading: A town map and a departures board",act:"story",si:5},
+  {id:"r_p1",t:"Classic poem: Foreign Lands (Robert Louis Stevenson)",act:"poem",pi:0},
+  {id:"r_p2",t:"Poem: Hello Around the World",act:"poem",pi:1},
+  {id:"r_where",t:"Postcard clues: Where am I?",learn:L.where,gen:whereQ},
+  {id:"r_detail",t:"Read and find the details",learn:L.detail,gen:detail},
+  {id:"r_main",t:"Find the main idea",learn:L.main,gen:mainIdea},
+  {id:"r_factop",t:"Fact or opinion?",learn:L.factop,gen:factOp},
+  {id:"r_order",t:"Order and sequence",learn:L.order,gen:order},
+  {id:"r_cause",t:"Cause and effect",learn:L.cause,gen:cause},
+  {id:"r_compare",t:"Compare and contrast",learn:L.compare,gen:compare}]},
+ {n:"Vocabulary",e:"🔤",items:[
+  {id:"v_s1",t:"Geography words",learn:L.vocab,gen:F.vocab(set(0))},
+  {id:"v_s2",t:"Map and direction words",learn:L.vocab,gen:F.vocab(set(1))},
+  {id:"v_s3",t:"Culture words",learn:L.vocab,gen:F.vocab(set(2))},
+  {id:"v_s4",t:"Travel and describing words",learn:L.vocab,gen:F.vocab(set(3))},
+  {id:"v_fill",t:"Use the right word in a sentence",learn:L.vocab,gen:F.fill(u.words)},
+  {id:"v_cult",t:"Greetings, food and festivals",learn:L.cult,gen:F.bank(CULT)},
+  {id:"v_syn",t:"Synonyms",learn:L.syn,gen:F.pairs(SYN,"synonym")},
+  {id:"v_opp",t:"Opposites",learn:L.opp,gen:F.pairs(OPP,"opposite")},
+  {id:"v_comp",t:"Compound words",learn:L.comp,gen:MIX(F.compoundJoin(COMP),F.compoundPick(COMP))}]},
+ {n:"Grammar",e:"🧩",items:[
+  {id:"g_pos",t:"Possessives: write it with 's or s'",learn:L.pos,gen:posMake},
+  {id:"g_poschoose",t:"Possessives: choose the correct form",learn:L.pos,gen:posChoose},
+  {id:"g_pospl",t:"Plural or possessive? (cats or cat's)",learn:L.posPl,gen:posPlural},
+  {id:"g_cap",t:"Proper nouns: which needs a capital letter?",learn:L.proper,gen:capWhich},
+  {id:"g_lang",t:"Countries and their languages",learn:L.proper,gen:langQ},
+  {id:"g_people",t:"People from countries (Japan → Japanese)",learn:L.proper,gen:peopleQ},
+  {id:"g_fix",t:"Fix the sentence (capitals for places and languages)",learn:L.fix,gen:fix},
+  {id:"g_order",t:"Put the words in order",learn:L.orderW,gen:G.order(["Asia is the biggest continent.","Grandma sent us a postcard.","Japan is an island country.","We looked at the world map.","The sun sets in the west.","Kenya is on the equator.","Our class ate pierogi and samosas.","The compass needle points north.","Egypt has very old pyramids.","Brazil has a huge rainforest.","The pyramids are in the desert.","Grandma packed her heavy luggage."])},
+  {id:"g_write",t:"Write your own sentences",learn:L.write,gen:F.write(WP)},
+  {id:"g_mixed",t:"Mixed grammar review",learn:"Use all the possessive and proper-noun rules from this unit.",gen:MIX(posMake,posChoose,posPlural,capWhich,langQ,peopleQ)}]},
+ {n:"Maps and the world",e:"🗺️",items:[
+  {id:"m_grid",t:"Read the map: north, south, east, west",learn:L.map,gen:gridMap},
+  {id:"m_turn",t:"Compass turns and opposite directions",learn:L.turn,gen:turnQ},
+  {id:"m_dw",t:"Map and direction words",learn:L.dw,gen:F.bank(DW)},
+  {id:"m_cont",t:"Which continent?",learn:L.cont,gen:contQ},
+  {id:"m_capital",t:"Capital cities",learn:L.cap,gen:capQ}]},
+ {n:"Spelling",e:"🎧",items:[
+  {id:"s_world",t:"World and travel words: listen and write",learn:L.spell,gen:F.listen(SP)},
+  {id:"s_names",t:"Countries, continents and languages: listen and write",learn:L.names,gen:F.listen(NAMES)},
+  {id:"s_choose",t:"Choose the correct spelling",learn:L.choose,gen:F.chooseSpelling(CHOOSE)},
+  {id:"s_missing",t:"Missing letters",learn:L.spell,gen:F.missing(SP)}]},
+ {n:"Thinking",e:"🧠",items:[
+  {id:"t_puz",t:"World puzzles and respectful choices",learn:L.think,gen:F.bank(PUZ)},
+  {id:"t_odd",t:"Odd one out",learn:L.odd,gen:odd},
+  {id:"t_ana",t:"Word links (analogies)",learn:L.ana,gen:analogy}]},
+ {n:"Review earlier units",e:"🔁",items:[
+  {id:"rv_u1",t:"Review: Unit 1 (sentences, question words, nouns)",learn:L.review,gen:RV("me")},
+  {id:"rv_u2",t:"Review: Unit 2 (plurals, past tense, animals)",learn:L.review,gen:RV("animals")},
+  {id:"rv_u3",t:"Review: Unit 3 (present tense, plants, magic e)",learn:L.review,gen:RV("plants")},
+  {id:"rv_u4",t:"Review: Unit 4 (adjectives, comparing, homophones)",learn:L.review,gen:RV("weather")},
+  {id:"rv_u5",t:"Review: Unit 5 (future tense, a/an/the, space)",learn:L.review,gen:RV("space")},
+  {id:"rv_u6",t:"Review: Unit 6 (prepositions, pronouns, un-/re-)",learn:L.review,gen:RV("ocean")},
+  {id:"rv_u7",t:"Review: Unit 7 (has/have, question words, time, money)",learn:L.review,gen:RV("maths")},
+  {id:"rv_u8",t:"Review: Unit 8 (was/were, joining words, -tion)",learn:L.review,gen:RV("inventions")},
+  {id:"rv_u9",t:"Review: Unit 9 (adverbs, contractions, -ful/-less)",learn:L.review,gen:RV("friends")}]},
+ {n:"Explore and write",e:"✏️",items:[
+  {id:"x_facts",t:"Did you know? Amazing facts about the world",act:"facts"},
+  {id:"x_w1",t:"Writing step 1: A country I would love to visit",act:"write",wi:0},
+  {id:"x_w2",t:"Writing step 2: Giving directions",act:"write",wi:1},
+  {id:"x_w3",t:"Writing step 3: A postcard to a friend",act:"write",wi:2}]}
+];
+})();
+
 /* ================= SETTINGS ================= */
 const SITE_NAME = "Sprout English";   // placeholder name — change this one line later
-const COMING=[["🗺️","Countries and Cultures"],["🍎","My Healthy Body"],["📚","Stories and Fables"]];
+const COMING=[["🍎","My Healthy Body"],["📚","Stories and Fables"]];
 
 /* ================= SAVED PROGRESS (this browser only) ================= */
 const KEY="sprout_v5";
