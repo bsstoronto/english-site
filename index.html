@@ -160,9 +160,9 @@ function blankWord(sentence,word){return sentence.replace(new RegExp("\\b"+word+
 
 /* Writing checks shared by many skills */
 const CHK={
-  cap:["^\\s*[A-Z]","Starts with a capital letter"],
-  end:["[.!?]\\s*$","Ends with a full stop (or ? or !)"],
-  q:["\\?\\s*$","Ends with a question mark"],
+  cap:["^\\s*[\"“‘']?[A-Z]","Starts with a capital letter"],
+  end:["[.!?][\"”’']?\\s*$","Ends with a full stop (or ? or !)"],
+  q:["\\?[\"”’']?\\s*$","Ends with a question mark"],
   I:["^(?![\\s\\S]*\\bi\\b)","Writes I as a capital letter"],
   w4:["^\\s*(\\S+\\s+){3,}\\S+","Has at least 4 words"],
   w3:["^\\s*(\\S+\\s+){2,}\\S+","Has at least 3 words"],
@@ -7256,9 +7256,606 @@ u.cats=[
 ];
 })();
 
+/* ===================== GRADE 3 · UNIT 12 · STORIES AND FABLES (original content, retold public-domain fables and one public-domain poem) ===================== */
+(function(){
+const f=(q,a,o,why)=>({lv:"find",q,o:[a].concat(o),a:[a],why});
+const t=(q,a,o,why)=>({lv:"think",q,o:[a].concat(o),a:[a],why});
+const p=(q,a,o,why)=>({lv:"predict",q,o:[a].concat(o),a:[a],why});
+UNITS.push({
+id:"stories", num:12, emoji:"📚🦊🐢", title:"Stories and Fables", badge:"📚 Master Storyteller",
+
+stories:[
+/* ---------- 1. FABLE ---------- */
+{title:"The Lion and the Mouse (an Aesop fable, retold)", e:"🦁", kind:"Fable", pages:[
+ {pic:"🦁😴", text:"On a hot afternoon, a mighty lion lay sleeping in the shade of a tree. A tiny mouse was scurrying home and, without looking, ran right across the lion's nose. The lion woke with a roar and trapped the mouse under his huge paw. \"How dare you wake me!\" he growled. \"I will eat you for my snack!\"",
+  qs:[f("Where was the lion sleeping?","In the shade of a tree",["In a cave","In a river"],"…a mighty lion lay sleeping in the shade of a tree."),
+      f("What did the lion say?","\"How dare you wake me!\"",["\"Hello, little friend!\"","\"Let's play!\""],"The words inside the quotation marks are what the lion said."),
+      t("Who are the two characters so far?","A lion and a mouse",["A fox and a crow","A tortoise and a hare"],"Characters are the people or animals in a story.")]},
+ {pic:"🐭🙏", text:"\"Please, Your Majesty,\" squeaked the mouse, trembling. \"Let me go, and one day I will help you.\" The lion laughed so hard that his whiskers shook. \"You? Help ME? You're so small that you couldn't help a beetle!\" But the mouse had made him smile, so the lion lifted his paw. \"Go on, then,\" he said. The mouse ran off quickly.",
+  qs:[f("What did the mouse promise?","To help the lion one day",["To bring him food","To leave the forest"],"\"Let me go, and one day I will help you.\""),
+      t("Why did the lion laugh?","He thought a tiny mouse could never help a big lion",["The mouse told a joke","He was tickled"],"\"You're so small that you couldn't help a beetle!\""),
+      p("Do you think the mouse will keep his promise?","Yes, he will find a way to help the lion",["No, he will forget","The lion will never see him again"],"Fables often bring the characters back together.")]},
+ {pic:"🕸️🦁", text:"A few days later, hunters set a trap in the forest. As the lion walked along the path, a heavy rope net fell on top of him. He pulled and twisted, but the more he struggled, the tighter the ropes became. \"Help!\" he roared. His roar echoed through the whole forest, all the way to the mouse's little home.",
+  qs:[f("What trapped the lion?","A rope net set by hunters",["A big hole","A cage of iron"],"…a heavy rope net fell on top of him."),
+      f("What happened when the lion struggled?","The ropes became tighter",["The ropes broke","The net disappeared"],"The more he struggled, the tighter the ropes became."),
+      t("What is the lion's problem now?","He is trapped in a net and can't get out",["He is hungry","He is lost"],"The problem is the challenge the character must solve.")]},
+ {pic:"🐭✂️", text:"The mouse heard the roar and raced to the lion. \"Don't worry,\" she said. \"I'm here.\" She began to nibble the ropes with her sharp little teeth. She nibbled and gnawed, one rope after another, until there was a hole big enough for the lion to climb through. The mighty lion stepped out, free at last.",
+  qs:[f("How did the mouse free the lion?","She nibbled through the ropes with her teeth",["She called the hunters","She pulled the net with her paws"],"She began to nibble the ropes with her sharp little teeth."),
+      f("What did the mouse say when she arrived?","\"Don't worry. I'm here.\"",["\"I told you so!\"","\"Goodbye!\""],"\"Don't worry,\" she said. \"I'm here.\""),
+      t("What is the solution in this story?","The mouse nibbles through the net",["The lion eats the mouse","The hunters let the lion go"],"The solution is how the problem is solved.")]},
+ {pic:"🦁🤝🐭", text:"The lion bowed his great head. \"Thank you, little friend,\" he said softly. \"I laughed at you because you were small, but today you saved my life.\" From that day on, the lion and the mouse were the best of friends. <b>Lesson: Even the smallest friend can be a great help. Kindness is never wasted.</b>",
+  qs:[t("What is the moral (lesson) of this fable?","Even the smallest friend can be a great help",["Lions are scary","Never sleep under a tree"],"The mouse was small, but she saved the mighty lion."),
+      f("What did the lion say at the end?","\"Thank you, little friend.\"",["\"Go away!\"","\"I'm still hungry.\""],"\"Thank you, little friend,\" he said softly."),
+      t("How did the lion change?","He learned not to judge someone by their size",["He became smaller","He stopped roaring forever"],"He laughed at the mouse at first, then thanked her.")]}
+], turn:{q:"Write two sentences about a time someone small or young helped you. Use quotation marks to show what someone said.",model:"My little sister found my lost key under the sofa. \"Here it is!\" she shouted happily."}},
+
+/* ---------- 2. FABLE ---------- */
+{title:"The Tortoise and the Hare (an Aesop fable, retold)", e:"🐢", kind:"Fable", pages:[
+ {pic:"🐇💨", text:"In a green meadow lived a hare who was very fast and very boastful. Every day he bragged to the other animals. \"I'm the fastest animal in the whole meadow!\" he would say. \"Nobody can beat me!\" One morning, he saw a tortoise walking slowly along the path. The hare laughed. \"Do you ever get anywhere, Slowpoke?\"",
+  qs:[f("Where did the hare live?","In a green meadow",["In the ocean","In a city"],"In a green meadow lived a hare…"),
+      f("What word describes the hare?","Boastful",["Shy","Humble"],"…a hare who was very fast and very boastful."),
+      t("What is the setting of this story?","A green meadow",["A school","A castle"],"The setting is where (and when) a story happens.")]},
+ {pic:"🐢🏁", text:"The tortoise stopped and looked up calmly. \"I may be slow,\" she said, \"but I will race you, and I think I can win.\" All the animals gasped. The hare rolled on the grass, laughing. \"You? Beat ME? All right, let's race to the big oak tree on the hill!\" The fox agreed to be the judge. \"Ready, steady, GO!\" he called.",
+  qs:[f("Where was the finish line?","The big oak tree on the hill",["The river","The tortoise's house"],"\"Let's race to the big oak tree on the hill!\""),
+      f("Who was the judge?","The fox",["The owl","The mouse"],"The fox agreed to be the judge."),
+      p("Who do you think will win?","The tortoise, because she is steady and the hare is too proud",["The hare, easily","Nobody"],"Fables often surprise us, and proud characters usually learn a lesson.")]},
+ {pic:"🐇😴", text:"The hare shot off like an arrow and was soon far ahead. He looked back. The tortoise was just a tiny dot. \"This is too easy,\" he yawned. \"I have time for a nap.\" He lay down under a shady bush and fell fast asleep. Meanwhile, the tortoise kept walking: step, step, step. She didn't stop once.",
+  qs:[f("What did the hare do when he was far ahead?","He took a nap",["He ran faster","He went home"],"\"I have time for a nap.\""),
+      f("What did the tortoise do?","She kept walking and didn't stop",["She took a nap too","She gave up"],"She didn't stop once."),
+      t("Why did the hare take a nap?","He was too sure he would win",["He was hurt","The judge told him to"],"\"This is too easy.\" He was overconfident.")]},
+ {pic:"🐢🌳", text:"The sun moved across the sky. When the hare finally woke up, he heard cheering in the distance. He jumped up and raced towards the hill as fast as his legs could go. But it was too late! The tortoise was just crossing the finish line under the oak tree. All the animals cheered. \"Hooray for the tortoise!\" they shouted.",
+  qs:[f("What did the hare hear when he woke up?","Cheering in the distance",["Thunder","Silence"],"…he heard cheering in the distance."),
+      f("Who won the race?","The tortoise",["The hare","The fox"],"The tortoise was just crossing the finish line."),
+      t("How do you think the hare felt?","Embarrassed and surprised",["Proud","Happy"],"He bragged that nobody could beat him, and then he lost.")]},
+ {pic:"🐢🏆", text:"The hare walked up, panting and red-faced. \"How did you beat me?\" he asked quietly. The tortoise smiled kindly. \"You are faster than me,\" she said, \"but you stopped. I kept going.\" The hare was quiet for a long time. Then he said, \"I'm sorry I laughed at you. I won't boast again.\" <b>Lesson: Slow and steady wins the race. Don't be too proud.</b>",
+  qs:[t("What is the moral of this fable?","Slow and steady wins the race",["Hares are lazy","Never race"],"The tortoise kept going and won."),
+      f("What did the tortoise say?","\"You are faster than me, but you stopped. I kept going.\"",["\"I'm the fastest!\"","\"Let's not race again.\""],"\"You are faster than me,\" she said, \"but you stopped. I kept going.\""),
+      t("Which pair of words describes the two characters?","The hare was boastful; the tortoise was patient",["Both were lazy","The tortoise was boastful"],"The hare bragged, and the tortoise worked steadily.")]}
+], turn:{q:"Write a short conversation (two lines) between the tortoise and the hare after the race. Use quotation marks.",model:"\"Will you race me again tomorrow?\" asked the hare.\n\"Only if you promise not to nap!\" laughed the tortoise."}},
+
+/* ---------- 3. FOLKTALE FROM INDIA ---------- */
+{title:"The Monkey and the Crocodile (a Panchatantra tale from India, retold)", e:"🐒", kind:"Folktale", pages:[
+ {pic:"🐒🌳", text:"Long ago in India, a monkey lived in a rose-apple tree beside a wide river. The tree was full of sweet, juicy fruit. One day, a crocodile swam up to the bank. \"I'm so hungry,\" he said. The kind monkey threw him some rose-apples. \"Thank you!\" said the crocodile. Soon the two became friends, and the crocodile visited every day.",
+  qs:[f("Where did the monkey live?","In a rose-apple tree beside a river",["In a cave","In a city zoo"],"…a monkey lived in a rose-apple tree beside a wide river."),
+      f("What did the monkey give the crocodile?","Rose-apples",["Fish","Bananas"],"The kind monkey threw him some rose-apples."),
+      t("What kind of character is the monkey at the start?","Kind and generous",["Mean and greedy","Lazy and rude"],"He shared his fruit with a hungry stranger.")]},
+ {pic:"🐊👑", text:"The crocodile took some rose-apples home to his wife. She loved them. Then she had a greedy idea. \"If the fruit is so sweet,\" she said, \"the monkey's heart must be even sweeter! Bring me his heart to eat!\" The crocodile didn't want to hurt his friend, but his wife insisted. So he made a plan to trick the monkey.",
+  qs:[f("Who wanted the monkey's heart?","The crocodile's wife",["The crocodile","Another monkey"],"\"Bring me his heart to eat!\""),
+      t("Which word describes the crocodile's wife?","Greedy",["Generous","Humble"],"She wanted more and more, even her husband's friend's heart."),
+      p("What do you think the crocodile will do?","Try to trick the monkey",["Tell the monkey to run away","Move to another river"],"\"So he made a plan to trick the monkey.\"")]},
+ {pic:"🐊🐒🌊", text:"The next day, the crocodile said, \"My friend, my wife wants to thank you. Come to dinner at our home across the river. Sit on my back, and I'll carry you.\" The monkey happily climbed on. But in the middle of the deep river, the crocodile said, \"I'm sorry, friend. My wife wants to eat your heart.\" The monkey couldn't swim. He was in great danger!",
+  qs:[f("Where did the crocodile say they were going?","To dinner at his home across the river",["To a party in the forest","To the mountains"],"\"Come to dinner at our home across the river.\""),
+      f("Why was the monkey in danger in the middle of the river?","He couldn't swim",["He was too heavy","It was raining"],"The monkey couldn't swim."),
+      t("What is the monkey's problem?","He is on the crocodile's back in the river, and the crocodile wants his heart",["He is hungry","He lost his tree"],"The problem is a big danger the character must escape.")]},
+ {pic:"🧠🐒", text:"The monkey thought quickly. \"Oh, my friend!\" he said calmly. \"Why didn't you tell me before? We monkeys keep our hearts safely in the tree when we go out. Take me back, and I'll fetch it for your wife.\" The foolish crocodile believed him and swam back to the bank. The moment they arrived, the monkey leapt high into his tree.",
+  qs:[f("Where did the monkey say he kept his heart?","In the tree",["In his pocket","Under a rock"],"\"We monkeys keep our hearts safely in the tree when we go out.\""),
+      t("Why did the monkey speak calmly?","So the crocodile would believe his trick",["He wasn't scared at all","He was sleepy"],"If he panicked, the crocodile might not believe him."),
+      t("Which word describes the crocodile here?","Foolish",["Clever","Wise"],"He believed the monkey's trick.")]},
+ {pic:"🐒🌳😌", text:"From the top of the tree, the monkey called down, \"You foolish crocodile! Nobody can take their heart out of their body. You tried to trick your friend, so our friendship is over.\" The crocodile swam away, ashamed. The monkey ate a rose-apple and thought about what had happened. <b>Lesson: Keep calm and think clearly in times of danger. And be careful whom you trust.</b>",
+  qs:[t("What is the lesson of this tale?","Keep calm and think clearly in danger",["Monkeys can swim","Always share your heart"],"The monkey escaped by staying calm and using his brain."),
+      f("Where was the monkey at the end?","Safe at the top of his tree",["In the river","At the crocodile's house"],"From the top of the tree, the monkey called down…"),
+      t("How is this tale like 'The Lion and the Mouse'?","Both have animal characters and teach a lesson",["Both are set in a meadow","Both have a race"],"Fables and folktales often use animals to teach lessons."),
+      t("What is the Panchatantra?","A very old collection of animal stories from India",["A kind of crocodile","A fruit"],"These stories were told in India for about 2,000 years to teach wisdom.")]}
+], turn:{q:"The monkey stayed calm in danger. Write about a time you stayed calm when something went wrong.",model:"When I lost my mom at the market, I stayed calm. I stood still and asked a shopkeeper for help."}},
+
+/* ---------- 4. FACT TEXT ---------- */
+{title:"How Stories Work", e:"🧩", kind:"Fact text", pages:[
+ {pic:"🧑‍🤝‍🧑🦊", text:"Every story has <b>characters</b>. Characters are the people, animals or creatures in a story. The most important character is called the <b>main character</b>. In fables, characters are often animals that act like people: they talk, think and make choices. We learn about characters from what they say, what they do and how others treat them.",
+  qs:[f("What are characters?","The people, animals or creatures in a story",["The place where a story happens","The lesson of a story"],"Characters are the people, animals or creatures in a story."),
+      f("What do animal characters in fables often do?","Talk, think and make choices like people",["Never speak","Only eat"],"…animals that act like people: they talk, think and make choices."),
+      t("How can we learn what a character is like?","From what they say and do",["From the page number","From the cover colour only"],"We learn about characters from what they say, what they do and how others treat them.")]},
+ {pic:"🏰🌲", text:"The <b>setting</b> is where and when a story happens. It might be a meadow, a castle, a busy city, a spaceship or a river in India. It could be long ago, today or in the future. Good writers use describing words to help us picture the setting: <i>a dark, whispering forest</i> or <i>a sunny, crowded beach</i>.",
+  qs:[f("What is the setting?","Where and when a story happens",["Who is in the story","How the story ends"],"The setting is where and when a story happens."),
+      f("Which is an example of a setting?","A dark, whispering forest",["A brave knight","A happy ending"],"…a dark, whispering forest…"),
+      t("Why do writers use describing words for the setting?","To help readers picture it",["To make the story longer","Because they must"],"…to help us picture the setting.")]},
+ {pic:"⚠️💡", text:"Every good story has a <b>problem</b>: something goes wrong, or a character wants something that is hard to get. The lion is caught in a net. The monkey is in danger. The middle of the story shows how the characters try to deal with it. Then the <b>solution</b> is how the problem is solved. Without a problem, a story would be very boring!",
+  qs:[f("What is the problem in a story?","Something that goes wrong or is hard to get",["The title","The last word"],"…something goes wrong, or a character wants something that is hard to get."),
+      f("What is the solution?","How the problem is solved",["Where the story happens","The main character's name"],"The solution is how the problem is solved."),
+      t("Why would a story without a problem be boring?","Nothing exciting would happen",["It would be too short","It would have no characters"],"The problem makes us want to know what happens next.")]},
+ {pic:"1️⃣2️⃣3️⃣", text:"Stories have a <b>beginning</b>, a <b>middle</b> and an <b>end</b>. The beginning introduces the characters and the setting. The middle is where the problem happens and grows. The end shows the solution. Many fables finish with a <b>moral</b>, a lesson that the reader can use in real life, such as \"Slow and steady wins the race.\"",
+  qs:[f("What happens in the beginning of a story?","We meet the characters and the setting",["The problem is solved","The moral is given"],"The beginning introduces the characters and the setting."),
+      f("What is a moral?","A lesson the reader can use in real life",["A kind of animal","The title of the story"],"…a moral, a lesson that the reader can use in real life."),
+      t("In which part of a story is the solution usually found?","The end",["The beginning","The title"],"The end shows the solution.")]},
+ {pic:"💬✍️", text:"When characters talk, writers use <b>quotation marks</b> (\" \") around the exact words they say. This is called <b>dialogue</b>. For example: <i>\"Let me go,\" squeaked the mouse.</i> Writers use interesting words instead of always writing <i>said</i>: whispered, shouted, giggled, grumbled or begged. Dialogue makes characters come alive. When you tell a story aloud, change your voice for each character!",
+  qs:[f("What are quotation marks used for?","To show the exact words a character says",["To end a question","To show a list"],"…writers use quotation marks around the exact words they say."),
+      f("What is dialogue?","The words characters say to each other",["The setting","The moral"],"This is called dialogue."),
+      t("In \"Let me go,\" squeaked the mouse, which words did the mouse say?","Let me go",["squeaked the mouse","the mouse"],"Only the words inside the quotation marks are spoken."),
+      t("What is the main idea of this whole text?","Stories have parts like characters, setting, problem, solution and dialogue",["Stories are always about lions","Only adults write stories"],"Each page explains one part of a story.")]}
+], turn:{q:"Think of your favourite story or film. Write the character, the setting and the problem.",model:"In my favourite story, the main character is a brave girl named Moana. The setting is an island in the Pacific Ocean. The problem is that her island is dying, and she must sail across the ocean to save it."}},
+
+/* ---------- 5. STORY ---------- */
+{title:"Neel and Grandma Write a Fable", e:"✍️", kind:"Story", pages:[
+ {pic:"🌧️📓", text:"It was a rainy Saturday, and Neel was bored. \"There's nothing to do,\" he sighed. Grandma Kiran put down her tea. \"Then let's write a fable together,\" she said, \"and tonight you can tell it to the family at dinner.\" Neel's eyes lit up. \"Can it have animals that talk?\" \"Of course!\" laughed Grandma. \"That's what fables do best.\"",
+  qs:[f("What was the weather like?","Rainy",["Sunny","Snowy"],"It was a rainy Saturday."),
+      f("What did Grandma suggest?","Writing a fable together",["Watching TV","Going to the park"],"\"Then let's write a fable together.\""),
+      t("Why does Neel want animals that talk?","Fables often have talking animals",["He doesn't like people","Animals are quiet"],"\"That's what fables do best.\"")]},
+ {pic:"🧠📝", text:"Grandma drew a story map on a page. \"First, every story needs characters,\" she said. Neel thought. \"A peacock who is very proud of his feathers… and a little brown sparrow.\" \"Good! And the setting?\" \"A garden in a city, next to a fountain.\" Grandma nodded. \"Now the most important part: what's the problem?\"",
+  qs:[f("Who are the characters in Neel's fable?","A proud peacock and a little brown sparrow",["A lion and a mouse","A tortoise and a hare"],"\"A peacock who is very proud of his feathers… and a little brown sparrow.\""),
+      f("What is the setting?","A garden in a city, next to a fountain",["A deep ocean","A snowy mountain"],"\"A garden in a city, next to a fountain.\""),
+      t("What is a story map?","A plan that shows the parts of a story",["A map of a city","A treasure map"],"Grandma drew a story map with characters, setting and problem.")]},
+ {pic:"🦚🐦", text:"Neel bounced in his chair. \"The peacock laughs at the sparrow because she's plain and brown. He says, 'Nobody will ever look at you!' Then one day, a cat sneaks into the garden. The peacock's long, heavy tail gets stuck in a bush, and he can't fly away!\" Grandma clapped. \"What a problem! And how is it solved?\"",
+  qs:[f("Why does the peacock laugh at the sparrow?","Because she is plain and brown",["Because she sings badly","Because she is fast"],"\"The peacock laughs at the sparrow because she's plain and brown.\""),
+      f("What is the problem in Neel's fable?","A cat comes, and the peacock's tail gets stuck in a bush",["The fountain breaks","The sparrow loses her nest"],"The peacock's long, heavy tail gets stuck in a bush, and he can't fly away!"),
+      p("How do you think the problem will be solved?","The sparrow will help the peacock",["The cat will become a vegetarian","The peacock will grow wings"],"Fables often have the character who was teased become the helper.")]},
+ {pic:"🐦🔔", text:"\"The sparrow sees the cat,\" said Neel. \"She's small and quick, so she flies right in front of the cat's nose and chirps loudly. The cat chases her, and that gives the peacock time to pull his tail free. Then the sparrow flies up to a high branch where the cat can't reach.\" \"And the ending?\" asked Grandma. Neel grinned. \"The peacock says, 'Thank you. I was wrong. Being useful is better than being beautiful.'\"",
+  qs:[f("How did the sparrow help?","She flew in front of the cat to distract it",["She fought the cat","She called the police"],"She flies right in front of the cat's nose and chirps loudly."),
+      f("What does the peacock say at the end?","\"Thank you. I was wrong. Being useful is better than being beautiful.\"",["\"Go away, sparrow!\"","\"My tail is the best.\""],"The peacock's words are inside the quotation marks."),
+      t("What is the moral of Neel's fable?","Being useful (and kind) is better than being beautiful",["Cats are bad","Peacocks are pretty"],"The peacock learned that looks aren't everything.")]},
+ {pic:"🍽️🎭", text:"That night at dinner, Neel stood up. \"Once upon a time, in a city garden…\" he began. He used a proud, booming voice for the peacock and a quick, chirpy voice for the sparrow. He made a sneaky \"meow\" for the cat. Everyone leaned in to listen. When he finished, the whole family clapped. \"You're a real storyteller!\" said Dad. Neel beamed. \"Can we write another one next Saturday, Grandma?\"",
+  qs:[f("How did Neel begin his story?","\"Once upon a time, in a city garden…\"",["\"The end.\"","\"Hello, everyone.\""],"\"Once upon a time, in a city garden…\" he began."),
+      f("What kind of voice did Neel use for the peacock?","A proud, booming voice",["A tiny, squeaky voice","A sleepy voice"],"He used a proud, booming voice for the peacock."),
+      t("Why did Neel use different voices?","To make the characters come alive for listeners",["Because he had a cold","To confuse his family"],"Changing your voice helps listeners know who is speaking."),
+      t("What steps did Neel and Grandma follow to write the fable?","Characters, setting, problem, solution, moral",["Title, end, beginning","Pictures only"],"They planned each part on a story map.")]}
+], turn:{q:"Plan your own fable. Write the characters, the setting and the problem in three sentences.",model:"My characters are a lazy bear and a hard-working beaver. The setting is a forest beside a river in Canada. The problem is that a big storm is coming, and the bear has not built a shelter."}},
+
+/* ---------- 6. REAL-WORLD TEXT ---------- */
+{title:"Real-world reading: A story map and a book review", e:"🗂️", kind:"Real-world text", pages:[
+ {pic:"🗺️📖", text:"Ms. Chen's class filled in a <b>story map</b> for \"The Lion and the Mouse\".<table class=\"realtbl\"><tr><th>Story part</th><th>The Lion and the Mouse</th></tr><tr><td>📛 Title</td><td>The Lion and the Mouse</td></tr><tr><td>🧑‍🤝‍🧑 Characters</td><td>A mighty lion, a tiny mouse, hunters</td></tr><tr><td>🌳 Setting</td><td>A forest, on a hot afternoon</td></tr><tr><td>⚠️ Problem</td><td>The lion is caught in a hunters' net.</td></tr><tr><td>➡️ Events</td><td>1. The mouse wakes the lion. 2. The lion lets her go. 3. The lion is trapped.</td></tr><tr><td>✅ Solution</td><td>The mouse nibbles through the ropes.</td></tr><tr><td>💡 Moral</td><td>Even the smallest friend can be a great help.</td></tr></table>",
+  qs:[f("What is the setting on the story map?","A forest, on a hot afternoon",["A meadow at night","A city"],"🌳 Setting: A forest, on a hot afternoon."),
+      f("What is the solution?","The mouse nibbles through the ropes.",["The lion lets the mouse go.","The hunters leave."],"✅ Solution: The mouse nibbles through the ropes."),
+      t("Why is a story map useful?","It organizes the important parts of a story",["It shows how to get to school","It replaces the story"],"A story map helps you understand and retell a story."),
+      f("Which event happens first?","The mouse wakes the lion",["The lion is trapped","The lion lets her go"],"Events: 1. The mouse wakes the lion.")]},
+ {pic:"⭐📚", text:"Ada wrote a book review for the school newsletter.<div class=\"realdoc\" style=\"text-align:left\"><b>📚 Book Review: <i>Anansi and the Pot of Wisdom</i></b><br>Reviewer: Ada, Grade 3 · Rating: ⭐⭐⭐⭐⭐<br><br>This folktale comes from Ghana, in West Africa. The main character is Anansi, a clever but selfish spider. He tries to hide all the wisdom in the world in a pot at the top of a tree. His problem is that he can't climb with the pot in front of him. His young son gives him a smart idea, and Anansi realizes that nobody has all the wisdom.<br><br>My favourite part is when the pot breaks and the wind carries wisdom around the world. I recommend this book to anyone who likes funny animal stories with a big lesson. My grandmother says she heard Anansi stories when she was a little girl in Nigeria!</div>",
+  qs:[f("How many stars did Ada give the book?","Five",["Three","One"],"Rating: ⭐⭐⭐⭐⭐"),
+      f("Who is the main character?","Anansi, a clever but selfish spider",["Ada's grandmother","A lion"],"The main character is Anansi, a clever but selfish spider."),
+      f("What is Ada's favourite part?","When the pot breaks and the wind carries wisdom around the world",["When Anansi climbs the tree","When the son is born"],"My favourite part is when the pot breaks…"),
+      t("Which sentence in the review is an opinion?","I recommend this book to anyone who likes funny animal stories.",["This folktale comes from Ghana.","The main character is a spider."],"A recommendation is what Ada thinks."),
+      t("What is the purpose of a book review?","To tell others about a book and whether to read it",["To sell spiders","To write a new story"],"Reviews share an opinion about a book.")]}
+], turn:{q:"Write a short book review (three sentences) of any story from this unit. Give it a star rating.",model:"I give \"The Tortoise and the Hare\" four stars. The main character is a patient tortoise who wins a race against a boastful hare. I like it because it teaches us not to give up."}}
+],
+
+poems:[
+ {title:"The Spider and the Fly (by Mary Howitt, 1829: the first and last verses)",
+  lines:["\"Will you walk into my parlour?\" said the Spider to the Fly,","\"'Tis the prettiest little parlour that ever you did spy;","The way into my parlour is up a winding stair,","And I've a many curious things to shew when you are there.\"","\"Oh no, no,\" said the little Fly, \"to ask me is in vain,","For who goes up your winding stair can ne'er come down again.\"","","(… In the middle verses, the Spider flatters the Fly again and again, praising her beautiful wings and bright eyes. At last, the silly Fly believes the sweet words, flies in, and is caught in the Spider's web …)","","And now, dear little children, who may this story read,","To idle, silly flattering words, I pray you ne'er give heed:","Unto an evil counsellor close heart and ear and eye,","And take a lesson from this tale, of the Spider and the Fly."],
+  qs:[f("What does the Spider ask the Fly at the start?","\"Will you walk into my parlour?\"",["\"Can I come to your house?\"","\"Are you hungry?\""],"The first line is the Spider's question, inside quotation marks."),
+      t("What does 'parlour' mean?","A sitting room (here, the spider's web)",["A garden","A kitchen"],"A parlour is an old word for a sitting room. The Spider means its web."),
+      t("Why does the Fly say no at first?","Whoever goes up the stair never comes down again",["She is tired","She doesn't like stairs"],"\"For who goes up your winding stair can ne'er come down again.\""),
+      t("What is the lesson of the poem?","Don't trust someone just because they say nice (flattering) things",["Spiders are pretty","Always visit new friends"],"\"To idle, silly flattering words, I pray you ne'er give heed.\""),
+      t("How is this poem like a fable?","It has talking animals and a lesson",["It is very short","It has no characters"],"The poet even tells children to 'take a lesson from this tale'.")]},
+ {title:"Once Upon a Time",
+  lines:["Once upon a time, a story starts to grow,","With characters to meet and places we should know.","A setting by the sea, a forest, or a town,","A problem comes along to turn things upside down.","The hero tries and fails, then tries a different way,","Until the problem's solved, and it's a happy day.","And if it is a fable, there's one thing left to tell:","A lesson we can keep, to help us live as well."],
+  qs:[f("Which words start the poem?","Once upon a time",["The end","Long, long ago"],"\"Once upon a time, a story starts to grow.\""),
+      f("Which settings does the poem name?","The sea, a forest or a town",["A rocket, the Moon or Mars","A school only"],"\"A setting by the sea, a forest, or a town.\""),
+      t("What does 'turn things upside down' mean here?","Cause big trouble or change",["Flip the book over","Stand on your head"],"A problem makes things go wrong."),
+      f("Which word rhymes with 'way'?","day",["tell","grow"],"Way and day end with the same sound."),
+      t("What extra part does the poem say a fable has?","A lesson",["A song","A map"],"\"And if it is a fable, there's one thing left to tell: a lesson…\"")]}
+],
+
+words:[
+ /* story parts */
+ {w:"character",e:"🦊",m:"a person, animal or creature in a story",ex:"The tortoise is my favourite character.",fill:"The lion is the main ___ in the story."},
+ {w:"setting",e:"🏞️",m:"where and when a story happens",ex:"The setting of the fable is a meadow.",fill:"The ___ of the story is a castle long ago."},
+ {w:"plot",e:"🗺️",m:"the events that happen in a story, in order",ex:"The plot of the story was full of surprises.",fill:"The ___ tells what happens first, next and last."},
+ {w:"problem",e:"⚠️",m:"something that goes wrong in a story",ex:"The lion's problem was the hunters' net.",fill:"Every good story has a ___ to solve."},
+ {w:"solution",e:"✅",m:"how the problem in a story is solved",ex:"The solution was the mouse nibbling the ropes.",fill:"The ___ came when the sparrow distracted the cat."},
+ {w:"beginning",e:"1️⃣",m:"the first part of a story",ex:"We meet the characters at the beginning.",fill:"\"Once upon a time\" is a ___."},
+ {w:"ending",e:"🏁",m:"the last part of a story",ex:"The story has a happy ending.",fill:"I didn't expect that surprising ___!"},
+ {w:"moral",e:"💡",m:"the lesson a fable teaches",ex:"The moral is: slow and steady wins the race.",fill:"The ___ of the fable is to be kind."},
+ {w:"narrator",e:"🗣️",m:"the person who tells the story",ex:"The narrator told us what the lion was thinking.",fill:"In this book, the ___ is a little girl."},
+ {w:"dialogue",e:"💬",m:"the words characters say to each other",ex:"The dialogue is inside quotation marks.",fill:"Writers put ___ inside quotation marks."},
+ /* kinds of stories and people */
+ {w:"fable",e:"🐢",m:"a short story, often with animals, that teaches a lesson",ex:"The Tortoise and the Hare is a fable.",fill:"A ___ ends with a moral."},
+ {w:"folktale",e:"🕷️",m:"a story told by people for a long time, passed down from parents to children",ex:"Anansi stories are folktales from Ghana.",fill:"My grandma told me a ___ from her village."},
+ {w:"myth",e:"⚡",m:"an old story that explains how something in nature began",ex:"Some myths explain why the sun crosses the sky.",fill:"The Greek ___ told how thunder began."},
+ {w:"legend",e:"🗡️",m:"an old story about a hero that may be partly true",ex:"The legend tells of a brave king.",fill:"The ___ of the lost city is very old."},
+ {w:"hero",e:"🦸",m:"the brave main character who solves the problem",ex:"The little mouse was the hero of the story.",fill:"The ___ saved the village from the dragon."},
+ {w:"villain",e:"🦹",m:"a bad character who causes trouble in a story",ex:"The sly fox was the villain.",fill:"In the story, the ___ tried to steal the treasure."},
+ {w:"author",e:"✍️",m:"the person who writes a story or book",ex:"Mary Howitt is the author of the poem.",fill:"The ___ of this book lives in Toronto."},
+ {w:"illustrator",e:"🎨",m:"the person who draws the pictures in a book",ex:"The illustrator painted beautiful animals.",fill:"The ___ drew a colourful lion on the cover."},
+ {w:"title",e:"📛",m:"the name of a story or book",ex:"The title of the fable is The Lion and the Mouse.",fill:"Write the ___ at the top of your story."},
+ {w:"chapter",e:"📑",m:"one part of a longer book",ex:"I read one chapter every night.",fill:"Let's read the next ___ tomorrow."},
+ /* character traits */
+ {w:"foolish",e:"🤪",m:"not sensible; silly",ex:"The foolish crocodile believed the trick.",fill:"It was ___ to nap in the middle of a race."},
+ {w:"greedy",e:"🤑",m:"wanting more than you need",ex:"The greedy wife wanted the monkey's heart.",fill:"The ___ dog wanted both bones."},
+ {w:"generous",e:"🎁",m:"happy to give and share",ex:"The generous monkey shared his fruit.",fill:"My ___ aunt gave me her old bike."},
+ {w:"boastful",e:"📣",m:"talking too proudly about yourself",ex:"The boastful hare said he was the fastest.",fill:"Don't be ___; let others praise you."},
+ {w:"humble",e:"🙇",m:"not thinking you are better than others",ex:"After the race, the hare was humble.",fill:"The champion was ___ and thanked her team."},
+ {w:"wise",e:"🦉",m:"having good judgment and knowledge",ex:"The wise owl gave good advice.",fill:"Grandma always gives ___ advice."},
+ {w:"sly",e:"🦊",m:"clever in a sneaky way",ex:"The sly fox tricked the crow.",fill:"The ___ fox crept up quietly."},
+ {w:"timid",e:"🐇",m:"shy and easily frightened",ex:"The timid rabbit hid in its burrow.",fill:"The ___ kitten hid under the bed."},
+ {w:"stubborn",e:"🐐",m:"refusing to change your mind",ex:"The stubborn goat would not move off the bridge.",fill:"My ___ little brother won't wear his coat."},
+ {w:"lazy",e:"🦥",m:"not wanting to work",ex:"The lazy grasshopper played all summer.",fill:"The ___ cat slept all day."},
+ /* speech words */
+ {w:"whispered",e:"🤫",m:"spoke very softly",ex:"\"It's a secret,\" she whispered.",fill:"\"Shh, the baby is sleeping,\" Mom ___."},
+ {w:"shouted",e:"📢",m:"said something very loudly",ex:"\"Help!\" shouted the lion.",fill:"\"Watch out!\" Leo ___."},
+ {w:"replied",e:"↩️",m:"answered",ex:"\"Yes, please,\" replied the mouse.",fill:"\"I'm fine, thank you,\" she ___."},
+ {w:"asked",e:"❓",m:"said a question",ex:"\"How did you beat me?\" asked the hare.",fill:"\"Where are you going?\" ___ Grandma."},
+ {w:"exclaimed",e:"❗",m:"said something suddenly with strong feeling",ex:"\"What a surprise!\" exclaimed Neel.",fill:"\"I won!\" she ___ happily."},
+ {w:"grumbled",e:"😒",m:"complained in a low, unhappy voice",ex:"\"I don't want to clean my room,\" he grumbled.",fill:"\"It's always raining,\" Sam ___."},
+ {w:"begged",e:"🥺",m:"asked very strongly and desperately",ex:"\"Please let me go!\" begged the mouse.",fill:"\"Please, just one more story!\" Neel ___."},
+ {w:"announced",e:"📯",m:"told everyone something important",ex:"\"The race will begin now!\" announced the fox.",fill:"\"We're having a party!\" the teacher ___."},
+ {w:"explained",e:"🧑‍🏫",m:"made something clear by telling more about it",ex:"\"Fables teach lessons,\" Grandma explained.",fill:"\"This is how a story map works,\" Ms. Chen ___."},
+ {w:"sighed",e:"😮‍💨",m:"breathed out slowly because you were tired, sad or bored",ex:"\"There's nothing to do,\" Neel sighed.",fill:"\"I'm so tired,\" she ___."}
+],
+
+spelling:[
+ {w:"story",s:"Tell me a story.",tip:"'or' as in for."},
+ {w:"once",s:"Once upon a time…",tip:"Tricky: it sounds like 'wunce'."},
+ {w:"upon",s:"Once upon a time…"},
+ {w:"said",s:"\"Hello,\" said the fox.",tip:"Tricky: 'ai' sounds like short e."},
+ {w:"asked",s:"\"Why?\" asked the mouse.",tip:"ask + ed."},
+ {w:"lion",s:"The lion roared."},
+ {w:"mouse",s:"The mouse was tiny.",tip:"'ou' as in out."},
+ {w:"tortoise",s:"The tortoise won the race.",tip:"tor-toise. It sounds like 'tor-tus'."},
+ {w:"monkey",s:"The monkey climbed the tree.",tip:"Ends with -ey."},
+ {w:"fable",s:"A fable teaches a lesson.",tip:"Ends with -le."},
+ {w:"hero",s:"The mouse was the hero."},
+ {w:"title",s:"Write the title.",tip:"Ends with -le."},
+ {w:"chapter",s:"Read one chapter.",tip:"chap-ter."},
+ {w:"ending",s:"It had a happy ending.",tip:"end + ing."},
+ {w:"moral",s:"What is the moral?",tip:"mor-al."}
+],
+
+facts:[
+ {e:"🏛️",c:"Aesop, the famous teller of fables, lived in ancient Greece about 2,500 years ago.",t:true,x:"True! Stories say Aesop was a clever storyteller. Many fables we know, like The Tortoise and the Hare, are named after him."},
+ {e:"🇮🇳",c:"The Panchatantra is a collection of animal stories from ancient India.",t:true,x:"True! It is about 2,000 years old and was created to teach young princes how to be wise."},
+ {e:"👠",c:"There are hundreds of different versions of the Cinderella story from around the world.",t:true,x:"True! One of the oldest is Ye Xian, a story from China written down more than 1,000 years ago."},
+ {e:"🐾",c:"Fables always have human characters.",t:false,x:"Not true! Fables very often have animals that talk and act like people."},
+ {e:"💬",c:"Quotation marks go around the exact words a character says.",t:true,x:"True! They are also called speech marks."},
+ {e:"🏞️",c:"The setting is the main character in a story.",t:false,x:"Not true! The setting is where and when a story happens."},
+ {e:"🇩🇪",c:"The Brothers Grimm collected fairy tales in Germany.",t:true,x:"True! In the 1800s, they wrote down stories like Hansel and Gretel that people had told for generations."},
+ {e:"🇩🇰",c:"Hans Christian Andersen, who wrote The Ugly Duckling, was from Denmark.",t:true,x:"True! He wrote more than 150 fairy tales."},
+ {e:"✍️",c:"Aesop wrote his fables in English.",t:false,x:"Not true! Aesop lived in ancient Greece. His fables were told in Greek and later translated into many languages."},
+ {e:"🕷️",c:"Anansi stories travelled from West Africa to the Caribbean.",t:true,x:"True! People carried the stories with them, and they are still told today."},
+ {e:"📚",c:"People told stories long before writing was invented.",t:true,x:"True! For thousands of years, stories were passed down by telling them aloud."},
+ {e:"🐢",c:"In Aesop's fable, the hare won the race.",t:false,x:"Not true! The slow and steady tortoise won because the hare stopped for a nap."}
+],
+
+writing:[
+ {e:"🦊",t:"Create a character and a setting",level:"Step 1 · Description",
+  prompt:"Invent an animal character for your own fable. Write at least 4 sentences: what your character looks like, what they are like inside (a character trait like greedy, generous, boastful or wise), and where they live (the setting). Use at least 2 words from the word bank.",
+  minS:4,minWords:2,
+  rx:[["^\\s*[A-Z]","I started with a capital letter"],["[.!?]\\s*$","I ended with a full stop"],["\\b(foolish|greedy|generous|boastful|humble|wise|sly|timid|stubborn|lazy|kind|brave|clever|proud|selfish|patient|honest|curious|shy|helpful)\\b","I used a character-trait word"],["\\b(lives?|lived|in a|in the|by the|near)\\b","I described the setting"]],
+  starters:["My character is a ","It has ","It is very ","It lives in "],
+  model:"My character is a little red fox named Rusty. He has a bushy tail and bright, shiny eyes. Rusty is clever, but he is also boastful, and he always tells everyone how smart he is. He lives in a dark, whispering forest beside a cold river in Canada."},
+ {e:"💬",t:"Write a conversation",level:"Step 2 · Dialogue",
+  prompt:"Write a conversation between two characters with at least 4 lines of dialogue. Put each speaker's exact words inside quotation marks. Use a different speech word each time (said, asked, replied, whispered, shouted…). Start a new line each time a new character speaks.",
+  minS:4,minWords:2,
+  rx:[["([\"“][^\"”]+[\"”][\\s\\S]*){4}","I wrote at least 4 lines inside quotation marks"],["\\b(asked|replied|whispered|shouted|exclaimed|grumbled|begged|announced|explained|sighed|cried|laughed|giggled|answered)\\b","I used an interesting speech word"],["\\?","One character asks a question"],["\\n","Each speaker starts on a new line"]],
+  starters:["\"Hello,\" said the ","\"Where are you going?\" asked ","\"","replied "],
+  model:"\"Where are you going in such a hurry?\" asked the owl.\n\"I'm going to the river to show everyone my new tail,\" boasted Rusty the fox.\n\"Be careful,\" whispered the owl. \"The ice is thin.\"\n\"I'm too clever to fall in!\" laughed Rusty, and he ran off."},
+ {e:"📚",t:"Write your own fable (and retell it aloud!)",level:"Step 3 · Fable",
+  prompt:"Write your own fable of at least 8 sentences. Include animal characters, a setting, a problem, at least 2 lines of dialogue in quotation marks, a solution, and a moral at the end (Lesson: … or Moral: …). When you finish, press 🔊 Read my writing, then retell your fable aloud to your family, using a different voice for each character!",
+  minS:8,minWords:3,
+  rx:[["\\b(Once upon a time|Long ago|One day|There once was)\\b","My beginning uses a story opening"],["([\"“][^\"”]+[\"”][\\s\\S]*){2}","I used dialogue in quotation marks (at least 2)"],["\\b(But|Suddenly|One day|Then)\\b","My middle has a problem (But, Suddenly, Then…)"],["\\b(Finally|In the end|At last|From that day)\\b","My ending shows the solution"],["\\b(Lesson|Moral)\\s*:","I wrote the moral (Lesson: or Moral:)"],["(\\b(\\w+ed|was|were|said|ran|saw|thought|felt|went|came|took|made|got|told|knew|began|fell|flew|swam)\\b[\\s\\S]*){3}","I wrote in the past tense"]],
+  starters:["Once upon a time, in ","\"","Suddenly, ","But ","Finally, ","Lesson: "],
+  model:"Once upon a time, in a forest beside a cold river, lived a boastful fox named Rusty. \"I'm the cleverest animal in the forest!\" he told everyone. One winter morning, the wise old owl warned him, \"Don't walk on the river. The ice is thin.\" But Rusty laughed and ran onto the ice to show off. Suddenly, the ice cracked, and Rusty fell into the freezing water! A timid little beaver heard his cries and quickly pushed a long branch towards him. Rusty grabbed it, and the beaver pulled him safely to the shore. Finally, the shivering fox said, \"Thank you. I wasn't clever at all. I was foolish.\" From that day on, Rusty listened to others and never boasted again.\nLesson: Being wise means listening to good advice."}
+]
+});
+})();
+
+/* ===================== UNIT 12 · SKILL BANKS AND SKILL LIST (original content) ===================== */
+(function(){
+const u=UNITS.find(x=>x.id==="stories");
+const set=k=>u.words.slice(k*10,k*10+10);
+const MIX=(...g)=>()=>R(g)();
+const box=(t,txt)=>`<div class="qbox" style="margin:0 0 12px;font-size:18px;line-height:1.6;font-weight:400"><b>${t}</b><br>${txt}</div>`;
+const QV=s=>{const c=s.replace(/"([^"]*)"/g,"“$1”");return uniq([s,c,s.replace(/'/g,"’"),c.replace(/'/g,"’")])};
+
+/* ================= GRAMMAR: QUOTATION MARKS ================= */
+const SPK=[["Let me go","squeaked the mouse"],["I'm the fastest animal","boasted the hare"],["Help","roared the lion"],["Slow and steady wins the race","said the tortoise"],["Where are you going","asked the owl"],["The ice is thin","warned the owl"],["Thank you, little friend","said the lion"],["Come to dinner at our home","said the crocodile"],["I keep my heart in the tree","said the monkey"],["Can we write another fable","asked Neel"],["Once upon a time","began Grandma"],["There's nothing to do","sighed Neel"],["Nobody will ever look at you","laughed the peacock"],["I was wrong","said the peacock"],["Ready, steady, go","called the fox"],["Please be my friend","begged the sparrow"],["It's time for bed","whispered Mom"],["Look out","shouted Leo"],["I found a shiny coin","said Mia"],["Will you walk into my parlour","said the Spider"]];
+const endP=x=>/^(Where|Can|Will|Do|Is|Are|How|Why|What)\b/.test(x[0])?"?":/^(Help|Look out|Ready, steady, go)$/.test(x[0])?"!":",";
+const fullQ=x=>{const p=endP(x);return `"${x[0]}${p}" ${x[1]}.`};
+const qmChoose=()=>{const x=R(SPK);const p=endP(x);const right=fullQ(x);
+  const w1=`${x[0]}${p} "${x[1]}."`,w2=`"${x[0]}${p} ${x[1]}."`,w3=`"${x[0]}"${p} ${x[1]}.`;
+  return mcQ("Which sentence uses <b>quotation marks</b> correctly?",right,SAMPLE([w1,w2,w3],2),`<b>${right}</b> The quotation marks go around the <b>exact words</b> that were spoken, and the comma, ? or ! goes <b>inside</b> the closing quotation mark.`,"Find the words the character actually said. Only those go inside the quotation marks.")};
+const qmSpoken=()=>{const x=R(SPK);const s=fullQ(x);return mcQ(`${box("Read",s)}Which words were actually <b>spoken</b>?`,x[0],[x[1],`${x[0].split(" ")[0]} ${x[1]}`].filter(z=>z!==x[0]),`Only the words inside the quotation marks were spoken: <b>${x[0]}</b>.`,"Look inside the quotation marks.")};
+const qmWho=()=>{const x=R(SPK);const s=fullQ(x);const who=x[1].replace(/^\w+ /,"");return mcQ(`${box("Read",s)}<b>Who</b> is speaking?`,who,SAMPLE(uniq(SPK.map(y=>y[1].replace(/^\w+ /,""))).filter(z=>z!==who),2),`<b>${cap(who)}</b> is speaking. The words after the quotation marks tell us who said it.`,"Look outside the quotation marks for the speaker.")};
+const qmType=()=>{const x=R(SPK);const s=fullQ(x);const bare=s.replace(/"/g,"");
+  return {type:"type",strict:true,q:`Add the <b>quotation marks</b>. Type the whole sentence:<br><b>${bare}</b>`,a:QV(s),why:`<b>${s}</b>`,hint:"Put \" before the first spoken word and \" after the comma, ? or !"}};
+const QWORD=[["\"Shh, the baby is sleeping,\" Mom ___.","whispered",["shouted","announced"]],["\"Watch out for that car!\" Leo ___.","shouted",["whispered","sighed"]],["\"What time is it?\" Mia ___.","asked",["replied","announced"]],["\"It's half past three,\" Dad ___.","replied",["asked","begged"]],["\"Please, please let me stay up late!\" Sam ___.","begged",["announced","replied"]],["\"I don't want to clean my room,\" Dev ___.","grumbled",["cheered","whispered"]],["\"The winner of the race is the tortoise!\" the fox ___.","announced",["whispered","grumbled"]],["\"I'm so tired,\" Grandma ___.","sighed",["shouted","announced"]],["\"Hooray, we won!\" the team ___.","cheered",["whispered","sighed"]],["\"A fable is a story with a lesson,\" Ms. Chen ___.","explained",["begged","grumbled"]],["\"Wow, a rainbow!\" Asha ___.","exclaimed",["grumbled","sighed"]],["\"That tickles!\" the baby ___.","giggled",["grumbled","announced"]],["\"Ouch, my knee!\" Wei ___.","cried",["giggled","announced"]],["\"Can I have a turn?\" Yuki ___ politely.","asked",["shouted","grumbled"]],["\"Yes, you may,\" Mr. Ali ___.","replied",["asked","begged"]],["\"I'm the best singer in the world!\" the crow ___.","boasted",["whispered","sighed"]],["\"Be careful, the ice is thin,\" the owl ___.","warned",["giggled","boasted"]],["\"Seven,\" Yuki ___ when the teacher asked how many.","answered",["begged","grumbled"]],["\"Come home for dinner!\" Dad ___ from the window.","called",["whispered","sighed"]],["\"Ha ha, that's so funny!\" Leo ___.","laughed",["grumbled","begged"]],["\"Please help me, I'm stuck!\" the peacock ___.","begged",["giggled","announced"]],["\"Goodnight, sleep tight,\" Grandma ___ softly.","whispered",["shouted","announced"]]];
+const qWord=()=>{const x=R(QWORD);return mcQ(`Choose the best <b>speech word</b>:<br><b>${x[0]}</b>`,x[1],x[2],`<b>${x[0].replace("___",x[1])}</b> Interesting speech words tell us <b>how</b> something was said.`,"Read the spoken words. Are they quiet, loud, a question, an answer, a complaint?")};
+const QKIND=[["\"Where is my hat?\" asked Leo.","asking"],["\"Hooray!\" shouted the children.","exclaiming"],["\"I like apples,\" said Mia.","telling"],["\"Can you help me?\" begged the mouse.","asking"],["\"Watch out!\" yelled Dad.","exclaiming"],["\"The sky is blue,\" said Grandma.","telling"],["\"Why did you stop?\" asked the tortoise.","asking"],["\"Wow, what a surprise!\" exclaimed Neel.","exclaiming"],["\"It's raining,\" sighed Sam.","telling"],["\"Will you race me?\" asked the hare.","asking"],["\"Help!\" roared the lion.","exclaiming"],["\"I keep my heart in the tree,\" said the monkey.","telling"],["\"What a beautiful tail!\" exclaimed the sparrow.","exclaiming"],["\"Is it time for dinner?\" asked Neel.","asking"],["\"The fox is the judge,\" said the owl.","telling"],["\"Run, run, run!\" cheered the animals.","exclaiming"],["\"Who ate my cheese?\" asked the crow.","asking"],["\"My tail is stuck,\" said the peacock.","telling"],["\"Ouch!\" cried the lion.","exclaiming"],["\"How old is this story?\" asked Ada.","asking"],["\"I live by the river,\" said the crocodile.","telling"],["\"Look, a shooting star!\" shouted Mia.","exclaiming"],["\"Can I try?\" asked the sparrow.","asking"],["\"The book has ten chapters,\" said Ms. Chen.","telling"]];
+const qKind=()=>{const x=R(QKIND);return mcQ(`${box("Read",x[0])}Is the character <b>telling</b>, <b>asking</b> or <b>exclaiming</b>?`,x[1],["telling","asking","exclaiming"].filter(z=>z!==x[1]),`Look at the mark inside the quotation marks: ${x[1]==="asking"?"? means asking":x[1]==="exclaiming"?"! means exclaiming (strong feeling)":", means telling"}.`,"Look at the punctuation just before the closing quotation mark.")};
+
+/* ================= GRAMMAR: JOINING SHORT SENTENCES ================= */
+const JS=[
+ {a:"The fox was clever.",b:"The fox was sly.",r:"The fox was clever and sly.",k:"adj"},
+ {a:"The hare was fast.",b:"The hare was boastful.",r:"The hare was fast and boastful.",k:"adj"},
+ {a:"The mouse was tiny.",b:"The mouse was brave.",r:"The mouse was tiny and brave.",k:"adj"},
+ {a:"The forest was dark.",b:"The forest was quiet.",r:"The forest was dark and quiet.",k:"adj"},
+ {a:"The owl was old.",b:"The owl was wise.",r:"The owl was old and wise.",k:"adj"},
+ {a:"The monkey was kind.",b:"The monkey was generous.",r:"The monkey was kind and generous.",k:"adj"},
+ {a:"Mia read the story.",b:"Leo read the story.",r:"Mia and Leo read the story.",k:"subj"},
+ {a:"The lion ran away.",b:"The mouse ran away.",r:"The lion and the mouse ran away.",k:"subj"},
+ {a:"Neel laughed.",b:"Grandma laughed.",r:"Neel and Grandma laughed.",k:"subj"},
+ {a:"The tortoise walked to the oak tree.",b:"The fox walked to the oak tree.",r:"The tortoise and the fox walked to the oak tree.",k:"subj"},
+ {a:"Ada clapped.",b:"Wei clapped.",r:"Ada and Wei clapped.",k:"subj"},
+ {a:"The crow sang.",b:"The fox sang.",r:"The crow and the fox sang.",k:"subj"},
+ {a:"Yuki read a fable.",b:"Asha read a fable.",r:"Yuki and Asha read a fable.",k:"subj"},
+ {a:"The peacock was proud.",b:"The peacock was rude.",r:"The peacock was proud and rude.",k:"adj"},
+ {a:"The river was wide.",b:"The river was deep.",r:"The river was wide and deep.",k:"adj"},
+ {a:"The sparrow chirped loudly.",b:"The sparrow flew away.",r:"The sparrow chirped loudly and flew away.",k:"verb"},
+ {a:"Grandma smiled.",b:"Grandma clapped.",r:"Grandma smiled and clapped.",k:"verb"},
+ {a:"The crow found a pitcher.",b:"The crow drank the water.",r:"The crow found a pitcher and drank the water.",k:"verb"},
+ {a:"The hare ran ahead.",b:"The hare took a nap.",r:"The hare ran ahead and took a nap.",k:"verb"},
+ {a:"The mouse nibbled the ropes.",b:"The mouse freed the lion.",r:"The mouse nibbled the ropes and freed the lion.",k:"verb"},
+ {a:"Neel stood up.",b:"Neel told his fable.",r:"Neel stood up and told his fable.",k:"verb"},
+ {a:"The monkey jumped into the tree.",b:"The monkey ate a rose-apple.",r:"The monkey jumped into the tree and ate a rose-apple.",k:"verb"},
+ {a:"The hare was fast.",b:"He lost the race.",r:"The hare was fast, but he lost the race.",k:"but"},
+ {a:"The mouse was small.",b:"She saved the lion.",r:"The mouse was small, but she saved the lion.",k:"but"},
+ {a:"The peacock was beautiful.",b:"He was not kind.",r:"The peacock was beautiful, but he was not kind.",k:"but"},
+ {a:"It was raining.",b:"Neel and Grandma wrote a fable.",r:"It was raining, so Neel and Grandma wrote a fable.",k:"so"},
+ {a:"The lion let the mouse go.",b:"She promised to help him.",r:"The lion let the mouse go because she promised to help him.",k:"because"},
+ {a:"The crocodile swam back.",b:"He believed the monkey's trick.",r:"The crocodile swam back because he believed the monkey's trick.",k:"because"},
+ {a:"The tortoise didn't stop.",b:"She won the race.",r:"The tortoise didn't stop, so she won the race.",k:"so"},
+ {a:"The cat chased the sparrow.",b:"The peacock escaped.",r:"The cat chased the sparrow, so the peacock escaped.",k:"so"}
+];
+const joinChoose=()=>{const x=R(JS);const w1=`${x.a.replace(/\.$/,"")} ${x.b}`;const w2=x.k==="subj"?x.r.replace(" and "," but "):x.k==="adj"||x.k==="verb"?x.r.replace(" and ",", ").replace(/\.$/,"."):x.k==="but"?x.r.replace(", but",", so"):x.k==="so"?x.r.replace(", so"," because"):x.r.replace(" because",", but");
+  return mcQ(`${box("Join these two short sentences",`${x.a} ${x.b}`)}Which is the best joined sentence?`,x.r,uniq([w1,w2].filter(z=>z!==x.r)),`<b>${x.r}</b> ${x.k==="adj"?"Two describing words about the same thing can be joined with <b>and</b>.":x.k==="subj"?"Two people doing the same thing can be joined with <b>and</b>.":x.k==="verb"?"Two actions by the same character can be joined with <b>and</b>.":x.k==="but"?"<b>but</b> joins two ideas that are surprising together.":x.k==="so"?"<b>so</b> joins a cause and its result.":"<b>because</b> gives the reason."}`,"Don't repeat words. Use and, but, so or because.")};
+const joinType=()=>{const x=R(JS.filter(y=>["adj","subj","verb"].includes(y.k)));return {type:"type",q:`Join the two sentences with <b>and</b>. Don't repeat words you don't need:<br><b>${x.a} ${x.b}</b>`,a:[x.r],why:`<b>${x.r}</b> We don't need to say the same words twice.`,hint:x.k==="subj"?"Put both names before the action: ___ and ___ …":"Keep the start once, then join the two endings with and."}};
+const wordy=()=>{const x=R(JS);const w=`${x.a.replace(/\.$/,"")} and ${x.b.charAt(0).toLowerCase()+x.b.slice(1)}`;return mcQ("Which sentence is <b>shorter and better</b> (no repeated words)?",x.r,[w].filter(z=>z!==x.r),`<b>${x.r}</b> is smoother because it doesn't repeat words.`,"Good writers join sentences without repeating the same words.")};
+
+/* ================= STORY ELEMENTS ================= */
+const MINI=[
+ {s:"On a snowy mountain, a little goat named Pip couldn't find his mother. He climbed higher and higher, calling for her. At last, an eagle flew down and showed him the way home.",ch:"A little goat named Pip and an eagle",se:"A snowy mountain",pr:"Pip couldn't find his mother",so:"An eagle showed him the way home"},
+ {s:"In a busy city bakery, a baker named Rosa burned all her bread on the morning of the big festival. Her neighbours brought flour and helped her bake new loaves just in time.",ch:"Rosa the baker and her neighbours",se:"A busy city bakery",pr:"Rosa burned all her bread before the festival",so:"Her neighbours helped her bake new loaves"},
+ {s:"Deep in the ocean, a shy octopus named Ollie wanted to join the fish choir, but he was too scared to sing. A friendly whale sang beside him until he felt brave.",ch:"Ollie the octopus and a friendly whale",se:"Deep in the ocean",pr:"Ollie was too scared to sing",so:"A friendly whale sang beside him"},
+ {s:"Long ago, in a castle on a hill, a princess lost her golden key in the garden. Her clever dog sniffed every flower bed until he found it under a rose bush.",ch:"A princess and her clever dog",se:"A castle on a hill, long ago",pr:"The princess lost her golden key",so:"Her dog sniffed it out under a rose bush"},
+ {s:"On a farm in Punjab, a hen named Goldie laid an egg that wouldn't hatch. The farmer's daughter kept it warm by the stove, and the next morning a fluffy chick appeared.",ch:"Goldie the hen and the farmer's daughter",se:"A farm in Punjab",pr:"Goldie's egg wouldn't hatch",so:"The farmer's daughter kept it warm by the stove"},
+ {s:"In the dry desert, a camel and a fox were very thirsty. The camel remembered an old well behind the dunes, and the fox found the bucket. Together they drank cool water.",ch:"A camel and a fox",se:"The dry desert",pr:"They were very thirsty",so:"They worked together at an old well"},
+ {s:"At a school in Toronto, a boy named Omar forgot his lines in the class play. His friend whispered the first word, and Omar remembered the rest.",ch:"Omar and his friend",se:"A school in Toronto",pr:"Omar forgot his lines in the play",so:"His friend whispered the first word"},
+ {s:"In a rainforest in Brazil, a sloth was too slow to escape a rainstorm. A kind toucan held a giant leaf over him like an umbrella.",ch:"A sloth and a toucan",se:"A rainforest in Brazil",pr:"The sloth couldn't escape the rainstorm",so:"The toucan held a giant leaf over him"},
+ {s:"On a spaceship far from Earth, a robot named Bolt ran out of power. A young astronaut opened a window to let the sunlight charge his solar panels.",ch:"Bolt the robot and a young astronaut",se:"A spaceship far from Earth",pr:"Bolt ran out of power",so:"Sunlight charged his solar panels"},
+ {s:"In a frozen Arctic town, a husky named Storm got lost in a blizzard. He followed the sound of a church bell all the way back to his family.",ch:"Storm the husky and his family",se:"A frozen Arctic town",pr:"Storm got lost in a blizzard",so:"He followed the sound of a church bell"},
+ {s:"In a village by the Nile, a girl named Nadia's kite got stuck in a palm tree. Her grandfather tied a hook to a long pole and gently pulled it down.",ch:"Nadia and her grandfather",se:"A village by the Nile",pr:"Nadia's kite got stuck in a palm tree",so:"Her grandfather pulled it down with a pole"},
+ {s:"In a pond at the edge of the woods, a frog wanted to fly like the birds. A wise turtle taught him that he could jump higher than any other animal in the pond, and the frog felt proud.",ch:"A frog and a wise turtle",se:"A pond at the edge of the woods",pr:"The frog wanted to fly",so:"The turtle helped him see his own special talent"},
+ {s:"In a library at night, a little book fell off the shelf and got lost under a table. A friendly mouse pushed it back to the shelf before the library opened.",ch:"A little book and a friendly mouse",se:"A library at night",pr:"The book got lost under a table",so:"The mouse pushed it back to the shelf"},
+ {s:"On a windy beach in Nova Scotia, Asha's sandcastle kept falling down. Her brother showed her how to wet the sand first, and her castle stood tall.",ch:"Asha and her brother",se:"A windy beach in Nova Scotia",pr:"Asha's sandcastle kept falling down",so:"Her brother showed her how to wet the sand"}
+];
+const elemQ=()=>{const m=R(MINI);const k=R(["ch","se","pr","so"]);const lab={ch:"characters",se:"setting",pr:"problem",so:"solution"}[k];const others=SAMPLE(MINI.filter(y=>y!==m),2).map(y=>y[k]);const mix=k==="se"?[m.ch]:k==="ch"?[m.se]:k==="pr"?[m.so]:[m.pr];
+  return mcQ(`${box("Read",m.s)}What is the <b>${lab}</b>?`,m[k],uniq(mix.concat(others)).slice(0,2),`${cap(lab)}: <b>${m[k]}</b>.<br>Characters = who · Setting = where/when · Problem = what goes wrong · Solution = how it is fixed.`,"Characters = who? Setting = where and when? Problem = what goes wrong? Solution = how is it fixed?",{say:m.s})};
+const SW=[
+ {q:"What do we call the people or animals in a story?",a:"Characters",o:["Setting","Moral"],why:"Characters are who the story is about."},
+ {q:"What do we call where and when a story happens?",a:"Setting",o:["Plot","Title"],why:"A meadow long ago, a city today…"},
+ {q:"What do we call the lesson at the end of a fable?",a:"The moral",o:["The setting","The chapter"],why:"Slow and steady wins the race is a moral."},
+ {q:"What do we call how the problem is solved?",a:"The solution",o:["The beginning","The character"],why:"The mouse nibbling the ropes was the solution."},
+ {q:"What do we call the events of a story in order?",a:"The plot",o:["The title","The author"],why:"Beginning, middle and end."},
+ {q:"Who writes a book?",a:"The author",o:["The illustrator","The reader"],why:"Authors write the words."},
+ {q:"Who draws the pictures in a book?",a:"The illustrator",o:["The author","The narrator"],why:"Illustrators create the art."},
+ {q:"Who tells the story?",a:"The narrator",o:["The villain","The setting"],why:"The narrator can be a character or an outside voice."},
+ {q:"What is the bad character in a story often called?",a:"The villain",o:["The hero","The author"],why:"The sly fox is often a villain."},
+ {q:"What is the brave main character who solves the problem often called?",a:"The hero",o:["The villain","The narrator"],why:"Heroes can be big or small!"},
+ {q:"What are the words characters say to each other called?",a:"Dialogue",o:["Setting","Chapter"],why:"Dialogue goes in quotation marks."},
+ {q:"What is a short story with animals that teaches a lesson?",a:"A fable",o:["A recipe","A report"],why:"Aesop told many fables."},
+ {q:"What is an old story passed down by people for many years?",a:"A folktale",o:["A newspaper","A poster"],why:"Anansi stories are folktales."},
+ {q:"What is an old story that explains something in nature?",a:"A myth",o:["A menu","A map"],why:"Myths explain things like thunder or the seasons."},
+ {q:"What do stories often begin with?",a:"Once upon a time",o:["The end","Lesson:"],why:"A classic story opening."},
+ {q:"In which part of a story do we usually meet the characters?",a:"The beginning",o:["The end","The moral"],why:"The beginning introduces who and where."},
+ {q:"In which part of a story does the problem usually happen?",a:"The middle",o:["The title","The cover"],why:"The middle is where trouble grows."},
+ {q:"In which part of a story is the problem usually solved?",a:"The end",o:["The beginning","The title page"],why:"The end brings the solution."},
+ {q:"What do we call one part of a long book?",a:"A chapter",o:["A moral","A setting"],why:"Long books are split into chapters."},
+ {q:"What is the name of a book called?",a:"The title",o:["The plot","The author"],why:"The title is on the cover."}
+];
+const TRAIT=[["The hare kept telling everyone, \"I'm the fastest! Nobody can beat me!\"","boastful",["humble","timid"]],["The monkey shared his sweet rose-apples with a hungry crocodile.","generous",["greedy","lazy"]],["The crocodile's wife wanted the monkey's heart, even after enjoying all his fruit.","greedy",["generous","humble"]],["The crocodile believed that the monkey kept his heart in a tree.","foolish",["wise","sly"]],["The owl gave careful advice: \"Don't walk on the thin ice.\"","wise",["foolish","boastful"]],["The fox crept up quietly and tricked the crow into dropping her cheese.","sly",["honest","timid"]],["The rabbit hid in its burrow every time it heard a noise.","timid",["boastful","stubborn"]],["The goat refused to move off the bridge, even when everyone asked nicely.","stubborn",["generous","timid"]],["The grasshopper played all summer and didn't gather any food.","lazy",["hard-working","wise"]],["After losing, the hare said, \"I'm sorry. I won't boast again.\"","humble",["boastful","greedy"]],["The tortoise kept walking, step by step, without stopping once.","determined",["lazy","foolish"]],["The mouse ran to help the lion, even though lions are dangerous.","brave",["timid","lazy"]],["The ant worked hard all summer, carrying food to her nest.","hard-working",["lazy","foolish"]],["Anansi wanted to keep all the wisdom for himself.","selfish",["generous","humble"]],["The sparrow chirped loudly to distract the cat and save the peacock.","brave",["timid","greedy"]],["The peacock laughed at the plain sparrow and said nobody would ever look at her.","unkind",["generous","humble"]],["The monkey stayed calm and thought of a clever trick to escape.","clever",["foolish","lazy"]],["The boy told the truth, even though he knew he'd be in trouble.","honest",["sly","boastful"]],["The lion let the mouse go, even though he was hungry.","merciful (kind)",["greedy","stubborn"]],["The dog with a bone wanted the bone in the river too, and lost his own.","greedy",["generous","wise"]]];
+const traitQ=()=>{const x=R(TRAIT);return mcQ(`${box("Read",x[0])}Which word best describes the character?`,x[1],x[2],`The character's actions and words show they are <b>${x[1]}</b>.`,"What does the character do or say? What does that show about them?",{say:x[0]})};
+const LESSON=[["A crow sang for a fox who flattered her, and she dropped her cheese. The fox ran off with it.","Don't trust people who flatter you",["Crows sing well","Cheese is tasty"]],["An ant saved a dove from drowning. Later, the dove saved the ant from a hunter.","One good turn deserves another",["Doves can fly","Ants are tiny"]],["A boy put his hand into a jar of nuts and grabbed so many that he couldn't pull his hand out. When he let go of some, his hand came free.","Don't try to take too much at once",["Nuts are healthy","Jars are glass"]],["A wolf dressed in a sheep's skin to trick the sheep, but the shepherd caught him.","Things are not always what they seem",["Sheep are white","Wolves are fast"]],["A goose laid golden eggs. Its greedy owner cut it open to get all the gold at once and found nothing.","Greed can make you lose everything",["Geese lay eggs","Gold is shiny"]],["A tortoise kept walking while a hare napped. The tortoise won the race.","Slow and steady wins the race",["Hares are fast","Races are fun"]],["A mouse freed a lion from a net, after the lion had let her go.","Even the smallest friend can help",["Lions roar","Nets are strong"]],["A monkey escaped a crocodile by staying calm and thinking of a clever trick.","Stay calm and think clearly in danger",["Monkeys climb trees","Crocodiles swim"]],["The peacock laughed at the sparrow, but the sparrow saved him from a cat.","Being useful and kind matters more than looks",["Peacocks are colourful","Cats chase birds"]],["Anansi tried to keep all the wisdom for himself, but it spilled out across the world.","Nobody has all the wisdom; share what you know",["Spiders climb","Pots break"]],["The Spider flattered the Fly with sweet words until she flew into the web.","Don't listen to flattering words from someone you shouldn't trust",["Flies are small","Webs are sticky"]],["Two goats met on a narrow bridge. Neither would move, so both fell into the river.","Being stubborn can hurt everyone",["Goats can swim","Bridges are narrow"]],["A man shared his bread with a hungry stranger, who later helped him find his way home.","Kindness comes back to you",["Bread is tasty","Strangers are lost"]],["A fox couldn't reach the grapes, so he said they were sour anyway.","It's easy to pretend you don't want what you can't have",["Grapes grow on vines","Foxes jump"]],["Many sticks bundled together couldn't be broken, but one stick broke easily.","We are stronger together",["Sticks are wood","Bundles are heavy"]],["The North Wind blew hard to take a man's coat, but the warm Sun made him take it off himself.","Gentleness can do more than force",["Wind is cold","Coats are warm"]],["A shepherd boy cried \"Wolf!\" as a joke so often that no one believed him when a real wolf came.","Nobody believes a liar, even when they tell the truth",["Wolves eat sheep","Boys are noisy"]],["A thirsty crow dropped pebbles into a pitcher until the water rose high enough to drink.","Little by little, you can solve a problem",["Crows are black","Pebbles are small"]],["A town mouse visited a country mouse. The country mouse preferred his simple, safe home to the dangerous, fancy city.","A simple, peaceful life can be better than a rich, scary one",["Cities are big","Mice eat cheese"]],["Lula the squirrel played instead of gathering nuts and had no food in winter.","Don't put off until tomorrow what you can do today",["Squirrels like nuts","Winter is cold"]]];
+const lessonQ=()=>{const x=R(LESSON);return mcQ(`${box("Read",x[0])}What is the <b>moral</b> (lesson)?`,x[1],x[2],`Moral: <b>${x[1]}</b>.`,"The moral is the big idea we can use in our own lives.",{say:x[0]})};
+
+/* ================= OTHER VOCABULARY ================= */
+const SYN=[["said","stated"],["shouted","yelled"],["whispered","murmured"],["asked","questioned"],["replied","answered"],["laughed","giggled"],["clever","smart"],["foolish","silly"],["sly","sneaky"],["timid","shy"],["brave","fearless"],["wise","sensible"],["story","tale"],["begin","start"],["finish","end"],["quick","fast"],["huge","enormous"],["tiny","little"],["frightened","scared"],["happy","joyful"]];
+const OPP=[["hero","villain"],["beginning","ending"],["boastful","humble"],["greedy","generous"],["wise","foolish"],["brave","cowardly"],["timid","bold"],["lazy","hard-working"],["whispered","shouted"],["asked","answered"],["problem","solution"],["first","last"],["fast","slow"],["question","answer"],["old","young"],["kind","cruel"],["true","false"],["win","lose"],["truth","lie"],["laugh","cry"]];
+const COMP=[["story","teller"],["book","shelf"],["book","mark"],["fairy","tale"].slice(0,0),["bed","time"],["day","dream"],["after","noon"],["grand","mother"],["note","book"],["camp","fire"],["sun","light"],["moon","light"],["every","one"],["some","thing"],["any","where"],["out","side"],["fire","place"],["head","line"],["foot","print"],["hand","writing"],["sea","shell"],["butter","fly"],["rain","bow"],["star","fish"],["cup","board"]].filter(x=>x.length===2);
+
+/* ================= SPELLING ================= */
+const SP=u.spelling.concat([{w:"character",s:"The lion is a character.",tip:"'ch' sounds like k: char-ac-ter."},{w:"setting",s:"The setting is a forest.",tip:"Double t."},{w:"problem",s:"Every story has a problem."},{w:"solution",s:"The mouse found a solution.",tip:"Ends with -tion."},{w:"author",s:"The author wrote a fable.",tip:"'au' as in August."},{w:"legend",s:"It's an old legend.",tip:"g sounds like j."},{w:"dialogue",s:"Put dialogue in quotation marks.",tip:"di-a-logue. Silent ue at the end."},{w:"whispered",s:"She whispered a secret.",tip:"wh at the start."},{w:"shouted",s:"He shouted for help.",tip:"'ou' as in out."},{w:"replied",s:"\"Yes,\" she replied.",tip:"reply → replied (y changes to i)."},{w:"begged",s:"The mouse begged.",tip:"beg → begged (double g)."},{w:"villain",s:"The villain was a sly fox.",tip:"vil-lain. Double l."},{w:"wise",s:"The owl was wise.",tip:"Magic e."},{w:"greedy",s:"The greedy dog lost his bone.",tip:"Double e."},{w:"generous",s:"Be generous and share.",tip:"gen-er-ous. Ends with -ous."}]);
+const SPS={said:"\"Good morning,\" said Grandma.",asked:"\"Where is my hat?\" asked Leo.",replied:"\"It's on the chair,\" replied Mom.",shouted:"\"Watch out!\" shouted Dev.",whispered:"\"It's a secret,\" whispered Mia.",exclaimed:"\"What a surprise!\" exclaimed Neel.",grumbled:"\"I hate rain,\" grumbled Sam.",begged:"\"Please let me go!\" begged the mouse.",announced:"\"The race begins now!\" announced the fox.",explained:"\"A fable teaches a lesson,\" explained Ms. Chen.",sighed:"\"I'm so tired,\" sighed the tortoise.",giggled:"\"That tickles!\" giggled the baby.",laughed:"\"You're so funny!\" laughed Ada.",cried:"\"My knee hurts!\" cried Wei.",answered:"\"Seven,\" answered Yuki.",called:"\"Come home for dinner!\" called Dad.",warned:"\"The ice is thin,\" warned the owl.",boasted:"\"I'm the fastest!\" boasted the hare.",cheered:"\"Hooray!\" cheered the crowd.",yelled:"\"Stop!\" yelled the guard.",muttered:"\"Not again,\" muttered the cat.",squeaked:"\"Let me go,\" squeaked the mouse."};
+const SPEECH=Object.keys(SPS).map(w=>({w,s:SPS[w],tip:w.endsWith("ied")?"y changes to i before -ed.":w==="begged"?"Double the g.":"It ends with -ed."}));
+const CHOOSE=[["character","charakter","charecter"],["setting","seting","settin"],["problem","problim","probblem"],["solution","solushun","solusion"],["author","auther","arthor"],["illustrator","ilustrator","illustrater"],["dialogue","dialog","dialogeu"].slice(0,1).concat(["dielogue","dialouge"]),["villain","villan","vilain"],["chapter","chaptur","chaptor"],["whispered","wispered","whisperd"],["replied","replyed","replide"],["begged","beged","beggd"],["once","wunce","onse"],["said","sed","sayed"],["tortoise","tortus","tortoyse"],["generous","generus","jenerous"],["greedy","greedie","gredy"],["legend","legand","lejend"],["moral","morral","morel"],["fable","fabel","fayble"]].map(x=>({w:x[0],bad:[x[1],x[2]],tip:(SP.find(y=>y.w===x[0])||{}).tip}));
+
+/* ================= READING ================= */
+const DETAIL=[
+ ["The Fox and the Crow","A crow found a piece of cheese and flew up to a branch. A hungry fox saw her and said, \"What beautiful feathers you have! I'm sure your voice is lovely too. Will you sing for me?\" The proud crow opened her beak to sing, and the cheese fell straight into the fox's mouth.",[["What did the crow find?","A piece of cheese",["A shiny ring","A worm"]],["What did the fox say about the crow's feathers?","They were beautiful",["They were dirty","They were too long"]],["What happened when the crow opened her beak?","The cheese fell to the fox",["She sang a beautiful song","She flew away"]]]],
+ ["The Ant and the Dove","An ant fell into a stream and was about to be swept away. A dove saw her and dropped a leaf into the water. The ant climbed onto the leaf and floated safely to the bank. A few days later, a hunter aimed at the dove. The ant bit the hunter's foot, and the dove flew away safely.",[["What did the dove drop into the water?","A leaf",["A stick","A stone"]],["How did the ant help the dove later?","She bit the hunter's foot",["She built a nest","She called other ants"]],["What is the moral?","One good turn deserves another",["Doves are white","Hunters are fast"]]]],
+ ["The Town Mouse and the Country Mouse","A country mouse invited her cousin from the town for a simple dinner of beans and bread. The town mouse laughed and invited her to the city, where there were cakes and cheese. But just as they began to eat, a cat sprang at them! The country mouse ran home, saying, \"I'd rather eat beans in peace than cake in fear.\"",[["What did the country mouse serve for dinner?","Beans and bread",["Cake and cheese","Fish"]],["What happened in the city?","A cat sprang at them",["It rained","They got lost"]],["What did the country mouse prefer?","Eating beans in peace",["Living in the city","Eating cake in fear"]]]],
+ ["The Golden Goose","A farmer had a goose that laid one golden egg every day. He became rich, but he also became greedy. \"If I cut open the goose,\" he thought, \"I'll get all the gold at once!\" So he did, but inside there was no gold at all. Now he had no goose and no more golden eggs.",[["How many golden eggs did the goose lay each day?","One",["Ten","None"]],["Why did the farmer cut open the goose?","He wanted all the gold at once",["The goose was sick","He was hungry"]],["What did he find inside?","No gold at all",["A mountain of gold","Another goose"]]]],
+ ["The Wind and the Sun","The Wind and the Sun argued about who was stronger. They saw a man walking in a coat. \"Whoever can make him take off his coat is the strongest,\" said the Sun. The Wind blew hard, but the man held his coat tighter. Then the Sun shone warmly, and soon the man took off his coat.",[["What did the Wind and the Sun argue about?","Who was stronger",["Who was taller","Who was older"]],["What happened when the Wind blew?","The man held his coat tighter",["The coat flew away","The man fell asleep"]],["How did the Sun win?","By shining warmly",["By hiding","By blowing harder"]]]],
+ ["Aesop","Aesop is the name given to a storyteller who is said to have lived in ancient Greece about 2,500 years ago. Nobody knows much about his life for sure. But the short animal stories called Aesop's Fables have been retold for thousands of years in hundreds of languages. Each one ends with a lesson.",[["Where is Aesop said to have lived?","Ancient Greece",["Ancient India","Canada"]],["How long ago did he live?","About 2,500 years ago",["About 25 years ago","Last year"]],["What does each of Aesop's fables end with?","A lesson",["A song","A recipe"]]]],
+ ["The Panchatantra","The Panchatantra is a very old collection of stories from India. Long ago, a wise teacher named Vishnu Sharma is said to have told these animal stories to three princes who didn't like to study. The stories taught them how to make good choices and be wise leaders. The tales have travelled around the world in many languages.",[["Where is the Panchatantra from?","India",["Greece","Ghana"]],["Who is said to have told these stories?","A wise teacher named Vishnu Sharma",["Aesop","Anansi"]],["Why were the stories told to the princes?","To teach them to make good choices",["To make them sleep","To teach them maths"]]]],
+ ["The Brothers Grimm","Jacob and Wilhelm Grimm were two brothers who lived in Germany in the 1800s. They travelled around listening to people tell old stories and wrote them down so they wouldn't be forgotten. Their book includes stories like Hansel and Gretel, Snow White and Rapunzel. Today, their stories are known all over the world.",[["Which country were the Brothers Grimm from?","Germany",["France","Japan"]],["What did they do with old stories?","Wrote them down so they wouldn't be forgotten",["Threw them away","Turned them into songs only"]],["Which story is in their book?","Hansel and Gretel",["The Tortoise and the Hare","Anansi and the Pot of Wisdom"]]]],
+ ["Ye Xian","Ye Xian is a story from China that is more than 1,000 years old. It is one of the oldest Cinderella stories. Ye Xian is a kind girl who is treated badly by her stepmother. With the help of a magic fish, she goes to a festival in a beautiful dress and golden slippers. She loses a slipper, and a king searches for its owner.",[["Where is the story of Ye Xian from?","China",["Germany","Egypt"]],["What helps Ye Xian?","A magic fish",["A fairy godmother","A talking mouse"]],["What does she lose?","A golden slipper",["Her necklace","Her book"]]]],
+ ["Storytelling Long Ago","Long before books and screens, people told stories around fires at night. Storytellers remembered long tales and shared them with their villages. In West Africa, storytellers called griots kept the history of their people alive through stories and songs. Many Indigenous peoples in Canada also pass down important stories by telling them aloud.",[["Where did people tell stories long ago?","Around fires at night",["On phones","In cinemas"]],["What are storytellers in West Africa called?","Griots",["Authors","Knights"]],["How do many Indigenous peoples in Canada pass down stories?","By telling them aloud",["Only on television","They don't share stories"]]]],
+ ["Hans Christian Andersen","Hans Christian Andersen was born in Denmark in 1805. His family was poor, but he loved stories and theatre. He grew up to write more than 150 fairy tales, including The Ugly Duckling, about a bird who is teased for being different but grows into a beautiful swan. Many people think the story was a little bit about his own life.",[["Where was Hans Christian Andersen born?","Denmark",["Germany","Greece"]],["About how many fairy tales did he write?","More than 150",["Two","Ten"]],["What is The Ugly Duckling about?","A bird teased for being different who becomes a swan",["A duck who wins a race","A duck who loses its egg"]]]],
+ ["Quotation Marks","Quotation marks are punctuation marks that show the exact words someone says. In English, they look like little sixty-sixes and ninety-nines: “like this”. Some people call them speech marks. Each time a new person speaks, writers usually start a new line. This helps readers know who is talking.",[["What do quotation marks show?","The exact words someone says",["The end of a question","A list of things"]],["What is another name for quotation marks?","Speech marks",["Question marks","Full stops"]],["What do writers usually do when a new person speaks?","Start a new line",["Write in capitals","Stop writing"]]]]
+];
+const detail=()=>{const p=R(DETAIL),x=R(p[2]);return mcQ(`${box(p[0],p[1])}${x[0]}`,x[1],x[2],`Look back at the text: the answer is there.`,"Read the text again and find the words.",{say:p[1]+" "+x[0]})};
+const SEQ=[["The mouse wakes the lion","The lion lets the mouse go","The lion is caught in a net","The mouse frees the lion"],["The hare boasts","The race begins","The hare takes a nap","The tortoise wins"],["The monkey shares fruit with the crocodile","The crocodile's wife wants the monkey's heart","The crocodile carries the monkey into the river","The monkey tricks the crocodile and escapes"],["Characters and setting are introduced","A problem happens","The characters try to solve it","The problem is solved"],["Plan the characters","Choose the setting","Think of a problem","Write the solution and moral"],["The peacock laughs at the sparrow","A cat sneaks into the garden","The sparrow distracts the cat","The peacock says thank you"],["Once upon a time","Suddenly, there was trouble","After that, they tried a plan","Finally, everything was fine"],["The crow finds cheese","The fox flatters her","The crow opens her beak","The fox takes the cheese"],["The ant falls into the stream","The dove drops a leaf","A hunter aims at the dove","The ant bites the hunter"],["Write the title","Write the story","Read it over and fix mistakes","Read it aloud to your family"],["Anansi collects wisdom","He tries to climb the tree","His son gives him an idea","The pot breaks and wisdom spreads"],["The goose lays golden eggs","The farmer becomes greedy","He cuts open the goose","He has nothing left"]];
+const order=()=>{const s=R(SEQ),t=R(["first","last","next"]);
+  if(t==="first")return mcQ(`What comes <b>FIRST</b>?`,s[0],SAMPLE(s.slice(1),2),`Order: ${s.join(" → ")}`,"What must come before everything else?");
+  if(t==="last")return mcQ(`What comes <b>LAST</b>?`,s[s.length-1],SAMPLE(s.slice(0,-1),2),`Order: ${s.join(" → ")}`,"What comes at the very end?");
+  const k=Math.floor(Math.random()*(s.length-1));return mcQ(`What comes right <b>AFTER</b> this?<br><b>${s[k]}</b>`,s[k+1],SAMPLE(s.filter((_,i)=>i!==k&&i!==k+1),2),`Order: ${s.join(" → ")}`,"What is the very next step?")};
+const CE=[["Because the mouse ran across his nose, the lion woke up.","the mouse ran across his nose","the lion woke up"],["The lion struggled, so the ropes became tighter.","the lion struggled","the ropes became tighter"],["Because the hare took a nap, the tortoise won.","the hare took a nap","the tortoise won"],["The tortoise never stopped, so she reached the finish first.","the tortoise never stopped","she reached the finish first"],["Because the crocodile's wife was greedy, she wanted the monkey's heart.","the crocodile's wife was greedy","she wanted the monkey's heart"],["The crocodile believed the trick, so the monkey escaped.","the crocodile believed the trick","the monkey escaped"],["Because the fox flattered the crow, she opened her beak.","the fox flattered the crow","she opened her beak"],["The crow opened her beak, so the cheese fell.","the crow opened her beak","the cheese fell"],["Because the dove dropped a leaf, the ant floated to safety.","the dove dropped a leaf","the ant floated to safety"],["The farmer cut open the goose, so he had no more golden eggs.","the farmer cut open the goose","he had no more golden eggs"],["Because the Sun shone warmly, the man took off his coat.","the Sun shone warmly","the man took off his coat"],["The cat chased the sparrow, so the peacock had time to escape.","the cat chased the sparrow","the peacock had time to escape"],["Because it was raining, Neel and Grandma stayed inside.","it was raining","Neel and Grandma stayed inside"],["Neel used different voices, so his family enjoyed the story.","Neel used different voices","his family enjoyed the story"],["Because the boy lied about the wolf, nobody believed him later.","the boy lied about the wolf","nobody believed him later"],["The two goats were stubborn, so they both fell into the river.","the two goats were stubborn","they both fell into the river"],["Because Anansi threw the pot, the wisdom spilled out.","Anansi threw the pot","the wisdom spilled out"],["The Fly listened to flattering words, so she was caught in the web.","the Fly listened to flattering words","she was caught in the web"],["Because the Brothers Grimm wrote the stories down, they weren't forgotten.","the Brothers Grimm wrote the stories down","they weren't forgotten"],["The country mouse saw the cat, so she ran home.","the country mouse saw the cat","she ran home"]];
+const cause=()=>{const c=R(CE),other=R(CE.filter(x=>x!==c));const askCause=Math.random()<.5;
+  return mcQ(`${box("Read",c[0])}What is the <b>${askCause?"cause":"effect"}</b>? <span style="color:var(--muted);font-size:15px">(${askCause?"WHY it happened":"WHAT happened"})</span>`,askCause?c[1]:c[2],[askCause?c[2]:c[1],askCause?other[1]:other[2]],`Cause (why): <b>${c[1]}</b>. Effect (what happened): <b>${c[2]}</b>.`,"Look for because and so.",{say:c[0]})};
+const CMP=[
+ ["The lion and the mouse are both characters in the fable. The lion is big and strong. The mouse is tiny but brave.","Both are characters in the fable","The lion is big and strong, but the mouse is tiny",["Both are tiny","The mouse is big and strong"]],
+ ["The tortoise and the hare both entered the race. The hare was fast but stopped to nap. The tortoise was slow but kept going.","Both entered the race","The hare was fast but napped, while the tortoise was slow but kept going",["Both took a nap","The tortoise napped"]],
+ ["The monkey and the crow (in the pitcher story) are both clever. The monkey used a trick to escape danger. The crow used pebbles to reach water.","Both are clever","The monkey used a trick, but the crow used pebbles",["Both used pebbles","The crow used a trick on a crocodile"]],
+ ["A fable and a folktale are both old stories. A fable is short and always teaches a lesson. A folktale is passed down by people and may or may not have a clear moral.","Both are old stories","A fable always teaches a lesson, but a folktale may not",["Both are new","A folktale always ends with 'Lesson:'"]],
+ ["Aesop's fables and the Panchatantra both teach lessons with animal stories. Aesop's fables come from ancient Greece. The Panchatantra comes from ancient India.","Both teach lessons with animal stories","Aesop's are from Greece, but the Panchatantra is from India",["Both are from Canada","The Panchatantra is from Greece"]],
+ ["A hero and a villain are both characters. A hero solves the problem. A villain causes trouble.","Both are characters","A hero solves problems, but a villain causes trouble",["Both cause trouble","A villain solves problems"]],
+ ["An author and an illustrator both help make a book. An author writes the words. An illustrator draws the pictures.","Both help make a book","An author writes, but an illustrator draws",["Both draw pictures","An illustrator writes the words"]],
+ ["The fox (in the crow story) and the Spider both used flattering words. The fox wanted the crow's cheese. The Spider wanted to catch the Fly.","Both used flattering words","The fox wanted cheese, but the Spider wanted to catch the Fly",["Both wanted cheese","The Spider wanted cheese"]],
+ ["The setting and the characters are both parts of a story. The setting is where and when it happens. The characters are who it is about.","Both are parts of a story","The setting is where and when, but characters are who",["Both mean where","Characters are where and when"]],
+ ["'Said' and 'whispered' are both speech words. 'Said' is a plain word. 'Whispered' tells us the words were spoken very softly.","Both are speech words","'Said' is plain, but 'whispered' means softly",["Both mean loudly","'Said' means very softly"]],
+ ["The country mouse and the town mouse are both mice. The country mouse likes a simple, safe life. The town mouse likes fancy food in the busy city.","Both are mice","The country mouse likes a simple life, but the town mouse likes the city",["Both love the city","The town mouse likes a simple life"]],
+ ["Neel's fable and 'The Lion and the Mouse' both have a small character who helps a bigger one. In Neel's fable, a sparrow saves a peacock. In Aesop's fable, a mouse saves a lion.","Both have a small character who helps a bigger one","A sparrow saves a peacock, but a mouse saves a lion",["Both have a race","A peacock saves a sparrow"]]
+];
+const compare=()=>{const c=R(CMP);const same=Math.random()<.5;
+  return mcQ(`${box("Read",c[0])}${same?"How are they the <b>same</b>?":"What is one <b>difference</b>?"}`,same?c[1]:c[2],[same?c[2]:c[1],R(c[3])],same?`Same: <b>${c[1]}</b>.`:`Different: <b>${c[2]}</b>.`,same?"Look for the word both.":"Look for the word but.",{say:c[0]})};
+const FACTS=["Aesop is said to have lived in ancient Greece.","The Panchatantra comes from India.","The Brothers Grimm were from Germany.","Hans Christian Andersen wrote The Ugly Duckling.","In Aesop's fable, the tortoise wins the race.","Quotation marks show the exact words someone says.","Anansi stories come from Ghana.","Ye Xian is a story from China.","Fables often have animal characters.","A moral is a lesson.","Griots are storytellers in West Africa.","The setting is where and when a story happens.","An author writes books.","An illustrator draws pictures for books.","Mary Howitt wrote The Spider and the Fly.","Many stories begin with Once upon a time.","The mouse freed the lion by nibbling the ropes.","The monkey escaped by tricking the crocodile.","Cinderella has many versions around the world.","People told stories long before writing was invented.","A chapter is part of a book.","Dialogue goes inside quotation marks.","The hare took a nap during the race.","The crow dropped pebbles into the pitcher.","Hans Christian Andersen was born in Denmark."];
+const OPIN=["The Lion and the Mouse is the best fable.","Fables are more fun than fairy tales.","The hare is the funniest character.","Stories about animals are better than stories about people.","Neel's fable was better than Aesop's.","Reading is more fun than watching TV.","The fox is the cleverest character in all fables.","Poems are harder than stories.","Happy endings are the best endings.","Every book should have pictures.","The monkey was braver than the mouse.","The Spider and the Fly is scary.","Long books are boring.","Telling stories aloud is more fun than reading quietly.","Villains are more interesting than heroes.","Folktales from India are the most exciting.","The tortoise is the best role model.","Writing dialogue is easy.","Bedtime is the best time for stories.","Comic books are better than chapter books.","The Ugly Duckling is the saddest story.","Fables should always have animals.","Short stories are better than long ones.","Grandmas tell the best stories.","Anansi is the most interesting character."];
+const factOp=()=>{const f=Math.random()<.5;const s=f?R(FACTS):R(OPIN);return mcQ(`Is this a <b>fact</b> or an <b>opinion</b>?<br><b>${s}</b>`,f?"Fact":"Opinion",[f?"Opinion":"Fact"],f?"A <b>fact</b> can be checked in a book or a story.":"An <b>opinion</b> is what someone thinks or feels. Others may disagree.","Could you check it? Or is it a feeling?")};
+
+/* ================= THINKING ================= */
+const PUZ=[
+ {q:"🧩 Riddle: I'm slow and steady, I carry my home, and I won a famous race. Who am I?",o:["The tortoise","The hare","The snail"],a:"The tortoise",why:"Slow and steady wins the race!"},
+ {q:"🧩 Riddle: I'm tiny, I squeak, and I saved the king of the jungle. Who am I?",o:["The mouse","The cat","The ant"],a:"The mouse",why:"The mouse freed the lion."},
+ {q:"🧩 Riddle: I'm a clever spider from Ghana who tried to keep all the wisdom. Who am I?",o:["Anansi","Charlotte","The Spider from the poem"],a:"Anansi",why:"Anansi stories come from the Ashanti people."},
+ {q:"🧩 Riddle: I'm sly, I have a bushy tail, and I tricked a crow out of her cheese. Who am I?",o:["The fox","The wolf","The owl"],a:"The fox",why:"Flattery got the fox the cheese."},
+ {q:"🧩 Riddle: I have a title, chapters and pages, but I'm not a newspaper. What am I?",o:["A book","A map","A clock"],a:"A book",why:"Books have titles and chapters."},
+ {q:"🧩 Riddle: I come at the end of a fable and teach you something. What am I?",o:["The moral","The title","The setting"],a:"The moral",why:"The moral is the lesson."},
+ {q:"🧩 Riddle: I'm two little marks that hug the words people say. What am I?",o:["Quotation marks","Question marks","Full stops"],a:"Quotation marks",why:"\"Like this!\""},
+ {q:"🤔 A story has no problem. What would most readers think?",o:["It's boring, because nothing happens","It's very exciting","It's too scary"],a:"It's boring, because nothing happens",why:"The problem makes a story interesting."},
+ {q:"🤔 Which is the best first sentence for a fable?",o:["Once upon a time, a proud peacock lived in a garden.","The end.","Lesson: be kind."],a:"Once upon a time, a proud peacock lived in a garden.",why:"It introduces a character and a setting."},
+ {q:"🤔 Which is the best last line for a fable?",o:["Lesson: Kindness is never wasted.","Once upon a time…","Suddenly, a cat appeared."],a:"Lesson: Kindness is never wasted.",why:"Fables end with a moral."},
+ {q:"🤔 Which sentence would make a good PROBLEM for a story?",o:["Suddenly, the bridge broke, and the goats couldn't get home.","The goats were happy.","The sun was yellow."],a:"Suddenly, the bridge broke, and the goats couldn't get home.",why:"A problem is something that goes wrong."},
+ {q:"🤔 How can you make your voice interesting when you tell a story aloud?",o:["Use different voices for each character","Read in one flat voice","Whisper the whole time"],a:"Use different voices for each character",why:"Changing your voice brings characters to life."},
+ {q:"🤔 Why do fables often use animals instead of people?",o:["Animals make the lesson fun and easy to remember","Animals can really talk","People are boring"],a:"Animals make the lesson fun and easy to remember",why:"A boastful hare is easy to picture and remember."},
+ {q:"🤔 In a story, a character says \"I'm cold!\" and shivers. What can you infer about the setting?",o:["It is cold, maybe winter","It is a hot desert","It is a swimming pool in summer"],a:"It is cold, maybe winter",why:"Clues help us work out the setting."},
+ {q:"🤔 Which speech word fits a secret?",o:["whispered","shouted","announced"],a:"whispered",why:"Secrets are told softly."},
+ {q:"🤔 Which speech word fits a warning about danger?",o:["shouted","yawned","sighed"],a:"shouted",why:"Warnings are often loud."},
+ {q:"🤔 Which is a good title for a fable about a greedy dog?",o:["The Dog and His Reflection","The Happy Teacher","My Trip to Paris"],a:"The Dog and His Reflection",why:"Titles tell the reader what the story is about."},
+ {q:"🔢 A fable has 3 characters. Another has 2. How many characters altogether?",o:["5","6","1"],a:"5",why:"3 + 2 = 5."},
+ {q:"🔢 Neel reads 2 chapters every night. How many chapters does he read in 5 nights?",o:["10","7","25"],a:"10",why:"2 × 5 = 10."},
+ {q:"🔢 A book has 30 pages. Mia has read 12. How many pages are left?",o:["18","42","12"],a:"18",why:"30 − 12 = 18."},
+ {q:"🔢 The class made 4 story maps with 6 parts each. How many parts altogether?",o:["24","10","46"],a:"24",why:"4 × 6 = 24."},
+ {q:"🧠 Which sentence has quotation marks in the right place?",o:["\"Help!\" roared the lion.","Help! \"roared the lion.\"","\"Help! roared the lion.\""],a:"\"Help!\" roared the lion.",why:"Only the spoken word goes inside."},
+ {q:"🧠 Which is the best way to join 'Mia laughed.' and 'Leo laughed.'?",o:["Mia and Leo laughed.","Mia laughed Leo laughed.","Mia laughed and Leo laughed and laughed."],a:"Mia and Leo laughed.",why:"Join the names, and say laughed once."},
+ {q:"🌍 Which country does the Panchatantra come from?",o:["India","Greece","Denmark"],a:"India",why:"It is about 2,000 years old."},
+ {q:"🌍 Which country is Ye Xian, an old Cinderella story, from?",o:["China","Germany","Ghana"],a:"China",why:"It is more than 1,000 years old."},
+ {q:"📚 What should you do after writing your fable?",o:["Read it over, fix mistakes and read it aloud","Throw it away","Hide it forever"],a:"Read it over, fix mistakes and read it aloud",why:"Good writers check and share their work."}
+];
+const GRP={"story parts":["character","setting","problem","solution","moral"],"speech words":["whispered","shouted","replied","asked","begged"],"character traits":["greedy","generous","boastful","wise","timid"],"fable animals":["tortoise","hare","fox","crow","lion"],"kinds of stories":["fable","folktale","myth","legend"],"people who make books":["author","illustrator","editor","publisher"],"story openings":["Once upon a time","Long ago","One day","There once was"]};
+const odd=()=>{const ks=Object.keys(GRP);const k=R(ks),k2=R(ks.filter(x=>x!==k));const three=SAMPLE(GRP[k],3),o=R(GRP[k2].filter(x=>!GRP[k].includes(x)));
+  return mcQ(`🤔 Which one does NOT belong?`,o,three,`${three.join(", ")} are all ${k}. <b>${o}</b> is not.`,"Find what three of them have in common.")};
+const ANA=[["Tortoise is to slow as hare is to ___.","fast",["lazy","small"]],["Lion is to big as mouse is to ___.","small",["loud","strong"]],["Hero is to good as villain is to ___.","bad",["brave","happy"]],["Beginning is to start as ending is to ___.","finish",["middle","title"]],["Problem is to trouble as solution is to ___.","answer",["question","danger"]],["Author is to words as illustrator is to ___.","pictures",["songs","maps"]],["Whisper is to quiet as shout is to ___.","loud",["soft","slow"]],["Asked is to question as replied is to ___.","answer",["story","title"]],["Greedy is to generous as boastful is to ___.","humble",["proud","sly"]],["Aesop is to Greece as the Panchatantra is to ___.","India",["Germany","Ghana"]],["Anansi is to spider as Rusty is to ___.","fox",["owl","beaver"]],["Fox is to sly as owl is to ___.","wise",["foolish","lazy"]],["Fable is to moral as joke is to ___.","punchline",["chapter","setting"]],["Chapter is to book as verse is to ___.","poem",["film","song title"]],["Once upon a time is to beginning as happily ever after is to ___.","ending",["middle","title"]],["Quotation marks are to speech as question marks are to ___.","questions",["lists","names"]],["Monkey is to clever as crocodile is to ___.","foolish",["wise","fast"]],["Brothers Grimm are to Germany as Andersen is to ___.","Denmark",["China","India"]],["Character is to who as setting is to ___.","where and when",["why","how many"]],["Mouse is to lion as sparrow is to ___.","peacock",["cat","owl"]]];
+const analogy=()=>{const x=R(ANA);return mcQ("🔗 "+x[0],x[1],x[2],`${x[0].replace("___","<b>"+x[1]+"</b>")} Think about how the first two words are linked.`,"How are the first two words linked? Use the same link.")};
+
+/* ================= SENTENCES AND WRITING ================= */
+const SENT=["The lion let the mouse go.","The hare took a nap under a bush.","The tortoise won the race.","Neel told a fable at dinner.","Grandma Kiran drew a story map.","The monkey lived beside a river in India.","Aesop told fables in ancient Greece.","The Brothers Grimm lived in Germany.","The mouse nibbled the ropes.","The crow dropped the cheese.","Ada wrote a book review.","The sparrow saved the peacock.","The fox was the judge of the race.","Hans Christian Andersen was from Denmark.","Once upon a time, there was a wise owl.","The story has a happy ending.","Ms. Chen read us a folktale.","The villain was a sly fox.","The hero was a tiny mouse.","My favourite book has ten chapters."];
+const fix=()=>{const s=R(SENT);return {type:"type",strict:true,q:`Fix this sentence. Add the capital letters and the full stop:<br><b>${breakSentence(s)}</b>`,a:[s],hint:"Capital letter at the start, capitals for names, places and I, and a full stop at the end.",why:`Correct: <b>${s}</b>`}};
+const D=[CHK.cap,CHK.end,CHK.w4,CHK.I];
+const QM=["([\"“][^\"”]+[\"”])","Uses quotation marks around spoken words"];
+const WP=[
+ {q:"Write a sentence where a character says something. Use quotation marks.",checks:[CHK.cap,QM,CHK.w4],model:"\"I will help you,\" said the mouse."},
+ {q:"Write a sentence where a character asks a question. Put the ? inside the quotation marks.",checks:[CHK.cap,["[\"“][^\"”]+\\?[\"”]","Has ? inside the quotation marks"],["\\basked\\b","Uses asked"]],model:"\"Where are you going?\" asked the owl."},
+ {q:"Write a sentence where a character shouts. Put the ! inside the quotation marks.",checks:[CHK.cap,["[\"“][^\"”]+![\"”]","Has ! inside the quotation marks"],["\\b(shouted|yelled|roared|exclaimed|cried|called)\\b","Uses a loud speech word"]],model:"\"Watch out!\" shouted the sparrow."},
+ {q:"Write a sentence with a speech word that isn't 'said' (whispered, grumbled, begged…).",checks:[CHK.cap,QM,["\\b(whispered|grumbled|begged|replied|announced|explained|sighed|giggled|laughed|exclaimed|shouted|asked|boasted|warned|cried)\\b","Uses an interesting speech word"]],model:"\"I'm so tired,\" sighed the tortoise."},
+ {q:"Join these sentences into one: <b>The fox was clever. The fox was sly.</b>",checks:[["^\\s*The fox was clever and sly\\.\\s*$","The fox was clever and sly."]],model:"The fox was clever and sly."},
+ {q:"Join these sentences into one: <b>Mia read a fable. Leo read a fable.</b>",checks:[["^\\s*(Mia and Leo|Leo and Mia) read a fable\\.\\s*$","Joins the two names with and"]],model:"Mia and Leo read a fable."},
+ {q:"Join these sentences with <b>but</b>: <b>The hare was fast. He lost the race.</b>",checks:[["^\\s*The hare was fast,? but he lost the race\\.\\s*$","Uses but correctly"]],model:"The hare was fast, but he lost the race."},
+ {q:"Write a sentence that describes a story setting using two describing words.",checks:[...D,["\\b(forest|castle|meadow|city|ocean|beach|garden|village|river|mountain|desert|school|spaceship|jungle|cave|farm)\\b","Names a place"]],model:"The story happens in a dark, quiet forest."},
+ {q:"Write a sentence that introduces a character with a trait word.",checks:[...D,["\\b(foolish|greedy|generous|boastful|humble|wise|sly|timid|stubborn|lazy|kind|brave|clever|proud|selfish|patient|honest|curious|shy)\\b","Uses a trait word"]],model:"There once was a greedy bear who never shared."},
+ {q:"Write a story problem that starts with <b>Suddenly,</b>.",checks:[["^\\s*Suddenly,","Starts with Suddenly,"],CHK.end,CHK.w4],model:"Suddenly, the river flooded and washed the bridge away."},
+ {q:"Write a moral for a fable. Start with <b>Lesson:</b>",checks:[["^\\s*Lesson:\\s*[A-Z]","Starts with Lesson: and a capital letter"],["[.!]\\s*$","Ends with . or !"],CHK.w3],model:"Lesson: Always tell the truth."},
+ {q:"Write the first sentence of a fable, starting with <b>Once upon a time</b>.",checks:[["^\\s*Once upon a time","Starts with Once upon a time"],CHK.end,CHK.w4],model:"Once upon a time, a timid rabbit lived beside a busy road."},
+ {q:"Write the last sentence of a story, starting with <b>Finally,</b> or <b>In the end,</b>.",checks:[["^\\s*(Finally|In the end),","Starts with Finally, or In the end,"],CHK.end,CHK.w4],model:"In the end, the two goats became friends."},
+ {q:"Write a sentence about your favourite character from this unit and why you like them.",checks:[...D,["\\b(lion|mouse|tortoise|hare|monkey|crocodile|peacock|sparrow|Neel|Grandma|Anansi|fox|owl|crow|Fly|Spider)\\b","Names a character"],["\\bbecause\\b","Uses because"]],model:"My favourite character is the mouse because she was small but brave."},
+ {q:"Write two lines of dialogue between two characters. Start a new line for the second speaker.",checks:[["([\"“][^\"”]+[\"”][\\s\\S]*){2}","Has two quoted parts"],["\\n","Second speaker starts on a new line"]],model:"\"Can I play too?\" asked the sparrow.\n\"Of course you can!\" replied the peacock."},
+ {q:"Write a sentence using <b>because</b> to explain why a character did something.",checks:[...D,["\\bbecause\\b","Uses because"]],model:"The lion let the mouse go because she made him smile."},
+ {q:"Write a sentence using <b>so</b> to show what happened as a result.",checks:[...D,["\\bso\\b","Uses so"]],model:"The hare fell asleep, so the tortoise won."},
+ {q:"Write a title for a fable of your own. Use capital letters for the important words.",checks:[["^\\s*(The\\s+)?[A-Z]\\w*","Starts with a capital letter"],["\\b[A-Z]\\w*\\b[\\s\\S]*\\b[A-Z]\\w*\\b","Important words have capitals"]],model:"The Lazy Bear and the Busy Beaver"},
+ {q:"Write a sentence that tells where and when a story happens.",checks:[...D,["\\b([Ll]ong ago|[Oo]ne day|[Oo]ne night|[Ii]n winter|[Ii]n summer|[Yy]esterday|[Oo]nce|[Ll]ast year|[Ii]n the morning|[Aa]t night|[Tt]oday)\\b","Tells when"]],model:"Long ago, in a small village by the sea, lived a kind fisherman."},
+ {q:"Write a short book review sentence with a star rating.",checks:[...D,["(⭐|stars?)","Gives a star rating"]],model:"I give The Lion and the Mouse five stars."}
+];
+
+/* ================= LEARN NOTES ================= */
+const L={
+ detail:"Read the short fable or text carefully. The answer is <b>in the text</b>.",
+ factop:"A <b>fact</b> can be checked. An <b>opinion</b> is a feeling: <i>The Lion and the Mouse is the best fable.</i>",
+ order:"Stories have a <b>beginning</b>, a <b>middle</b> and an <b>end</b>. What happens first, next and last?",
+ cause:"The <b>cause</b> is <b>why</b>. The <b>effect</b> is <b>what happened</b>. Look for <b>because</b> and <b>so</b>.",
+ compare:"<b>Same:</b> look for <b>both</b>, <b>also</b>. <b>Different:</b> look for <b>but</b>.",
+ elem:"<b>Characters</b> = who · <b>Setting</b> = where and when · <b>Problem</b> = what goes wrong · <b>Solution</b> = how it is fixed.",
+ trait:"A <b>character trait</b> describes what a character is like inside: <i>greedy, generous, boastful, humble, wise, foolish, sly, timid, stubborn, lazy</i>. Look at what they <b>say</b> and <b>do</b>.",
+ lesson:"A <b>fable</b> ends with a <b>moral</b>: a lesson we can use in real life. Ask: <i>What did the character learn?</i>",
+ sw:"Story words: <b>character, setting, plot, problem, solution, beginning, ending, moral, narrator, dialogue, author, illustrator, title, chapter</b>.",
+ vocab:"Read the word, say it aloud, and think of a sentence that uses it.",
+ syn:"<b>Synonyms</b> mean almost the same: shouted = yelled, story = tale.",
+ opp:"<b>Opposites</b>: hero ↔ villain, greedy ↔ generous, boastful ↔ humble.",
+ comp:"<b>Compound words</b>: story + teller = storyteller, book + mark = bookmark.",
+ qm:"<b>Quotation marks</b> (\" \") go around the <b>exact words</b> someone says: <i>\"Let me go,\" squeaked the mouse.</i><br>The comma, question mark or exclamation mark goes <b>inside</b> the closing quotation mark: <i>\"Where are you going?\" asked the owl.</i>",
+ qword:"Instead of always using <b>said</b>, try: <i>whispered, shouted, asked, replied, exclaimed, grumbled, begged, announced, explained, sighed, giggled</i>. They show <b>how</b> words were said.",
+ qkind:"Look at the mark inside the quotation marks: <b>,</b> → telling · <b>?</b> → asking · <b>!</b> → exclaiming.",
+ join:"Join short sentences so your writing flows:<br>Same character, two describing words: <i>The fox was clever <b>and</b> sly.</i><br>Two characters, same action: <i>Mia <b>and</b> Leo laughed.</i><br>Two actions: <i>The hare ran ahead <b>and</b> took a nap.</i><br>Use <b>but, so, because</b> to show surprise, result or reason.",
+ fix:"Check: <b>1.</b> capital letter at the start, <b>2.</b> capitals for names, places and I, <b>3.</b> a full stop at the end.",
+ orderW:"Find the word with the capital letter: it goes first. Then think: <b>who? did what?</b>",
+ write:"Plan in your head first. Then write: capital letter, complete idea, end mark. Use quotation marks for speech!",
+ spell:"Use <b>Look → Say → Cover → Write → Check</b>.",
+ speech:"Most speech words end in <b>-ed</b>. Watch out: repl<b>y</b> → repl<b>ied</b>, be<b>g</b> → be<b>gg</b>ed.",
+ choose:"Watch out for: <b>ch</b>aracter (sounds like k), dialo<b>gue</b>, vil<b>lain</b>, <b>o</b>nce, s<b>ai</b>d.",
+ think:"Think like an author: every story needs characters, a setting, a problem and a solution.",
+ odd:"Three belong to the same group. Find the one that does <b>not</b> belong.",
+ ana:"Find how the first two words are linked. Use the <b>same link</b> for the next pair.",
+ review:"These questions come from earlier units, so you keep everything you learned fresh."
+};
+const RV=id=>UNITS.find(x=>x.id===id).review;
+u.review=MIX(qmChoose,qmSpoken,qmWho,qWord,qKind,joinChoose,wordy,elemQ,traitQ,lessonQ,F.bank(SW),F.vocab(u.words));
+
+/* ================= THE SKILL LIST ================= */
+u.cats=[
+ {n:"Reading",e:"📖",items:[
+  {id:"r_t1",t:"Fable: The Lion and the Mouse",act:"story",si:0},
+  {id:"r_t2",t:"Fable: The Tortoise and the Hare",act:"story",si:1},
+  {id:"r_t3",t:"Folktale from India: The Monkey and the Crocodile",act:"story",si:2},
+  {id:"r_t4",t:"Fact text: How Stories Work",act:"story",si:3},
+  {id:"r_t5",t:"Story: Neel and Grandma Write a Fable",act:"story",si:4},
+  {id:"r_t6",t:"Real-world reading: A story map and a book review",act:"story",si:5},
+  {id:"r_p1",t:"Classic poem: The Spider and the Fly (Mary Howitt)",act:"poem",pi:0},
+  {id:"r_p2",t:"Poem: Once Upon a Time",act:"poem",pi:1},
+  {id:"r_elem",t:"Characters, setting, problem and solution",learn:L.elem,gen:elemQ},
+  {id:"r_trait",t:"Character traits: what is the character like?",learn:L.trait,gen:traitQ},
+  {id:"r_lesson",t:"What is the moral?",learn:L.lesson,gen:lessonQ},
+  {id:"r_detail",t:"Read fables and find the details",learn:L.detail,gen:detail},
+  {id:"r_factop",t:"Fact or opinion?",learn:L.factop,gen:factOp},
+  {id:"r_order",t:"Beginning, middle and end",learn:L.order,gen:order},
+  {id:"r_cause",t:"Cause and effect",learn:L.cause,gen:cause},
+  {id:"r_compare",t:"Compare characters and stories",learn:L.compare,gen:compare}]},
+ {n:"Vocabulary",e:"🔤",items:[
+  {id:"v_s1",t:"Story-part words",learn:L.vocab,gen:F.vocab(set(0))},
+  {id:"v_s2",t:"Kinds of stories and people who make them",learn:L.vocab,gen:F.vocab(set(1))},
+  {id:"v_s3",t:"Character-trait words",learn:L.vocab,gen:F.vocab(set(2))},
+  {id:"v_s4",t:"Speech words (instead of said)",learn:L.vocab,gen:F.vocab(set(3))},
+  {id:"v_fill",t:"Use the right word in a sentence",learn:L.vocab,gen:F.fill(u.words)},
+  {id:"v_sw",t:"Story words: what do they mean?",learn:L.sw,gen:F.bank(SW)},
+  {id:"v_syn",t:"Synonyms",learn:L.syn,gen:F.pairs(SYN,"synonym")},
+  {id:"v_opp",t:"Opposites",learn:L.opp,gen:F.pairs(OPP,"opposite")},
+  {id:"v_comp",t:"Compound words",learn:L.comp,gen:MIX(F.compoundJoin(COMP),F.compoundPick(COMP))}]},
+ {n:"Grammar",e:"🧩",items:[
+  {id:"g_qm",t:"Quotation marks: choose the correct sentence",learn:L.qm,gen:qmChoose},
+  {id:"g_qmtype",t:"Quotation marks: add them yourself",learn:L.qm,gen:qmType},
+  {id:"g_qmspoken",t:"Which words were spoken? Who is speaking?",learn:L.qm,gen:MIX(qmSpoken,qmWho)},
+  {id:"g_qword",t:"Speech words: said, whispered, shouted…",learn:L.qword,gen:qWord},
+  {id:"g_qkind",t:"Telling, asking or exclaiming? (punctuation in speech)",learn:L.qkind,gen:qKind},
+  {id:"g_join",t:"Join short sentences: choose the best",learn:L.join,gen:MIX(joinChoose,wordy)},
+  {id:"g_jointype",t:"Join short sentences with and",learn:L.join,gen:joinType},
+  {id:"g_fix",t:"Fix the sentence (capitals and full stops)",learn:L.fix,gen:fix},
+  {id:"g_order",t:"Put the words in order",learn:L.orderW,gen:G.order(SENT.filter(x=>(x.match(/\b[A-Z]/g)||[]).length===1&&!/,/.test(x)))},
+  {id:"g_write",t:"Write your own sentences and dialogue",learn:L.write,gen:F.write(WP)},
+  {id:"g_mixed",t:"Mixed grammar review",learn:"Use all the quotation-mark and joining rules from this unit.",gen:MIX(qmChoose,qmType,qmSpoken,qmWho,qWord,qKind,joinChoose,joinType,wordy)}]},
+ {n:"Spelling",e:"🎧",items:[
+  {id:"s_story",t:"Story words: listen and write",learn:L.spell,gen:F.listen(SP)},
+  {id:"s_speech",t:"Speech words: listen and write",learn:L.speech,gen:F.listen(SPEECH)},
+  {id:"s_choose",t:"Choose the correct spelling",learn:L.choose,gen:F.chooseSpelling(CHOOSE)},
+  {id:"s_missing",t:"Missing letters",learn:L.spell,gen:F.missing(SP)}]},
+ {n:"Thinking",e:"🧠",items:[
+  {id:"t_puz",t:"Story puzzles and author thinking",learn:L.think,gen:F.bank(PUZ)},
+  {id:"t_odd",t:"Odd one out",learn:L.odd,gen:odd},
+  {id:"t_ana",t:"Word links (analogies)",learn:L.ana,gen:analogy}]},
+ {n:"Review earlier units",e:"🔁",items:[
+  {id:"rv_u1",t:"Review: Unit 1 (sentences, question words, nouns)",learn:L.review,gen:RV("me")},
+  {id:"rv_u2",t:"Review: Unit 2 (plurals, past tense, animals)",learn:L.review,gen:RV("animals")},
+  {id:"rv_u3",t:"Review: Unit 3 (present tense, plants, magic e)",learn:L.review,gen:RV("plants")},
+  {id:"rv_u4",t:"Review: Unit 4 (adjectives, comparing, homophones)",learn:L.review,gen:RV("weather")},
+  {id:"rv_u5",t:"Review: Unit 5 (future tense, a/an/the, space)",learn:L.review,gen:RV("space")},
+  {id:"rv_u6",t:"Review: Unit 6 (prepositions, pronouns, un-/re-)",learn:L.review,gen:RV("ocean")},
+  {id:"rv_u7",t:"Review: Unit 7 (has/have, question words, time, money)",learn:L.review,gen:RV("maths")},
+  {id:"rv_u8",t:"Review: Unit 8 (was/were, joining words, -tion)",learn:L.review,gen:RV("inventions")},
+  {id:"rv_u9",t:"Review: Unit 9 (adverbs, contractions, -ful/-less)",learn:L.review,gen:RV("friends")},
+  {id:"rv_u10",t:"Review: Unit 10 (possessives, proper nouns, maps)",learn:L.review,gen:RV("world")},
+  {id:"rv_u11",t:"Review: Unit 11 (instructions, can/should, silent letters)",learn:L.review,gen:RV("health")}]},
+ {n:"Explore and write",e:"✏️",items:[
+  {id:"x_facts",t:"Did you know? Amazing facts about stories",act:"facts"},
+  {id:"x_w1",t:"Writing step 1: Create a character and a setting",act:"write",wi:0},
+  {id:"x_w2",t:"Writing step 2: Write a conversation",act:"write",wi:1},
+  {id:"x_w3",t:"Writing step 3: Write your own fable and retell it aloud",act:"write",wi:2}]}
+];
+})();
+
 /* ================= SETTINGS ================= */
 const SITE_NAME = "Sprout English";   // placeholder name — change this one line later
-const COMING=[["📚","Stories and Fables"]];
+const COMING=[];
 
 /* ================= SAVED PROGRESS (this browser only) ================= */
 const KEY="sprout_v5";
