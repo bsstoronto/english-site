@@ -110,8 +110,8 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px 16px;bor
   <section id="v-grade" class="hidden">
     <button class="link" onclick="go('home')">← All grades</button>
     <div class="hero" style="margin-top:12px">
-      <span class="pill">Grade 3</span>
-      <h1>Grade 3 English</h1>
+      <span class="pill" id="gPill">Grade 3</span>
+      <h1 id="gTitle">Grade 3 English</h1>
       <p>12 units. Each one explores one topic of the world, with many skills to master.</p>
     </div>
     <h2>Units</h2>
@@ -119,7 +119,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px 16px;bor
   </section>
 
   <section id="v-unit" class="hidden">
-    <button class="link" onclick="openGrade()">← Grade 3 units</button>
+    <button class="link" onclick="openGrade()" id="gBack">← Grade 3 units</button>
     <div class="hero" style="margin-top:12px">
       <div style="font-size:44px" id="unitEmoji"></div>
       <span class="pill" id="unitNum"></span>
@@ -145,6 +145,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px 16px;bor
 <div id="toast" class="toast hidden"></div>
 
 <script>
+const GRADE=3;
 /* ================= SHARED HELPERS + QUESTION GENERATORS ================= */
 const UNITS=[];
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
@@ -8032,8 +8033,12 @@ function reviewStart(){
 
 /* ================= HOME / GRADE / UNIT PAGES ================= */
 $("siteName").textContent=SITE_NAME;$("footName").textContent=SITE_NAME;document.title=SITE_NAME;
-$("gradeGrid").innerHTML=[...Array(12)].map((_,i)=>"Grade "+(i+1)).concat(["College"]).map((g,i)=>{const open=i===2;
-  return `<div class="card ${open?"click":"locked"}" ${open?'onclick="openGrade()"':""}><span class="pill">${open?"Open":"Coming soon"}</span><h3>${g}</h3><p>${open?"Family, animals, plants, space and more":"In progress"}</p></div>`}).join("");
+const GFILE={3:"index.html",4:"grade4.html"},GDESC={3:"Family, animals, plants, space and more",4:"Ecosystems, ancient worlds, energy, myths and more"};
+$("gradeGrid").innerHTML=[...Array(12)].map((_,i)=>"Grade "+(i+1)).concat(["College"]).map((g,i)=>{const n=i+1,open=!!GFILE[n],here=n===GRADE;
+  const act=here?'onclick="openGrade()"':open?`onclick="location.href='${GFILE[n]}#units'"`:"";
+  return `<div class="card ${open?"click":"locked"}" ${act}><span class="pill">${open?"Open":"Coming soon"}</span><h3>${g}</h3><p>${open?GDESC[n]:"In progress"}</p></div>`}).join("");
+$("gPill").textContent="Grade "+GRADE;$("gTitle").textContent="Grade "+GRADE+" English";$("gBack").textContent="← Grade "+GRADE+" units";
+setTimeout(()=>{if(location.hash==="#units")openGrade()},0);
 function openGrade(){
   const built=UNITS.map(u=>{const x=unitStats(u);
     return `<div class="card click" onclick="openUnit('${u.id}')"><div class="em">${u.emoji}</div>
@@ -8175,7 +8180,7 @@ function writeTask(i,id){
   const prev=i>0&&!(st().act[allItems().filter(x=>x.act==="write")[i-1].id]);
   body().innerHTML=`${prev?`<div class="hintbox">Tip: finish the writing step before this one first. Each step builds on the last.</div>`:""}
    <div class="flash" style="text-align:left"><span class="pill">${t.level}</span><h2 style="text-align:left;margin:8px 0">${t.e} ${t.t}</h2>
-   <p style="font-size:17px;line-height:1.5;margin:0">${esc(t.prompt)}</p>
+   <p style="font-size:17px;line-height:1.5;margin:0">${t.prompt}</p>
    <p style="margin:10px 0 0"><button class="btn ghost small" onclick="say(U.writing[${i}].prompt)">🔊 Read to me</button> <button class="btn ghost small" id="exBtn">👀 See an example</button></p><div id="exBox"></div></div>
    <p style="margin:12px 0 4px"><b>Sentence starters</b> (tap to add):</p>
    <div>${t.starters.map((s,k)=>`<span class="chip" onclick="ins(U.writing[${i}].starters[${k}])">${esc(s.trim())}…</span>`).join("")}</div>
