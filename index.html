@@ -8033,7 +8033,7 @@ function reviewStart(){
 
 /* ================= HOME / GRADE / UNIT PAGES ================= */
 $("siteName").textContent=SITE_NAME;$("footName").textContent=SITE_NAME;document.title=SITE_NAME;
-const GFILE={3:"index.html",4:"grade4.html",5:"grade5.html"},GDESC={3:"Family, animals, plants, space and more",4:"Ecosystems, ancient worlds, energy, myths and more",5:"Body systems, oceans, space, mysteries and more"};
+const GFILE={3:"index.html",4:"grade4.html",5:"grade5.html",6:"grade6.html"},GDESC={3:"Family, animals, plants, space and more",4:"Ecosystems, ancient worlds, energy, myths and more",5:"Body systems, oceans, space, mysteries and more",6:"Identity, ancient empires, climate and more"};
 $("gradeGrid").innerHTML=[...Array(12)].map((_,i)=>"Grade "+(i+1)).concat(["College"]).map((g,i)=>{const n=i+1,open=!!GFILE[n],here=n===GRADE;
   const act=here?'onclick="openGrade()"':open?`onclick="location.href='${GFILE[n]}#units'"`:"";
   return `<div class="card ${open?"click":"locked"}" ${act}><span class="pill">${open?"Open":"Coming soon"}</span><h3>${g}</h3><p>${open?GDESC[n]:"In progress"}</p></div>`}).join("");

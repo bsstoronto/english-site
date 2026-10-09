@@ -268,14 +268,14 @@ const L={
  choose:"Say the word slowly in syllables and picture it. Look for the tricky letters.",
  odd:"Three belong to the same group. Find the one that does <b>not</b> belong.",
  ana:"An <b>analogy</b> compares two pairs. Work out how the first pair is linked, then use the <b>same link</b>.",
- review:"These questions come from earlier Grade 4 units, so you keep everything you learned fresh."
+ review:"These questions come from earlier units in this grade, so you keep everything you learned fresh."
 };
 /* Build the full skill list for a unit.
    X = {sets:[4 titles], reading:[extra items], vocab:[extra items], grammar:[items], spelling:[items], thinking:[items],
         B:{DETAIL,MAIN,FACTS,OPIN,SEQ,CE,CMP,GRP,ANA,SENT,WP,SYN,OPP,COMP,SP,CHOOSE}} */
 function std(u,X){const B=X.B,set=k=>u.words.slice(k*10,k*10+10);
   const rd=u.stories.map((s,i)=>({id:"r_t"+(i+1),t:`${s.kind}: ${s.title.replace(/ \(.*\)$/,"")}`,act:"story",si:i})).concat(u.poems.map((p,i)=>({id:"r_p"+(i+1),t:`Poem: ${p.title.replace(/ \(.*\)$/,"")}${/\(by /.test(p.title)?" ("+p.title.match(/\(by ([^,)]+)/)[1]+")":""}`,act:"poem",pi:i})));
-  const before=UNITS.slice(0,UNITS.indexOf(u)).filter(x=>x.grade===4&&x.review);
+  const before=UNITS.slice(0,UNITS.indexOf(u)).filter(x=>x.grade===u.grade&&x.review);
   return [
    {n:"Reading",e:"📖",items:rd.concat(X.reading||[],[
      {id:"r_detail",t:"Read and find the details",learn:L.detail,gen:detail(B.DETAIL)},
@@ -6608,7 +6608,7 @@ function reviewStart(){
 
 /* ================= HOME / GRADE / UNIT PAGES ================= */
 $("siteName").textContent=SITE_NAME;$("footName").textContent=SITE_NAME;document.title=SITE_NAME;
-const GFILE={3:"index.html",4:"grade4.html"},GDESC={3:"Family, animals, plants, space and more",4:"Ecosystems, ancient worlds, energy, myths and more"};
+const GFILE={3:"index.html",4:"grade4.html",5:"grade5.html",6:"grade6.html"},GDESC={3:"Family, animals, plants, space and more",4:"Ecosystems, ancient worlds, energy, myths and more",5:"Body systems, oceans, space, mysteries and more",6:"Identity, ancient empires, climate and more"};
 $("gradeGrid").innerHTML=[...Array(12)].map((_,i)=>"Grade "+(i+1)).concat(["College"]).map((g,i)=>{const n=i+1,open=!!GFILE[n],here=n===GRADE;
   const act=here?'onclick="openGrade()"':open?`onclick="location.href='${GFILE[n]}#units'"`:"";
   return `<div class="card ${open?"click":"locked"}" ${act}><span class="pill">${open?"Open":"Coming soon"}</span><h3>${g}</h3><p>${open?GDESC[n]:"In progress"}</p></div>`}).join("");
