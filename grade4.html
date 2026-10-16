@@ -5001,7 +5001,7 @@ words:[
  {w:"nostril",e:"👃",m:"one of the two openings in your nose",ex:"Smells float into each nostril when you sniff.",fill:"Air goes in and out through each ___ of your nose."},
  {w:"flavour",e:"🍓",m:"the taste of a food, made by taste and smell working together",ex:"Mint gives the tea a fresh flavour.",fill:"Strawberry is my favourite ice cream ___.",alt:["flavor"]},
  {w:"saliva",e:"💧",m:"the watery liquid in your mouth that helps you taste and swallow food",ex:"Saliva helps carry flavours to your taste buds.",fill:"When I smell pizza, my mouth fills with ___."},
- {w:"texture",e:"🧶",m:"how something feels when you touch it, such as rough or smooth",ex:"Sandpaper has a rough texture.",fill:"Velvet has a soft, smooth ___."},
+ {w:"fragrance",e:"🌸",m:"a pleasant smell",ex:"The fragrance of fresh bread filled the kitchen.",fill:"The roses had a sweet ___."},
  {w:"receptor",e:"📡",m:"a special cell that notices things like light, sound, smells or touch",ex:"Your nose has millions of smell receptors.",fill:"Each smell ___ sends a signal to the brain."},
  {w:"sensitive",e:"🪶",m:"able to notice very small changes or touches",ex:"Your fingertips are very sensitive.",fill:"A dog's nose is very ___ to smells."},
  {w:"neuron",e:"🧠",m:"a nerve cell that carries messages in the brain and body",ex:"Your brain has billions of neurons.",fill:"A ___ sends tiny signals to other nerve cells."},
@@ -6608,7 +6608,7 @@ function reviewStart(){
 
 /* ================= HOME / GRADE / UNIT PAGES ================= */
 $("siteName").textContent=SITE_NAME;$("footName").textContent=SITE_NAME;document.title=SITE_NAME;
-const GFILE={3:"index.html",4:"grade4.html",5:"grade5.html",6:"grade6.html",7:"grade7.html"},GDESC={3:"Family, animals, plants, space and more",4:"Ecosystems, ancient worlds, energy, myths and more",5:"Body systems, oceans, space, mysteries and more",6:"Identity, ancient empires, climate and more",7:"Revolutions, genetics, media, forensics and more"};
+const GFILE={3:"index.html",4:"grade4.html",5:"grade5.html",6:"grade6.html",7:"grade7.html",8:"grade8.html"},GDESC={3:"Family, animals, plants, space and more",4:"Ecosystems, ancient worlds, energy, myths and more",5:"Body systems, oceans, space, mysteries and more",6:"Identity, ancient empires, climate and more",7:"Revolutions, genetics, media, forensics and more",8:"Identity, turning points, chemistry, stories and more"};
 $("gradeGrid").innerHTML=[...Array(12)].map((_,i)=>"Grade "+(i+1)).concat(["College"]).map((g,i)=>{const n=i+1,open=!!GFILE[n],here=n===GRADE;
   const act=here?'onclick="openGrade()"':open?`onclick="location.href='${GFILE[n]}#units'"`:"";
   return `<div class="card ${open?"click":"locked"}" ${act}><span class="pill">${open?"Open":"Coming soon"}</span><h3>${g}</h3><p>${open?GDESC[n]:"In progress"}</p></div>`}).join("");
