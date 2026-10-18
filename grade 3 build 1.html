@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sprout English</title>
+<style>
+:root{--g:#2D6A4F;--gd:#1B4332;--gl:#F0F8F3;--gb:#B7DCC4;--mint:#D8F3DC;--text:#1F2D27;--muted:#5B6B63;--bad:#B23A3A;--badbg:#FCECEC;--sun:#FFF4D6}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--text);background:#fff}
+header{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--gb);position:sticky;top:0;background:#fff;z-index:5}
+.brand{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--gd);cursor:pointer;font-size:17px}
+.btn{background:var(--g);color:#fff;border:0;border-radius:8px;padding:10px 16px;font-weight:600;cursor:pointer;font-size:15px}
+.btn:hover{background:var(--gd)}
+.btn.ghost{background:#fff;color:var(--g);border:1px solid var(--g)}
+.btn.small{padding:7px 12px;font-size:13px}
+.btn:disabled{opacity:.5;cursor:default}
+main{max-width:760px;margin:0 auto;padding:20px 16px 40px}
+.hero{background:var(--g);color:#fff;border-radius:14px;padding:26px 20px;text-align:center}
+.hero h1{margin:10px 0 6px;font-size:24px}
+.hero p{margin:0 0 14px;opacity:.92}
+.hero .btn{background:#fff;color:var(--gd)}
+.pill{display:inline-block;background:var(--mint);color:var(--gd);border-radius:999px;padding:3px 10px;font-size:12px;font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-top:16px}
+.card{background:var(--gl);border:1px solid var(--gb);border-radius:12px;padding:14px}
+.card h3{margin:8px 0 4px;font-size:16px}
+.card p{margin:0 0 10px;color:var(--muted);font-size:13px}
+.card.locked{opacity:.55}
+.card.click{cursor:pointer;transition:transform .15s}
+.card.click:hover{transform:translateY(-2px);border-color:var(--g)}
+.card .em{font-size:30px}
+h2{text-align:center;margin:28px 0 4px}
+.sub{text-align:center;color:var(--muted);margin:0}
+.bar{height:8px;background:#fff;border:1px solid var(--gb);border-radius:99px;overflow:hidden;margin:10px 0}
+.bar>div{height:100%;background:var(--g);transition:width .3s}
+.q{font-size:21px;margin:16px 0;line-height:1.45}
+.opts{display:grid;gap:10px}
+.opt{text-align:left;background:#fff;border:1px solid var(--gb);border-radius:10px;padding:12px 14px;font-size:17px;cursor:pointer;color:var(--text)}
+.opt:hover:not(:disabled){border-color:var(--g)}
+.opt.right{background:var(--mint);border-color:var(--g)}
+.opt.wrong{background:var(--badbg);border-color:var(--bad)}
+input.ans{width:100%;padding:12px;font-size:18px;border:1px solid var(--gb);border-radius:10px;margin-bottom:10px}
+.fb{margin-top:14px;padding:12px 14px;border-radius:10px;line-height:1.5}
+.fb.ok{background:var(--mint);color:var(--gd)}
+.fb.no{background:var(--badbg);color:var(--bad)}
+.hintbox{margin-top:8px;padding:10px 12px;border-radius:10px;background:var(--sun);color:#6B4E00}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.link{color:var(--g);cursor:pointer;font-weight:600;background:none;border:0;padding:0;font-size:14px}
+.storypic{font-size:64px;text-align:center;background:var(--gl);border:1px solid var(--gb);border-radius:14px;padding:18px;margin:12px 0;letter-spacing:6px}
+.story{font-size:19px;line-height:1.7}
+.vw{background:var(--mint);border:0;border-radius:6px;padding:0 4px;font:inherit;color:var(--gd);font-weight:700;cursor:pointer}
+.qbox{background:var(--gl);border:1px solid var(--gb);border-radius:12px;padding:14px;margin-top:14px}
+.flash{text-align:center;background:var(--gl);border:1px solid var(--gb);border-radius:16px;padding:26px 18px;margin:12px 0}
+.flash .em{font-size:70px}
+.flash .word{font-size:32px;font-weight:800;color:var(--gd);margin:8px 0}
+.flash .mean{font-size:18px;margin-top:12px}
+.flash .ex{font-style:italic;color:var(--muted);margin-top:8px}
+.rule{background:#fff;border:1px solid var(--gb);border-radius:12px;padding:12px 14px;margin:10px 0}
+.rule b{color:var(--gd)}
+.chip{display:inline-block;background:var(--gl);border:1px solid var(--gb);border-radius:8px;padding:5px 10px;margin:4px 4px 0 0;font-size:15px;cursor:pointer}
+textarea{width:100%;min-height:150px;padding:12px;font-size:17px;border:1px solid var(--gb);border-radius:10px;font-family:inherit;line-height:1.5}
+.check{margin:4px 0;font-size:15px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--gd);color:#fff;padding:12px 16px;border-radius:12px;max-width:92%;box-shadow:0 6px 20px rgba(0,0,0,.2);font-size:15px;z-index:9}
+.big{font-size:56px;margin:10px 0}
+.badge{display:inline-block;background:var(--sun);border:2px solid #E9C46A;border-radius:14px;padding:10px 16px;font-weight:800;color:#6B4E00;margin-top:12px}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:20px 16px;border-top:1px solid var(--gb)}
+.hidden{display:none}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand" onclick="go('home')">
+    <svg width="28" height="28" viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="13" r="13" fill="#2D6A4F"/><path d="M13 20v-7" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M13 13c0-3-2-5-5-5 0 3 2 5 5 5z" fill="#fff"/><path d="M13 12c0-3 2-5 5-5 0 3-2 5-5 5z" fill="#D8F3DC"/></svg>
+    <span id="siteName"></span>
+  </div>
+  <button class="btn small" onclick="openUnit()">Start Free</button>
+</header>
+
+<main>
+  <section id="v-home">
+    <div class="hero">
+      <span class="pill">Free · No sign-up</span>
+      <h1>Learn English by exploring the world</h1>
+      <p>Stories, new words, puzzles, amazing facts and writing — from Grade 1 to college.</p>
+      <button class="btn" onclick="openUnit()">Start exploring →</button>
+    </div>
+    <h2>Choose your level</h2>
+    <p class="sub">More grades are on the way.</p>
+    <div class="grid" id="gradeGrid"></div>
+  </section>
+
+  <section id="v-grade" class="hidden">
+    <button class="link" onclick="go('home')">← All grades</button>
+    <div class="hero" style="margin-top:12px">
+      <span class="pill">Grade 3</span>
+      <h1>Grade 3 English</h1>
+      <p>Each unit is a journey into one topic of the world.</p>
+    </div>
+    <h2>Units</h2>
+    <div class="grid" id="unitGrid"></div>
+  </section>
+
+  <section id="v-unit" class="hidden">
+    <button class="link" onclick="openGrade()">← Grade 3 units</button>
+    <div class="hero" style="margin-top:12px">
+      <div style="font-size:44px">🐘🐪🐙</div>
+      <h1>Animals Around the World</h1>
+      <p id="unitStars"></p>
+      <div id="unitBadge"></div>
+    </div>
+    <h2>Your journey</h2>
+    <p class="sub">Go in order for the best learning.</p>
+    <div class="grid" id="partGrid"></div>
+    <p style="text-align:center;margin-top:24px"><button class="link" onclick="resetAll()">Reset my progress</button></p>
+  </section>
+
+  <section id="v-part" class="hidden">
+    <div class="row">
+      <button class="link" onclick="openUnit()">← Back to unit</button>
+      <span class="pill" id="partTag"></span>
+    </div>
+    <div id="pbody"></div>
+  </section>
+</main>
+
+<footer><span id="footName"></span> · Free English learning for everyone</footer>
+<div id="toast" class="toast hidden"></div>
+
+<script>
+/* ================= SETTINGS ================= */
+const SITE_NAME = "Sprout English";   // placeholder name — change this one line later
+
+/* ================= UNIT CONTENT (all original) ================= */
+const UNIT = {
+story: [
+ {pic:"🐦🗺️", text:"Pip was a small blue bird with a big dream. One morning, Pip looked at an old map and said, \"I want to meet animals from all around the world!\" So Pip flew away from home.",
+  q:{q:"What did Pip want to do?",o:["Meet animals around the world","Build a new nest","Find some seeds"],a:["Meet animals around the world"],why:"Pip said, \"I want to meet animals from all around the world!\""}},
+ {pic:"🏜️🐪", text:"First, Pip flew to a hot, dry desert. There was sand everywhere. There Pip met a camel named Kamal. \"How do you live here?\" asked Pip. Kamal smiled. \"My hump stores fat, so I can go a long time without food. I can also drink a lot of water very fast.\"",
+  q:{q:"What does Kamal's hump store?",o:["Water","Fat","Sand"],a:["Fat"],why:"Kamal said his hump stores fat, not water."}},
+ {pic:"🌾🐘", text:"Next, Pip flew to the grasslands of Africa. A herd of elephants walked slowly to a river. The smallest elephant lifted her trunk and sprayed water on Pip. Splash! Pip laughed and shook his wet feathers.",
+  q:{q:"What is a group of elephants called?",o:["A herd","A flock","A team"],a:["A herd"],why:"The story says \"a herd of elephants\"."}},
+ {pic:"🧊🐻‍❄️", text:"Then Pip flew far north to the cold Arctic. Everything was white with snow and ice. A polar bear named Nanuk was fishing near the water. \"Aren't you cold?\" asked Pip. \"No,\" said Nanuk. \"My thick fur keeps me warm.\"",
+  q:{q:"Why is Nanuk not cold?",o:["He sits in the sun","His thick fur keeps him warm","He drinks hot water"],a:["His thick fur keeps him warm"],why:"Nanuk said, \"My thick fur keeps me warm.\""}},
+ {pic:"🌏🦘", text:"After that, Pip flew to Australia. A kangaroo hopped past with a baby in her pouch. The baby peeked out and waved. \"That is my joey,\" said the mother. \"He rides in my pouch until he is big enough to hop.\"",
+  q:{q:"Where does the baby kangaroo ride?",o:["On her back","In her pouch","In a tree"],a:["In her pouch"],why:"The joey rides in his mother's pouch."}},
+ {pic:"🌊🐙", text:"Last, Pip flew over the deep blue ocean. An octopus waved its eight arms from a rock. \"Hello, little bird! Did you know I have three hearts?\" Pip was amazed. That night, Pip flew home, tired but happy. \"The world is full of wonderful animals,\" Pip thought.",
+  q:{q:"How did Pip feel at the end of the trip?",o:["Angry and sad","Tired but happy","Scared and lost"],a:["Tired but happy"],why:"The story says Pip flew home \"tired but happy\"."}}
+],
+words: [
+ {w:"habitat",e:"🏞️",m:"the natural home of an animal or plant",ex:"The Arctic is the habitat of the polar bear.",fill:"A forest is the ___ of many birds and monkeys."},
+ {w:"desert",e:"🏜️",m:"a very dry place where it almost never rains",ex:"Camels can live in the hot desert.",fill:"It almost never rains in the ___."},
+ {w:"arctic",e:"🧊",m:"the very cold area at the top of the world",ex:"There is snow and ice in the Arctic all year.",fill:"Polar bears live in the cold ___."},
+ {w:"ocean",e:"🌊",m:"a very big area of salty water",ex:"Whales swim in the ocean.",fill:"Whales and octopuses swim in the ___."},
+ {w:"herd",e:"🐘",m:"a big group of animals that live and move together",ex:"A herd of elephants walked to the river.",fill:"A ___ of cows ate grass in the field."},
+ {w:"trunk",e:"🐘",m:"the long nose of an elephant",ex:"The elephant sprayed water with its trunk.",fill:"The elephant picked up a peanut with its ___."},
+ {w:"hump",e:"🐪",m:"the round bump on a camel's back",ex:"The camel's hump stores fat.",fill:"The camel has a big ___ on its back."},
+ {w:"pouch",e:"🦘",m:"a pocket of skin where a kangaroo carries its baby",ex:"The joey sleeps in the pouch.",fill:"The baby kangaroo sleeps in its mother's ___."},
+ {w:"fur",e:"🐻‍❄️",m:"the thick, soft hair on an animal",ex:"The polar bear's fur keeps it warm.",fill:"The rabbit has soft, white ___."},
+ {w:"amazed",e:"😲",m:"very, very surprised",ex:"Pip was amazed to meet an octopus.",fill:"We were ___ to see a whale jump out of the water."}
+],
+grammar: [
+ {id:"plural", e:"🐑🐑", t:"One or many? (Plurals)",
+  intro:"When there is more than one, the word changes. Here are the rules:",
+  rules:[
+   {r:"Most words: add <b>-s</b>",ex:["camel → camels","bird → birds"]},
+   {r:"Words ending in <b>-s, -x, -sh, -ch</b>: add <b>-es</b>",ex:["fox → foxes","bus → buses"]},
+   {r:"Consonant + <b>y</b>: change y to <b>-ies</b>",ex:["puppy → puppies","bunny → bunnies"]},
+   {r:"Many words ending in <b>-f</b>: change to <b>-ves</b>",ex:["wolf → wolves","leaf → leaves"]},
+   {r:"<b>Special words</b> — learn them by heart",ex:["mouse → mice","goose → geese","sheep → sheep"]}
+  ],
+  tries:[
+   {id:"g_p1",type:"type",q:"One camel, two ___.",a:["camels"],hint:"Most words just add -s.",why:"Camel → camels. Just add -s."},
+   {id:"g_p2",type:"mc",q:"One fox, three ___.",o:["foxs","foxes","foxies"],a:["foxes"],hint:"Fox ends in -x.",why:"Words ending in -x add -es: fox → foxes."},
+   {id:"g_p3",type:"type",q:"One puppy, two ___.",a:["puppies"],hint:"Look at the last letters: consonant + y.",why:"Puppy → puppies. Change y to -ies."},
+   {id:"g_p4",type:"mc",q:"One wolf, many ___.",o:["wolfs","wolves","wolfes"],a:["wolves"],hint:"Think of leaf → leaves.",why:"Wolf → wolves. The f changes to -ves."},
+   {id:"g_p5",type:"mc",q:"One goose, two ___.",o:["gooses","geese","geeses"],a:["geese"],hint:"It is a special word, like mouse → mice.",why:"Goose is special: goose → geese."},
+   {id:"g_p6",type:"type",q:"One sheep, ten ___.",a:["sheep"],hint:"This special word does not change at all!",why:"Sheep stays the same: one sheep, ten sheep."}
+  ]},
+ {id:"past", e:"⏪", t:"Yesterday words (Past tense)",
+  intro:"In Pip's story, everything already happened, so we use past tense. Look: Pip <b>flew</b>, <b>met</b>, <b>smiled</b>, <b>laughed</b>.",
+  rules:[
+   {r:"Most verbs: add <b>-ed</b>",ex:["walk → walked","laugh → laughed"]},
+   {r:"Verbs ending in <b>e</b>: just add <b>-d</b>",ex:["smile → smiled","wave → waved"]},
+   {r:"<b>Special verbs</b> change in their own way",ex:["fly → flew","see → saw","swim → swam","eat → ate","meet → met"]}
+  ],
+  tries:[
+   {id:"g_t1",type:"type",q:"Today the elephants walk. Yesterday they ___.",a:["walked"],hint:"Walk is a regular verb. Add -ed.",why:"Walk → walked."},
+   {id:"g_t2",type:"mc",q:"Yesterday Pip ___ to the desert.",o:["fly","flew","flied"],a:["flew"],hint:"Fly is a special verb. Look back at the story!",why:"Fly is special: fly → flew."},
+   {id:"g_t3",type:"type",q:"Today I see a whale. Yesterday I ___ a whale.",a:["saw"],hint:"See is a special verb with only 3 letters in the past.",why:"See is special: see → saw."},
+   {id:"g_t4",type:"mc",q:"The fish ___ in the river last night.",o:["swim","swam","swimmed"],a:["swam"],hint:"Swim is special. Only one letter changes.",why:"Swim → swam."},
+   {id:"g_t5",type:"type",q:"Today the kangaroo smiles. Yesterday it ___.",a:["smiled"],hint:"Smile ends in e. Just add -d.",why:"Smile → smiled."},
+   {id:"g_t6",type:"mc",q:"The bear ___ a big fish yesterday.",o:["eat","ate","eated"],a:["ate"],hint:"Eat is special.",why:"Eat → ate."}
+  ]}
+],
+think: [
+ {q:"🤔 Odd one out: which animal does NOT live in the ocean?",o:["Shark","Octopus","Camel","Whale"],a:["Camel"],why:"Sharks, octopuses and whales live in the ocean. A camel lives in the desert."},
+ {q:"🔥 Which animal would find it HARDEST to live in a hot desert?",o:["Camel","Lizard","Polar bear"],a:["Polar bear"],why:"A polar bear's thick fur is made for the cold. In a hot desert, it would get far too hot."},
+ {q:"🐸 A frog's life: egg → ___ → frog. What comes in the middle?",o:["Tadpole","Fish","Snake"],a:["Tadpole"],why:"A frog starts as an egg, then becomes a tadpole that swims, and then grows legs and becomes a frog."},
+ {q:"🧩 Riddle: I have a pouch and strong back legs, and I hop. Who am I?",o:["Penguin","Kangaroo","Monkey"],a:["Kangaroo"],why:"Pouch + hopping = kangaroo!"},
+ {q:"🐪 A camel's hump is small and floppy. What probably happened?",o:["It used up the fat in its hump","It drank too much water","It is too cold"],a:["It used up the fat in its hump"],why:"The hump stores fat. When the camel uses the fat for energy, the hump gets smaller and floppy."},
+ {q:"🔗 Elephant is to trunk as bird is to ___.",o:["beak","tail","fur"],a:["beak"],why:"An elephant picks up food with its trunk. A bird picks up food with its beak."}
+],
+facts: [
+ {e:"🐪",c:"A camel's hump is full of water.",t:false,x:"Not true! The hump stores fat. The camel's body can turn that fat into energy."},
+ {e:"🐙",c:"An octopus has three hearts.",t:true,x:"True! Two hearts pump blood to its gills and one pumps blood to the rest of its body."},
+ {e:"🐻‍❄️",c:"Polar bears have black skin under their white fur.",t:true,x:"True! Their dark skin helps them soak up warmth from the sun."},
+ {e:"🐧",c:"Penguins can fly high in the sky.",t:false,x:"Not true! Penguins cannot fly, but they are super swimmers. Their wings work like flippers."},
+ {e:"🐦",c:"Hummingbirds can fly backwards.",t:true,x:"True! Hummingbirds can fly forwards, backwards, and even stay still in the air."},
+ {e:"🦦",c:"Sea otters sometimes hold paws while they sleep.",t:true,x:"True! It helps them stay together so they don't float away from each other."},
+ {e:"🦘",c:"A baby kangaroo is called a cub.",t:false,x:"Not true! A baby kangaroo is called a joey."},
+ {e:"🦥",c:"Sloths move so slowly that tiny green plants can grow on their fur.",t:true,x:"True! Tiny plants called algae grow on their fur. The green colour helps them hide in trees."}
+],
+imagine: {
+ prompts:[
+  {e:"🦋",t:"If you could be any animal for one day, which animal would you be? What would you do?"},
+  {e:"🦄",t:"Invent a brand-new animal! What does it look like? What is its habitat? What can it do?"}
+ ],
+ starters:["If I were a ","I would live in ","My animal has ","It can ","One day, it "]
+}
+};
+
+const PARTS=[
+ {k:"read",e:"📖",t:"1. Read the story",d:"Pip's trip around the world"},
+ {k:"words",e:"🔤",t:"2. New words",d:"10 animal words"},
+ {k:"grammar",e:"🧩",t:"3. Grammar",d:"Plurals and past tense"},
+ {k:"think",e:"🧠",t:"4. Think",d:"Puzzles and riddles"},
+ {k:"facts",e:"💡",t:"5. Did you know?",d:"Guess: true or false?"},
+ {k:"imagine",e:"✏️",t:"6. Imagine & write",d:"Write your own ideas"},
+ {k:"review",e:"🔁",t:"7. Review",d:"Practice so you never forget"}
+];
+
+/* ================= SAVED PROGRESS (this browser only) ================= */
+const KEY="sprout_v2";
+let S;
+try{S=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+if(!S||!S.parts)S={parts:{},cards:{},writing:"",gram:{}};
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function resetAll(){if(confirm("Reset all progress for this unit?")){S={parts:{},cards:{},writing:"",gram:{}};save();openUnit()}}
+function markDone(k){S.parts[k]=true;save()}
+
+/* ================= HELPERS ================= */
+const $=id=>document.getElementById(id);
+const body=()=>$("pbody");
+const norm=s=>s.toLowerCase().trim().replace(/[.!?]+$/,"").replace(/\s+/g," ");
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function go(v){["home","grade","unit","part"].forEach(x=>$("v-"+x).classList.toggle("hidden",x!==v));window.scrollTo(0,0);try{speechSynthesis.cancel()}catch(e){}}
+function say(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t.replace(/<[^>]+>/g,""));u.lang="en-US";u.rate=0.9;speechSynthesis.speak(u)}catch(e){}}
+let toastT;
+function toast(html){const t=$("toast");t.innerHTML=html;t.classList.remove("hidden");clearTimeout(toastT);toastT=setTimeout(()=>t.classList.add("hidden"),4500)}
+function cap(w){return w.charAt(0).toUpperCase()+w.slice(1)}
+function doneScreen(e,title,msg){
+  body().innerHTML=`<div style="text-align:center"><div class="big">${e}</div><h2 style="margin-top:0">${title}</h2><p class="sub">${msg}</p>
+  <p style="margin-top:20px"><button class="btn" onclick="openUnit()">Back to the journey →</button></p></div>`;
+}
+
+/* ================= FSRS (v4.5 default weights) ================= */
+const W=[0.4872,1.4003,3.7145,13.8206,5.1618,1.2298,0.8975,0.031,1.6474,0.1367,1.0461,2.1072,0.0793,0.3246,1.587,0.2272,2.8755];
+const DAY=86400000,FACTOR=19/81,DECAY=-0.5;
+const clampD=d=>Math.min(10,Math.max(1,d));
+function fsrs(c,g,now){ // g: 1 = wrong, 3 = right
+  if(!c.s){c.s=W[g-1];c.d=clampD(W[4]-(g-3)*W[5])}
+  else{
+    const r=Math.pow(1+FACTOR*Math.max(0,(now-c.last)/DAY)/c.s,DECAY);
+    if(g===1)c.s=W[11]*Math.pow(c.d,-W[12])*(Math.pow(c.s+1,W[13])-1)*Math.exp(W[14]*(1-r));
+    else c.s=c.s*(1+Math.exp(W[8])*(11-c.d)*Math.pow(c.s,-W[9])*(Math.exp(W[10]*(1-r))-1));
+    c.d=clampD(W[7]*W[4]+(1-W[7])*(c.d-W[6]*(g-3)));
+  }
+  c.last=now;c.due=g===1?now:now+Math.max(1,Math.round(c.s))*DAY;
+  c.streak=g===1?0:(c.streak||0)+1;
+}
+
+/* ================= QUESTION RUNNER (used by every part) ================= */
+function runQuestions(list,opt){
+  const q=list.slice();let i=0,first=0,seen=new Set(),retries={},answered=false,answeredAt=0;
+  function show(){
+    answered=false;const it=q[i];
+    body().innerHTML=`<div class="bar"><div style="width:${i/q.length*100}%"></div></div>
+      <div class="row"><span class="pill">Question ${Math.min(i+1,q.length)} of ${q.length}</span>
+      <button class="btn ghost small" id="sayQ">🔊 Listen</button></div>
+      <div class="q">${it.q}</div><div id="qa"></div>
+      ${opt.hints&&it.hint?`<button class="link" id="hintBtn" style="margin-top:10px">💡 Need a hint?</button><div id="hint"></div>`:""}
+      <div id="fb"></div><div id="nx" style="margin-top:14px"></div>`;
+    $("sayQ").onclick=()=>say(it.q.replace(/___/g,"blank"));
+    if(opt.hints&&it.hint)$("hintBtn").onclick=()=>{$("hint").innerHTML=`<div class="hintbox">💡 ${it.hint}</div>`;$("hintBtn").remove()};
+    const qa=$("qa");
+    if(it.type==="type"){
+      const inp=document.createElement("input");inp.className="ans";inp.placeholder="Type your answer";inp.autocomplete="off";inp.setAttribute("autocapitalize","off");
+      inp.onkeydown=e=>{if(e.key==="Enter"&&inp.value.trim()){e.preventDefault();check(inp.value)}};
+      const b=document.createElement("button");b.className="btn";b.textContent="Check";b.onclick=()=>{if(inp.value.trim())check(inp.value)};
+      qa.append(inp,b);inp.focus();
+    }else{
+      const box=document.createElement("div");box.className="opts";
+      shuffle(it.o.slice()).forEach(o=>{const b=document.createElement("button");b.className="opt";b.textContent=o;b.onclick=()=>check(o,b);box.appendChild(b)});
+      qa.appendChild(box);
+    }
+  }
+  function check(val,btn){
+    if(answered)return;answered=true;answeredAt=Date.now();
+    const it=q[i];const ok=it.a.map(norm).includes(norm(val));
+    if(opt.onAnswer)opt.onAnswer(it,ok);
+    if(!seen.has(it.id||it.q)){seen.add(it.id||it.q);if(ok)first++}
+    $("qa").querySelectorAll("button,input").forEach(el=>el.disabled=true);
+    if(it.type!=="type")$("qa").querySelectorAll(".opt").forEach(b=>{if(it.a.includes(b.textContent))b.classList.add("right");else if(b===btn)b.classList.add("wrong")});
+    if($("hintBtn"))$("hintBtn").remove();
+    $("fb").innerHTML=`<div class="fb ${ok?"ok":"no"}"><b>${ok?pick(["Correct! 🎉","Great job! ⭐","Yes! 👏","Well done! 🌱"]):"Not quite. The answer is: "+it.a[0]}</b><br>${it.why||""}</div>`;
+    if(!ok&&(retries[it.id||it.q]||0)<2){retries[it.id||it.q]=(retries[it.id||it.q]||0)+1;q.splice(Math.min(i+3,q.length),0,it)}
+    const nb=document.createElement("button");nb.className="btn";nb.textContent=i+1<q.length?"Next →":"Finish ✓";
+    nb.onclick=()=>{if(Date.now()-answeredAt<250)return;i++;if(i>=q.length)opt.onDone(first,seen.size);else show()};
+    $("nx").appendChild(nb);setTimeout(()=>nb.focus(),50);
+  }
+  show();
+}
+function pick(a){return a[Math.floor(Math.random()*a.length)]}
+
+/* ================= HOME / GRADE / UNIT ================= */
+$("siteName").textContent=SITE_NAME;$("footName").textContent=SITE_NAME;document.title=SITE_NAME;
+$("gradeGrid").innerHTML=[...Array(12)].map((_,i)=>"Grade "+(i+1)).concat(["College"]).map((g,i)=>{
+  const open=i===2;
+  return `<div class="card ${open?"click":"locked"}" ${open?'onclick="openGrade()"':""}>
+    <span class="pill">${open?"Open":"Coming soon"}</span><h3>${g}</h3>
+    <p>${open?"Animals, space, weather and more":"In progress"}</p></div>`}).join("");
+
+const UNITS=[["🐘","Animals Around the World",1],["🚀","Space and the Planets"],["🌦️","Weather and Seasons"],["🌱","How Plants Grow"],["🌊","Life in the Ocean"],["💡","Amazing Inventions"],["⏰","Time, Shapes and Money"],["🤝","Friends and Feelings"]];
+function openGrade(){
+  $("unitGrid").innerHTML=UNITS.map(u=>`<div class="card ${u[2]?"click":"locked"}" ${u[2]?'onclick="openUnit()"':""}>
+    <div class="em">${u[0]}</div><span class="pill">${u[2]?"Open":"Coming soon"}</span><h3>${u[1]}</h3></div>`).join("");
+  go("grade");
+}
+function openUnit(){
+  const n=PARTS.filter(p=>S.parts[p.k]).length;
+  $("unitStars").textContent=`⭐ ${n} of ${PARTS.length} parts complete`;
+  $("unitBadge").innerHTML=n===PARTS.length?`<div class="badge">🏅 Animal Explorer badge earned!</div>`:"";
+  $("partGrid").innerHTML=PARTS.map(p=>{
+    const locked=p.k==="review"&&!(S.parts.words&&S.parts.grammar);
+    return `<div class="card ${locked?"locked":"click"}" ${locked?"":`onclick="openPart('${p.k}')"`}>
+      <div class="em">${p.e}</div><span class="pill">${S.parts[p.k]?"Done ⭐":locked?"🔒 After parts 2 & 3":"Start"}</span>
+      <h3>${p.t}</h3><p>${p.d}</p></div>`}).join("");
+  go("unit");
+}
+function openPart(k){
+  $("partTag").textContent=PARTS.find(p=>p.k===k).t.replace(/^\d\. /,"");
+  go("part");
+  ({read:readPart,words:wordsPart,grammar:grammarPart,think:thinkPart,facts:factsPart,imagine:imaginePart,review:reviewPart})[k]();
+}
+
+/* ================= 1. READ ================= */
+function highlight(text){
+  let out=text;
+  UNIT.words.forEach((w,i)=>{out=out.replace(new RegExp("\\b("+w.w+")\\b","i"),m=>`<button class="vw" onclick="showWord(${i})">${m}</button>`)});
+  return out;
+}
+function showWord(i){const w=UNIT.words[i];say(w.w);toast(`${w.e} <b>${w.w}</b>: ${w.m}`)}
+function readPart(pg=0){
+  const p=UNIT.story[pg],n=UNIT.story.length;
+  body().innerHTML=`<div class="bar"><div style="width:${pg/n*100}%"></div></div>
+    <div class="storypic">${p.pic}</div>
+    <div class="row"><span class="pill">Page ${pg+1} of ${n}</span><button class="btn ghost small" onclick="say(UNIT.story[${pg}].text)">🔊 Read to me</button></div>
+    <p class="story">${highlight(p.text)}</p>
+    <p style="color:var(--muted);font-size:13px;margin:0">Tip: tap a <span class="vw">green word</span> to learn what it means.</p>
+    <div class="qbox"><b>${p.q.q}</b><div class="opts" id="sq" style="margin-top:10px"></div><div id="sfb"></div></div>
+    <div id="snext" style="margin-top:14px"></div>`;
+  shuffle(p.q.o.slice()).forEach(o=>{
+    const b=document.createElement("button");b.className="opt";b.textContent=o;
+    b.onclick=()=>{
+      const ok=p.q.a.includes(o);
+      $("sq").querySelectorAll(".opt").forEach(x=>{x.disabled=true;if(p.q.a.includes(x.textContent))x.classList.add("right");else if(x===b)x.classList.add("wrong")});
+      $("sfb").innerHTML=`<div class="fb ${ok?"ok":"no"}"><b>${ok?"Correct! 🎉":"Not quite."}</b> ${p.q.why}</div>`;
+      const nb=document.createElement("button");nb.className="btn";nb.textContent=pg+1<n?"Next page →":"Finish the story ✓";
+      nb.onclick=()=>{if(pg+1<n)readPart(pg+1);else{markDone("read");doneScreen("📖","Story complete!","You travelled the world with Pip. Next, learn the new words from the story.")}};
+      $("snext").appendChild(nb);
+    };
+    $("sq").appendChild(b);
+  });
+}
+
+/* ================= 2. WORDS ================= */
+function wordsPart(wi=0){
+  const w=UNIT.words[wi],n=UNIT.words.length;
+  body().innerHTML=`<div class="bar"><div style="width:${wi/n*100}%"></div></div>
+    <div class="flash"><div class="em">${w.e}</div><div class="word">${cap(w.w)}</div>
+      <button class="btn ghost small" onclick="say(UNIT.words[${wi}].w)">🔊 Say it</button>
+      <div id="meanBox"><p style="margin-top:16px"><button class="btn" id="showM">Show the meaning</button></p></div>
+    </div>
+    <div class="row"><button class="btn ghost" ${wi===0?"disabled":""} onclick="wordsPart(${wi-1})">← Back</button>
+    <span class="pill">Word ${wi+1} of ${n}</span>
+    <button class="btn" onclick="${wi+1<n?`wordsPart(${wi+1})`:"wordCheck()"}">${wi+1<n?"Next →":"Quick check →"}</button></div>`;
+  $("showM").onclick=()=>{$("meanBox").innerHTML=`<div class="mean">${w.m}</div><div class="ex">"${w.ex}" <button class="link" onclick="say(UNIT.words[${wi}].ex)">🔊</button></div>`;say(w.m)};
+}
+function wordMC(w){return {id:"w_m_"+w.w,type:"mc",q:`Which word means: <b>${w.m}</b>?`,o:shuffle([w.w].concat(shuffle(UNIT.words.filter(x=>x.w!==w.w)).slice(0,2).map(x=>x.w))),a:[w.w],why:`${w.e} <b>${w.w}</b>: ${w.ex}`}}
+function wordFill(w){return {id:"w_f_"+w.w,type:"type",q:w.fill,a:[w.w],why:`${w.e} <b>${w.w}</b> = ${w.m}`}}
+function wordCheck(){
+  runQuestions(shuffle(UNIT.words.slice()).slice(0,5).map(wordMC),{onDone:(f,t)=>{markDone("words");doneScreen("🔤","Words learned!",`You got ${f} of ${t} right on the first try. These words will come back in Review so you remember them.`)}});
+}
+
+/* ================= 3. GRAMMAR ================= */
+function grammarPart(){
+  body().innerHTML=`<h2>Two mini-lessons</h2><p class="sub">Learn the rule first, then try it with hints.</p>
+   <div class="grid">${UNIT.grammar.map((g,i)=>`<div class="card click" onclick="grammarLesson(${i})"><div class="em">${g.e}</div>
+   <span class="pill">${S.gram[g.id]?"Done ⭐":"Start"}</span><h3>${g.t}</h3></div>`).join("")}</div>`;
+}
+function grammarLesson(i){
+  const g=UNIT.grammar[i];
+  body().innerHTML=`<div class="storypic">${g.e}</div><h2 style="margin-top:0">${g.t}</h2>
+   <p class="story" style="font-size:17px">${g.intro}</p>
+   ${g.rules.map(r=>`<div class="rule"><div>${r.r}</div><div>${r.ex.map(x=>`<span class="chip" onclick="say('${x.replace(" → ",", ")}')">🔊 ${x}</span>`).join("")}</div></div>`).join("")}
+   <p style="text-align:center;margin-top:18px"><button class="btn" onclick="grammarTry(${i})">I understand — let me try (with hints) →</button></p>`;
+}
+function grammarTry(i){
+  const g=UNIT.grammar[i];
+  runQuestions(g.tries,{hints:true,onDone:(f,t)=>{
+    S.gram[g.id]=true;save();
+    const both=UNIT.grammar.every(x=>S.gram[x.id]);
+    if(both)markDone("grammar");
+    doneScreen("🧩","Lesson complete!",`You got ${f} of ${t} right on the first try.`+(both?" Both grammar lessons are done!":" Now try the other grammar lesson."));
+    if(!both)body().insertAdjacentHTML("beforeend",`<p style="text-align:center"><button class="btn ghost" onclick="grammarPart()">Go to the next lesson</button></p>`);
+  }});
+}
+
+/* ================= 4. THINK ================= */
+function thinkPart(){
+  runQuestions(UNIT.think.map((x,i)=>Object.assign({id:"th"+i,type:"mc"},x)),{onDone:(f,t)=>{markDone("think");doneScreen("🧠","Super thinker!",`You solved ${f} of ${t} on the first try. Great brain work!`)}});
+}
+
+/* ================= 5. DID YOU KNOW? ================= */
+function factsPart(fi=0,score=0){
+  const f=UNIT.facts[fi],n=UNIT.facts.length;
+  body().innerHTML=`<div class="bar"><div style="width:${fi/n*100}%"></div></div>
+   <div class="flash"><div class="em">${f.e}</div><p style="color:var(--muted);margin:6px 0">Guess first: true or false?</p>
+   <div class="q" style="font-weight:700">${f.c}</div>
+   <div class="row" style="justify-content:center"><button class="btn" id="fT">True ✅</button><button class="btn" id="fF">False ❌</button></div>
+   <div id="ffb"></div></div><div id="fnx" style="text-align:center"></div>`;
+  say(f.c);
+  const ans=g=>{
+    $("fT").disabled=$("fF").disabled=true;const ok=g===f.t;if(ok)score++;
+    $("ffb").innerHTML=`<div class="fb ${ok?"ok":"no"}" style="text-align:left"><b>${ok?"You guessed right! 🎉":"Surprise! 😲"}</b><br>${f.x}</div>`;
+    const nb=document.createElement("button");nb.className="btn";nb.textContent=fi+1<n?"Next fact →":"Finish ✓";
+    nb.onclick=()=>{if(fi+1<n)factsPart(fi+1,score);else{markDone("facts");doneScreen("💡","Fact explorer!",`You guessed ${score} of ${n} right. Share one fact with your family today!`)}};
+    $("fnx").appendChild(nb);
+  };
+  $("fT").onclick=()=>ans(true);$("fF").onclick=()=>ans(false);
+}
+
+/* ================= 6. IMAGINE & WRITE ================= */
+let promptIdx=0;
+function imaginePart(){
+  const im=UNIT.imagine;
+  body().innerHTML=`<h2 style="margin-top:10px">Choose your idea</h2>
+   <div class="grid">${im.prompts.map((p,i)=>`<div class="card click" id="pr${i}" onclick="setPrompt(${i})" style="${i===promptIdx?"border-color:var(--g);border-width:2px":""}"><div class="em">${p.e}</div><p style="color:var(--text);font-size:15px">${p.t}</p></div>`).join("")}</div>
+   <p style="margin:16px 0 4px"><b>Sentence starters</b> (tap to add):</p>
+   <div>${im.starters.map((s,i)=>`<span class="chip" onclick="ins(UNIT.imagine.starters[${i}])">${s}…</span>`).join("")}</div>
+   <p style="margin:12px 0 4px"><b>Word bank</b> (try to use one!):</p>
+   <div>${UNIT.words.map((w,i)=>`<span class="chip" onclick="ins(UNIT.words[${i}].w+' ')">${w.e} ${w.w}</span>`).join("")}</div>
+   <textarea id="wr" style="margin-top:14px" placeholder="Write at least 2 sentences here…"></textarea>
+   <div id="checks" style="margin:10px 0"></div>
+   <div class="row"><button class="btn ghost" onclick="say($('wr').value||'Write something first!')">🔊 Read my writing</button>
+   <button class="btn" onclick="saveWriting()">Save my writing ✓</button></div><div id="wfb"></div>`;
+  $("wr").value=S.writing||"";$("wr").oninput=updateChecks;updateChecks();
+}
+function setPrompt(i){promptIdx=i;const v=$("wr").value;imaginePart();$("wr").value=v;updateChecks()}
+function ins(t){const a=$("wr"),s=a.selectionStart??a.value.length;a.value=a.value.slice(0,s)+t+a.value.slice(a.selectionEnd??s);a.focus();a.selectionStart=a.selectionEnd=s+t.length;updateChecks()}
+function writingChecks(v){
+  const sentences=(v.match(/[a-z][^.!?]*[.!?]/gi)||[]).length;
+  return [
+    [sentences>=2,"I wrote at least 2 sentences"],
+    [/^\s*[A-Z]/.test(v),"I started with a capital letter"],
+    [/[.!?]\s*$/.test(v.trim()),"I ended with a full stop (.), ! or ?"],
+    [UNIT.words.some(w=>new RegExp("\\b"+w.w+"\\b","i").test(v)),"I used a word from the word bank"]
+  ];
+}
+function updateChecks(){$("checks").innerHTML=writingChecks($("wr").value).map(c=>`<div class="check">${c[0]?"✅":"⬜"} ${c[1]}</div>`).join("")}
+function saveWriting(){
+  const v=$("wr").value;S.writing=v;save();
+  const all=writingChecks(v).every(c=>c[0]);
+  if(all){markDone("imagine");$("wfb").innerHTML=`<div class="fb ok"><b>Wonderful writing! ✏️⭐</b><br>Your writing is saved. Read it aloud to someone at home!</div>`}
+  else $("wfb").innerHTML=`<div class="fb no"><b>Saved!</b> Tick all the boxes above to finish this part.</div>`;
+}
+
+/* ================= 7. REVIEW (FSRS spaced repetition) ================= */
+function reviewItems(){return UNIT.words.flatMap(w=>[wordMC(w),wordFill(w)]).concat(UNIT.grammar.flatMap(g=>g.tries))}
+function reviewPart(){
+  const now=Date.now(),all=reviewItems();
+  const due=shuffle(all.filter(i=>S.cards[i.id]&&S.cards[i.id].due<=now)).slice(0,10);
+  const fresh=shuffle(all.filter(i=>!S.cards[i.id])).slice(0,Math.max(0,Math.min(6,10-due.length)));
+  let list=shuffle(due.concat(fresh));
+  const learned=all.filter(i=>S.cards[i.id]&&S.cards[i.id].streak>=2).length;
+  if(!list.length){
+    body().innerHTML=`<div style="text-align:center"><div class="big">🌙</div><h2 style="margin-top:0">All caught up!</h2>
+     <p class="sub">${learned} of ${all.length} items learned. Your next review is scheduled. Come back tomorrow!</p>
+     <p style="margin-top:18px"><button class="btn ghost" onclick="extraReview()">Extra practice anyway</button></p></div>`;return;
+  }
+  startReview(list);
+}
+function extraReview(){startReview(reviewItems().sort((a,b)=>((S.cards[a.id]||{}).s||0)-((S.cards[b.id]||{}).s||0)).slice(0,10))}
+function startReview(list){
+  runQuestions(list,{onAnswer:(it,ok)=>{S.cards[it.id]=S.cards[it.id]||{};fsrs(S.cards[it.id],ok?3:1,Date.now());save()},
+    onDone:(f,t)=>{markDone("review");const all=reviewItems();const learned=all.filter(i=>S.cards[i.id]&&S.cards[i.id].streak>=2).length;
+      doneScreen("🔁","Review done!",`${f} of ${t} right on the first try. ${learned} of ${all.length} items learned so far. The ones you found hard will come back sooner.`)}});
+}
+</script>
+</body>
+</html>
